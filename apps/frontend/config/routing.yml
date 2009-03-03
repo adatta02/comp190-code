@@ -9,7 +9,7 @@ project_success:
 # default rules
 homepage:
   url:   /
-  param: { module: default, action: index }
+  param: { module: welcome, action: index }
 
 default_index:
   url:   /:module

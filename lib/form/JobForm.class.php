@@ -24,6 +24,10 @@ class JobForm extends BaseJobForm
   	$this->widgetSchema->setLabel('event','Event Name');
   	$this->widgetSchema->setLabel('publication_id','Publication');
   	
+  	$this->widgetSchema['start_time'] = new sfWidgetFormJQueryDate();
+  	$this->widgetSchema['end_time'] = new sfWidgetFormJQueryDate();
+  	$this->widgetSchema['due_date'] = new sfWidgetFormJQueryDate();
+  	
   	$this->validatorSchema['event']->setOption('required', true); 
   	$this->validatorSchema['street']->setOption('required', true);
   	$this->validatorSchema['city']->setOption('required', true);

@@ -1,3 +1,6 @@
+<?php echo include_javascripts_for_form($form); ?>
+<?php echo include_stylesheets_for_form($form); ?>
+
 <h2>Request a photographer:</h2>
 
 <?php echo form_tag_for($form, '@project') ?>
