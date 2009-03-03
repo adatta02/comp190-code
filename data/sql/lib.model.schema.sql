@@ -27,11 +27,11 @@ DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user`
 (
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
-	`User_Type_id` INTEGER,
+	`user_Type_id` INTEGER,
 	PRIMARY KEY (`id`),
-	INDEX `FI_User_User_Type` (`User_Type_id`),
+	INDEX `FI_User_User_Type` (`user_Type_id`),
 	CONSTRAINT `fk_User_User_Type`
-		FOREIGN KEY (`User_Type_id`)
+		FOREIGN KEY (`user_Type_id`)
 		REFERENCES `user_type` (`id`)
 )Type=InnoDB;
 
@@ -45,9 +45,9 @@ DROP TABLE IF EXISTS `job`;
 CREATE TABLE `job`
 (
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
-	`Project_id` INTEGER,
-	`Publication_id` INTEGER,
-	`Status_id` INTEGER,
+	`project_id` INTEGER,
+	`publication_id` INTEGER,
+	`status_id` INTEGER,
 	`event` VARCHAR(64),
 	`date` DATETIME,
 	`start_time` DATETIME,
@@ -69,17 +69,17 @@ CREATE TABLE `job`
 	`other` VARCHAR(255),
 	`idr` VARCHAR(32),
 	PRIMARY KEY (`id`),
-	INDEX `FI_Shoot_Publication` (`Publication_id`),
+	INDEX `FI_Shoot_Publication` (`publication_id`),
 	CONSTRAINT `fk_Shoot_Publication`
-		FOREIGN KEY (`Publication_id`)
+		FOREIGN KEY (`publication_id`)
 		REFERENCES `publication` (`id`),
-	INDEX `FI_Job_Project` (`Project_id`),
+	INDEX `FI_Job_Project` (`project_id`),
 	CONSTRAINT `fk_Job_Project`
-		FOREIGN KEY (`Project_id`)
+		FOREIGN KEY (`project_id`)
 		REFERENCES `project` (`id`),
-	INDEX `FI_Job_Status` (`Status_id`),
+	INDEX `FI_Job_Status` (`status_id`),
 	CONSTRAINT `fk_Job_Status`
-		FOREIGN KEY (`Status_id`)
+		FOREIGN KEY (`status_id`)
 		REFERENCES `status` (`id`)
 )Type=InnoDB;
 
@@ -93,11 +93,11 @@ DROP TABLE IF EXISTS `photo`;
 CREATE TABLE `photo`
 (
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
-	`Job_id` INTEGER,
+	`job_id` INTEGER,
 	PRIMARY KEY (`id`),
-	INDEX `FI_Photo_Job` (`Job_id`),
+	INDEX `FI_Photo_Job` (`job_id`),
 	CONSTRAINT `fk_Photo_Job`
-		FOREIGN KEY (`Job_id`)
+		FOREIGN KEY (`job_id`)
 		REFERENCES `job` (`id`)
 )Type=InnoDB;
 
@@ -111,7 +111,7 @@ DROP TABLE IF EXISTS `photographer`;
 CREATE TABLE `photographer`
 (
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
-	`User_id` INTEGER,
+	`user_id` INTEGER,
 	`name` VARCHAR(64),
 	`phone` VARCHAR(45),
 	`email` VARCHAR(64),
@@ -119,9 +119,9 @@ CREATE TABLE `photographer`
 	`website` VARCHAR(64),
 	`description` TEXT,
 	PRIMARY KEY (`id`),
-	INDEX `FI_Photographer_User` (`User_id`),
+	INDEX `FI_Photographer_User` (`user_id`),
 	CONSTRAINT `fk_Photographer_User`
-		FOREIGN KEY (`User_id`)
+		FOREIGN KEY (`user_id`)
 		REFERENCES `user` (`id`)
 )Type=InnoDB;
 
@@ -135,16 +135,16 @@ DROP TABLE IF EXISTS `client`;
 CREATE TABLE `client`
 (
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
-	`User_id` INTEGER,
+	`user_id` INTEGER,
 	`name` VARCHAR(45),
 	`department` VARCHAR(255),
 	`address` VARCHAR(255),
 	`email` VARCHAR(255),
 	`phone` VARCHAR(32),
 	PRIMARY KEY (`id`),
-	INDEX `FI_Client_User` (`User_id`),
+	INDEX `FI_Client_User` (`user_id`),
 	CONSTRAINT `fk_Client_User`
-		FOREIGN KEY (`User_id`)
+		FOREIGN KEY (`user_id`)
 		REFERENCES `user` (`id`)
 )Type=InnoDB;
 
@@ -223,16 +223,16 @@ DROP TABLE IF EXISTS `job_photographer`;
 CREATE TABLE `job_photographer`
 (
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
-	`Photographer_id` INTEGER,
-	`Job_id` INTEGER,
+	`photographer_id` INTEGER,
+	`job_id` INTEGER,
 	PRIMARY KEY (`id`),
-	INDEX `FI_Job_Photographer_Photographer` (`Photographer_id`),
+	INDEX `FI_Job_Photographer_Photographer` (`photographer_id`),
 	CONSTRAINT `fk_Job_Photographer_Photographer`
-		FOREIGN KEY (`Photographer_id`)
+		FOREIGN KEY (`photographer_id`)
 		REFERENCES `photographer` (`id`),
-	INDEX `FI_Job_Photographer_Job` (`Job_id`),
+	INDEX `FI_Job_Photographer_Job` (`job_id`),
 	CONSTRAINT `fk_Job_Photographer_Job`
-		FOREIGN KEY (`Job_id`)
+		FOREIGN KEY (`job_id`)
 		REFERENCES `job` (`id`)
 )Type=InnoDB;
 
@@ -246,16 +246,16 @@ DROP TABLE IF EXISTS `job_client`;
 CREATE TABLE `job_client`
 (
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
-	`Client_id` INTEGER,
-	`Job_id` INTEGER,
+	`client_id` INTEGER,
+	`job_id` INTEGER,
 	PRIMARY KEY (`id`),
-	INDEX `FI_Job_Client_Client` (`Client_id`),
+	INDEX `FI_Job_Client_Client` (`client_id`),
 	CONSTRAINT `fk_Job_Client_Client`
-		FOREIGN KEY (`Client_id`)
+		FOREIGN KEY (`client_id`)
 		REFERENCES `client` (`id`),
-	INDEX `FI_Job_Client_Job` (`Job_id`),
+	INDEX `FI_Job_Client_Job` (`job_id`),
 	CONSTRAINT `fk_Job_Client_Job`
-		FOREIGN KEY (`Job_id`)
+		FOREIGN KEY (`job_id`)
 		REFERENCES `job` (`id`)
 )Type=InnoDB;
 

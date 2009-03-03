@@ -12,5 +12,35 @@ class JobForm extends BaseJobForm
 {
   public function configure()
   {
+  	$unsetMe = array("id", "project_id", "status_id", "date", "notes", "estimate",
+  	                 "acct_num", "grand_id", "other", "idr");
+
+  	// unset the fields we dont want to display
+  	foreach($unsetMe as $key){
+  	 unset($this->widgetSchema[$key]);
+     unset($this->validatorSchema[$key]);		
+  	}
+  	
+  	$this->widgetSchema->setLabel('event','Event Name');
+  	$this->widgetSchema->setLabel('publication_id','Publication');
+  	
+  	$this->validatorSchema['event']->setOption('required', true); 
+  	$this->validatorSchema['street']->setOption('required', true);
+  	$this->validatorSchema['city']->setOption('required', true);
+  	$this->validatorSchema['state']->setOption('required', true);
+  	$this->validatorSchema['zip']->setOption('required', true);
+  	$this->validatorSchema['contact_name']->setOption('required', true);
+  	$this->validatorSchema['contact_email']->setOption('required', true);
+  	$this->validatorSchema['contact_phone']->setOption('required', true);
+  	
   }
+  
+  /**
+   * Serialize the form into the database.
+   *
+   */
+  public function save($con = null){
+  	
+  }
+  
 }

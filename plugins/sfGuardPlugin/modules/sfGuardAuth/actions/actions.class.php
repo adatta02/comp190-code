@@ -19,4 +19,30 @@ require_once(dirname(__FILE__).'/../lib/BasesfGuardAuthActions.class.php');
  */
 class sfGuardAuthActions extends BasesfGuardAuthActions
 {
+	/**
+	 * This is a symfony workaround. As soon as someone logs in check if they are in the DB.
+	 * If they aren't just insert them so they can authenticate.
+	 *
+	 * @param sfWebRequest $request
+	 */
+	public function executeSignin($request)
+  {
+  	if($request->isMethod("post")){
+	  	$form = new sfGuardFormSignin();
+	  	$username = $request->getParameter($form->getName() . "[username]");
+	  	
+	  	$c = new Criteria();
+	  	$c->add(sfGuardUserPeer::USERNAME, $username);
+	  	$res = sfGuardUserPeer::doCount($c);
+	  	
+	  	// if they dont exist in the db then stick them in so LDAP works
+	  	if($res == 0){
+	  	  $u = new sfGuardUser();
+	  	  $u->setUsername($username);
+	  	  $u->save();
+	  	}
+  	}
+  	
+  	parent::executeSignin($request);
+  }
 }

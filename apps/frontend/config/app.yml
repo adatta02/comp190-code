@@ -1,2 +1,4 @@
 # default values
-#all:
+all:
+  sf_guard_plugin:
+    check_password_callable: [LDAPAuth, checkLDAPPassword]

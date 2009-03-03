@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?> <database defaultIdMethod="native" name="propel" package="lib.model">
+  <table name="project">
+    <column name="id" type="INTEGER" primaryKey="true" required="true" autoIncrement="true"/>
+    <column name="name" type="VARCHAR" size="45"/>
+  </table>
+  <table name="user">
+    <column name="id" type="INTEGER" primaryKey="true" required="true" autoIncrement="true"/>
+    <column name="user_Type_id" type="INTEGER"/>
+    <foreign-key name="fk_User_User_Type" foreignTable="user_type">
+      <reference local="user_Type_id" foreign="id"/>
+    </foreign-key>
+  </table>
+  <table name="job">
+    <column name="id" type="INTEGER" primaryKey="true" required="true" autoIncrement="true"/>
+    <column name="project_id" type="INTEGER"/>
+    <column name="publication_id" type="INTEGER"/>
+    <column name="status_id" type="INTEGER"/>
+    <column name="event" type="VARCHAR" size="64"/>
+    <column name="date" type="TIMESTAMP"/>
+    <column name="start_time" type="TIMESTAMP"/>
+    <column name="end_time" type="TIMESTAMP"/>
+    <column name="due_date" type="TIMESTAMP"/>
+    <column name="street" type="VARCHAR" size="64"/>
+    <column name="city" type="VARCHAR" size="64"/>
+    <column name="state" type="VARCHAR" size="64"/>
+    <column name="zip" type="INTEGER"/>
+    <column name="contact_name" type="VARCHAR" size="45"/>
+    <column name="contact_email" type="VARCHAR" size="64"/>
+    <column name="contact_phone" type="VARCHAR" size="45"/>
+    <column name="notes" type="LONGVARCHAR"/>
+    <column name="estimate" type="INTEGER"/>
+    <column name="photo_type" type="INTEGER"/>
+    <column name="acct_num" type="VARCHAR" size="32"/>
+    <column name="dept_id" type="VARCHAR" size="32"/>
+    <column name="grant_id" type="VARCHAR" size="32"/>
+    <column name="other" type="VARCHAR" size="255"/>
+    <column name="idr" type="VARCHAR" size="32"/>
+    <foreign-key name="fk_Shoot_Publication" foreignTable="publication">
+      <reference local="publication_id" foreign="id"/>
+    </foreign-key>
+    <foreign-key name="fk_Job_Project" foreignTable="project">
+      <reference local="project_id" foreign="id"/>
+    </foreign-key>
+    <foreign-key name="fk_Job_Status" foreignTable="status">
+      <reference local="status_id" foreign="id"/>
+    </foreign-key>
+  </table>
+  <table name="photo">
+    <column name="id" type="INTEGER" primaryKey="true" required="true" autoIncrement="true"/>
+    <column name="job_id" type="INTEGER"/>
+    <foreign-key name="fk_Photo_Job" foreignTable="job">
+      <reference local="job_id" foreign="id"/>
+    </foreign-key>
+  </table>
+  <table name="photographer">
+    <column name="id" type="INTEGER" primaryKey="true" required="true" autoIncrement="true"/>
+    <column name="user_id" type="INTEGER"/>
+    <column name="name" type="VARCHAR" size="64"/>
+    <column name="phone" type="VARCHAR" size="45"/>
+    <column name="email" type="VARCHAR" size="64"/>
+    <column name="affiliation" type="VARCHAR" size="64"/>
+    <column name="website" type="VARCHAR" size="64"/>
+    <column name="description" type="LONGVARCHAR"/>
+    <foreign-key name="fk_Photographer_User" foreignTable="user">
+      <reference local="user_id" foreign="id"/>
+    </foreign-key>
+  </table>
+  <table name="client">
+    <column name="id" type="INTEGER" primaryKey="true" required="true" autoIncrement="true"/>
+    <column name="user_id" type="INTEGER"/>
+    <column name="name" type="VARCHAR" size="45"/>
+    <column name="department" type="VARCHAR" size="255"/>
+    <column name="address" type="VARCHAR" size="255"/>
+    <column name="email" type="VARCHAR" size="255"/>
+    <column name="phone" type="VARCHAR" size="32"/>
+    <foreign-key name="fk_Client_User" foreignTable="user">
+      <reference local="user_id" foreign="id"/>
+    </foreign-key>
+  </table>
+  <table name="delivery">
+    <column name="id" type="INTEGER" primaryKey="true" required="true" autoIncrement="true"/>
+    <column name="pub_name" type="VARCHAR" size="255"/>
+    <column name="pub_type" type="VARCHAR" size="255"/>
+    <column name="other" type="VARCHAR" size="255"/>
+    <column name="color" type="VARCHAR" size="255"/>
+    <column name="size" type="VARCHAR" size="255"/>
+    <column name="method" type="VARCHAR" size="255"/>
+    <column name="instructions" type="LONGVARCHAR"/>
+  </table>
+  <table name="status">
+    <column name="id" type="INTEGER" primaryKey="true" required="true" autoIncrement="true"/>
+    <column name="state" type="VARCHAR" size="45"/>
+  </table>
+  <table name="publication">
+    <column name="id" type="INTEGER" primaryKey="true" required="true" autoIncrement="true"/>
+    <column name="name" type="VARCHAR" size="255"/>
+    <column name="contact_name" type="VARCHAR" size="64"/>
+    <column name="contact_email" type="VARCHAR" size="64"/>
+  </table>
+  <table name="user_type">
+    <column name="id" type="INTEGER" primaryKey="true" required="true" autoIncrement="true"/>
+    <column name="type" type="VARCHAR" size="45"/>
+    <column name="permissions" type="INTEGER"/>
+  </table>
+  <table name="job_photographer">
+    <column name="id" type="INTEGER" primaryKey="true" required="true" autoIncrement="true"/>
+    <column name="photographer_id" type="INTEGER"/>
+    <column name="job_id" type="INTEGER"/>
+    <foreign-key name="fk_Job_Photographer_Photographer" foreignTable="photographer">
+      <reference local="photographer_id" foreign="id"/>
+    </foreign-key>
+    <foreign-key name="fk_Job_Photographer_Job" foreignTable="job">
+      <reference local="job_id" foreign="id"/>
+    </foreign-key>
+  </table>
+  <table name="job_client">
+    <column name="id" type="INTEGER" primaryKey="true" required="true" autoIncrement="true"/>
+    <column name="client_id" type="INTEGER"/>
+    <column name="job_id" type="INTEGER"/>
+    <foreign-key name="fk_Job_Client_Client" foreignTable="client">
+      <reference local="client_id" foreign="id"/>
+    </foreign-key>
+    <foreign-key name="fk_Job_Client_Job" foreignTable="job">
+      <reference local="job_id" foreign="id"/>
+    </foreign-key>
+  </table> </database>

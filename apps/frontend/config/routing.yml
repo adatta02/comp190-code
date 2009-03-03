@@ -1,3 +1,11 @@
+# project creation
+project_create:
+  url: /project/create
+  param: { module: project, action: create }
+project_success:
+  url: /project/success
+  param: { module: project, action: success }
+
 # default rules
 homepage:
   url:   /

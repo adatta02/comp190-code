@@ -82,6 +82,7 @@ class PluginsfGuardUser extends BasesfGuardUser
 
   public function checkPasswordByGuard($password)
   {
+  	
     $algorithm = $this->getAlgorithm();
     if (false !== $pos = strpos($algorithm, '::'))
     {
