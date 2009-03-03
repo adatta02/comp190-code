@@ -8325,3 +8325,571 @@ Mar 03 17:07:29 symfony [debug] {sfPropelLogger} Binding 'admin' at position :p1
 Mar 03 17:07:29 symfony [debug] {sfPropelLogger} 7
 Mar 03 17:07:29 symfony [debug] {sfPropelLogger} Binding 1 at position :p2 w/ PDO type PDO::PARAM_INT
 Mar 03 17:07:29 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:20:15 symfony [info] {sfPatternRouting} Connect sfRoute "project_create" (/project/create)
+Mar 03 17:20:15 symfony [info] {sfPatternRouting} Connect sfRoute "project_success" (/project/success)
+Mar 03 17:20:15 symfony [info] {sfPatternRouting} Connect sfRoute "homepage" (/)
+Mar 03 17:20:15 symfony [info] {sfPatternRouting} Connect sfRoute "default_index" (/:module)
+Mar 03 17:20:15 symfony [info] {sfPatternRouting} Connect sfRoute "default" (/:module/:action/*)
+Mar 03 17:20:15 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/login)
+Mar 03 17:20:15 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/logout)
+Mar 03 17:20:15 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_password" (/request_password)
+Mar 03 17:20:15 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/login)
+Mar 03 17:20:15 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/logout)
+Mar 03 17:20:15 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_password" (/request_password)
+Mar 03 17:20:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user" (/sf_guard_user.:sf_format)
+Mar 03 17:20:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_new" (/sf_guard_user/new.:sf_format)
+Mar 03 17:20:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_create" (/sf_guard_user.:sf_format)
+Mar 03 17:20:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_edit" (/sf_guard_user/:id/edit.:sf_format)
+Mar 03 17:20:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_update" (/sf_guard_user/:id.:sf_format)
+Mar 03 17:20:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_delete" (/sf_guard_user/:id.:sf_format)
+Mar 03 17:20:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_show" (/sf_guard_user/:id.:sf_format)
+Mar 03 17:20:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_object" (/sf_guard_user/:id/:action.:sf_format)
+Mar 03 17:20:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_collection" (/sf_guard_user/:action/action.:sf_format)
+Mar 03 17:20:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group" (/sf_guard_group.:sf_format)
+Mar 03 17:20:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_new" (/sf_guard_group/new.:sf_format)
+Mar 03 17:20:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_create" (/sf_guard_group.:sf_format)
+Mar 03 17:20:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_edit" (/sf_guard_group/:id/edit.:sf_format)
+Mar 03 17:20:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_update" (/sf_guard_group/:id.:sf_format)
+Mar 03 17:20:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_delete" (/sf_guard_group/:id.:sf_format)
+Mar 03 17:20:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_show" (/sf_guard_group/:id.:sf_format)
+Mar 03 17:20:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_object" (/sf_guard_group/:id/:action.:sf_format)
+Mar 03 17:20:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_collection" (/sf_guard_group/:action/action.:sf_format)
+Mar 03 17:20:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission" (/sf_guard_permission.:sf_format)
+Mar 03 17:20:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_new" (/sf_guard_permission/new.:sf_format)
+Mar 03 17:20:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_create" (/sf_guard_permission.:sf_format)
+Mar 03 17:20:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_edit" (/sf_guard_permission/:id/edit.:sf_format)
+Mar 03 17:20:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_update" (/sf_guard_permission/:id.:sf_format)
+Mar 03 17:20:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_delete" (/sf_guard_permission/:id.:sf_format)
+Mar 03 17:20:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_show" (/sf_guard_permission/:id.:sf_format)
+Mar 03 17:20:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_object" (/sf_guard_permission/:id/:action.:sf_format)
+Mar 03 17:20:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_collection" (/sf_guard_permission/:action/action.:sf_format)
+Mar 03 17:20:15 symfony [info] {sfPatternRouting} Match route "sf_guard_signin" (/login) for /login with parameters array (  'module' => 'sfGuardAuth',  'action' => 'signin',)
+Mar 03 17:20:15 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Mar 03 17:20:15 symfony [info] {sfFilterChain} Executing filter "sfCommonFilter"
+Mar 03 17:20:15 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Mar 03 17:20:15 symfony [info] {sfGuardAuthActions} Call "sfGuardAuthActions->executeSignin()"
+Mar 03 17:20:15 symfony [debug] {sfPropelLogger} exec: SET NAMES 'utf8'
+Mar 03 17:20:15 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:20:15 symfony [debug] {sfPropelLogger} prepare: SELECT COUNT(*) FROM `sf_guard_user` WHERE sf_guard_user.USERNAME=:p1
+Mar 03 17:20:15 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:20:15 symfony [debug] {sfPropelLogger} Binding 'admin' at position :p1 w/ PDO type PDO::PARAM_STR
+Mar 03 17:20:15 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:20:15 symfony [debug] {sfPropelLogger} prepare: SELECT sf_guard_user.ID, sf_guard_user.USERNAME, sf_guard_user.ALGORITHM, sf_guard_user.SALT, sf_guard_user.PASSWORD, sf_guard_user.CREATED_AT, sf_guard_user.LAST_LOGIN, sf_guard_user.IS_ACTIVE, sf_guard_user.IS_SUPER_ADMIN FROM `sf_guard_user` WHERE sf_guard_user.USERNAME=:p1 AND sf_guard_user.IS_ACTIVE=:p2 LIMIT 1
+Mar 03 17:20:15 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:20:15 symfony [debug] {sfPropelLogger} Binding 'admin' at position :p1 w/ PDO type PDO::PARAM_STR
+Mar 03 17:20:15 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:20:15 symfony [debug] {sfPropelLogger} Binding 1 at position :p2 w/ PDO type PDO::PARAM_INT
+Mar 03 17:20:15 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:20:15 symfony [info] {sfPHPView} Render "/home/user/comp190-code/plugins/sfGuardPlugin/modules/sfGuardAuth/templates/signinSuccess.php"
+Mar 03 17:20:15 symfony [info] {sfPHPView} Decorate content with "/home/user/comp190-code/apps/frontend/templates/layout.php"
+Mar 03 17:20:15 symfony [info] {sfPHPView} Render "/home/user/comp190-code/apps/frontend/templates/layout.php"
+Mar 03 17:20:15 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Mar 03 17:20:15 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Mar 03 17:20:15 symfony [info] {sfWebDebugLogger} Configuration 3.24 ms (9)
+Mar 03 17:20:15 symfony [info] {sfWebDebugLogger} Action "sfGuardAuth/signin" 13.69 ms (1)
+Mar 03 17:20:15 symfony [info] {sfWebDebugLogger} View "Success" for "sfGuardAuth/signin" 4.11 ms (1)
+Mar 03 17:20:15 symfony [info] {sfWebResponse} Send content (38694 o)
+Mar 03 17:20:17 symfony [info] {sfPatternRouting} Connect sfRoute "project_create" (/project/create)
+Mar 03 17:20:17 symfony [info] {sfPatternRouting} Connect sfRoute "project_success" (/project/success)
+Mar 03 17:20:17 symfony [info] {sfPatternRouting} Connect sfRoute "homepage" (/)
+Mar 03 17:20:17 symfony [info] {sfPatternRouting} Connect sfRoute "default_index" (/:module)
+Mar 03 17:20:17 symfony [info] {sfPatternRouting} Connect sfRoute "default" (/:module/:action/*)
+Mar 03 17:20:17 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/login)
+Mar 03 17:20:17 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/logout)
+Mar 03 17:20:17 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_password" (/request_password)
+Mar 03 17:20:17 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/login)
+Mar 03 17:20:17 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/logout)
+Mar 03 17:20:17 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_password" (/request_password)
+Mar 03 17:20:17 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user" (/sf_guard_user.:sf_format)
+Mar 03 17:20:17 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_new" (/sf_guard_user/new.:sf_format)
+Mar 03 17:20:17 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_create" (/sf_guard_user.:sf_format)
+Mar 03 17:20:17 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_edit" (/sf_guard_user/:id/edit.:sf_format)
+Mar 03 17:20:17 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_update" (/sf_guard_user/:id.:sf_format)
+Mar 03 17:20:17 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_delete" (/sf_guard_user/:id.:sf_format)
+Mar 03 17:20:17 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_show" (/sf_guard_user/:id.:sf_format)
+Mar 03 17:20:17 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_object" (/sf_guard_user/:id/:action.:sf_format)
+Mar 03 17:20:17 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_collection" (/sf_guard_user/:action/action.:sf_format)
+Mar 03 17:20:17 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group" (/sf_guard_group.:sf_format)
+Mar 03 17:20:17 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_new" (/sf_guard_group/new.:sf_format)
+Mar 03 17:20:17 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_create" (/sf_guard_group.:sf_format)
+Mar 03 17:20:17 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_edit" (/sf_guard_group/:id/edit.:sf_format)
+Mar 03 17:20:17 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_update" (/sf_guard_group/:id.:sf_format)
+Mar 03 17:20:17 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_delete" (/sf_guard_group/:id.:sf_format)
+Mar 03 17:20:17 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_show" (/sf_guard_group/:id.:sf_format)
+Mar 03 17:20:17 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_object" (/sf_guard_group/:id/:action.:sf_format)
+Mar 03 17:20:17 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_collection" (/sf_guard_group/:action/action.:sf_format)
+Mar 03 17:20:17 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission" (/sf_guard_permission.:sf_format)
+Mar 03 17:20:17 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_new" (/sf_guard_permission/new.:sf_format)
+Mar 03 17:20:17 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_create" (/sf_guard_permission.:sf_format)
+Mar 03 17:20:17 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_edit" (/sf_guard_permission/:id/edit.:sf_format)
+Mar 03 17:20:17 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_update" (/sf_guard_permission/:id.:sf_format)
+Mar 03 17:20:17 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_delete" (/sf_guard_permission/:id.:sf_format)
+Mar 03 17:20:17 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_show" (/sf_guard_permission/:id.:sf_format)
+Mar 03 17:20:17 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_object" (/sf_guard_permission/:id/:action.:sf_format)
+Mar 03 17:20:17 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_collection" (/sf_guard_permission/:action/action.:sf_format)
+Mar 03 17:20:17 symfony [info] {sfPatternRouting} Match route "sf_guard_signin" (/login) for /login with parameters array (  'module' => 'sfGuardAuth',  'action' => 'signin',)
+Mar 03 17:20:17 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Mar 03 17:20:17 symfony [info] {sfFilterChain} Executing filter "sfCommonFilter"
+Mar 03 17:20:17 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Mar 03 17:20:17 symfony [info] {sfGuardAuthActions} Call "sfGuardAuthActions->executeSignin()"
+Mar 03 17:20:17 symfony [debug] {sfPropelLogger} exec: SET NAMES 'utf8'
+Mar 03 17:20:17 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:20:17 symfony [debug] {sfPropelLogger} prepare: SELECT COUNT(*) FROM `sf_guard_user` WHERE sf_guard_user.USERNAME=:p1
+Mar 03 17:20:17 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:20:17 symfony [debug] {sfPropelLogger} Binding 'admin' at position :p1 w/ PDO type PDO::PARAM_STR
+Mar 03 17:20:17 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:20:17 symfony [debug] {sfPropelLogger} prepare: SELECT sf_guard_user.ID, sf_guard_user.USERNAME, sf_guard_user.ALGORITHM, sf_guard_user.SALT, sf_guard_user.PASSWORD, sf_guard_user.CREATED_AT, sf_guard_user.LAST_LOGIN, sf_guard_user.IS_ACTIVE, sf_guard_user.IS_SUPER_ADMIN FROM `sf_guard_user` WHERE sf_guard_user.USERNAME=:p1 AND sf_guard_user.IS_ACTIVE=:p2 LIMIT 1
+Mar 03 17:20:17 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:20:17 symfony [debug] {sfPropelLogger} Binding 'admin' at position :p1 w/ PDO type PDO::PARAM_STR
+Mar 03 17:20:17 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:20:17 symfony [debug] {sfPropelLogger} Binding 1 at position :p2 w/ PDO type PDO::PARAM_INT
+Mar 03 17:20:17 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:20:17 symfony [info] {sfPHPView} Render "/home/user/comp190-code/plugins/sfGuardPlugin/modules/sfGuardAuth/templates/signinSuccess.php"
+Mar 03 17:20:17 symfony [info] {sfPHPView} Decorate content with "/home/user/comp190-code/apps/frontend/templates/layout.php"
+Mar 03 17:20:17 symfony [info] {sfPHPView} Render "/home/user/comp190-code/apps/frontend/templates/layout.php"
+Mar 03 17:20:17 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Mar 03 17:20:17 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Mar 03 17:20:17 symfony [info] {sfWebDebugLogger} Configuration 2.87 ms (9)
+Mar 03 17:20:17 symfony [info] {sfWebDebugLogger} Action "sfGuardAuth/signin" 13.01 ms (1)
+Mar 03 17:20:17 symfony [info] {sfWebDebugLogger} View "Success" for "sfGuardAuth/signin" 3.96 ms (1)
+Mar 03 17:20:17 symfony [info] {sfWebResponse} Send content (38661 o)
+Mar 03 17:20:23 symfony [info] {sfPatternRouting} Connect sfRoute "project_create" (/project/create)
+Mar 03 17:20:23 symfony [info] {sfPatternRouting} Connect sfRoute "project_success" (/project/success)
+Mar 03 17:20:23 symfony [info] {sfPatternRouting} Connect sfRoute "homepage" (/)
+Mar 03 17:20:23 symfony [info] {sfPatternRouting} Connect sfRoute "default_index" (/:module)
+Mar 03 17:20:23 symfony [info] {sfPatternRouting} Connect sfRoute "default" (/:module/:action/*)
+Mar 03 17:20:23 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/login)
+Mar 03 17:20:23 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/logout)
+Mar 03 17:20:23 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_password" (/request_password)
+Mar 03 17:20:23 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/login)
+Mar 03 17:20:23 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/logout)
+Mar 03 17:20:23 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_password" (/request_password)
+Mar 03 17:20:23 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user" (/sf_guard_user.:sf_format)
+Mar 03 17:20:23 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_new" (/sf_guard_user/new.:sf_format)
+Mar 03 17:20:23 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_create" (/sf_guard_user.:sf_format)
+Mar 03 17:20:23 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_edit" (/sf_guard_user/:id/edit.:sf_format)
+Mar 03 17:20:23 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_update" (/sf_guard_user/:id.:sf_format)
+Mar 03 17:20:23 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_delete" (/sf_guard_user/:id.:sf_format)
+Mar 03 17:20:23 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_show" (/sf_guard_user/:id.:sf_format)
+Mar 03 17:20:23 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_object" (/sf_guard_user/:id/:action.:sf_format)
+Mar 03 17:20:23 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_collection" (/sf_guard_user/:action/action.:sf_format)
+Mar 03 17:20:23 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group" (/sf_guard_group.:sf_format)
+Mar 03 17:20:23 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_new" (/sf_guard_group/new.:sf_format)
+Mar 03 17:20:23 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_create" (/sf_guard_group.:sf_format)
+Mar 03 17:20:23 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_edit" (/sf_guard_group/:id/edit.:sf_format)
+Mar 03 17:20:23 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_update" (/sf_guard_group/:id.:sf_format)
+Mar 03 17:20:23 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_delete" (/sf_guard_group/:id.:sf_format)
+Mar 03 17:20:23 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_show" (/sf_guard_group/:id.:sf_format)
+Mar 03 17:20:23 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_object" (/sf_guard_group/:id/:action.:sf_format)
+Mar 03 17:20:23 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_collection" (/sf_guard_group/:action/action.:sf_format)
+Mar 03 17:20:23 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission" (/sf_guard_permission.:sf_format)
+Mar 03 17:20:23 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_new" (/sf_guard_permission/new.:sf_format)
+Mar 03 17:20:23 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_create" (/sf_guard_permission.:sf_format)
+Mar 03 17:20:23 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_edit" (/sf_guard_permission/:id/edit.:sf_format)
+Mar 03 17:20:23 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_update" (/sf_guard_permission/:id.:sf_format)
+Mar 03 17:20:23 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_delete" (/sf_guard_permission/:id.:sf_format)
+Mar 03 17:20:23 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_show" (/sf_guard_permission/:id.:sf_format)
+Mar 03 17:20:23 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_object" (/sf_guard_permission/:id/:action.:sf_format)
+Mar 03 17:20:23 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_collection" (/sf_guard_permission/:action/action.:sf_format)
+Mar 03 17:20:23 symfony [info] {sfPatternRouting} Match route "sf_guard_signin" (/login) for /login with parameters array (  'module' => 'sfGuardAuth',  'action' => 'signin',)
+Mar 03 17:20:23 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Mar 03 17:20:23 symfony [info] {sfFilterChain} Executing filter "sfCommonFilter"
+Mar 03 17:20:23 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Mar 03 17:20:23 symfony [info] {sfGuardAuthActions} Call "sfGuardAuthActions->executeSignin()"
+Mar 03 17:20:23 symfony [debug] {sfPropelLogger} exec: SET NAMES 'utf8'
+Mar 03 17:20:23 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:20:23 symfony [debug] {sfPropelLogger} prepare: SELECT COUNT(*) FROM `sf_guard_user` WHERE sf_guard_user.USERNAME=:p1
+Mar 03 17:20:23 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:20:23 symfony [debug] {sfPropelLogger} Binding 'admin' at position :p1 w/ PDO type PDO::PARAM_STR
+Mar 03 17:20:23 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:20:23 symfony [debug] {sfPropelLogger} prepare: SELECT sf_guard_user.ID, sf_guard_user.USERNAME, sf_guard_user.ALGORITHM, sf_guard_user.SALT, sf_guard_user.PASSWORD, sf_guard_user.CREATED_AT, sf_guard_user.LAST_LOGIN, sf_guard_user.IS_ACTIVE, sf_guard_user.IS_SUPER_ADMIN FROM `sf_guard_user` WHERE sf_guard_user.USERNAME=:p1 AND sf_guard_user.IS_ACTIVE=:p2 LIMIT 1
+Mar 03 17:20:23 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:20:23 symfony [debug] {sfPropelLogger} Binding 'admin' at position :p1 w/ PDO type PDO::PARAM_STR
+Mar 03 17:20:23 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:20:23 symfony [debug] {sfPropelLogger} Binding 1 at position :p2 w/ PDO type PDO::PARAM_INT
+Mar 03 17:20:23 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:20:43 symfony [info] {sfPatternRouting} Connect sfRoute "project_create" (/project/create)
+Mar 03 17:20:43 symfony [info] {sfPatternRouting} Connect sfRoute "project_success" (/project/success)
+Mar 03 17:20:43 symfony [info] {sfPatternRouting} Connect sfRoute "homepage" (/)
+Mar 03 17:20:43 symfony [info] {sfPatternRouting} Connect sfRoute "default_index" (/:module)
+Mar 03 17:20:43 symfony [info] {sfPatternRouting} Connect sfRoute "default" (/:module/:action/*)
+Mar 03 17:20:43 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/login)
+Mar 03 17:20:43 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/logout)
+Mar 03 17:20:43 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_password" (/request_password)
+Mar 03 17:20:43 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/login)
+Mar 03 17:20:43 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/logout)
+Mar 03 17:20:43 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_password" (/request_password)
+Mar 03 17:20:43 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user" (/sf_guard_user.:sf_format)
+Mar 03 17:20:43 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_new" (/sf_guard_user/new.:sf_format)
+Mar 03 17:20:43 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_create" (/sf_guard_user.:sf_format)
+Mar 03 17:20:43 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_edit" (/sf_guard_user/:id/edit.:sf_format)
+Mar 03 17:20:43 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_update" (/sf_guard_user/:id.:sf_format)
+Mar 03 17:20:43 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_delete" (/sf_guard_user/:id.:sf_format)
+Mar 03 17:20:43 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_show" (/sf_guard_user/:id.:sf_format)
+Mar 03 17:20:43 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_object" (/sf_guard_user/:id/:action.:sf_format)
+Mar 03 17:20:43 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_collection" (/sf_guard_user/:action/action.:sf_format)
+Mar 03 17:20:43 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group" (/sf_guard_group.:sf_format)
+Mar 03 17:20:43 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_new" (/sf_guard_group/new.:sf_format)
+Mar 03 17:20:43 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_create" (/sf_guard_group.:sf_format)
+Mar 03 17:20:43 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_edit" (/sf_guard_group/:id/edit.:sf_format)
+Mar 03 17:20:43 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_update" (/sf_guard_group/:id.:sf_format)
+Mar 03 17:20:43 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_delete" (/sf_guard_group/:id.:sf_format)
+Mar 03 17:20:43 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_show" (/sf_guard_group/:id.:sf_format)
+Mar 03 17:20:43 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_object" (/sf_guard_group/:id/:action.:sf_format)
+Mar 03 17:20:43 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_collection" (/sf_guard_group/:action/action.:sf_format)
+Mar 03 17:20:43 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission" (/sf_guard_permission.:sf_format)
+Mar 03 17:20:43 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_new" (/sf_guard_permission/new.:sf_format)
+Mar 03 17:20:43 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_create" (/sf_guard_permission.:sf_format)
+Mar 03 17:20:43 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_edit" (/sf_guard_permission/:id/edit.:sf_format)
+Mar 03 17:20:43 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_update" (/sf_guard_permission/:id.:sf_format)
+Mar 03 17:20:43 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_delete" (/sf_guard_permission/:id.:sf_format)
+Mar 03 17:20:43 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_show" (/sf_guard_permission/:id.:sf_format)
+Mar 03 17:20:43 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_object" (/sf_guard_permission/:id/:action.:sf_format)
+Mar 03 17:20:43 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_collection" (/sf_guard_permission/:action/action.:sf_format)
+Mar 03 17:20:43 symfony [info] {sfPatternRouting} Match route "sf_guard_signin" (/login) for /login with parameters array (  'module' => 'sfGuardAuth',  'action' => 'signin',)
+Mar 03 17:20:43 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Mar 03 17:20:43 symfony [info] {sfFilterChain} Executing filter "sfCommonFilter"
+Mar 03 17:20:43 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Mar 03 17:20:43 symfony [info] {sfGuardAuthActions} Call "sfGuardAuthActions->executeSignin()"
+Mar 03 17:20:43 symfony [debug] {sfPropelLogger} exec: SET NAMES 'utf8'
+Mar 03 17:20:43 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:20:43 symfony [debug] {sfPropelLogger} prepare: SELECT COUNT(*) FROM `sf_guard_user` WHERE sf_guard_user.USERNAME=:p1
+Mar 03 17:20:43 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:20:43 symfony [debug] {sfPropelLogger} Binding 'admin' at position :p1 w/ PDO type PDO::PARAM_STR
+Mar 03 17:20:43 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:20:43 symfony [debug] {sfPropelLogger} prepare: SELECT sf_guard_user.ID, sf_guard_user.USERNAME, sf_guard_user.ALGORITHM, sf_guard_user.SALT, sf_guard_user.PASSWORD, sf_guard_user.CREATED_AT, sf_guard_user.LAST_LOGIN, sf_guard_user.IS_ACTIVE, sf_guard_user.IS_SUPER_ADMIN FROM `sf_guard_user` WHERE sf_guard_user.USERNAME=:p1 AND sf_guard_user.IS_ACTIVE=:p2 LIMIT 1
+Mar 03 17:20:43 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:20:43 symfony [debug] {sfPropelLogger} Binding 'admin' at position :p1 w/ PDO type PDO::PARAM_STR
+Mar 03 17:20:43 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:20:43 symfony [debug] {sfPropelLogger} Binding 1 at position :p2 w/ PDO type PDO::PARAM_INT
+Mar 03 17:20:43 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:24:33 symfony [info] {sfPatternRouting} Connect sfRoute "project_create" (/project/create)
+Mar 03 17:24:33 symfony [info] {sfPatternRouting} Connect sfRoute "project_success" (/project/success)
+Mar 03 17:24:33 symfony [info] {sfPatternRouting} Connect sfRoute "homepage" (/)
+Mar 03 17:24:33 symfony [info] {sfPatternRouting} Connect sfRoute "default_index" (/:module)
+Mar 03 17:24:33 symfony [info] {sfPatternRouting} Connect sfRoute "default" (/:module/:action/*)
+Mar 03 17:24:33 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/login)
+Mar 03 17:24:33 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/logout)
+Mar 03 17:24:33 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_password" (/request_password)
+Mar 03 17:24:33 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/login)
+Mar 03 17:24:33 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/logout)
+Mar 03 17:24:33 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_password" (/request_password)
+Mar 03 17:24:33 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user" (/sf_guard_user.:sf_format)
+Mar 03 17:24:33 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_new" (/sf_guard_user/new.:sf_format)
+Mar 03 17:24:33 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_create" (/sf_guard_user.:sf_format)
+Mar 03 17:24:33 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_edit" (/sf_guard_user/:id/edit.:sf_format)
+Mar 03 17:24:33 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_update" (/sf_guard_user/:id.:sf_format)
+Mar 03 17:24:33 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_delete" (/sf_guard_user/:id.:sf_format)
+Mar 03 17:24:33 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_show" (/sf_guard_user/:id.:sf_format)
+Mar 03 17:24:33 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_object" (/sf_guard_user/:id/:action.:sf_format)
+Mar 03 17:24:33 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_collection" (/sf_guard_user/:action/action.:sf_format)
+Mar 03 17:24:33 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group" (/sf_guard_group.:sf_format)
+Mar 03 17:24:33 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_new" (/sf_guard_group/new.:sf_format)
+Mar 03 17:24:33 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_create" (/sf_guard_group.:sf_format)
+Mar 03 17:24:33 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_edit" (/sf_guard_group/:id/edit.:sf_format)
+Mar 03 17:24:33 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_update" (/sf_guard_group/:id.:sf_format)
+Mar 03 17:24:33 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_delete" (/sf_guard_group/:id.:sf_format)
+Mar 03 17:24:33 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_show" (/sf_guard_group/:id.:sf_format)
+Mar 03 17:24:33 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_object" (/sf_guard_group/:id/:action.:sf_format)
+Mar 03 17:24:33 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_collection" (/sf_guard_group/:action/action.:sf_format)
+Mar 03 17:24:33 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission" (/sf_guard_permission.:sf_format)
+Mar 03 17:24:33 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_new" (/sf_guard_permission/new.:sf_format)
+Mar 03 17:24:33 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_create" (/sf_guard_permission.:sf_format)
+Mar 03 17:24:33 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_edit" (/sf_guard_permission/:id/edit.:sf_format)
+Mar 03 17:24:33 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_update" (/sf_guard_permission/:id.:sf_format)
+Mar 03 17:24:33 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_delete" (/sf_guard_permission/:id.:sf_format)
+Mar 03 17:24:33 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_show" (/sf_guard_permission/:id.:sf_format)
+Mar 03 17:24:33 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_object" (/sf_guard_permission/:id/:action.:sf_format)
+Mar 03 17:24:33 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_collection" (/sf_guard_permission/:action/action.:sf_format)
+Mar 03 17:24:33 symfony [info] {sfPatternRouting} Match route "sf_guard_signin" (/login) for /login with parameters array (  'module' => 'sfGuardAuth',  'action' => 'signin',)
+Mar 03 17:24:33 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Mar 03 17:24:33 symfony [info] {sfFilterChain} Executing filter "sfCommonFilter"
+Mar 03 17:24:33 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Mar 03 17:24:33 symfony [info] {sfGuardAuthActions} Call "sfGuardAuthActions->executeSignin()"
+Mar 03 17:24:33 symfony [debug] {sfPropelLogger} exec: SET NAMES 'utf8'
+Mar 03 17:24:33 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:24:33 symfony [debug] {sfPropelLogger} prepare: SELECT COUNT(*) FROM `sf_guard_user` WHERE sf_guard_user.USERNAME=:p1
+Mar 03 17:24:33 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:24:33 symfony [debug] {sfPropelLogger} Binding 'admin' at position :p1 w/ PDO type PDO::PARAM_STR
+Mar 03 17:24:33 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:24:33 symfony [debug] {sfPropelLogger} prepare: SELECT sf_guard_user.ID, sf_guard_user.USERNAME, sf_guard_user.ALGORITHM, sf_guard_user.SALT, sf_guard_user.PASSWORD, sf_guard_user.CREATED_AT, sf_guard_user.LAST_LOGIN, sf_guard_user.IS_ACTIVE, sf_guard_user.IS_SUPER_ADMIN FROM `sf_guard_user` WHERE sf_guard_user.USERNAME=:p1 AND sf_guard_user.IS_ACTIVE=:p2 LIMIT 1
+Mar 03 17:24:33 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:24:33 symfony [debug] {sfPropelLogger} Binding 'admin' at position :p1 w/ PDO type PDO::PARAM_STR
+Mar 03 17:24:33 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:24:33 symfony [debug] {sfPropelLogger} Binding 1 at position :p2 w/ PDO type PDO::PARAM_INT
+Mar 03 17:24:33 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:25:15 symfony [info] {sfPatternRouting} Connect sfRoute "project_create" (/project/create)
+Mar 03 17:25:15 symfony [info] {sfPatternRouting} Connect sfRoute "project_success" (/project/success)
+Mar 03 17:25:15 symfony [info] {sfPatternRouting} Connect sfRoute "homepage" (/)
+Mar 03 17:25:15 symfony [info] {sfPatternRouting} Connect sfRoute "default_index" (/:module)
+Mar 03 17:25:15 symfony [info] {sfPatternRouting} Connect sfRoute "default" (/:module/:action/*)
+Mar 03 17:25:15 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/login)
+Mar 03 17:25:15 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/logout)
+Mar 03 17:25:15 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_password" (/request_password)
+Mar 03 17:25:15 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/login)
+Mar 03 17:25:15 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/logout)
+Mar 03 17:25:15 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_password" (/request_password)
+Mar 03 17:25:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user" (/sf_guard_user.:sf_format)
+Mar 03 17:25:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_new" (/sf_guard_user/new.:sf_format)
+Mar 03 17:25:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_create" (/sf_guard_user.:sf_format)
+Mar 03 17:25:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_edit" (/sf_guard_user/:id/edit.:sf_format)
+Mar 03 17:25:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_update" (/sf_guard_user/:id.:sf_format)
+Mar 03 17:25:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_delete" (/sf_guard_user/:id.:sf_format)
+Mar 03 17:25:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_show" (/sf_guard_user/:id.:sf_format)
+Mar 03 17:25:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_object" (/sf_guard_user/:id/:action.:sf_format)
+Mar 03 17:25:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_collection" (/sf_guard_user/:action/action.:sf_format)
+Mar 03 17:25:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group" (/sf_guard_group.:sf_format)
+Mar 03 17:25:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_new" (/sf_guard_group/new.:sf_format)
+Mar 03 17:25:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_create" (/sf_guard_group.:sf_format)
+Mar 03 17:25:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_edit" (/sf_guard_group/:id/edit.:sf_format)
+Mar 03 17:25:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_update" (/sf_guard_group/:id.:sf_format)
+Mar 03 17:25:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_delete" (/sf_guard_group/:id.:sf_format)
+Mar 03 17:25:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_show" (/sf_guard_group/:id.:sf_format)
+Mar 03 17:25:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_object" (/sf_guard_group/:id/:action.:sf_format)
+Mar 03 17:25:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_collection" (/sf_guard_group/:action/action.:sf_format)
+Mar 03 17:25:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission" (/sf_guard_permission.:sf_format)
+Mar 03 17:25:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_new" (/sf_guard_permission/new.:sf_format)
+Mar 03 17:25:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_create" (/sf_guard_permission.:sf_format)
+Mar 03 17:25:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_edit" (/sf_guard_permission/:id/edit.:sf_format)
+Mar 03 17:25:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_update" (/sf_guard_permission/:id.:sf_format)
+Mar 03 17:25:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_delete" (/sf_guard_permission/:id.:sf_format)
+Mar 03 17:25:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_show" (/sf_guard_permission/:id.:sf_format)
+Mar 03 17:25:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_object" (/sf_guard_permission/:id/:action.:sf_format)
+Mar 03 17:25:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_collection" (/sf_guard_permission/:action/action.:sf_format)
+Mar 03 17:25:15 symfony [info] {sfPatternRouting} Match route "sf_guard_signin" (/login) for /login with parameters array (  'module' => 'sfGuardAuth',  'action' => 'signin',)
+Mar 03 17:25:15 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Mar 03 17:25:15 symfony [info] {sfFilterChain} Executing filter "sfCommonFilter"
+Mar 03 17:25:15 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Mar 03 17:25:15 symfony [info] {sfGuardAuthActions} Call "sfGuardAuthActions->executeSignin()"
+Mar 03 17:25:15 symfony [debug] {sfPropelLogger} exec: SET NAMES 'utf8'
+Mar 03 17:25:15 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:25:15 symfony [debug] {sfPropelLogger} prepare: SELECT COUNT(*) FROM `sf_guard_user` WHERE sf_guard_user.USERNAME=:p1
+Mar 03 17:25:15 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:25:15 symfony [debug] {sfPropelLogger} Binding 'admin' at position :p1 w/ PDO type PDO::PARAM_STR
+Mar 03 17:25:15 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:25:15 symfony [debug] {sfPropelLogger} prepare: SELECT sf_guard_user.ID, sf_guard_user.USERNAME, sf_guard_user.ALGORITHM, sf_guard_user.SALT, sf_guard_user.PASSWORD, sf_guard_user.CREATED_AT, sf_guard_user.LAST_LOGIN, sf_guard_user.IS_ACTIVE, sf_guard_user.IS_SUPER_ADMIN FROM `sf_guard_user` WHERE sf_guard_user.USERNAME=:p1 AND sf_guard_user.IS_ACTIVE=:p2 LIMIT 1
+Mar 03 17:25:15 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:25:15 symfony [debug] {sfPropelLogger} Binding 'admin' at position :p1 w/ PDO type PDO::PARAM_STR
+Mar 03 17:25:15 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:25:15 symfony [debug] {sfPropelLogger} Binding 1 at position :p2 w/ PDO type PDO::PARAM_INT
+Mar 03 17:25:15 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:25:39 symfony [info] {sfPatternRouting} Connect sfRoute "project_create" (/project/create)
+Mar 03 17:25:39 symfony [info] {sfPatternRouting} Connect sfRoute "project_success" (/project/success)
+Mar 03 17:25:39 symfony [info] {sfPatternRouting} Connect sfRoute "homepage" (/)
+Mar 03 17:25:39 symfony [info] {sfPatternRouting} Connect sfRoute "default_index" (/:module)
+Mar 03 17:25:39 symfony [info] {sfPatternRouting} Connect sfRoute "default" (/:module/:action/*)
+Mar 03 17:25:39 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/login)
+Mar 03 17:25:39 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/logout)
+Mar 03 17:25:39 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_password" (/request_password)
+Mar 03 17:25:39 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/login)
+Mar 03 17:25:39 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/logout)
+Mar 03 17:25:39 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_password" (/request_password)
+Mar 03 17:25:39 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user" (/sf_guard_user.:sf_format)
+Mar 03 17:25:39 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_new" (/sf_guard_user/new.:sf_format)
+Mar 03 17:25:39 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_create" (/sf_guard_user.:sf_format)
+Mar 03 17:25:39 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_edit" (/sf_guard_user/:id/edit.:sf_format)
+Mar 03 17:25:39 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_update" (/sf_guard_user/:id.:sf_format)
+Mar 03 17:25:39 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_delete" (/sf_guard_user/:id.:sf_format)
+Mar 03 17:25:39 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_show" (/sf_guard_user/:id.:sf_format)
+Mar 03 17:25:39 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_object" (/sf_guard_user/:id/:action.:sf_format)
+Mar 03 17:25:39 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_collection" (/sf_guard_user/:action/action.:sf_format)
+Mar 03 17:25:39 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group" (/sf_guard_group.:sf_format)
+Mar 03 17:25:39 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_new" (/sf_guard_group/new.:sf_format)
+Mar 03 17:25:39 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_create" (/sf_guard_group.:sf_format)
+Mar 03 17:25:39 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_edit" (/sf_guard_group/:id/edit.:sf_format)
+Mar 03 17:25:39 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_update" (/sf_guard_group/:id.:sf_format)
+Mar 03 17:25:39 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_delete" (/sf_guard_group/:id.:sf_format)
+Mar 03 17:25:39 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_show" (/sf_guard_group/:id.:sf_format)
+Mar 03 17:25:39 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_object" (/sf_guard_group/:id/:action.:sf_format)
+Mar 03 17:25:39 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_collection" (/sf_guard_group/:action/action.:sf_format)
+Mar 03 17:25:39 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission" (/sf_guard_permission.:sf_format)
+Mar 03 17:25:39 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_new" (/sf_guard_permission/new.:sf_format)
+Mar 03 17:25:39 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_create" (/sf_guard_permission.:sf_format)
+Mar 03 17:25:39 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_edit" (/sf_guard_permission/:id/edit.:sf_format)
+Mar 03 17:25:39 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_update" (/sf_guard_permission/:id.:sf_format)
+Mar 03 17:25:39 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_delete" (/sf_guard_permission/:id.:sf_format)
+Mar 03 17:25:39 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_show" (/sf_guard_permission/:id.:sf_format)
+Mar 03 17:25:39 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_object" (/sf_guard_permission/:id/:action.:sf_format)
+Mar 03 17:25:39 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_collection" (/sf_guard_permission/:action/action.:sf_format)
+Mar 03 17:25:39 symfony [info] {sfPatternRouting} Match route "sf_guard_signin" (/login) for /login with parameters array (  'module' => 'sfGuardAuth',  'action' => 'signin',)
+Mar 03 17:25:39 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Mar 03 17:25:39 symfony [info] {sfFilterChain} Executing filter "sfCommonFilter"
+Mar 03 17:25:39 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Mar 03 17:25:39 symfony [info] {sfGuardAuthActions} Call "sfGuardAuthActions->executeSignin()"
+Mar 03 17:25:39 symfony [debug] {sfPropelLogger} exec: SET NAMES 'utf8'
+Mar 03 17:25:39 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:25:39 symfony [debug] {sfPropelLogger} prepare: SELECT COUNT(*) FROM `sf_guard_user` WHERE sf_guard_user.USERNAME=:p1
+Mar 03 17:25:39 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:25:39 symfony [debug] {sfPropelLogger} Binding 'admin' at position :p1 w/ PDO type PDO::PARAM_STR
+Mar 03 17:25:39 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:25:39 symfony [debug] {sfPropelLogger} prepare: SELECT sf_guard_user.ID, sf_guard_user.USERNAME, sf_guard_user.ALGORITHM, sf_guard_user.SALT, sf_guard_user.PASSWORD, sf_guard_user.CREATED_AT, sf_guard_user.LAST_LOGIN, sf_guard_user.IS_ACTIVE, sf_guard_user.IS_SUPER_ADMIN FROM `sf_guard_user` WHERE sf_guard_user.USERNAME=:p1 AND sf_guard_user.IS_ACTIVE=:p2 LIMIT 1
+Mar 03 17:25:39 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:25:39 symfony [debug] {sfPropelLogger} Binding 'admin' at position :p1 w/ PDO type PDO::PARAM_STR
+Mar 03 17:25:39 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:25:39 symfony [debug] {sfPropelLogger} Binding 1 at position :p2 w/ PDO type PDO::PARAM_INT
+Mar 03 17:25:39 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:27:24 symfony [info] {sfPatternRouting} Connect sfRoute "project_create" (/project/create)
+Mar 03 17:27:24 symfony [info] {sfPatternRouting} Connect sfRoute "project_success" (/project/success)
+Mar 03 17:27:24 symfony [info] {sfPatternRouting} Connect sfRoute "homepage" (/)
+Mar 03 17:27:24 symfony [info] {sfPatternRouting} Connect sfRoute "default_index" (/:module)
+Mar 03 17:27:24 symfony [info] {sfPatternRouting} Connect sfRoute "default" (/:module/:action/*)
+Mar 03 17:27:24 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/login)
+Mar 03 17:27:24 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/logout)
+Mar 03 17:27:24 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_password" (/request_password)
+Mar 03 17:27:24 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/login)
+Mar 03 17:27:24 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/logout)
+Mar 03 17:27:24 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_password" (/request_password)
+Mar 03 17:27:24 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user" (/sf_guard_user.:sf_format)
+Mar 03 17:27:24 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_new" (/sf_guard_user/new.:sf_format)
+Mar 03 17:27:24 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_create" (/sf_guard_user.:sf_format)
+Mar 03 17:27:24 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_edit" (/sf_guard_user/:id/edit.:sf_format)
+Mar 03 17:27:24 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_update" (/sf_guard_user/:id.:sf_format)
+Mar 03 17:27:24 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_delete" (/sf_guard_user/:id.:sf_format)
+Mar 03 17:27:24 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_show" (/sf_guard_user/:id.:sf_format)
+Mar 03 17:27:24 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_object" (/sf_guard_user/:id/:action.:sf_format)
+Mar 03 17:27:24 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_collection" (/sf_guard_user/:action/action.:sf_format)
+Mar 03 17:27:24 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group" (/sf_guard_group.:sf_format)
+Mar 03 17:27:24 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_new" (/sf_guard_group/new.:sf_format)
+Mar 03 17:27:24 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_create" (/sf_guard_group.:sf_format)
+Mar 03 17:27:24 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_edit" (/sf_guard_group/:id/edit.:sf_format)
+Mar 03 17:27:24 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_update" (/sf_guard_group/:id.:sf_format)
+Mar 03 17:27:24 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_delete" (/sf_guard_group/:id.:sf_format)
+Mar 03 17:27:24 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_show" (/sf_guard_group/:id.:sf_format)
+Mar 03 17:27:24 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_object" (/sf_guard_group/:id/:action.:sf_format)
+Mar 03 17:27:24 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_collection" (/sf_guard_group/:action/action.:sf_format)
+Mar 03 17:27:24 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission" (/sf_guard_permission.:sf_format)
+Mar 03 17:27:24 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_new" (/sf_guard_permission/new.:sf_format)
+Mar 03 17:27:24 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_create" (/sf_guard_permission.:sf_format)
+Mar 03 17:27:24 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_edit" (/sf_guard_permission/:id/edit.:sf_format)
+Mar 03 17:27:24 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_update" (/sf_guard_permission/:id.:sf_format)
+Mar 03 17:27:24 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_delete" (/sf_guard_permission/:id.:sf_format)
+Mar 03 17:27:24 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_show" (/sf_guard_permission/:id.:sf_format)
+Mar 03 17:27:24 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_object" (/sf_guard_permission/:id/:action.:sf_format)
+Mar 03 17:27:24 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_collection" (/sf_guard_permission/:action/action.:sf_format)
+Mar 03 17:27:24 symfony [info] {sfPatternRouting} Match route "sf_guard_signin" (/login) for /login with parameters array (  'module' => 'sfGuardAuth',  'action' => 'signin',)
+Mar 03 17:27:24 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Mar 03 17:27:24 symfony [info] {sfFilterChain} Executing filter "sfCommonFilter"
+Mar 03 17:27:24 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Mar 03 17:27:24 symfony [info] {sfGuardAuthActions} Call "sfGuardAuthActions->executeSignin()"
+Mar 03 17:27:24 symfony [debug] {sfPropelLogger} exec: SET NAMES 'utf8'
+Mar 03 17:27:24 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:27:24 symfony [debug] {sfPropelLogger} prepare: SELECT COUNT(*) FROM `sf_guard_user` WHERE sf_guard_user.USERNAME=:p1
+Mar 03 17:27:24 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:27:24 symfony [debug] {sfPropelLogger} Binding 'admin' at position :p1 w/ PDO type PDO::PARAM_STR
+Mar 03 17:27:24 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:27:24 symfony [debug] {sfPropelLogger} prepare: SELECT sf_guard_user.ID, sf_guard_user.USERNAME, sf_guard_user.ALGORITHM, sf_guard_user.SALT, sf_guard_user.PASSWORD, sf_guard_user.CREATED_AT, sf_guard_user.LAST_LOGIN, sf_guard_user.IS_ACTIVE, sf_guard_user.IS_SUPER_ADMIN FROM `sf_guard_user` WHERE sf_guard_user.USERNAME=:p1 AND sf_guard_user.IS_ACTIVE=:p2 LIMIT 1
+Mar 03 17:27:24 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:27:24 symfony [debug] {sfPropelLogger} Binding 'admin' at position :p1 w/ PDO type PDO::PARAM_STR
+Mar 03 17:27:24 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:27:24 symfony [debug] {sfPropelLogger} Binding 1 at position :p2 w/ PDO type PDO::PARAM_INT
+Mar 03 17:27:24 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:30:59 symfony [info] {sfPatternRouting} Connect sfRoute "project_create" (/project/create)
+Mar 03 17:30:59 symfony [info] {sfPatternRouting} Connect sfRoute "project_success" (/project/success)
+Mar 03 17:30:59 symfony [info] {sfPatternRouting} Connect sfRoute "homepage" (/)
+Mar 03 17:30:59 symfony [info] {sfPatternRouting} Connect sfRoute "default_index" (/:module)
+Mar 03 17:30:59 symfony [info] {sfPatternRouting} Connect sfRoute "default" (/:module/:action/*)
+Mar 03 17:30:59 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/login)
+Mar 03 17:30:59 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/logout)
+Mar 03 17:30:59 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_password" (/request_password)
+Mar 03 17:30:59 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/login)
+Mar 03 17:30:59 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/logout)
+Mar 03 17:30:59 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_password" (/request_password)
+Mar 03 17:30:59 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user" (/sf_guard_user.:sf_format)
+Mar 03 17:30:59 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_new" (/sf_guard_user/new.:sf_format)
+Mar 03 17:30:59 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_create" (/sf_guard_user.:sf_format)
+Mar 03 17:30:59 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_edit" (/sf_guard_user/:id/edit.:sf_format)
+Mar 03 17:30:59 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_update" (/sf_guard_user/:id.:sf_format)
+Mar 03 17:30:59 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_delete" (/sf_guard_user/:id.:sf_format)
+Mar 03 17:30:59 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_show" (/sf_guard_user/:id.:sf_format)
+Mar 03 17:30:59 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_object" (/sf_guard_user/:id/:action.:sf_format)
+Mar 03 17:30:59 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_collection" (/sf_guard_user/:action/action.:sf_format)
+Mar 03 17:30:59 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group" (/sf_guard_group.:sf_format)
+Mar 03 17:30:59 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_new" (/sf_guard_group/new.:sf_format)
+Mar 03 17:30:59 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_create" (/sf_guard_group.:sf_format)
+Mar 03 17:30:59 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_edit" (/sf_guard_group/:id/edit.:sf_format)
+Mar 03 17:30:59 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_update" (/sf_guard_group/:id.:sf_format)
+Mar 03 17:30:59 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_delete" (/sf_guard_group/:id.:sf_format)
+Mar 03 17:30:59 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_show" (/sf_guard_group/:id.:sf_format)
+Mar 03 17:30:59 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_object" (/sf_guard_group/:id/:action.:sf_format)
+Mar 03 17:30:59 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_collection" (/sf_guard_group/:action/action.:sf_format)
+Mar 03 17:30:59 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission" (/sf_guard_permission.:sf_format)
+Mar 03 17:30:59 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_new" (/sf_guard_permission/new.:sf_format)
+Mar 03 17:30:59 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_create" (/sf_guard_permission.:sf_format)
+Mar 03 17:30:59 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_edit" (/sf_guard_permission/:id/edit.:sf_format)
+Mar 03 17:30:59 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_update" (/sf_guard_permission/:id.:sf_format)
+Mar 03 17:30:59 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_delete" (/sf_guard_permission/:id.:sf_format)
+Mar 03 17:30:59 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_show" (/sf_guard_permission/:id.:sf_format)
+Mar 03 17:30:59 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_object" (/sf_guard_permission/:id/:action.:sf_format)
+Mar 03 17:30:59 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_collection" (/sf_guard_permission/:action/action.:sf_format)
+Mar 03 17:30:59 symfony [info] {sfPatternRouting} Match route "sf_guard_signin" (/login) for /login with parameters array (  'module' => 'sfGuardAuth',  'action' => 'signin',)
+Mar 03 17:30:59 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Mar 03 17:30:59 symfony [info] {sfFilterChain} Executing filter "sfCommonFilter"
+Mar 03 17:30:59 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Mar 03 17:30:59 symfony [info] {sfGuardAuthActions} Call "sfGuardAuthActions->executeSignin()"
+Mar 03 17:30:59 symfony [debug] {sfPropelLogger} exec: SET NAMES 'utf8'
+Mar 03 17:30:59 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:30:59 symfony [debug] {sfPropelLogger} prepare: SELECT COUNT(*) FROM `sf_guard_user` WHERE sf_guard_user.USERNAME=:p1
+Mar 03 17:30:59 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:30:59 symfony [debug] {sfPropelLogger} Binding 'admin' at position :p1 w/ PDO type PDO::PARAM_STR
+Mar 03 17:30:59 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:30:59 symfony [debug] {sfPropelLogger} prepare: SELECT sf_guard_user.ID, sf_guard_user.USERNAME, sf_guard_user.ALGORITHM, sf_guard_user.SALT, sf_guard_user.PASSWORD, sf_guard_user.CREATED_AT, sf_guard_user.LAST_LOGIN, sf_guard_user.IS_ACTIVE, sf_guard_user.IS_SUPER_ADMIN FROM `sf_guard_user` WHERE sf_guard_user.USERNAME=:p1 AND sf_guard_user.IS_ACTIVE=:p2 LIMIT 1
+Mar 03 17:30:59 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:30:59 symfony [debug] {sfPropelLogger} Binding 'admin' at position :p1 w/ PDO type PDO::PARAM_STR
+Mar 03 17:30:59 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:30:59 symfony [debug] {sfPropelLogger} Binding 1 at position :p2 w/ PDO type PDO::PARAM_INT
+Mar 03 17:30:59 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:31:14 symfony [info] {sfPatternRouting} Connect sfRoute "project_create" (/project/create)
+Mar 03 17:31:14 symfony [info] {sfPatternRouting} Connect sfRoute "project_success" (/project/success)
+Mar 03 17:31:14 symfony [info] {sfPatternRouting} Connect sfRoute "homepage" (/)
+Mar 03 17:31:14 symfony [info] {sfPatternRouting} Connect sfRoute "default_index" (/:module)
+Mar 03 17:31:14 symfony [info] {sfPatternRouting} Connect sfRoute "default" (/:module/:action/*)
+Mar 03 17:31:14 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/login)
+Mar 03 17:31:14 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/logout)
+Mar 03 17:31:14 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_password" (/request_password)
+Mar 03 17:31:14 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/login)
+Mar 03 17:31:14 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/logout)
+Mar 03 17:31:14 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_password" (/request_password)
+Mar 03 17:31:14 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user" (/sf_guard_user.:sf_format)
+Mar 03 17:31:14 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_new" (/sf_guard_user/new.:sf_format)
+Mar 03 17:31:14 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_create" (/sf_guard_user.:sf_format)
+Mar 03 17:31:14 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_edit" (/sf_guard_user/:id/edit.:sf_format)
+Mar 03 17:31:14 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_update" (/sf_guard_user/:id.:sf_format)
+Mar 03 17:31:14 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_delete" (/sf_guard_user/:id.:sf_format)
+Mar 03 17:31:14 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_show" (/sf_guard_user/:id.:sf_format)
+Mar 03 17:31:14 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_object" (/sf_guard_user/:id/:action.:sf_format)
+Mar 03 17:31:14 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_collection" (/sf_guard_user/:action/action.:sf_format)
+Mar 03 17:31:14 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group" (/sf_guard_group.:sf_format)
+Mar 03 17:31:14 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_new" (/sf_guard_group/new.:sf_format)
+Mar 03 17:31:14 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_create" (/sf_guard_group.:sf_format)
+Mar 03 17:31:14 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_edit" (/sf_guard_group/:id/edit.:sf_format)
+Mar 03 17:31:14 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_update" (/sf_guard_group/:id.:sf_format)
+Mar 03 17:31:14 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_delete" (/sf_guard_group/:id.:sf_format)
+Mar 03 17:31:14 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_show" (/sf_guard_group/:id.:sf_format)
+Mar 03 17:31:14 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_object" (/sf_guard_group/:id/:action.:sf_format)
+Mar 03 17:31:14 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_group_collection" (/sf_guard_group/:action/action.:sf_format)
+Mar 03 17:31:14 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission" (/sf_guard_permission.:sf_format)
+Mar 03 17:31:14 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_new" (/sf_guard_permission/new.:sf_format)
+Mar 03 17:31:14 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_create" (/sf_guard_permission.:sf_format)
+Mar 03 17:31:14 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_edit" (/sf_guard_permission/:id/edit.:sf_format)
+Mar 03 17:31:14 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_update" (/sf_guard_permission/:id.:sf_format)
+Mar 03 17:31:14 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_delete" (/sf_guard_permission/:id.:sf_format)
+Mar 03 17:31:14 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_show" (/sf_guard_permission/:id.:sf_format)
+Mar 03 17:31:14 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_object" (/sf_guard_permission/:id/:action.:sf_format)
+Mar 03 17:31:14 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_permission_collection" (/sf_guard_permission/:action/action.:sf_format)
+Mar 03 17:31:14 symfony [info] {sfPatternRouting} Match route "sf_guard_signin" (/login) for /login with parameters array (  'module' => 'sfGuardAuth',  'action' => 'signin',)
+Mar 03 17:31:14 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Mar 03 17:31:14 symfony [info] {sfFilterChain} Executing filter "sfCommonFilter"
+Mar 03 17:31:14 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Mar 03 17:31:14 symfony [info] {sfGuardAuthActions} Call "sfGuardAuthActions->executeSignin()"
+Mar 03 17:31:14 symfony [debug] {sfPropelLogger} exec: SET NAMES 'utf8'
+Mar 03 17:31:14 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:31:14 symfony [debug] {sfPropelLogger} prepare: SELECT COUNT(*) FROM `sf_guard_user` WHERE sf_guard_user.USERNAME=:p1
+Mar 03 17:31:14 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:31:14 symfony [debug] {sfPropelLogger} Binding 'admin' at position :p1 w/ PDO type PDO::PARAM_STR
+Mar 03 17:31:14 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:31:14 symfony [debug] {sfPropelLogger} prepare: SELECT sf_guard_user.ID, sf_guard_user.USERNAME, sf_guard_user.ALGORITHM, sf_guard_user.SALT, sf_guard_user.PASSWORD, sf_guard_user.CREATED_AT, sf_guard_user.LAST_LOGIN, sf_guard_user.IS_ACTIVE, sf_guard_user.IS_SUPER_ADMIN FROM `sf_guard_user` WHERE sf_guard_user.USERNAME=:p1 AND sf_guard_user.IS_ACTIVE=:p2 LIMIT 1
+Mar 03 17:31:14 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:31:14 symfony [debug] {sfPropelLogger} Binding 'admin' at position :p1 w/ PDO type PDO::PARAM_STR
+Mar 03 17:31:14 symfony [debug] {sfPropelLogger} 7
+Mar 03 17:31:14 symfony [debug] {sfPropelLogger} Binding 1 at position :p2 w/ PDO type PDO::PARAM_INT
+Mar 03 17:31:14 symfony [debug] {sfPropelLogger} 7

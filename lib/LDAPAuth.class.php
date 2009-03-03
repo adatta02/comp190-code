@@ -5,9 +5,11 @@
  *
  */
 class LDAPAuth extends sfGuardSecurityUser{
+	
+	// TODO: Fix this - its just not working
   public static function checkLDAPPassword($username, $password){
 
-  	return;
+  	return true;
   	// try and validate the user
   	// if the password is null length then reject
   	if(strlen(trim($password)) == 0){
@@ -16,14 +18,12 @@ class LDAPAuth extends sfGuardSecurityUser{
   	}
   	
   	// lets try the ldap
-  	// TODO: Fix this - its just not working
-  	$res = ldap_connect("ldaps://ldap.tufts.edu/", 636);
-  	if(!res){
+  	$res = ldap_connect("ldap://ldap.tufts.edu/", 389);
+  	if(!$res){
   		throw new sfException("Could not connect to the LDAP server!", 0);
   	}
   	
-    $ldapbind = ldap_bind($res, "dc=tufts,dc=edu,scope sub,filter(uid={$username})", $password);
-    $result = ldap_unbind($res);
+    $ldapbind = ldap_bind($res, "dc=tufts,dc=edu,scope sub,filter(uid=" . $username . ")", $password);
     
     // verify binding
     if ($ldapbind) {
@@ -31,6 +31,7 @@ class LDAPAuth extends sfGuardSecurityUser{
     } else {
         echo "LDAP bind failed...";
     }
+  	$result = ldap_unbind($res);
   	
   	// if they aren't valid make sure to delete them out of the DB
   	die("0xDEADBEEF");
