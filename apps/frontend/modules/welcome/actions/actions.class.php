@@ -17,6 +17,6 @@ class welcomeActions extends sfActions
   */
   public function executeIndex(sfWebRequest $request)
   {
-    
+    $this->setLayout("nomenu");
   }
 }

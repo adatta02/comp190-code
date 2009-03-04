@@ -1,13 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?> <database defaultIdMethod="native" name="propel" package="lib.model">
+<?xml version="1.0" encoding="UTF-8"?>
+<database defaultIdMethod="native" name="propel" package="lib.model">
   <table name="project">
     <column name="id" type="INTEGER" primaryKey="true" required="true" autoIncrement="true"/>
     <column name="name" type="VARCHAR" size="45"/>
   </table>
-  <table name="user">
+  <table name="sf_guard_user_profile">
     <column name="id" type="INTEGER" primaryKey="true" required="true" autoIncrement="true"/>
-    <column name="user_Type_id" type="INTEGER"/>
-    <foreign-key name="fk_User_User_Type" foreignTable="user_type">
-      <reference local="user_Type_id" foreign="id"/>
+    <column name="user_type_id" type="INTEGER"/>
+    <foreign-key name="fk_sf_guard_user_profile_user_type" foreignTable="user_type">
+      <reference local="user_type_id" foreign="id"/>
     </foreign-key>
   </table>
   <table name="job">
@@ -16,10 +17,10 @@
     <column name="publication_id" type="INTEGER"/>
     <column name="status_id" type="INTEGER"/>
     <column name="event" type="VARCHAR" size="64"/>
-    <column name="date" type="TIMESTAMP"/>
     <column name="start_time" type="TIMESTAMP"/>
     <column name="end_time" type="TIMESTAMP"/>
     <column name="due_date" type="TIMESTAMP"/>
+    <column name="created_at" type="TIMESTAMP"/>
     <column name="street" type="VARCHAR" size="64"/>
     <column name="city" type="VARCHAR" size="64"/>
     <column name="state" type="VARCHAR" size="64"/>
@@ -61,7 +62,7 @@
     <column name="affiliation" type="VARCHAR" size="64"/>
     <column name="website" type="VARCHAR" size="64"/>
     <column name="description" type="LONGVARCHAR"/>
-    <foreign-key name="fk_Photographer_User" foreignTable="user">
+    <foreign-key name="fk_Photographer_User" foreignTable="sf_guard_user_profile">
       <reference local="user_id" foreign="id"/>
     </foreign-key>
   </table>
@@ -73,7 +74,7 @@
     <column name="address" type="VARCHAR" size="255"/>
     <column name="email" type="VARCHAR" size="255"/>
     <column name="phone" type="VARCHAR" size="32"/>
-    <foreign-key name="fk_Client_User" foreignTable="user">
+    <foreign-key name="fk_Client_User" foreignTable="sf_guard_user_profile">
       <reference local="user_id" foreign="id"/>
     </foreign-key>
   </table>
@@ -123,4 +124,5 @@
     <foreign-key name="fk_Job_Client_Job" foreignTable="job">
       <reference local="job_id" foreign="id"/>
     </foreign-key>
-  </table> </database>
+  </table>
+</database>

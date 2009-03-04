@@ -1,17 +1,95 @@
-# # Populate this file with data to be loaded by your ORM's *:data-load task.
-# # You can create multiple files in this directory (i.e. 010_users.yml,
-# # 020_articles.yml, etc) which will be loaded in alphabetical order.
-# # 
-# # See documentation for your ORM's *:data-load task for more information.
-# 
-# User:
-#   fabien:
-#     username: fabien
-#     password: changeme
-#     name:     Fabien Potencier
-#     email:    fabien.potencier@symfony-project.com
-#   kris:
-#     username: Kris.Wallsmith
-#     password: changeme
-#     name:     Kris Wallsmith
-#     email:    kris.wallsmith@symfony-project.com
+sfGuardPermission:
+  sfGuardPermission_1:
+    name: admin
+    description: 'Administrator permission'
+sfGuardUser:
+  sfGuardUser_1:
+    username: admin
+    algorithm: sha1
+    salt: 0d0ddf39bd29e7c17afb5881b8c8ea67
+    password: 325494dedebeefaad7a17fd43c1b730448a25a2e
+    created_at: '2009-03-03 03:30:05'
+    last_login: '2009-03-03 17:36:14'
+    is_active: '1'
+    is_super_admin: '1'
+  sfGuardUser_8:
+    username: asdf
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-03-03 16:54:46'
+    is_active: '1'
+    is_super_admin: '0'
+sfGuardGroup:
+  sfGuardGroup_1:
+    name: admin
+    description: 'Administrator group'
+sfGuardGroupPermission:
+  sfGuardGroupPermission_1_1:
+    group_id: sfGuardGroup_1
+    permission_id: sfGuardPermission_1
+sfGuardUserGroup:
+  sfGuardUserGroup_1_1:
+    user_id: sfGuardUser_1
+    group_id: sfGuardGroup_1
+Publication:
+  Publication_1:
+    name: 'Tufts Daily'
+    contact_name: 'Tufts Daily'
+    contact_email: daily@tufts.edu
+Status:
+  Status_1:
+    state: Pending
+  Status_2:
+    state: Accepted
+  Status_3:
+    state: Completed
+  Status_4:
+    state: Delivered
+  Status_5:
+    state: Invoiced
+  Status_6:
+    state: Paid
+  Status_7:
+    state: Archived
+Job:
+  Job_1:
+    publication_id: Publication_1
+    status_id: Status_1
+    event: 'gq test shoot'
+    start_time: '2009-03-31 00:00:00'
+    end_time: '2009-04-01 00:00:00'
+    due_date: '2009-03-27 00:00:00'
+    street: '124 main st'
+    city: medford
+    state: MA
+    zip: '2155'
+    contact_name: ashish
+    contact_email: datta@test.edu
+    contact_phone: '2019503958'
+  Job_2:
+    status_id: Status_1
+    event: 'esquire shoot'
+    start_time: '2009-03-05 00:00:00'
+    end_time: '2009-03-11 00:00:00'
+    due_date: '2009-03-31 00:00:00'
+    street: sfsdf
+    city: medford
+    state: MA
+    zip: '2155'
+    contact_name: ashish
+    contact_email: ashish@setfive.com
+    contact_phone: '102934'
+UserType:
+  UserType_1:
+    type: admin
+    permissions: '1111'
+  UserType_2:
+    type: client
+    permissions: '101'
+  UserType_3:
+    type: photographer
+    permissions: '0'
+  UserType_4:
+    type: user
+    permissions: '1'

@@ -18,8 +18,10 @@ class projectActions extends sfActions
 	 * @param sfWebRequest $request
 	 */
   public function executeCreate(sfWebRequest $request){
-  	$this->form = new JobForm();
   	
+  	// if this user is a admin or client show a layout otherwise dont
+  	
+  	$this->form = new JobForm();
   	if($request->isMethod("POST")){
       $this->processForm($request, $this->form);
   	}

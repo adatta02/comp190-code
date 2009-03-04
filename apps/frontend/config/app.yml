@@ -2,3 +2,11 @@
 all:
   sf_guard_plugin:
     check_password_callable: [LDAPAuth, checkLDAPPassword]
+  job_status:
+    pending: 1
+    accepted: 2
+    completed: 3
+    delivered: 4
+    invoiced: 5
+    paid: 6
+    archived: 7

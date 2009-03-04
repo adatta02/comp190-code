@@ -1,0 +1,12 @@
+#header{
+  text-align: center;
+}
+
+#menu{
+  float: left;
+  width: 200px;
+}
+
+#content{
+  float: left;
+}

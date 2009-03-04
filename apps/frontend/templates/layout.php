@@ -7,6 +7,24 @@
     <link rel="shortcut icon" href="/favicon.ico" />
   </head>
   <body>
-    <?php echo $sf_content ?>
+    
+    <div id="header">
+      <h3>Photo@Tufts.edu</h3>
+      <div id="top-menu">[menu 1] [menu 2] [menu 3] [menu 4]</div>
+    </div>
+    
+    <div id="menu">
+      <ul id="menu-list">
+        <li>[menu 1]</li>
+        <li>[menu 2]</li>
+        <li>[menu 3]</li>
+        <li>[menu 4]</li>
+      </ul>
+    </div>
+    
+    <div id="content">
+      <?php echo $sf_content ?>
+    </div>
+    
   </body>
 </html>

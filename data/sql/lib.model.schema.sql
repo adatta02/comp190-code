@@ -18,20 +18,20 @@ CREATE TABLE `project`
 )Type=InnoDB;
 
 #-----------------------------------------------------------------------------
-#-- user
+#-- sf_guard_user_profile
 #-----------------------------------------------------------------------------
 
-DROP TABLE IF EXISTS `user`;
+DROP TABLE IF EXISTS `sf_guard_user_profile`;
 
 
-CREATE TABLE `user`
+CREATE TABLE `sf_guard_user_profile`
 (
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
-	`user_Type_id` INTEGER,
+	`user_type_id` INTEGER,
 	PRIMARY KEY (`id`),
-	INDEX `FI_User_User_Type` (`user_Type_id`),
-	CONSTRAINT `fk_User_User_Type`
-		FOREIGN KEY (`user_Type_id`)
+	INDEX `FI_sf_guard_user_profile_user_type` (`user_type_id`),
+	CONSTRAINT `fk_sf_guard_user_profile_user_type`
+		FOREIGN KEY (`user_type_id`)
 		REFERENCES `user_type` (`id`)
 )Type=InnoDB;
 
@@ -49,10 +49,10 @@ CREATE TABLE `job`
 	`publication_id` INTEGER,
 	`status_id` INTEGER,
 	`event` VARCHAR(64),
-	`date` DATETIME,
 	`start_time` DATETIME,
 	`end_time` DATETIME,
 	`due_date` DATETIME,
+	`created_at` DATETIME,
 	`street` VARCHAR(64),
 	`city` VARCHAR(64),
 	`state` VARCHAR(64),
@@ -122,7 +122,7 @@ CREATE TABLE `photographer`
 	INDEX `FI_Photographer_User` (`user_id`),
 	CONSTRAINT `fk_Photographer_User`
 		FOREIGN KEY (`user_id`)
-		REFERENCES `user` (`id`)
+		REFERENCES `sf_guard_user_profile` (`id`)
 )Type=InnoDB;
 
 #-----------------------------------------------------------------------------
@@ -145,7 +145,7 @@ CREATE TABLE `client`
 	INDEX `FI_Client_User` (`user_id`),
 	CONSTRAINT `fk_Client_User`
 		FOREIGN KEY (`user_id`)
-		REFERENCES `user` (`id`)
+		REFERENCES `sf_guard_user_profile` (`id`)
 )Type=InnoDB;
 
 #-----------------------------------------------------------------------------
