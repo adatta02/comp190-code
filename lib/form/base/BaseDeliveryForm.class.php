@@ -21,6 +21,7 @@ class BaseDeliveryForm extends BaseFormPropel
       'size'         => new sfWidgetFormInput(),
       'method'       => new sfWidgetFormInput(),
       'instructions' => new sfWidgetFormTextarea(),
+      'job_id'       => new sfWidgetFormPropelChoice(array('model' => 'Job', 'add_empty' => true)),
     ));
 
     $this->setValidators(array(
@@ -32,6 +33,7 @@ class BaseDeliveryForm extends BaseFormPropel
       'size'         => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'method'       => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'instructions' => new sfValidatorString(array('required' => false)),
+      'job_id'       => new sfValidatorPropelChoice(array('model' => 'Job', 'column' => 'id', 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('delivery[%s]');

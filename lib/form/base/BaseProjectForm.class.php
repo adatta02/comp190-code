@@ -13,13 +13,15 @@ class BaseProjectForm extends BaseFormPropel
   public function setup()
   {
     $this->setWidgets(array(
-      'id'   => new sfWidgetFormInputHidden(),
-      'name' => new sfWidgetFormInput(),
+      'id'        => new sfWidgetFormInputHidden(),
+      'name'      => new sfWidgetFormInput(),
+      'status_id' => new sfWidgetFormPropelChoice(array('model' => 'Status', 'add_empty' => true)),
     ));
 
     $this->setValidators(array(
-      'id'   => new sfValidatorPropelChoice(array('model' => 'Project', 'column' => 'id', 'required' => false)),
-      'name' => new sfValidatorString(array('max_length' => 45, 'required' => false)),
+      'id'        => new sfValidatorPropelChoice(array('model' => 'Project', 'column' => 'id', 'required' => false)),
+      'name'      => new sfValidatorString(array('max_length' => 45, 'required' => false)),
+      'status_id' => new sfValidatorPropelChoice(array('model' => 'Status', 'column' => 'id', 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('project[%s]');

@@ -1,0 +1,392 @@
+1:
+  id: 46
+  name: comm08
+  desc: Commencement 2008
+  project_notes: All jobs associated with 2008 commencement and end-of-year activities on all campuses shot between May 12 and May 18.
+  billing_notes: All jobs associated with 2008 commencement and end-of-year activities on all campuses shot between May 12 and May 18.
+  active: 0
+2:
+  id: 10
+  name: AMSu07
+  desc: Alma Matters Summer 2007
+  project_notes: Bi-annual Graduate School of Arts and Sciences Magazine
+  billing_notes: Bi-annual Graduate School of Arts and Sciences Magazine
+  active: 0
+3:
+  id: 11
+  name: FAid07
+  desc: Financial Aid Brochure 2006-2007
+  project_notes: Financial Aid Brochure for Tufts Undergraduate Admissions 2006-2007
+  billing_notes: Financial Aid Brochure for Tufts Undergraduate Admissions 2006-2007
+  active: 0
+4:
+  id: 36
+  name: vetmagF07
+  desc: Tufts Vet Magazine Fall 2007
+  project_notes: Sept.-Oct. 2007 shoots for Tufts Vet Mag
+  billing_notes: Sept.-Oct. 2007 shoots for Tufts Vet Mag
+  active: 0
+5:
+  id: 13
+  name: GSPH06
+  desc: Graduate School of Public Health Viewbook 2006
+  project_notes: 
+  billing_notes: 
+  active: 0
+6:
+  id: 14
+  name: BBProfiles07
+  desc: Beyond Boundaries Website Profiles
+  project_notes: 
+  billing_notes: 
+  active: 0
+7:
+  id: 15
+  name: MusicCenter07
+  desc: Sophia Gordon Music Center Opening 2007
+  project_notes: 
+  billing_notes: 
+  active: 0
+8:
+  id: 16
+  name: PW06
+  desc: Parents Weekend 2006
+  project_notes: 
+  billing_notes: 
+  active: 0
+9:
+  id: 17
+  name: Commence07
+  desc: Commencement 2007
+  project_notes: 
+  billing_notes: 
+  active: 0
+10:
+  id: 18
+  name: vetmagW07
+  desc: Tufts Vet Magazine Winter 2007
+  project_notes: All jobs for Tufts Vet Magazine 2007.
+  billing_notes: All jobs for Tufts Vet Magazine 2007.
+  active: 0
+11:
+  id: 45
+  name: vertical
+  desc: Dental School Vertical Expansion
+  project_notes: Ongoing project (duration approx. 18 months) documenting vertical expansion of Dental School. Shoots 2x/month.
+  billing_notes: Ongoing project (duration approx. 18 months) documenting vertical expansion of Dental School. Shoots 2x/month.
+  active: 1
+12:
+  id: 24
+  name: alma
+  desc: Alma Matters
+  project_notes: Alma Matters jobs
+  billing_notes: Alma Matters jobs
+  active: 0
+13:
+  id: 25
+  name: CSheadshots
+  desc: Computer Science Department Headshots 2007
+  project_notes: 
+  billing_notes: 
+  active: 0
+14:
+  id: 26
+  name: meddinner07
+  desc: Medical School Dinner 2007
+  project_notes: 
+  billing_notes: 
+  active: 0
+15:
+  id: 27
+  name: Marathon07
+  desc: President's Marathon Challenge 2007
+  project_notes: 
+  billing_notes: 
+  active: 0
+16:
+  id: 28
+  name: FinancialAid
+  desc: Financial Aid Profiles for Advancement
+  project_notes: 
+  billing_notes: 
+  active: 0
+17:
+  id: 29
+  name: VetMagS07
+  desc: Vet Magazine Summer 2007
+  project_notes: 
+  billing_notes: 
+  active: 0
+18:
+  id: 30
+  name: matriculation
+  desc: Matriculation 2007
+  project_notes: 
+  billing_notes: 
+  active: 0
+19:
+  id: 31
+  name: NutritionVB07
+  desc: Nutrition Viewbook 2007
+  project_notes: 
+  billing_notes: 
+  active: 0
+20:
+  id: 40
+  name: isner
+  desc: November 2007 Isner Lecture
+  project_notes: Judah Folkman Medical School
+  billing_notes: Judah Folkman Medical School
+  active: 0
+21:
+  id: 33
+  name: TMagAdvSept07
+  desc: Tufts Magazine Advancement section Sept. 07 jobs
+  project_notes: Mark Sullivan jobs shot in Sept. 2007
+  billing_notes: Mark Sullivan jobs shot in Sept. 2007
+  active: 0
+22:
+  id: 34
+  name: gsashomepage
+  desc: GSAS Homepage Profiles Fall 2007
+  project_notes: Profiles of new graduate students.
+  billing_notes: Profiles of new graduate students.
+  active: 0
+23:
+  id: 35
+  name: nutmagfall07
+  desc: Tufts Nutrition Magazine Fall 2007
+  project_notes: Shoots for Tufts Nutrition, September-October 2007.
+  billing_notes: Shoots for Tufts Nutrition, September-October 2007.
+  active: 0
+24:
+  id: 37
+  name: almaF07
+  desc: Alma Matters Fall 2007
+  project_notes: Jobs for Fall 2007 Alma Matters Bob Bochnak/Efi Georgiou
+  billing_notes: Jobs for Fall 2007 Alma Matters Bob Bochnak/Efi Georgiou
+  active: 0
+25:
+  id: 38
+  name: PW07
+  desc: Parents Weekend 2007
+  project_notes: October 12-14, 2007 Kristen Olson Joanie Tobin <br/>Alonso Nichols
+  billing_notes: October 12-14, 2007 <br/>Kristen Olson <br/>Joanie Tobin <br/>Alonso Nichols
+  active: 0
+26:
+  id: 39
+  name: climate
+  desc: Climate Change homepage feature Oct. 2007
+  project_notes: Four portraits for homepage feature on climate change
+  billing_notes: Four portraits for homepage feature on climate change
+  active: 0
+27:
+  id: 41
+  name: almamatterssp08
+  desc: Tufts Alma Matters Spring 2008
+  project_notes: Jobs associated with the Spring 2008 issue of Tufts Alma Matters. Requested by Bob Bochnak from Office of Graduate Studies.
+  billing_notes: Jobs associated with the Spring 2008 issue of Tufts Alma Matters. Requested by Bob Bochnak from Office of Graduate Studies.
+  active: 0
+28:
+  id: 42
+  name: vetmagsp08
+  desc: Tufts Veterinary Medicine Spring 2008
+  project_notes: 
+  billing_notes: 
+  active: 0
+29:
+  id: 43
+  name: medsp08
+  desc: Tufts Medicine Spring 2008
+  project_notes: 
+  billing_notes: 
+  active: 0
+30:
+  id: 44
+  name: tmagsp08
+  desc: Tufts Magazine Spring 2008
+  project_notes: 
+  billing_notes: 
+  active: 0
+31:
+  id: 47
+  name: nutmagsp08
+  desc: Tufts Nutrition Magazine Spring 2008
+  project_notes: 
+  billing_notes: 
+  active: 0
+32:
+  id: 48
+  name: freshmanhomepage
+  desc: Class of 2010 Homepage Profiles (ongoing)
+  project_notes: 
+  billing_notes: 
+  active: 0
+33:
+  id: 49
+  name: artsscistock
+  desc: Arts &amp; Sciences stock Spring 2008
+  project_notes: 
+  billing_notes: 
+  active: 0
+34:
+  id: 50
+  name: springstock
+  desc: Medford Campus Stock Spring 2008
+  project_notes: 
+  billing_notes: 
+  active: 0
+35:
+  id: 51
+  name: sffoundation
+  desc: San Francisco, CA, shoots for Tufts Medicine, April 2008
+  project_notes: 
+  billing_notes: 
+  active: 0
+36:
+  id: 52
+  name: faces
+  desc: Faces of Tufts: Advancement content bank
+  project_notes: 24 pairs of portraits
+  billing_notes: 24 pairs of portraits
+  active: 0
+37:
+  id: 54
+  name: skybreaking
+  desc: Dental Skybreaking, May 2008
+  project_notes: 
+  billing_notes: 
+  active: 0
+38:
+  id: 55
+  name: dentalmagsu08
+  desc: Tufts Dental Medicine Summer 2008
+  project_notes: 
+  billing_notes: 
+  active: 0
+39:
+  id: 56
+  name: vetmagsu08
+  desc: Tufts Veterinary Medicine Summer 2008
+  project_notes: 
+  billing_notes: 
+  active: 0
+40:
+  id: 57
+  name: almamattersfa08
+  desc: Tufts Alma Matters Fall 2008
+  project_notes: 
+  billing_notes: 
+  active: 0
+41:
+  id: 58
+  name: medmagsu08
+  desc: Tufts Medicine Summer 2008
+  project_notes: 
+  billing_notes: 
+  active: 0
+42:
+  id: 59
+  name: matriculation08
+  desc: Matriculation 2008
+  project_notes: 
+  billing_notes: 
+  active: 0
+43:
+  id: 60
+  name: summer
+  desc: Summer Session Website (summer 2008)
+  project_notes: 
+  billing_notes: 
+  active: 0
+44:
+  id: 61
+  name: Goosby
+  desc: Tufts Medical Student Latrice Goosby's work and family from Boston to Washington, DC to Jackson MS
+  project_notes: 
+  billing_notes: 
+  active: 0
+45:
+  id: 62
+  name: beyondboundariesfa08
+  desc: Beyond Boundaries Fall 2008 Newsletter
+  project_notes: 
+  billing_notes: 
+  active: 0
+46:
+  id: 63
+  name: parents08
+  desc: Parents Weekend 2008
+  project_notes: 
+  billing_notes: 
+  active: 0
+47:
+  id: 64
+  name: tufts360
+  desc: Tufts 360
+  project_notes: Mostly John Soares jobs. 
+  billing_notes: Mostly John Soares jobs. 
+  active: 0
+48:
+  id: 65
+  name: tmedw09
+  desc: Tufts Medicine Winter 2009
+  project_notes: 
+  billing_notes: 
+  active: 1
+49:
+  id: 66
+  name: fareslec09
+  desc: 2009 Fares Lecture
+  project_notes: 2009 Fares Lecture w/ Tony Blair on 2/2/09
+  billing_notes: 2009 Fares Lecture w/ Tony Blair on 2/2/09
+  active: 0
+50:
+  id: 67
+  name: dentalw09
+  desc: Tufts Dental Medicine Winter 2009
+  project_notes: 
+  billing_notes: 
+  active: 0
+51:
+  id: 68
+  name: classroomsp09
+  desc: Arts, Sciences &amp; Engineering Classroom Stock Spring 2009
+  project_notes: 
+  billing_notes: 
+  active: 1
+52:
+  id: 69
+  name: comm09
+  desc: Commencement 2009
+  project_notes: All jobs associated with Commencement 2009.
+  billing_notes: All jobs associated with Commencement 2009.
+  active: 1
+53:
+  id: 70
+  name: blueprintsp09
+  desc: Blueprint campaign newsletter Spring 2009
+  project_notes: 
+  billing_notes: 
+  active: 1
+54:
+  id: 71
+  name: vetmagsp09
+  desc: Tufts Veterinary Medicine Spring 2009
+  project_notes: 
+  billing_notes: 
+  active: 1
+55:
+  id: 72
+  name: marathon09
+  desc: President's Marathon Challenge: Boston Marathon 2009
+  project_notes: 4/20/09
+  billing_notes: 4/20/09
+  active: 1
+56:
+  id: 73
+  name: almasp09
+  desc: Alma Matters Spring 2009
+  project_notes: 
+  billing_notes: 
+  active: 1

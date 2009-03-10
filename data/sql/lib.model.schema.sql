@@ -14,7 +14,12 @@ CREATE TABLE `project`
 (
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
 	`name` VARCHAR(45),
-	PRIMARY KEY (`id`)
+	`status_id` INTEGER,
+	PRIMARY KEY (`id`),
+	INDEX `FI_project_status` (`status_id`),
+	CONSTRAINT `fk_project_status`
+		FOREIGN KEY (`status_id`)
+		REFERENCES `status` (`id`)
 )Type=InnoDB;
 
 #-----------------------------------------------------------------------------
@@ -170,7 +175,12 @@ CREATE TABLE `delivery`
 	`size` VARCHAR(255),
 	`method` VARCHAR(255),
 	`instructions` TEXT,
-	PRIMARY KEY (`id`)
+	`job_id` INTEGER,
+	PRIMARY KEY (`id`),
+	INDEX `FI_delivery_job` (`job_id`),
+	CONSTRAINT `fk_delivery_job`
+		FOREIGN KEY (`job_id`)
+		REFERENCES `job` (`id`)
 )Type=InnoDB;
 
 #-----------------------------------------------------------------------------

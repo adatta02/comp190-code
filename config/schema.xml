@@ -3,6 +3,10 @@
   <table name="project">
     <column name="id" type="INTEGER" primaryKey="true" required="true" autoIncrement="true"/>
     <column name="name" type="VARCHAR" size="45"/>
+    <column name="status_id" type="INTEGER"/>
+    <foreign-key name="fk_project_status" foreignTable="status">
+      <reference local="status_id" foreign="id"/>
+    </foreign-key>
   </table>
   <table name="sf_guard_user_profile">
     <column name="id" type="INTEGER" primaryKey="true" required="true" autoIncrement="true"/>
@@ -91,6 +95,10 @@
     <column name="size" type="VARCHAR" size="255"/>
     <column name="method" type="VARCHAR" size="255"/>
     <column name="instructions" type="LONGVARCHAR"/>
+    <column name="job_id" type="INTEGER"/>
+    <foreign-key name="fk_delivery_job" foreignTable="job">
+      <reference local="job_id" foreign="id"/>
+    </foreign-key>
   </table>
   <table name="status">
     <column name="id" type="INTEGER" primaryKey="true" required="true" autoIncrement="true"/>
