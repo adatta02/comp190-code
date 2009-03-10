@@ -1,10 +1,37 @@
-# project creation
-project_create:
-  url: /project/create
-  param: { module: project, action: create }
-project_success:
-  url: /project/success
-  param: { module: project, action: success }
+# job creation
+job_create:
+  url: /job/create
+  param: { module: job, action: create }
+job_success:
+  url: /job/success
+  param: { module: job, action: success }
+job_list:
+  url: /job/list/Pending
+  param: { module: job, action: list }
+job_list_by:
+  url: /job/list/:state
+  class:    sfPropelRoute
+  param: { module: job, action: list }
+  options: { model: Status, type: object }
+  requirements: {slug: \w+ }
+
+# where you go after you log in succesfully
+welcome_loggedin:
+  url: /home/
+  param: { module: welcome, action: redirect }
+
+# sfguard
+sf_guard_signin:
+  url:   /login
+  param: { module: sfGuardAuth, action: signin }
+ 
+sf_guard_signout:
+  url:   /logout
+  param: { module: sfGuardAuth, action: signout }
+ 
+sf_guard_password:
+  url:   /request_password
+  param: { module: sfGuardAuth, action: password }
 
 # default rules
 homepage:
@@ -17,15 +44,3 @@ default_index:
 
 default:
   url:   /:module/:action/*
-
-sf_guard_signin:
-  url:   /login
-  param: { module: sfGuardAuth, action: signin }
- 
-sf_guard_signout:
-  url:   /logout
-  param: { module: sfGuardAuth, action: signout }
- 
-sf_guard_password:
-  url:   /request_password
-  param: { module: sfGuardAuth, action: password }

@@ -8,6 +8,10 @@
   </head>
   <body>
     
+    <div id="header">
+      <h1>Photo@Tufts.edu</h1>
+    </div>
+    
     <div id="content">
       <?php echo $sf_content ?>
     </div>

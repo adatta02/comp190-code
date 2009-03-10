@@ -2,6 +2,7 @@
 all:
   sf_guard_plugin:
     check_password_callable: [LDAPAuth, checkLDAPPassword]
+    success_signin_url: @welcome_loggedin
   job_status:
     pending: 1
     accepted: 2
@@ -10,3 +11,5 @@ all:
     invoiced: 5
     paid: 6
     archived: 7
+  project_list:
+    default_view: 1

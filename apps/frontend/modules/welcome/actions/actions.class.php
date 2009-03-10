@@ -17,6 +17,15 @@ class welcomeActions extends sfActions
   */
   public function executeIndex(sfWebRequest $request)
   {
-    $this->setLayout("nomenu");
+    $this->form = new sfGuardFormSignin();
+  }
+  
+  public function executeRedirect(sfWebRequest $request){
+  	
+  	// check if the logged in user is an admin/client
+  	// if they are an admin forward them to the admin panel
+  	// if their email address is attached to a job ask if they want to view details of that job
+  	// otherwise present the choice of photoshelter or request a job
+  	
   }
 }

@@ -10,6 +10,7 @@ class LDAPAuth extends sfGuardSecurityUser{
   public static function checkLDAPPassword($username, $password){
 
   	return true;
+  	
   	// try and validate the user
   	// if the password is null length then reject
   	if(strlen(trim($password)) == 0){

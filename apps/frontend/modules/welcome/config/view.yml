@@ -3,7 +3,7 @@ default:
     content-type: text/html
 
   metas:
-    title:         Tufts Photography - Project Manager
+    #title:        symfony project
     #description:  symfony project
     #keywords:     symfony, project
     #language:     en
@@ -14,4 +14,4 @@ default:
   javascripts:    [jquery.js, jquery-ui.js]
 
   has_layout:     on
-  layout:         layout
+  layout:         nomenu
