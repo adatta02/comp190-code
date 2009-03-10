@@ -7,8 +7,12 @@
   <table name="sf_guard_user_profile">
     <column name="id" type="INTEGER" primaryKey="true" required="true" autoIncrement="true"/>
     <column name="user_type_id" type="INTEGER"/>
+    <column name="user_id" type="INTEGER"/>
     <foreign-key name="fk_sf_guard_user_profile_user_type" foreignTable="user_type">
       <reference local="user_type_id" foreign="id"/>
+    </foreign-key>
+    <foreign-key name="fk_sf_gaurd_user_profile_user_id" foreignTable="sf_guard_user">
+      <reference local="user_id" foreign="id"/>
     </foreign-key>
   </table>
   <table name="job">
@@ -17,6 +21,7 @@
     <column name="publication_id" type="INTEGER"/>
     <column name="status_id" type="INTEGER"/>
     <column name="event" type="VARCHAR" size="64"/>
+    <column name="date" type="DATE"/>
     <column name="start_time" type="TIMESTAMP"/>
     <column name="end_time" type="TIMESTAMP"/>
     <column name="due_date" type="TIMESTAMP"/>
@@ -35,7 +40,6 @@
     <column name="dept_id" type="VARCHAR" size="32"/>
     <column name="grant_id" type="VARCHAR" size="32"/>
     <column name="other" type="VARCHAR" size="255"/>
-    <column name="idr" type="VARCHAR" size="32"/>
     <foreign-key name="fk_Shoot_Publication" foreignTable="publication">
       <reference local="publication_id" foreign="id"/>
     </foreign-key>
@@ -123,6 +127,84 @@
     </foreign-key>
     <foreign-key name="fk_Job_Client_Job" foreignTable="job">
       <reference local="job_id" foreign="id"/>
+    </foreign-key>
+  </table>
+  <table name="sf_guard_group">
+    <column name="id" type="INTEGER" primaryKey="true" required="true" autoIncrement="true"/>
+    <column name="name" type="VARCHAR" size="255" required="true"/>
+    <column name="description" type="LONGVARCHAR"/>
+    <unique>
+      <unique-column name="name" size="255"/>
+    </unique>
+  </table>
+  <table name="sf_guard_permission">
+    <column name="id" type="INTEGER" primaryKey="true" required="true" autoIncrement="true"/>
+    <column name="name" type="VARCHAR" size="255" required="true"/>
+    <column name="description" type="LONGVARCHAR"/>
+    <unique>
+      <unique-column name="name" size="255"/>
+    </unique>
+  </table>
+  <table name="sf_guard_group_permission">
+    <column name="group_id" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="permission_id" type="INTEGER" primaryKey="true" required="true"/>
+    <foreign-key name="sf_guard_group_permission_FK_1" foreignTable="sf_guard_group" onDelete="cascade">
+      <reference local="group_id" foreign="id"/>
+    </foreign-key>
+    <foreign-key name="sf_guard_group_permission_FK_2" foreignTable="sf_guard_permission" onDelete="cascade">
+      <reference local="permission_id" foreign="id"/>
+    </foreign-key>
+    <index>
+      <index-column name="permission_id"/>
+    </index>
+  </table>
+  <table name="sf_guard_user">
+    <column name="id" type="INTEGER" primaryKey="true" required="true" autoIncrement="true"/>
+    <column name="username" type="VARCHAR" size="128" required="true"/>
+    <column name="algorithm" type="VARCHAR" size="128" required="true"/>
+    <column name="salt" type="VARCHAR" size="128" required="true"/>
+    <column name="password" type="VARCHAR" size="128" required="true"/>
+    <column name="created_at" type="TIMESTAMP"/>
+    <column name="last_login" type="TIMESTAMP"/>
+    <column name="is_active" type="TINYINT" required="true"/>
+    <column name="is_super_admin" type="TINYINT" required="true"/>
+    <unique>
+      <unique-column name="username" size="128"/>
+    </unique>
+  </table>
+  <table name="sf_guard_user_permission">
+    <column name="user_id" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="permission_id" type="INTEGER" primaryKey="true" required="true"/>
+    <foreign-key name="sf_guard_user_permission_FK_1" foreignTable="sf_guard_user" onDelete="cascade">
+      <reference local="user_id" foreign="id"/>
+    </foreign-key>
+    <foreign-key name="sf_guard_user_permission_FK_2" foreignTable="sf_guard_permission" onDelete="cascade">
+      <reference local="permission_id" foreign="id"/>
+    </foreign-key>
+    <index>
+      <index-column name="permission_id"/>
+    </index>
+  </table>
+  <table name="sf_guard_user_group">
+    <column name="user_id" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="group_id" type="INTEGER" primaryKey="true" required="true"/>
+    <foreign-key name="sf_guard_user_group_FK_1" foreignTable="sf_guard_user" onDelete="cascade">
+      <reference local="user_id" foreign="id"/>
+    </foreign-key>
+    <foreign-key name="sf_guard_user_group_FK_2" foreignTable="sf_guard_group" onDelete="cascade">
+      <reference local="group_id" foreign="id"/>
+    </foreign-key>
+    <index>
+      <index-column name="group_id"/>
+    </index>
+  </table>
+  <table name="sf_guard_remember_key">
+    <column name="user_id" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="remember_key" type="VARCHAR" size="32"/>
+    <column name="ip_address" type="VARCHAR" size="50" primaryKey="true" required="true"/>
+    <column name="created_at" type="TIMESTAMP"/>
+    <foreign-key name="sf_guard_remember_key_FK_1" foreignTable="sf_guard_user" onDelete="cascade">
+      <reference local="user_id" foreign="id"/>
     </foreign-key>
   </table>
 </database>

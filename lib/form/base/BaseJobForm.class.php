@@ -18,6 +18,7 @@ class BaseJobForm extends BaseFormPropel
       'publication_id' => new sfWidgetFormPropelChoice(array('model' => 'Publication', 'add_empty' => true)),
       'status_id'      => new sfWidgetFormPropelChoice(array('model' => 'Status', 'add_empty' => true)),
       'event'          => new sfWidgetFormInput(),
+      'date'           => new sfWidgetFormDate(),
       'start_time'     => new sfWidgetFormDateTime(),
       'end_time'       => new sfWidgetFormDateTime(),
       'due_date'       => new sfWidgetFormDateTime(),
@@ -36,7 +37,6 @@ class BaseJobForm extends BaseFormPropel
       'dept_id'        => new sfWidgetFormInput(),
       'grant_id'       => new sfWidgetFormInput(),
       'other'          => new sfWidgetFormInput(),
-      'idr'            => new sfWidgetFormInput(),
     ));
 
     $this->setValidators(array(
@@ -45,6 +45,7 @@ class BaseJobForm extends BaseFormPropel
       'publication_id' => new sfValidatorPropelChoice(array('model' => 'Publication', 'column' => 'id', 'required' => false)),
       'status_id'      => new sfValidatorPropelChoice(array('model' => 'Status', 'column' => 'id', 'required' => false)),
       'event'          => new sfValidatorString(array('max_length' => 64, 'required' => false)),
+      'date'           => new sfValidatorDate(array('required' => false)),
       'start_time'     => new sfValidatorDateTime(array('required' => false)),
       'end_time'       => new sfValidatorDateTime(array('required' => false)),
       'due_date'       => new sfValidatorDateTime(array('required' => false)),
@@ -63,7 +64,6 @@ class BaseJobForm extends BaseFormPropel
       'dept_id'        => new sfValidatorString(array('max_length' => 32, 'required' => false)),
       'grant_id'       => new sfValidatorString(array('max_length' => 32, 'required' => false)),
       'other'          => new sfValidatorString(array('max_length' => 255, 'required' => false)),
-      'idr'            => new sfValidatorString(array('max_length' => 32, 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('job[%s]');
