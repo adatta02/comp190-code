@@ -92,6 +92,7 @@
     <column name="pub_type" type="VARCHAR" size="255"/>
     <column name="other" type="VARCHAR" size="255"/>
     <column name="color" type="VARCHAR" size="255"/>
+    <column name="format" type="VARCHAR" size="255"/>
     <column name="size" type="VARCHAR" size="255"/>
     <column name="method" type="VARCHAR" size="255"/>
     <column name="instructions" type="LONGVARCHAR"/>
@@ -214,5 +215,24 @@
     <foreign-key name="sf_guard_remember_key_FK_1" foreignTable="sf_guard_user" onDelete="cascade">
       <reference local="user_id" foreign="id"/>
     </foreign-key>
+  </table>
+  <table name="log">
+    <column name="id" type="INTEGER" primaryKey="true" required="true" autoIncrement="true"/>
+    <column name="message" type="VARCHAR" size="255"/>
+    <column name="when" type="TIMESTAMP"/>
+    <column name="propel_id" type="INTEGER"/>
+    <column name="propel_class" type="VARCHAR" size="255"/>
+    <column name="sf_guard_user_profile_id" type="INTEGER"/>
+    <column name="log_message_type_id" type="INTEGER"/>
+    <foreign-key name="fk_log_sf_guard_user_profile" foreignTable="sf_guard_user_profile">
+      <reference local="sf_guard_user_profile_id" foreign="id"/>
+    </foreign-key>
+    <foreign-key name="fk_log_log_message_type" foreignTable="log_message_type">
+      <reference local="log_message_type_id" foreign="id"/>
+    </foreign-key>
+  </table>
+  <table name="log_message_type">
+    <column name="id" type="INTEGER" primaryKey="true" required="true" autoIncrement="true"/>
+    <column name="type" type="VARCHAR" size="64"/>
   </table>
 </database>

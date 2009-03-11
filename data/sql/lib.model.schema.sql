@@ -172,6 +172,7 @@ CREATE TABLE `delivery`
 	`pub_type` VARCHAR(255),
 	`other` VARCHAR(255),
 	`color` VARCHAR(255),
+	`format` VARCHAR(255),
 	`size` VARCHAR(255),
 	`method` VARCHAR(255),
 	`instructions` TEXT,
@@ -415,6 +416,47 @@ CREATE TABLE `sf_guard_remember_key`
 		FOREIGN KEY (`user_id`)
 		REFERENCES `sf_guard_user` (`id`)
 		ON DELETE CASCADE
+)Type=InnoDB;
+
+#-----------------------------------------------------------------------------
+#-- log
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `log`;
+
+
+CREATE TABLE `log`
+(
+	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`message` VARCHAR(255),
+	`when` DATETIME,
+	`propel_id` INTEGER,
+	`propel_class` VARCHAR(255),
+	`sf_guard_user_profile_id` INTEGER,
+	`log_message_type_id` INTEGER,
+	PRIMARY KEY (`id`),
+	INDEX `FI_log_sf_guard_user_profile` (`sf_guard_user_profile_id`),
+	CONSTRAINT `fk_log_sf_guard_user_profile`
+		FOREIGN KEY (`sf_guard_user_profile_id`)
+		REFERENCES `sf_guard_user_profile` (`id`),
+	INDEX `FI_log_log_message_type` (`log_message_type_id`),
+	CONSTRAINT `fk_log_log_message_type`
+		FOREIGN KEY (`log_message_type_id`)
+		REFERENCES `log_message_type` (`id`)
+)Type=InnoDB;
+
+#-----------------------------------------------------------------------------
+#-- log_message_type
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `log_message_type`;
+
+
+CREATE TABLE `log_message_type`
+(
+	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`type` VARCHAR(64),
+	PRIMARY KEY (`id`)
 )Type=InnoDB;
 
 # This restores the fkey checks, after having unset them earlier

@@ -8,14 +8,27 @@ $sfContext->dispatch();
 
 $jm = new Jm2Transform();
 $jm->transformPhotographers();
-// $jm->transformProjects();
-// $jm->transformJobs();
+$jm->transformJobsProjects();
+$jm->transformProjects();
+$jm->transformJobs();
 
 class Jm2Transform{
   
 	private $projectKeys;
 	private $jobKeys;
 	private $photogKeys;
+  private $jobProjectKeys;
+  	
+	public function transformJobsProjects(){
+		$this->jobProjectKeys = array();
+		
+		$arr = sfYaml::load("jobs_projects.yml");
+		
+		foreach($arr as $i){
+			$this->jobProjectKeys[$i["job_id"]] = $i["project_id"];
+		}
+		
+	}
 	
 	public function transformPhotographers(){
 		$this->photogKeys = array();
@@ -23,7 +36,6 @@ class Jm2Transform{
 		
 		$total = count($arr);
 		$count = 1;
-		
 		
 		foreach($arr as $i){
 			$user = new SfGuardUser();
@@ -48,7 +60,7 @@ class Jm2Transform{
       echo $count . "/" . $total . "\n";
       $count += 1;
 		
-		  $this->photogKeys[$i["id"]] = $ph->getId();
+		  $this->photogKeys[$i["photog_id"]] = $ph->getId();
 		}
 		
 	}
@@ -63,7 +75,7 @@ class Jm2Transform{
     foreach($arr as $i){
     	
     	$p = new Project();
-    	$p->setName($i["name"]);
+    	$p->setName($i["desc"]);
     	
     	if($i["active"]){
     		$p->setStatusId(2);
@@ -83,7 +95,7 @@ class Jm2Transform{
   	$statusObjects = StatusPeer::doSelect(new Criteria());
   	
   	foreach($statusObjects as $s){
-  		$statusHash[$s->getStatus()] = $s->getId();
+  		$statusHash[$s->getState()] = $s->getId();
   	}
   	
   	$this->jobKeys = array();
@@ -98,16 +110,20 @@ class Jm2Transform{
   	  echo $count . "/" . $total . "\n";	
   		
   		$j = new Job();
+  		$del = new Delivery();
+  		
   		$jid = 1;
   		$startTime = "";
   		$endTime = "";
   		$notes = "";
+  		$photog = 0;
+  		
   		
   		$childNodes = $job->childNodes;
   		
   		foreach($childNodes as $child){
   			switch( $child->nodeName ){
-  				case "id"; $jid = 1; break;
+  				case "id"; $jid = $child->textContent; break;
   				case "shoot_name": $j->setEvent($child->textContent); break;
   				case "shoot_date": $j->setDate($child->textContent); break;
   				case "shoot_startT": $startTime = $child->textContent; break;
@@ -127,6 +143,17 @@ class Jm2Transform{
   				case "billing_grantid": $j->setGrantId($child->textContent); break;
   				case "shoot_directions": $j->setOther($child->textContent); break;
   				case "status": $j->setStatusId($statusHash[$child->textContent]); break;
+  				case "photog_id": $photog = $child->textContent; break;
+  				case "delivery_pubname": $del->setPubName($child->textContent); break;
+  				case "delivery_pubtype": $del->setPubType($child->textContent); break;
+  				case "delivery_other": $del->setOther($child->textContent); break;
+  				case "delivery_format": break;
+  				case "delivery_color": $del->setColor($child->textContent); break;
+  				case "delivery_format": $del->setFormat($child->textContent); break;
+  				case "delivery_size": $del->setSize($child->textContent); break;
+  				case "delivery_method": $del->setMethod($child->textContent); break;
+  				case "delivery_special": $del->setInstructions($child->textContent); break;
+  				
   				case "#text":
   				  default: break;
   			}
@@ -142,9 +169,30 @@ class Jm2Transform{
   		$j->setState("Massachusetts");
   		$j->setEndTime($j->getDate() . " " . $endTime);
   		$j->setStartTime($j->getDate() . " " . $startTime);
-  		$j->save();
+  		
+  		if(isset($this->jobProjectKeys[$jid])){
+  		  $j->setProjectId($this->jobProjectKeys[$jid]);	
+  		}
+  		
+  		try{
+  		  $j->save();
+  		}catch(Exception $ex){
+  			$j->setProjectId(NULL);
+  			$j->save();
+  		}
+  		
+  		$del->setJobId($j->getId());
+  		$del->save();
+  		
   		$this->jobKeys[$jid] = $j->getId();
   	
+  		if($photog){
+  			$jp = new JobPhotographer();
+  			$jp->setPhotographerId( $this->photogKeys[$photog] );
+  			$jp->setJobId($j->setId());
+  			try{ $jp->save(); } catch(Exception $ex){ }
+  		}
+  		
   	  $count += 1;
   	}
   	

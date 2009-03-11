@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Base static class for performing query and update operations on the 'user_type' table.
+ * Base static class for performing query and update operations on the 'log_message_type' table.
  *
  * 
  *
@@ -11,37 +11,34 @@
  *
  * @package    lib.model.om
  */
-abstract class BaseUserTypePeer {
+abstract class BaseLogMessageTypePeer {
 
 	/** the default database name for this class */
 	const DATABASE_NAME = 'propel';
 
 	/** the table name for this class */
-	const TABLE_NAME = 'user_type';
+	const TABLE_NAME = 'log_message_type';
 
 	/** A class that can be returned by this peer. */
-	const CLASS_DEFAULT = 'lib.model.UserType';
+	const CLASS_DEFAULT = 'lib.model.LogMessageType';
 
 	/** The total number of columns. */
-	const NUM_COLUMNS = 3;
+	const NUM_COLUMNS = 2;
 
 	/** The number of lazy-loaded columns. */
 	const NUM_LAZY_LOAD_COLUMNS = 0;
 
 	/** the column name for the ID field */
-	const ID = 'user_type.ID';
+	const ID = 'log_message_type.ID';
 
 	/** the column name for the TYPE field */
-	const TYPE = 'user_type.TYPE';
-
-	/** the column name for the PERMISSIONS field */
-	const PERMISSIONS = 'user_type.PERMISSIONS';
+	const TYPE = 'log_message_type.TYPE';
 
 	/**
-	 * An identiy map to hold any loaded instances of UserType objects.
+	 * An identiy map to hold any loaded instances of LogMessageType objects.
 	 * This must be public so that other peer classes can access this when hydrating from JOIN
 	 * queries.
-	 * @var        array UserType[]
+	 * @var        array LogMessageType[]
 	 */
 	public static $instances = array();
 
@@ -58,11 +55,11 @@ abstract class BaseUserTypePeer {
 	 * e.g. self::$fieldNames[self::TYPE_PHPNAME][0] = 'Id'
 	 */
 	private static $fieldNames = array (
-		BasePeer::TYPE_PHPNAME => array ('Id', 'Type', 'Permissions', ),
-		BasePeer::TYPE_STUDLYPHPNAME => array ('id', 'type', 'permissions', ),
-		BasePeer::TYPE_COLNAME => array (self::ID, self::TYPE, self::PERMISSIONS, ),
-		BasePeer::TYPE_FIELDNAME => array ('id', 'type', 'permissions', ),
-		BasePeer::TYPE_NUM => array (0, 1, 2, )
+		BasePeer::TYPE_PHPNAME => array ('Id', 'Type', ),
+		BasePeer::TYPE_STUDLYPHPNAME => array ('id', 'type', ),
+		BasePeer::TYPE_COLNAME => array (self::ID, self::TYPE, ),
+		BasePeer::TYPE_FIELDNAME => array ('id', 'type', ),
+		BasePeer::TYPE_NUM => array (0, 1, )
 	);
 
 	/**
@@ -72,11 +69,11 @@ abstract class BaseUserTypePeer {
 	 * e.g. self::$fieldNames[BasePeer::TYPE_PHPNAME]['Id'] = 0
 	 */
 	private static $fieldKeys = array (
-		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'Type' => 1, 'Permissions' => 2, ),
-		BasePeer::TYPE_STUDLYPHPNAME => array ('id' => 0, 'type' => 1, 'permissions' => 2, ),
-		BasePeer::TYPE_COLNAME => array (self::ID => 0, self::TYPE => 1, self::PERMISSIONS => 2, ),
-		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'type' => 1, 'permissions' => 2, ),
-		BasePeer::TYPE_NUM => array (0, 1, 2, )
+		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'Type' => 1, ),
+		BasePeer::TYPE_STUDLYPHPNAME => array ('id' => 0, 'type' => 1, ),
+		BasePeer::TYPE_COLNAME => array (self::ID => 0, self::TYPE => 1, ),
+		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'type' => 1, ),
+		BasePeer::TYPE_NUM => array (0, 1, )
 	);
 
 	/**
@@ -86,7 +83,7 @@ abstract class BaseUserTypePeer {
 	public static function getMapBuilder()
 	{
 		if (self::$mapBuilder === null) {
-			self::$mapBuilder = new UserTypeMapBuilder();
+			self::$mapBuilder = new LogMessageTypeMapBuilder();
 		}
 		return self::$mapBuilder;
 	}
@@ -136,12 +133,12 @@ abstract class BaseUserTypePeer {
 	 *		$c->addJoin(TablePeer::alias("alias1", TablePeer::PRIMARY_KEY_COLUMN), TablePeer::PRIMARY_KEY_COLUMN);
 	 * </code>
 	 * @param      string $alias The alias for the current table.
-	 * @param      string $column The column name for current table. (i.e. UserTypePeer::COLUMN_NAME).
+	 * @param      string $column The column name for current table. (i.e. LogMessageTypePeer::COLUMN_NAME).
 	 * @return     string
 	 */
 	public static function alias($alias, $column)
 	{
-		return str_replace(UserTypePeer::TABLE_NAME.'.', $alias.'.', $column);
+		return str_replace(LogMessageTypePeer::TABLE_NAME.'.', $alias.'.', $column);
 	}
 
 	/**
@@ -158,11 +155,9 @@ abstract class BaseUserTypePeer {
 	public static function addSelectColumns(Criteria $criteria)
 	{
 
-		$criteria->addSelectColumn(UserTypePeer::ID);
+		$criteria->addSelectColumn(LogMessageTypePeer::ID);
 
-		$criteria->addSelectColumn(UserTypePeer::TYPE);
-
-		$criteria->addSelectColumn(UserTypePeer::PERMISSIONS);
+		$criteria->addSelectColumn(LogMessageTypePeer::TYPE);
 
 	}
 
@@ -182,27 +177,27 @@ abstract class BaseUserTypePeer {
 		// We need to set the primary table name, since in the case that there are no WHERE columns
 		// it will be impossible for the BasePeer::createSelectSql() method to determine which
 		// tables go into the FROM clause.
-		$criteria->setPrimaryTableName(UserTypePeer::TABLE_NAME);
+		$criteria->setPrimaryTableName(LogMessageTypePeer::TABLE_NAME);
 
 		if ($distinct && !in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
 			$criteria->setDistinct();
 		}
 
 		if (!$criteria->hasSelectClause()) {
-			UserTypePeer::addSelectColumns($criteria);
+			LogMessageTypePeer::addSelectColumns($criteria);
 		}
 
 		$criteria->clearOrderByColumns(); // ORDER BY won't ever affect the count
 		$criteria->setDbName(self::DATABASE_NAME); // Set the correct dbName
 
 		if ($con === null) {
-			$con = Propel::getConnection(UserTypePeer::DATABASE_NAME, Propel::CONNECTION_READ);
+			$con = Propel::getConnection(LogMessageTypePeer::DATABASE_NAME, Propel::CONNECTION_READ);
 		}
 
 
-    foreach (sfMixer::getCallables('BaseUserTypePeer:doCount:doCount') as $callable)
+    foreach (sfMixer::getCallables('BaseLogMessageTypePeer:doCount:doCount') as $callable)
     {
-      call_user_func($callable, 'BaseUserTypePeer', $criteria, $con);
+      call_user_func($callable, 'BaseLogMessageTypePeer', $criteria, $con);
     }
 
 
@@ -222,7 +217,7 @@ abstract class BaseUserTypePeer {
 	 *
 	 * @param      Criteria $criteria object used to create the SELECT statement.
 	 * @param      PropelPDO $con
-	 * @return     UserType
+	 * @return     LogMessageType
 	 * @throws     PropelException Any exceptions caught during processing will be
 	 *		 rethrown wrapped into a PropelException.
 	 */
@@ -230,7 +225,7 @@ abstract class BaseUserTypePeer {
 	{
 		$critcopy = clone $criteria;
 		$critcopy->setLimit(1);
-		$objects = UserTypePeer::doSelect($critcopy, $con);
+		$objects = LogMessageTypePeer::doSelect($critcopy, $con);
 		if ($objects) {
 			return $objects[0];
 		}
@@ -247,7 +242,7 @@ abstract class BaseUserTypePeer {
 	 */
 	public static function doSelect(Criteria $criteria, PropelPDO $con = null)
 	{
-		return UserTypePeer::populateObjects(UserTypePeer::doSelectStmt($criteria, $con));
+		return LogMessageTypePeer::populateObjects(LogMessageTypePeer::doSelectStmt($criteria, $con));
 	}
 	/**
 	 * Prepares the Criteria object and uses the parent doSelect() method to execute a PDOStatement.
@@ -265,19 +260,19 @@ abstract class BaseUserTypePeer {
 	public static function doSelectStmt(Criteria $criteria, PropelPDO $con = null)
 	{
 
-    foreach (sfMixer::getCallables('BaseUserTypePeer:doSelectStmt:doSelectStmt') as $callable)
+    foreach (sfMixer::getCallables('BaseLogMessageTypePeer:doSelectStmt:doSelectStmt') as $callable)
     {
-      call_user_func($callable, 'BaseUserTypePeer', $criteria, $con);
+      call_user_func($callable, 'BaseLogMessageTypePeer', $criteria, $con);
     }
 
 
 		if ($con === null) {
-			$con = Propel::getConnection(UserTypePeer::DATABASE_NAME, Propel::CONNECTION_READ);
+			$con = Propel::getConnection(LogMessageTypePeer::DATABASE_NAME, Propel::CONNECTION_READ);
 		}
 
 		if (!$criteria->hasSelectClause()) {
 			$criteria = clone $criteria;
-			UserTypePeer::addSelectColumns($criteria);
+			LogMessageTypePeer::addSelectColumns($criteria);
 		}
 
 		// Set the correct dbName
@@ -295,10 +290,10 @@ abstract class BaseUserTypePeer {
 	 * to the cache in order to ensure that the same objects are always returned by doSelect*()
 	 * and retrieveByPK*() calls.
 	 *
-	 * @param      UserType $value A UserType object.
+	 * @param      LogMessageType $value A LogMessageType object.
 	 * @param      string $key (optional) key to use for instance map (for performance boost if key was already calculated externally).
 	 */
-	public static function addInstanceToPool(UserType $obj, $key = null)
+	public static function addInstanceToPool(LogMessageType $obj, $key = null)
 	{
 		if (Propel::isInstancePoolingEnabled()) {
 			if ($key === null) {
@@ -316,18 +311,18 @@ abstract class BaseUserTypePeer {
 	 * methods in your stub classes -- you may need to explicitly remove objects
 	 * from the cache in order to prevent returning objects that no longer exist.
 	 *
-	 * @param      mixed $value A UserType object or a primary key value.
+	 * @param      mixed $value A LogMessageType object or a primary key value.
 	 */
 	public static function removeInstanceFromPool($value)
 	{
 		if (Propel::isInstancePoolingEnabled() && $value !== null) {
-			if (is_object($value) && $value instanceof UserType) {
+			if (is_object($value) && $value instanceof LogMessageType) {
 				$key = (string) $value->getId();
 			} elseif (is_scalar($value)) {
 				// assume we've been passed a primary key
 				$key = (string) $value;
 			} else {
-				$e = new PropelException("Invalid value passed to removeInstanceFromPool().  Expected primary key or UserType object; got " . (is_object($value) ? get_class($value) . ' object.' : var_export($value,true)));
+				$e = new PropelException("Invalid value passed to removeInstanceFromPool().  Expected primary key or LogMessageType object; got " . (is_object($value) ? get_class($value) . ' object.' : var_export($value,true)));
 				throw $e;
 			}
 
@@ -342,7 +337,7 @@ abstract class BaseUserTypePeer {
 	 * a multi-column primary key, a serialize()d version of the primary key will be returned.
 	 *
 	 * @param      string $key The key (@see getPrimaryKeyHash()) for this instance.
-	 * @return     UserType Found object or NULL if 1) no instance exists for specified key or 2) instance pooling has been disabled.
+	 * @return     LogMessageType Found object or NULL if 1) no instance exists for specified key or 2) instance pooling has been disabled.
 	 * @see        getPrimaryKeyHash()
 	 */
 	public static function getInstanceFromPool($key)
@@ -396,12 +391,12 @@ abstract class BaseUserTypePeer {
 		$results = array();
 	
 		// set the class once to avoid overhead in the loop
-		$cls = UserTypePeer::getOMClass();
+		$cls = LogMessageTypePeer::getOMClass();
 		$cls = substr('.'.$cls, strrpos('.'.$cls, '.') + 1);
 		// populate the object(s)
 		while ($row = $stmt->fetch(PDO::FETCH_NUM)) {
-			$key = UserTypePeer::getPrimaryKeyHashFromRow($row, 0);
-			if (null !== ($obj = UserTypePeer::getInstanceFromPool($key))) {
+			$key = LogMessageTypePeer::getPrimaryKeyHashFromRow($row, 0);
+			if (null !== ($obj = LogMessageTypePeer::getInstanceFromPool($key))) {
 				// We no longer rehydrate the object, since this can cause data loss.
 				// See http://propel.phpdb.org/trac/ticket/509
 				// $obj->hydrate($row, 0, true); // rehydrate
@@ -411,7 +406,7 @@ abstract class BaseUserTypePeer {
 				$obj = new $cls();
 				$obj->hydrate($row);
 				$results[] = $obj;
-				UserTypePeer::addInstanceToPool($obj, $key);
+				LogMessageTypePeer::addInstanceToPool($obj, $key);
 			} // if key exists
 		}
 		$stmt->closeCursor();
@@ -445,13 +440,13 @@ abstract class BaseUserTypePeer {
 	 */
 	public static function getOMClass()
 	{
-		return UserTypePeer::CLASS_DEFAULT;
+		return LogMessageTypePeer::CLASS_DEFAULT;
 	}
 
 	/**
-	 * Method perform an INSERT on the database, given a UserType or Criteria object.
+	 * Method perform an INSERT on the database, given a LogMessageType or Criteria object.
 	 *
-	 * @param      mixed $values Criteria or UserType object containing data that is used to create the INSERT statement.
+	 * @param      mixed $values Criteria or LogMessageType object containing data that is used to create the INSERT statement.
 	 * @param      PropelPDO $con the PropelPDO connection to use
 	 * @return     mixed The new primary key.
 	 * @throws     PropelException Any exceptions caught during processing will be
@@ -460,9 +455,9 @@ abstract class BaseUserTypePeer {
 	public static function doInsert($values, PropelPDO $con = null)
 	{
 
-    foreach (sfMixer::getCallables('BaseUserTypePeer:doInsert:pre') as $callable)
+    foreach (sfMixer::getCallables('BaseLogMessageTypePeer:doInsert:pre') as $callable)
     {
-      $ret = call_user_func($callable, 'BaseUserTypePeer', $values, $con);
+      $ret = call_user_func($callable, 'BaseLogMessageTypePeer', $values, $con);
       if (false !== $ret)
       {
         return $ret;
@@ -471,17 +466,17 @@ abstract class BaseUserTypePeer {
 
 
 		if ($con === null) {
-			$con = Propel::getConnection(UserTypePeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+			$con = Propel::getConnection(LogMessageTypePeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
 		}
 
 		if ($values instanceof Criteria) {
 			$criteria = clone $values; // rename for clarity
 		} else {
-			$criteria = $values->buildCriteria(); // build Criteria from UserType object
+			$criteria = $values->buildCriteria(); // build Criteria from LogMessageType object
 		}
 
-		if ($criteria->containsKey(UserTypePeer::ID) && $criteria->keyContainsValue(UserTypePeer::ID) ) {
-			throw new PropelException('Cannot insert a value for auto-increment primary key ('.UserTypePeer::ID.')');
+		if ($criteria->containsKey(LogMessageTypePeer::ID) && $criteria->keyContainsValue(LogMessageTypePeer::ID) ) {
+			throw new PropelException('Cannot insert a value for auto-increment primary key ('.LogMessageTypePeer::ID.')');
 		}
 
 
@@ -500,18 +495,18 @@ abstract class BaseUserTypePeer {
 		}
 
 		
-    foreach (sfMixer::getCallables('BaseUserTypePeer:doInsert:post') as $callable)
+    foreach (sfMixer::getCallables('BaseLogMessageTypePeer:doInsert:post') as $callable)
     {
-      call_user_func($callable, 'BaseUserTypePeer', $values, $con, $pk);
+      call_user_func($callable, 'BaseLogMessageTypePeer', $values, $con, $pk);
     }
 
     return $pk;
 	}
 
 	/**
-	 * Method perform an UPDATE on the database, given a UserType or Criteria object.
+	 * Method perform an UPDATE on the database, given a LogMessageType or Criteria object.
 	 *
-	 * @param      mixed $values Criteria or UserType object containing data that is used to create the UPDATE statement.
+	 * @param      mixed $values Criteria or LogMessageType object containing data that is used to create the UPDATE statement.
 	 * @param      PropelPDO $con The connection to use (specify PropelPDO connection object to exert more control over transactions).
 	 * @return     int The number of affected rows (if supported by underlying database driver).
 	 * @throws     PropelException Any exceptions caught during processing will be
@@ -520,9 +515,9 @@ abstract class BaseUserTypePeer {
 	public static function doUpdate($values, PropelPDO $con = null)
 	{
 
-    foreach (sfMixer::getCallables('BaseUserTypePeer:doUpdate:pre') as $callable)
+    foreach (sfMixer::getCallables('BaseLogMessageTypePeer:doUpdate:pre') as $callable)
     {
-      $ret = call_user_func($callable, 'BaseUserTypePeer', $values, $con);
+      $ret = call_user_func($callable, 'BaseLogMessageTypePeer', $values, $con);
       if (false !== $ret)
       {
         return $ret;
@@ -531,7 +526,7 @@ abstract class BaseUserTypePeer {
 
 
 		if ($con === null) {
-			$con = Propel::getConnection(UserTypePeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+			$con = Propel::getConnection(LogMessageTypePeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
 		}
 
 		$selectCriteria = new Criteria(self::DATABASE_NAME);
@@ -539,10 +534,10 @@ abstract class BaseUserTypePeer {
 		if ($values instanceof Criteria) {
 			$criteria = clone $values; // rename for clarity
 
-			$comparison = $criteria->getComparison(UserTypePeer::ID);
-			$selectCriteria->add(UserTypePeer::ID, $criteria->remove(UserTypePeer::ID), $comparison);
+			$comparison = $criteria->getComparison(LogMessageTypePeer::ID);
+			$selectCriteria->add(LogMessageTypePeer::ID, $criteria->remove(LogMessageTypePeer::ID), $comparison);
 
-		} else { // $values is UserType object
+		} else { // $values is LogMessageType object
 			$criteria = $values->buildCriteria(); // gets full criteria
 			$selectCriteria = $values->buildPkeyCriteria(); // gets criteria w/ primary key(s)
 		}
@@ -553,30 +548,30 @@ abstract class BaseUserTypePeer {
 		$ret = BasePeer::doUpdate($selectCriteria, $criteria, $con);
 	
 
-    foreach (sfMixer::getCallables('BaseUserTypePeer:doUpdate:post') as $callable)
+    foreach (sfMixer::getCallables('BaseLogMessageTypePeer:doUpdate:post') as $callable)
     {
-      call_user_func($callable, 'BaseUserTypePeer', $values, $con, $ret);
+      call_user_func($callable, 'BaseLogMessageTypePeer', $values, $con, $ret);
     }
 
     return $ret;
   }
 
 	/**
-	 * Method to DELETE all rows from the user_type table.
+	 * Method to DELETE all rows from the log_message_type table.
 	 *
 	 * @return     int The number of affected rows (if supported by underlying database driver).
 	 */
 	public static function doDeleteAll($con = null)
 	{
 		if ($con === null) {
-			$con = Propel::getConnection(UserTypePeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+			$con = Propel::getConnection(LogMessageTypePeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
 		}
 		$affectedRows = 0; // initialize var to track total num of affected rows
 		try {
 			// use transaction because $criteria could contain info
 			// for more than one table or we could emulating ON DELETE CASCADE, etc.
 			$con->beginTransaction();
-			$affectedRows += BasePeer::doDeleteAll(UserTypePeer::TABLE_NAME, $con);
+			$affectedRows += BasePeer::doDeleteAll(LogMessageTypePeer::TABLE_NAME, $con);
 			$con->commit();
 			return $affectedRows;
 		} catch (PropelException $e) {
@@ -586,9 +581,9 @@ abstract class BaseUserTypePeer {
 	}
 
 	/**
-	 * Method perform a DELETE on the database, given a UserType or Criteria object OR a primary key value.
+	 * Method perform a DELETE on the database, given a LogMessageType or Criteria object OR a primary key value.
 	 *
-	 * @param      mixed $values Criteria or UserType object or primary key or array of primary keys
+	 * @param      mixed $values Criteria or LogMessageType object or primary key or array of primary keys
 	 *              which is used to create the DELETE statement
 	 * @param      PropelPDO $con the connection to use
 	 * @return     int 	The number of affected rows (if supported by underlying database driver).  This includes CASCADE-related rows
@@ -599,20 +594,20 @@ abstract class BaseUserTypePeer {
 	 public static function doDelete($values, PropelPDO $con = null)
 	 {
 		if ($con === null) {
-			$con = Propel::getConnection(UserTypePeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+			$con = Propel::getConnection(LogMessageTypePeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
 		}
 
 		if ($values instanceof Criteria) {
 			// invalidate the cache for all objects of this type, since we have no
 			// way of knowing (without running a query) what objects should be invalidated
 			// from the cache based on this Criteria.
-			UserTypePeer::clearInstancePool();
+			LogMessageTypePeer::clearInstancePool();
 
 			// rename for clarity
 			$criteria = clone $values;
-		} elseif ($values instanceof UserType) {
+		} elseif ($values instanceof LogMessageType) {
 			// invalidate the cache for this single object
-			UserTypePeer::removeInstanceFromPool($values);
+			LogMessageTypePeer::removeInstanceFromPool($values);
 			// create criteria based on pk values
 			$criteria = $values->buildPkeyCriteria();
 		} else {
@@ -621,11 +616,11 @@ abstract class BaseUserTypePeer {
 
 
 			$criteria = new Criteria(self::DATABASE_NAME);
-			$criteria->add(UserTypePeer::ID, (array) $values, Criteria::IN);
+			$criteria->add(LogMessageTypePeer::ID, (array) $values, Criteria::IN);
 
 			foreach ((array) $values as $singleval) {
 				// we can invalidate the cache for this single object
-				UserTypePeer::removeInstanceFromPool($singleval);
+				LogMessageTypePeer::removeInstanceFromPool($singleval);
 			}
 		}
 
@@ -650,24 +645,24 @@ abstract class BaseUserTypePeer {
 	}
 
 	/**
-	 * Validates all modified columns of given UserType object.
+	 * Validates all modified columns of given LogMessageType object.
 	 * If parameter $columns is either a single column name or an array of column names
 	 * than only those columns are validated.
 	 *
 	 * NOTICE: This does not apply to primary or foreign keys for now.
 	 *
-	 * @param      UserType $obj The object to validate.
+	 * @param      LogMessageType $obj The object to validate.
 	 * @param      mixed $cols Column name or array of column names.
 	 *
 	 * @return     mixed TRUE if all columns are valid or the error message of the first invalid column.
 	 */
-	public static function doValidate(UserType $obj, $cols = null)
+	public static function doValidate(LogMessageType $obj, $cols = null)
 	{
 		$columns = array();
 
 		if ($cols) {
-			$dbMap = Propel::getDatabaseMap(UserTypePeer::DATABASE_NAME);
-			$tableMap = $dbMap->getTable(UserTypePeer::TABLE_NAME);
+			$dbMap = Propel::getDatabaseMap(LogMessageTypePeer::DATABASE_NAME);
+			$tableMap = $dbMap->getTable(LogMessageTypePeer::TABLE_NAME);
 
 			if (! is_array($cols)) {
 				$cols = array($cols);
@@ -683,11 +678,11 @@ abstract class BaseUserTypePeer {
 
 		}
 
-		$res =  BasePeer::doValidate(UserTypePeer::DATABASE_NAME, UserTypePeer::TABLE_NAME, $columns);
+		$res =  BasePeer::doValidate(LogMessageTypePeer::DATABASE_NAME, LogMessageTypePeer::TABLE_NAME, $columns);
     if ($res !== true) {
         $request = sfContext::getInstance()->getRequest();
         foreach ($res as $failed) {
-            $col = UserTypePeer::translateFieldname($failed->getColumn(), BasePeer::TYPE_COLNAME, BasePeer::TYPE_PHPNAME);
+            $col = LogMessageTypePeer::translateFieldname($failed->getColumn(), BasePeer::TYPE_COLNAME, BasePeer::TYPE_PHPNAME);
         }
     }
 
@@ -699,23 +694,23 @@ abstract class BaseUserTypePeer {
 	 *
 	 * @param      int $pk the primary key.
 	 * @param      PropelPDO $con the connection to use
-	 * @return     UserType
+	 * @return     LogMessageType
 	 */
 	public static function retrieveByPK($pk, PropelPDO $con = null)
 	{
 
-		if (null !== ($obj = UserTypePeer::getInstanceFromPool((string) $pk))) {
+		if (null !== ($obj = LogMessageTypePeer::getInstanceFromPool((string) $pk))) {
 			return $obj;
 		}
 
 		if ($con === null) {
-			$con = Propel::getConnection(UserTypePeer::DATABASE_NAME, Propel::CONNECTION_READ);
+			$con = Propel::getConnection(LogMessageTypePeer::DATABASE_NAME, Propel::CONNECTION_READ);
 		}
 
-		$criteria = new Criteria(UserTypePeer::DATABASE_NAME);
-		$criteria->add(UserTypePeer::ID, $pk);
+		$criteria = new Criteria(LogMessageTypePeer::DATABASE_NAME);
+		$criteria->add(LogMessageTypePeer::ID, $pk);
 
-		$v = UserTypePeer::doSelect($criteria, $con);
+		$v = LogMessageTypePeer::doSelect($criteria, $con);
 
 		return !empty($v) > 0 ? $v[0] : null;
 	}
@@ -731,30 +726,30 @@ abstract class BaseUserTypePeer {
 	public static function retrieveByPKs($pks, PropelPDO $con = null)
 	{
 		if ($con === null) {
-			$con = Propel::getConnection(UserTypePeer::DATABASE_NAME, Propel::CONNECTION_READ);
+			$con = Propel::getConnection(LogMessageTypePeer::DATABASE_NAME, Propel::CONNECTION_READ);
 		}
 
 		$objs = null;
 		if (empty($pks)) {
 			$objs = array();
 		} else {
-			$criteria = new Criteria(UserTypePeer::DATABASE_NAME);
-			$criteria->add(UserTypePeer::ID, $pks, Criteria::IN);
-			$objs = UserTypePeer::doSelect($criteria, $con);
+			$criteria = new Criteria(LogMessageTypePeer::DATABASE_NAME);
+			$criteria->add(LogMessageTypePeer::ID, $pks, Criteria::IN);
+			$objs = LogMessageTypePeer::doSelect($criteria, $con);
 		}
 		return $objs;
 	}
 
-} // BaseUserTypePeer
+} // BaseLogMessageTypePeer
 
 // This is the static code needed to register the MapBuilder for this table with the main Propel class.
 //
-// NOTE: This static code cannot call methods on the UserTypePeer class, because it is not defined yet.
-// If you need to use overridden methods, you can add this code to the bottom of the UserTypePeer class:
+// NOTE: This static code cannot call methods on the LogMessageTypePeer class, because it is not defined yet.
+// If you need to use overridden methods, you can add this code to the bottom of the LogMessageTypePeer class:
 //
-// Propel::getDatabaseMap(UserTypePeer::DATABASE_NAME)->addTableBuilder(UserTypePeer::TABLE_NAME, UserTypePeer::getMapBuilder());
+// Propel::getDatabaseMap(LogMessageTypePeer::DATABASE_NAME)->addTableBuilder(LogMessageTypePeer::TABLE_NAME, LogMessageTypePeer::getMapBuilder());
 //
 // Doing so will effectively overwrite the registration below.
 
-Propel::getDatabaseMap(BaseUserTypePeer::DATABASE_NAME)->addTableBuilder(BaseUserTypePeer::TABLE_NAME, BaseUserTypePeer::getMapBuilder());
+Propel::getDatabaseMap(BaseLogMessageTypePeer::DATABASE_NAME)->addTableBuilder(BaseLogMessageTypePeer::TABLE_NAME, BaseLogMessageTypePeer::getMapBuilder());
 

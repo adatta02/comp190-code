@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Base class that represents a row from the 'publication' table.
+ * Base class that represents a row from the 'log_message_type' table.
  *
  * 
  *
@@ -11,16 +11,16 @@
  *
  * @package    lib.model.om
  */
-abstract class BasePublication extends BaseObject  implements Persistent {
+abstract class BaseLogMessageType extends BaseObject  implements Persistent {
 
 
-  const PEER = 'PublicationPeer';
+  const PEER = 'LogMessageTypePeer';
 
 	/**
 	 * The Peer class.
 	 * Instance provides a convenient way of calling static methods on a class
 	 * that calling code may not be able to identify.
-	 * @var        PublicationPeer
+	 * @var        LogMessageTypePeer
 	 */
 	protected static $peer;
 
@@ -31,32 +31,20 @@ abstract class BasePublication extends BaseObject  implements Persistent {
 	protected $id;
 
 	/**
-	 * The value for the name field.
+	 * The value for the type field.
 	 * @var        string
 	 */
-	protected $name;
+	protected $type;
 
 	/**
-	 * The value for the contact_name field.
-	 * @var        string
+	 * @var        array Log[] Collection to store aggregation of Log objects.
 	 */
-	protected $contact_name;
+	protected $collLogs;
 
 	/**
-	 * The value for the contact_email field.
-	 * @var        string
+	 * @var        Criteria The criteria used to select the current contents of collLogs.
 	 */
-	protected $contact_email;
-
-	/**
-	 * @var        array Job[] Collection to store aggregation of Job objects.
-	 */
-	protected $collJobs;
-
-	/**
-	 * @var        Criteria The criteria used to select the current contents of collJobs.
-	 */
-	private $lastJobCriteria = null;
+	private $lastLogCriteria = null;
 
 	/**
 	 * Flag to prevent endless save loop, if this object is referenced
@@ -73,7 +61,7 @@ abstract class BasePublication extends BaseObject  implements Persistent {
 	protected $alreadyInValidation = false;
 
 	/**
-	 * Initializes internal state of BasePublication object.
+	 * Initializes internal state of BaseLogMessageType object.
 	 * @see        applyDefaults()
 	 */
 	public function __construct()
@@ -103,40 +91,20 @@ abstract class BasePublication extends BaseObject  implements Persistent {
 	}
 
 	/**
-	 * Get the [name] column value.
+	 * Get the [type] column value.
 	 * 
 	 * @return     string
 	 */
-	public function getName()
+	public function getType()
 	{
-		return $this->name;
-	}
-
-	/**
-	 * Get the [contact_name] column value.
-	 * 
-	 * @return     string
-	 */
-	public function getContactName()
-	{
-		return $this->contact_name;
-	}
-
-	/**
-	 * Get the [contact_email] column value.
-	 * 
-	 * @return     string
-	 */
-	public function getContactEmail()
-	{
-		return $this->contact_email;
+		return $this->type;
 	}
 
 	/**
 	 * Set the value of [id] column.
 	 * 
 	 * @param      int $v new value
-	 * @return     Publication The current object (for fluent API support)
+	 * @return     LogMessageType The current object (for fluent API support)
 	 */
 	public function setId($v)
 	{
@@ -146,71 +114,31 @@ abstract class BasePublication extends BaseObject  implements Persistent {
 
 		if ($this->id !== $v) {
 			$this->id = $v;
-			$this->modifiedColumns[] = PublicationPeer::ID;
+			$this->modifiedColumns[] = LogMessageTypePeer::ID;
 		}
 
 		return $this;
 	} // setId()
 
 	/**
-	 * Set the value of [name] column.
+	 * Set the value of [type] column.
 	 * 
 	 * @param      string $v new value
-	 * @return     Publication The current object (for fluent API support)
+	 * @return     LogMessageType The current object (for fluent API support)
 	 */
-	public function setName($v)
+	public function setType($v)
 	{
 		if ($v !== null) {
 			$v = (string) $v;
 		}
 
-		if ($this->name !== $v) {
-			$this->name = $v;
-			$this->modifiedColumns[] = PublicationPeer::NAME;
+		if ($this->type !== $v) {
+			$this->type = $v;
+			$this->modifiedColumns[] = LogMessageTypePeer::TYPE;
 		}
 
 		return $this;
-	} // setName()
-
-	/**
-	 * Set the value of [contact_name] column.
-	 * 
-	 * @param      string $v new value
-	 * @return     Publication The current object (for fluent API support)
-	 */
-	public function setContactName($v)
-	{
-		if ($v !== null) {
-			$v = (string) $v;
-		}
-
-		if ($this->contact_name !== $v) {
-			$this->contact_name = $v;
-			$this->modifiedColumns[] = PublicationPeer::CONTACT_NAME;
-		}
-
-		return $this;
-	} // setContactName()
-
-	/**
-	 * Set the value of [contact_email] column.
-	 * 
-	 * @param      string $v new value
-	 * @return     Publication The current object (for fluent API support)
-	 */
-	public function setContactEmail($v)
-	{
-		if ($v !== null) {
-			$v = (string) $v;
-		}
-
-		if ($this->contact_email !== $v) {
-			$this->contact_email = $v;
-			$this->modifiedColumns[] = PublicationPeer::CONTACT_EMAIL;
-		}
-
-		return $this;
-	} // setContactEmail()
+	} // setType()
 
 	/**
 	 * Indicates whether the columns in this object are only set to default values.
@@ -250,9 +178,7 @@ abstract class BasePublication extends BaseObject  implements Persistent {
 		try {
 
 			$this->id = ($row[$startcol + 0] !== null) ? (int) $row[$startcol + 0] : null;
-			$this->name = ($row[$startcol + 1] !== null) ? (string) $row[$startcol + 1] : null;
-			$this->contact_name = ($row[$startcol + 2] !== null) ? (string) $row[$startcol + 2] : null;
-			$this->contact_email = ($row[$startcol + 3] !== null) ? (string) $row[$startcol + 3] : null;
+			$this->type = ($row[$startcol + 1] !== null) ? (string) $row[$startcol + 1] : null;
 			$this->resetModified();
 
 			$this->setNew(false);
@@ -262,10 +188,10 @@ abstract class BasePublication extends BaseObject  implements Persistent {
 			}
 
 			// FIXME - using NUM_COLUMNS may be clearer.
-			return $startcol + 4; // 4 = PublicationPeer::NUM_COLUMNS - PublicationPeer::NUM_LAZY_LOAD_COLUMNS).
+			return $startcol + 2; // 2 = LogMessageTypePeer::NUM_COLUMNS - LogMessageTypePeer::NUM_LAZY_LOAD_COLUMNS).
 
 		} catch (Exception $e) {
-			throw new PropelException("Error populating Publication object", $e);
+			throw new PropelException("Error populating LogMessageType object", $e);
 		}
 	}
 
@@ -308,13 +234,13 @@ abstract class BasePublication extends BaseObject  implements Persistent {
 		}
 
 		if ($con === null) {
-			$con = Propel::getConnection(PublicationPeer::DATABASE_NAME, Propel::CONNECTION_READ);
+			$con = Propel::getConnection(LogMessageTypePeer::DATABASE_NAME, Propel::CONNECTION_READ);
 		}
 
 		// We don't need to alter the object instance pool; we're just modifying this instance
 		// already in the pool.
 
-		$stmt = PublicationPeer::doSelectStmt($this->buildPkeyCriteria(), $con);
+		$stmt = LogMessageTypePeer::doSelectStmt($this->buildPkeyCriteria(), $con);
 		$row = $stmt->fetch(PDO::FETCH_NUM);
 		$stmt->closeCursor();
 		if (!$row) {
@@ -324,8 +250,8 @@ abstract class BasePublication extends BaseObject  implements Persistent {
 
 		if ($deep) {  // also de-associate any related objects?
 
-			$this->collJobs = null;
-			$this->lastJobCriteria = null;
+			$this->collLogs = null;
+			$this->lastLogCriteria = null;
 
 		} // if (deep)
 	}
@@ -342,7 +268,7 @@ abstract class BasePublication extends BaseObject  implements Persistent {
 	public function delete(PropelPDO $con = null)
 	{
 
-    foreach (sfMixer::getCallables('BasePublication:delete:pre') as $callable)
+    foreach (sfMixer::getCallables('BaseLogMessageType:delete:pre') as $callable)
     {
       $ret = call_user_func($callable, $this, $con);
       if ($ret)
@@ -357,12 +283,12 @@ abstract class BasePublication extends BaseObject  implements Persistent {
 		}
 
 		if ($con === null) {
-			$con = Propel::getConnection(PublicationPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+			$con = Propel::getConnection(LogMessageTypePeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
 		}
 		
 		$con->beginTransaction();
 		try {
-			PublicationPeer::doDelete($this, $con);
+			LogMessageTypePeer::doDelete($this, $con);
 			$this->setDeleted(true);
 			$con->commit();
 		} catch (PropelException $e) {
@@ -371,7 +297,7 @@ abstract class BasePublication extends BaseObject  implements Persistent {
 		}
 	
 
-    foreach (sfMixer::getCallables('BasePublication:delete:post') as $callable)
+    foreach (sfMixer::getCallables('BaseLogMessageType:delete:post') as $callable)
     {
       call_user_func($callable, $this, $con);
     }
@@ -393,7 +319,7 @@ abstract class BasePublication extends BaseObject  implements Persistent {
 	public function save(PropelPDO $con = null)
 	{
 
-    foreach (sfMixer::getCallables('BasePublication:save:pre') as $callable)
+    foreach (sfMixer::getCallables('BaseLogMessageType:save:pre') as $callable)
     {
       $affectedRows = call_user_func($callable, $this, $con);
       if (is_int($affectedRows))
@@ -408,19 +334,19 @@ abstract class BasePublication extends BaseObject  implements Persistent {
 		}
 
 		if ($con === null) {
-			$con = Propel::getConnection(PublicationPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+			$con = Propel::getConnection(LogMessageTypePeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
 		}
 		
 		$con->beginTransaction();
 		try {
 			$affectedRows = $this->doSave($con);
 			$con->commit();
-    foreach (sfMixer::getCallables('BasePublication:save:post') as $callable)
+    foreach (sfMixer::getCallables('BaseLogMessageType:save:post') as $callable)
     {
       call_user_func($callable, $this, $con, $affectedRows);
     }
 
-			PublicationPeer::addInstanceToPool($this);
+			LogMessageTypePeer::addInstanceToPool($this);
 			return $affectedRows;
 		} catch (PropelException $e) {
 			$con->rollBack();
@@ -446,13 +372,13 @@ abstract class BasePublication extends BaseObject  implements Persistent {
 			$this->alreadyInSave = true;
 
 			if ($this->isNew() ) {
-				$this->modifiedColumns[] = PublicationPeer::ID;
+				$this->modifiedColumns[] = LogMessageTypePeer::ID;
 			}
 
 			// If this object has been modified, then save it to the database.
 			if ($this->isModified()) {
 				if ($this->isNew()) {
-					$pk = PublicationPeer::doInsert($this, $con);
+					$pk = LogMessageTypePeer::doInsert($this, $con);
 					$affectedRows += 1; // we are assuming that there is only 1 row per doInsert() which
 										 // should always be true here (even though technically
 										 // BasePeer::doInsert() can insert multiple rows).
@@ -461,14 +387,14 @@ abstract class BasePublication extends BaseObject  implements Persistent {
 
 					$this->setNew(false);
 				} else {
-					$affectedRows += PublicationPeer::doUpdate($this, $con);
+					$affectedRows += LogMessageTypePeer::doUpdate($this, $con);
 				}
 
 				$this->resetModified(); // [HL] After being saved an object is no longer 'modified'
 			}
 
-			if ($this->collJobs !== null) {
-				foreach ($this->collJobs as $referrerFK) {
+			if ($this->collLogs !== null) {
+				foreach ($this->collLogs as $referrerFK) {
 					if (!$referrerFK->isDeleted()) {
 						$affectedRows += $referrerFK->save($con);
 					}
@@ -541,13 +467,13 @@ abstract class BasePublication extends BaseObject  implements Persistent {
 			$failureMap = array();
 
 
-			if (($retval = PublicationPeer::doValidate($this, $columns)) !== true) {
+			if (($retval = LogMessageTypePeer::doValidate($this, $columns)) !== true) {
 				$failureMap = array_merge($failureMap, $retval);
 			}
 
 
-				if ($this->collJobs !== null) {
-					foreach ($this->collJobs as $referrerFK) {
+				if ($this->collLogs !== null) {
+					foreach ($this->collLogs as $referrerFK) {
 						if (!$referrerFK->validate($columns)) {
 							$failureMap = array_merge($failureMap, $referrerFK->getValidationFailures());
 						}
@@ -572,7 +498,7 @@ abstract class BasePublication extends BaseObject  implements Persistent {
 	 */
 	public function getByName($name, $type = BasePeer::TYPE_PHPNAME)
 	{
-		$pos = PublicationPeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
+		$pos = LogMessageTypePeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
 		$field = $this->getByPosition($pos);
 		return $field;
 	}
@@ -591,13 +517,7 @@ abstract class BasePublication extends BaseObject  implements Persistent {
 				return $this->getId();
 				break;
 			case 1:
-				return $this->getName();
-				break;
-			case 2:
-				return $this->getContactName();
-				break;
-			case 3:
-				return $this->getContactEmail();
+				return $this->getType();
 				break;
 			default:
 				return null;
@@ -618,12 +538,10 @@ abstract class BasePublication extends BaseObject  implements Persistent {
 	 */
 	public function toArray($keyType = BasePeer::TYPE_PHPNAME, $includeLazyLoadColumns = true)
 	{
-		$keys = PublicationPeer::getFieldNames($keyType);
+		$keys = LogMessageTypePeer::getFieldNames($keyType);
 		$result = array(
 			$keys[0] => $this->getId(),
-			$keys[1] => $this->getName(),
-			$keys[2] => $this->getContactName(),
-			$keys[3] => $this->getContactEmail(),
+			$keys[1] => $this->getType(),
 		);
 		return $result;
 	}
@@ -640,7 +558,7 @@ abstract class BasePublication extends BaseObject  implements Persistent {
 	 */
 	public function setByName($name, $value, $type = BasePeer::TYPE_PHPNAME)
 	{
-		$pos = PublicationPeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
+		$pos = LogMessageTypePeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
 		return $this->setByPosition($pos, $value);
 	}
 
@@ -659,13 +577,7 @@ abstract class BasePublication extends BaseObject  implements Persistent {
 				$this->setId($value);
 				break;
 			case 1:
-				$this->setName($value);
-				break;
-			case 2:
-				$this->setContactName($value);
-				break;
-			case 3:
-				$this->setContactEmail($value);
+				$this->setType($value);
 				break;
 		} // switch()
 	}
@@ -689,12 +601,10 @@ abstract class BasePublication extends BaseObject  implements Persistent {
 	 */
 	public function fromArray($arr, $keyType = BasePeer::TYPE_PHPNAME)
 	{
-		$keys = PublicationPeer::getFieldNames($keyType);
+		$keys = LogMessageTypePeer::getFieldNames($keyType);
 
 		if (array_key_exists($keys[0], $arr)) $this->setId($arr[$keys[0]]);
-		if (array_key_exists($keys[1], $arr)) $this->setName($arr[$keys[1]]);
-		if (array_key_exists($keys[2], $arr)) $this->setContactName($arr[$keys[2]]);
-		if (array_key_exists($keys[3], $arr)) $this->setContactEmail($arr[$keys[3]]);
+		if (array_key_exists($keys[1], $arr)) $this->setType($arr[$keys[1]]);
 	}
 
 	/**
@@ -704,12 +614,10 @@ abstract class BasePublication extends BaseObject  implements Persistent {
 	 */
 	public function buildCriteria()
 	{
-		$criteria = new Criteria(PublicationPeer::DATABASE_NAME);
+		$criteria = new Criteria(LogMessageTypePeer::DATABASE_NAME);
 
-		if ($this->isColumnModified(PublicationPeer::ID)) $criteria->add(PublicationPeer::ID, $this->id);
-		if ($this->isColumnModified(PublicationPeer::NAME)) $criteria->add(PublicationPeer::NAME, $this->name);
-		if ($this->isColumnModified(PublicationPeer::CONTACT_NAME)) $criteria->add(PublicationPeer::CONTACT_NAME, $this->contact_name);
-		if ($this->isColumnModified(PublicationPeer::CONTACT_EMAIL)) $criteria->add(PublicationPeer::CONTACT_EMAIL, $this->contact_email);
+		if ($this->isColumnModified(LogMessageTypePeer::ID)) $criteria->add(LogMessageTypePeer::ID, $this->id);
+		if ($this->isColumnModified(LogMessageTypePeer::TYPE)) $criteria->add(LogMessageTypePeer::TYPE, $this->type);
 
 		return $criteria;
 	}
@@ -724,9 +632,9 @@ abstract class BasePublication extends BaseObject  implements Persistent {
 	 */
 	public function buildPkeyCriteria()
 	{
-		$criteria = new Criteria(PublicationPeer::DATABASE_NAME);
+		$criteria = new Criteria(LogMessageTypePeer::DATABASE_NAME);
 
-		$criteria->add(PublicationPeer::ID, $this->id);
+		$criteria->add(LogMessageTypePeer::ID, $this->id);
 
 		return $criteria;
 	}
@@ -757,18 +665,14 @@ abstract class BasePublication extends BaseObject  implements Persistent {
 	 * If desired, this method can also make copies of all associated (fkey referrers)
 	 * objects.
 	 *
-	 * @param      object $copyObj An object of Publication (or compatible) type.
+	 * @param      object $copyObj An object of LogMessageType (or compatible) type.
 	 * @param      boolean $deepCopy Whether to also copy all rows that refer (by fkey) to the current row.
 	 * @throws     PropelException
 	 */
 	public function copyInto($copyObj, $deepCopy = false)
 	{
 
-		$copyObj->setName($this->name);
-
-		$copyObj->setContactName($this->contact_name);
-
-		$copyObj->setContactEmail($this->contact_email);
+		$copyObj->setType($this->type);
 
 
 		if ($deepCopy) {
@@ -776,9 +680,9 @@ abstract class BasePublication extends BaseObject  implements Persistent {
 			// the getter/setter methods for fkey referrer objects.
 			$copyObj->setNew(false);
 
-			foreach ($this->getJobs() as $relObj) {
+			foreach ($this->getLogs() as $relObj) {
 				if ($relObj !== $this) {  // ensure that we don't try to copy a reference to ourselves
-					$copyObj->addJob($relObj->copy($deepCopy));
+					$copyObj->addLog($relObj->copy($deepCopy));
 				}
 			}
 
@@ -800,7 +704,7 @@ abstract class BasePublication extends BaseObject  implements Persistent {
 	 * objects.
 	 *
 	 * @param      boolean $deepCopy Whether to also copy all rows that refer (by fkey) to the current row.
-	 * @return     Publication Clone of current object.
+	 * @return     LogMessageType Clone of current object.
 	 * @throws     PropelException
 	 */
 	public function copy($deepCopy = false)
@@ -819,76 +723,76 @@ abstract class BasePublication extends BaseObject  implements Persistent {
 	 * same instance for all member of this class. The method could therefore
 	 * be static, but this would prevent one from overriding the behavior.
 	 *
-	 * @return     PublicationPeer
+	 * @return     LogMessageTypePeer
 	 */
 	public function getPeer()
 	{
 		if (self::$peer === null) {
-			self::$peer = new PublicationPeer();
+			self::$peer = new LogMessageTypePeer();
 		}
 		return self::$peer;
 	}
 
 	/**
-	 * Clears out the collJobs collection (array).
+	 * Clears out the collLogs collection (array).
 	 *
 	 * This does not modify the database; however, it will remove any associated objects, causing
 	 * them to be refetched by subsequent calls to accessor method.
 	 *
 	 * @return     void
-	 * @see        addJobs()
+	 * @see        addLogs()
 	 */
-	public function clearJobs()
+	public function clearLogs()
 	{
-		$this->collJobs = null; // important to set this to NULL since that means it is uninitialized
+		$this->collLogs = null; // important to set this to NULL since that means it is uninitialized
 	}
 
 	/**
-	 * Initializes the collJobs collection (array).
+	 * Initializes the collLogs collection (array).
 	 *
-	 * By default this just sets the collJobs collection to an empty array (like clearcollJobs());
+	 * By default this just sets the collLogs collection to an empty array (like clearcollLogs());
 	 * however, you may wish to override this method in your stub class to provide setting appropriate
 	 * to your application -- for example, setting the initial array to the values stored in database.
 	 *
 	 * @return     void
 	 */
-	public function initJobs()
+	public function initLogs()
 	{
-		$this->collJobs = array();
+		$this->collLogs = array();
 	}
 
 	/**
-	 * Gets an array of Job objects which contain a foreign key that references this object.
+	 * Gets an array of Log objects which contain a foreign key that references this object.
 	 *
 	 * If this collection has already been initialized with an identical Criteria, it returns the collection.
-	 * Otherwise if this Publication has previously been saved, it will retrieve
-	 * related Jobs from storage. If this Publication is new, it will return
+	 * Otherwise if this LogMessageType has previously been saved, it will retrieve
+	 * related Logs from storage. If this LogMessageType is new, it will return
 	 * an empty collection or the current collection, the criteria is ignored on a new object.
 	 *
 	 * @param      PropelPDO $con
 	 * @param      Criteria $criteria
-	 * @return     array Job[]
+	 * @return     array Log[]
 	 * @throws     PropelException
 	 */
-	public function getJobs($criteria = null, PropelPDO $con = null)
+	public function getLogs($criteria = null, PropelPDO $con = null)
 	{
 		if ($criteria === null) {
-			$criteria = new Criteria(PublicationPeer::DATABASE_NAME);
+			$criteria = new Criteria(LogMessageTypePeer::DATABASE_NAME);
 		}
 		elseif ($criteria instanceof Criteria)
 		{
 			$criteria = clone $criteria;
 		}
 
-		if ($this->collJobs === null) {
+		if ($this->collLogs === null) {
 			if ($this->isNew()) {
-			   $this->collJobs = array();
+			   $this->collLogs = array();
 			} else {
 
-				$criteria->add(JobPeer::PUBLICATION_ID, $this->id);
+				$criteria->add(LogPeer::LOG_MESSAGE_TYPE_ID, $this->id);
 
-				JobPeer::addSelectColumns($criteria);
-				$this->collJobs = JobPeer::doSelect($criteria, $con);
+				LogPeer::addSelectColumns($criteria);
+				$this->collLogs = LogPeer::doSelect($criteria, $con);
 			}
 		} else {
 			// criteria has no effect for a new object
@@ -898,31 +802,31 @@ abstract class BasePublication extends BaseObject  implements Persistent {
 				// one, just return the collection.
 
 
-				$criteria->add(JobPeer::PUBLICATION_ID, $this->id);
+				$criteria->add(LogPeer::LOG_MESSAGE_TYPE_ID, $this->id);
 
-				JobPeer::addSelectColumns($criteria);
-				if (!isset($this->lastJobCriteria) || !$this->lastJobCriteria->equals($criteria)) {
-					$this->collJobs = JobPeer::doSelect($criteria, $con);
+				LogPeer::addSelectColumns($criteria);
+				if (!isset($this->lastLogCriteria) || !$this->lastLogCriteria->equals($criteria)) {
+					$this->collLogs = LogPeer::doSelect($criteria, $con);
 				}
 			}
 		}
-		$this->lastJobCriteria = $criteria;
-		return $this->collJobs;
+		$this->lastLogCriteria = $criteria;
+		return $this->collLogs;
 	}
 
 	/**
-	 * Returns the number of related Job objects.
+	 * Returns the number of related Log objects.
 	 *
 	 * @param      Criteria $criteria
 	 * @param      boolean $distinct
 	 * @param      PropelPDO $con
-	 * @return     int Count of related Job objects.
+	 * @return     int Count of related Log objects.
 	 * @throws     PropelException
 	 */
-	public function countJobs(Criteria $criteria = null, $distinct = false, PropelPDO $con = null)
+	public function countLogs(Criteria $criteria = null, $distinct = false, PropelPDO $con = null)
 	{
 		if ($criteria === null) {
-			$criteria = new Criteria(PublicationPeer::DATABASE_NAME);
+			$criteria = new Criteria(LogMessageTypePeer::DATABASE_NAME);
 		} else {
 			$criteria = clone $criteria;
 		}
@@ -933,14 +837,14 @@ abstract class BasePublication extends BaseObject  implements Persistent {
 
 		$count = null;
 
-		if ($this->collJobs === null) {
+		if ($this->collLogs === null) {
 			if ($this->isNew()) {
 				$count = 0;
 			} else {
 
-				$criteria->add(JobPeer::PUBLICATION_ID, $this->id);
+				$criteria->add(LogPeer::LOG_MESSAGE_TYPE_ID, $this->id);
 
-				$count = JobPeer::doCount($criteria, $con);
+				$count = LogPeer::doCount($criteria, $con);
 			}
 		} else {
 			// criteria has no effect for a new object
@@ -950,37 +854,37 @@ abstract class BasePublication extends BaseObject  implements Persistent {
 				// one, just return count of the collection.
 
 
-				$criteria->add(JobPeer::PUBLICATION_ID, $this->id);
+				$criteria->add(LogPeer::LOG_MESSAGE_TYPE_ID, $this->id);
 
-				if (!isset($this->lastJobCriteria) || !$this->lastJobCriteria->equals($criteria)) {
-					$count = JobPeer::doCount($criteria, $con);
+				if (!isset($this->lastLogCriteria) || !$this->lastLogCriteria->equals($criteria)) {
+					$count = LogPeer::doCount($criteria, $con);
 				} else {
-					$count = count($this->collJobs);
+					$count = count($this->collLogs);
 				}
 			} else {
-				$count = count($this->collJobs);
+				$count = count($this->collLogs);
 			}
 		}
-		$this->lastJobCriteria = $criteria;
+		$this->lastLogCriteria = $criteria;
 		return $count;
 	}
 
 	/**
-	 * Method called to associate a Job object to this object
-	 * through the Job foreign key attribute.
+	 * Method called to associate a Log object to this object
+	 * through the Log foreign key attribute.
 	 *
-	 * @param      Job $l Job
+	 * @param      Log $l Log
 	 * @return     void
 	 * @throws     PropelException
 	 */
-	public function addJob(Job $l)
+	public function addLog(Log $l)
 	{
-		if ($this->collJobs === null) {
-			$this->initJobs();
+		if ($this->collLogs === null) {
+			$this->initLogs();
 		}
-		if (!in_array($l, $this->collJobs, true)) { // only add it if the **same** object is not already associated
-			array_push($this->collJobs, $l);
-			$l->setPublication($this);
+		if (!in_array($l, $this->collLogs, true)) { // only add it if the **same** object is not already associated
+			array_push($this->collLogs, $l);
+			$l->setLogMessageType($this);
 		}
 	}
 
@@ -988,94 +892,47 @@ abstract class BasePublication extends BaseObject  implements Persistent {
 	/**
 	 * If this collection has already been initialized with
 	 * an identical criteria, it returns the collection.
-	 * Otherwise if this Publication is new, it will return
-	 * an empty collection; or if this Publication has previously
-	 * been saved, it will retrieve related Jobs from storage.
+	 * Otherwise if this LogMessageType is new, it will return
+	 * an empty collection; or if this LogMessageType has previously
+	 * been saved, it will retrieve related Logs from storage.
 	 *
 	 * This method is protected by default in order to keep the public
 	 * api reasonable.  You can provide public methods for those you
-	 * actually need in Publication.
+	 * actually need in LogMessageType.
 	 */
-	public function getJobsJoinProject($criteria = null, $con = null, $join_behavior = Criteria::LEFT_JOIN)
+	public function getLogsJoinSfGuardUserProfile($criteria = null, $con = null, $join_behavior = Criteria::LEFT_JOIN)
 	{
 		if ($criteria === null) {
-			$criteria = new Criteria(PublicationPeer::DATABASE_NAME);
+			$criteria = new Criteria(LogMessageTypePeer::DATABASE_NAME);
 		}
 		elseif ($criteria instanceof Criteria)
 		{
 			$criteria = clone $criteria;
 		}
 
-		if ($this->collJobs === null) {
+		if ($this->collLogs === null) {
 			if ($this->isNew()) {
-				$this->collJobs = array();
+				$this->collLogs = array();
 			} else {
 
-				$criteria->add(JobPeer::PUBLICATION_ID, $this->id);
+				$criteria->add(LogPeer::LOG_MESSAGE_TYPE_ID, $this->id);
 
-				$this->collJobs = JobPeer::doSelectJoinProject($criteria, $con, $join_behavior);
+				$this->collLogs = LogPeer::doSelectJoinSfGuardUserProfile($criteria, $con, $join_behavior);
 			}
 		} else {
 			// the following code is to determine if a new query is
 			// called for.  If the criteria is the same as the last
 			// one, just return the collection.
 
-			$criteria->add(JobPeer::PUBLICATION_ID, $this->id);
+			$criteria->add(LogPeer::LOG_MESSAGE_TYPE_ID, $this->id);
 
-			if (!isset($this->lastJobCriteria) || !$this->lastJobCriteria->equals($criteria)) {
-				$this->collJobs = JobPeer::doSelectJoinProject($criteria, $con, $join_behavior);
+			if (!isset($this->lastLogCriteria) || !$this->lastLogCriteria->equals($criteria)) {
+				$this->collLogs = LogPeer::doSelectJoinSfGuardUserProfile($criteria, $con, $join_behavior);
 			}
 		}
-		$this->lastJobCriteria = $criteria;
+		$this->lastLogCriteria = $criteria;
 
-		return $this->collJobs;
-	}
-
-
-	/**
-	 * If this collection has already been initialized with
-	 * an identical criteria, it returns the collection.
-	 * Otherwise if this Publication is new, it will return
-	 * an empty collection; or if this Publication has previously
-	 * been saved, it will retrieve related Jobs from storage.
-	 *
-	 * This method is protected by default in order to keep the public
-	 * api reasonable.  You can provide public methods for those you
-	 * actually need in Publication.
-	 */
-	public function getJobsJoinStatus($criteria = null, $con = null, $join_behavior = Criteria::LEFT_JOIN)
-	{
-		if ($criteria === null) {
-			$criteria = new Criteria(PublicationPeer::DATABASE_NAME);
-		}
-		elseif ($criteria instanceof Criteria)
-		{
-			$criteria = clone $criteria;
-		}
-
-		if ($this->collJobs === null) {
-			if ($this->isNew()) {
-				$this->collJobs = array();
-			} else {
-
-				$criteria->add(JobPeer::PUBLICATION_ID, $this->id);
-
-				$this->collJobs = JobPeer::doSelectJoinStatus($criteria, $con, $join_behavior);
-			}
-		} else {
-			// the following code is to determine if a new query is
-			// called for.  If the criteria is the same as the last
-			// one, just return the collection.
-
-			$criteria->add(JobPeer::PUBLICATION_ID, $this->id);
-
-			if (!isset($this->lastJobCriteria) || !$this->lastJobCriteria->equals($criteria)) {
-				$this->collJobs = JobPeer::doSelectJoinStatus($criteria, $con, $join_behavior);
-			}
-		}
-		$this->lastJobCriteria = $criteria;
-
-		return $this->collJobs;
+		return $this->collLogs;
 	}
 
 	/**
@@ -1090,22 +947,22 @@ abstract class BasePublication extends BaseObject  implements Persistent {
 	public function clearAllReferences($deep = false)
 	{
 		if ($deep) {
-			if ($this->collJobs) {
-				foreach ((array) $this->collJobs as $o) {
+			if ($this->collLogs) {
+				foreach ((array) $this->collLogs as $o) {
 					$o->clearAllReferences($deep);
 				}
 			}
 		} // if ($deep)
 
-		$this->collJobs = null;
+		$this->collLogs = null;
 	}
 
 
   public function __call($method, $arguments)
   {
-    if (!$callable = sfMixer::getCallable('BasePublication:'.$method))
+    if (!$callable = sfMixer::getCallable('BaseLogMessageType:'.$method))
     {
-      throw new sfException(sprintf('Call to undefined method BasePublication::%s', $method));
+      throw new sfException(sprintf('Call to undefined method BaseLogMessageType::%s', $method));
     }
 
     array_unshift($arguments, $this);
@@ -1114,4 +971,4 @@ abstract class BasePublication extends BaseObject  implements Persistent {
   }
 
 
-} // BasePublication
+} // BaseLogMessageType

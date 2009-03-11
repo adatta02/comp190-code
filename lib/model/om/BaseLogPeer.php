@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Base static class for performing query and update operations on the 'sf_guard_user_profile' table.
+ * Base static class for performing query and update operations on the 'log' table.
  *
  * 
  *
@@ -11,37 +11,49 @@
  *
  * @package    lib.model.om
  */
-abstract class BaseSfGuardUserProfilePeer {
+abstract class BaseLogPeer {
 
 	/** the default database name for this class */
 	const DATABASE_NAME = 'propel';
 
 	/** the table name for this class */
-	const TABLE_NAME = 'sf_guard_user_profile';
+	const TABLE_NAME = 'log';
 
 	/** A class that can be returned by this peer. */
-	const CLASS_DEFAULT = 'lib.model.SfGuardUserProfile';
+	const CLASS_DEFAULT = 'lib.model.Log';
 
 	/** The total number of columns. */
-	const NUM_COLUMNS = 3;
+	const NUM_COLUMNS = 7;
 
 	/** The number of lazy-loaded columns. */
 	const NUM_LAZY_LOAD_COLUMNS = 0;
 
 	/** the column name for the ID field */
-	const ID = 'sf_guard_user_profile.ID';
+	const ID = 'log.ID';
 
-	/** the column name for the USER_TYPE_ID field */
-	const USER_TYPE_ID = 'sf_guard_user_profile.USER_TYPE_ID';
+	/** the column name for the MESSAGE field */
+	const MESSAGE = 'log.MESSAGE';
 
-	/** the column name for the USER_ID field */
-	const USER_ID = 'sf_guard_user_profile.USER_ID';
+	/** the column name for the WHEN field */
+	const WHEN = 'log.WHEN';
+
+	/** the column name for the PROPEL_ID field */
+	const PROPEL_ID = 'log.PROPEL_ID';
+
+	/** the column name for the PROPEL_CLASS field */
+	const PROPEL_CLASS = 'log.PROPEL_CLASS';
+
+	/** the column name for the SF_GUARD_USER_PROFILE_ID field */
+	const SF_GUARD_USER_PROFILE_ID = 'log.SF_GUARD_USER_PROFILE_ID';
+
+	/** the column name for the LOG_MESSAGE_TYPE_ID field */
+	const LOG_MESSAGE_TYPE_ID = 'log.LOG_MESSAGE_TYPE_ID';
 
 	/**
-	 * An identiy map to hold any loaded instances of SfGuardUserProfile objects.
+	 * An identiy map to hold any loaded instances of Log objects.
 	 * This must be public so that other peer classes can access this when hydrating from JOIN
 	 * queries.
-	 * @var        array SfGuardUserProfile[]
+	 * @var        array Log[]
 	 */
 	public static $instances = array();
 
@@ -58,11 +70,11 @@ abstract class BaseSfGuardUserProfilePeer {
 	 * e.g. self::$fieldNames[self::TYPE_PHPNAME][0] = 'Id'
 	 */
 	private static $fieldNames = array (
-		BasePeer::TYPE_PHPNAME => array ('Id', 'UserTypeId', 'UserId', ),
-		BasePeer::TYPE_STUDLYPHPNAME => array ('id', 'userTypeId', 'userId', ),
-		BasePeer::TYPE_COLNAME => array (self::ID, self::USER_TYPE_ID, self::USER_ID, ),
-		BasePeer::TYPE_FIELDNAME => array ('id', 'user_type_id', 'user_id', ),
-		BasePeer::TYPE_NUM => array (0, 1, 2, )
+		BasePeer::TYPE_PHPNAME => array ('Id', 'Message', 'When', 'PropelId', 'PropelClass', 'SfGuardUserProfileId', 'LogMessageTypeId', ),
+		BasePeer::TYPE_STUDLYPHPNAME => array ('id', 'message', 'when', 'propelId', 'propelClass', 'sfGuardUserProfileId', 'logMessageTypeId', ),
+		BasePeer::TYPE_COLNAME => array (self::ID, self::MESSAGE, self::WHEN, self::PROPEL_ID, self::PROPEL_CLASS, self::SF_GUARD_USER_PROFILE_ID, self::LOG_MESSAGE_TYPE_ID, ),
+		BasePeer::TYPE_FIELDNAME => array ('id', 'message', 'when', 'propel_id', 'propel_class', 'sf_guard_user_profile_id', 'log_message_type_id', ),
+		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, )
 	);
 
 	/**
@@ -72,11 +84,11 @@ abstract class BaseSfGuardUserProfilePeer {
 	 * e.g. self::$fieldNames[BasePeer::TYPE_PHPNAME]['Id'] = 0
 	 */
 	private static $fieldKeys = array (
-		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'UserTypeId' => 1, 'UserId' => 2, ),
-		BasePeer::TYPE_STUDLYPHPNAME => array ('id' => 0, 'userTypeId' => 1, 'userId' => 2, ),
-		BasePeer::TYPE_COLNAME => array (self::ID => 0, self::USER_TYPE_ID => 1, self::USER_ID => 2, ),
-		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'user_type_id' => 1, 'user_id' => 2, ),
-		BasePeer::TYPE_NUM => array (0, 1, 2, )
+		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'Message' => 1, 'When' => 2, 'PropelId' => 3, 'PropelClass' => 4, 'SfGuardUserProfileId' => 5, 'LogMessageTypeId' => 6, ),
+		BasePeer::TYPE_STUDLYPHPNAME => array ('id' => 0, 'message' => 1, 'when' => 2, 'propelId' => 3, 'propelClass' => 4, 'sfGuardUserProfileId' => 5, 'logMessageTypeId' => 6, ),
+		BasePeer::TYPE_COLNAME => array (self::ID => 0, self::MESSAGE => 1, self::WHEN => 2, self::PROPEL_ID => 3, self::PROPEL_CLASS => 4, self::SF_GUARD_USER_PROFILE_ID => 5, self::LOG_MESSAGE_TYPE_ID => 6, ),
+		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'message' => 1, 'when' => 2, 'propel_id' => 3, 'propel_class' => 4, 'sf_guard_user_profile_id' => 5, 'log_message_type_id' => 6, ),
+		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, )
 	);
 
 	/**
@@ -86,7 +98,7 @@ abstract class BaseSfGuardUserProfilePeer {
 	public static function getMapBuilder()
 	{
 		if (self::$mapBuilder === null) {
-			self::$mapBuilder = new SfGuardUserProfileMapBuilder();
+			self::$mapBuilder = new LogMapBuilder();
 		}
 		return self::$mapBuilder;
 	}
@@ -136,12 +148,12 @@ abstract class BaseSfGuardUserProfilePeer {
 	 *		$c->addJoin(TablePeer::alias("alias1", TablePeer::PRIMARY_KEY_COLUMN), TablePeer::PRIMARY_KEY_COLUMN);
 	 * </code>
 	 * @param      string $alias The alias for the current table.
-	 * @param      string $column The column name for current table. (i.e. SfGuardUserProfilePeer::COLUMN_NAME).
+	 * @param      string $column The column name for current table. (i.e. LogPeer::COLUMN_NAME).
 	 * @return     string
 	 */
 	public static function alias($alias, $column)
 	{
-		return str_replace(SfGuardUserProfilePeer::TABLE_NAME.'.', $alias.'.', $column);
+		return str_replace(LogPeer::TABLE_NAME.'.', $alias.'.', $column);
 	}
 
 	/**
@@ -158,11 +170,19 @@ abstract class BaseSfGuardUserProfilePeer {
 	public static function addSelectColumns(Criteria $criteria)
 	{
 
-		$criteria->addSelectColumn(SfGuardUserProfilePeer::ID);
+		$criteria->addSelectColumn(LogPeer::ID);
 
-		$criteria->addSelectColumn(SfGuardUserProfilePeer::USER_TYPE_ID);
+		$criteria->addSelectColumn(LogPeer::MESSAGE);
 
-		$criteria->addSelectColumn(SfGuardUserProfilePeer::USER_ID);
+		$criteria->addSelectColumn(LogPeer::WHEN);
+
+		$criteria->addSelectColumn(LogPeer::PROPEL_ID);
+
+		$criteria->addSelectColumn(LogPeer::PROPEL_CLASS);
+
+		$criteria->addSelectColumn(LogPeer::SF_GUARD_USER_PROFILE_ID);
+
+		$criteria->addSelectColumn(LogPeer::LOG_MESSAGE_TYPE_ID);
 
 	}
 
@@ -182,27 +202,27 @@ abstract class BaseSfGuardUserProfilePeer {
 		// We need to set the primary table name, since in the case that there are no WHERE columns
 		// it will be impossible for the BasePeer::createSelectSql() method to determine which
 		// tables go into the FROM clause.
-		$criteria->setPrimaryTableName(SfGuardUserProfilePeer::TABLE_NAME);
+		$criteria->setPrimaryTableName(LogPeer::TABLE_NAME);
 
 		if ($distinct && !in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
 			$criteria->setDistinct();
 		}
 
 		if (!$criteria->hasSelectClause()) {
-			SfGuardUserProfilePeer::addSelectColumns($criteria);
+			LogPeer::addSelectColumns($criteria);
 		}
 
 		$criteria->clearOrderByColumns(); // ORDER BY won't ever affect the count
 		$criteria->setDbName(self::DATABASE_NAME); // Set the correct dbName
 
 		if ($con === null) {
-			$con = Propel::getConnection(SfGuardUserProfilePeer::DATABASE_NAME, Propel::CONNECTION_READ);
+			$con = Propel::getConnection(LogPeer::DATABASE_NAME, Propel::CONNECTION_READ);
 		}
 
 
-    foreach (sfMixer::getCallables('BaseSfGuardUserProfilePeer:doCount:doCount') as $callable)
+    foreach (sfMixer::getCallables('BaseLogPeer:doCount:doCount') as $callable)
     {
-      call_user_func($callable, 'BaseSfGuardUserProfilePeer', $criteria, $con);
+      call_user_func($callable, 'BaseLogPeer', $criteria, $con);
     }
 
 
@@ -222,7 +242,7 @@ abstract class BaseSfGuardUserProfilePeer {
 	 *
 	 * @param      Criteria $criteria object used to create the SELECT statement.
 	 * @param      PropelPDO $con
-	 * @return     SfGuardUserProfile
+	 * @return     Log
 	 * @throws     PropelException Any exceptions caught during processing will be
 	 *		 rethrown wrapped into a PropelException.
 	 */
@@ -230,7 +250,7 @@ abstract class BaseSfGuardUserProfilePeer {
 	{
 		$critcopy = clone $criteria;
 		$critcopy->setLimit(1);
-		$objects = SfGuardUserProfilePeer::doSelect($critcopy, $con);
+		$objects = LogPeer::doSelect($critcopy, $con);
 		if ($objects) {
 			return $objects[0];
 		}
@@ -247,7 +267,7 @@ abstract class BaseSfGuardUserProfilePeer {
 	 */
 	public static function doSelect(Criteria $criteria, PropelPDO $con = null)
 	{
-		return SfGuardUserProfilePeer::populateObjects(SfGuardUserProfilePeer::doSelectStmt($criteria, $con));
+		return LogPeer::populateObjects(LogPeer::doSelectStmt($criteria, $con));
 	}
 	/**
 	 * Prepares the Criteria object and uses the parent doSelect() method to execute a PDOStatement.
@@ -265,19 +285,19 @@ abstract class BaseSfGuardUserProfilePeer {
 	public static function doSelectStmt(Criteria $criteria, PropelPDO $con = null)
 	{
 
-    foreach (sfMixer::getCallables('BaseSfGuardUserProfilePeer:doSelectStmt:doSelectStmt') as $callable)
+    foreach (sfMixer::getCallables('BaseLogPeer:doSelectStmt:doSelectStmt') as $callable)
     {
-      call_user_func($callable, 'BaseSfGuardUserProfilePeer', $criteria, $con);
+      call_user_func($callable, 'BaseLogPeer', $criteria, $con);
     }
 
 
 		if ($con === null) {
-			$con = Propel::getConnection(SfGuardUserProfilePeer::DATABASE_NAME, Propel::CONNECTION_READ);
+			$con = Propel::getConnection(LogPeer::DATABASE_NAME, Propel::CONNECTION_READ);
 		}
 
 		if (!$criteria->hasSelectClause()) {
 			$criteria = clone $criteria;
-			SfGuardUserProfilePeer::addSelectColumns($criteria);
+			LogPeer::addSelectColumns($criteria);
 		}
 
 		// Set the correct dbName
@@ -295,10 +315,10 @@ abstract class BaseSfGuardUserProfilePeer {
 	 * to the cache in order to ensure that the same objects are always returned by doSelect*()
 	 * and retrieveByPK*() calls.
 	 *
-	 * @param      SfGuardUserProfile $value A SfGuardUserProfile object.
+	 * @param      Log $value A Log object.
 	 * @param      string $key (optional) key to use for instance map (for performance boost if key was already calculated externally).
 	 */
-	public static function addInstanceToPool(SfGuardUserProfile $obj, $key = null)
+	public static function addInstanceToPool(Log $obj, $key = null)
 	{
 		if (Propel::isInstancePoolingEnabled()) {
 			if ($key === null) {
@@ -316,18 +336,18 @@ abstract class BaseSfGuardUserProfilePeer {
 	 * methods in your stub classes -- you may need to explicitly remove objects
 	 * from the cache in order to prevent returning objects that no longer exist.
 	 *
-	 * @param      mixed $value A SfGuardUserProfile object or a primary key value.
+	 * @param      mixed $value A Log object or a primary key value.
 	 */
 	public static function removeInstanceFromPool($value)
 	{
 		if (Propel::isInstancePoolingEnabled() && $value !== null) {
-			if (is_object($value) && $value instanceof SfGuardUserProfile) {
+			if (is_object($value) && $value instanceof Log) {
 				$key = (string) $value->getId();
 			} elseif (is_scalar($value)) {
 				// assume we've been passed a primary key
 				$key = (string) $value;
 			} else {
-				$e = new PropelException("Invalid value passed to removeInstanceFromPool().  Expected primary key or SfGuardUserProfile object; got " . (is_object($value) ? get_class($value) . ' object.' : var_export($value,true)));
+				$e = new PropelException("Invalid value passed to removeInstanceFromPool().  Expected primary key or Log object; got " . (is_object($value) ? get_class($value) . ' object.' : var_export($value,true)));
 				throw $e;
 			}
 
@@ -342,7 +362,7 @@ abstract class BaseSfGuardUserProfilePeer {
 	 * a multi-column primary key, a serialize()d version of the primary key will be returned.
 	 *
 	 * @param      string $key The key (@see getPrimaryKeyHash()) for this instance.
-	 * @return     SfGuardUserProfile Found object or NULL if 1) no instance exists for specified key or 2) instance pooling has been disabled.
+	 * @return     Log Found object or NULL if 1) no instance exists for specified key or 2) instance pooling has been disabled.
 	 * @see        getPrimaryKeyHash()
 	 */
 	public static function getInstanceFromPool($key)
@@ -396,12 +416,12 @@ abstract class BaseSfGuardUserProfilePeer {
 		$results = array();
 	
 		// set the class once to avoid overhead in the loop
-		$cls = SfGuardUserProfilePeer::getOMClass();
+		$cls = LogPeer::getOMClass();
 		$cls = substr('.'.$cls, strrpos('.'.$cls, '.') + 1);
 		// populate the object(s)
 		while ($row = $stmt->fetch(PDO::FETCH_NUM)) {
-			$key = SfGuardUserProfilePeer::getPrimaryKeyHashFromRow($row, 0);
-			if (null !== ($obj = SfGuardUserProfilePeer::getInstanceFromPool($key))) {
+			$key = LogPeer::getPrimaryKeyHashFromRow($row, 0);
+			if (null !== ($obj = LogPeer::getInstanceFromPool($key))) {
 				// We no longer rehydrate the object, since this can cause data loss.
 				// See http://propel.phpdb.org/trac/ticket/509
 				// $obj->hydrate($row, 0, true); // rehydrate
@@ -411,7 +431,7 @@ abstract class BaseSfGuardUserProfilePeer {
 				$obj = new $cls();
 				$obj->hydrate($row);
 				$results[] = $obj;
-				SfGuardUserProfilePeer::addInstanceToPool($obj, $key);
+				LogPeer::addInstanceToPool($obj, $key);
 			} // if key exists
 		}
 		$stmt->closeCursor();
@@ -419,7 +439,7 @@ abstract class BaseSfGuardUserProfilePeer {
 	}
 
 	/**
-	 * Returns the number of rows matching criteria, joining the related UserType table
+	 * Returns the number of rows matching criteria, joining the related SfGuardUserProfile table
 	 *
 	 * @param      Criteria $c
 	 * @param      boolean $distinct Whether to select only distinct columns; deprecated: use Criteria->setDistinct() instead.
@@ -427,7 +447,7 @@ abstract class BaseSfGuardUserProfilePeer {
 	 * @param      String    $join_behavior the type of joins to use, defaults to Criteria::LEFT_JOIN
 	 * @return     int Number of matching rows.
 	 */
-	public static function doCountJoinUserType(Criteria $criteria, $distinct = false, PropelPDO $con = null, $join_behavior = Criteria::LEFT_JOIN)
+	public static function doCountJoinSfGuardUserProfile(Criteria $criteria, $distinct = false, PropelPDO $con = null, $join_behavior = Criteria::LEFT_JOIN)
 	{
 		// we're going to modify criteria, so copy it first
 		$criteria = clone $criteria;
@@ -435,14 +455,14 @@ abstract class BaseSfGuardUserProfilePeer {
 		// We need to set the primary table name, since in the case that there are no WHERE columns
 		// it will be impossible for the BasePeer::createSelectSql() method to determine which
 		// tables go into the FROM clause.
-		$criteria->setPrimaryTableName(SfGuardUserProfilePeer::TABLE_NAME);
+		$criteria->setPrimaryTableName(LogPeer::TABLE_NAME);
 
 		if ($distinct && !in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
 			$criteria->setDistinct();
 		}
 
 		if (!$criteria->hasSelectClause()) {
-			SfGuardUserProfilePeer::addSelectColumns($criteria);
+			LogPeer::addSelectColumns($criteria);
 		}
 
 		$criteria->clearOrderByColumns(); // ORDER BY won't ever affect the count
@@ -451,15 +471,15 @@ abstract class BaseSfGuardUserProfilePeer {
 		$criteria->setDbName(self::DATABASE_NAME);
 
 		if ($con === null) {
-			$con = Propel::getConnection(SfGuardUserProfilePeer::DATABASE_NAME, Propel::CONNECTION_READ);
+			$con = Propel::getConnection(LogPeer::DATABASE_NAME, Propel::CONNECTION_READ);
 		}
 
-		$criteria->addJoin(array(SfGuardUserProfilePeer::USER_TYPE_ID,), array(UserTypePeer::ID,), $join_behavior);
+		$criteria->addJoin(array(LogPeer::SF_GUARD_USER_PROFILE_ID,), array(SfGuardUserProfilePeer::ID,), $join_behavior);
 
 
-    foreach (sfMixer::getCallables('BaseSfGuardUserProfilePeer:doCount:doCount') as $callable)
+    foreach (sfMixer::getCallables('BaseLogPeer:doCount:doCount') as $callable)
     {
-      call_user_func($callable, 'BaseSfGuardUserProfilePeer', $criteria, $con);
+      call_user_func($callable, 'BaseLogPeer', $criteria, $con);
     }
 
 
@@ -476,7 +496,7 @@ abstract class BaseSfGuardUserProfilePeer {
 
 
 	/**
-	 * Returns the number of rows matching criteria, joining the related SfGuardUser table
+	 * Returns the number of rows matching criteria, joining the related LogMessageType table
 	 *
 	 * @param      Criteria $c
 	 * @param      boolean $distinct Whether to select only distinct columns; deprecated: use Criteria->setDistinct() instead.
@@ -484,7 +504,7 @@ abstract class BaseSfGuardUserProfilePeer {
 	 * @param      String    $join_behavior the type of joins to use, defaults to Criteria::LEFT_JOIN
 	 * @return     int Number of matching rows.
 	 */
-	public static function doCountJoinSfGuardUser(Criteria $criteria, $distinct = false, PropelPDO $con = null, $join_behavior = Criteria::LEFT_JOIN)
+	public static function doCountJoinLogMessageType(Criteria $criteria, $distinct = false, PropelPDO $con = null, $join_behavior = Criteria::LEFT_JOIN)
 	{
 		// we're going to modify criteria, so copy it first
 		$criteria = clone $criteria;
@@ -492,14 +512,14 @@ abstract class BaseSfGuardUserProfilePeer {
 		// We need to set the primary table name, since in the case that there are no WHERE columns
 		// it will be impossible for the BasePeer::createSelectSql() method to determine which
 		// tables go into the FROM clause.
-		$criteria->setPrimaryTableName(SfGuardUserProfilePeer::TABLE_NAME);
+		$criteria->setPrimaryTableName(LogPeer::TABLE_NAME);
 
 		if ($distinct && !in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
 			$criteria->setDistinct();
 		}
 
 		if (!$criteria->hasSelectClause()) {
-			SfGuardUserProfilePeer::addSelectColumns($criteria);
+			LogPeer::addSelectColumns($criteria);
 		}
 
 		$criteria->clearOrderByColumns(); // ORDER BY won't ever affect the count
@@ -508,15 +528,15 @@ abstract class BaseSfGuardUserProfilePeer {
 		$criteria->setDbName(self::DATABASE_NAME);
 
 		if ($con === null) {
-			$con = Propel::getConnection(SfGuardUserProfilePeer::DATABASE_NAME, Propel::CONNECTION_READ);
+			$con = Propel::getConnection(LogPeer::DATABASE_NAME, Propel::CONNECTION_READ);
 		}
 
-		$criteria->addJoin(array(SfGuardUserProfilePeer::USER_ID,), array(SfGuardUserPeer::ID,), $join_behavior);
+		$criteria->addJoin(array(LogPeer::LOG_MESSAGE_TYPE_ID,), array(LogMessageTypePeer::ID,), $join_behavior);
 
 
-    foreach (sfMixer::getCallables('BaseSfGuardUserProfilePeer:doCount:doCount') as $callable)
+    foreach (sfMixer::getCallables('BaseLogPeer:doCount:doCount') as $callable)
     {
-      call_user_func($callable, 'BaseSfGuardUserProfilePeer', $criteria, $con);
+      call_user_func($callable, 'BaseLogPeer', $criteria, $con);
     }
 
 
@@ -533,20 +553,20 @@ abstract class BaseSfGuardUserProfilePeer {
 
 
 	/**
-	 * Selects a collection of SfGuardUserProfile objects pre-filled with their UserType objects.
+	 * Selects a collection of Log objects pre-filled with their SfGuardUserProfile objects.
 	 * @param      Criteria  $c
 	 * @param      PropelPDO $con
 	 * @param      String    $join_behavior the type of joins to use, defaults to Criteria::LEFT_JOIN
-	 * @return     array Array of SfGuardUserProfile objects.
+	 * @return     array Array of Log objects.
 	 * @throws     PropelException Any exceptions caught during processing will be
 	 *		 rethrown wrapped into a PropelException.
 	 */
-	public static function doSelectJoinUserType(Criteria $c, $con = null, $join_behavior = Criteria::LEFT_JOIN)
+	public static function doSelectJoinSfGuardUserProfile(Criteria $c, $con = null, $join_behavior = Criteria::LEFT_JOIN)
 	{
 
-    foreach (sfMixer::getCallables('BaseSfGuardUserProfilePeer:doSelectJoin:doSelectJoin') as $callable)
+    foreach (sfMixer::getCallables('BaseLogPeer:doSelectJoin:doSelectJoin') as $callable)
     {
-      call_user_func($callable, 'BaseSfGuardUserProfilePeer', $c, $con);
+      call_user_func($callable, 'BaseLogPeer', $c, $con);
     }
 
 
@@ -557,45 +577,45 @@ abstract class BaseSfGuardUserProfilePeer {
 			$c->setDbName(self::DATABASE_NAME);
 		}
 
+		LogPeer::addSelectColumns($c);
+		$startcol = (LogPeer::NUM_COLUMNS - LogPeer::NUM_LAZY_LOAD_COLUMNS);
 		SfGuardUserProfilePeer::addSelectColumns($c);
-		$startcol = (SfGuardUserProfilePeer::NUM_COLUMNS - SfGuardUserProfilePeer::NUM_LAZY_LOAD_COLUMNS);
-		UserTypePeer::addSelectColumns($c);
 
-		$c->addJoin(array(SfGuardUserProfilePeer::USER_TYPE_ID,), array(UserTypePeer::ID,), $join_behavior);
+		$c->addJoin(array(LogPeer::SF_GUARD_USER_PROFILE_ID,), array(SfGuardUserProfilePeer::ID,), $join_behavior);
 		$stmt = BasePeer::doSelect($c, $con);
 		$results = array();
 
 		while ($row = $stmt->fetch(PDO::FETCH_NUM)) {
-			$key1 = SfGuardUserProfilePeer::getPrimaryKeyHashFromRow($row, 0);
-			if (null !== ($obj1 = SfGuardUserProfilePeer::getInstanceFromPool($key1))) {
+			$key1 = LogPeer::getPrimaryKeyHashFromRow($row, 0);
+			if (null !== ($obj1 = LogPeer::getInstanceFromPool($key1))) {
 				// We no longer rehydrate the object, since this can cause data loss.
 				// See http://propel.phpdb.org/trac/ticket/509
 				// $obj1->hydrate($row, 0, true); // rehydrate
 			} else {
 
-				$omClass = SfGuardUserProfilePeer::getOMClass();
+				$omClass = LogPeer::getOMClass();
 
 				$cls = substr('.'.$omClass, strrpos('.'.$omClass, '.') + 1);
 				$obj1 = new $cls();
 				$obj1->hydrate($row);
-				SfGuardUserProfilePeer::addInstanceToPool($obj1, $key1);
+				LogPeer::addInstanceToPool($obj1, $key1);
 			} // if $obj1 already loaded
 
-			$key2 = UserTypePeer::getPrimaryKeyHashFromRow($row, $startcol);
+			$key2 = SfGuardUserProfilePeer::getPrimaryKeyHashFromRow($row, $startcol);
 			if ($key2 !== null) {
-				$obj2 = UserTypePeer::getInstanceFromPool($key2);
+				$obj2 = SfGuardUserProfilePeer::getInstanceFromPool($key2);
 				if (!$obj2) {
 
-					$omClass = UserTypePeer::getOMClass();
+					$omClass = SfGuardUserProfilePeer::getOMClass();
 
 					$cls = substr('.'.$omClass, strrpos('.'.$omClass, '.') + 1);
 					$obj2 = new $cls();
 					$obj2->hydrate($row, $startcol);
-					UserTypePeer::addInstanceToPool($obj2, $key2);
+					SfGuardUserProfilePeer::addInstanceToPool($obj2, $key2);
 				} // if obj2 already loaded
 
-				// Add the $obj1 (SfGuardUserProfile) to $obj2 (UserType)
-				$obj2->addSfGuardUserProfile($obj1);
+				// Add the $obj1 (Log) to $obj2 (SfGuardUserProfile)
+				$obj2->addLog($obj1);
 
 			} // if joined row was not null
 
@@ -607,15 +627,15 @@ abstract class BaseSfGuardUserProfilePeer {
 
 
 	/**
-	 * Selects a collection of SfGuardUserProfile objects pre-filled with their SfGuardUser objects.
+	 * Selects a collection of Log objects pre-filled with their LogMessageType objects.
 	 * @param      Criteria  $c
 	 * @param      PropelPDO $con
 	 * @param      String    $join_behavior the type of joins to use, defaults to Criteria::LEFT_JOIN
-	 * @return     array Array of SfGuardUserProfile objects.
+	 * @return     array Array of Log objects.
 	 * @throws     PropelException Any exceptions caught during processing will be
 	 *		 rethrown wrapped into a PropelException.
 	 */
-	public static function doSelectJoinSfGuardUser(Criteria $c, $con = null, $join_behavior = Criteria::LEFT_JOIN)
+	public static function doSelectJoinLogMessageType(Criteria $c, $con = null, $join_behavior = Criteria::LEFT_JOIN)
 	{
 		$c = clone $c;
 
@@ -624,45 +644,45 @@ abstract class BaseSfGuardUserProfilePeer {
 			$c->setDbName(self::DATABASE_NAME);
 		}
 
-		SfGuardUserProfilePeer::addSelectColumns($c);
-		$startcol = (SfGuardUserProfilePeer::NUM_COLUMNS - SfGuardUserProfilePeer::NUM_LAZY_LOAD_COLUMNS);
-		SfGuardUserPeer::addSelectColumns($c);
+		LogPeer::addSelectColumns($c);
+		$startcol = (LogPeer::NUM_COLUMNS - LogPeer::NUM_LAZY_LOAD_COLUMNS);
+		LogMessageTypePeer::addSelectColumns($c);
 
-		$c->addJoin(array(SfGuardUserProfilePeer::USER_ID,), array(SfGuardUserPeer::ID,), $join_behavior);
+		$c->addJoin(array(LogPeer::LOG_MESSAGE_TYPE_ID,), array(LogMessageTypePeer::ID,), $join_behavior);
 		$stmt = BasePeer::doSelect($c, $con);
 		$results = array();
 
 		while ($row = $stmt->fetch(PDO::FETCH_NUM)) {
-			$key1 = SfGuardUserProfilePeer::getPrimaryKeyHashFromRow($row, 0);
-			if (null !== ($obj1 = SfGuardUserProfilePeer::getInstanceFromPool($key1))) {
+			$key1 = LogPeer::getPrimaryKeyHashFromRow($row, 0);
+			if (null !== ($obj1 = LogPeer::getInstanceFromPool($key1))) {
 				// We no longer rehydrate the object, since this can cause data loss.
 				// See http://propel.phpdb.org/trac/ticket/509
 				// $obj1->hydrate($row, 0, true); // rehydrate
 			} else {
 
-				$omClass = SfGuardUserProfilePeer::getOMClass();
+				$omClass = LogPeer::getOMClass();
 
 				$cls = substr('.'.$omClass, strrpos('.'.$omClass, '.') + 1);
 				$obj1 = new $cls();
 				$obj1->hydrate($row);
-				SfGuardUserProfilePeer::addInstanceToPool($obj1, $key1);
+				LogPeer::addInstanceToPool($obj1, $key1);
 			} // if $obj1 already loaded
 
-			$key2 = SfGuardUserPeer::getPrimaryKeyHashFromRow($row, $startcol);
+			$key2 = LogMessageTypePeer::getPrimaryKeyHashFromRow($row, $startcol);
 			if ($key2 !== null) {
-				$obj2 = SfGuardUserPeer::getInstanceFromPool($key2);
+				$obj2 = LogMessageTypePeer::getInstanceFromPool($key2);
 				if (!$obj2) {
 
-					$omClass = SfGuardUserPeer::getOMClass();
+					$omClass = LogMessageTypePeer::getOMClass();
 
 					$cls = substr('.'.$omClass, strrpos('.'.$omClass, '.') + 1);
 					$obj2 = new $cls();
 					$obj2->hydrate($row, $startcol);
-					SfGuardUserPeer::addInstanceToPool($obj2, $key2);
+					LogMessageTypePeer::addInstanceToPool($obj2, $key2);
 				} // if obj2 already loaded
 
-				// Add the $obj1 (SfGuardUserProfile) to $obj2 (SfGuardUser)
-				$obj2->addSfGuardUserProfile($obj1);
+				// Add the $obj1 (Log) to $obj2 (LogMessageType)
+				$obj2->addLog($obj1);
 
 			} // if joined row was not null
 
@@ -690,14 +710,14 @@ abstract class BaseSfGuardUserProfilePeer {
 		// We need to set the primary table name, since in the case that there are no WHERE columns
 		// it will be impossible for the BasePeer::createSelectSql() method to determine which
 		// tables go into the FROM clause.
-		$criteria->setPrimaryTableName(SfGuardUserProfilePeer::TABLE_NAME);
+		$criteria->setPrimaryTableName(LogPeer::TABLE_NAME);
 
 		if ($distinct && !in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
 			$criteria->setDistinct();
 		}
 
 		if (!$criteria->hasSelectClause()) {
-			SfGuardUserProfilePeer::addSelectColumns($criteria);
+			LogPeer::addSelectColumns($criteria);
 		}
 
 		$criteria->clearOrderByColumns(); // ORDER BY won't ever affect the count
@@ -706,15 +726,15 @@ abstract class BaseSfGuardUserProfilePeer {
 		$criteria->setDbName(self::DATABASE_NAME);
 
 		if ($con === null) {
-			$con = Propel::getConnection(SfGuardUserProfilePeer::DATABASE_NAME, Propel::CONNECTION_READ);
+			$con = Propel::getConnection(LogPeer::DATABASE_NAME, Propel::CONNECTION_READ);
 		}
 
-		$criteria->addJoin(array(SfGuardUserProfilePeer::USER_TYPE_ID,), array(UserTypePeer::ID,), $join_behavior);
-		$criteria->addJoin(array(SfGuardUserProfilePeer::USER_ID,), array(SfGuardUserPeer::ID,), $join_behavior);
+		$criteria->addJoin(array(LogPeer::SF_GUARD_USER_PROFILE_ID,), array(SfGuardUserProfilePeer::ID,), $join_behavior);
+		$criteria->addJoin(array(LogPeer::LOG_MESSAGE_TYPE_ID,), array(LogMessageTypePeer::ID,), $join_behavior);
 
-    foreach (sfMixer::getCallables('BaseSfGuardUserProfilePeer:doCount:doCount') as $callable)
+    foreach (sfMixer::getCallables('BaseLogPeer:doCount:doCount') as $callable)
     {
-      call_user_func($callable, 'BaseSfGuardUserProfilePeer', $criteria, $con);
+      call_user_func($callable, 'BaseLogPeer', $criteria, $con);
     }
 
 
@@ -730,21 +750,21 @@ abstract class BaseSfGuardUserProfilePeer {
 	}
 
 	/**
-	 * Selects a collection of SfGuardUserProfile objects pre-filled with all related objects.
+	 * Selects a collection of Log objects pre-filled with all related objects.
 	 *
 	 * @param      Criteria  $c
 	 * @param      PropelPDO $con
 	 * @param      String    $join_behavior the type of joins to use, defaults to Criteria::LEFT_JOIN
-	 * @return     array Array of SfGuardUserProfile objects.
+	 * @return     array Array of Log objects.
 	 * @throws     PropelException Any exceptions caught during processing will be
 	 *		 rethrown wrapped into a PropelException.
 	 */
 	public static function doSelectJoinAll(Criteria $c, $con = null, $join_behavior = Criteria::LEFT_JOIN)
 	{
 
-    foreach (sfMixer::getCallables('BaseSfGuardUserProfilePeer:doSelectJoinAll:doSelectJoinAll') as $callable)
+    foreach (sfMixer::getCallables('BaseLogPeer:doSelectJoinAll:doSelectJoinAll') as $callable)
     {
-      call_user_func($callable, 'BaseSfGuardUserProfilePeer', $c, $con);
+      call_user_func($callable, 'BaseLogPeer', $c, $con);
     }
 
 
@@ -755,73 +775,73 @@ abstract class BaseSfGuardUserProfilePeer {
 			$c->setDbName(self::DATABASE_NAME);
 		}
 
+		LogPeer::addSelectColumns($c);
+		$startcol2 = (LogPeer::NUM_COLUMNS - LogPeer::NUM_LAZY_LOAD_COLUMNS);
+
 		SfGuardUserProfilePeer::addSelectColumns($c);
-		$startcol2 = (SfGuardUserProfilePeer::NUM_COLUMNS - SfGuardUserProfilePeer::NUM_LAZY_LOAD_COLUMNS);
+		$startcol3 = $startcol2 + (SfGuardUserProfilePeer::NUM_COLUMNS - SfGuardUserProfilePeer::NUM_LAZY_LOAD_COLUMNS);
 
-		UserTypePeer::addSelectColumns($c);
-		$startcol3 = $startcol2 + (UserTypePeer::NUM_COLUMNS - UserTypePeer::NUM_LAZY_LOAD_COLUMNS);
+		LogMessageTypePeer::addSelectColumns($c);
+		$startcol4 = $startcol3 + (LogMessageTypePeer::NUM_COLUMNS - LogMessageTypePeer::NUM_LAZY_LOAD_COLUMNS);
 
-		SfGuardUserPeer::addSelectColumns($c);
-		$startcol4 = $startcol3 + (SfGuardUserPeer::NUM_COLUMNS - SfGuardUserPeer::NUM_LAZY_LOAD_COLUMNS);
-
-		$c->addJoin(array(SfGuardUserProfilePeer::USER_TYPE_ID,), array(UserTypePeer::ID,), $join_behavior);
-		$c->addJoin(array(SfGuardUserProfilePeer::USER_ID,), array(SfGuardUserPeer::ID,), $join_behavior);
+		$c->addJoin(array(LogPeer::SF_GUARD_USER_PROFILE_ID,), array(SfGuardUserProfilePeer::ID,), $join_behavior);
+		$c->addJoin(array(LogPeer::LOG_MESSAGE_TYPE_ID,), array(LogMessageTypePeer::ID,), $join_behavior);
 		$stmt = BasePeer::doSelect($c, $con);
 		$results = array();
 
 		while ($row = $stmt->fetch(PDO::FETCH_NUM)) {
-			$key1 = SfGuardUserProfilePeer::getPrimaryKeyHashFromRow($row, 0);
-			if (null !== ($obj1 = SfGuardUserProfilePeer::getInstanceFromPool($key1))) {
+			$key1 = LogPeer::getPrimaryKeyHashFromRow($row, 0);
+			if (null !== ($obj1 = LogPeer::getInstanceFromPool($key1))) {
 				// We no longer rehydrate the object, since this can cause data loss.
 				// See http://propel.phpdb.org/trac/ticket/509
 				// $obj1->hydrate($row, 0, true); // rehydrate
 			} else {
-				$omClass = SfGuardUserProfilePeer::getOMClass();
+				$omClass = LogPeer::getOMClass();
 
 				$cls = substr('.'.$omClass, strrpos('.'.$omClass, '.') + 1);
 				$obj1 = new $cls();
 				$obj1->hydrate($row);
-				SfGuardUserProfilePeer::addInstanceToPool($obj1, $key1);
+				LogPeer::addInstanceToPool($obj1, $key1);
 			} // if obj1 already loaded
 
-			// Add objects for joined UserType rows
+			// Add objects for joined SfGuardUserProfile rows
 
-			$key2 = UserTypePeer::getPrimaryKeyHashFromRow($row, $startcol2);
+			$key2 = SfGuardUserProfilePeer::getPrimaryKeyHashFromRow($row, $startcol2);
 			if ($key2 !== null) {
-				$obj2 = UserTypePeer::getInstanceFromPool($key2);
+				$obj2 = SfGuardUserProfilePeer::getInstanceFromPool($key2);
 				if (!$obj2) {
 
-					$omClass = UserTypePeer::getOMClass();
+					$omClass = SfGuardUserProfilePeer::getOMClass();
 
 
 					$cls = substr('.'.$omClass, strrpos('.'.$omClass, '.') + 1);
 					$obj2 = new $cls();
 					$obj2->hydrate($row, $startcol2);
-					UserTypePeer::addInstanceToPool($obj2, $key2);
+					SfGuardUserProfilePeer::addInstanceToPool($obj2, $key2);
 				} // if obj2 loaded
 
-				// Add the $obj1 (SfGuardUserProfile) to the collection in $obj2 (UserType)
-				$obj2->addSfGuardUserProfile($obj1);
+				// Add the $obj1 (Log) to the collection in $obj2 (SfGuardUserProfile)
+				$obj2->addLog($obj1);
 			} // if joined row not null
 
-			// Add objects for joined SfGuardUser rows
+			// Add objects for joined LogMessageType rows
 
-			$key3 = SfGuardUserPeer::getPrimaryKeyHashFromRow($row, $startcol3);
+			$key3 = LogMessageTypePeer::getPrimaryKeyHashFromRow($row, $startcol3);
 			if ($key3 !== null) {
-				$obj3 = SfGuardUserPeer::getInstanceFromPool($key3);
+				$obj3 = LogMessageTypePeer::getInstanceFromPool($key3);
 				if (!$obj3) {
 
-					$omClass = SfGuardUserPeer::getOMClass();
+					$omClass = LogMessageTypePeer::getOMClass();
 
 
 					$cls = substr('.'.$omClass, strrpos('.'.$omClass, '.') + 1);
 					$obj3 = new $cls();
 					$obj3->hydrate($row, $startcol3);
-					SfGuardUserPeer::addInstanceToPool($obj3, $key3);
+					LogMessageTypePeer::addInstanceToPool($obj3, $key3);
 				} // if obj3 loaded
 
-				// Add the $obj1 (SfGuardUserProfile) to the collection in $obj3 (SfGuardUser)
-				$obj3->addSfGuardUserProfile($obj1);
+				// Add the $obj1 (Log) to the collection in $obj3 (LogMessageType)
+				$obj3->addLog($obj1);
 			} // if joined row not null
 
 			$results[] = $obj1;
@@ -832,7 +852,7 @@ abstract class BaseSfGuardUserProfilePeer {
 
 
 	/**
-	 * Returns the number of rows matching criteria, joining the related UserType table
+	 * Returns the number of rows matching criteria, joining the related SfGuardUserProfile table
 	 *
 	 * @param      Criteria $c
 	 * @param      boolean $distinct Whether to select only distinct columns; deprecated: use Criteria->setDistinct() instead.
@@ -840,7 +860,7 @@ abstract class BaseSfGuardUserProfilePeer {
 	 * @param      String    $join_behavior the type of joins to use, defaults to Criteria::LEFT_JOIN
 	 * @return     int Number of matching rows.
 	 */
-	public static function doCountJoinAllExceptUserType(Criteria $criteria, $distinct = false, PropelPDO $con = null, $join_behavior = Criteria::LEFT_JOIN)
+	public static function doCountJoinAllExceptSfGuardUserProfile(Criteria $criteria, $distinct = false, PropelPDO $con = null, $join_behavior = Criteria::LEFT_JOIN)
 	{
 		// we're going to modify criteria, so copy it first
 		$criteria = clone $criteria;
@@ -850,7 +870,7 @@ abstract class BaseSfGuardUserProfilePeer {
 		}
 
 		if (!$criteria->hasSelectClause()) {
-			SfGuardUserProfilePeer::addSelectColumns($criteria);
+			LogPeer::addSelectColumns($criteria);
 		}
 
 		$criteria->clearOrderByColumns(); // ORDER BY won't ever affect the count
@@ -859,14 +879,14 @@ abstract class BaseSfGuardUserProfilePeer {
 		$criteria->setDbName(self::DATABASE_NAME);
 
 		if ($con === null) {
-			$con = Propel::getConnection(SfGuardUserProfilePeer::DATABASE_NAME, Propel::CONNECTION_READ);
+			$con = Propel::getConnection(LogPeer::DATABASE_NAME, Propel::CONNECTION_READ);
 		}
 	
-				$criteria->addJoin(array(SfGuardUserProfilePeer::USER_ID,), array(SfGuardUserPeer::ID,), $join_behavior);
+				$criteria->addJoin(array(LogPeer::LOG_MESSAGE_TYPE_ID,), array(LogMessageTypePeer::ID,), $join_behavior);
 
-    foreach (sfMixer::getCallables('BaseSfGuardUserProfilePeer:doCount:doCount') as $callable)
+    foreach (sfMixer::getCallables('BaseLogPeer:doCount:doCount') as $callable)
     {
-      call_user_func($callable, 'BaseSfGuardUserProfilePeer', $criteria, $con);
+      call_user_func($callable, 'BaseLogPeer', $criteria, $con);
     }
 
 
@@ -883,7 +903,7 @@ abstract class BaseSfGuardUserProfilePeer {
 
 
 	/**
-	 * Returns the number of rows matching criteria, joining the related SfGuardUser table
+	 * Returns the number of rows matching criteria, joining the related LogMessageType table
 	 *
 	 * @param      Criteria $c
 	 * @param      boolean $distinct Whether to select only distinct columns; deprecated: use Criteria->setDistinct() instead.
@@ -891,7 +911,7 @@ abstract class BaseSfGuardUserProfilePeer {
 	 * @param      String    $join_behavior the type of joins to use, defaults to Criteria::LEFT_JOIN
 	 * @return     int Number of matching rows.
 	 */
-	public static function doCountJoinAllExceptSfGuardUser(Criteria $criteria, $distinct = false, PropelPDO $con = null, $join_behavior = Criteria::LEFT_JOIN)
+	public static function doCountJoinAllExceptLogMessageType(Criteria $criteria, $distinct = false, PropelPDO $con = null, $join_behavior = Criteria::LEFT_JOIN)
 	{
 		// we're going to modify criteria, so copy it first
 		$criteria = clone $criteria;
@@ -901,7 +921,7 @@ abstract class BaseSfGuardUserProfilePeer {
 		}
 
 		if (!$criteria->hasSelectClause()) {
-			SfGuardUserProfilePeer::addSelectColumns($criteria);
+			LogPeer::addSelectColumns($criteria);
 		}
 
 		$criteria->clearOrderByColumns(); // ORDER BY won't ever affect the count
@@ -910,14 +930,14 @@ abstract class BaseSfGuardUserProfilePeer {
 		$criteria->setDbName(self::DATABASE_NAME);
 
 		if ($con === null) {
-			$con = Propel::getConnection(SfGuardUserProfilePeer::DATABASE_NAME, Propel::CONNECTION_READ);
+			$con = Propel::getConnection(LogPeer::DATABASE_NAME, Propel::CONNECTION_READ);
 		}
 	
-				$criteria->addJoin(array(SfGuardUserProfilePeer::USER_TYPE_ID,), array(UserTypePeer::ID,), $join_behavior);
+				$criteria->addJoin(array(LogPeer::SF_GUARD_USER_PROFILE_ID,), array(SfGuardUserProfilePeer::ID,), $join_behavior);
 
-    foreach (sfMixer::getCallables('BaseSfGuardUserProfilePeer:doCount:doCount') as $callable)
+    foreach (sfMixer::getCallables('BaseLogPeer:doCount:doCount') as $callable)
     {
-      call_user_func($callable, 'BaseSfGuardUserProfilePeer', $criteria, $con);
+      call_user_func($callable, 'BaseLogPeer', $criteria, $con);
     }
 
 
@@ -934,21 +954,21 @@ abstract class BaseSfGuardUserProfilePeer {
 
 
 	/**
-	 * Selects a collection of SfGuardUserProfile objects pre-filled with all related objects except UserType.
+	 * Selects a collection of Log objects pre-filled with all related objects except SfGuardUserProfile.
 	 *
 	 * @param      Criteria  $c
 	 * @param      PropelPDO $con
 	 * @param      String    $join_behavior the type of joins to use, defaults to Criteria::LEFT_JOIN
-	 * @return     array Array of SfGuardUserProfile objects.
+	 * @return     array Array of Log objects.
 	 * @throws     PropelException Any exceptions caught during processing will be
 	 *		 rethrown wrapped into a PropelException.
 	 */
-	public static function doSelectJoinAllExceptUserType(Criteria $c, $con = null, $join_behavior = Criteria::LEFT_JOIN)
+	public static function doSelectJoinAllExceptSfGuardUserProfile(Criteria $c, $con = null, $join_behavior = Criteria::LEFT_JOIN)
 	{
 
-    foreach (sfMixer::getCallables('BaseSfGuardUserProfilePeer:doSelectJoinAllExcept:doSelectJoinAllExcept') as $callable)
+    foreach (sfMixer::getCallables('BaseLogPeer:doSelectJoinAllExcept:doSelectJoinAllExcept') as $callable)
     {
-      call_user_func($callable, 'BaseSfGuardUserProfilePeer', $c, $con);
+      call_user_func($callable, 'BaseLogPeer', $c, $con);
     }
 
 
@@ -961,50 +981,50 @@ abstract class BaseSfGuardUserProfilePeer {
 			$c->setDbName(self::DATABASE_NAME);
 		}
 
-		SfGuardUserProfilePeer::addSelectColumns($c);
-		$startcol2 = (SfGuardUserProfilePeer::NUM_COLUMNS - SfGuardUserProfilePeer::NUM_LAZY_LOAD_COLUMNS);
+		LogPeer::addSelectColumns($c);
+		$startcol2 = (LogPeer::NUM_COLUMNS - LogPeer::NUM_LAZY_LOAD_COLUMNS);
 
-		SfGuardUserPeer::addSelectColumns($c);
-		$startcol3 = $startcol2 + (SfGuardUserPeer::NUM_COLUMNS - SfGuardUserPeer::NUM_LAZY_LOAD_COLUMNS);
+		LogMessageTypePeer::addSelectColumns($c);
+		$startcol3 = $startcol2 + (LogMessageTypePeer::NUM_COLUMNS - LogMessageTypePeer::NUM_LAZY_LOAD_COLUMNS);
 
-				$c->addJoin(array(SfGuardUserProfilePeer::USER_ID,), array(SfGuardUserPeer::ID,), $join_behavior);
+				$c->addJoin(array(LogPeer::LOG_MESSAGE_TYPE_ID,), array(LogMessageTypePeer::ID,), $join_behavior);
 
 		$stmt = BasePeer::doSelect($c, $con);
 		$results = array();
 
 		while ($row = $stmt->fetch(PDO::FETCH_NUM)) {
-			$key1 = SfGuardUserProfilePeer::getPrimaryKeyHashFromRow($row, 0);
-			if (null !== ($obj1 = SfGuardUserProfilePeer::getInstanceFromPool($key1))) {
+			$key1 = LogPeer::getPrimaryKeyHashFromRow($row, 0);
+			if (null !== ($obj1 = LogPeer::getInstanceFromPool($key1))) {
 				// We no longer rehydrate the object, since this can cause data loss.
 				// See http://propel.phpdb.org/trac/ticket/509
 				// $obj1->hydrate($row, 0, true); // rehydrate
 			} else {
-				$omClass = SfGuardUserProfilePeer::getOMClass();
+				$omClass = LogPeer::getOMClass();
 
 				$cls = substr('.'.$omClass, strrpos('.'.$omClass, '.') + 1);
 				$obj1 = new $cls();
 				$obj1->hydrate($row);
-				SfGuardUserProfilePeer::addInstanceToPool($obj1, $key1);
+				LogPeer::addInstanceToPool($obj1, $key1);
 			} // if obj1 already loaded
 
-				// Add objects for joined SfGuardUser rows
+				// Add objects for joined LogMessageType rows
 
-				$key2 = SfGuardUserPeer::getPrimaryKeyHashFromRow($row, $startcol2);
+				$key2 = LogMessageTypePeer::getPrimaryKeyHashFromRow($row, $startcol2);
 				if ($key2 !== null) {
-					$obj2 = SfGuardUserPeer::getInstanceFromPool($key2);
+					$obj2 = LogMessageTypePeer::getInstanceFromPool($key2);
 					if (!$obj2) {
 	
-						$omClass = SfGuardUserPeer::getOMClass();
+						$omClass = LogMessageTypePeer::getOMClass();
 
 
 					$cls = substr('.'.$omClass, strrpos('.'.$omClass, '.') + 1);
 					$obj2 = new $cls();
 					$obj2->hydrate($row, $startcol2);
-					SfGuardUserPeer::addInstanceToPool($obj2, $key2);
+					LogMessageTypePeer::addInstanceToPool($obj2, $key2);
 				} // if $obj2 already loaded
 
-				// Add the $obj1 (SfGuardUserProfile) to the collection in $obj2 (SfGuardUser)
-				$obj2->addSfGuardUserProfile($obj1);
+				// Add the $obj1 (Log) to the collection in $obj2 (LogMessageType)
+				$obj2->addLog($obj1);
 
 			} // if joined row is not null
 
@@ -1016,16 +1036,16 @@ abstract class BaseSfGuardUserProfilePeer {
 
 
 	/**
-	 * Selects a collection of SfGuardUserProfile objects pre-filled with all related objects except SfGuardUser.
+	 * Selects a collection of Log objects pre-filled with all related objects except LogMessageType.
 	 *
 	 * @param      Criteria  $c
 	 * @param      PropelPDO $con
 	 * @param      String    $join_behavior the type of joins to use, defaults to Criteria::LEFT_JOIN
-	 * @return     array Array of SfGuardUserProfile objects.
+	 * @return     array Array of Log objects.
 	 * @throws     PropelException Any exceptions caught during processing will be
 	 *		 rethrown wrapped into a PropelException.
 	 */
-	public static function doSelectJoinAllExceptSfGuardUser(Criteria $c, $con = null, $join_behavior = Criteria::LEFT_JOIN)
+	public static function doSelectJoinAllExceptLogMessageType(Criteria $c, $con = null, $join_behavior = Criteria::LEFT_JOIN)
 	{
 		$c = clone $c;
 
@@ -1036,50 +1056,50 @@ abstract class BaseSfGuardUserProfilePeer {
 			$c->setDbName(self::DATABASE_NAME);
 		}
 
+		LogPeer::addSelectColumns($c);
+		$startcol2 = (LogPeer::NUM_COLUMNS - LogPeer::NUM_LAZY_LOAD_COLUMNS);
+
 		SfGuardUserProfilePeer::addSelectColumns($c);
-		$startcol2 = (SfGuardUserProfilePeer::NUM_COLUMNS - SfGuardUserProfilePeer::NUM_LAZY_LOAD_COLUMNS);
+		$startcol3 = $startcol2 + (SfGuardUserProfilePeer::NUM_COLUMNS - SfGuardUserProfilePeer::NUM_LAZY_LOAD_COLUMNS);
 
-		UserTypePeer::addSelectColumns($c);
-		$startcol3 = $startcol2 + (UserTypePeer::NUM_COLUMNS - UserTypePeer::NUM_LAZY_LOAD_COLUMNS);
-
-				$c->addJoin(array(SfGuardUserProfilePeer::USER_TYPE_ID,), array(UserTypePeer::ID,), $join_behavior);
+				$c->addJoin(array(LogPeer::SF_GUARD_USER_PROFILE_ID,), array(SfGuardUserProfilePeer::ID,), $join_behavior);
 
 		$stmt = BasePeer::doSelect($c, $con);
 		$results = array();
 
 		while ($row = $stmt->fetch(PDO::FETCH_NUM)) {
-			$key1 = SfGuardUserProfilePeer::getPrimaryKeyHashFromRow($row, 0);
-			if (null !== ($obj1 = SfGuardUserProfilePeer::getInstanceFromPool($key1))) {
+			$key1 = LogPeer::getPrimaryKeyHashFromRow($row, 0);
+			if (null !== ($obj1 = LogPeer::getInstanceFromPool($key1))) {
 				// We no longer rehydrate the object, since this can cause data loss.
 				// See http://propel.phpdb.org/trac/ticket/509
 				// $obj1->hydrate($row, 0, true); // rehydrate
 			} else {
-				$omClass = SfGuardUserProfilePeer::getOMClass();
+				$omClass = LogPeer::getOMClass();
 
 				$cls = substr('.'.$omClass, strrpos('.'.$omClass, '.') + 1);
 				$obj1 = new $cls();
 				$obj1->hydrate($row);
-				SfGuardUserProfilePeer::addInstanceToPool($obj1, $key1);
+				LogPeer::addInstanceToPool($obj1, $key1);
 			} // if obj1 already loaded
 
-				// Add objects for joined UserType rows
+				// Add objects for joined SfGuardUserProfile rows
 
-				$key2 = UserTypePeer::getPrimaryKeyHashFromRow($row, $startcol2);
+				$key2 = SfGuardUserProfilePeer::getPrimaryKeyHashFromRow($row, $startcol2);
 				if ($key2 !== null) {
-					$obj2 = UserTypePeer::getInstanceFromPool($key2);
+					$obj2 = SfGuardUserProfilePeer::getInstanceFromPool($key2);
 					if (!$obj2) {
 	
-						$omClass = UserTypePeer::getOMClass();
+						$omClass = SfGuardUserProfilePeer::getOMClass();
 
 
 					$cls = substr('.'.$omClass, strrpos('.'.$omClass, '.') + 1);
 					$obj2 = new $cls();
 					$obj2->hydrate($row, $startcol2);
-					UserTypePeer::addInstanceToPool($obj2, $key2);
+					SfGuardUserProfilePeer::addInstanceToPool($obj2, $key2);
 				} // if $obj2 already loaded
 
-				// Add the $obj1 (SfGuardUserProfile) to the collection in $obj2 (UserType)
-				$obj2->addSfGuardUserProfile($obj1);
+				// Add the $obj1 (Log) to the collection in $obj2 (SfGuardUserProfile)
+				$obj2->addLog($obj1);
 
 			} // if joined row is not null
 
@@ -1117,13 +1137,13 @@ abstract class BaseSfGuardUserProfilePeer {
 	 */
 	public static function getOMClass()
 	{
-		return SfGuardUserProfilePeer::CLASS_DEFAULT;
+		return LogPeer::CLASS_DEFAULT;
 	}
 
 	/**
-	 * Method perform an INSERT on the database, given a SfGuardUserProfile or Criteria object.
+	 * Method perform an INSERT on the database, given a Log or Criteria object.
 	 *
-	 * @param      mixed $values Criteria or SfGuardUserProfile object containing data that is used to create the INSERT statement.
+	 * @param      mixed $values Criteria or Log object containing data that is used to create the INSERT statement.
 	 * @param      PropelPDO $con the PropelPDO connection to use
 	 * @return     mixed The new primary key.
 	 * @throws     PropelException Any exceptions caught during processing will be
@@ -1132,9 +1152,9 @@ abstract class BaseSfGuardUserProfilePeer {
 	public static function doInsert($values, PropelPDO $con = null)
 	{
 
-    foreach (sfMixer::getCallables('BaseSfGuardUserProfilePeer:doInsert:pre') as $callable)
+    foreach (sfMixer::getCallables('BaseLogPeer:doInsert:pre') as $callable)
     {
-      $ret = call_user_func($callable, 'BaseSfGuardUserProfilePeer', $values, $con);
+      $ret = call_user_func($callable, 'BaseLogPeer', $values, $con);
       if (false !== $ret)
       {
         return $ret;
@@ -1143,17 +1163,17 @@ abstract class BaseSfGuardUserProfilePeer {
 
 
 		if ($con === null) {
-			$con = Propel::getConnection(SfGuardUserProfilePeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+			$con = Propel::getConnection(LogPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
 		}
 
 		if ($values instanceof Criteria) {
 			$criteria = clone $values; // rename for clarity
 		} else {
-			$criteria = $values->buildCriteria(); // build Criteria from SfGuardUserProfile object
+			$criteria = $values->buildCriteria(); // build Criteria from Log object
 		}
 
-		if ($criteria->containsKey(SfGuardUserProfilePeer::ID) && $criteria->keyContainsValue(SfGuardUserProfilePeer::ID) ) {
-			throw new PropelException('Cannot insert a value for auto-increment primary key ('.SfGuardUserProfilePeer::ID.')');
+		if ($criteria->containsKey(LogPeer::ID) && $criteria->keyContainsValue(LogPeer::ID) ) {
+			throw new PropelException('Cannot insert a value for auto-increment primary key ('.LogPeer::ID.')');
 		}
 
 
@@ -1172,18 +1192,18 @@ abstract class BaseSfGuardUserProfilePeer {
 		}
 
 		
-    foreach (sfMixer::getCallables('BaseSfGuardUserProfilePeer:doInsert:post') as $callable)
+    foreach (sfMixer::getCallables('BaseLogPeer:doInsert:post') as $callable)
     {
-      call_user_func($callable, 'BaseSfGuardUserProfilePeer', $values, $con, $pk);
+      call_user_func($callable, 'BaseLogPeer', $values, $con, $pk);
     }
 
     return $pk;
 	}
 
 	/**
-	 * Method perform an UPDATE on the database, given a SfGuardUserProfile or Criteria object.
+	 * Method perform an UPDATE on the database, given a Log or Criteria object.
 	 *
-	 * @param      mixed $values Criteria or SfGuardUserProfile object containing data that is used to create the UPDATE statement.
+	 * @param      mixed $values Criteria or Log object containing data that is used to create the UPDATE statement.
 	 * @param      PropelPDO $con The connection to use (specify PropelPDO connection object to exert more control over transactions).
 	 * @return     int The number of affected rows (if supported by underlying database driver).
 	 * @throws     PropelException Any exceptions caught during processing will be
@@ -1192,9 +1212,9 @@ abstract class BaseSfGuardUserProfilePeer {
 	public static function doUpdate($values, PropelPDO $con = null)
 	{
 
-    foreach (sfMixer::getCallables('BaseSfGuardUserProfilePeer:doUpdate:pre') as $callable)
+    foreach (sfMixer::getCallables('BaseLogPeer:doUpdate:pre') as $callable)
     {
-      $ret = call_user_func($callable, 'BaseSfGuardUserProfilePeer', $values, $con);
+      $ret = call_user_func($callable, 'BaseLogPeer', $values, $con);
       if (false !== $ret)
       {
         return $ret;
@@ -1203,7 +1223,7 @@ abstract class BaseSfGuardUserProfilePeer {
 
 
 		if ($con === null) {
-			$con = Propel::getConnection(SfGuardUserProfilePeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+			$con = Propel::getConnection(LogPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
 		}
 
 		$selectCriteria = new Criteria(self::DATABASE_NAME);
@@ -1211,10 +1231,10 @@ abstract class BaseSfGuardUserProfilePeer {
 		if ($values instanceof Criteria) {
 			$criteria = clone $values; // rename for clarity
 
-			$comparison = $criteria->getComparison(SfGuardUserProfilePeer::ID);
-			$selectCriteria->add(SfGuardUserProfilePeer::ID, $criteria->remove(SfGuardUserProfilePeer::ID), $comparison);
+			$comparison = $criteria->getComparison(LogPeer::ID);
+			$selectCriteria->add(LogPeer::ID, $criteria->remove(LogPeer::ID), $comparison);
 
-		} else { // $values is SfGuardUserProfile object
+		} else { // $values is Log object
 			$criteria = $values->buildCriteria(); // gets full criteria
 			$selectCriteria = $values->buildPkeyCriteria(); // gets criteria w/ primary key(s)
 		}
@@ -1225,30 +1245,30 @@ abstract class BaseSfGuardUserProfilePeer {
 		$ret = BasePeer::doUpdate($selectCriteria, $criteria, $con);
 	
 
-    foreach (sfMixer::getCallables('BaseSfGuardUserProfilePeer:doUpdate:post') as $callable)
+    foreach (sfMixer::getCallables('BaseLogPeer:doUpdate:post') as $callable)
     {
-      call_user_func($callable, 'BaseSfGuardUserProfilePeer', $values, $con, $ret);
+      call_user_func($callable, 'BaseLogPeer', $values, $con, $ret);
     }
 
     return $ret;
   }
 
 	/**
-	 * Method to DELETE all rows from the sf_guard_user_profile table.
+	 * Method to DELETE all rows from the log table.
 	 *
 	 * @return     int The number of affected rows (if supported by underlying database driver).
 	 */
 	public static function doDeleteAll($con = null)
 	{
 		if ($con === null) {
-			$con = Propel::getConnection(SfGuardUserProfilePeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+			$con = Propel::getConnection(LogPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
 		}
 		$affectedRows = 0; // initialize var to track total num of affected rows
 		try {
 			// use transaction because $criteria could contain info
 			// for more than one table or we could emulating ON DELETE CASCADE, etc.
 			$con->beginTransaction();
-			$affectedRows += BasePeer::doDeleteAll(SfGuardUserProfilePeer::TABLE_NAME, $con);
+			$affectedRows += BasePeer::doDeleteAll(LogPeer::TABLE_NAME, $con);
 			$con->commit();
 			return $affectedRows;
 		} catch (PropelException $e) {
@@ -1258,9 +1278,9 @@ abstract class BaseSfGuardUserProfilePeer {
 	}
 
 	/**
-	 * Method perform a DELETE on the database, given a SfGuardUserProfile or Criteria object OR a primary key value.
+	 * Method perform a DELETE on the database, given a Log or Criteria object OR a primary key value.
 	 *
-	 * @param      mixed $values Criteria or SfGuardUserProfile object or primary key or array of primary keys
+	 * @param      mixed $values Criteria or Log object or primary key or array of primary keys
 	 *              which is used to create the DELETE statement
 	 * @param      PropelPDO $con the connection to use
 	 * @return     int 	The number of affected rows (if supported by underlying database driver).  This includes CASCADE-related rows
@@ -1271,20 +1291,20 @@ abstract class BaseSfGuardUserProfilePeer {
 	 public static function doDelete($values, PropelPDO $con = null)
 	 {
 		if ($con === null) {
-			$con = Propel::getConnection(SfGuardUserProfilePeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+			$con = Propel::getConnection(LogPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
 		}
 
 		if ($values instanceof Criteria) {
 			// invalidate the cache for all objects of this type, since we have no
 			// way of knowing (without running a query) what objects should be invalidated
 			// from the cache based on this Criteria.
-			SfGuardUserProfilePeer::clearInstancePool();
+			LogPeer::clearInstancePool();
 
 			// rename for clarity
 			$criteria = clone $values;
-		} elseif ($values instanceof SfGuardUserProfile) {
+		} elseif ($values instanceof Log) {
 			// invalidate the cache for this single object
-			SfGuardUserProfilePeer::removeInstanceFromPool($values);
+			LogPeer::removeInstanceFromPool($values);
 			// create criteria based on pk values
 			$criteria = $values->buildPkeyCriteria();
 		} else {
@@ -1293,11 +1313,11 @@ abstract class BaseSfGuardUserProfilePeer {
 
 
 			$criteria = new Criteria(self::DATABASE_NAME);
-			$criteria->add(SfGuardUserProfilePeer::ID, (array) $values, Criteria::IN);
+			$criteria->add(LogPeer::ID, (array) $values, Criteria::IN);
 
 			foreach ((array) $values as $singleval) {
 				// we can invalidate the cache for this single object
-				SfGuardUserProfilePeer::removeInstanceFromPool($singleval);
+				LogPeer::removeInstanceFromPool($singleval);
 			}
 		}
 
@@ -1322,24 +1342,24 @@ abstract class BaseSfGuardUserProfilePeer {
 	}
 
 	/**
-	 * Validates all modified columns of given SfGuardUserProfile object.
+	 * Validates all modified columns of given Log object.
 	 * If parameter $columns is either a single column name or an array of column names
 	 * than only those columns are validated.
 	 *
 	 * NOTICE: This does not apply to primary or foreign keys for now.
 	 *
-	 * @param      SfGuardUserProfile $obj The object to validate.
+	 * @param      Log $obj The object to validate.
 	 * @param      mixed $cols Column name or array of column names.
 	 *
 	 * @return     mixed TRUE if all columns are valid or the error message of the first invalid column.
 	 */
-	public static function doValidate(SfGuardUserProfile $obj, $cols = null)
+	public static function doValidate(Log $obj, $cols = null)
 	{
 		$columns = array();
 
 		if ($cols) {
-			$dbMap = Propel::getDatabaseMap(SfGuardUserProfilePeer::DATABASE_NAME);
-			$tableMap = $dbMap->getTable(SfGuardUserProfilePeer::TABLE_NAME);
+			$dbMap = Propel::getDatabaseMap(LogPeer::DATABASE_NAME);
+			$tableMap = $dbMap->getTable(LogPeer::TABLE_NAME);
 
 			if (! is_array($cols)) {
 				$cols = array($cols);
@@ -1355,11 +1375,11 @@ abstract class BaseSfGuardUserProfilePeer {
 
 		}
 
-		$res =  BasePeer::doValidate(SfGuardUserProfilePeer::DATABASE_NAME, SfGuardUserProfilePeer::TABLE_NAME, $columns);
+		$res =  BasePeer::doValidate(LogPeer::DATABASE_NAME, LogPeer::TABLE_NAME, $columns);
     if ($res !== true) {
         $request = sfContext::getInstance()->getRequest();
         foreach ($res as $failed) {
-            $col = SfGuardUserProfilePeer::translateFieldname($failed->getColumn(), BasePeer::TYPE_COLNAME, BasePeer::TYPE_PHPNAME);
+            $col = LogPeer::translateFieldname($failed->getColumn(), BasePeer::TYPE_COLNAME, BasePeer::TYPE_PHPNAME);
         }
     }
 
@@ -1371,23 +1391,23 @@ abstract class BaseSfGuardUserProfilePeer {
 	 *
 	 * @param      int $pk the primary key.
 	 * @param      PropelPDO $con the connection to use
-	 * @return     SfGuardUserProfile
+	 * @return     Log
 	 */
 	public static function retrieveByPK($pk, PropelPDO $con = null)
 	{
 
-		if (null !== ($obj = SfGuardUserProfilePeer::getInstanceFromPool((string) $pk))) {
+		if (null !== ($obj = LogPeer::getInstanceFromPool((string) $pk))) {
 			return $obj;
 		}
 
 		if ($con === null) {
-			$con = Propel::getConnection(SfGuardUserProfilePeer::DATABASE_NAME, Propel::CONNECTION_READ);
+			$con = Propel::getConnection(LogPeer::DATABASE_NAME, Propel::CONNECTION_READ);
 		}
 
-		$criteria = new Criteria(SfGuardUserProfilePeer::DATABASE_NAME);
-		$criteria->add(SfGuardUserProfilePeer::ID, $pk);
+		$criteria = new Criteria(LogPeer::DATABASE_NAME);
+		$criteria->add(LogPeer::ID, $pk);
 
-		$v = SfGuardUserProfilePeer::doSelect($criteria, $con);
+		$v = LogPeer::doSelect($criteria, $con);
 
 		return !empty($v) > 0 ? $v[0] : null;
 	}
@@ -1403,30 +1423,30 @@ abstract class BaseSfGuardUserProfilePeer {
 	public static function retrieveByPKs($pks, PropelPDO $con = null)
 	{
 		if ($con === null) {
-			$con = Propel::getConnection(SfGuardUserProfilePeer::DATABASE_NAME, Propel::CONNECTION_READ);
+			$con = Propel::getConnection(LogPeer::DATABASE_NAME, Propel::CONNECTION_READ);
 		}
 
 		$objs = null;
 		if (empty($pks)) {
 			$objs = array();
 		} else {
-			$criteria = new Criteria(SfGuardUserProfilePeer::DATABASE_NAME);
-			$criteria->add(SfGuardUserProfilePeer::ID, $pks, Criteria::IN);
-			$objs = SfGuardUserProfilePeer::doSelect($criteria, $con);
+			$criteria = new Criteria(LogPeer::DATABASE_NAME);
+			$criteria->add(LogPeer::ID, $pks, Criteria::IN);
+			$objs = LogPeer::doSelect($criteria, $con);
 		}
 		return $objs;
 	}
 
-} // BaseSfGuardUserProfilePeer
+} // BaseLogPeer
 
 // This is the static code needed to register the MapBuilder for this table with the main Propel class.
 //
-// NOTE: This static code cannot call methods on the SfGuardUserProfilePeer class, because it is not defined yet.
-// If you need to use overridden methods, you can add this code to the bottom of the SfGuardUserProfilePeer class:
+// NOTE: This static code cannot call methods on the LogPeer class, because it is not defined yet.
+// If you need to use overridden methods, you can add this code to the bottom of the LogPeer class:
 //
-// Propel::getDatabaseMap(SfGuardUserProfilePeer::DATABASE_NAME)->addTableBuilder(SfGuardUserProfilePeer::TABLE_NAME, SfGuardUserProfilePeer::getMapBuilder());
+// Propel::getDatabaseMap(LogPeer::DATABASE_NAME)->addTableBuilder(LogPeer::TABLE_NAME, LogPeer::getMapBuilder());
 //
 // Doing so will effectively overwrite the registration below.
 
-Propel::getDatabaseMap(BaseSfGuardUserProfilePeer::DATABASE_NAME)->addTableBuilder(BaseSfGuardUserProfilePeer::TABLE_NAME, BaseSfGuardUserProfilePeer::getMapBuilder());
+Propel::getDatabaseMap(BaseLogPeer::DATABASE_NAME)->addTableBuilder(BaseLogPeer::TABLE_NAME, BaseLogPeer::getMapBuilder());
 
