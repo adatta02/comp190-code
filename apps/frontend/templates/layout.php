@@ -1,3 +1,4 @@
+<?php use_helper("Form"); ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
@@ -12,20 +13,27 @@
 <body>
 
 <div id="header">
-<h3>Photo@Tufts.edu</h3>
-<div id="top-menu">
+  <div id="sub-header" style="padding-bottom: 20px">
+    <div style="float:left; font-size: 24px">Photo@Tufts.edu</div>
+    <div id="top-search" style="float:left; padding-left: 80px">
+      <?php echo input_tag("search-box"); ?> <?php echo submit_tag("Search"); ?>
+    </div>
+    <div style="clear:both"></div>
+  </div>
+  
+  <div id="top-menu">
 	        <?php
 									include_component ( "static", "topmenu" );
-									?>
-	      </div>
+					?>
+  </div>
 </div>
 
 <div id="menu">
 	      <?php
 							include_component ( "static", "shortcuts" );
-							?>
-	    </div>
+				?>
 
+</div>
 
 <div id="content">
       <?php

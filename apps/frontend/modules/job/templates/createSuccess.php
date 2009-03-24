@@ -3,7 +3,7 @@
 
 <h2>Request a photographer:</h2>
 
-<?php echo form_tag_for($form, '@project') ?>
+<?php echo form_tag_for($form, '@job') ?>
   <div>
     <h3><?php echo $form->renderGlobalErrors(); ?></h3>
     <?php echo $form["event"]->renderRow(); ?> <br/>

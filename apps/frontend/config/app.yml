@@ -13,3 +13,8 @@ all:
     archived: 7
   project_list:
     default_view: 1
+  user_type:
+    admin: 1
+    client: 2
+    photographer: 3
+    user: 4

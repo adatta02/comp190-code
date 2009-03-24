@@ -10,46 +10,17 @@
  */
 class projectActions extends sfActions
 {
-  
-	/**
-	 * Executes the create action. 
-	 * Displays a form to the user or deals with the save.
-	 *
-	 * @param sfWebRequest $request
-	 */
-  public function executeCreate(sfWebRequest $request){
-  	
-  	// if this user is a admin or client show a layout otherwise dont
-  	
-  	$this->form = new JobForm();
-  	if($request->isMethod("POST")){
-      $this->processForm($request, $this->form);
-  	}
+ /**
+  * Executes index action
+  *
+  * @param sfRequest $request A request object
+  */
+  public function executeIndex(sfWebRequest $request)
+  {
+    $this->forward('default', 'module');
   }
   
-  /**
-   * Deals with processing and saving the form.
-   *
-   * @param sfWebRequest $request
-   * @param sfForm $form
-   */
-  private function processForm(sfWebRequest $request, sfForm $form){
-    $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
-    if ($form->isValid())
-    {
-      $form->save();
-      $this->redirect($this->generateUrl('project_success'));
-    }
-  }
-  
-  /**
-   * Present the user with a confirmation page. 
-   * Send an email maybe?
-   *
-   * @param sfWebRequest $request
-   */
-  public function executeSuccess(sfWebRequest $request){
+  public function executeView(sfWebRequest $request){
   	
   }
-  
 }

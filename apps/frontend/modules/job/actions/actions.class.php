@@ -19,7 +19,7 @@ class jobActions extends sfActions
 	 */
 	public function executeList(sfWebRequest $request){
 		
-		$this->page = $request->getUrlParameter("page", 1);
+		$this->page = $request->getParameter("page");
 		
 		if(!method_exists($this->getRoute(), "getObject")){
 			$c = new Criteria();
@@ -29,15 +29,21 @@ class jobActions extends sfActions
 			$showType = $this->getRoute()->getObject();
 		}
 		
+		$this->showing = $showType->getState();
+		
 		$c = new Criteria();
 		$c->add(JobPeer::STATUS_ID, $showType->getId());
+		$c->addAscendingOrderByColumn(JobPeer::DATE);
+		
+		// if this user is only a client 
+		// make sure they can only see their jobs
 		
 		$this->pager = new sfPropelPager ( "Job", 20 );
     $this->pager->setCriteria ( $c );
     $this->pager->setPage ( $this->page );
     $this->pager->init ();
 		
-    $this->url = $this->generateUrl("job_list_by", $showType);
+    $this->routeObject = $showType;
 	}
 	
 	/**

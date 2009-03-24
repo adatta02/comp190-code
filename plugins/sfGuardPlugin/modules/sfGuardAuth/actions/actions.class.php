@@ -44,5 +44,8 @@ class sfGuardAuthActions extends BasesfGuardAuthActions
   	}
   	
   	parent::executeSignin($request);
+  	
+  	$credential = $this->getUser()->getProfile()->getUserType()->getType();
+  	$this->getUser()->addCredential($credential);
   }
 }

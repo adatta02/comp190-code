@@ -1,4 +1,17 @@
-# job creation
+################################################
+# projects
+################################################
+project_view:
+  url: /project/view/:name
+  class:    sfPropelRoute
+  param: { module: project, action: view }
+  options: { model: Project, type: object }
+  requirements: {slug: \w+ }
+  
+################################################
+# jobs
+################################################
+
 job_create:
   url: /job/create
   param: { module: job, action: create }
@@ -14,6 +27,10 @@ job_list_by:
   param: { module: job, action: list }
   options: { model: Status, type: object }
   requirements: {slug: \w+ }
+
+################################################
+# misc login and redirect routes
+################################################
 
 # where you go after you log in succesfully
 welcome_loggedin:
@@ -32,8 +49,11 @@ sf_guard_signout:
 sf_guard_password:
   url:   /request_password
   param: { module: sfGuardAuth, action: password }
-
+  
+################################################
 # default rules
+################################################
+
 homepage:
   url:   /
   param: { module: welcome, action: index }
@@ -44,3 +64,4 @@ default_index:
 
 default:
   url:   /:module/:action/*
+################################################

@@ -18,7 +18,7 @@ class BaseLogForm extends BaseFormPropel
       'when'                     => new sfWidgetFormDateTime(),
       'propel_id'                => new sfWidgetFormInput(),
       'propel_class'             => new sfWidgetFormInput(),
-      'sf_guard_user_profile_id' => new sfWidgetFormPropelChoice(array('model' => 'SfGuardUserProfile', 'add_empty' => true)),
+      'sf_guard_user_profile_id' => new sfWidgetFormPropelChoice(array('model' => 'sfGuardUserProfile', 'add_empty' => true)),
       'log_message_type_id'      => new sfWidgetFormPropelChoice(array('model' => 'LogMessageType', 'add_empty' => true)),
     ));
 
@@ -28,7 +28,7 @@ class BaseLogForm extends BaseFormPropel
       'when'                     => new sfValidatorDateTime(array('required' => false)),
       'propel_id'                => new sfValidatorInteger(array('required' => false)),
       'propel_class'             => new sfValidatorString(array('max_length' => 255, 'required' => false)),
-      'sf_guard_user_profile_id' => new sfValidatorPropelChoice(array('model' => 'SfGuardUserProfile', 'column' => 'id', 'required' => false)),
+      'sf_guard_user_profile_id' => new sfValidatorPropelChoice(array('model' => 'sfGuardUserProfile', 'column' => 'id', 'required' => false)),
       'log_message_type_id'      => new sfValidatorPropelChoice(array('model' => 'LogMessageType', 'column' => 'id', 'required' => false)),
     ));
 

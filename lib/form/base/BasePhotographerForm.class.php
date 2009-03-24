@@ -14,7 +14,7 @@ class BasePhotographerForm extends BaseFormPropel
   {
     $this->setWidgets(array(
       'id'          => new sfWidgetFormInputHidden(),
-      'user_id'     => new sfWidgetFormPropelChoice(array('model' => 'SfGuardUserProfile', 'add_empty' => true)),
+      'user_id'     => new sfWidgetFormPropelChoice(array('model' => 'sfGuardUserProfile', 'add_empty' => true)),
       'name'        => new sfWidgetFormInput(),
       'phone'       => new sfWidgetFormInput(),
       'email'       => new sfWidgetFormInput(),
@@ -25,7 +25,7 @@ class BasePhotographerForm extends BaseFormPropel
 
     $this->setValidators(array(
       'id'          => new sfValidatorPropelChoice(array('model' => 'Photographer', 'column' => 'id', 'required' => false)),
-      'user_id'     => new sfValidatorPropelChoice(array('model' => 'SfGuardUserProfile', 'column' => 'id', 'required' => false)),
+      'user_id'     => new sfValidatorPropelChoice(array('model' => 'sfGuardUserProfile', 'column' => 'id', 'required' => false)),
       'name'        => new sfValidatorString(array('max_length' => 64, 'required' => false)),
       'phone'       => new sfValidatorString(array('max_length' => 45, 'required' => false)),
       'email'       => new sfValidatorString(array('max_length' => 64, 'required' => false)),
