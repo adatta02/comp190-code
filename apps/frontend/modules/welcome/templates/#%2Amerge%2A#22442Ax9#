@@ -1,0 +1,107 @@
+<div class="body">
+
+    <script languange="JavaScript">
+       function getWidth(){
+           return screen.width;
+       }
+
+       function viewProjects(){
+
+       }
+
+       function viewJobs(){
+
+       }
+
+    </script>
+
+  <div id='welcome' style="align:center;">
+       <table width="100%">
+         <tr>
+           <td align="left"><h3>Welcome <?php echo "username"; ?>! </h3></td>
+           <td align="right">Logout</td>
+         </tr>
+	 </table>
+	 <br/>
+	 <table width="100%">
+         <tr>
+	   <td> <?php link_to("Job","@project_create"); ?> </td> 	    
+      	   <td><form><input type="button" value="View Photos" /> </form></td>
+	   <td><form><input type="button" value="View by Projects" /> </form></td>      	   
+	   <td><form><input type="button" value="View by Jobs" /> </form></td>
+	   <td align="right" width="200%">
+      	     <form>
+               <input type="text" name="search" />
+               <input type="button" value="Search" />
+      	     </form>
+           </td>
+         </tr>
+       </table>
+   </div>
+   
+   <br/>
+
+   <div id="options" style="float:left;align:center;padding-right:40px;">
+	<form>
+                Sort By:<select>
+                <option value="id">Job Id</option>
+                <option value="client">Client</option>
+                <option value="publication">Publication</option>
+                <option value="photograher">Photographer</option>
+                <option value="date">Date</option>
+                <option value="due">Date Due</option>
+                </select>
+         </form>
+	 <br/><br/><br/>
+	 <b>Shortcuts</b> <span style="color:red;font-size:.8em;"><?php echo "Add New"; ?></span>
+	 <br/>
+	 <?php echo "Pending"; ?><br/>
+         <?php echo "Accepted"; ?> <br/>
+	 <?php echo "Completed"; ?> <br/>
+	 <?php echo "Delivered"; ?> <br/>
+	 <?php echo "Invoiced"; ?> <br/>
+         <?php echo "Paid"; ?> <br/>	 
+	 <br/><br/><br/>
+         <b><?php echo "Advanced Search"; ?></b>
+	 <br/>
+   </div>
+   
+   
+
+   <div id="jobs" style="float:right;align:center;padding-right:20px;">
+   	<div style="border-style:ridge;align:center;">
+	     <table cellpadding="5">
+		<tr>
+		   <td>Job: <?php echo "0000" ?> </td>
+		   <td>Event: <?php echo "Marathon" ?> </td>
+		   <td>Date: <?php echo "December 22, 2009" ?> </td>
+		</tr>
+		<tr>
+		   <td>Status: <?php echo "Pending" ?> </td>
+		   <td>Client: <?php echo "Alissa Cooper" ?> </td>
+		   <td>Photographer: <?php echo "Chris Katz" ?> </td>
+		</tr>
+	     </table>
+	  </div>
+
+	  <br/><br/>
+
+	  <div style="border-style:ridge;align:center;">
+             <table>
+                <tr>
+                   <td>Job: <?php echo "0000" ?> </td>
+                   <td>Event: <?php echo "Marathon" ?> </td>
+                   <td>Date: <?php echo "December 22, 2009" ?> </td>
+                </tr>
+                <tr>
+                   <td>Status: <?php echo "Pending" ?> </td>
+                   <td>Client: <?php echo "Alissa Cooper" ?> </td>
+                   <td>Photographer: <?php echo "Chris Katz" ?> </td>
+                </tr>
+             </table>
+          </div>
+
+
+
+   </div>
+</div>

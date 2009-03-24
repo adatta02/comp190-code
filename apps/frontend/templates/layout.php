@@ -8,16 +8,25 @@
     <?php
 				include_title ()?>
     <link rel="shortcut icon" href="/favicon.ico" />
+
+    <?php include_stylesheets() ?>
+
 </head>
 <body>
 
 <div id="header">
-<h3>Photo@Tufts.edu</h3>
+
+<div id="title">
+    <div id="logo"></div>  
+    <h3>University Photography Management</h3>
+</div>
+<br/>
 <div id="top-menu">
-	        <?php
-									include_component ( "static", "topmenu" );
-									?>
-	      </div>
+<br/>
+  <div id="left-top-menu"></div>
+  <?php include_component ( "static", "topmenu" ); ?>
+  <div id="right-top-menu"></div>
+</div>
 </div>
 
 <div id="menu">

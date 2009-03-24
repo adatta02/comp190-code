@@ -9,7 +9,7 @@
   <body>
     
     <div id="header">
-      <h1>Photo@Tufts.edu</h1>
+      <h1>University Photography Management</h1>
     </div>
     
     <div id="content">

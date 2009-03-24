@@ -1,3 +1,16 @@
-To view all your jobs click here <?php echo link_to("here!", "@job_list"); ?> <br/>
-To request a job click <?php echo link_to("here!", "@job_create"); ?> <br/>
-To view photos click here!<br/>
+<div id="box">
+   <div id='choices'>
+     <span class='link'><?php echo link_to("Request a Job", "@job_create"); ?> </span>
+     <br/><br/>
+     <span class='desc'>Request a photographer for your event or publication.</span>
+     <br/><br/>
+     <span class='link'><?php echo link_to("View Jobs", "@job_list"); ?> </span>
+     <br/><br/>
+     <span class='desc'>View and edit requests, create and assign photographers, manage emails.</span>
+     <br/><br/>
+     <span class='link'>View Photos</span>
+     <br/><br/>
+     <span class='desc'>View photos from your projects and jobs. </span>
+   </div>
+
+</div>

@@ -1,13 +1,121 @@
+body{
+ font-family: Helvetica;
+}
+
+#login-form{
+  position:fixed;
+  left:150px;
+  text-align:left;
+}
+
+#box{
+  background-color: #8BB2D1;
+  border: 3px ridge #6699C2;
+  width:575px;
+  height:325px;
+  padding:30px;
+  text-align:center;
+}
+
+#choices{
+  text-align:left;
+}
+
+.link{
+  font-size:1.5em;
+  font-weight:bold;
+}
+
+.desc{
+  font-size:1.2em;
+  padding-left: 40px;
+}
+
 #header{
-  margin-left: 200px;
-  padding-bottom: 20px;
+   text-align:center;
+}
+
+#logo{ 
+   width:226px;
+   height:78px;
+   float:left;
+   background-image: url(images/tufts_logo.jpg);
+   margin-right: 20px;
+}
+
+#title{
+  text-align:left;
 }
 
 #menu{
   float: left;
-  width: 200px;
+  padding:30px;
+  height:400px;
+  margin-left:12px;
+  background-image: url(images/sidebar.jpg);
 }
 
 #content{
   float: left;
+  padding-left: 10px;
 }
+
+#left-top-menu{
+  width:52px;
+  height:82px;
+  margin-left:2px;
+  background-image: url(images/header_left.jpg);
+  float:left;
+}
+
+#right-top-menu{
+  width:52px;
+  height: 82px;
+  background-image: url(images/header_right.jpg);
+  float:right;
+}
+
+#top-menu-one{
+   width:1240px;
+}
+
+#top-menu-one table{
+  height: 82px;
+  width: 1260px;
+  background-image: url(images/header.jpg);
+  color:white;
+  font-size: 1.5 em;
+  font-weight: bold;
+}
+
+.names{
+  color: #8BB2D1;
+}
+
+.job-list-item table.status1{
+    border:1px solid red;
+ }
+
+.job-list-item table.status2{
+    border:1px solid blue;
+ }
+
+.job-list-item table.status3{
+    border:1px solid green;
+ }
+
+.job-list-item table.status4{
+    border:1px solid orange;
+ }
+
+.job-list-item table.status5{
+    border:1px solid purple;
+ }
+
+.job-list-item table.status6{
+    border:1px solid cyan;
+ }
+
+.job-list-item table.status7{
+    border:1px solid black;
+ }
