@@ -35,7 +35,7 @@ body{
    text-align:center;
 }
 
-#logo{ 
+#logo{
    width:226px;
    height:78px;
    float:left;
@@ -48,6 +48,9 @@ body{
 }
 
 #menu{
+   position: absolute;
+   top: 182px;
+
   float: left;
   padding:30px;
   height:400px;
@@ -56,26 +59,40 @@ body{
 }
 
 #content{
-  float: left;
-  padding-left: 10px;
+  position: absolute;
+  top: 182px;
+
+  margin-left: 235px;
+  margin-top: 10px;
 }
 
 #left-top-menu{
+   position:absolute;
+   left: 8px;
+   top: 100px;
+
   width:52px;
   height:82px;
   margin-left:2px;
   background-image: url(images/header_left.jpg);
-  float:left;
+  //float:left;
 }
 
 #right-top-menu{
+   position:absolute;
+   top: 100px;
+   left: 1300px;
+
   width:52px;
   height: 82px;
   background-image: url(images/header_right.jpg);
-  float:right;
+  //float:right;
 }
 
 #top-menu-one{
+   position: absolute;
+   top: 100px;
+   left: 60px;
    width:1240px;
 }
 
@@ -90,6 +107,9 @@ body{
 
 .names{
   color: #8BB2D1;
+}
+
+.job-list-item{
 }
 
 .job-list-item table.status1{

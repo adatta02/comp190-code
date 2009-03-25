@@ -20,7 +20,7 @@
     <div id="logo"></div>  
     <h3>University Photography Management</h3>
 </div>
-<br/>
+<br/><br/>
 <div id="top-menu">
 <br/>
   <div id="left-top-menu"></div>
