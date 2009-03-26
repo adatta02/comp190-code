@@ -6,7 +6,7 @@
 <div id="content-container">
   <div id="now-viewing">Viewing job #<?php echo $job->getId(); ?></div>
 	
-	<div class="info-header">Basic Info 
+	<div class="info-header">Basic 
 	   <a href="#" onclick="javascript:$('#job-basic-info').toggle(); return false;">[tg]</a>
 	</div>
 	
@@ -58,7 +58,9 @@
 		</table>
 	</div>
 	
-	<div class="info-header">Shoot Info 
+	<hr/>
+	
+	<div class="info-header">Shoot 
      <a href="#" onclick="javascript:$('#job-shoot-info').toggle(); return false;">[tg]</a>
   </div>
   
@@ -76,9 +78,83 @@
 	   </tr>
 	 </table>
 	 
-	 MAP GOES HERE!
+	 <div id="job-map">MAP GOES HERE!</div>
 	 
 	</div>
+	
+	 <hr/>
+	
+  <div class="info-header">Clients 
+     <a href="#" onclick="javascript:$('#job-client-info').toggle(); return false;">[tg]</a>
+  </div>
+	
+	<div id="job-client-info" class="collapsable">
+	 <div class="info-header-small">Current Clients: <?php echo image_tag("add.png"); ?></div>
+	 
+	 <?php if(count($job->getClients())): ?>
+	 
+	 <table>
+     <tr>
+       <th>Remove</th>
+       <th>Name</th>
+       <th>Email</th>
+       <th>Phone</th>
+       <th>Department</th>
+     </tr>
+     <?php foreach($job->getClients() as $c): ?>
+     <tr>
+       <td><?php echo image_tag("delete.png"); ?></td>
+       <td><?php echo $c->getName() ?></td>
+       <td><?php echo $c->getEmail() ?></td>
+       <td><?php echo $c->getPhone() ?></td>
+       <td><?php echo $c->getDepartment() ?></td>
+     </tr>  
+     <?php endforeach; ?>
+    </table>
+  <?php else: ?>
+    There are no clients attached to this job.
+  <?php endif; ?>
+	</div>
+	
+  <hr/>
+	
+	<div class="info-header">Photographers 
+     <a href="#" onclick="javascript:$('#job-photographer-info').toggle(); return false;">[tg]</a>
+  </div>
+  
+  <div id="job-photographer-info" class="collapsable">
+   <div class="info-header-small">Current Photographers: <?php echo image_tag("add.png"); ?></div>
+	  <table>
+	   <tr>
+	     <th>Remove</th>
+	     <th>Name</th>
+	     <th>Email</th>
+	     <th>Phone</th>
+	     <th>Affiliation</th>
+	   </tr>
+	   
+	   <?php foreach($job->getPhotographers() as $ph): ?>
+	   <tr>
+	     <td><?php echo image_tag("delete.png"); ?></td>
+       <td><?php echo $ph->getName() ?></td>
+       <td><?php echo $ph->getEmail() ?></td>
+       <td><?php echo $ph->getPhone() ?></td>
+       <td><?php echo $ph->getAffiliation() ?></td>
+     </tr>  
+	   <?php endforeach; ?>
+	   
+	  </table>
+  </div>
+	
+	<hr />
+	
+	<div class="info-header">Billing and Delivery 
+     <a href="#" onclick="javascript:$('#job-billing-info').toggle(); return false;">[tg]</a>
+  </div>
+  
+  <div id="job-billing-info" class="collapsable">
+    
+  </div>
 	
 </div>
 

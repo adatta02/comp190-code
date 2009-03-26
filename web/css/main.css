@@ -1,5 +1,6 @@
 body{
  font-family: Helvetica;
+ font-size: 14px;
 }
 
 #login-container{
@@ -163,6 +164,11 @@ body{
   font-weight: bold;
 }
 
+#job-map{
+  padding-top: 10px;
+  padding-bottom: 10px;	
+}
+
 .shoot-datetime{
 	font-size: 14px;
 	font-weight: bold;
@@ -174,7 +180,15 @@ body{
 .info-header{
 	font-size: 18px;
 	font-weight: bold;
-	padding-top: 10px;
+	padding-top: 15px;
+}
+
+.info-header-small{
+	font-size: 14px;
+	font-weight: bold;
+	color: #aaaaaa;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .img_link{

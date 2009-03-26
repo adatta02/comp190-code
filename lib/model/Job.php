@@ -13,6 +13,41 @@ class Job extends BaseJob
 		       . $this->getCity() . "<br/>" 
 		       . $this->getState() . ", " . $this->getZip();
 	}
+	
+	public function getClients(){
+		$c = new Criteria();
+		$c->add(JobClientPeer::JOB_ID, $this->getId());
+		
+		$clientIds = array();
+		$jc = JobClientPeer::doSelect($c);
+		
+		foreach($jc as $i){
+			$clientIds[] = $i->getClientId();
+		}
+		
+		$c = new Criteria();
+		$c->add(ClientPeer::ID, $clientIds, Criteria::IN);
+		
+		return ClientPeer::doSelect($c);
+	}
+	
+ public function getPhotographers(){
+    $c = new Criteria();
+    $c->add(JobPhotographerPeer::JOB_ID, $this->getId());
+    
+    $photographerIds = array();
+    $jc = JobPhotographerPeer::doSelect($c);
+    
+    foreach($jc as $i){
+      $photographerIds[] = $i->getPhotographerId();
+    }
+    
+    $c = new Criteria();
+    $c->add(PhotographerPeer::ID, $photographerIds, Criteria::IN);
+    
+    return PhotographerPeer::doSelect($c);
+  }
+	
 }
 
 $columns_map = array(  'from'   => JobPeer::EVENT,
