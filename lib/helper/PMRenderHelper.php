@@ -6,7 +6,7 @@
   	?>
   	 <div class="job-list-item-<?php echo $classNum ?>">
   	   <?php echo checkbox_tag('job-' . $job->getId(), $job->getId(), 0, array("class" => "job-check")); ?> |
-  	   <?php echo $job->getId(); ?>
+  	   <?php echo link_to($job->getId(), "job_show", $job); ?>
   	   [tags here]
   	   <?php echo $job->getDate("m/d/Y") ?> 
   	   <br/>

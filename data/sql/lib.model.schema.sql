@@ -15,6 +15,7 @@ CREATE TABLE `project`
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
 	`name` VARCHAR(45),
 	`status_id` INTEGER,
+	`slug` VARCHAR(255),
 	PRIMARY KEY (`id`),
 	INDEX `FI_project_status` (`status_id`),
 	CONSTRAINT `fk_project_status`
@@ -78,6 +79,7 @@ CREATE TABLE `job`
 	`dept_id` VARCHAR(32),
 	`grant_id` VARCHAR(32),
 	`other` VARCHAR(255),
+	`slug` VARCHAR(255),
 	PRIMARY KEY (`id`),
 	INDEX `FI_Shoot_Publication` (`publication_id`),
 	CONSTRAINT `fk_Shoot_Publication`
@@ -128,6 +130,7 @@ CREATE TABLE `photographer`
 	`affiliation` VARCHAR(64),
 	`website` VARCHAR(64),
 	`description` TEXT,
+	`slug` VARCHAR(255),
 	PRIMARY KEY (`id`),
 	INDEX `FI_Photographer_User` (`user_id`),
 	CONSTRAINT `fk_Photographer_User`
@@ -151,6 +154,7 @@ CREATE TABLE `client`
 	`address` VARCHAR(255),
 	`email` VARCHAR(255),
 	`phone` VARCHAR(32),
+	`slug` VARCHAR(255),
 	PRIMARY KEY (`id`),
 	INDEX `FI_Client_User` (`user_id`),
 	CONSTRAINT `fk_Client_User`
@@ -273,149 +277,6 @@ CREATE TABLE `job_client`
 	CONSTRAINT `fk_Job_Client_Job`
 		FOREIGN KEY (`job_id`)
 		REFERENCES `job` (`id`)
-)Type=InnoDB;
-
-#-----------------------------------------------------------------------------
-#-- sf_guard_group
-#-----------------------------------------------------------------------------
-
-DROP TABLE IF EXISTS `sf_guard_group`;
-
-
-CREATE TABLE `sf_guard_group`
-(
-	`id` INTEGER  NOT NULL AUTO_INCREMENT,
-	`name` VARCHAR(255)  NOT NULL,
-	`description` TEXT,
-	PRIMARY KEY (`id`),
-	UNIQUE KEY `sf_guard_group_U_1` (`name`(255))
-)Type=InnoDB;
-
-#-----------------------------------------------------------------------------
-#-- sf_guard_permission
-#-----------------------------------------------------------------------------
-
-DROP TABLE IF EXISTS `sf_guard_permission`;
-
-
-CREATE TABLE `sf_guard_permission`
-(
-	`id` INTEGER  NOT NULL AUTO_INCREMENT,
-	`name` VARCHAR(255)  NOT NULL,
-	`description` TEXT,
-	PRIMARY KEY (`id`),
-	UNIQUE KEY `sf_guard_permission_U_1` (`name`(255))
-)Type=InnoDB;
-
-#-----------------------------------------------------------------------------
-#-- sf_guard_group_permission
-#-----------------------------------------------------------------------------
-
-DROP TABLE IF EXISTS `sf_guard_group_permission`;
-
-
-CREATE TABLE `sf_guard_group_permission`
-(
-	`group_id` INTEGER  NOT NULL,
-	`permission_id` INTEGER  NOT NULL,
-	PRIMARY KEY (`group_id`,`permission_id`),
-	KEY `sf_guard_group_permission_I_1`(`permission_id`),
-	CONSTRAINT `sf_guard_group_permission_FK_1`
-		FOREIGN KEY (`group_id`)
-		REFERENCES `sf_guard_group` (`id`)
-		ON DELETE CASCADE,
-	CONSTRAINT `sf_guard_group_permission_FK_2`
-		FOREIGN KEY (`permission_id`)
-		REFERENCES `sf_guard_permission` (`id`)
-		ON DELETE CASCADE
-)Type=InnoDB;
-
-#-----------------------------------------------------------------------------
-#-- sf_guard_user
-#-----------------------------------------------------------------------------
-
-DROP TABLE IF EXISTS `sf_guard_user`;
-
-
-CREATE TABLE `sf_guard_user`
-(
-	`id` INTEGER  NOT NULL AUTO_INCREMENT,
-	`username` VARCHAR(128)  NOT NULL,
-	`algorithm` VARCHAR(128)  NOT NULL,
-	`salt` VARCHAR(128)  NOT NULL,
-	`password` VARCHAR(128)  NOT NULL,
-	`created_at` DATETIME,
-	`last_login` DATETIME,
-	`is_active` TINYINT  NOT NULL,
-	`is_super_admin` TINYINT  NOT NULL,
-	PRIMARY KEY (`id`),
-	UNIQUE KEY `sf_guard_user_U_1` (`username`(128))
-)Type=InnoDB;
-
-#-----------------------------------------------------------------------------
-#-- sf_guard_user_permission
-#-----------------------------------------------------------------------------
-
-DROP TABLE IF EXISTS `sf_guard_user_permission`;
-
-
-CREATE TABLE `sf_guard_user_permission`
-(
-	`user_id` INTEGER  NOT NULL,
-	`permission_id` INTEGER  NOT NULL,
-	PRIMARY KEY (`user_id`,`permission_id`),
-	KEY `sf_guard_user_permission_I_1`(`permission_id`),
-	CONSTRAINT `sf_guard_user_permission_FK_1`
-		FOREIGN KEY (`user_id`)
-		REFERENCES `sf_guard_user` (`id`)
-		ON DELETE CASCADE,
-	CONSTRAINT `sf_guard_user_permission_FK_2`
-		FOREIGN KEY (`permission_id`)
-		REFERENCES `sf_guard_permission` (`id`)
-		ON DELETE CASCADE
-)Type=InnoDB;
-
-#-----------------------------------------------------------------------------
-#-- sf_guard_user_group
-#-----------------------------------------------------------------------------
-
-DROP TABLE IF EXISTS `sf_guard_user_group`;
-
-
-CREATE TABLE `sf_guard_user_group`
-(
-	`user_id` INTEGER  NOT NULL,
-	`group_id` INTEGER  NOT NULL,
-	PRIMARY KEY (`user_id`,`group_id`),
-	KEY `sf_guard_user_group_I_1`(`group_id`),
-	CONSTRAINT `sf_guard_user_group_FK_1`
-		FOREIGN KEY (`user_id`)
-		REFERENCES `sf_guard_user` (`id`)
-		ON DELETE CASCADE,
-	CONSTRAINT `sf_guard_user_group_FK_2`
-		FOREIGN KEY (`group_id`)
-		REFERENCES `sf_guard_group` (`id`)
-		ON DELETE CASCADE
-)Type=InnoDB;
-
-#-----------------------------------------------------------------------------
-#-- sf_guard_remember_key
-#-----------------------------------------------------------------------------
-
-DROP TABLE IF EXISTS `sf_guard_remember_key`;
-
-
-CREATE TABLE `sf_guard_remember_key`
-(
-	`user_id` INTEGER  NOT NULL,
-	`remember_key` VARCHAR(32),
-	`ip_address` VARCHAR(50)  NOT NULL,
-	`created_at` DATETIME,
-	PRIMARY KEY (`user_id`,`ip_address`),
-	CONSTRAINT `sf_guard_remember_key_FK_1`
-		FOREIGN KEY (`user_id`)
-		REFERENCES `sf_guard_user` (`id`)
-		ON DELETE CASCADE
 )Type=InnoDB;
 
 #-----------------------------------------------------------------------------

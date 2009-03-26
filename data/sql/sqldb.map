@@ -1,3 +1,4 @@
 # Sqlfile -> Database map
 plugins.sfGuardPlugin.lib.model.schema.sql=propel
 lib.model.schema.sql=propel
+plugins.sfPropelActAsTaggableBehaviorPlugin.lib.model.schema.sql=propel

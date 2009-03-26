@@ -37,6 +37,7 @@ class BaseJobForm extends BaseFormPropel
       'dept_id'        => new sfWidgetFormInput(),
       'grant_id'       => new sfWidgetFormInput(),
       'other'          => new sfWidgetFormInput(),
+      'slug'           => new sfWidgetFormInput(),
     ));
 
     $this->setValidators(array(
@@ -64,6 +65,7 @@ class BaseJobForm extends BaseFormPropel
       'dept_id'        => new sfValidatorString(array('max_length' => 32, 'required' => false)),
       'grant_id'       => new sfValidatorString(array('max_length' => 32, 'required' => false)),
       'other'          => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'slug'           => new sfValidatorString(array('max_length' => 255, 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('job[%s]');

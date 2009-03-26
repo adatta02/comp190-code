@@ -20,6 +20,7 @@ class BaseClientForm extends BaseFormPropel
       'address'    => new sfWidgetFormInput(),
       'email'      => new sfWidgetFormInput(),
       'phone'      => new sfWidgetFormInput(),
+      'slug'       => new sfWidgetFormInput(),
     ));
 
     $this->setValidators(array(
@@ -30,6 +31,7 @@ class BaseClientForm extends BaseFormPropel
       'address'    => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'email'      => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'phone'      => new sfValidatorString(array('max_length' => 32, 'required' => false)),
+      'slug'       => new sfValidatorString(array('max_length' => 255, 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('client[%s]');

@@ -65,7 +65,7 @@ body{
   height: 100%;
 }
 
-#list-container{
+#list-container, #content-container{
   padding-left: 20px;
   padding-top: 20px;
   float: left;
