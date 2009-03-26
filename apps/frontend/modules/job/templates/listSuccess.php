@@ -16,6 +16,8 @@
 var sortUrls = <?php echo $sortUrlJson; ?>;
 var currentKey = "<?php echo $sortedBy; ?>";
 var isInverted = <?php echo ($invert ? 1 : 0) ?>;
+var item2OldColor, item1OldColor;
+
 
 function invertSort(){
   var key;
@@ -30,6 +32,23 @@ function invertSort(){
 
 $(document).ready( 
   function(){
+  
+    item2OldColor = $(".job-list-item-2:first").css("background-color");
+    item1OldColor = $(".job-list-item-1:first").css("background-color");
+    
+    $(".job-list-item-1").mouseover( 
+        function(){  $(this).css("background-color", item2OldColor); });
+  
+    $(".job-list-item-1").mouseleave( 
+        function(){  $(this).css("background-color", item1OldColor);  });
+    
+    $(".job-list-item-2").mouseover( 
+        function(){  $(this).css("background-color", item1OldColor); });
+  
+    $(".job-list-item-2").mouseleave( 
+        function(){  $(this).css("background-color",item2OldColor);  });
+  
+
   
     // when you toggle the sort drop down change the sorting
     $("#sort-by-options").change(
