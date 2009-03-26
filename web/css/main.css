@@ -126,7 +126,7 @@ body{
 #now-viewing{
 	font-size: 26px; 
 	weight: bold;
-	padding-bottom: 20px;
+	padding-bottom: 10px;
 }
 
 #top-search{
@@ -161,6 +161,20 @@ body{
   padding-bottom: 5px;
   font-size: 14px;
   font-weight: bold;
+}
+
+.shoot-datetime{
+	font-size: 14px;
+	font-weight: bold;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	color: red;
+}
+
+.info-header{
+	font-size: 18px;
+	font-weight: bold;
+	padding-top: 10px;
 }
 
 .img_link{
