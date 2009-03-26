@@ -13,32 +13,15 @@
 <body>
 
 <div id="header">
-  <div id="sub-header" style="padding-bottom: 20px">
-    <div style="float:left; font-size: 24px">Photo@Tufts.edu</div>
-    <div id="top-search" style="float:left; padding-left: 80px">
-      <?php echo input_tag("search-box"); ?> <?php echo submit_tag("Search"); ?>
-    </div>
-    <div style="clear:both"></div>
-  </div>
-  
-  <div id="top-menu">
-	        <?php
-									include_component ( "static", "topmenu" );
-					?>
-  </div>
+  <div id="logo"><?php echo image_tag("tufts_logo.jpg"); ?></div>
+  <div id="title">University Photography Management</div>
 </div>
 
-<div id="menu">
-	      <?php
-							include_component ( "static", "shortcuts" );
-				?>
-
-</div>
+<div class="clear"></div>
 
 <div id="content">
-      <?php
-						echo $sf_content?>
-    </div>
+  <?php echo $sf_content?>
+</div>
 
 </body>
 </html>

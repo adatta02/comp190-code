@@ -24,6 +24,10 @@ class staticComponents extends sfComponents
 		$this->options = array();
 		
 		foreach($options as $i){
+			
+			if($i == $this->moveToSkip)
+			 continue;
+			
 			$this->options[$i->getId()] = $i->getState();
 		}
 		

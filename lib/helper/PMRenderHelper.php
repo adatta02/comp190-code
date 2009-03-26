@@ -2,13 +2,14 @@
 
 <?php
 
-  function renderJobListView($job){
+  function renderJobListView($job, $classNum){
   	?>
-  	 <div class="job-list-item" style="padding-top: 5px; padding-bottom: 5px">
+  	 <div class="job-list-item-<?php echo $classNum ?>">
   	   <?php echo checkbox_tag('job-' . $job->getId(), $job->getId(), 0, array("class" => "job-check")); ?> |
   	   <?php echo $job->getId(); ?>
   	   [tags here]
-  	   <?php echo $job->getDate("Y-m-d") ?>
+  	   <?php echo $job->getDate("Y-m-d") ?> 
+  	   <br/>
   	   <?php echo $job->getEvent(); ?>
   	   <?php  
   	     if($job->getProjectId()){

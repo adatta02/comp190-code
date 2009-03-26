@@ -1,14 +1,21 @@
 <?php use_helper("PMRender"); ?>
 
-<div id="now-viewing" style="font-size: 18px; weight: bold">
-  Viewing <?php echo $showing; ?>
-</div>
+<?php include_component ( "static", "topmenu", array("moveToSkip" => $routeObject) ); ?>
+<?php include_component ( "static", "shortcuts", array("sortByCurrent" => "", "viewingCurrent" => $showing) ); ?>
 
-<div id="jobs-container" style="padding-top: 10px">
+<div id="list-container">
 
-<?php foreach($pager->getResults() as $i): ?>
-  <?php renderJobListView($i); ?>
-<?php endforeach; ?>
+<div id="now-viewing"> Viewing <?php echo $showing; ?> </div>
+
+<?php 
+$count = 1;
+foreach($pager->getResults() as $i){
+  renderJobListView($i, (($count % 2 == 0) ? "1" : "2"));
+  $count += 1;
+} 
+?>
+
+<div class="clear"></div>
 
 <?php include_component("static", 
                         "propelPager", 
@@ -23,14 +30,6 @@
 
 $(document).ready( 
   function(){
-  
-    // remove whatever status we are currently viewing
-    var opts = $("#move-to").children();
-    for(var i=0; i < opts.length; i++){
-      if(opts[i].textContent == "<?php echo $showing ?>"){
-        $(opts[i]).remove();
-      }
-    }
     
     // when you toggle the move-to go ahead and move the jobs
     $("#move-to").change( 
