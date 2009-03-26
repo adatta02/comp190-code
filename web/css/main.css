@@ -76,10 +76,15 @@ body{
   clear: both;	
 }
 
+#ajax-loading{
+  display: none;
+}
+
 #top-menu{
   padding-top: 40px;
   color: white;
   font-weight: bold;
+  font-size: 14px;
 }
 
 #left-top-menu{
@@ -119,9 +124,22 @@ body{
 }
 
 #now-viewing{
-	font-size: 22px; 
+	font-size: 26px; 
 	weight: bold;
 	padding-bottom: 20px;
+}
+
+#top-search{
+	float:right; 
+}
+
+#move-menu{
+	float:left;
+	padding-left: 200px;
+}
+
+#project-menu, #tag-menu, #check-menu{
+	padding-top: 5px;
 }
 
 #project-menu{
@@ -135,8 +153,18 @@ body{
 }
 
 #check-menu{
-	padding-left: 180px;
-	padding-top: 5px;
+	float: left;
+	padding-left: 200px;
+}
+
+#sort-by-sub{
+  padding-bottom: 5px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.img_link{
+  border: 0px none;	
 }
 
 .job-list-item-1, .job-list-item-2 {

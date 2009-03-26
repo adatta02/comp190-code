@@ -5,27 +5,30 @@
 
 		<div id="top-menu-one">
 		  <div id="top-menu-container">
-			  <div id="move-menu" style="float:left">
-			    Move to: <?php echo select_tag("move-to", $options); ?>
+			  <div id="move-menu">
+			    Move to: <?php echo select_tag("move-to", options_for_select($options, "")); ?>
 			  </div>
 			  
-			  <div id="project-menu">
-			    [+] Project
-			  </div>
-			  
-			  <div id="tag-menu">
-			    [+] Tag
-			  </div>
-			  
-			  <div id="top-search" style="float:left; padding-left: 80px">
+			  <div id="top-search">
 			      <?php echo input_tag("search-box"); ?> <?php echo submit_tag("Search"); ?>
 			  </div>
 			  
 			  <div style="clear:both"></div>
 			  
 			  <div id="check-menu">
-			    Select: All None Toggle
+			    Select: <a href="#" onclick="return toggle(ProjectManager.ALL); return false;">All</a> 
+			             * <a href="#" onclick="return toggle(ProjectManager.NONE);">None</a> 
+			             * <a href="#" onclick="return toggle(ProjectManager.TOGGLE)">Toggle</a>
 			  </div>
+			  
+			  <div id="project-menu">
+          [+] Project
+        </div>
+        
+        <div id="tag-menu">
+          [+] Tag
+        </div>
+			  
 		  </div>
 		</div>
 		

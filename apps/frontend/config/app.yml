@@ -18,3 +18,4 @@ all:
     client: 2
     photographer: 3
     user: 4
+  items_per_page: 20

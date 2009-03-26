@@ -27,6 +27,9 @@ job_list_by:
   param: { module: job, action: list }
   options: { model: Status, type: object }
   requirements: {slug: \w+ }
+job_move:
+  url: /job/move
+  param: { module: job, action: move }
 
 ################################################
 # misc login and redirect routes

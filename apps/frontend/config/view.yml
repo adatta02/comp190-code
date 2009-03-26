@@ -11,7 +11,7 @@ default:
 
   stylesheets:    [main.css, ui.all.css]
 
-  javascripts:    [jquery.js, jquery-ui.js]
+  javascripts:    [jquery.js, jquery-ui.js, main.js, jquery.json-1.3.min.js]
 
   has_layout:     on
   layout:         layout

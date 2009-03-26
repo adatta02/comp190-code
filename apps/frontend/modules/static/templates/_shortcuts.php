@@ -1,6 +1,10 @@
 <div id="menu">
 	<div id="sort-by">
-	Sort By: <?php echo select_tag("sort-by", $sortBy); ?>
+	 <div id="sort-by-sub">
+	   Sort By: 
+	  <a href="javascript:invertSort()"><?php echo image_tag("arrow_rotate_clockwise.png", array("class" => "img_link")); ?></a>
+	 </div>
+	 <?php echo select_tag("sort-by-options", options_for_select($sortBy, $sortedBy)); ?>
 	</div>
 	
 	<h3>Shortcuts</h3>

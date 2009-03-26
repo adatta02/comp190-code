@@ -4,10 +4,7 @@ class staticComponents extends sfComponents
 	public function executeShortcuts()
 	{
 		$this->states = StatusPeer::doSelect(new Criteria());
-		$this->sortBy = array(  JobPeer::ID => "Job Id",
-		                        JobPeer::DATE => "Date", 
-		                        JobPeer::EVENT => "Event Name", 
-		                     );
+		$this->sortBy = JobPeer::$LIST_VIEW_SORTABLE;
 	}
 	
 	public function executePager(){
@@ -21,7 +18,7 @@ class staticComponents extends sfComponents
 	public function executeTopmenu(){
 				
 		$options = StatusPeer::doSelect(new Criteria());
-		$this->options = array();
+		$this->options = array("-1" => "");
 		
 		foreach($options as $i){
 			

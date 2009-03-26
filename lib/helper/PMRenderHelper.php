@@ -8,7 +8,7 @@
   	   <?php echo checkbox_tag('job-' . $job->getId(), $job->getId(), 0, array("class" => "job-check")); ?> |
   	   <?php echo $job->getId(); ?>
   	   [tags here]
-  	   <?php echo $job->getDate("Y-m-d") ?> 
+  	   <?php echo $job->getDate("m/d/Y") ?> 
   	   <br/>
   	   <?php echo $job->getEvent(); ?>
   	   <?php  

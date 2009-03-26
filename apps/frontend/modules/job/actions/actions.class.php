@@ -11,6 +11,61 @@
 class jobActions extends sfActions
 {
   
+	private function createPager($stateId){
+		$this->page = $this->getRequest()->getParameter("page");
+    $this->sortedBy = $this->getRequest()->getParameter("sortBy");
+		$this->invert = $this->getRequest()->getParameter("invert");
+    
+	  if(is_null($this->invert) || $this->invert == "false"){
+      $this->invert = false;
+    }
+		
+	  if(is_null($this->sortedBy)){
+      $this->sortedBy = JobPeer::DATE;
+    }
+		
+    if(!is_numeric($this->page))
+      $this->page = 1;
+    
+    $c = new Criteria();
+    $c->add(JobPeer::STATUS_ID, $stateId);
+    
+    if($this->invert){
+    	$c->addDescendingOrderByColumn($this->sortedBy);
+    }else{
+    	$c->addAscendingOrderByColumn($this->sortedBy);
+    }
+    
+    // if this user is only a client 
+    // make sure they can only see their jobs
+    
+    $this->pager = new sfPropelPager ( "Job", sfConfig::get("app_items_per_page") );
+    $this->pager->setCriteria ( $c );
+    $this->pager->setPage ( $this->page );
+    $this->pager->init ();
+	}
+	
+  public function executeMove(sfWebRequest $request){
+    
+    $obj = json_decode($request->getParameter("obj"), true);
+  	$jobs = $obj["jobs"];
+    $toState = $obj["state"];
+    $viewState = $obj["render"];
+    
+    if($toState < 1)
+      return;
+    
+    $c1 = new Criteria();
+    $c2 = new Criteria();
+    $c1->add(JobPeer::ID, $jobs, Criteria::IN);
+    $c2->add(JobPeer::STATUS_ID, $toState);
+    BasePeer::doUpdate($c1, $c2, Propel::getConnection());
+    
+    $this->routeObject = StatusPeer::retrieveByPK($viewState);
+    $this->createPager($viewState);
+    $this->setTemplate("reload");
+  }
+	
 	/**
 	 * The default landing for project manager.
 	 * Lists all the active jobs.
@@ -18,8 +73,6 @@ class jobActions extends sfActions
 	 * @param sfWebRequest $request
 	 */
 	public function executeList(sfWebRequest $request){
-		
-		$this->page = $request->getParameter("page");
 		
 		if(!method_exists($this->getRoute(), "getObject")){
 			$c = new Criteria();
@@ -29,21 +82,23 @@ class jobActions extends sfActions
 			$showType = $this->getRoute()->getObject();
 		}
 		
-		$this->showing = $showType->getState();
+		$this->routeObject = $showType;
+		$this->createPager($showType->getId());
 		
-		$c = new Criteria();
-		$c->add(JobPeer::STATUS_ID, $showType->getId());
-		$c->addAscendingOrderByColumn(JobPeer::DATE);
+		$sortUrls = array();
 		
-		// if this user is only a client 
-		// make sure they can only see their jobs
+		foreach(JobPeer::$LIST_VIEW_SORTABLE as $key => $val){
+		  $sortUrls[$key]["true"] = $this->generateUrl("job_list_by", 
+                                           array("state" => $this->routeObject, 
+                                                 "sortBy" => $key,
+                                                 "invert" => "true"));
+      $sortUrls[$key]["false"] = $this->generateUrl("job_list_by", 
+                                           array("state" => $this->routeObject, 
+                                                 "sortBy" => $key,
+                                                 "invert" => "false"));	
+		}
 		
-		$this->pager = new sfPropelPager ( "Job", 20 );
-    $this->pager->setCriteria ( $c );
-    $this->pager->setPage ( $this->page );
-    $this->pager->init ();
-		
-    $this->routeObject = $showType;
+		$this->sortUrlJson = json_encode($sortUrls);
 	}
 	
 	/**
