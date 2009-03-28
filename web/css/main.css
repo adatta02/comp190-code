@@ -127,18 +127,20 @@ body{
 	font-size: 26px; 
 	weight: bold;
 	padding-bottom: 20px;
+        text-align: center; 
 }
 
 #top-search{
 	float:right; 
+	margin-top:15px;
 }
 
 #move-menu{
 	float:left;
-	padding-left: 200px;
+	padding-left: 150px;
 }
 
-#project-menu, #tag-menu, #check-menu{
+#project-menu, #tag-menu{
 	padding-top: 5px;
 }
 
@@ -149,12 +151,12 @@ body{
 
 #tag-menu{
 	float:left; 
-	padding-left: 70px;
+	padding-left: 50px;
 }
 
 #check-menu{
 	float: left;
-	padding-left: 200px;
+	padding-left: 250px;
 }
 
 #sort-by-sub{
@@ -182,8 +184,8 @@ body{
 	background-color: #DDDDDD;
 }
 
-.names{
-  color: #8BB2D1;
+#job-table{;
+  width:100%;
 }
 
 

@@ -8,7 +8,16 @@
 			  <div id="move-menu">
 			    Move to: <?php echo select_tag("move-to", options_for_select($options, "")); ?>
 			  </div>
+
+			  <div id="tag-menu">
+          		      [+] Tag
+        		   </div>
+
+			   <div id="project-menu">
+                              [+] Project
+                           </div>
 			  
+
 			  <div id="top-search">
 			      <?php echo input_tag("search-box"); ?> <?php echo submit_tag("Search"); ?>
 			  </div>
@@ -21,13 +30,6 @@
 			             * <a href="#" onclick="return toggle(ProjectManager.TOGGLE)">Toggle</a>
 			  </div>
 			  
-			  <div id="project-menu">
-          [+] Project
-        </div>
-        
-        <div id="tag-menu">
-          [+] Tag
-        </div>
 			  
 		  </div>
 		</div>
