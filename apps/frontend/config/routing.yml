@@ -2,7 +2,7 @@
 # projects
 ################################################
 project_view:
-  url: /project/view/:name
+  url: /project/view/:slug
   class:    sfPropelRoute
   param: { module: project, action: view }
   options: { model: Project, type: object }
@@ -18,6 +18,12 @@ job_create:
 job_success:
   url: /job/success
   param: { module: job, action: success }
+job_show:
+  url: /job/show/:slug
+  class:    sfPropelRoute
+  param: { module: job, action: show }
+  options: { model: Job, type: object }
+  requirements: {slug: \w+ }
 job_list:
   url: /job/list/Pending
   param: { module: job, action: list }

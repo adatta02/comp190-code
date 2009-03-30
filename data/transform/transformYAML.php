@@ -38,13 +38,13 @@ class Jm2Transform{
 		$count = 1;
 		
 		foreach($arr as $i){
-			$user = new SfGuardUser();
+			$user = new sfGuardUser();
 			$user->setUsername($i["email"]);
 			$user->setPassword("admin");
 			$user->setAlgorithm("sha1");
       $user->save();
 			
-      $profile = new SfGuardUserProfile();
+      $profile = new sfGuardUserProfile();
       $profile->setUserId($user->getId());
       $profile->setUserTypeId(3);
       $profile->save();
@@ -118,7 +118,6 @@ class Jm2Transform{
   		$notes = "";
   		$photog = 0;
   		
-  		
   		$childNodes = $job->childNodes;
   		
   		foreach($childNodes as $child){
@@ -171,27 +170,28 @@ class Jm2Transform{
   		$j->setStartTime($j->getDate() . " " . $startTime);
   		
   		if(isset($this->jobProjectKeys[$jid])){
-  		  $j->setProjectId($this->jobProjectKeys[$jid]);	
+  		  $j->setProjectId($this->projectKeys[$this->jobProjectKeys[$jid]]);
   		}
   		
   		try{
   		  $j->save();
   		}catch(Exception $ex){
+  			echo $ex->getMessage();
   			$j->setProjectId(NULL);
   			$j->save();
   		}
   		
+  		$this->jobKeys[$jid] = $j->getId();
+  		
+  	  if($photog){
+        $jp = new JobPhotographer();
+        $jp->setPhotographerId( $this->photogKeys[$photog] );
+        $jp->setJobId($j->getId());
+        try{ $jp->save(); } catch(Exception $ex){ echo $ex->getMessage(); }
+      }
+  		
   		$del->setJobId($j->getId());
   		$del->save();
-  		
-  		$this->jobKeys[$jid] = $j->getId();
-  	
-  		if($photog){
-  			$jp = new JobPhotographer();
-  			$jp->setPhotographerId( $this->photogKeys[$photog] );
-  			$jp->setJobId($j->setId());
-  			try{ $jp->save(); } catch(Exception $ex){ }
-  		}
   		
   	  $count += 1;
   	}

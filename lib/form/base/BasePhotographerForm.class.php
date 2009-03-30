@@ -21,6 +21,7 @@ class BasePhotographerForm extends BaseFormPropel
       'affiliation' => new sfWidgetFormInput(),
       'website'     => new sfWidgetFormInput(),
       'description' => new sfWidgetFormTextarea(),
+      'slug'        => new sfWidgetFormInput(),
     ));
 
     $this->setValidators(array(
@@ -32,6 +33,7 @@ class BasePhotographerForm extends BaseFormPropel
       'affiliation' => new sfValidatorString(array('max_length' => 64, 'required' => false)),
       'website'     => new sfValidatorString(array('max_length' => 64, 'required' => false)),
       'description' => new sfValidatorString(array('required' => false)),
+      'slug'        => new sfValidatorString(array('max_length' => 255, 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('photographer[%s]');

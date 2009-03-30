@@ -4,6 +4,7 @@
     <column name="id" type="INTEGER" primaryKey="true" required="true" autoIncrement="true"/>
     <column name="name" type="VARCHAR" size="45"/>
     <column name="status_id" type="INTEGER"/>
+    <column name="slug" type="VARCHAR" size="255"/>
     <foreign-key name="fk_project_status" foreignTable="status">
       <reference local="status_id" foreign="id"/>
     </foreign-key>
@@ -44,6 +45,7 @@
     <column name="dept_id" type="VARCHAR" size="32"/>
     <column name="grant_id" type="VARCHAR" size="32"/>
     <column name="other" type="VARCHAR" size="255"/>
+    <column name="slug" type="VARCHAR" size="255"/>
     <foreign-key name="fk_Shoot_Publication" foreignTable="publication">
       <reference local="publication_id" foreign="id"/>
     </foreign-key>
@@ -70,6 +72,7 @@
     <column name="affiliation" type="VARCHAR" size="64"/>
     <column name="website" type="VARCHAR" size="64"/>
     <column name="description" type="LONGVARCHAR"/>
+    <column name="slug" type="VARCHAR" size="255"/>
     <foreign-key name="fk_Photographer_User" foreignTable="sf_guard_user_profile">
       <reference local="user_id" foreign="id"/>
     </foreign-key>
@@ -82,6 +85,7 @@
     <column name="address" type="VARCHAR" size="255"/>
     <column name="email" type="VARCHAR" size="255"/>
     <column name="phone" type="VARCHAR" size="32"/>
+    <column name="slug" type="VARCHAR" size="255"/>
     <foreign-key name="fk_Client_User" foreignTable="sf_guard_user_profile">
       <reference local="user_id" foreign="id"/>
     </foreign-key>

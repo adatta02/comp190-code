@@ -45,6 +45,10 @@ class jobActions extends sfActions
     $this->pager->init ();
 	}
 	
+	public function executeShow(sfWebRequest $request){
+		$this->job = $this->getRoute()->getObject();
+	}
+	
   public function executeMove(sfWebRequest $request){
     
     $obj = json_decode($request->getParameter("obj"), true);

@@ -1,5 +1,6 @@
 body{
  font-family: Helvetica;
+ font-size: 14px;
 }
 
 #login-container{
@@ -65,7 +66,7 @@ body{
   height: 100%;
 }
 
-#list-container{
+#list-container, #content-container{
   padding-left: 20px;
   padding-top: 20px;
   float: left;
@@ -126,21 +127,19 @@ body{
 #now-viewing{
 	font-size: 26px; 
 	weight: bold;
-	padding-bottom: 20px;
-        text-align: center; 
+	padding-bottom: 10px;
 }
 
 #top-search{
 	float:right; 
-	margin-top:15px;
 }
 
 #move-menu{
 	float:left;
-	padding-left: 150px;
+	padding-left: 200px;
 }
 
-#project-menu, #tag-menu{
+#project-menu, #tag-menu, #check-menu{
 	padding-top: 5px;
 }
 
@@ -151,7 +150,7 @@ body{
 
 #tag-menu{
 	float:left; 
-	padding-left: 50px;
+	padding-left: 70px;
 }
 
 #check-menu{
@@ -163,6 +162,33 @@ body{
   padding-bottom: 5px;
   font-size: 14px;
   font-weight: bold;
+}
+
+#job-map{
+  padding-top: 10px;
+  padding-bottom: 10px;	
+}
+
+.shoot-datetime{
+	font-size: 14px;
+	font-weight: bold;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	color: red;
+}
+
+.info-header{
+	font-size: 18px;
+	font-weight: bold;
+	padding-top: 15px;
+}
+
+.info-header-small{
+	font-size: 14px;
+	font-weight: bold;
+	color: #aaaaaa;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .img_link{
@@ -184,10 +210,13 @@ body{
 	background-color: #DDDDDD;
 }
 
+.names{
+  color: #8BB2D1;
+}
+
 #job-table{;
   width:100%;
 }
-
 
 .job-list-item{
 }

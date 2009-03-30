@@ -1,0 +1,32 @@
+Status:
+  Status_1:
+    state: Pending
+  Status_2:
+    state: Accepted
+  Status_3:
+    state: Completed
+  Status_4:
+    state: Delivered
+  Status_5:
+    state: Invoiced
+  Status_6:
+    state: Paid
+  Status_7:
+    state: Archived
+sfGuardPermission:
+  sfGuardPermission_1:
+    name: admin
+    description: 'Administrator permission'
+UserType:
+  UserType_1:
+    type: admin
+    permissions: '1111'
+  UserType_2:
+    type: client
+    permissions: '101'
+  UserType_3:
+    type: photographer
+    permissions: '0'
+  UserType_4:
+    type: user
+    permissions: '1'
