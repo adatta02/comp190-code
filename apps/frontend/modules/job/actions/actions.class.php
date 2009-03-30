@@ -70,6 +70,45 @@ class jobActions extends sfActions
     $this->setTemplate("reload");
   }
 	
+  public function executeRemoveTag(sfWebRequest $request){
+    $obj = json_decode($request->getParameter("obj"), true);
+    
+    $jobId = $obj["jobId"];
+    $tagVal = $obj["tagVal"];
+    $viewState = $obj["render"];
+    
+    $job = JobPeer::retrieveByPK($jobId);
+    if(!is_null($job)){
+    	$job->removeTag($tagVal);
+    	$job->save();
+    }
+    
+    $this->routeObject = StatusPeer::retrieveByPK($viewState);
+    $this->createPager($viewState);
+    $this->setTemplate("reload");
+  }
+  
+  public function executeAddTag(sfWebRequest $request){
+  	$obj = json_decode($request->getParameter("obj"), true);
+    
+  	$jobs = $obj["jobs"];
+    $tags = $obj["tags"];
+    $viewState = $obj["render"];
+    
+    $c = new Criteria();
+    $c->add(JobPeer::ID, $jobs, Criteria::IN);
+    $jobs = JobPeer::doSelect($c);
+    
+    foreach($jobs as $j){
+    	$j->addTag($tags);
+    	$j->save();
+    }
+    
+    $this->routeObject = StatusPeer::retrieveByPK($viewState);
+    $this->createPager($viewState);
+    $this->setTemplate("reload");
+  }
+  
 	/**
 	 * The default landing for project manager.
 	 * Lists all the active jobs.

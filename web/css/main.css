@@ -139,8 +139,33 @@ body{
 	padding-left: 200px;
 }
 
+.plus-img, .delete-img{
+  position: relative;
+  top: 3px;
+  border: none;
+}
+
+#job-tag{
+	
+}
+
 #project-menu, #tag-menu, #check-menu{
+	vertical-align: center;
+}
+
+#project-menu a, #tag-menu a {
+	color: white;
+	text-decoration: none;
+}
+
+#check-menu{
 	padding-top: 5px;
+}
+
+#add-tag-menu{
+	padding-left: 20px;
+	float: left;
+	display: none;
 }
 
 #project-menu{
@@ -155,7 +180,7 @@ body{
 
 #check-menu{
 	float: left;
-	padding-left: 250px;
+	padding-left: 200px;
 }
 
 #sort-by-sub{

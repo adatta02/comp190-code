@@ -1,4 +1,5 @@
 <?php use_helper("Form"); ?>
+<?php use_helper("JavascriptBase"); ?>
 
 <div id="top-menu">
     <div id="left-top-menu"></div>
@@ -10,12 +11,14 @@
 			  </div>
 
 			  <div id="tag-menu">
-          		      [+] Tag
-        		   </div>
+          <a href="#" onclick="javascript:$('#add-tag-menu').toggle()">
+            <?php echo image_tag("add.png", array("class" => "plus-img")); ?> Tag
+          </a>
+        </div>
 
 			   <div id="project-menu">
-                              [+] Project
-                           </div>
+          <?php echo image_tag("add.png", array("class" => "plus-img")); ?> Project
+         </div>
 			  
 
 			  <div id="top-search">
@@ -30,6 +33,10 @@
 			             * <a href="#" onclick="return toggle(ProjectManager.TOGGLE)">Toggle</a>
 			  </div>
 			  
+			  <div id="add-tag-menu">
+			   <?php echo input_tag("add-tag"); ?> 
+			   <?php echo button_to_function("Add", "addJobTag()"); ?>
+			  </div>
 			  
 		  </div>
 		</div>
