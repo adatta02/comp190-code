@@ -21,6 +21,7 @@
                      <?php echo checkbox_tag('job-' . $job->getId(), $job->getId(), 0, array("class" => "job-check")); ?> 
 		   </td>
 		   <td> Job  <?php echo $job->getId(); ?> </td>
+		   <td> <?php echo $job->getEvent(); ?> </td>
 		   <td>
                     <?php
             	       if($job->getProjectId()){
@@ -30,8 +31,7 @@
              		}
                      ?>
 		   </td>
-		   <td> <?php echo $job->getEvent(); ?> </td>
-               </tr>
+	       </tr>
 	       <tr>
 		   <td> <?php echo $job->getDate("F d, Y") . " " .  $sTime . " - " . $eTime ?> </td> 
 		   <td>Tags: [tags here]</td>

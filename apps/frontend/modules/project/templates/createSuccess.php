@@ -5,17 +5,23 @@
 
 <?php echo form_tag_for($form, '@project') ?>
   <div>
+  <h4>Client</h4>
+  <h4>Shoot</h4>
     <h3><?php echo $form->renderGlobalErrors(); ?></h3>
+    <?php echo $form["publication_id"]->renderRow(); ?> <br/>
     <?php echo $form["event"]->renderRow(); ?> <br/>
+    <?php echo $form["project_id"]->renderRow(); ?> <br/><br/>
+    <?php echo $form["date"]->renderRow(); ?> <br/>
     <?php echo $form["start_time"]->renderRow(); ?> <br/>
     <?php echo $form["end_time"]->renderRow(); ?> <br/>
-    <?php echo $form["due_date"]->renderRow(); ?> <br/>
-    <?php echo $form["publication_id"]->renderRow(); ?> <br/>
-    <?php echo $form["project_id"]->renderRow(); ?> <br/>
     <?php echo $form["street"]->renderRow(); ?> <br/>
     <?php echo $form["city"]->renderRow(); ?> [10 digits - 551-666-0968]<br/>
     <?php echo $form["state"]->renderRow(); ?> <br/>
     <?php echo $form["zip"]->renderRow(); ?> <br/>
+    <?php echo $form["due_date"]->renderRow(); ?> <br/>
+    <?php echo $form["notes"]->renderRow(); ?> <br/><br/>
+
+<h4>Shoot Contact</h4>
     <?php echo $form["contact_name"]->renderRow(); ?> <br/>
     <?php echo $form["contact_email"]->renderRow(); ?> <br/>
     <?php echo $form["contact_phone"]->renderRow(); ?> <br/>
