@@ -36,6 +36,12 @@ job_list_by:
 job_move:
   url: /job/move
   param: { module: job, action: move }
+job_add_tag:
+  url: /job/tag
+  param: { module: job, action: addTag }
+job_remove_tag:
+  url: /job/tag/delete
+  param: { module: job, action: removeTag }
 
 ################################################
 # misc login and redirect routes

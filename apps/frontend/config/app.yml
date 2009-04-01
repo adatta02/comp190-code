@@ -3,6 +3,7 @@ all:
   sf_guard_plugin:
     check_password_callable: [LDAPAuth, checkLDAPPassword]
     success_signin_url: @welcome_loggedin
+  ldap_server: ldaps://ldap.tufts.edu/
   job_status:
     pending: 1
     accepted: 2

@@ -57,3 +57,4 @@ sfPropelBehavior::add('Job',
                       array('sfPropelActAsSluggableBehavior' => 
                         array('columns' => $columns_map, 
                                 'separator' => '_', 'permanent' => true)));
+sfPropelBehavior::add('Job', array('sfPropelActAsTaggableBehavior'));

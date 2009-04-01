@@ -18,6 +18,35 @@ var currentKey = "<?php echo $sortedBy; ?>";
 var isInverted = <?php echo ($invert ? 1 : 0) ?>;
 var item2OldColor, item1OldColor;
 
+function removeJobTag(jobId, tagVal){
+  var obj = new Object();
+  obj.jobId = jobId;
+  obj.tagVal = tagVal;
+  obj.render = <?php echo $routeObject->getId ()?>;
+  
+  $("#ajax-loading").attr("style", "display:inline");
+  $("#list-container").load("<?php echo url_for ( "job_remove_tag" );?>", 
+                              {obj: $.toJSON(obj)},
+                              function(){ $("#ajax-loading").attr("style", "display:none"); });
+}
+
+function addJobTag(){
+
+  var jobs = new Array();
+  $(".job-check:checked").each( function(){ jobs.push( $(this).val() ); });
+  
+  var obj = new Object();
+  obj.render = <?php echo $routeObject->getId ()?>;
+  obj.jobs = jobs;
+  obj.tags = $("#add-tag").val();
+  
+  $('#add-tag-menu').hide();
+  
+  $("#ajax-loading").attr("style", "display:inline");
+  $("#list-container").load("<?php echo url_for ( "job_add_tag" );?>", 
+                              {obj: $.toJSON(obj)},
+                              function(){ $("#ajax-loading").attr("style", "display:none"); });
+}
 
 function invertSort(){
   var key;
