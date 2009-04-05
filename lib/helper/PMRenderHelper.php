@@ -48,9 +48,11 @@
 		   <td> <?php echo $job->getDate("F d, Y") . " " .  $sTime . " - " . $eTime ?> </td> 
 		   <td>Tags: <?php renderTagList($job); ?></td>
 		    <td align="center">
-		     <?php if($job->getProjectId()): ?>
-			   <img src="../../web/css/images/header_left.jpg" />
-			   <?php endif; ?>
+		     <?php if($job->getPhotographers()): 
+		     	   foreach($job->getPhotographers() as $i){
+			     echo $i->getName();  
+			   }
+			   endif; ?>
 		   </td>
    	   	</tr>
 	     </table></div>

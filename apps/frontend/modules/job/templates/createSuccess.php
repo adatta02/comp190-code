@@ -5,25 +5,39 @@
  
 <?php echo form_tag_for($form, '@job') ?>
   <div>
-<h4> Shoot </h4>
-    <h3><?php echo $form->renderGlobalErrors(); ?></h3>
-    <?php echo $form["publication_id"]->renderRow(); ?> <br/>
-    <?php echo $form["event"]->renderRow(); ?> <br/>
-    <?php echo $form["project_id"]->renderRow(); ?> <br/><br/>
+<h3><?php echo $form->renderGlobalErrors(); ?></h3>
+<h3>Client</h3>
+   <table>
+      <tr>-----Merge Client Form here ------</tr>
+    <tr><?php echo $form["acct_num"]->renderRow(); ?> </tr>
+    <tr><?php echo $form["dept_id"]->renderRow(); ?> </tr>
+  </table>
+<h3> Shoot </h3>
+<table>
+    <tr><?php echo $form["publication_id"]->renderRow(); ?> </tr>
+    <tr><?php echo $form["event"]->renderRow(); ?> </tr>
+    <tr><?php echo $form["project_id"]->renderRow(); ?> </tr>
 
-    <?php echo $form["start_time"]->renderRow(); ?> <br/>
-    <?php echo $form["end_time"]->renderRow(); ?> <br/>
-    <?php echo $form["street"]->renderRow(); ?> <br/>
-    <?php echo $form["city"]->renderRow(); ?> [10 digits - 551-666-0968]<br/>
-    <?php echo $form["state"]->renderRow(); ?> <br/>
-    <?php echo $form["zip"]->renderRow(); ?> <br/><br/>
-
-    <?php echo $form["due_date"]->renderRow(); ?> <br/>
+    <tr><?php echo $form["date"]->renderRow(); ?> </tr>
+    <tr><td><?php echo $form["start_time"]->renderRow(); ?> </td>
+    <td><?php echo $form["end_time"]->renderRow(); ?> </td></tr>
  
-<h4>Shoot Contact </h4>
-    <?php echo $form["contact_name"]->renderRow(); ?> <br/>
-    <?php echo $form["contact_email"]->renderRow(); ?> <br/>
-    <?php echo $form["contact_phone"]->renderRow(); ?> <br/>
+    <tr><?php echo $form["street"]->renderRow(); ?> </tr>
+    <tr><?php echo $form["city"]->renderRow(); ?></tr>
+    <tr><td><?php echo $form["state"]->renderRow(); ?> </td>
+    <td><?php echo $form["zip"]->renderRow(); ?> </td></tr>
+
+    <tr><?php echo $form["due_date"]->renderRow(); ?> </tr>
+    <tr><?php echo $form["notes"]->renderRow(); ?> </tr>
+</table>
+ 
+<h3>Shoot Contact </h3>
+<table>
+    <tr><?php echo $form["contact_name"]->renderRow(); ?> </tr>
+    <tr><?php echo $form["contact_email"]->renderRow(); ?> </tr>
+    <tr><?php echo $form["contact_phone"]->renderRow(); ?> </tr>
+</table>
+<br/>
     <input type="submit" value="submit" />
     <?php echo $form->renderHiddenFields(); ?>
   </div>
