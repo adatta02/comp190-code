@@ -11,30 +11,57 @@
 class jobActions extends sfActions
 {
   
-	private function createPager($stateId){
+	private function createPager($stateId = null){
 		$this->page = $this->getRequest()->getParameter("page");
     $this->sortedBy = $this->getRequest()->getParameter("sortBy");
 		$this->invert = $this->getRequest()->getParameter("invert");
     
-	  if(is_null($this->invert) || $this->invert == "false"){
-      $this->invert = false;
+		if(is_null($stateId)){
+		  $obj = json_decode($this->getRequest()->getParameter("obj"), true);
+      $stateId = $obj["render"];
+      $tagId = $obj["tagId"];
+      $projectId = $obj["projectId"];
+		}
+		
+		$c = new Criteria();
+	  
+		if($stateId > 0){
+      $c->add(JobPeer::STATUS_ID, $stateId);
+      $this->routeObject = StatusPeer::retrieveByPK($stateId);
+      $this->route = "job_list_by";
+      $this->propelType = "state";
+      $this->renderStatus = false;
+		} else if($tagId > 0){ 
+			$this->routeObject = TagPeer::retrieveByPK($tagId);
+			$ids = TaggingPeer::getJobIdsByTag($this->routeObject);
+      $c->add(JobPeer::ID, $ids, Criteria::IN);
+      
+      $this->route = "job_listby_tag";
+      $this->propelType = "tag";
+      $this->renderStatus = true;
+    } else if($projectId > 0){
+    	$c->add(JobPeer::PROJECT_ID, $projectId);
+    	$this->routeObject = ProjectPeer::retrieveByPK($projectId);
+      $this->route = "project_view";
+      $this->propelType = "project";
+      $this->renderStatus = true;
+    }else{
+    	$this->forward404("Something went wrong...");
     }
 		
 	  if(is_null($this->sortedBy)){
       $this->sortedBy = JobPeer::DATE;
     }
+		if(is_null($this->invert) || $this->invert == "false"){
+			$this->invert = false;
+      $c->addAscendingOrderByColumn($this->sortedBy);
+    }else{
+    	$c->addDescendingOrderByColumn($this->sortedBy);
+    	$this->invert = true;
+    }
 		
     if(!is_numeric($this->page))
       $this->page = 1;
-    
-    $c = new Criteria();
-    $c->add(JobPeer::STATUS_ID, $stateId);
-    
-    if($this->invert){
-    	$c->addDescendingOrderByColumn($this->sortedBy);
-    }else{
-    	$c->addAscendingOrderByColumn($this->sortedBy);
-    }
     
     // if this user is only a client 
     // make sure they can only see their jobs
@@ -65,8 +92,7 @@ class jobActions extends sfActions
     $c2->add(JobPeer::STATUS_ID, $toState);
     BasePeer::doUpdate($c1, $c2, Propel::getConnection());
     
-    $this->routeObject = StatusPeer::retrieveByPK($viewState);
-    $this->createPager($viewState);
+    $this->createPager();
     $this->setTemplate("reload");
   }
 	
@@ -83,8 +109,7 @@ class jobActions extends sfActions
     	$job->save();
     }
     
-    $this->routeObject = StatusPeer::retrieveByPK($viewState);
-    $this->createPager($viewState);
+    $this->createPager();
     $this->setTemplate("reload");
   }
   
@@ -104,8 +129,7 @@ class jobActions extends sfActions
     	$j->save();
     }
     
-    $this->routeObject = StatusPeer::retrieveByPK($viewState);
-    $this->createPager($viewState);
+    $this->createPager();
     $this->setTemplate("reload");
   }
   

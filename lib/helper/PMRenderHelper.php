@@ -6,14 +6,14 @@
   	$tags = $job->getTags();
   	
   	foreach($tags as $key => $val){
-  		echo "<span class='job-tag'>" . $key . 
+  		echo "<span class='job-tag'>" . link_to($key, "job_listby_tag", array("name" => $key)) . 
   		      " <a onclick='javascript:removeJobTag(\"" . $job->getId() . "\", \"" . $key . "\");' href='#'>" 
   		      . image_tag("delete.png", array("class" => "delete-img")) . "</a></span>";
   	}
   	
   }
 
-  function renderJobListView($job, $classNum){
+  function renderJobListView($job, $classNum, $renderStatus = false){
   	?>
 <div class="job-list-item-<?php echo $classNum ?>">
 	<?php
@@ -47,11 +47,20 @@
 	       <tr>
 		   <td> <?php echo $job->getDate("F d, Y") . " " .  $sTime . " - " . $eTime ?> </td> 
 		   <td>Tags: <?php renderTagList($job); ?></td>
-		    <td align="center">
-		     <?php if($job->getProjectId()): ?>
-			   <img src="../../web/css/images/header_left.jpg" />
-			   <?php endif; ?>
+
+       <?php if($renderStatus): ?>
+          <td align="left">
+          Status:
+          <?php echo $job->getStatus()->getState(); ?>
+          </td>
+       <?php endif; ?>
+       
+		   <?php if($job->getProjectId()): ?>
+		   <td align="center">
+			   <?php echo image_tag("css/header_left.jpg"); ?>
 		   </td>
+      <?php endif; ?>
+      
    	   	</tr>
 	     </table></div>
 <?php 

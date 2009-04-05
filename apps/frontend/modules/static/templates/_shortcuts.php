@@ -2,7 +2,9 @@
 	<div id="sort-by">
 	 <div id="sort-by-sub">
 	   Sort By: 
-	  <a href="javascript:invertSort()"><?php echo image_tag("arrow_rotate_clockwise.png", array("class" => "img_link")); ?></a>
+	  <a href="javascript:invertSort()">
+	   <?php echo image_tag("arrow_rotate_clockwise.png", array("class" => "img_link")); ?>
+	  </a>
 	 </div>
 	 <?php echo select_tag("sort-by-options", options_for_select($sortBy, $sortedBy)); ?>
 	</div>

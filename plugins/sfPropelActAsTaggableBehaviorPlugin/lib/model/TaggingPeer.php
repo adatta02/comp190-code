@@ -9,4 +9,17 @@
  */ 
 class TaggingPeer extends BaseTaggingPeer
 {
+	public static function getJobIdsByTag($tag){
+	  $c = new Criteria();
+    $c->add(TaggingPeer::TAG_ID, $tag->getId());
+    $c->add(TaggingPeer::TAGGABLE_MODEL, "Job");
+    
+    $ids = array();
+    $taggings = TaggingPeer::doSelect($c);
+    foreach($taggings as $t){
+      $ids[] = $t->getTaggableId();
+    }
+    
+    return $ids;
+	}
 }

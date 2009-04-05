@@ -36,13 +36,23 @@ job_list_by:
 job_move:
   url: /job/move
   param: { module: job, action: move }
+  
+  
+################################################
+# tags
+################################################
 job_add_tag:
   url: /job/tag
   param: { module: job, action: addTag }
 job_remove_tag:
   url: /job/tag/delete
   param: { module: job, action: removeTag }
-
+job_listby_tag:
+  url: /tag/list/:name
+  class:    sfPropelRoute
+  param: { module: tag, action: list }
+  options: { model: Tag, type: object }
+  requirements: {name: \w+ }
 ################################################
 # misc login and redirect routes
 ################################################
