@@ -39,7 +39,7 @@
       </tr>
 		  <tr>
 		    <td>Contact</td>
-		    <td><?php echo mail_to($job->getContactEmail(), $job->getContactName()) . " " . $job->getContactEmail(); ?></td>
+		    <td><?php echo mail_to($job->getContactEmail(), $job->getContactName()) . " &lt;" . $job->getContactEmail(); ?>&gt;</td>
 		  </tr>
 		  <tr>
 		    <td>Contact Phone</td>
@@ -53,6 +53,14 @@
                 else
                   echo "None"; 
           ?>
+       </td>
+      </tr>
+      <tr>
+       <td>Tags</td>
+       <td>
+        <?php foreach($job->getTags() as $tag): ?>
+          
+        <? endforeach; ?>
        </td>
       </tr>
 		</table>
