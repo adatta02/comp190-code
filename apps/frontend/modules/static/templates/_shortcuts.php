@@ -1,11 +1,18 @@
 <div id="menu">
+	
+	<?php
+	 $noSort = (isset($noSort) ? $noSort : false);  
+	 if(!$noSort): ?>
 	<div id="sort-by">
 	 <div id="sort-by-sub">
 	   Sort By: 
-	  <a href="javascript:invertSort()"><?php echo image_tag("arrow_rotate_clockwise.png", array("class" => "img_link")); ?></a>
+	  <a href="javascript:invertSort()">
+	   <?php echo image_tag("arrow_rotate_clockwise.png", array("class" => "img_link")); ?>
+	  </a>
 	 </div>
 	 <?php echo select_tag("sort-by-options", options_for_select($sortBy, $sortedBy)); ?>
 	</div>
+	<?php endif; ?>
 	
 	<h3>Shortcuts</h3>
 	<ul id="menu-list">
@@ -17,6 +24,12 @@
 	 <?php endif; ?>
 	 
 	<?php endforeach; ?>
+	</ul>
+	
+	<hr/>
+	
+	<ul id="middle-menu">
+	 <li><?php echo link_to("View Projects", "project_list"); ?></li>
 	</ul>
 	
 	<hr/>

@@ -5,11 +5,16 @@
 </div>
 
 <?php 
+$route = (isset($route) ? $route : "job_list_by");
+$propelType = (isset($propelType) ? $propelType : "state");
+$renderStatus = (isset($renderStatus) ? $renderStatus : false);
+
 $count = 1;
 foreach($pager->getResults() as $i){
-  renderJobListView($i, (($count % 2 == 0) ? "1" : "2"));
+  renderJobListView($i, (($count % 2 == 0) ? "1" : "2"), $renderStatus);
   $count += 1;
-} 
+}
+
 ?>
 
 <div class="clear"></div>
@@ -17,6 +22,6 @@ foreach($pager->getResults() as $i){
 <?php include_component("static", 
                         "propelPager", 
                          array("pager" => $pager, 
-                               "route" => "job_list_by",
-                               "propelType" => "state", 
+                               "route" => $route,
+                               "propelType" => $propelType, 
                                "object" => $object)); ?>

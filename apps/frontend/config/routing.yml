@@ -7,7 +7,15 @@ project_view:
   param: { module: project, action: view }
   options: { model: Project, type: object }
   requirements: {slug: \w+ }
-  
+project_list:
+  url: /project/list
+  param: { module: project, action: list }
+project_create:
+  url: /project/create
+  param: { module: project, action: create }
+project_autocomplete:
+  url: /project/autocomplete
+  param: { module: project, action: autocomplete }
 ################################################
 # jobs
 ################################################
@@ -36,12 +44,48 @@ job_list_by:
 job_move:
   url: /job/move
   param: { module: job, action: move }
+job_addto_project: 
+  url: /job/add/project
+  param: { module: job, action: addProject }
+job_add_client:
+  url: /job/add/client
+  param: { module: job, action: addClient }
+job_remove_client:
+  url: /job/remove/client
+  param: { module: job, action: removeClient }
+job_add_photographer:
+  url: /job/add/photographer
+  param: { module: job, action: addPhotographer }
+job_remove_photographer:
+  url: /job/remove/photographer
+  param: { module: job, action: removePhotographer }
+
+################################################
+# tags
+################################################
 job_add_tag:
   url: /job/tag
   param: { module: job, action: addTag }
 job_remove_tag:
   url: /job/tag/delete
   param: { module: job, action: removeTag }
+job_listby_tag:
+  url: /tag/list/:name
+  class:    sfPropelRoute
+  param: { module: tag, action: list }
+  options: { model: Tag, type: object }
+  requirements: {name: \w+ }
+
+
+tag_autocomplete:
+  url: /tag/autocomplete
+  param: { module: tag, action: autocomplete }
+client_autocomplete:
+  url: /client/autocomplete
+  param: { module: client, action: autocomplete }
+photographer_autocomplete:
+  url: /photographer/autocomplete
+  param: { module: photographer, action: autocomplete }
 
 ################################################
 # misc login and redirect routes

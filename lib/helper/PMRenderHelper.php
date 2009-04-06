@@ -1,19 +1,30 @@
-<?php use_helper("Form"); ?>
+<?php use_helper("Form"); 
 
-<?php
+  function renderProject($project, $classNum){
+  	?>
+  	 <div class="job-list-item-<?php echo $classNum ?>">
+  	   <table class="job-table" width="100%">
+  	     <tr><td>
+  	       <?php echo link_to($project->getName(), "project_view", $project); ?>
+  	     </td></tr>
+  	     <tr><td>Contains <?php echo $project->getNumberOfJobs(); ?> jobs</td></tr>
+  	   </table>
+  	 </div>
+  	<?php
+  }
 
   function renderTagList($job){
   	$tags = $job->getTags();
   	
   	foreach($tags as $key => $val){
-  		echo "<span class='job-tag'>" . $key . 
+  		echo "<span class='job-tag'>" . link_to($key, "job_listby_tag", array("name" => $key)) . 
   		      " <a onclick='javascript:removeJobTag(\"" . $job->getId() . "\", \"" . $key . "\");' href='#'>" 
   		      . image_tag("delete.png", array("class" => "delete-img")) . "</a></span>";
   	}
   	
   }
 
-  function renderJobListView($job, $classNum){
+  function renderJobListView($job, $classNum, $renderStatus = false){
   	?>
 <div class="job-list-item-<?php echo $classNum ?>">
 	<?php
@@ -22,7 +33,7 @@
 	      $sTime = substr($sTime, -8, 5);
 	      $eTime = substr($eTime, -8, 5);
 	   ?>
-	<table id="job-table" width="100%">
+	<table class="job-table" width="100%">
 	     <col width="4%"></col>
 	     <col width="30%"></col> 
 	     <col width="33%"></col>
@@ -47,13 +58,20 @@
 	       <tr>
 		   <td> <?php echo $job->getDate("F d, Y") . " " .  $sTime . " - " . $eTime ?> </td> 
 		   <td>Tags: <?php renderTagList($job); ?></td>
-		    <td align="center">
-		     <?php if($job->getPhotographers()): 
-		     	   foreach($job->getPhotographers() as $i){
-			     echo $i->getName();  
-			   }
-			   endif; ?>
+
+       <?php if($renderStatus): ?>
+          <td align="left">
+          Status:
+          <?php echo $job->getStatus()->getState(); ?>
+          </td>
+       <?php endif; ?>
+       
+		   <?php if($job->getProjectId()): ?>
+		   <td align="center">
+			   <?php echo image_tag("css/header_left.jpg"); ?>
 		   </td>
+      <?php endif; ?>
+      
    	   	</tr>
 	     </table></div>
 <?php 

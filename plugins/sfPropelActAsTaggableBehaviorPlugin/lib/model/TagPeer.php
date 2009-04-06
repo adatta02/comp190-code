@@ -572,6 +572,7 @@ class TagPeer extends BaseTagPeer
 
     if (Propel::VERSION >= '1.3')
     {
+    	
       $rs = $stmt->execute();
 
       while ($row = $stmt->fetch(PDO::FETCH_NUM))

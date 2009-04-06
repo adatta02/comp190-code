@@ -9,9 +9,9 @@ default:
     #language:     en
     #robots:       index, follow
 
-  stylesheets:    [main.css, ui.all.css]
+  stylesheets:    [main.css, jquery.ui.all.css, jquery.autocomplete.css, jquery.thickbox.css]
 
-  javascripts:    [jquery.js, jquery-ui.js, main.js, jquery.json-1.3.min.js]
+  javascripts:    [jquery.js, jquery.ui.all.js, main.js, jquery.json-1.3.min.js, jquery.autocomplete.js, jquery.thickbox.js]
 
   has_layout:     on
   layout:         layout

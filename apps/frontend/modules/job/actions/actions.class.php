@@ -11,30 +11,57 @@
 class jobActions extends sfActions
 {
   
-	private function createPager($stateId){
+	private function createPager($stateId = null){
 		$this->page = $this->getRequest()->getParameter("page");
     $this->sortedBy = $this->getRequest()->getParameter("sortBy");
 		$this->invert = $this->getRequest()->getParameter("invert");
     
-	  if(is_null($this->invert) || $this->invert == "false"){
-      $this->invert = false;
+		if(is_null($stateId)){
+		  $obj = json_decode($this->getRequest()->getParameter("obj"), true);
+      $stateId = $obj["render"];
+      $tagId = $obj["tagId"];
+      $projectId = $obj["projectId"];
+		}
+		
+		$c = new Criteria();
+	  
+		if($stateId > 0){
+      $c->add(JobPeer::STATUS_ID, $stateId);
+      $this->routeObject = StatusPeer::retrieveByPK($stateId);
+      $this->route = "job_list_by";
+      $this->propelType = "state";
+      $this->renderStatus = false;
+		} else if($tagId > 0){ 
+			$this->routeObject = TagPeer::retrieveByPK($tagId);
+			$ids = TaggingPeer::getJobIdsByTag($this->routeObject);
+      $c->add(JobPeer::ID, $ids, Criteria::IN);
+      
+      $this->route = "job_listby_tag";
+      $this->propelType = "tag";
+      $this->renderStatus = true;
+    } else if($projectId > 0){
+    	$c->add(JobPeer::PROJECT_ID, $projectId);
+    	$this->routeObject = ProjectPeer::retrieveByPK($projectId);
+      $this->route = "project_view";
+      $this->propelType = "project";
+      $this->renderStatus = true;
+    }else{
+    	$this->forward404("Tried to reload list but something went wrong...");
     }
 		
 	  if(is_null($this->sortedBy)){
       $this->sortedBy = JobPeer::DATE;
     }
+		if(is_null($this->invert) || $this->invert == "false"){
+			$this->invert = false;
+      $c->addAscendingOrderByColumn($this->sortedBy);
+    }else{
+    	$c->addDescendingOrderByColumn($this->sortedBy);
+    	$this->invert = true;
+    }
 		
     if(!is_numeric($this->page))
       $this->page = 1;
-    
-    $c = new Criteria();
-    $c->add(JobPeer::STATUS_ID, $stateId);
-    
-    if($this->invert){
-    	$c->addDescendingOrderByColumn($this->sortedBy);
-    }else{
-    	$c->addAscendingOrderByColumn($this->sortedBy);
-    }
     
     // if this user is only a client 
     // make sure they can only see their jobs
@@ -49,12 +76,112 @@ class jobActions extends sfActions
 		$this->job = $this->getRoute()->getObject();
 	}
 	
+	public function executeRemoveClient(sfWebRequest $request){
+    $obj = json_decode($request->getParameter("obj"), true);
+    $client = ClientPeer::retrieveByPK($obj["clientId"]);
+    $job = JobPeer::retrieveByPK($obj["viewingJobId"]);
+    
+    if(!is_null($client) && !is_null($job)){
+    	$c = new Criteria();
+    	$c->add(JobClientPeer::CLIENT_ID, $client->getId());
+    	$c->add(JobClientPeer::JOB_ID, $job->getId());
+    	JobClientPeer::doDelete($c);
+    }
+    
+    $this->renderPartial("clientList", array("job" => $job));
+    return sfView::NONE;
+	}
+	
+	public function executeAddPhotographer(sfWebRequest $request){
+		$obj = json_decode($request->getParameter("obj"), true);
+		$job = JobPeer::retrieveByPK($obj["viewingJobId"]);
+		$photographer = PhotographerPeer::retrieveByPK($obj["photographerId"]);
+		
+		if(!is_null($job) && !is_null($photographer)){
+			$jp = new JobPhotographer();
+			$jp->setPhotographerId($photographer->getId());
+			$jp->setJobId($job->getId());
+			$jp->save();
+		}
+		
+    $this->renderPartial("photographerList", array("job" => $job));
+    return sfView::NONE;
+	}
+	
+  public function executeRemovePhotographer(sfWebRequest $request){
+    $obj = json_decode($request->getParameter("obj"), true);
+    $job = JobPeer::retrieveByPK($obj["viewingJobId"]);
+    $photographer = PhotographerPeer::retrieveByPK($obj["photographerId"]);
+    
+    if(!is_null($job) && !is_null($photographer)){
+    	$c = new Criteria();
+    	$c->add(JobPhotographerPeer::JOB_ID, $job->getId());
+    	$c->add(JobPhotographerPeer::PHOTOGRAPHER_ID, $photographer->getId());
+    	JobPhotographerPeer::doDelete($c);
+    }
+    
+    $this->renderPartial("photographerList", array("job" => $job));
+    return sfView::NONE;
+  }
+	
+	public function executeAddClient(sfWebRequest $request){
+		$obj = json_decode($request->getParameter("obj"), true);
+		$client = ClientPeer::retrieveByPK($obj["clientId"]);
+		$job = JobPeer::retrieveByPK($obj["viewingJobId"]);
+		
+		if(!is_null($client) && !is_null($job)){
+			$jc = new JobClient();
+			$jc->setClientId($client->getId());
+			$jc->setJobId($job->getId());
+			$jc->save();
+		}
+		
+		$this->renderPartial("clientList", array("job" => $job));
+		return sfView::NONE;
+	}
+	
+	public function executeAddProject(sfWebRequest $request){
+    $obj = json_decode($request->getParameter("obj"), true);
+    $jobs = $obj["jobs"];
+    
+    $addProjectId = $obj["addProjectId"];
+    $projectName = $obj["projectName"];
+    $createNew = $obj["createNew"];
+    $removeFromProject = $obj["removeFromProject"];
+    
+    if(!$removeFromProject){
+	    
+    	if($createNew){
+	    	$project = new Project();
+	    	$project->setName($projectName);
+	    	$project->save();
+	    }else{
+	    	$project = ProjectPeer::retrieveByPK($addProjectId);
+	    }
+	    
+	    $projectId = $project->getId();
+	    
+    }else{
+    	$projectId = null;
+    }
+    
+    if($removeFromProject || !is_null($projectId)){
+	    $c1 = new Criteria();
+		  $c2 = new Criteria();
+		  $c1->add(JobPeer::ID, $jobs, Criteria::IN);
+		  $c2->add(JobPeer::PROJECT_ID, $projectId);
+		  BasePeer::doUpdate($c1, $c2, Propel::getConnection());
+    }
+    
+		$this->createPager();
+    $this->setTemplate("reload");
+	}
+	
   public function executeMove(sfWebRequest $request){
     
     $obj = json_decode($request->getParameter("obj"), true);
   	$jobs = $obj["jobs"];
     $toState = $obj["state"];
-    $viewState = $obj["render"];
     
     if($toState < 1)
       return;
@@ -65,8 +192,7 @@ class jobActions extends sfActions
     $c2->add(JobPeer::STATUS_ID, $toState);
     BasePeer::doUpdate($c1, $c2, Propel::getConnection());
     
-    $this->routeObject = StatusPeer::retrieveByPK($viewState);
-    $this->createPager($viewState);
+    $this->createPager();
     $this->setTemplate("reload");
   }
 	
@@ -83,8 +209,7 @@ class jobActions extends sfActions
     	$job->save();
     }
     
-    $this->routeObject = StatusPeer::retrieveByPK($viewState);
-    $this->createPager($viewState);
+    $this->createPager();
     $this->setTemplate("reload");
   }
   
@@ -94,6 +219,7 @@ class jobActions extends sfActions
   	$jobs = $obj["jobs"];
     $tags = $obj["tags"];
     $viewState = $obj["render"];
+    $addTagId = $obj["addTagId"];
     
     $c = new Criteria();
     $c->add(JobPeer::ID, $jobs, Criteria::IN);
@@ -104,8 +230,7 @@ class jobActions extends sfActions
     	$j->save();
     }
     
-    $this->routeObject = StatusPeer::retrieveByPK($viewState);
-    $this->createPager($viewState);
+    $this->createPager();
     $this->setTemplate("reload");
   }
   
