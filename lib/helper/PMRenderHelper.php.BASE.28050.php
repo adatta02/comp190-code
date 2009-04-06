@@ -1,30 +1,19 @@
-<?php use_helper("Form"); 
+<?php use_helper("Form"); ?>
 
-  function renderProject($project, $classNum){
-  	?>
-  	 <div class="job-list-item-<?php echo $classNum ?>">
-  	   <table class="job-table" width="100%">
-  	     <tr><td>
-  	       <?php echo link_to($project->getName(), "project_view", $project); ?>
-  	     </td></tr>
-  	     <tr><td>Contains <?php echo $project->getNumberOfJobs(); ?> jobs</td></tr>
-  	   </table>
-  	 </div>
-  	<?php
-  }
+<?php
 
   function renderTagList($job){
   	$tags = $job->getTags();
   	
   	foreach($tags as $key => $val){
-  		echo "<span class='job-tag'>" . link_to($key, "job_listby_tag", array("name" => $key)) . 
+  		echo "<span class='job-tag'>" . $key . 
   		      " <a onclick='javascript:removeJobTag(\"" . $job->getId() . "\", \"" . $key . "\");' href='#'>" 
   		      . image_tag("delete.png", array("class" => "delete-img")) . "</a></span>";
   	}
   	
   }
 
-  function renderJobListView($job, $classNum, $renderStatus = false){
+  function renderJobListView($job, $classNum){
   	?>
 <div class="job-list-item-<?php echo $classNum ?>">
 	<?php
@@ -33,7 +22,7 @@
 	      $sTime = substr($sTime, -8, 5);
 	      $eTime = substr($eTime, -8, 5);
 	   ?>
-	<table class="job-table" width="100%">
+	<table id="job-table" width="100%">
 	     <col width="4%"></col>
 	     <col width="30%"></col> 
 	     <col width="33%"></col>
@@ -58,30 +47,11 @@
 	       <tr>
 		   <td> <?php echo $job->getDate("F d, Y") . " " .  $sTime . " - " . $eTime ?> </td> 
 		   <td>Tags: <?php renderTagList($job); ?></td>
-
-       <?php if($renderStatus): ?>
-          <td align="left">
-          Status:
-          <?php echo $job->getStatus()->getState(); ?>
-          </td>
-       <?php endif; ?>
-       
-		   <?php if(count($job->getPhotographers()) == 1):
-		    
-			 foreach($job->getPhotographers() as $i){ ?>
-		   	 <td>
-			   <?php echo $i; ?>
-		   	 </td>
-		   <?php 
-		         }
-		      elseif(count($job->getPhotographers()) == 0): ?>
-		           <td> <?php echo "No Photographer"; ?> </td>
-		      <?php else: 
-		    ?>
-		        <td> <?php echo count($job->getPhotographers()) . " Photographers"; ?> </td>
-			   
-		   <?php endif; ?>
-      
+		    <td align="center">
+		     <?php if($job->getProjectId()): ?>
+			   <img src="../../web/css/images/header_left.jpg" />
+			   <?php endif; ?>
+		   </td>
    	   	</tr>
 	     </table></div>
 <?php 

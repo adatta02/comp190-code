@@ -66,21 +66,11 @@
           </td>
        <?php endif; ?>
        
-		   <?php if(count($job->getPhotographers()) == 1):
-		    
-			 foreach($job->getPhotographers() as $i){ ?>
-		   	 <td>
-			   <?php echo $i; ?>
-		   	 </td>
-		   <?php 
-		         }
-		      elseif(count($job->getPhotographers()) == 0): ?>
-		           <td> <?php echo "No Photographer"; ?> </td>
-		      <?php else: 
-		    ?>
-		        <td> <?php echo count($job->getPhotographers()) . " Photographers"; ?> </td>
-			   
-		   <?php endif; ?>
+		   <?php if($job->getProjectId()): ?>
+		   <td align="center">
+			   <?php echo image_tag("css/header_left.jpg"); ?>
+		   </td>
+      <?php endif; ?>
       
    	   	</tr>
 	     </table></div>

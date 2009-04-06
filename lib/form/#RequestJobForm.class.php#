@@ -19,8 +19,8 @@ class RequestJobForm extends sfForm
       'status_id'      => new sfWidgetFormPropelChoice(array('model' => 'Status', 'add_empty' => true)),
       'event'          => new sfWidgetFormInput(),
       'date'           => new sfWidgetFormJQueryDate(),
-      'start_time'     => new sfWidgetFormTime(),
-      'end_time'       => new sfWidgetFormTime(),
+      'start_time'     => new sfWidgetjQueryTimepickr(),
+      'end_time'       => new sfWidgetjQueryTimepickr(),
       'due_date'       => new sfWidgetFormJQueryDate(),
       'created_at'     => new sfWidgetFormDateTime(),
       'street'         => new sfWidgetFormInput(),
@@ -150,15 +150,6 @@ public function save($con = null){
         $j->setStatusId(sfConfig::get("app_job_status_pending", 1));
         $j->setProjectId($this->getValue("project_id"));
         $j->save();
-
-
-	$c = new Client();
-        $c->setName($this->getValue("name"));
-        $c->setDepartment($this->getValue("department"));
-        $c->setAddress($this->getValue("address"));
-        $c->setEmail($this->getValue("email"));
-        $c->setPhone($this->getValue("phone"));
-        $c->save();
 
   }
 
