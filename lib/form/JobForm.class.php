@@ -28,8 +28,8 @@ class JobForm extends BaseJobForm
   	$this->widgetSchema->setLabel('publication_id','Publication');
   	$this->widgetSchema->setLabel('project_id','Project');
   	
-  	$this->widgetSchema['start_time'] = new sfWidgetFormJQueryDate();
-  	$this->widgetSchema['end_time'] = new sfWidgetFormJQueryDate();
+  	$this->widgetSchema['start_time'] = new sfWidgetjQueryTimepickr();
+  	$this->widgetSchema['end_time'] = new sfWidgetjQueryTimepickr();
   	$this->widgetSchema['due_date'] = new sfWidgetFormJQueryDate();
   	$this->widgetSchema['state'] = new sfWidgetFormSelectUSState();
   	$this->widgetSchema['state']->setDefault("MA");
