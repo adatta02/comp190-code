@@ -48,6 +48,53 @@ class Job extends BaseJob
     return PhotographerPeer::doSelect($c);
   }
 	
+	public function addPhotographer($photographer) {
+		
+		$c = new Criteria();
+		$c->add(JobPhotographerPeer::JOB_ID, $this->getId());
+		$c->add(JobPhotographerPeer::PHOTOGRAPHER_ID, $photographer->getId());
+		
+		if(JobPhotographerPeer::doCount($c) > 0)
+		  return false;
+		
+		$jp = new JobPhotographer ( );
+		$jp->setPhotographerId ( $photographer->getId () );
+		$jp->setJobId ( $this->getId () );
+		$jp->save ();
+		
+		return true;
+	}
+  
+	public function removePhotographer($photographer){
+	 $c = new Criteria();
+   $c->add(JobPhotographerPeer::JOB_ID, $this->getId());
+   $c->add(JobPhotographerPeer::PHOTOGRAPHER_ID, $photographer->getId());
+   JobPhotographerPeer::doDelete($c);
+	}
+	
+	public function addClient($client){
+		$c = new Criteria();
+		$c->add(JobClientPeer::JOB_ID, $this->getId());
+		$c->add(JobClientPeer::CLIENT_ID, $client->getId());
+		
+		if(JobClientPeer::doCount($c) > 0)
+		  return false;
+		
+		$jc = new JobClient();
+		$jc->setClientId($client->getId());
+    $jc->setJobId($this->getId());
+    $jc->save();
+    
+    return true;
+	}
+	
+	public function removeClient($client){
+	 $c = new Criteria();
+	 $c->add(JobClientPeer::CLIENT_ID, $client->getId());
+   $c->add(JobClientPeer::JOB_ID, $this->getId());
+   JobClientPeer::doDelete($c);
+	}
+	
 }
 
 $columns_map = array(  'from'   => JobPeer::EVENT,
