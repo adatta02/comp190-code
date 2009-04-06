@@ -1,4 +1,15 @@
 <?php
+
+/*
+ * sfWidgetjQueryTimepickr
+ *
+ * Copyright (c) 2009 Ashish Datta 
+ *                    ashish@setfive.com
+ * Licensed under the MIT (http://www.opensource.org/licenses/mit-license.php)
+ *
+ */
+
+
 class sfWidgetjQueryTimepickr extends sfWidgetFormInput
 {
 	
