@@ -53,6 +53,12 @@ job_add_client:
 job_remove_client:
   url: /job/remove/client
   param: { module: job, action: removeClient }
+job_add_photographer:
+  url: /job/add/photographer
+  param: { module: job, action: addPhotographer }
+job_remove_photographer:
+  url: /job/remove/photographer
+  param: { module: job, action: removePhotographer }
 
 ################################################
 # tags
@@ -77,8 +83,10 @@ tag_autocomplete:
 client_autocomplete:
   url: /client/autocomplete
   param: { module: client, action: autocomplete }
-  
-  
+photographer_autocomplete:
+  url: /photographer/autocomplete
+  param: { module: photographer, action: autocomplete }
+
 ################################################
 # misc login and redirect routes
 ################################################

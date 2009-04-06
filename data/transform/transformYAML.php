@@ -213,6 +213,12 @@ class Jm2Transform{
   			$clientProfile->setEmail($j->getContactEmail());
   			$clientProfile->setPhone($j->getContactPhone());
   			$clientProfile->save();
+  			
+  			$jobClient = new JobClient();
+  			$jobClient->setClientId($clientProfile->getId());
+  			$jobClient->setJobId($j->getId());
+  			$jobClient->save();
+  			
   		}
   		
   	  $count += 1;

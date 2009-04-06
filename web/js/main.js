@@ -70,6 +70,32 @@ function addClientToJob(){
                               function(){ $("#ajax-loading").attr("style", "display:none"); });
 }
 
+function addPhotographerToJob(){
+  var obj = new Object();
+  obj.photographerId = $("#add-photographer-id").val();
+  obj.viewingJobId = ProjectManager.viewingJobId;
+  
+  tb_remove();
+  
+  $("#ajax-loading").attr("style", "display:inline");
+  $("#job-photographer-list").load(ProjectManager.addPhotographerToJobUrl, 
+                              {obj: $.toJSON(obj)},
+                              function(){ $("#ajax-loading").attr("style", "display:none"); });
+}
+
+function removePhotographerFromJob(photographerId){
+  var obj = new Object();
+  obj.photographerId = photographerId;
+  obj.viewingJobId = ProjectManager.viewingJobId;
+  
+  tb_remove();
+  
+  $("#ajax-loading").attr("style", "display:inline");
+  $("#job-photographer-list").load(ProjectManager.removePhotographerFromJobUrl, 
+                              {obj: $.toJSON(obj)},
+                              function(){ $("#ajax-loading").attr("style", "display:none"); });
+}
+
 function removeJobTag(jobId, tagVal){
   var obj = new Object();
   obj.jobId = jobId;

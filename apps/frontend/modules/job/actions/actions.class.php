@@ -92,6 +92,38 @@ class jobActions extends sfActions
     return sfView::NONE;
 	}
 	
+	public function executeAddPhotographer(sfWebRequest $request){
+		$obj = json_decode($request->getParameter("obj"), true);
+		$job = JobPeer::retrieveByPK($obj["viewingJobId"]);
+		$photographer = PhotographerPeer::retrieveByPK($obj["photographerId"]);
+		
+		if(!is_null($job) && !is_null($photographer)){
+			$jp = new JobPhotographer();
+			$jp->setPhotographerId($photographer->getId());
+			$jp->setJobId($job->getId());
+			$jp->save();
+		}
+		
+    $this->renderPartial("photographerList", array("job" => $job));
+    return sfView::NONE;
+	}
+	
+  public function executeRemovePhotographer(sfWebRequest $request){
+    $obj = json_decode($request->getParameter("obj"), true);
+    $job = JobPeer::retrieveByPK($obj["viewingJobId"]);
+    $photographer = PhotographerPeer::retrieveByPK($obj["photographerId"]);
+    
+    if(!is_null($job) && !is_null($photographer)){
+    	$c = new Criteria();
+    	$c->add(JobPhotographerPeer::JOB_ID, $job->getId());
+    	$c->add(JobPhotographerPeer::PHOTOGRAPHER_ID, $photographer->getId());
+    	JobPhotographerPeer::doDelete($c);
+    }
+    
+    $this->renderPartial("photographerList", array("job" => $job));
+    return sfView::NONE;
+  }
+	
 	public function executeAddClient(sfWebRequest $request){
 		$obj = json_decode($request->getParameter("obj"), true);
 		$client = ClientPeer::retrieveByPK($obj["clientId"]);
