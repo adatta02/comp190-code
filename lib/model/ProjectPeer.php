@@ -10,9 +10,9 @@ class ProjectPeer extends BaseProjectPeer
     $names = array();
     $projects = ProjectPeer::doSelect($c);
     foreach($projects as $p){
-      $names[] = $p->getName();
+      $names[] = array("id" => $p->getId(), "name" => $p->getName());
     }
     
-    return implode("\n", $names);
+    return $names;
   }
 }

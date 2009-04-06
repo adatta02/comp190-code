@@ -31,9 +31,9 @@ class TaggingPeer extends BaseTaggingPeer
     $names = array();
     $tags = TagPeer::doSelect($c);
     foreach($tags as $tag){
-      $names[] = $tag->getName();
+      $names[] = array("id" => $tag->getId(), "name" => $tag->getName());
     }
     
-    return implode("\n", $names);
+    return $names;
 	}
 }

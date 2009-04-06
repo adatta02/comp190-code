@@ -13,7 +13,7 @@ class projectActions extends sfActions
   
 	public function executeAutocomplete(sfWebRequest $request){
 		$q = $request->getParameter("q");
-		$this->renderText(ProjectPeer::getNamesForAutocomplete($q));
+		$this->renderText(json_encode(ProjectPeer::getNamesForAutocomplete($q)));
 		
 		return sfView::NONE;
 	}

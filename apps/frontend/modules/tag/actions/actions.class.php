@@ -60,7 +60,7 @@ class tagActions extends sfActions
   }
 
   public function executeAutocomplete(sfWebRequest $request){
-    $this->renderText(TaggingPeer::getNamesForAutocomplete($request->getParameter("q")));
+    $this->renderText(json_encode(TaggingPeer::getNamesForAutocomplete($request->getParameter("q"))));
     return sfView::NONE;
   }
   

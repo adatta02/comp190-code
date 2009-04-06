@@ -47,7 +47,13 @@ job_move:
 job_addto_project: 
   url: /job/add/project
   param: { module: job, action: addProject }
-  
+job_add_client:
+  url: /job/add/client
+  param: { module: job, action: addClient }
+job_remove_client:
+  url: /job/remove/client
+  param: { module: job, action: removeClient }
+
 ################################################
 # tags
 ################################################
@@ -63,9 +69,16 @@ job_listby_tag:
   param: { module: tag, action: list }
   options: { model: Tag, type: object }
   requirements: {name: \w+ }
+
+
 tag_autocomplete:
   url: /tag/autocomplete
   param: { module: tag, action: autocomplete }
+client_autocomplete:
+  url: /client/autocomplete
+  param: { module: client, action: autocomplete }
+  
+  
 ################################################
 # misc login and redirect routes
 ################################################

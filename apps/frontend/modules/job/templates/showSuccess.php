@@ -1,10 +1,41 @@
+<script type="text/javascript">
+  
+  ProjectManager.viewingJobId = <?php echo $job->getId(); ?>;
+  ProjectManager.addClientToJobUrl = "<?php echo url_for("@job_add_client"); ?>";
+  ProjectManager.removeClientFromJob = "<?php echo url_for("@job_remove_client"); ?>";
+  
+  $(document).ready( 
+    function(){
+    $("#add-client-name")
+    .autocomplete('<?php
+        echo url_for ( "@client_autocomplete" )?>', $.extend({}, {
+      dataType: 'json',
+      parse:    function(data) {
+                  var parsed = [];
+                  var obj;
+                  for(var i=0; i < data.length; i++){
+                    obj = new Object();
+                    obj.data = [data[i].name + " &lt;" + data[i].email + "&gt", data[i].id];
+                    obj.value = data[i].name;
+                    obj.result = data[i].name;
+                    parsed.push(obj);
+                  }
+                  return parsed;
+      }}, {width: 300}))
+    .result(function(event, data) { $("#add-client-id").val(data[1]); });
+   });
+</script>
+
 <?php include_component ( "static", "topmenu", array("moveToSkip" => null) ); ?>
 <?php include_component ( "static", "shortcuts", 
                           array("sortedBy" => null, 
                                 "viewingCurrent" => null) ); ?>
 
 <div id="content-container">
-  <div id="now-viewing">Viewing job #<?php echo $job->getId(); ?></div>
+  <div id="now-viewing">
+    Viewing job #<?php echo $job->getId(); ?>
+    <?php echo image_tag("loading.gif", array("id" => "ajax-loading")); ?> 
+  </div>
 	
 	<div class="info-header">Basic 
 	   <a href="#" onclick="javascript:$('#job-basic-info').toggle(); return false;">[tg]</a>
@@ -59,7 +90,7 @@
        <td>Tags</td>
        <td>
         <?php foreach($job->getTags() as $tag): ?>
-          
+          <?php echo link_to($tag, "job_listby_tag", array("name" => $tag)) . " "; ?>
         <? endforeach; ?>
        </td>
       </tr>
@@ -97,33 +128,29 @@
   </div>
 	
 	<div id="job-client-info" class="collapsable">
-	 <div class="info-header-small">Current Clients: <?php echo image_tag("add.png"); ?></div>
+	 <div class="info-header-small">
+	   Current Clients:
+	   <a href="#TB_inline?height=200&width=330&inlineId=hiddenAddClient&modal=false"
+        class="thickbox">
+	   <?php echo image_tag("add.png", array("class" => "plus-img")); ?>
+	   </a>
+	 </div>
 	 
-	 <?php if(count($job->getClients())): ?>
+	 <div id="hiddenAddClient" style="display:none">
+	   <h3>Add Client:</h3>
+	   <label for="add-client-name">
+	     Client Name <br/>
+	   </label>
+	   <?php echo input_tag("add-client-name", "", array("size" => 30)); ?>
+	   <?php echo input_hidden_tag("add-client-id"); ?>
+	   <?php echo button_to_function("Add", "addClientToJob()"); ?>
+	 </div>
 	 
-	 <table>
-     <tr>
-       <th>Remove</th>
-       <th>Name</th>
-       <th>Email</th>
-       <th>Phone</th>
-       <th>Department</th>
-     </tr>
-     <?php foreach($job->getClients() as $c): ?>
-     <tr>
-       <td><?php echo image_tag("delete.png"); ?></td>
-       <td><?php echo $c->getName() ?></td>
-       <td><?php echo $c->getEmail() ?></td>
-       <td><?php echo $c->getPhone() ?></td>
-       <td><?php echo $c->getDepartment() ?></td>
-     </tr>  
-     <?php endforeach; ?>
-    </table>
-  <?php else: ?>
-    There are no clients attached to this job.
-  <?php endif; ?>
+	<div id="job-client-list">
+    <?php include_partial("clientList", array("job" => $job)); ?>
 	</div>
 	
+	</div>
   <hr/>
 	
 	<div class="info-header">Photographers 

@@ -193,6 +193,28 @@ class Jm2Transform{
   		$del->setJobId($j->getId());
   		$del->save();
   		
+  		// add the requester as a client
+  		$c = new Criteria();
+  		$c->add(sfGuardUserPeer::USERNAME, $j->getContactEmail());
+  		if(ClientPeer::doCount($c) == 0){
+  			$user = new sfGuardUser();
+  			$user->setUsername($j->getContactEmail());
+  			$user->setPassword("admin");
+  			$user->save();
+  			
+  			$userProfile = new sfGuardUserProfile();
+  			$userProfile->setUserId($user->getId());
+  			$userProfile->setUserTypeId(sfConfig::get("app_user_type_client"));
+  			$userProfile->save();
+  			
+  			$clientProfile = new Client();
+  			$clientProfile->setUserId($userProfile->getId());
+  			$clientProfile->setName($j->getContactName());
+  			$clientProfile->setEmail($j->getContactEmail());
+  			$clientProfile->setPhone($j->getContactPhone());
+  			$clientProfile->save();
+  		}
+  		
   	  $count += 1;
   	}
   	

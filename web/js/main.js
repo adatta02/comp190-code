@@ -2,6 +2,8 @@ var ProjectManager = new Object();
 ProjectManager.NONE = 1;
 ProjectManager.ALL = 2;
 ProjectManager.TOGGLE = 3;
+ProjectManager.item2OldColor = null;
+ProjectManager.item1OldColor = null;
 
 function showProjectCreate(){
   $("#create-project-form").show();
@@ -42,7 +44,31 @@ function toggle(what){
   return false;
 }
 
-var item2OldColor, item1OldColor;
+function removeClientFromJob(clientId){
+  var obj = new Object();
+  obj.clientId = clientId;
+  obj.viewingJobId = ProjectManager.viewingJobId;
+  
+  tb_remove();
+  
+  $("#ajax-loading").attr("style", "display:inline");
+  $("#job-client-list").load(ProjectManager.removeClientFromJob, 
+                              {obj: $.toJSON(obj)},
+                              function(){ $("#ajax-loading").attr("style", "display:none"); });
+}
+
+function addClientToJob(){
+  var obj = new Object();
+  obj.clientId = $("#add-client-id").val();
+  obj.viewingJobId = ProjectManager.viewingJobId;
+  
+  tb_remove();
+  
+  $("#ajax-loading").attr("style", "display:inline");
+  $("#job-client-list").load(ProjectManager.addClientToJobUrl, 
+                              {obj: $.toJSON(obj)},
+                              function(){ $("#ajax-loading").attr("style", "display:none"); });
+}
 
 function removeJobTag(jobId, tagVal){
   var obj = new Object();
@@ -71,6 +97,8 @@ function addToProject(){
   obj.projectId = ProjectManager.projectId;
   obj.tagId = ProjectManager.tagId;
   obj.jobs = jobs;
+  
+  obj.addProjectId = $("#add-project-id").val();
   obj.projectName = $("#project-name").val();
   obj.createNew = $("#project-create-new").attr("checked");
   obj.removeFromProject = $("#project-create-remove").attr("checked");
@@ -96,6 +124,7 @@ function addJobTag(){
   obj.projectId = ProjectManager.projectId;
   obj.tagId = ProjectManager.tagId;
   
+  obj.addTagId = $("#add-tag-id").val();
   obj.jobs = jobs;
   obj.tags = $("#add-tag").val();
   
@@ -121,20 +150,20 @@ function invertSort(){
 $(document).ready( 
   function(){
   
-    item2OldColor = $(".job-list-item-2:first").css("background-color");
-    item1OldColor = $(".job-list-item-1:first").css("background-color");
+    ProjectManager.item1OldColor = $(".job-list-item-1:first").css("background-color");
+    ProjectManager.item2OldColor = $(".job-list-item-2:first").css("background-color");
     
-    $(".job-list-item-1").mouseover( 
-        function(){  $(this).css("background-color", item2OldColor); });
+    $(".job-list-item-1").mouseenter( 
+        function(){  $(this).css("background-color", ProjectManager.item2OldColor); });
   
     $(".job-list-item-1").mouseleave( 
-        function(){  $(this).css("background-color", item1OldColor);  });
+        function(){  $(this).css("background-color", ProjectManager.item1OldColor);  });
     
-    $(".job-list-item-2").mouseover( 
-        function(){  $(this).css("background-color", item1OldColor); });
+    $(".job-list-item-2").mouseenter( 
+        function(){  $(this).css("background-color", ProjectManager.item1OldColor); });
   
     $(".job-list-item-2").mouseleave( 
-        function(){  $(this).css("background-color",item2OldColor);  });
+        function(){  $(this).css("background-color", ProjectManager.item2OldColor);  });
   
 
   

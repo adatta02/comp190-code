@@ -76,31 +76,58 @@ class jobActions extends sfActions
 		$this->job = $this->getRoute()->getObject();
 	}
 	
+	public function executeRemoveClient(sfWebRequest $request){
+    $obj = json_decode($request->getParameter("obj"), true);
+    $client = ClientPeer::retrieveByPK($obj["clientId"]);
+    $job = JobPeer::retrieveByPK($obj["viewingJobId"]);
+    
+    if(!is_null($client) && !is_null($job)){
+    	$c = new Criteria();
+    	$c->add(JobClientPeer::CLIENT_ID, $client->getId());
+    	$c->add(JobClientPeer::JOB_ID, $job->getId());
+    	JobClientPeer::doDelete($c);
+    }
+    
+    $this->renderPartial("clientList", array("job" => $job));
+    return sfView::NONE;
+	}
+	
+	public function executeAddClient(sfWebRequest $request){
+		$obj = json_decode($request->getParameter("obj"), true);
+		$client = ClientPeer::retrieveByPK($obj["clientId"]);
+		$job = JobPeer::retrieveByPK($obj["viewingJobId"]);
+		
+		if(!is_null($client) && !is_null($job)){
+			$jc = new JobClient();
+			$jc->setClientId($client->getId());
+			$jc->setJobId($job->getId());
+			$jc->save();
+		}
+		
+		$this->renderPartial("clientList", array("job" => $job));
+		return sfView::NONE;
+	}
+	
 	public function executeAddProject(sfWebRequest $request){
     $obj = json_decode($request->getParameter("obj"), true);
     $jobs = $obj["jobs"];
+    
+    $addProjectId = $obj["addProjectId"];
     $projectName = $obj["projectName"];
     $createNew = $obj["createNew"];
     $removeFromProject = $obj["removeFromProject"];
     
     if(!$removeFromProject){
-	    if($createNew){
+	    
+    	if($createNew){
 	    	$project = new Project();
 	    	$project->setName($projectName);
 	    	$project->save();
 	    }else{
-	    	$c = new Criteria();
-	    	$c->add(ProjectPeer::NAME, $projectName);
-	    	$project = ProjectPeer::doSelectOne($c);
+	    	$project = ProjectPeer::retrieveByPK($addProjectId);
 	    }
 	    
-	    if(is_null($project)){
-	     $this->renderText("<script type='text/javascript'>
-                          alert('An error has occured! Do NOT edit the project name unless you want to create a new project.');
-                          </script>");
-	    }else{
-	    	$projectId = $project->getId();
-	    }
+	    $projectId = $project->getId();
 	    
     }else{
     	$projectId = null;
@@ -160,6 +187,7 @@ class jobActions extends sfActions
   	$jobs = $obj["jobs"];
     $tags = $obj["tags"];
     $viewState = $obj["render"];
+    $addTagId = $obj["addTagId"];
     
     $c = new Criteria();
     $c->add(JobPeer::ID, $jobs, Criteria::IN);
