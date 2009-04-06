@@ -156,7 +156,7 @@ class jobActions extends sfActions
   	if(!$this->getUser()->isAdminOrClient())
   	 $this->setLayout("nomenu");
   	
-  	$this->form = new JobForm();
+  	$this->form = new RequestJobForm();
   	if($request->isMethod("POST")){
       $this->processForm($request, $this->form);
   	}

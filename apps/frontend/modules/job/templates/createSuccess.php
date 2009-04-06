@@ -3,12 +3,16 @@
  
 <h2>Request a photographer:</h2>
  
-<?php echo form_tag_for($form, '@job') ?>
+<form action="<?php echo url_for('@job_create') ?>" method="POST">
   <div>
 <h3><?php echo $form->renderGlobalErrors(); ?></h3>
 <h3>Client</h3>
    <table>
-      <tr>-----Merge Client Form here ------</tr>
+   <tr><?php echo $form["name"]->renderRow(); ?> </tr>
+   <tr><?php echo $form["department"]->renderRow(); ?> </tr>
+   <tr><?php echo $form["address"]->renderRow(); ?> </tr>
+   <tr><?php echo $form["email"]->renderRow(); ?> </tr>
+   <tr><?php echo $form["phone"]->renderRow(); ?> </tr>
     <tr><?php echo $form["acct_num"]->renderRow(); ?> </tr>
     <tr><?php echo $form["dept_id"]->renderRow(); ?> </tr>
   </table>
