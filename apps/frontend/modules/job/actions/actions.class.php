@@ -277,10 +277,6 @@ class jobActions extends sfActions
 	 */
   public function executeCreate(sfWebRequest $request){
   	
-  	// if this user is a admin or client show a layout otherwise dont
-  	if(!$this->getUser()->isAdminOrClient())
-  	 $this->setLayout("nomenu");
-  	
   	$this->form = new RequestJobForm();
   	if($request->isMethod("POST")){
       $this->processForm($request, $this->form);
@@ -299,7 +295,7 @@ class jobActions extends sfActions
     if ($form->isValid())
     {
       $form->save();
-      $this->redirect($this->generateUrl('project_success'));
+      $this->redirect("@job_list");
     }
   }
   
