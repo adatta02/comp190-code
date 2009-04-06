@@ -22,4 +22,18 @@ class TaggingPeer extends BaseTaggingPeer
     
     return $ids;
 	}
+	
+	public static function getNamesForAutocomplete($q){
+	  $c = new Criteria();
+    $c->add(TagPeer::NAME, $q . "%", Criteria::LIKE);
+    $c->setLimit(10);
+    
+    $names = array();
+    $tags = TagPeer::doSelect($c);
+    foreach($tags as $tag){
+      $names[] = $tag->getName();
+    }
+    
+    return implode("\n", $names);
+	}
 }

@@ -3,6 +3,25 @@ ProjectManager.NONE = 1;
 ProjectManager.ALL = 2;
 ProjectManager.TOGGLE = 3;
 
+function showProjectCreate(){
+  $("#create-project-form").show();
+}
+
+function createProject(){
+
+  if( new String($("#project-name").val()).length >= 45 ){
+    alert("The project name is to long!");
+    return;
+  }
+
+  $("#ajax-loading").attr("style", "display:inline");
+  $("#create-project-form").hide();
+  
+  $("#project-name").load(ProjectManager.createProjectUrl, 
+                          {name: $("#project-name").val()},
+                          function(){ $("#ajax-loading").attr("style", "display:none"); alert("Project Created!"); });
+}
+
 function toggle(what){
   switch(what){
     case ProjectManager.NONE:
@@ -36,6 +55,30 @@ function removeJobTag(jobId, tagVal){
   
   $("#ajax-loading").attr("style", "display:inline");
   $("#list-container").load(ProjectManager.removeJobTagUrl, 
+                              {obj: $.toJSON(obj)},
+                              function(){ $("#ajax-loading").attr("style", "display:none"); });
+}
+
+function addToProject(){
+  var jobs = new Array();
+  $(".job-check:checked").each( function(){ jobs.push( $(this).val() ); });
+  
+  if(jobs.length == 0)
+    return;
+  
+  var obj = new Object();
+  obj.render = ProjectManager.routeId;
+  obj.projectId = ProjectManager.projectId;
+  obj.tagId = ProjectManager.tagId;
+  obj.jobs = jobs;
+  obj.projectName = $("#project-name").val();
+  obj.createNew = $("#project-create-new").attr("checked");
+  obj.removeFromProject = $("#project-create-remove").attr("checked");
+  
+  tb_remove();
+  
+  $("#ajax-loading").attr("style", "display:inline");
+  $("#list-container").load(ProjectManager.addJobsToProjectUrl, 
                               {obj: $.toJSON(obj)},
                               function(){ $("#ajax-loading").attr("style", "display:none"); });
 }

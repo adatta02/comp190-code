@@ -7,7 +7,15 @@ project_view:
   param: { module: project, action: view }
   options: { model: Project, type: object }
   requirements: {slug: \w+ }
-  
+project_list:
+  url: /project/list
+  param: { module: project, action: list }
+project_create:
+  url: /project/create
+  param: { module: project, action: create }
+project_autocomplete:
+  url: /project/autocomplete
+  param: { module: project, action: autocomplete }
 ################################################
 # jobs
 ################################################
@@ -36,7 +44,9 @@ job_list_by:
 job_move:
   url: /job/move
   param: { module: job, action: move }
-  
+job_addto_project: 
+  url: /job/add/project
+  param: { module: job, action: addProject }
   
 ################################################
 # tags
@@ -53,6 +63,9 @@ job_listby_tag:
   param: { module: tag, action: list }
   options: { model: Tag, type: object }
   requirements: {name: \w+ }
+tag_autocomplete:
+  url: /tag/autocomplete
+  param: { module: tag, action: autocomplete }
 ################################################
 # misc login and redirect routes
 ################################################

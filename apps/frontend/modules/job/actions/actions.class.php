@@ -46,7 +46,7 @@ class jobActions extends sfActions
       $this->propelType = "project";
       $this->renderStatus = true;
     }else{
-    	$this->forward404("Something went wrong...");
+    	$this->forward404("Tried to reload list but something went wrong...");
     }
 		
 	  if(is_null($this->sortedBy)){
@@ -76,12 +76,53 @@ class jobActions extends sfActions
 		$this->job = $this->getRoute()->getObject();
 	}
 	
+	public function executeAddProject(sfWebRequest $request){
+    $obj = json_decode($request->getParameter("obj"), true);
+    $jobs = $obj["jobs"];
+    $projectName = $obj["projectName"];
+    $createNew = $obj["createNew"];
+    $removeFromProject = $obj["removeFromProject"];
+    
+    if(!$removeFromProject){
+	    if($createNew){
+	    	$project = new Project();
+	    	$project->setName($projectName);
+	    	$project->save();
+	    }else{
+	    	$c = new Criteria();
+	    	$c->add(ProjectPeer::NAME, $projectName);
+	    	$project = ProjectPeer::doSelectOne($c);
+	    }
+	    
+	    if(is_null($project)){
+	     $this->renderText("<script type='text/javascript'>
+                          alert('An error has occured! Do NOT edit the project name unless you want to create a new project.');
+                          </script>");
+	    }else{
+	    	$projectId = $project->getId();
+	    }
+	    
+    }else{
+    	$projectId = null;
+    }
+    
+    if($removeFromProject || !is_null($projectId)){
+	    $c1 = new Criteria();
+		  $c2 = new Criteria();
+		  $c1->add(JobPeer::ID, $jobs, Criteria::IN);
+		  $c2->add(JobPeer::PROJECT_ID, $projectId);
+		  BasePeer::doUpdate($c1, $c2, Propel::getConnection());
+    }
+    
+		$this->createPager();
+    $this->setTemplate("reload");
+	}
+	
   public function executeMove(sfWebRequest $request){
     
     $obj = json_decode($request->getParameter("obj"), true);
   	$jobs = $obj["jobs"];
     $toState = $obj["state"];
-    $viewState = $obj["render"];
     
     if($toState < 1)
       return;

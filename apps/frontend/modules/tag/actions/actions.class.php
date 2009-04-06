@@ -10,7 +10,7 @@
  */
 class tagActions extends sfActions
 {
-
+	
   public function executeList(sfWebRequest $request)
   {
   	$this->page = $this->getRequest()->getParameter("page");
@@ -57,6 +57,11 @@ class tagActions extends sfActions
     }
     
     $this->sortUrlJson = json_encode($sortUrls);
+  }
+
+  public function executeAutocomplete(sfWebRequest $request){
+    $this->renderText(TaggingPeer::getNamesForAutocomplete($request->getParameter("q")));
+    return sfView::NONE;
   }
   
 }

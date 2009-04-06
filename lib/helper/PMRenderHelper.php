@@ -1,6 +1,17 @@
-<?php use_helper("Form"); ?>
+<?php use_helper("Form"); 
 
-<?php
+  function renderProject($project, $classNum){
+  	?>
+  	 <div class="job-list-item-<?php echo $classNum ?>">
+  	   <table class="job-table" width="100%">
+  	     <tr><td>
+  	       <?php echo link_to($project->getName(), "project_view", $project); ?>
+  	     </td></tr>
+  	     <tr><td>Contains <?php echo $project->getNumberOfJobs(); ?> jobs</td></tr>
+  	   </table>
+  	 </div>
+  	<?php
+  }
 
   function renderTagList($job){
   	$tags = $job->getTags();
@@ -22,7 +33,7 @@
 	      $sTime = substr($sTime, -8, 5);
 	      $eTime = substr($eTime, -8, 5);
 	   ?>
-	<table id="job-table" width="100%">
+	<table class="job-table" width="100%">
 	     <col width="4%"></col>
 	     <col width="30%"></col> 
 	     <col width="33%"></col>
