@@ -4,6 +4,7 @@ ProjectManager.ALL = 2;
 ProjectManager.TOGGLE = 3;
 ProjectManager.item2OldColor = null;
 ProjectManager.item1OldColor = null;
+ProjectManager.mouseOverColor = "#0793FF";
 
 function showProjectCreate(){
   $("#create-project-form").show();
@@ -157,10 +158,8 @@ function addJobTag(){
 }
 
 function setRouteProperties(obj){
-  obj.render = ProjectManager.routeId;
-  obj.projectId = ProjectManager.projectId;
-  obj.tagId = ProjectManager.tagId;
-  obj.searchQuery = ProjectManager.searchQuery;
+  obj.reloadFunction = ProjectManager.reloadFunction;
+  obj.reloadParam = ProjectManager.reloadParam;
   return obj;
 }
 
@@ -177,24 +176,6 @@ function invertSort(){
 
 $(document).ready( 
   function(){
-  
-    ProjectManager.item1OldColor = $(".job-list-item-1:first").css("background-color");
-    ProjectManager.item2OldColor = $(".job-list-item-2:first").css("background-color");
-    
-    $(".job-list-item-1").mouseenter( 
-        function(){  $(this).css("background-color", ProjectManager.item2OldColor); });
-  
-    $(".job-list-item-1").mouseleave( 
-        function(){  $(this).css("background-color", ProjectManager.item1OldColor);  });
-    
-    $(".job-list-item-2").mouseenter( 
-        function(){  $(this).css("background-color", ProjectManager.item1OldColor); });
-  
-    $(".job-list-item-2").mouseleave( 
-        function(){  $(this).css("background-color", ProjectManager.item2OldColor);  });
-  
-
-  
     // when you toggle the sort drop down change the sorting
     $("#sort-by-options").change(
       function(){
@@ -222,3 +203,21 @@ $(document).ready(
                                   function(){ $("#ajax-loading").attr("style", "display:none"); });
     }); 
   });
+
+function activateMouseOvers(){
+  ProjectManager.item1OldColor = $(".job-list-item-1:first").css("background-color");
+  ProjectManager.item2OldColor = $(".job-list-item-2:first").css("background-color");
+    
+  $(".job-list-item-1").mouseenter( 
+        function(){  $(this).css("background-color", ProjectManager.mouseOverColor); });
+  
+  $(".job-list-item-1").mouseleave( 
+        function(){  $(this).css("background-color", ProjectManager.item1OldColor);  });
+    
+  $(".job-list-item-2").mouseenter( 
+        function(){  $(this).css("background-color", ProjectManager.mouseOverColor); });
+  
+  $(".job-list-item-2").mouseleave( 
+        function(){  $(this).css("background-color", ProjectManager.item2OldColor);  });
+}
+  

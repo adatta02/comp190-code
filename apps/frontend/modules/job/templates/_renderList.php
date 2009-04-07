@@ -25,3 +25,7 @@ foreach($pager->getResults() as $i){
                                "route" => $route,
                                "propelType" => $propelType, 
                                "object" => $object)); ?>
+                         
+<script type="text/javascript">
+  activateMouseOvers();
+</script>
