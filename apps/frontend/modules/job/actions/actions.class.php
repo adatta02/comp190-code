@@ -11,6 +11,21 @@
 class jobActions extends sfActions
 {
   
+	private function reloadByPhotographer($photographerId){
+    $c = new Criteria();
+    $this->routeObject = PhotographerPeer::retrieveByPK($photographerId);
+    
+    $ids = JobPhotographerPeer::getJobsByPhotographerId($photographerId);
+    $c->add(JobPeer::ID, $ids, Criteria::IN);
+    
+    $this->route = "photographer_view_jobs";
+    $this->propelType = "slug";
+    $this->renderStatus = true;
+    $this->viewingCaption = " jobs for " . $this->routeObject->getName();
+    
+    return $c;
+	}
+	
 	private function reloadByTag($tagId){
 		
 		$c = new Criteria();
@@ -20,7 +35,7 @@ class jobActions extends sfActions
     $c->add(JobPeer::ID, $ids, Criteria::IN);
     
     $this->route = "job_listby_tag";
-    $this->propelType = "tag";
+    $this->propelType = "name";
     $this->renderStatus = true;
     $this->viewingCaption = " taggings for " . $this->routeObject->__toString();
     

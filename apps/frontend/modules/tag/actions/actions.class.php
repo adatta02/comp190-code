@@ -47,11 +47,11 @@ class tagActions extends sfActions
     
     foreach(JobPeer::$LIST_VIEW_SORTABLE as $key => $val){
       $sortUrls[$key]["true"] = $this->generateUrl("job_listby_tag", 
-                                           array("name" => $this->tag->getName(), 
+                                           array("slug" => $this->tag->getSlug(), 
                                                  "sortBy" => $key,
                                                  "invert" => "true"));
       $sortUrls[$key]["false"] = $this->generateUrl("job_listby_tag", 
-                                           array("name" => $this->tag->getName(), 
+                                           array("slug" => $this->tag->getSlug(), 
                                                  "sortBy" => $key,
                                                  "invert" => "false")); 
     }

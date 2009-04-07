@@ -28,6 +28,9 @@
          <tr>
           <td><?php echo $photographer->getAffiliation() ?></td>
           <td><?php echo $photographer->getPhone(); ?></td>
+          <td><?php echo link_to($photographer->getNumberOfJobs() . " jobs", 
+                                  "photographer_view_jobs", 
+                                  $photographer) ?></td>
         </tr>
        </table>
      </div>
@@ -51,7 +54,7 @@
   	$tags = $job->getTags();
   	
   	foreach($tags as $key => $val){
-  		echo "<span class='job-tag'>" . link_to($key, "job_listby_tag", array("name" => $key)) . 
+  		echo "<span class='job-tag'>" . link_to($key, "job_listby_tag", array("slug" => $key)) . 
   		      " <a onclick='javascript:removeJobTag(\"" . $job->getId() . "\", \"" . $key . "\");' href='#'>" 
   		      . image_tag("delete.png", array("class" => "delete-img")) . "</a></span>";
   	}

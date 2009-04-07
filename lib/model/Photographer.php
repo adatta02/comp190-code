@@ -37,6 +37,12 @@ class Photographer extends BasePhotographer
    parent::delete($con);
   }
   
+  public function getNumberOfJobs(){
+  	$c = new Criteria();
+  	$c->add(JobPhotographerPeer::PHOTOGRAPHER_ID, $this->getId());
+  	return JobPhotographerPeer::doCount($c);
+  }
+  
 }
 
 $columns_map = array(  'from'   => PhotographerPeer::EMAIL,

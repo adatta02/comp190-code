@@ -3,8 +3,8 @@
   ProjectManager.currentKey = "<?php echo $sortedBy; ?>";
   ProjectManager.isInverted = <?php echo ($invert ? 1 : 0) ?>;
   
-  ProjectManager.reloadFunction = "reloadByTag";
-  ProjectManager.reloadParam = "<?php echo $tag->getId(); ?>";
+  ProjectManager.reloadFunction = "reloadByPhotographer";
+  ProjectManager.reloadParam = "<?php echo $photographer->getId(); ?>";
   
   ProjectManager.removeJobTagUrl = "<?php echo url_for ( "job_remove_tag" );?>";
   ProjectManager.addJobTagUrl = "<?php echo url_for ( "job_add_tag" );?>";
@@ -20,10 +20,10 @@
 
 <?php include_partial("job/renderList", 
                       array("pager" => $pager, 
-                            "object" => $tag->getSlug(),
+                            "object" => $photographer->getSlug(),
                             "propelType" => "slug",
-                            "viewingCaption" => " taggings for " . $tag->__toString(),
-                            "route" => "job_listby_tag",
+                            "viewingCaption" => " jobs for " . $photographer->getName(),
+                            "route" => "photographer_view_jobs",
                             "renderStatus" => true)); ?>
 
 </div>

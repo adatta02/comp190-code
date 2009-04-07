@@ -60,12 +60,24 @@ job_remove_photographer:
   url: /job/remove/photographer
   param: { module: job, action: removePhotographer }
 
+################################################
+# photographer
+################################################
 photographer_list:
   url: /photographer/list
   param: { module: photographer, action: list }
 photographer_view:
   url: /photographer/view
   param: { module: photographer, action: view }
+photographer_view_jobs:
+  url: /photographer/view/jobs/:slug
+  class:    sfPropelRoute
+  param: { module: photographer, action: viewJobs }
+  options: { model: Photographer, type: object }
+  requirements: {slug: \w+ }
+################################################
+# client
+################################################
 client_list:
   url: /client/list
   param: { module: client, action: list }
@@ -83,7 +95,7 @@ job_remove_tag:
   url: /job/tag/delete
   param: { module: job, action: removeTag }
 job_listby_tag:
-  url: /tag/list/:name
+  url: /tag/list/:slug
   class:    sfPropelRoute
   param: { module: tag, action: list }
   options: { model: Tag, type: object }
