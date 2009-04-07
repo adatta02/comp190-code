@@ -18,3 +18,6 @@ foreach($pager->getResults() as $proj){
                                "route" => "project_list",
                                "propelType" => "", 
                                "object" => null)); ?>
+<script type="text/javascript">
+  activateMouseOvers();
+</script>

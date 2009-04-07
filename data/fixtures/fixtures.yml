@@ -1,3 +1,33 @@
+sfGuardPermission:
+  sfGuardPermission_1:
+    name: admin
+    description: 'Administrator permission'
+sfGuardUser:
+  sfGuardUser_1:
+    username: admin
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-04-06 18:25:09'
+    last_login: '2009-04-06 18:25:09'
+    is_active: '1'
+    is_super_admin: '0'
+UserType:
+  UserType_1:
+    type: admin
+    permissions: '1111'
+  UserType_2:
+    type: client
+    permissions: '101'
+  UserType_3:
+    type: photographer
+    permissions: '0'
+  UserType_4:
+    type: user
+    permissions: '1'
+sfGuardUserProfile:
+  sfGuardUserProfile_1:
+    user_id: sfGuardUser_1
 Status:
   Status_1:
     state: Pending
@@ -13,23 +43,6 @@ Status:
     state: Paid
   Status_7:
     state: Archived
-sfGuardPermission:
-  sfGuardPermission_1:
-    name: admin
-    description: 'Administrator permission'
-UserType:
-  UserType_1:
-    type: admin
-    permissions: '1111'
-  UserType_2:
-    type: client
-    permissions: '101'
-  UserType_3:
-    type: photographer
-    permissions: '0'
-  UserType_4:
-    type: user
-    permissions: '1'
 Publication:
   Publication_1:
     name: 'Tufts Daily'
@@ -39,4 +52,26 @@ Publication:
     name: 'The Observer'
   Publication_4:
     name: 'Tufts Traveler'
-    
+LogMessageType:
+  LogMessageType_1:
+    type: Create
+  LogMessageType_2:
+    type: Update
+  LogMessageType_3:
+    type: Delete
+  LogMessageType_4:
+    type: 'Add Photographer'
+  LogMessageType_5:
+    type: 'Add Client'
+  LogMessageType_6:
+    type: 'Remove Client'
+  LogMessageType_7:
+    type: 'Remove Photographer'
+  LogMessageType_8:
+    type: 'Add Tag'
+  LogMessageType_9:
+    type: 'Remove Tag'
+  LogMessageType_10:
+    type: 'Move to project'
+  LogMessageType_11:
+    type: 'Change status'

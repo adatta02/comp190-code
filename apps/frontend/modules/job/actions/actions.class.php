@@ -10,7 +10,95 @@
  */
 class jobActions extends sfActions
 {
+	
+	private function reloadByClient($clientId){
+    $c = new Criteria();
+    $this->routeObject = ClientPeer::retrieveByPK($clientId);
+    
+    $ids = JobClientPeer::getJobsByClientId($this->routeObject->getId());
+    $c->add(JobPeer::ID, $ids, Criteria::IN);
+    
+    $this->route = "client_view_jobs";
+    $this->propelType = "slug";
+    $this->renderStatus = true;
+    $this->viewingCaption = " jobs owned by " . $this->routeObject->getName();
+    
+    return $c;
+	}
   
+	private function reloadByPhotographer($photographerId){
+    $c = new Criteria();
+    $this->routeObject = PhotographerPeer::retrieveByPK($photographerId);
+    
+    $ids = JobPhotographerPeer::getJobsByPhotographerId($photographerId);
+    $c->add(JobPeer::ID, $ids, Criteria::IN);
+    
+    $this->route = "photographer_view_jobs";
+    $this->propelType = "slug";
+    $this->renderStatus = true;
+    $this->viewingCaption = " jobs for " . $this->routeObject->getName();
+    
+    return $c;
+	}
+	
+	private function reloadByTag($tagId){
+		
+		$c = new Criteria();
+		$this->routeObject = TagPeer::retrieveByPK($tagId);
+		
+		$ids = TaggingPeer::getJobIdsByTag($this->routeObject);
+    $c->add(JobPeer::ID, $ids, Criteria::IN);
+    
+    $this->route = "job_listby_tag";
+    $this->propelType = "name";
+    $this->renderStatus = true;
+    $this->viewingCaption = " taggings for " . $this->routeObject->__toString();
+    
+    return $c;
+	}
+	
+	private function reloadByState($stateId){
+	  $c = new Criteria();
+		$c->add(JobPeer::STATUS_ID, $stateId);
+		
+	  $this->routeObject = StatusPeer::retrieveByPK($stateId);
+	  $this->route = "job_list_by";
+	  $this->propelType = "state";
+	  $this->renderStatus = false;
+	  $this->viewingCaption = $this->routeObject->__toString();
+	  
+	  return $c;
+	}
+	
+	private function reloadByProject($projectId){
+	  
+		$c = new Criteria();
+		$c->add(JobPeer::PROJECT_ID, $projectId);
+   
+	  $this->routeObject = ProjectPeer::retrieveByPK($projectId);
+    $this->route = "project_view";
+    $this->propelType = "project";
+    $this->renderStatus = true;
+    $this->viewingCaption = " project " . $this->routeObject->__toString();
+    
+    return $c;
+	}
+	
+	private function reloadBySearch($searchQuery){
+	 
+		$c = new Criteria();
+		$ids = JobPeer::executeSearch($searchQuery);
+    $c->add(JobPeer::ID, $ids, Criteria::IN);
+    
+    $this->routeObject = $searchQuery;
+    $this->route = "job_search";
+    $this->propelType = "search-box";
+    $this->renderStatus = true;
+    $this->viewingCaption = " results for " . $this->routeObject->__toString();
+    
+    return $c;
+	}
+	
 	private function createPager($stateId = null){
 		$this->page = $this->getRequest()->getParameter("page");
     $this->sortedBy = $this->getRequest()->getParameter("sortBy");
@@ -18,38 +106,21 @@ class jobActions extends sfActions
     
 		if(is_null($stateId)){
 		  $obj = json_decode($this->getRequest()->getParameter("obj"), true);
-      $stateId = $obj["render"];
-      $tagId = $obj["tagId"];
-      $projectId = $obj["projectId"];
+		  $reloadFunction = $obj["reloadFunction"];
+		  $reloadParam = $obj["reloadParam"];
+		  
+		  if(!method_exists($this, $reloadFunction)){
+		  	$this->forward404("Fatal Application Error!");
+		  }
+		  
+		}else{
+			$reloadFunction = "reloadByState";
+			$reloadParam = $stateId;
 		}
 		
-		$c = new Criteria();
-	  
-		if($stateId > 0){
-      $c->add(JobPeer::STATUS_ID, $stateId);
-      $this->routeObject = StatusPeer::retrieveByPK($stateId);
-      $this->route = "job_list_by";
-      $this->propelType = "state";
-      $this->renderStatus = false;
-		} else if($tagId > 0){ 
-			$this->routeObject = TagPeer::retrieveByPK($tagId);
-			$ids = TaggingPeer::getJobIdsByTag($this->routeObject);
-      $c->add(JobPeer::ID, $ids, Criteria::IN);
-      
-      $this->route = "job_listby_tag";
-      $this->propelType = "tag";
-      $this->renderStatus = true;
-    } else if($projectId > 0){
-    	$c->add(JobPeer::PROJECT_ID, $projectId);
-    	$this->routeObject = ProjectPeer::retrieveByPK($projectId);
-      $this->route = "project_view";
-      $this->propelType = "project";
-      $this->renderStatus = true;
-    }else{
-    	$this->forward404("Tried to reload list but something went wrong...");
-    }
+		$c = $this->$reloadFunction($reloadParam);
 		
-	  if(is_null($this->sortedBy)){
+		if(is_null($this->sortedBy)){
       $this->sortedBy = JobPeer::DATE;
     }
 		if(is_null($this->invert) || $this->invert == "false"){
@@ -182,7 +253,6 @@ class jobActions extends sfActions
     
     $jobId = $obj["jobId"];
     $tagVal = $obj["tagVal"];
-    $viewState = $obj["render"];
     
     $job = JobPeer::retrieveByPK($jobId);
     if(!is_null($job)){
@@ -199,7 +269,6 @@ class jobActions extends sfActions
     
   	$jobs = $obj["jobs"];
     $tags = $obj["tags"];
-    $viewState = $obj["render"];
     $addTagId = $obj["addTagId"];
     
     $c = new Criteria();

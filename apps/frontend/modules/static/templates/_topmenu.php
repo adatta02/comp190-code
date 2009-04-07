@@ -61,8 +61,9 @@
 				    Move to: <?php echo select_tag("move-to", options_for_select($options, "")); ?>
 				  </div>
 
-<div id="tag-menu"><a href="#"
-	onclick="javascript:$('#add-tag-menu').toggle()">
+<div id="tag-menu">
+     <a href="#tag"
+	   onclick="javascript:$('#add-tag-menu').toggle(); return false;">
 	            <?php echo image_tag("add.png", array("class" => "plus-img")); ?> Tag
 	          </a></div>
 
@@ -74,15 +75,17 @@
 
 
 <div id="top-search">
-				      <?php echo input_tag("search-box"); ?> <?php echo submit_tag("Search"); ?>
-				  </div>
+  <?php echo form_tag("@job_search", array("method" => "GET")); ?>
+    <?php echo input_tag("search-box"); ?> <?php echo submit_tag("Search"); ?>
+  </form>
+</div>
 
 <div style="clear: both"></div>
 
-<div id="check-menu">Select: <a href="#"
+<div id="check-menu">Select: <a href="#all"
 	onclick="return toggle(ProjectManager.ALL); return false;">All</a> * <a
-	href="#" onclick="return toggle(ProjectManager.NONE);">None</a> * <a
-	href="#" onclick="return toggle(ProjectManager.TOGGLE)">Toggle</a></div>
+	href="#none" onclick="return toggle(ProjectManager.NONE); return false;">None</a> * <a
+	href="#toggle" onclick="return toggle(ProjectManager.TOGGLE); return false;">Toggle</a></div>
 
 <div id="add-tag-menu">
 				   <?php echo input_tag("add-tag"); ?>

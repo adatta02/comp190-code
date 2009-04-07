@@ -117,6 +117,7 @@ class Jm2Transform{
   		$endTime = "";
   		$notes = "";
   		$photog = 0;
+  		$slug = "";
   		
   		$childNodes = $job->childNodes;
   		
@@ -152,7 +153,7 @@ class Jm2Transform{
   				case "delivery_size": $del->setSize($child->textContent); break;
   				case "delivery_method": $del->setMethod($child->textContent); break;
   				case "delivery_special": $del->setInstructions($child->textContent); break;
-  				
+  				case "slug": $slug = $child->textContent; break;
   				case "#text":
   				  default: break;
   			}
@@ -168,7 +169,8 @@ class Jm2Transform{
   		$j->setState("Massachusetts");
   		$j->setEndTime($j->getDate() . " " . $endTime);
   		$j->setStartTime($j->getDate() . " " . $startTime);
-  		
+  		$j->addTag($slug);
+      
   		if(isset($this->jobProjectKeys[$jid])){
   		  $j->setProjectId($this->projectKeys[$this->jobProjectKeys[$jid]]);
   		}

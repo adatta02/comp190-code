@@ -2,9 +2,10 @@
   ProjectManager.sortUrls = <?php echo $sortUrlJson; ?>;
   ProjectManager.currentKey = "<?php echo $sortedBy; ?>";
   ProjectManager.isInverted = <?php echo ($invert ? 1 : 0) ?>;
-  ProjectManager.routeId = -1;
-  ProjectManager.tagId = -1;
-  ProjectManager.projectId = <?php echo $project->getId(); ?>;
+  
+  ProjectManager.reloadFunction = "reloadByProject";
+  ProjectManager.reloadParam = "<?php echo $project->getId(); ?>";
+  
   ProjectManager.removeJobTagUrl = "<?php echo url_for ( "job_remove_tag" );?>";
   ProjectManager.addJobTagUrl = "<?php echo url_for ( "job_add_tag" );?>";
   ProjectManager.moveJobUrl = "<?php echo url_for("job_move"); ?>";
@@ -18,8 +19,10 @@
 <div id="list-container">
 
 <?php include_partial("job/renderList", 
-                      array("pager" => $pager, 
-                            "object" => $project,
+                      array("pager" => $pager,
+                            "viewingCaption" => " project " . $project->getName(),
+                            "object" => $project->getSlug(),
+                            "propelType" => "slug",
                             "route" => "project_view",
                             "renderStatus" => true)); ?>
 

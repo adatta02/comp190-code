@@ -2,5 +2,6 @@
                       array("pager" => $pager, 
                             "object" => $routeObject,
                             "route" => $route,
+                            "viewingCaption" => $viewingCaption,
                             "propelType" => $propelType,
                             "renderStatus" => $renderStatus)); ?>

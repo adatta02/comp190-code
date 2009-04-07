@@ -61,6 +61,36 @@ job_remove_photographer:
   param: { module: job, action: removePhotographer }
 
 ################################################
+# photographer
+################################################
+photographer_list:
+  url: /photographer/list
+  param: { module: photographer, action: list }
+photographer_view:
+  url: /photographer/view
+  param: { module: photographer, action: view }
+photographer_view_jobs:
+  url: /photographer/view/jobs/:slug
+  class:    sfPropelRoute
+  param: { module: photographer, action: viewJobs }
+  options: { model: Photographer, type: object }
+  requirements: {slug: \w+ }
+################################################
+# client
+################################################
+client_list:
+  url: /client/list
+  param: { module: client, action: list }
+client_view:
+  url: /client/view
+  param: { module: client, action: view }
+client_view_jobs:
+  url: /client/view/jobs/:slug
+  class:    sfPropelRoute
+  param: { module: client, action: viewJobs }
+  options: { model: Client, type: object }
+  requirements: {slug: \w+ }
+################################################
 # tags
 ################################################
 job_add_tag:
@@ -70,12 +100,15 @@ job_remove_tag:
   url: /job/tag/delete
   param: { module: job, action: removeTag }
 job_listby_tag:
-  url: /tag/list/:name
+  url: /tag/list/:slug
   class:    sfPropelRoute
   param: { module: tag, action: list }
   options: { model: Tag, type: object }
   requirements: {name: \w+ }
 
+################################################
+# autocompletes
+################################################
 
 tag_autocomplete:
   url: /tag/autocomplete
@@ -86,6 +119,13 @@ client_autocomplete:
 photographer_autocomplete:
   url: /photographer/autocomplete
   param: { module: photographer, action: autocomplete }
+
+################################################
+# search
+################################################
+job_search:
+  url: /job/search
+  param: { module: search, action: job }
 
 ################################################
 # misc login and redirect routes

@@ -9,6 +9,7 @@ propel:
     triple_namespace: varchar(100)
     triple_key:       varchar(100)
     triple_value:     varchar(100)
+    slug:             {type: varchar(255), index: unique}
     _indexes:
       name:           [name]
       triple1:        [triple_namespace]
