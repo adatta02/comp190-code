@@ -19,7 +19,8 @@
 <div id="list-container">
 
 <?php include_partial("renderList", 
-                       array("pager" => $pager, 
+                       array("pager" => $pager,
+                             "viewingCaption" => $routeObject->__toString(), 
                              "object" => $routeObject)); ?>
 
 </div>

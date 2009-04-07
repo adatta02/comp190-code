@@ -21,6 +21,7 @@
 <?php include_partial("job/renderList", 
                       array("pager" => $pager, 
                             "object" => $tag,
+                            "viewingCaption" => " taggings for " . $tag->__toString(),
                             "route" => "job_listby_tag",
                             "renderStatus" => true)); ?>
 

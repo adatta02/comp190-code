@@ -1,7 +1,7 @@
 <?php use_helper("PMRender"); ?>
 
 <div id="now-viewing"> 
-  Viewing <?php echo $object; ?> <?php echo image_tag("loading.gif", array("id" => "ajax-loading")); ?> 
+  Viewing <?php echo $viewingCaption; ?> <?php echo image_tag("loading.gif", array("id" => "ajax-loading")); ?> 
 </div>
 
 <?php 

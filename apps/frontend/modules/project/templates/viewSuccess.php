@@ -19,8 +19,10 @@
 <div id="list-container">
 
 <?php include_partial("job/renderList", 
-                      array("pager" => $pager, 
-                            "object" => $project,
+                      array("pager" => $pager,
+                            "viewingCaption" => " project " . $project->getName(),
+                            "object" => $project->getSlug(),
+                            "propelType" => "slug",
                             "route" => "project_view",
                             "renderStatus" => true)); ?>
 

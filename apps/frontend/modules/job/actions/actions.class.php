@@ -32,6 +32,7 @@ class jobActions extends sfActions
       $this->route = "job_list_by";
       $this->propelType = "state";
       $this->renderStatus = false;
+      $this->viewingCaption = $this->routeObject->__toString();
 		} else if($tagId > 0){ 
 			$this->routeObject = TagPeer::retrieveByPK($tagId);
 			$ids = TaggingPeer::getJobIdsByTag($this->routeObject);
@@ -40,12 +41,14 @@ class jobActions extends sfActions
       $this->route = "job_listby_tag";
       $this->propelType = "tag";
       $this->renderStatus = true;
+      $this->viewingCaption = " taggings for " . $this->routeObject->__toString();
     } else if($projectId > 0){
     	$c->add(JobPeer::PROJECT_ID, $projectId);
     	$this->routeObject = ProjectPeer::retrieveByPK($projectId);
       $this->route = "project_view";
       $this->propelType = "project";
       $this->renderStatus = true;
+      $this->viewingCaption = " project " . $this->routeObject->__toString();
     } else if(strlen($searchQuery) > 0){
     	$ids = JobPeer::executeSearch($searchQuery);
     	$c->add(JobPeer::ID, $ids, Criteria::IN);
@@ -53,6 +56,7 @@ class jobActions extends sfActions
       $this->route = "job_search";
       $this->propelType = "search-box";
       $this->renderStatus = true;
+      $this->viewingCaption = " results for " . $this->routeObject->__toString();
     }
     else{
     	$this->forward404("Tried to reload list but something went wrong...");

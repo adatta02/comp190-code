@@ -21,6 +21,7 @@
 <?php include_partial("job/renderList", 
                       array("pager" => $pager, 
                             "object" => $searchBox,
+                            "viewingCaption" => " results for " . $searchBox,
                             "propelType" => "search-box",
                             "route" => "job_search",
                             "renderStatus" => true)); ?>
