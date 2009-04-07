@@ -19,6 +19,7 @@ class BaseTagForm extends BaseFormPropel
       'triple_namespace' => new sfWidgetFormInput(),
       'triple_key'       => new sfWidgetFormInput(),
       'triple_value'     => new sfWidgetFormInput(),
+      'slug'             => new sfWidgetFormInput(),
     ));
 
     $this->setValidators(array(
@@ -28,7 +29,12 @@ class BaseTagForm extends BaseFormPropel
       'triple_namespace' => new sfValidatorString(array('max_length' => 100, 'required' => false)),
       'triple_key'       => new sfValidatorString(array('max_length' => 100, 'required' => false)),
       'triple_value'     => new sfValidatorString(array('max_length' => 100, 'required' => false)),
+      'slug'             => new sfValidatorString(array('max_length' => 255, 'required' => false)),
     ));
+
+    $this->validatorSchema->setPostValidator(
+      new sfValidatorPropelUnique(array('model' => 'Tag', 'column' => array('slug')))
+    );
 
     $this->widgetSchema->setNameFormat('tag[%s]');
 

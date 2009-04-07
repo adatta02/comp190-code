@@ -112,7 +112,7 @@
 		<td>Tags</td>
 		<td>
         <?php foreach($job->getTags() as $tag): ?>
-          <?php echo link_to($tag, "job_listby_tag", array("slug" => $tag)) . " "; ?>
+          <?php echo link_to($tag, "job_listby_tag", array("slug" => $tag->getSlug())) . " "; ?>
         <? endforeach; ?>
        </td>
 	</tr>
