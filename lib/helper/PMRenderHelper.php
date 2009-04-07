@@ -11,6 +11,7 @@
          <tr>
           <td><?php echo $client->getDepartment() ?></td>
           <td><?php echo $client->getPhone(); ?></td>
+          <td><?php echo link_to($client->getNumberOfJobs() . " jobs", "client_view_jobs", array("slug" => $client->getSlug())); ?>
         </tr>
        </table>
      </div>

@@ -84,7 +84,12 @@ client_list:
 client_view:
   url: /client/view
   param: { module: client, action: view }
-
+client_view_jobs:
+  url: /client/view/jobs/:slug
+  class:    sfPropelRoute
+  param: { module: client, action: viewJobs }
+  options: { model: Client, type: object }
+  requirements: {slug: \w+ }
 ################################################
 # tags
 ################################################

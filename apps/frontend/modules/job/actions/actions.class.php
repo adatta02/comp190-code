@@ -10,6 +10,21 @@
  */
 class jobActions extends sfActions
 {
+	
+	private function reloadByClient($clientId){
+    $c = new Criteria();
+    $this->routeObject = ClientPeer::retrieveByPK($clientId);
+    
+    $ids = JobClientPeer::getJobsByClientId($this->routeObject->getId());
+    $c->add(JobPeer::ID, $ids, Criteria::IN);
+    
+    $this->route = "client_view_jobs";
+    $this->propelType = "slug";
+    $this->renderStatus = true;
+    $this->viewingCaption = " jobs owned by " . $this->routeObject->getName();
+    
+    return $c;
+	}
   
 	private function reloadByPhotographer($photographerId){
     $c = new Criteria();

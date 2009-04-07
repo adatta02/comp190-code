@@ -38,6 +38,12 @@ class Client extends BaseClient
    parent::delete($con);
   }
   
+  public function getNumberOfJobs(){
+  	$c = new Criteria();
+  	$c->add(JobClientPeer::CLIENT_ID, $this->getId());
+  	return JobClientPeer::doCount($c);
+  }
+  
 }
 
 $columns_map = array(  'from'   => ClientPeer::EMAIL,
