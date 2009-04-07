@@ -1,3 +1,4 @@
+
 <?php echo include_javascripts_for_form($form); ?>
 <?php echo include_stylesheets_for_form($form); ?>
  
@@ -24,7 +25,7 @@
 
     <tr><?php echo $form["date"]->renderRow(); ?> </tr>
     <tr><td><?php echo $form["start_time"]->renderRow(); ?> </td>
-    <td><?php echo $form["end_time"]->renderRow(); ?> </td></tr>
+    <td><?php echo $form["end_time"]->renderRow(); ?> </td> Leave time blank if it is TBD</tr>
  
     <tr><?php echo $form["street"]->renderRow(); ?> </tr>
     <tr><?php echo $form["city"]->renderRow(); ?></tr>
