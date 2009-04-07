@@ -20,4 +20,32 @@ class clientActions extends sfActions
     $this->renderText(json_encode(ClientPeer::getArrayForAutocomplete($request->getParameter("q"))));
     return sfView::NONE;
   }
+  
+  public function executeList(sfWebRequest $request){
+    $this->page = $request->getParameter("page");
+    $this->q = $request->getParameter("q");
+    
+    if(is_null($this->page)){
+     $this->page = 1;
+    }
+    
+    $c = new Criteria();
+    $c->addAscendingOrderByColumn(ClientPeer::NAME);
+    
+    if(is_null($this->q)){
+      $this->q = "";
+    }else{
+      $c = ClientPeer::getCriteriaForAutocomplete($this->q);
+    }
+    
+    $this->pager = new sfPropelPager ( "Client", sfConfig::get("app_items_per_page") );
+    $this->pager->setCriteria ( $c );
+    $this->pager->setPage ( $this->page );
+    $this->pager->init ();
+    
+    if($request->isXmlHttpRequest()){
+      $this->renderPartial("renderList", array("pager" => $this->pager, "q" => $this->q));
+      return sfView::NONE;
+    }
+  }
 }

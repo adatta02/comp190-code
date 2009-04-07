@@ -1,5 +1,39 @@
 <?php use_helper("Form"); 
 
+  function renderClient($client, $classNum){
+  ?>
+     <div class="job-list-item-<?php echo $classNum ?>">
+       <table class="job-table" width="100%">
+         <tr>
+           <td><?php echo link_to($client->getName(), "client_view"); ?></td>
+           <td>&lt;<?php echo mail_to($client->getEmail() , $client->getEmail()); ?>&gt;</td>
+         </tr>
+         <tr>
+          <td><?php echo $client->getDepartment() ?></td>
+          <td><?php echo $client->getPhone(); ?></td>
+        </tr>
+       </table>
+     </div>
+  <?php 
+  }
+
+  function renderPhotographer($photographer, $classNum){
+  ?>
+     <div class="job-list-item-<?php echo $classNum ?>">
+       <table class="job-table" width="100%">
+         <tr>
+           <td><?php echo link_to($photographer->getName(), "photographer_view"); ?></td>
+           <td>&lt;<?php echo mail_to($photographer->getEmail() , $photographer->getEmail()); ?>&gt;</td>
+         </tr>
+         <tr>
+          <td><?php echo $photographer->getAffiliation() ?></td>
+          <td><?php echo $photographer->getPhone(); ?></td>
+        </tr>
+       </table>
+     </div>
+  <?php 
+  }
+
   function renderProject($project, $classNum){
   	?>
   	 <div class="job-list-item-<?php echo $classNum ?>">

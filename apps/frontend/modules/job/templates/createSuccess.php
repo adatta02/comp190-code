@@ -24,8 +24,9 @@
     <tr><?php echo $form["project_id"]->renderRow(); ?> </tr>
 
     <tr><?php echo $form["date"]->renderRow(); ?> </tr>
-    <tr><td><?php echo $form["start_time"]->renderRow(); ?> </td>
-    <td><?php echo $form["end_time"]->renderRow(); ?> </td></tr>
+    <tr><td></td><td><small>If time is TDB leave blank</small></td></tr>
+    <tr><?php echo $form["start_time"]->renderRow(); ?> </tr>
+    <tr><?php echo $form["end_time"]->renderRow(); ?> </tr>
  
     <tr><?php echo $form["street"]->renderRow(); ?> </tr>
     <tr><?php echo $form["city"]->renderRow(); ?></tr>

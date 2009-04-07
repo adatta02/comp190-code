@@ -29,3 +29,10 @@ class Tag extends BaseTag
     return TagPeer::getTaggedWith($this->getName());
   }
 }
+
+$columns_map = array(  'from'   => TagPeer::NAME,
+                       'to'     => TagPeer::SLUG);
+sfPropelBehavior::add('Tag', 
+                      array('sfPropelActAsSluggableBehavior' => 
+                        array('columns' => $columns_map, 
+                              'separator' => '_', 'permanent' => true)));

@@ -38,3 +38,10 @@ class Photographer extends BasePhotographer
   }
   
 }
+
+$columns_map = array(  'from'   => PhotographerPeer::EMAIL,
+                       'to'     => PhotographerPeer::SLUG);
+sfPropelBehavior::add('Photographer', 
+                      array('sfPropelActAsSluggableBehavior' => 
+                        array('columns' => $columns_map, 
+                              'separator' => '_', 'permanent' => true)));

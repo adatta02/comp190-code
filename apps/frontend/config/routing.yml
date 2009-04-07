@@ -60,6 +60,19 @@ job_remove_photographer:
   url: /job/remove/photographer
   param: { module: job, action: removePhotographer }
 
+photographer_list:
+  url: /photographer/list
+  param: { module: photographer, action: list }
+photographer_view:
+  url: /photographer/view
+  param: { module: photographer, action: view }
+client_list:
+  url: /client/list
+  param: { module: client, action: list }
+client_view:
+  url: /client/view
+  param: { module: client, action: view }
+
 ################################################
 # tags
 ################################################

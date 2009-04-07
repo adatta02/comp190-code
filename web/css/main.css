@@ -58,8 +58,12 @@ body{
   margin-left:12px;
   height: 100%;
   width: 15%;
-  font-size: 16px;
+  font-size: 15px;
   background-image: url(images/sidebar.jpg);
+}
+
+#menu ul{
+	padding-left: 5px;
 }
 
 #content{
