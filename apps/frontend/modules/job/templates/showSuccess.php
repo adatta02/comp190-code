@@ -84,11 +84,11 @@
 	</tr>
 	<tr>
 		<td>Due Date</td>
-		<td><?php echo $job->getDueDate("F n, o"); ?></td>
+		<td><?php echo $job->getDueDate("F j, Y"); ?></td>
 	</tr>
 	<tr>
 		<td>Created At</td>
-		<td><?php echo $job->getCreatedAt("F n, o"); ?></td>
+		<td><?php echo $job->getCreatedAt("F j, Y"); ?></td>
 	</tr>
 	<tr>
 		<td>Contact</td>

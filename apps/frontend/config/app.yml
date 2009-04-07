@@ -20,3 +20,15 @@ all:
     photographer: 3
     user: 4
   items_per_page: 20
+  log_type:
+    create: 1
+    update: 2
+    delete: 3
+    add_photographer: 4
+    add_client: 5
+    remove_client: 6
+    remove_photographer: 7
+    add_tag: 8
+    remove_tag: 9
+    move_to_project: 10
+    change_status: 10

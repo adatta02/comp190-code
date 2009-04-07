@@ -13,5 +13,8 @@ class myUser extends sfGuardSecurityUser
 		        $type == sfConfig::get("app_user_type_client") ); 
 	}
 	
-	
+	// TODO: fix this
+	public function getUserId(){
+		return $this->getAttribute('user_id','','sfGuardSecurityUser');
+	}
 }

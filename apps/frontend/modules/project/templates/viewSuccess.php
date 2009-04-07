@@ -4,6 +4,7 @@
   ProjectManager.isInverted = <?php echo ($invert ? 1 : 0) ?>;
   ProjectManager.routeId = -1;
   ProjectManager.tagId = -1;
+  ProjectManager.searchQuery = "";
   ProjectManager.projectId = <?php echo $project->getId(); ?>;
   ProjectManager.removeJobTagUrl = "<?php echo url_for ( "job_remove_tag" );?>";
   ProjectManager.addJobTagUrl = "<?php echo url_for ( "job_add_tag" );?>";

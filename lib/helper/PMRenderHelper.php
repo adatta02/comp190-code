@@ -56,7 +56,7 @@
        </td>
                </tr>
 	       <tr>
-		   <td> <?php echo $job->getDate("F d, Y") . " " .  $sTime . " - " . $eTime ?> </td> 
+		   <td> <?php echo $job->getDate("F j, Y") . " " .  $sTime . " - " . $eTime ?> </td> 
 		   <td>Tags: <?php renderTagList($job); ?></td>
 
        <?php if($renderStatus): ?>

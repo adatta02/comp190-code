@@ -62,6 +62,15 @@ class Job extends BaseJob
 		$jp->setJobId ( $this->getId () );
 		$jp->save ();
 		
+	  $logEntry = new Log();
+    $logEntry->setWhen(time());
+    $logEntry->setPropelClass("Job");
+    $logEntry->setSfGuardUserProfileId(sfContext::getInstance()->getUser()->getUserId());
+    $logEntry->setMessage($photographer->getName() . " added to job.");
+    $logEntry->setLogMessageTypeId(sfConfig::get("app_log_type_add_photographer"));
+    $logEntry->setPropelId($this->getId());
+    $logEntry->save();
+		
 		return true;
 	}
   
@@ -70,6 +79,15 @@ class Job extends BaseJob
    $c->add(JobPhotographerPeer::JOB_ID, $this->getId());
    $c->add(JobPhotographerPeer::PHOTOGRAPHER_ID, $photographer->getId());
    JobPhotographerPeer::doDelete($c);
+   
+   $logEntry = new Log ( );
+	 $logEntry->setWhen ( time () );
+	 $logEntry->setPropelClass ( "Job" );
+	 $logEntry->setSfGuardUserProfileId ( sfContext::getInstance ()->getUser ()->getUserId () );
+	 $logEntry->setMessage ( $photographer->getName () . " removed from job." );
+	 $logEntry->setLogMessageTypeId ( sfConfig::get ( "app_log_type_remove_photographer" ) );
+	 $logEntry->setPropelId ( $this->getId () );
+	 $logEntry->save ();
 	}
 	
 	public function addClient($client){
@@ -85,6 +103,15 @@ class Job extends BaseJob
     $jc->setJobId($this->getId());
     $jc->save();
     
+    $logEntry = new Log ( );
+    $logEntry->setWhen ( time () );
+    $logEntry->setPropelClass ( "Job" );
+    $logEntry->setSfGuardUserProfileId ( sfContext::getInstance ()->getUser ()->getUserId () );
+    $logEntry->setMessage ( $client->getName () . " added to job." );
+    $logEntry->setLogMessageTypeId ( sfConfig::get ( "app_log_type_add_client" ) );
+    $logEntry->setPropelId ( $this->getId () );
+    $logEntry->save ();
+    
     return true;
 	}
 	
@@ -93,8 +120,92 @@ class Job extends BaseJob
 	 $c->add(JobClientPeer::CLIENT_ID, $client->getId());
    $c->add(JobClientPeer::JOB_ID, $this->getId());
    JobClientPeer::doDelete($c);
+   
+   $logEntry = new Log ( );
+   $logEntry->setWhen ( time () );
+   $logEntry->setPropelClass ( "Job" );
+   $logEntry->setSfGuardUserProfileId ( sfContext::getInstance ()->getUser ()->getUserId () );
+   $logEntry->setMessage ( $client->getName () . " removed from job." );
+   $logEntry->setLogMessageTypeId ( sfConfig::get ( "app_log_type_remove_client" ) );
+   $logEntry->setPropelId ( $this->getId () );
+   $logEntry->save ();
+   
 	}
 	
+	public function delete(PropelPDO $con = null)
+	{
+   $logEntry = new Log ( );
+   $logEntry->setWhen ( time () );
+   $logEntry->setPropelClass ( "Job" );
+   $logEntry->setSfGuardUserProfileId ( sfContext::getInstance ()->getUser ()->getUserId () );
+   $logEntry->setMessage ( "Job deleted." );
+   $logEntry->setLogMessageTypeId ( sfConfig::get ( "app_log_type_delete" ) );
+   $logEntry->setPropelId ( $this->getId () );
+   $logEntry->save ();
+   
+   parent::delete($con);
+	}
+	
+	private function updateLuceneIndex() {
+		$index = JobPeer::getLuceneIndex ();
+		
+		// remove an existing entry
+		if ($hit = $index->find ( 'pk:' . $this->getId () )) {
+			$index->delete ( $hit->id );
+		}
+		
+		$doc = new Zend_Search_Lucene_Document ( );
+		// store job primary key URL to identify it in the search results
+		$doc->addField ( Zend_Search_Lucene_Field::UnIndexed ( 'pk', $this->getId () ) );
+		
+		// index job fields
+		$doc->addField ( Zend_Search_Lucene_Field::UnStored ( 'event', 
+		                    $this->getEvent(), 'utf-8' ) );
+    $doc->addField ( Zend_Search_Lucene_Field::UnStored ( 'contact_name', 
+                        $this->getContactName(), 'utf-8' ) );
+    $doc->addField ( Zend_Search_Lucene_Field::UnStored ( 'contact_email', 
+                        $this->getContactEmail(), 'utf-8' ) );
+                             
+    $index->addDocument($doc);
+    $index->commit();
+	}
+	
+	public function save(PropelPDO $con = null)
+  {
+  	$logEntry = new Log();
+  	$logEntry->setWhen(time());
+    $logEntry->setPropelClass("Job");
+    $logEntry->setSfGuardUserProfileId(sfContext::getInstance()->getUser()->getUserId());
+    
+  	// this is a new job
+  	if($this->isNew()){
+  		$logEntry->setMessage("Job created.");
+  		$logEntry->setLogMessageTypeId(sfConfig::get("app_log_type_create"));
+  	}else{
+      $logEntry->setMessage("Job updated.");
+      $logEntry->setLogMessageTypeId(sfConfig::get("app_log_type_update"));
+  	}
+  	
+  	$logEntry->setPropelId($this->getId());
+  	
+  	if(is_null($con)){
+  	 $con = Propel::getConnection(JobPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+  	}
+  	$con->beginTransaction();
+    try {
+      $ret = parent::save($con);
+      $logEntry->save();
+      $this->updateLuceneIndex();
+      
+      $con->commit();
+      return $ret;
+    }catch (Exception $e) {
+      $con->rollBack();
+      throw $e;
+    }
+    
+  }
+  
 }
 
 $columns_map = array(  'from'   => JobPeer::EVENT,

@@ -76,6 +76,9 @@ job_listby_tag:
   options: { model: Tag, type: object }
   requirements: {name: \w+ }
 
+################################################
+# autocompletes
+################################################
 
 tag_autocomplete:
   url: /tag/autocomplete
@@ -86,6 +89,13 @@ client_autocomplete:
 photographer_autocomplete:
   url: /photographer/autocomplete
   param: { module: photographer, action: autocomplete }
+
+################################################
+# search
+################################################
+job_search:
+  url: /job/search
+  param: { module: search, action: job }
 
 ################################################
 # misc login and redirect routes

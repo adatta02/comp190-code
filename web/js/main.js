@@ -101,9 +101,7 @@ function removeJobTag(jobId, tagVal){
   obj.jobId = jobId;
   obj.tagVal = tagVal;
   
-  obj.render = ProjectManager.routeId;
-  obj.projectId = ProjectManager.projectId;
-  obj.tagId = ProjectManager.tagId;
+  obj = setRouteProperties(obj);
   
   $("#ajax-loading").attr("style", "display:inline");
   $("#list-container").load(ProjectManager.removeJobTagUrl, 
@@ -119,11 +117,9 @@ function addToProject(){
     return;
   
   var obj = new Object();
-  obj.render = ProjectManager.routeId;
-  obj.projectId = ProjectManager.projectId;
-  obj.tagId = ProjectManager.tagId;
-  obj.jobs = jobs;
+  obj = setRouteProperties(obj);
   
+  obj.jobs = jobs;
   obj.addProjectId = $("#add-project-id").val();
   obj.projectName = $("#project-name").val();
   obj.createNew = $("#project-create-new").attr("checked");
@@ -146,9 +142,7 @@ function addJobTag(){
     return;
   
   var obj = new Object();
-  obj.render = ProjectManager.routeId;
-  obj.projectId = ProjectManager.projectId;
-  obj.tagId = ProjectManager.tagId;
+  obj = setRouteProperties(obj);
   
   obj.addTagId = $("#add-tag-id").val();
   obj.jobs = jobs;
@@ -160,6 +154,14 @@ function addJobTag(){
   $("#list-container").load(ProjectManager.addJobTagUrl, 
                               {obj: $.toJSON(obj)},
                               function(){ $("#ajax-loading").attr("style", "display:none"); });
+}
+
+function setRouteProperties(obj){
+  obj.render = ProjectManager.routeId;
+  obj.projectId = ProjectManager.projectId;
+  obj.tagId = ProjectManager.tagId;
+  obj.searchQuery = ProjectManager.searchQuery;
+  return obj;
 }
 
 function invertSort(){
@@ -210,10 +212,7 @@ $(document).ready(
         
         $(".job-check:checked").each( function(){ jobs.push( $(this).val() ); });
         
-        obj.render = ProjectManager.routeId;
-        obj.projectId = ProjectManager.projectId;
-        obj.tagId = ProjectManager.tagId;
-        
+        obj = setRouteProperties(obj);
         obj.state = $("#move-to").val();
         obj.jobs = jobs;
         

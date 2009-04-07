@@ -74,8 +74,10 @@
 
 
 <div id="top-search">
-				      <?php echo input_tag("search-box"); ?> <?php echo submit_tag("Search"); ?>
-				  </div>
+  <?php echo form_tag("@job_search", array("method" => "GET")); ?>
+    <?php echo input_tag("search-box"); ?> <?php echo submit_tag("Search"); ?>
+  </form>
+</div>
 
 <div style="clear: both"></div>
 

@@ -21,6 +21,7 @@ class jobActions extends sfActions
       $stateId = $obj["render"];
       $tagId = $obj["tagId"];
       $projectId = $obj["projectId"];
+      $searchQuery = $obj["searchQuery"];
 		}
 		
 		$c = new Criteria();
@@ -45,7 +46,15 @@ class jobActions extends sfActions
       $this->route = "project_view";
       $this->propelType = "project";
       $this->renderStatus = true;
-    }else{
+    } else if(strlen($searchQuery) > 0){
+    	$ids = JobPeer::executeSearch($searchQuery);
+    	$c->add(JobPeer::ID, $ids, Criteria::IN);
+      $this->routeObject = $searchQuery;
+      $this->route = "job_search";
+      $this->propelType = "search-box";
+      $this->renderStatus = true;
+    }
+    else{
     	$this->forward404("Tried to reload list but something went wrong...");
     }
 		

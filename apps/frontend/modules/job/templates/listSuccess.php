@@ -5,6 +5,7 @@
   ProjectManager.routeId = <?php echo $routeObject->getId ()?>;
   ProjectManager.tagId = -1;
   ProjectManager.projectId = -1;
+  ProjectManager.searchQuery = "";
   ProjectManager.removeJobTagUrl = "<?php echo url_for ( "job_remove_tag" );?>";
   ProjectManager.addJobTagUrl = "<?php echo url_for ( "job_add_tag" );?>";
   ProjectManager.moveJobUrl = "<?php echo url_for("job_move"); ?>";
