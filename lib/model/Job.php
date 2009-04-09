@@ -31,21 +31,19 @@ class Job extends BaseJob
 		return ClientPeer::doSelect($c);
 	}
 	
- public function getPhotographers(){
+ public function getPhotographer(){
     $c = new Criteria();
     $c->add(JobPhotographerPeer::JOB_ID, $this->getId());
     
     $photographerIds = array();
-    $jc = JobPhotographerPeer::doSelect($c);
+    $jc = JobPhotographerPeer::doSelectJoinPhotographer($c);
+    $names = array();
     
-    foreach($jc as $i){
-      $photographerIds[] = $i->getPhotographerId();
+    foreach($jc as $j){
+    	$names[] = $j->getPhotographer();
     }
     
-    $c = new Criteria();
-    $c->add(PhotographerPeer::ID, $photographerIds, Criteria::IN);
-    
-    return PhotographerPeer::doSelect($c);
+    return $names;
   }
 	
 	public function addPhotographer($photographer) {
@@ -146,30 +144,6 @@ class Job extends BaseJob
    parent::delete($con);
 	}
 	
-	private function updateLuceneIndex() {
-		$index = JobPeer::getLuceneIndex ();
-		
-		// remove an existing entry
-		if ($hit = $index->find ( 'pk:' . $this->getId () )) {
-			$index->delete ( $hit->id );
-		}
-		
-		$doc = new Zend_Search_Lucene_Document ( );
-		// store job primary key URL to identify it in the search results
-		$doc->addField ( Zend_Search_Lucene_Field::UnIndexed ( 'pk', $this->getId () ) );
-		
-		// index job fields
-		$doc->addField ( Zend_Search_Lucene_Field::UnStored ( 'event', 
-		                    $this->getEvent(), 'utf-8' ) );
-    $doc->addField ( Zend_Search_Lucene_Field::UnStored ( 'contact_name', 
-                        $this->getContactName(), 'utf-8' ) );
-    $doc->addField ( Zend_Search_Lucene_Field::UnStored ( 'contact_email', 
-                        $this->getContactEmail(), 'utf-8' ) );
-                             
-    $index->addDocument($doc);
-    $index->commit();
-	}
-	
 	public function save(PropelPDO $con = null)
   {
   	$logEntry = new Log();
@@ -191,12 +165,11 @@ class Job extends BaseJob
   	if(is_null($con)){
   	 $con = Propel::getConnection(JobPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
   	}
+  	
   	$con->beginTransaction();
     try {
       $ret = parent::save($con);
       $logEntry->save();
-      $this->updateLuceneIndex();
-      
       $con->commit();
       return $ret;
     }catch (Exception $e) {

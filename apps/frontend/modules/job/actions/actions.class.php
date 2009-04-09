@@ -8,7 +8,7 @@
  * @author     Your name here
  * @version    SVN: $Id: actions.class.php 12479 2008-10-31 10:54:40Z fabien $
  */
-class jobActions extends sfActions
+class jobActions extends PMActions
 {
 	
 	private function reloadByClient($clientId){
@@ -99,11 +99,8 @@ class jobActions extends sfActions
     return $c;
 	}
 	
-	private function createPager($stateId = null){
-		$this->page = $this->getRequest()->getParameter("page");
-    $this->sortedBy = $this->getRequest()->getParameter("sortBy");
-		$this->invert = $this->getRequest()->getParameter("invert");
-    
+	private function createCriteria($stateId = null, $routeArray = null){
+		
 		if(is_null($stateId)){
 		  $obj = json_decode($this->getRequest()->getParameter("obj"), true);
 		  $reloadFunction = $obj["reloadFunction"];
@@ -120,27 +117,7 @@ class jobActions extends sfActions
 		
 		$c = $this->$reloadFunction($reloadParam);
 		
-		if(is_null($this->sortedBy)){
-      $this->sortedBy = JobPeer::DATE;
-    }
-		if(is_null($this->invert) || $this->invert == "false"){
-			$this->invert = false;
-      $c->addAscendingOrderByColumn($this->sortedBy);
-    }else{
-    	$c->addDescendingOrderByColumn($this->sortedBy);
-    	$this->invert = true;
-    }
-		
-    if(!is_numeric($this->page))
-      $this->page = 1;
-    
-    // if this user is only a client 
-    // make sure they can only see their jobs
-    
-    $this->pager = new sfPropelPager ( "Job", sfConfig::get("app_items_per_page") );
-    $this->pager->setCriteria ( $c );
-    $this->pager->setPage ( $this->page );
-    $this->pager->init ();
+		$this->getPager($c, $routeArray);
 	}
 	
 	public function executeShow(sfWebRequest $request){
@@ -229,7 +206,7 @@ class jobActions extends sfActions
       JobPeer::setJobProjectIds($jobs, $projectId);
     }
     
-		$this->createPager();
+		$this->createCriteria();
     $this->setTemplate("reload");
 	}
 	
@@ -244,7 +221,7 @@ class jobActions extends sfActions
     
     JobPeer::setJobStateIds($jobs, $toState);
     
-    $this->createPager();
+    $this->createCriteria();
     $this->setTemplate("reload");
   }
 	
@@ -260,7 +237,7 @@ class jobActions extends sfActions
     	$job->save();
     }
     
-    $this->createPager();
+    $this->createCriteria();
     $this->setTemplate("reload");
   }
   
@@ -280,7 +257,7 @@ class jobActions extends sfActions
     	$j->save();
     }
     
-    $this->createPager();
+    $this->createCriteria();
     $this->setTemplate("reload");
   }
   
@@ -301,22 +278,10 @@ class jobActions extends sfActions
 		}
 		
 		$this->routeObject = $showType;
-		$this->createPager($showType->getId());
-		
-		$sortUrls = array();
-		
-		foreach(JobPeer::$LIST_VIEW_SORTABLE as $key => $val){
-		  $sortUrls[$key]["true"] = $this->generateUrl("job_list_by", 
-                                           array("state" => $this->routeObject, 
-                                                 "sortBy" => $key,
-                                                 "invert" => "true"));
-      $sortUrls[$key]["false"] = $this->generateUrl("job_list_by", 
-                                           array("state" => $this->routeObject, 
-                                                 "sortBy" => $key,
-                                                 "invert" => "false"));	
-		}
-		
-		$this->sortUrlJson = json_encode($sortUrls);
+		$this->createCriteria($showType->getId(), 
+		                      array("route" => "job_list_by", 
+		                            "slugOn" => "state", 
+		                            "slug" => $this->routeObject));
 	}
 	
 	/**

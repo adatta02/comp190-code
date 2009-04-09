@@ -46,42 +46,11 @@ class JobPeer extends BaseJobPeer
      $logEntry->save ();
     }
   }
-  
-  // these two functions are from the Symfony Jobeet tutorial
-  static public function getLuceneIndex() {
-    ProjectConfiguration::registerZend ();
-		
-    if (file_exists ( $index = self::getLuceneIndexFile () )) {
-			return Zend_Search_Lucene::open ( $index );
-		} else {
-			return Zend_Search_Lucene::create ( $index );
-		}
-	}
-	
-	static private function getLuceneIndexFile() {
-		return sfConfig::get ( 'sf_data_dir' ) . '/job.' . sfConfig::get ( 'sf_environment' ) . '.index';
-	}
-  
-	public static function doDeleteAll($con = null)
-	{
-	  if (file_exists($index = self::getLuceneIndexFile()))
-	  {
-	    sfToolkit::clearDirectory($index);
-	    rmdir($index);
-	  }
-	 
-	  return parent::doDeleteAll($con);
-	}
-  
-	public static function executeSearch($q){
-    $hits = self::getLuceneIndex()->find($q);
     
-    $pks = array();
-    foreach ($hits as $hit)
-    {
-      $pks[] = $hit->pk;
-    }
+	public static function executeSearch($q){
+		$c = new Criteria();
+		$c->add(JobPeer::EVENT, "%" . $q . "%", Criteria::LIKE);
 		
-    return $pks;
+    return $c;
 	}
 }
