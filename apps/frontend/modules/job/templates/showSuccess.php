@@ -1,3 +1,4 @@
+<?php use_helper("PMRender"); ?>
 <script type="text/javascript">
   
   ProjectManager.viewingJobId = <?php echo $job->getId(); ?>;
@@ -5,6 +6,9 @@
   ProjectManager.removeClientFromJob = "<?php echo url_for("@job_remove_client"); ?>";
   ProjectManager.addPhotographerToJobUrl = "<?php echo url_for("@job_add_photographer"); ?>";
   ProjectManager.removePhotographerFromJobUrl = "<?php echo url_for("@job_remove_photographer"); ?>";
+  
+  ProjectManager.reloadFunction = "noReload";
+  ProjectManager.reloadParam = "";
   
   $(document).ready( 
     function(){
@@ -111,9 +115,7 @@
 	<tr>
 		<td>Tags</td>
 		<td>
-        <?php foreach($job->getTags() as $tag): ?>
-          <?php echo link_to($tag, "job_listby_tag", array("slug" => $tag)) . " "; ?>
-        <? endforeach; ?>
+      <?php renderTagList($job); ?>
        </td>
 	</tr>
 </table>
