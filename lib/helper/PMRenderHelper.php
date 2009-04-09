@@ -104,19 +104,21 @@
           </td>
        <?php endif; ?>
        
-		   <?php if(count($job->getPhotographers()) == 1):
+		   <?php
+		    $photogs = $job->getPhotographer(); 
+		    if(count($photogs) == 1):
 		    
-			 foreach($job->getPhotographers() as $i){ ?>
+			 foreach($photogs as $i){ ?>
 		   	 <td>
-			   <?php echo $i; ?>
+			     <?php echo $i; ?>
 		   	 </td>
 		   <?php 
 		         }
-		      elseif(count($job->getPhotographers()) == 0): ?>
+		      elseif(count($photogs) == 0): ?>
 		           <td> <?php echo "No Photographer"; ?> </td>
 		      <?php else: 
 		    ?>
-		        <td> <?php echo count($job->getPhotographers()) . " Photographers"; ?> </td>
+		        <td> <?php echo count($photogs) . " Photographers"; ?> </td>
 			   
 		   <?php endif; ?>
       
