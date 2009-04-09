@@ -17,12 +17,12 @@ function createProject(){
     return;
   }
 
-  $("#ajax-loading").attr("style", "display:inline");
+  $("#ajax-loading").show();
   $("#create-project-form").hide();
   
   $("#project-name").load(ProjectManager.createProjectUrl, 
                           {name: $("#project-name").val()},
-                          function(){ $("#ajax-loading").attr("style", "display:none"); alert("Project Created!"); });
+                          function(){ $("#ajax-loading").hide(); alert("Project Created!"); });
 }
 
 function toggle(what){
@@ -52,10 +52,10 @@ function removeClientFromJob(clientId){
   
   tb_remove();
   
-  $("#ajax-loading").attr("style", "display:inline");
+  $("#ajax-loading").show();
   $("#job-client-list").load(ProjectManager.removeClientFromJob, 
                               {obj: $.toJSON(obj)},
-                              function(){ $("#ajax-loading").attr("style", "display:none"); });
+                              function(){ $("#ajax-loading").hide(); });
 }
 
 function addClientToJob(){
@@ -65,10 +65,10 @@ function addClientToJob(){
   
   tb_remove();
   
-  $("#ajax-loading").attr("style", "display:inline");
+  $("#ajax-loading").show();
   $("#job-client-list").load(ProjectManager.addClientToJobUrl, 
                               {obj: $.toJSON(obj)},
-                              function(){ $("#ajax-loading").attr("style", "display:none"); });
+                              function(){ $("#ajax-loading").hide(); });
 }
 
 function addPhotographerToJob(){
@@ -78,10 +78,10 @@ function addPhotographerToJob(){
   
   tb_remove();
   
-  $("#ajax-loading").attr("style", "display:inline");
+  $("#ajax-loading").show();
   $("#job-photographer-list").load(ProjectManager.addPhotographerToJobUrl, 
                               {obj: $.toJSON(obj)},
-                              function(){ $("#ajax-loading").attr("style", "display:none"); });
+                              function(){ $("#ajax-loading").hide(); });
 }
 
 function removePhotographerFromJob(photographerId){
@@ -91,23 +91,40 @@ function removePhotographerFromJob(photographerId){
   
   tb_remove();
   
-  $("#ajax-loading").attr("style", "display:inline");
+  $("#ajax-loading").show();
   $("#job-photographer-list").load(ProjectManager.removePhotographerFromJobUrl, 
                               {obj: $.toJSON(obj)},
-                              function(){ $("#ajax-loading").attr("style", "display:none"); });
+                              function(){ $("#ajax-loading").hide(); });
 }
 
 function removeJobTag(jobId, tagVal){
+  
+  if(ProjectManager.isViewingJob){
+    var obj = new Object();
+    obj.jobId = jobId;
+    obj.tagVal = tagVal;
+    obj.viewingJob = true;
+    
+    $("#ajax-loading").show();
+    $("#job-basic-info").load(ProjectManager.removeJobTagUrl, 
+                              {obj: $.toJSON(obj)},
+                                function(){ 
+                                  $("#ajax-loading").hide(); 
+                                });
+    return;
+  }
+  
+  
   var obj = new Object();
   obj.jobId = jobId;
   obj.tagVal = tagVal;
   
   obj = setRouteProperties(obj);
   
-  $("#ajax-loading").attr("style", "display:inline");
+  $("#ajax-loading").show();
   $("#list-container").load(ProjectManager.removeJobTagUrl, 
                               {obj: $.toJSON(obj)},
-                              function(){ $("#ajax-loading").attr("style", "display:none"); });
+                              function(){ $("#ajax-loading").hide(); });
 }
 
 function addToProject(){
@@ -128,13 +145,30 @@ function addToProject(){
   
   tb_remove();
   
-  $("#ajax-loading").attr("style", "display:inline");
+  $("#ajax-loading").show();
   $("#list-container").load(ProjectManager.addJobsToProjectUrl, 
                               {obj: $.toJSON(obj)},
-                              function(){ $("#ajax-loading").attr("style", "display:none"); });
+                              function(){ $("#ajax-loading").hide(); });
 }
 
-function addJobTag(){
+function addJobTag(jobId){
+
+  if(ProjectManager.isViewingJob){
+    
+    var obj = new Object();
+    obj.jobs = new Array();
+    obj.jobs.push(jobId);
+    obj.tags = $("#add-tag-val").val();
+    obj.viewingJob = true;
+    
+    $("#ajax-loading").show();
+    $("#job-basic-info").load(ProjectManager.addJobTagUrl, 
+                              {obj: $.toJSON(obj)},
+                                function(){ 
+                                  $("#ajax-loading").hide(); 
+                              });
+    return;
+  }
 
   var jobs = new Array();
   $(".job-check:checked").each( function(){ jobs.push( $(this).val() ); });
@@ -151,10 +185,10 @@ function addJobTag(){
   
   $('#add-tag-menu').hide();
   
-  $("#ajax-loading").attr("style", "display:inline");
+  $("#ajax-loading").show();
   $("#list-container").load(ProjectManager.addJobTagUrl, 
                               {obj: $.toJSON(obj)},
-                              function(){ $("#ajax-loading").attr("style", "display:none"); });
+                              function(){ $("#ajax-loading").hide(); });
 }
 
 function setRouteProperties(obj){
@@ -197,10 +231,10 @@ $(document).ready(
         obj.state = $("#move-to").val();
         obj.jobs = jobs;
         
-        $("#ajax-loading").attr("style", "display:inline");
+        $("#ajax-loading").show();
         $("#list-container").load(ProjectManager.moveJobUrl, 
                                   {obj: $.toJSON(obj)},
-                                  function(){ $("#ajax-loading").attr("style", "display:none"); });
+                                  function(){ $("#ajax-loading").hide(); });
     }); 
   });
 
