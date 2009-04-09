@@ -230,6 +230,7 @@ class jobActions extends PMActions
     
     $jobId = $obj["jobId"];
     $tagVal = $obj["tagVal"];
+    $viewingJob = array_key_exists("viewingJob", $obj);
     
     $job = JobPeer::retrieveByPK($jobId);
     if(!is_null($job)){
@@ -237,16 +238,22 @@ class jobActions extends PMActions
     	$job->save();
     }
     
-    $this->createCriteria();
-    $this->setTemplate("reload");
+    if(!$viewingJob){
+      $this->createCriteria();
+      $this->setTemplate("reload");
+    }else{
+      $this->renderPartial("basicInfo", array("job" => $job));
+      return sfView::NONE;
+    }
+    
   }
-  
+    
   public function executeAddTag(sfWebRequest $request){
   	$obj = json_decode($request->getParameter("obj"), true);
     
   	$jobs = $obj["jobs"];
     $tags = $obj["tags"];
-    $addTagId = $obj["addTagId"];
+    $viewingJob = array_key_exists("viewingJob", $obj);
     
     $c = new Criteria();
     $c->add(JobPeer::ID, $jobs, Criteria::IN);
@@ -257,8 +264,14 @@ class jobActions extends PMActions
     	$j->save();
     }
     
-    $this->createCriteria();
-    $this->setTemplate("reload");
+    if(!$viewingJob){
+      $this->createCriteria();
+      $this->setTemplate("reload");
+    }else{
+    	$job = $jobs[0];
+      $this->renderPartial("basicInfo", array("job" => $job));
+      return sfView::NONE;
+    }
   }
   
 	/**

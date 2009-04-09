@@ -6,12 +6,29 @@
   ProjectManager.removeClientFromJob = "<?php echo url_for("@job_remove_client"); ?>";
   ProjectManager.addPhotographerToJobUrl = "<?php echo url_for("@job_add_photographer"); ?>";
   ProjectManager.removePhotographerFromJobUrl = "<?php echo url_for("@job_remove_photographer"); ?>";
-  
-  ProjectManager.reloadFunction = "noReload";
-  ProjectManager.reloadParam = "";
+  ProjectManager.addJobTagUrl = "<?php echo url_for("@job_add_tag"); ?>";
+  ProjectManager.removeJobTagUrl = "<?php echo url_for("@job_remove_tag"); ?>";
+  ProjectManager.isViewingJob = true;
   
   $(document).ready( 
     function(){
+    
+	  $("#add-tag-val")
+	    .autocomplete('<?php echo url_for ( "@tag_autocomplete" )?>', $.extend({}, {
+	      dataType: 'json',
+	      parse:    function(data) {
+	                  var parsed = [];
+	                  var obj;
+	                  for(var i=0; i < data.length; i++){
+	                    obj = new Object();
+	                    obj.data = [data[i].name, data[i].id];
+	                    obj.value = data[i].name;
+	                    obj.result = data[i].name;
+	                    parsed.push(obj);
+	                  }
+	                  return parsed;
+	      }}, {}))
+	    .result(function(event, data) { });
     
     $("#add-client-name")
     .autocomplete('<?php
@@ -69,56 +86,7 @@
 </div>
 
 <div id="job-basic-info" class="collapsable"><a href="#basic"></a>
-<table width="100%" border="0">
-	<tr>
-		<td width="20%">Event</td>
-		<td width="80%"><?php echo $job->getEvent(); ?></td>
-	</tr>
-	<tr>
-		<td>Status</td>
-		<td><?php echo $job->getStatus()->getState(); ?></td>
-	</tr>
-	<tr>
-		<td>Shoot Type</td>
-		<td><?php echo $job->getPhotoType() ?></td>
-	</tr>
-	<tr>
-		<td>Shoot Date</td>
-		<td><?php echo $job->getPrettyShootDate() ?></td>
-	</tr>
-	<tr>
-		<td>Due Date</td>
-		<td><?php echo $job->getDueDate("F j, Y"); ?></td>
-	</tr>
-	<tr>
-		<td>Created At</td>
-		<td><?php echo $job->getCreatedAt("F j, Y"); ?></td>
-	</tr>
-	<tr>
-		<td>Contact</td>
-		<td><?php echo mail_to($job->getContactEmail(), $job->getContactName()) . " &lt;" . $job->getContactEmail(); ?>&gt;</td>
-	</tr>
-	<tr>
-		<td>Contact Phone</td>
-		<td><?php echo $job->getContactPhone() ?></td>
-	</tr>
-	<tr>
-		<td>Publication</td>
-		<td>
-          <?php if($job->getPublication()) 
-                  echo $job->getPublication()->getName();
-                else
-                  echo "None"; 
-          ?>
-       </td>
-	</tr>
-	<tr>
-		<td>Tags</td>
-		<td>
-      <?php renderTagList($job); ?>
-       </td>
-	</tr>
-</table>
+  <?php include_partial("basicInfo", array("job" => $job)); ?>
 </div>
 
 <hr />

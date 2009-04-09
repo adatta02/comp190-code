@@ -105,7 +105,6 @@ job_listby_tag:
   param: { module: tag, action: list }
   options: { model: Tag, type: object }
   requirements: {name: \w+ }
-
 ################################################
 # autocompletes
 ################################################
