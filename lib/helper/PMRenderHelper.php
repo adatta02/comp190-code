@@ -4,14 +4,18 @@
   ?>
      <div class="job-list-item-<?php echo $classNum ?>">
        <table class="job-table" width="100%">
-         <tr>
+          <col width="32%"></col>
+          <col width="36%"></col>
+          <col width="32%"></col>
+
+	 <tr>
            <td><?php echo link_to($client->getName(), "client_view"); ?></td>
            <td>&lt;<?php echo mail_to($client->getEmail() , $client->getEmail()); ?>&gt;</td>
          </tr>
          <tr>
           <td><?php echo $client->getDepartment() ?></td>
           <td><?php echo $client->getPhone(); ?></td>
-          <td><?php echo link_to($client->getNumberOfJobs() . " jobs", "client_view_jobs", array("slug" => $client->getSlug())); ?>
+          <td align="center"><?php echo link_to($client->getNumberOfJobs() . " jobs", "client_view_jobs", array("slug" => $client->getSlug())); ?>
         </tr>
        </table>
      </div>
@@ -22,6 +26,9 @@
   ?>
      <div class="job-list-item-<?php echo $classNum ?>">
        <table class="job-table" width="100%">
+          <col width="32%"></col>
+          <col width="36%"></col>
+          <col width="32%"></col>
          <tr>
            <td><?php echo link_to($photographer->getName(), "photographer_view"); ?></td>
            <td>&lt;<?php echo mail_to($photographer->getEmail() , $photographer->getEmail()); ?>&gt;</td>
@@ -29,7 +36,7 @@
          <tr>
           <td><?php echo $photographer->getAffiliation() ?></td>
           <td><?php echo $photographer->getPhone(); ?></td>
-          <td><?php echo link_to($photographer->getNumberOfJobs() . " jobs", 
+          <td align="center"><?php echo link_to($photographer->getNumberOfJobs() . " jobs", 
                                   "photographer_view_jobs", 
                                   $photographer) ?></td>
         </tr>
