@@ -1,5 +1,7 @@
 <?php
 
+sfContext::getInstance()->getConfiguration()->loadHelpers('Url');
+
 class JobPeer extends BaseJobPeer
 {
 	public static $LIST_VIEW_SORTABLE = array( JobPeer::ID => "Job Id", 
@@ -50,7 +52,22 @@ class JobPeer extends BaseJobPeer
 	public static function executeSearch($q){
 		$c = new Criteria();
 		$c->add(JobPeer::EVENT, "%" . $q . "%", Criteria::LIKE);
-		
     return $c;
+	}
+	
+	public static function getJobsForAutocomplete($q){
+		$c = new Criteria();
+    $c->add(JobPeer::EVENT, $q . "%", Criteria::LIKE);
+		$c->addDescendingOrderByColumn(JobPeer::EVENT);
+		$c->setLimit(10);
+		
+		$jobs = JobPeer::doSelect($c);
+		$arr = array();
+		foreach($jobs as $j){
+			$arr[] = array("name" => $j->getEvent(), 
+			               "url" => url_for('job_show', array("slug" => $j->getSlug())));
+		}
+		
+		return $arr;
 	}
 }

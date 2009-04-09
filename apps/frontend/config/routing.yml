@@ -119,7 +119,10 @@ client_autocomplete:
 photographer_autocomplete:
   url: /photographer/autocomplete
   param: { module: photographer, action: autocomplete }
-
+job_autocomplete:
+  url: /job/autocomplete
+  param: { module: job, action: autocomplete }
+  
 ################################################
 # search
 ################################################

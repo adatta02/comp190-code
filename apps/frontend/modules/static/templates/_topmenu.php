@@ -16,14 +16,14 @@
                   var obj;
                   for(var i=0; i < data.length; i++){
                     obj = new Object();
-                    obj.data = [data[i].name, data[i].slug];
+                    obj.data = [data[i].name, data[i].url];
                     obj.value = data[i].name;
                     obj.result = data[i].name;
                     parsed.push(obj);
                   }
                   return parsed;
       }}, {}))
-    .result(function(event, data) { alert(data[1]); });
+    .result(function(event, data) { window.location = data[1]; });
     
   $("#add-tag")
     .autocomplete('<?php

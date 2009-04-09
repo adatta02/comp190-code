@@ -105,7 +105,7 @@
        <?php endif; ?>
        
 		   <?php
-		    $photogs = $job->getPhotographer(); 
+		    $photogs = $job->getPhotographers(); 
 		    if(count($photogs) == 1):
 		    
 			 foreach($photogs as $i){ ?>

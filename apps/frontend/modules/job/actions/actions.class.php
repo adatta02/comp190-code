@@ -325,5 +325,11 @@ class jobActions extends PMActions
   	if(!$this->getUser()->isAdminOrClient())
   	 $this->setLayout("nomenu");
   }
+
+  public function executeAutocomplete(sfWebRequest $request){
+    $q = $request->getParameter("q");
+    $this->renderText(json_encode(JobPeer::getJobsForAutocomplete($q)));
+    return sfView::NONE;
+  }
   
 }
