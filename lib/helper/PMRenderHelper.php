@@ -10,7 +10,7 @@
 
 	 <tr>
            <td><?php echo link_to($client->getName(), "client_view"); ?></td>
-           <td>&lt;<?php echo mail_to($client->getEmail() , $client->getEmail()); ?>&gt;</td>
+           <td><?php echo mail_to($client->getEmail() , $client->getEmail()); ?></td>
          </tr>
          <tr>
           <td><?php echo $client->getDepartment() ?></td>
@@ -31,7 +31,7 @@
           <col width="32%"></col>
          <tr>
            <td><?php echo link_to($photographer->getName(), "photographer_view"); ?></td>
-           <td>&lt;<?php echo mail_to($photographer->getEmail() , $photographer->getEmail()); ?>&gt;</td>
+           <td><?php echo mail_to($photographer->getEmail() , $photographer->getEmail()); ?></td>
          </tr>
          <tr>
           <td><?php echo $photographer->getAffiliation() ?></td>
