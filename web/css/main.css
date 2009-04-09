@@ -37,16 +37,20 @@ body{
   padding-left: 40px;
 }
 
+
 #logo{
    float:left;
+   margin-left:2px;
    margin-right: 20px;
+   width:18.7%;
 }
 
 #menu{
   float: left;
   padding:30px;
+  padding-top:102px;
   margin-left:2px;
-  margin-top:-5px;
+  margin-top:-93px;
   height: 100%;
   width: 15%;
   font-size: 15px;
@@ -83,10 +87,12 @@ body{
 }
 
 #top-menu{
+  position:relative;
   padding-top: 1px;
   color: white;
   font-weight: bold;
   font-size: 14px;
+  z-index:1;
 }
 
 #left-top-menu{
