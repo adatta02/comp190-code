@@ -6,6 +6,25 @@
   $(document).ready( 
     function(){
 
+  // search-box
+  $("#search-box")
+    .autocomplete('<?php
+        echo url_for ( "@job_autocomplete" )?>', $.extend({}, {
+      dataType: 'json',
+      parse:    function(data) {
+                  var parsed = [];
+                  var obj;
+                  for(var i=0; i < data.length; i++){
+                    obj = new Object();
+                    obj.data = [data[i].name, data[i].slug];
+                    obj.value = data[i].name;
+                    obj.result = data[i].name;
+                    parsed.push(obj);
+                  }
+                  return parsed;
+      }}, {}))
+    .result(function(event, data) { alert(data[1]); });
+    
   $("#add-tag")
     .autocomplete('<?php
 				echo url_for ( "@tag_autocomplete" )?>', $.extend({}, {
