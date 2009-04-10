@@ -40,17 +40,19 @@ body{
 
 #logo{
    float:left;
-   margin-left:2px;
-   margin-right: 20px;
-   width:18.7%;
+   margin-right:120px;
+   margin-left:40px;
+   position:relative;
+   z-index:2;
+   width:75px;
 }
 
 #menu{
   float: left;
   padding:30px;
-  padding-top:102px;
+  padding-top:202px;
   margin-left:2px;
-  margin-top:-93px;
+  margin-top:-173px;
   height: 100%;
   width: 15%;
   font-size: 15px;
@@ -97,17 +99,17 @@ body{
 
 #left-top-menu{
   margin-top:3px;
-  background-image: url(images/header_left.jpg);
+  background-image: url(images/header_left.gif);
   background-repeat: no-repeat;
-  width:56px;
+  width:50px;
   height:88px;
   float: left;
 }
 
 #right-top-menu{
-  width:56px;
+  width:50px;
   height: 88px;
-  background-image: url(images/header_right.jpg);
+  background-image: url(images/header_right.gif);
   background-repeat: no-repeat;
   float:left;
 }
@@ -116,7 +118,7 @@ body{
   float: left;
   height: 88px;
   width: 980px;
-  background-image: url(images/header.jpg);
+  background-image: url(images/header.gif);
 }
 
 #top-menu-container{
