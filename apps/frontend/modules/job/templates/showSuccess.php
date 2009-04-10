@@ -176,7 +176,9 @@
 	onclick="javascript:$('#job-billing-info').toggle(); return false;">[tg]</a>
 </div>
 
-<div id="job-billing-info" class="collapsable"></div>
+<div id="job-billing-info" class="collapsable">
+  
+</div>
 
 </div>
 

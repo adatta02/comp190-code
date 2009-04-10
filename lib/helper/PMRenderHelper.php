@@ -1,5 +1,24 @@
 <?php use_helper("Form"); 
 
+  function renderLog($log, $classNum){
+  ?>
+     <div class="job-list-item-<?php echo $classNum ?>">
+       <table class="job-table" width="100%">
+          <col width="32%"></col>
+          <col width="36%"></col>
+          <col width="32%"></col>
+        <tr>
+           <td><?php echo $log->getWhen("F j, Y"); ?></td>
+           <td><?php echo $log->getMessage(); ?></td>
+         </tr>
+         <tr>
+          <td></td>
+         </tr>
+       </table>
+     </div>
+  <?php 
+  }
+
   function renderClient($client, $classNum){
   ?>
      <div class="job-list-item-<?php echo $classNum ?>">

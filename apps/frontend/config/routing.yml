@@ -16,10 +16,10 @@ project_create:
 project_autocomplete:
   url: /project/autocomplete
   param: { module: project, action: autocomplete }
+
 ################################################
 # jobs
 ################################################
-
 job_create:
   url: /job/create
   param: { module: job, action: create }
@@ -75,6 +75,7 @@ photographer_view_jobs:
   param: { module: photographer, action: viewJobs }
   options: { model: Photographer, type: object }
   requirements: {slug: \w+ }
+
 ################################################
 # client
 ################################################
@@ -90,6 +91,7 @@ client_view_jobs:
   param: { module: client, action: viewJobs }
   options: { model: Client, type: object }
   requirements: {slug: \w+ }
+
 ################################################
 # tags
 ################################################
@@ -128,6 +130,10 @@ job_autocomplete:
 job_search:
   url: /job/search
   param: { module: search, action: job }
+
+view_log:
+  url: /log/view
+  param: { module: log, action: view }
 
 ################################################
 # misc login and redirect routes
