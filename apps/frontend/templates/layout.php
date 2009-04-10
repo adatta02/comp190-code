@@ -14,8 +14,8 @@
 <body>
 
 <div id="header">
-  <div id="logo"><?php echo image_tag("tufts_logo.jpg"); ?></div>
-  <div id="title"><?php echo image_tag("title.jpg", array("style" => "height: 50px; padding-top: 20px")); ?></div>
+  <div id="logo"><?php echo image_tag("tufts_logo.gif"); ?></div>
+  <div id="title"><?php echo image_tag("title.jpg", array("style" => "height: 50px;margin-top:20px;margin-left:10px;")); ?></div>
 </div>
 
 <div class="clear"></div>
