@@ -47,6 +47,36 @@ CREATE TABLE `sf_guard_user_profile`
 )Type=InnoDB;
 
 #-----------------------------------------------------------------------------
+#-- job_notes
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `job_notes`;
+
+
+CREATE TABLE `job_notes`
+(
+	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`job_id` INTEGER,
+	`revision` INTEGER,
+	`notes` TEXT,
+	PRIMARY KEY (`id`)
+)Type=InnoDB;
+
+#-----------------------------------------------------------------------------
+#-- photo_type
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `photo_type`;
+
+
+CREATE TABLE `photo_type`
+(
+	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`name` VARCHAR(64),
+	PRIMARY KEY (`id`)
+)Type=InnoDB;
+
+#-----------------------------------------------------------------------------
 #-- job
 #-----------------------------------------------------------------------------
 
@@ -74,12 +104,12 @@ CREATE TABLE `job`
 	`contact_phone` VARCHAR(45),
 	`notes` TEXT,
 	`estimate` INTEGER,
-	`photo_type` INTEGER,
 	`acct_num` VARCHAR(32),
 	`dept_id` VARCHAR(32),
 	`grant_id` VARCHAR(32),
 	`other` VARCHAR(255),
 	`slug` VARCHAR(255),
+	`photo_type` INTEGER,
 	PRIMARY KEY (`id`),
 	INDEX `FI_Shoot_Publication` (`publication_id`),
 	CONSTRAINT `fk_Shoot_Publication`
@@ -92,7 +122,11 @@ CREATE TABLE `job`
 	INDEX `FI_Job_Status` (`status_id`),
 	CONSTRAINT `fk_Job_Status`
 		FOREIGN KEY (`status_id`)
-		REFERENCES `status` (`id`)
+		REFERENCES `status` (`id`),
+	INDEX `FI_Job_Photo_type` (`photo_type`),
+	CONSTRAINT `fk_Job_Photo_type`
+		FOREIGN KEY (`photo_type`)
+		REFERENCES `photo_type` (`id`)
 )Type=InnoDB;
 
 #-----------------------------------------------------------------------------
