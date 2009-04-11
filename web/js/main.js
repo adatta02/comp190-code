@@ -6,6 +6,14 @@ ProjectManager.item2OldColor = null;
 ProjectManager.item1OldColor = null;
 ProjectManager.mouseOverColor = "#0793FF";
 
+function saveBasicInfo(){
+  var queryString = $("#basic-info-form").serialize();
+  var postTo = $("#basic-info-form").attr("action");
+  
+  $("#ajax-loading").show();
+  $.post( postTo, queryString, function(data){ $("#job-basic-info").html(data); $("#ajax-loading").hide(); });
+}
+
 function showProjectCreate(){
   $("#create-project-form").show();
 }

@@ -27,8 +27,8 @@
     <column name="status_id" type="INTEGER"/>
     <column name="event" type="VARCHAR" size="64"/>
     <column name="date" type="DATE"/>
-    <column name="start_time" type="TIMESTAMP"/>
-    <column name="end_time" type="TIMESTAMP"/>
+    <column name="start_time" type="TIME"/>
+    <column name="end_time" type="TIME"/>
     <column name="due_date" type="TIMESTAMP"/>
     <column name="created_at" type="TIMESTAMP"/>
     <column name="street" type="VARCHAR" size="64"/>

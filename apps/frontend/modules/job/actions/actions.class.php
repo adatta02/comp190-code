@@ -120,8 +120,38 @@ class jobActions extends PMActions
 		$this->getPager($c, $routeArray);
 	}
 	
+	public function executeEdit(sfWebRequest $request){
+	  
+		$job = JobPeer::retrieveByPK($request->getParameter("job_id")); 
+	  $updating = $request->getParameter("form");
+	  
+      switch($updating){
+        case "basic":
+         $form = new BasicInfoJobForm($job);
+         $this->bindAndValidateForm($form ,$request);
+         $this->renderPartial("basicInfo", array("job" => $job, 
+                              "basicInfoForm" => $form));
+         break;
+        default: break;
+      }
+      
+      return sfView::NONE;
+	}
+	
 	public function executeShow(sfWebRequest $request){
+	 
 		$this->job = $this->getRoute()->getObject();
+		$this->basicInfoForm = new BasicInfoJobForm($this->job);
+				
+	}
+	
+	private function bindAndValidateForm($form, $request){
+	 $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
+	 if ($form->isValid()) {
+	   $form->save();
+     return true;
+   }
+   return false;
 	}
 	
 	public function executeAddPhotographer(sfWebRequest $request){

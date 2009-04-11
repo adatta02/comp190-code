@@ -32,6 +32,9 @@ job_show:
   param: { module: job, action: show }
   options: { model: Job, type: object }
   requirements: {slug: \w+ }
+job_edit:
+  url: /job/edit
+  param: { module: job, action: edit }
 job_list:
   url: /job/list/Pending
   param: { module: job, action: list }

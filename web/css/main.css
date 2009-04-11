@@ -149,7 +149,7 @@ body{
 	padding-left: 200px;
 }
 
-.plus-img, .delete-img{
+.plus-img, .delete-img, .image-href{
   position: relative;
   top: 3px;
   border: none;

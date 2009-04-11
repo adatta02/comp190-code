@@ -1,4 +1,6 @@
 <?php use_helper("PMRender"); ?>
+<?php echo include_javascripts_for_form($basicInfoForm); ?>
+<?php echo include_stylesheets_for_form($basicInfoForm); ?>
 <script type="text/javascript">
   
   ProjectManager.viewingJobId = <?php echo $job->getId(); ?>;
@@ -81,12 +83,15 @@
     <?php echo image_tag("loading.gif", array("id" => "ajax-loading")); ?> 
   </div>
 
-<div class="info-header">Basic <a href="#"
-	onclick="javascript:$('#job-basic-info').toggle(); return false;">[tg]</a>
+<div class="info-header">Basic 
+<a href="#" onclick="javascript:$('#job-basic-info').toggle(); return false;">[tg]</a>
+<a href="#" onclick="javascript:$('#basic-info-edit').toggle(); return false;">
+  <?php echo image_tag("pencil.png", array("class" => "image-href")) ?>
+</a>
 </div>
 
 <div id="job-basic-info" class="collapsable"><a href="#basic"></a>
-  <?php include_partial("basicInfo", array("job" => $job)); ?>
+  <?php include_partial("basicInfo", array("job" => $job, "basicInfoForm" => $basicInfoForm)); ?>
 </div>
 
 <hr />

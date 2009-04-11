@@ -1,6 +1,8 @@
 <?php use_helper("PMRender"); ?>
 <?php use_helper("Url"); ?>
-<table width="100%" border="0">
+<?php use_helper("JavascriptBase"); ?>
+
+<table width="100%" border="0" id="basic-info-table">
   <tr>
     <td width="20%">Event</td>
     <td width="80%"><?php echo $job->getEvent(); ?></td>
@@ -59,3 +61,23 @@
     </td>
   </tr>
 </table>
+
+<form id="basic-info-form"
+       action="<?php echo url_for("job_edit", array("form" => 'basic', "job_id" => $job->getId())); ?>"
+       method="post">
+<table id="basic-info-edit" style="display: none">
+  <?php echo $basicInfoForm["event"]->renderRow(); ?>
+  <?php echo $basicInfoForm["status_id"]->renderRow(); ?>
+  <?php echo $basicInfoForm["publication_id"]->renderRow(); ?>
+  <?php echo $basicInfoForm["date"]->renderRow(); ?>
+  <?php echo $basicInfoForm["start_time"]->renderRow(array("size" => 7)); ?>
+  <?php echo $basicInfoForm["end_time"]->renderRow(array("size" => 7)); ?>
+  <?php echo $basicInfoForm["due_date"]->renderRow(); ?>
+  <?php echo $basicInfoForm["contact_name"]->renderRow(); ?>
+  <?php echo $basicInfoForm["contact_email"]->renderRow(); ?>
+  <?php echo $basicInfoForm["contact_phone"]->renderRow(); ?>
+  <tr><td><?php echo button_to_function("Save", "saveBasicInfo()"); ?>
+  <?php echo $basicInfoForm->renderHiddenFields(); ?>
+  </td></tr>
+</table>
+</form>
