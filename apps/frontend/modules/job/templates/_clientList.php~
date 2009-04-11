@@ -9,7 +9,7 @@
 	<col width="15%"></col>
 	<col width="25%"></col>
 
-	<tr align="left">
+	<tr>
 		<th>Remove</th>
 		<th>Name</th>
 		<th>Email</th>
@@ -17,7 +17,7 @@
 		<th>Department</th>
 	</tr>
        <?php foreach($job->getClients() as $c): ?>
-       <tr>
+       <tr align="center">
 		<td>
 		  <?php 
 		    echo link_to_function(

@@ -138,20 +138,23 @@ class jobActions extends PMActions
          $job = JobPeer::retrieveByPK($request->getParameter("job_id"));
          $this->renderPartial("shootInfo", array("job" => $job, 
                               "form" => $form));
+<<<<<<< HEAD:apps/frontend/modules/job/actions/actions.class.php
+        	break;
+        case "internal":
+        	$newVal = $request->getParameter("internal-edit");
+        	$job->setNotes($newVal);
+        	$job->save();
+        	$this->renderPartial("internalNotes", array("job" => $job));
+        	break;
+=======
         	break;
 	case "photography":
          $form = new PhotographyInfoJobForm($job);
          $this->bindAndValidateForm($form ,$request);
          $this->renderPartial("photographyInfo", array("job" => $job, 
                               "form" => $form));
-         break;        
-
-	case "internal":
-        	$newVal = $request->getParameter("internal-edit");
-        	$job->setNotes($newVal);
-        	$job->save();
-        	$this->renderPartial("internalNotes", array("job" => $job));
-        	break;
+         break;
+>>>>>>> cc579d2a3cc8d1a309b8e8db1a225f8d80faf3b4:apps/frontend/modules/job/actions/actions.class.php
         default: break;
       }
       
@@ -184,6 +187,7 @@ class jobActions extends PMActions
 		$this->job = $this->getRoute()->getObject();
 		$this->basicInfoForm = new BasicInfoJobForm($this->job);
 		$this->shootInfoForm = new ShootInfoJobForm($this->job);
+ 		$this->photographyInfoForm = new PhotographyInfoJobForm($this->job);
 	}
 	
 	private function bindAndValidateForm($form, $request){

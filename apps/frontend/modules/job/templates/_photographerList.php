@@ -1,8 +1,15 @@
 <?php use_helper("JavascriptBase"); ?>
 
 <?php if(count($job->getPhotographers()) > 0): ?>
-<table>
-	<tr>
+<table width="100%">
+
+    <col width="10%"></col>
+     <col width="25%"></col>
+     <col width="25%"></col>
+     <col width="15%"></col>
+     <col width="25%"></col>
+
+	<tr align="left">
 		<th>Remove</th>
 		<th>Name</th>
 		<th>Email</th>
