@@ -176,5 +176,18 @@
   
 </div>
 
+<hr />
+
+<div class="info-header">Internal Notes <a href="#"
+  onclick="javascript:$('#job-internal-notes').toggle(); return false;">[tg]</a>
+  <a href="#" onclick="javascript:$('#internal-notes-edit').toggle(); $('#internal-notes-div').toggle(); return false;">
+    <?php echo image_tag("pencil.png", array("class" => "image-href")) ?>
+  </a>
+</div>
+
+<div id="job-internal-notes" class="collapsable">
+  <?php include_partial("internalNotes", array("job" => $job)); ?>
+</div>
+
 </div>
 

@@ -139,10 +139,37 @@ class jobActions extends PMActions
          $this->renderPartial("shootInfo", array("job" => $job, 
                               "form" => $form));
         	break;
+        case "internal":
+        	$newVal = $request->getParameter("internal-edit");
+        	$job->setNotes($newVal);
+        	$job->save();
+        	$this->renderPartial("internalNotes", array("job" => $job));
+        	break;
         default: break;
       }
       
       return sfView::NONE;
+	}
+	
+	public function executeViewNotes(sfWebRequest $request){
+		$this->job = $this->getRoute()->getObject();
+		
+		$c = new Criteria();
+		$c->add(JobNotesPeer::JOB_ID, $this->job->getId());
+		
+    $this->pager = new sfPropelPager ( "JobNotes", sfConfig::get("app_items_per_page") );
+    $this->pager->setCriteria ( $c );
+    $this->pager->setPage ( $this->page );
+    $this->pager->setPeerMethod("doSelectJoinAll");
+    $this->pager->init ();
+	}
+	
+	public function executeDiffNotes(sfWebRequest $request){
+		$job = JobPeer::retrieveByPK($request->getParameter("jobId"));
+		$jobNoteDiff = JobNotesPeer::retrieveByPK($request->getParameter("noteDiffId"));
+		
+		
+		return sfView::NONE;
 	}
 	
 	public function executeShow(sfWebRequest $request){

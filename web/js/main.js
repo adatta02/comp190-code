@@ -6,6 +6,25 @@ ProjectManager.item2OldColor = null;
 ProjectManager.item1OldColor = null;
 ProjectManager.mouseOverColor = "#0793FF";
 
+function diffNotes(jobId, originalDiff){
+  var obj = new Object();
+  obj.noteDiffId = $("input:checked").val();
+  obj.jobId = jobId;
+  
+  $("#ajax-loading").show();
+  $("#diff-result").load(ProjectManager.diffNotesUrl, 
+                          obj, function(){ $("#ajax-loading").hide() });
+}
+
+function saveInternalNotes(){
+  var queryString = $("#internal-notes-form").serialize();
+  var postTo = $("#internal-notes-form").attr("action");
+  
+  $("#ajax-loading").show();
+  $.post( postTo, queryString, 
+          function(data){ $("#job-internal-notes").html(data); $("#ajax-loading").hide(); });
+}
+
 function saveBasicInfo(){
   var queryString = $("#basic-info-form").serialize();
   var postTo = $("#basic-info-form").attr("action");

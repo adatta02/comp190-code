@@ -62,6 +62,15 @@ job_add_photographer:
 job_remove_photographer:
   url: /job/remove/photographer
   param: { module: job, action: removePhotographer }
+job_view_notes:
+  url: /job/view/notes/:slug
+  class:    sfPropelRoute
+  param: { module: job, action: viewNotes }
+  options: { model: Job, type: object }
+  requirements: {slug: \w+ }
+job_diff_notes:
+  url: /job/view/notes/diff
+  param: { module: job, action: diffNotes }
 
 ################################################
 # photographer

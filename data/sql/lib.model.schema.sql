@@ -58,8 +58,14 @@ CREATE TABLE `job_notes`
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
 	`job_id` INTEGER,
 	`revision` INTEGER,
+	`created_at` DATETIME,
 	`notes` TEXT,
-	PRIMARY KEY (`id`)
+	`user_id` INTEGER,
+	PRIMARY KEY (`id`),
+	INDEX `FI__notes_user_id` (`user_id`),
+	CONSTRAINT `job_notes_user_id`
+		FOREIGN KEY (`user_id`)
+		REFERENCES `sf_guard_user_profile` (`id`)
 )Type=InnoDB;
 
 #-----------------------------------------------------------------------------
@@ -107,7 +113,7 @@ CREATE TABLE `job`
 	`acct_num` VARCHAR(32),
 	`dept_id` VARCHAR(32),
 	`grant_id` VARCHAR(32),
-	`other` VARCHAR(255),
+	`other` TEXT(255),
 	`slug` VARCHAR(255),
 	`photo_type` INTEGER,
 	PRIMARY KEY (`id`),

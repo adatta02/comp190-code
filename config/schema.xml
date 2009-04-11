@@ -25,7 +25,12 @@
     <column name="id" type="INTEGER" primaryKey="true" required="true" autoIncrement="true"/>
     <column name="job_id" type="INTEGER" />
     <column name="revision" type="INTEGER" />
+    <column name="created_at" type="TIMESTAMP"/>
     <column name="notes" type="LONGVARCHAR" />
+    <column name="user_id" type="INTEGER"/>
+    <foreign-key name="job_notes_user_id" foreignTable="sf_guard_user_profile">
+      <reference local="user_id" foreign="id"/>
+    </foreign-key>
   </table>
   
   <table name="photo_type">
@@ -56,7 +61,7 @@
     <column name="acct_num" type="VARCHAR" size="32"/>
     <column name="dept_id" type="VARCHAR" size="32"/>
     <column name="grant_id" type="VARCHAR" size="32"/>
-    <column name="other" type="VARCHAR" size="255"/>
+    <column name="other" type="LONGVARCHAR" size="255"/>
     <column name="slug" type="VARCHAR" size="255"/>
     <column name="photo_type" type="INTEGER"/>
     <foreign-key name="fk_Shoot_Publication" foreignTable="publication">

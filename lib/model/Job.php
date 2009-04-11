@@ -2,6 +2,20 @@
 
 class Job extends BaseJob
 {
+	
+	public function getNumberRevisions(){
+		$c = new Criteria();
+		$c->add(JobNotesPeer::JOB_ID, $this->getId());
+		return JobNotesPeer::doCount($c);
+	}
+	
+	public function setNotes($v)
+  {
+  	$v = strip_tags($v);
+  	$v = nl2br($v);
+  	parent::setNotes($v);
+  }
+	
 	public function getPrettyShootDate(){
 		return $this->getDate("F n, o") . " " 
 		        . $this->getStartTime("g:i A") 
@@ -162,6 +176,9 @@ class Job extends BaseJob
   	
   	$logEntry->setPropelId($this->getId());
   	
+  	// see if we need to do revision control on the notes
+  	$updateNotes = in_array(JobPeer::NOTES, $this->modifiedColumns);
+  	
   	if(is_null($con)){
   	 $con = Propel::getConnection(JobPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
   	}
@@ -171,10 +188,24 @@ class Job extends BaseJob
       $ret = parent::save($con);
       $logEntry->save();
       $con->commit();
-      return $ret;
     }catch (Exception $e) {
       $con->rollBack();
       throw $e;
+    }
+    
+    if($updateNotes){
+    	$c = new Criteria();
+    	$c->add(JobNotesPeer::JOB_ID, $this->getId());
+    	$c->addDescendingOrderByColumn(JobNotesPeer::ID);
+    	$old = JobNotesPeer::doSelectOne($c);
+    	$rev = (!is_null($old) ? ($old->getRevision() + 1) : 1);
+    	
+    	$jn = new JobNotes();
+    	$jn->setJobId($this->getId());
+    	$jn->setNotes($this->getNotes());
+    	$jn->setRevision($rev);
+    	$jn->setUserId(sfContext::getInstance()->getUser()->getUserId());
+    	$jn->save();
     }
     
   }
