@@ -132,6 +132,13 @@ class jobActions extends PMActions
          $this->renderPartial("basicInfo", array("job" => $job, 
                               "basicInfoForm" => $form));
          break;
+        case "shoot":
+         $form = new ShootInfoJobForm($job);
+         $this->bindAndValidateForm($form ,$request);
+         $job = JobPeer::retrieveByPK($request->getParameter("job_id"));
+         $this->renderPartial("shootInfo", array("job" => $job, 
+                              "form" => $form));
+        	break;
         default: break;
       }
       
@@ -142,7 +149,7 @@ class jobActions extends PMActions
 	 
 		$this->job = $this->getRoute()->getObject();
 		$this->basicInfoForm = new BasicInfoJobForm($this->job);
-				
+		$this->shootInfoForm = new ShootInfoJobForm($this->job);
 	}
 	
 	private function bindAndValidateForm($form, $request){

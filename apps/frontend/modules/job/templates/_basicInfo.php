@@ -16,8 +16,8 @@
     <td><?php echo $job->getPhotoType() ?></td>
   </tr>
   <tr>
-    <td>Shoot Date</td>
-    <td><?php echo $job->getPrettyShootDate() ?></td>
+    <td class="shoot-datetime">Shoot Date</td>
+    <td class="shoot-datetime"><?php echo $job->getPrettyShootDate() ?></td>
   </tr>
   <tr>
     <td>Due Date</td>

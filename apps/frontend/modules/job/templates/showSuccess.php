@@ -85,7 +85,7 @@
 
 <div class="info-header">Basic 
 <a href="#" onclick="javascript:$('#job-basic-info').toggle(); return false;">[tg]</a>
-<a href="#" onclick="javascript:$('#basic-info-edit').toggle(); return false;">
+<a href="#" onclick="javascript:$('#basic-info-edit').toggle(); $('#basic-info-table').toggle(); return false;">
   <?php echo image_tag("pencil.png", array("class" => "image-href")) ?>
 </a>
 </div>
@@ -98,23 +98,14 @@
 
 <div class="info-header">Shoot <a href="#"
 	onclick="javascript:$('#job-shoot-info').toggle(); return false;">[tg]</a>
+	 <a href="#" onclick="javascript:$('#shoot-edit-table').toggle(); $('#shoot-info-table').toggle(); return false;">
+    <?php echo image_tag("pencil.png", array("class" => "image-href")) ?>
+  </a>
+	
 </div>
 
 <div id="job-shoot-info" class="collapsable"><a href="#shoot"></a>
-
-<table>
-	<tr>
-		<td class="shoot-datetime">Shoot Date</td>
-		<td class="shoot-datetime"><?php echo $job->getPrettyShootDate(); ?></td>
-	</tr>
-	<tr>
-		<td>Shoot Address</td>
-		<td><?php echo $job->getPrettyAddress(); ?></td>
-	</tr>
-</table>
-
-<div id="job-map">MAP GOES HERE!</div>
-
+  <?php include_partial("shootInfo", array("job" => $job, "form" => $shootInfoForm)); ?>
 </div>
 
 <hr />

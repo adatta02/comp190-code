@@ -14,6 +14,14 @@ function saveBasicInfo(){
   $.post( postTo, queryString, function(data){ $("#job-basic-info").html(data); $("#ajax-loading").hide(); });
 }
 
+function saveShootInfo(){
+  var queryString = $("#shoot-info-form").serialize();
+  var postTo = $("#shoot-info-form").attr("action");
+  
+  $("#ajax-loading").show();
+  $.post( postTo, queryString, function(data){ $("#job-shoot-info").html(data); $("#ajax-loading").hide(); });
+}
+
 function showProjectCreate(){
   $("#create-project-form").show();
 }
