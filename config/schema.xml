@@ -20,6 +20,19 @@
       <reference local="user_id" foreign="id"/>
     </foreign-key>
   </table>
+  
+  <table name="job_notes">
+    <column name="id" type="INTEGER" primaryKey="true" required="true" autoIncrement="true"/>
+    <column name="job_id" type="INTEGER" />
+    <column name="revision" type="INTEGER" />
+    <column name="notes" type="LONGVARCHAR" />
+  </table>
+  
+  <table name="photo_type">
+    <column name="id" type="INTEGER" primaryKey="true" required="true" autoIncrement="true"/>
+    <column name="name" type="VARCHAR" size="64"/>
+  </table>
+  
   <table name="job">
     <column name="id" type="INTEGER" primaryKey="true" required="true" autoIncrement="true"/>
     <column name="project_id" type="INTEGER"/>
@@ -40,12 +53,12 @@
     <column name="contact_phone" type="VARCHAR" size="45"/>
     <column name="notes" type="LONGVARCHAR"/>
     <column name="estimate" type="INTEGER"/>
-    <column name="photo_type" type="INTEGER"/>
     <column name="acct_num" type="VARCHAR" size="32"/>
     <column name="dept_id" type="VARCHAR" size="32"/>
     <column name="grant_id" type="VARCHAR" size="32"/>
     <column name="other" type="VARCHAR" size="255"/>
     <column name="slug" type="VARCHAR" size="255"/>
+    <column name="photo_type" type="INTEGER"/>
     <foreign-key name="fk_Shoot_Publication" foreignTable="publication">
       <reference local="publication_id" foreign="id"/>
     </foreign-key>
@@ -55,7 +68,12 @@
     <foreign-key name="fk_Job_Status" foreignTable="status">
       <reference local="status_id" foreign="id"/>
     </foreign-key>
+    <foreign-key name="fk_Job_Photo_type" foreignTable="photo_type">
+      <reference local="photo_type" foreign="id"/>
+    </foreign-key>
   </table>
+  
+  
   <table name="photo">
     <column name="id" type="INTEGER" primaryKey="true" required="true" autoIncrement="true"/>
     <column name="job_id" type="INTEGER"/>

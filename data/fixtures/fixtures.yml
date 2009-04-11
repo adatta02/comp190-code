@@ -43,15 +43,15 @@ Status:
     state: Paid
   Status_7:
     state: Archived
-Publication:
-  Publication_1:
-    name: 'Tufts Daily'
-  Publication_2:
-    name: 'Primary Source'
-  Publication_3:
-    name: 'The Observer'
-  Publication_4:
-    name: 'Tufts Traveler'
+PhotoType:
+  PhotoType_1:
+    name: Headshot
+  PhotoType_2:
+    name: Portrait
+  PhotoType_3:
+    name: Candids
+  PhotoType_4:
+    name: 'Group Photos'
 LogMessageType:
   LogMessageType_1:
     type: Create

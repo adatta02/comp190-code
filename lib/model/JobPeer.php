@@ -1,7 +1,5 @@
 <?php
 
-sfContext::getInstance()->getConfiguration()->loadHelpers('Url');
-
 class JobPeer extends BaseJobPeer
 {
 	public static $LIST_VIEW_SORTABLE = array( JobPeer::ID => "Job Id", 
@@ -56,6 +54,8 @@ class JobPeer extends BaseJobPeer
 	}
 	
 	public static function getJobsForAutocomplete($q){
+		sfContext::getInstance()->getConfiguration()->loadHelpers('Url');
+		
 		$c = new Criteria();
     $c->add(JobPeer::EVENT, $q . "%", Criteria::LIKE);
 		$c->addDescendingOrderByColumn(JobPeer::EVENT);
