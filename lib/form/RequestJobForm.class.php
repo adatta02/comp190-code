@@ -31,11 +31,14 @@ class RequestJobForm extends sfForm {
 		'contact_phone' => new sfWidgetFormInput ( ), 
 		'notes' => new sfWidgetFormTextarea ( ), 
 		'estimate' => new sfWidgetFormInput ( ), 
-		'photo_type' => new sfWidgetFormSelectCheckbox ( ), 
+		'photo_type' => new sfWidgetFormPropelChoice(array('model' => 'PhotoType', 'add_empty' => true)), 
 		'acct_num' => new sfWidgetFormInput ( ), 
 		'dept_id' => new sfWidgetFormInput ( ), 
 		'grant_id' => new sfWidgetFormInput ( ), 
 		'other' => new sfWidgetFormInput ( ), 
+		'ques1' => new sfWidgetFormTextarea(),
+		'ques2' => new sfWidgetFormTextarea(),
+		'ques3' => new sfWidgetFormTextarea(),
 		'slug' => new sfWidgetFormInput ( ), 
 		'user_id' => new sfWidgetFormPropelChoice ( array ('model' => 'sfGuardUserProfile', 'add_empty' => true ) ), 
 		'name' => new sfWidgetFormInput ( ), 
@@ -50,7 +53,10 @@ class RequestJobForm extends sfForm {
 		$this->widgetSchema->setLabel ( 'project_id', 'Project' );
 		$this->widgetSchema->setLabel ( 'dept_id', 'Department Id' );
 		$this->widgetSchema->setLabel ( 'acct_num', 'Account Num' );
-		
+		$this->widgetSchema->setLabel ( 'ques1', 'Please list specific photos you need, including, for group photos, number of groups and subjects in each.' );
+		$this->widgetSchema->setLabel ( 'ques2', 'Please provide specific instructions for the photogrpaher.' );
+		$this->widgetSchema->setLabel ( 'ques3', 'Please describe in detail the event or story being photographed.' );		
+
 		$this->widgetSchema ['state']->setDefault ( "MA" );
 		
 		$this->widgetSchema ['now'] = new sfWidgetFormInputHidden ( );
@@ -76,11 +82,14 @@ class RequestJobForm extends sfForm {
 			'contact_phone' => new sfValidatorString ( array ('max_length' => 45, 'required' => false ) ), 
 			'notes' => new sfValidatorString ( array ('required' => false ) ), 
 			'estimate' => new sfValidatorInteger ( array ('required' => false ) ), 
-			'photo_type' => new sfValidatorInteger ( array ('required' => false ) ), 
+			'photo_type' => new sfValidatorPropelChoice ( array ('model' => 'PhotoType', 'column' => 'id', 'required' => false ) ),  
 			'acct_num' => new sfValidatorString ( array ('max_length' => 32, 'required' => false ) ), 
 			'dept_id' => new sfValidatorString ( array ('max_length' => 32, 'required' => false ) ), 
 			'grant_id' => new sfValidatorString ( array ('max_length' => 32, 'required' => false ) ), 
 			'other' => new sfValidatorString ( array ('max_length' => 255, 'required' => false ) ), 
+			'ques1' => new sfValidatorString ( array ('required' => false ) ),
+			'ques2' => new sfValidatorString ( array ('required' => false ) ),
+			'ques3' => new sfValidatorString ( array ('required' => false ) ),
 			'slug' => new sfValidatorString ( array ('max_length' => 255, 'required' => false ) ), 
 			'user_id' => new sfValidatorPropelChoice ( array ('model' => 'sfGuardUserProfile', 'column' => 'id', 'required' => false ) ), 
 			'name' => new sfValidatorString ( array ('max_length' => 45, 'required' => false ) ), 
@@ -126,6 +135,8 @@ class RequestJobForm extends sfForm {
 		$j->setCity ( $this->getValue ( "city" ) );
 		$j->setState ( $this->getValue ( "state" ) );
 		$j->setZip ( $this->getValue ( "zip" ) );
+		$j->setPhotoType ( $this->getValue ( "photo_type" ) );
+		$j->setOther ( $this->getValue ( "ques1" ) . "\n" . $this->getValue ( "ques2" ) . "\n" . $this->getValue ( "ques3" ) );		
 		$j->setContactName ( $this->getValue ( "contact_name" ) );
 		$j->setContactPhone ( $this->getValue ( "contact_phone" ) );
 		$j->setContactEmail ( $this->getValue ( "contact_email" ) );

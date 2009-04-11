@@ -140,7 +140,7 @@ class jobActions extends PMActions
                               "form" => $form));
         	break;
 	case "photography":
-         $form = new PhotographyInfoJobForm($job);
+         $form = new PhotogrpahyInfoJobForm($job);
          $this->bindAndValidateForm($form ,$request);
          $this->renderPartial("photographyInfo", array("job" => $job, 
                               "form" => $form));

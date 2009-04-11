@@ -38,14 +38,6 @@ function saveShootInfo(){
   $.post( postTo, queryString, function(data){ $("#job-shoot-info").html(data); $("#ajax-loading").hide(); });
 }
 
-function savePhotographyInfo(){
-  var queryString = $("#photography-info-form").serialize();
-  var postTo = $("#photography-info-form").attr("action");
-  
-  $("#ajax-loading").show();
-  $.post( postTo, queryString, function(data){ $("#job-photogrpahy-info").html(data); $("#ajax-loading").hide(); });
-}
-
 function showProjectCreate(){
   $("#create-project-form").show();
 }

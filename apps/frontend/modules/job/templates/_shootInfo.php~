@@ -1,9 +1,9 @@
 <?php use_helper("JavascriptBase"); ?>
 
-<table width="100%" id="shoot-info-table">
+<table id="shoot-info-table" cellspacing="10">
   <tr>
-    <td width="20%">Shoot Address</td>
-    <td width="80%"><?php echo $job->getPrettyAddress(); ?></td>
+    <td>Shoot Address</td>
+    <td><?php echo $job->getPrettyAddress(); ?></td>
   </tr>
 </table>
 
