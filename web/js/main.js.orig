@@ -14,6 +14,7 @@ function saveBasicInfo(){
   $.post( postTo, queryString, function(data){ $("#job-basic-info").html(data); $("#ajax-loading").hide(); });
 }
 
+<<<<<<< HEAD:web/js/main.js
 function saveClientInfo(){
     var queryString = $("#info-form").serialize();
     var postTo = $("#info-form").attr("action");
@@ -30,6 +31,9 @@ function savePhotographerInfo(){
     $.post( postTo, queryString, function(data){ $("#photographer-info").html(data); $("#ajax-loading").hide(); });
 }
 
+
+
+=======
 function saveShootInfo(){
   var queryString = $("#shoot-info-form").serialize();
   var postTo = $("#shoot-info-form").attr("action");
@@ -38,6 +42,7 @@ function saveShootInfo(){
   $.post( postTo, queryString, function(data){ $("#job-shoot-info").html(data); $("#ajax-loading").hide(); });
 }
 
+>>>>>>> bfd30bc57ba4f1e68e8ebae6b978feb06c0a9a4c:web/js/main.js
 function showProjectCreate(){
   $("#create-project-form").show();
 }
