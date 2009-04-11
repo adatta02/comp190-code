@@ -58,4 +58,41 @@ class clientActions extends PMActions
       return sfView::NONE;
     }
   }
+
+  private function bindAndValidateForm($form, $request){
+         $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
+         if ($form->isValid()) {
+           $form->save();
+     return true;
+   }
+
+}
+
+      public function executeShow(sfWebRequest $request){
+          
+         $this->client = $this->getRoute()->getObject();  
+         $this->InfoForm = new InfoClientForm($this->client);
+                                
+        }
+
+
+	public function executeEdit(sfWebRequest $request){
+
+          $client = ClientPeer::retrieveByPK($request->getParameter("client_id"));
+          $updating = $request->getParameter("form");
+
+      switch($updating){
+        case "info":
+         $form = new InfoClientForm($client);
+         $this->bindAndValidateForm($form ,$request);
+         $this->renderPartial("Info", array("client" => $client, 
+                              "InfoForm" => $form));
+         break;
+        default: break;
+      }
+      
+      return sfView::NONE;
+        }
+
+
 }

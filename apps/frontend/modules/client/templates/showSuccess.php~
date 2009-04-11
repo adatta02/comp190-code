@@ -1,0 +1,18 @@
+<div id="content-container">
+<div id="now-viewing">
+    Viewing client #<?php echo $client->getName(); ?>
+    <?php echo image_tag("loading.gif", array("id" => "ajax-loading")); ?>
+  </div>
+
+<div class="info-header">Information
+<a href="#" onclick="javascript:$('#job-basic-info').toggle(); return false;">[tg]</a>
+<a href="#" onclick="javascript:$('#basic-info-edit').toggle(); return false;">
+  <?php echo image_tag("pencil.png", array("class" => "image-href")) ?>
+</a>
+</div>
+
+<div id="client-basic-info" class="collapsable"><a href="#info"></a>
+  <?php include_partial("basicInfo", array("client" => $client, "InfoForm" => $InfoForm)); ?>
+</div>
+
+</div>

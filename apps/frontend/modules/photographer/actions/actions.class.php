@@ -60,4 +60,43 @@ class photographerActions extends PMActions
     }
     
   }
+
+  private function bindAndValidateForm($form, $request){
+         $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
+         if ($form->isValid()) {
+           $form->save();
+     return true;
+   }
+}
+
+  public function executeShow(sfWebRequest $request){
+         $this->photographer = $this->getRoute()->getObject();
+         $this->InfoForm = new InfoPhotographerForm($this->photographer);
+
+  }
+
+
+   public function executeEdit(sfWebRequest $request){
+
+          $photographer = PhotographerPeer::retrieveByPK($request->getParameter("photographer_id"));
+          $updating = $request->getParameter("form");
+
+      switch($updating){
+        case "info":
+         $form = new InfoPhotographerForm($photographer);
+         $this->bindAndValidateForm($form ,$request);
+         $this->renderPartial("Info", array("photographer" => $photographer,
+                              "InfoForm" => $form));
+         break;
+        default: break;
+      }
+
+      return sfView::NONE;
+   }
+
+
+
+
+
+
 }

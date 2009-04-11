@@ -14,6 +14,24 @@ function saveBasicInfo(){
   $.post( postTo, queryString, function(data){ $("#job-basic-info").html(data); $("#ajax-loading").hide(); });
 }
 
+function saveClientInfo(){
+    var queryString = $("#info-form").serialize();
+    var postTo = $("#info-form").attr("action");
+
+    $("#ajax-loading").show();
+    $.post( postTo, queryString, function(data){ $("#client-info").html(data); $("#ajax-loading").hide(); });
+}
+
+function savePhotographerInfo(){
+    var queryString = $("#info-form").serialize();
+    var postTo = $("#info-form").attr("action");
+
+    $("#ajax-loading").show();
+    $.post( postTo, queryString, function(data){ $("#photographer-info").html(data); $("#ajax-loading").hide(); });
+}
+
+
+
 function showProjectCreate(){
   $("#create-project-form").show();
 }

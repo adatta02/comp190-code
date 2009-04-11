@@ -28,7 +28,7 @@
           <col width="32%"></col>
 
 	 <tr>
-           <td><?php echo link_to($client->getName(), "client_view"); ?></td>
+           <td><?php echo link_to($client->getName(), "client_view", $client); ?></td>
            <td><?php echo mail_to($client->getEmail() , $client->getEmail()); ?></td>
          </tr>
          <tr>
@@ -49,7 +49,7 @@
           <col width="36%"></col>
           <col width="32%"></col>
          <tr>
-           <td><?php echo link_to($photographer->getName(), "photographer_view"); ?></td>
+           <td><?php echo link_to($photographer->getName(), "photographer_view", $photographer); ?></td>
            <td><?php echo mail_to($photographer->getEmail() , $photographer->getEmail()); ?></td>
          </tr>
          <tr>

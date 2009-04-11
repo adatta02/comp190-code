@@ -70,8 +70,14 @@ photographer_list:
   url: /photographer/list
   param: { module: photographer, action: list }
 photographer_view:
-  url: /photographer/view
-  param: { module: photographer, action: view }
+  url: /photographer/view/:slug
+  param: { module: photographer, action: show }
+  class:    sfPropelRoute
+  options: { model: Photographer, type: object }
+  requirements: {slug: \w+ }
+photographer_edit:
+  url: /photographer/edit
+  param: { module: photographer, action: edit }
 photographer_view_jobs:
   url: /photographer/view/jobs/:slug
   class:    sfPropelRoute
@@ -86,8 +92,14 @@ client_list:
   url: /client/list
   param: { module: client, action: list }
 client_view:
-  url: /client/view
-  param: { module: client, action: view }
+  url: /client/view/:slug
+  param: { module: client, action: show }
+  class:    sfPropelRoute
+  options: { model: Client, type: object }
+  requirements: {slug: \w+ }
+client_edit:
+  url: /client/edit
+  param: { module: client, action: edit }
 client_view_jobs:
   url: /client/view/jobs/:slug
   class:    sfPropelRoute
