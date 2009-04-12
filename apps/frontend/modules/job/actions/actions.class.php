@@ -184,6 +184,8 @@ class jobActions extends PMActions
 		$this->job = $this->getRoute()->getObject();
 		$this->basicInfoForm = new BasicInfoJobForm($this->job);
 		$this->shootInfoForm = new ShootInfoJobForm($this->job);
+		$this->photographyInfoForm = new PhotographyInfoJobForm($this->job);
+
 	}
 	
 	private function bindAndValidateForm($form, $request){
