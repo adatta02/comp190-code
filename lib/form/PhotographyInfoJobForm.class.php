@@ -27,14 +27,14 @@ class PhotographyInfoJobForm extends BaseFormPropel
     ));
 
 	$this->widgetSchema->setLabel ( 'ques1', 'Please list specific photos you need, including, for group photos, number of groups and subjects in each.' );
-		$this->widgetSchema->setLabel ( 'ques2', 'Please provide specific instructions for the photogrpaher.' );
+		$this->widgetSchema->setLabel ( 'ques2', 'Please provide specific instructions for the photographer.' );
 		$this->widgetSchema->setLabel ( 'ques3', 'Please describe in detail the event or story being photographed.' );
 
 
     $this->widgetSchema->setNameFormat('job[%s]');
     $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);
 
-    $explode = explode(":", $this->getObject()->getOther());
+    $explode = explode("^", $this->getObject()->getOther());
     if(count($explode) == 3){
     $this->widgetSchema['ques1']->setDefault($explode[0]); 
     $this->widgetSchema['ques2']->setDefault($explode[1]); 
@@ -55,8 +55,8 @@ class PhotographyInfoJobForm extends BaseFormPropel
   		$j = new Job();
   	}
   	
-  	$j->setPhotoType ( $this->getValue ( "photo_type" ) );
-	$j->setOther ( $this->getValue ( "ques1" ) . ":" . $this->getValue ( "ques2" ) . ":" . $this->getValue ( "ques3" ) );		
+  	$j->setPhotoType ( $this->getValue ( "photo_type" ) );	
+	$j->setOther ( $this->getValue ( "ques1" ) . "^" . $this->getValue ( "ques2" ) . "^" . $this->getValue( "ques3" ) );		
 	$j->save();
   }
   

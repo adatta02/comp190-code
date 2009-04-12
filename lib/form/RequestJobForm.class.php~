@@ -29,7 +29,7 @@ class RequestJobForm extends sfForm {
 		'contact_name' => new sfWidgetFormInput ( ), 
 		'contact_email' => new sfWidgetFormInput ( ), 
 		'contact_phone' => new sfWidgetFormInput ( ), 
-		'notes' => new sfWidgetFormTextarea ( ), 
+		//'notes' => new sfWidgetFormTextarea ( ), 
 		'estimate' => new sfWidgetFormInput ( ), 
 		'photo_type' => new sfWidgetFormPropelChoice(array('model' => 'PhotoType', 'add_empty' => true)), 
 		'acct_num' => new sfWidgetFormInput ( ), 
@@ -53,7 +53,10 @@ class RequestJobForm extends sfForm {
 		$this->widgetSchema->setLabel ( 'project_id', 'Project' );
 		$this->widgetSchema->setLabel ( 'dept_id', 'Department Id' );
 		$this->widgetSchema->setLabel ( 'acct_num', 'Account Num' );
-		
+		$this->widgetSchema->setLabel ( 'ques1', 'Please list specific photos you need, including, for group photos, number of groups and subjects in each.' );
+		$this->widgetSchema->setLabel ( 'ques2', 'Please provide specific instructions for the photogrpaher.' );
+		$this->widgetSchema->setLabel ( 'ques3', 'Please describe in detail the event or story being photographed.' );		
+
 		$this->widgetSchema ['state']->setDefault ( "MA" );
 		
 		$this->widgetSchema ['now'] = new sfWidgetFormInputHidden ( );
@@ -77,7 +80,7 @@ class RequestJobForm extends sfForm {
 			'contact_name' => new sfValidatorString ( array ('max_length' => 45, 'required' => false ) ), 
 			'contact_email' => new sfValidatorEmail ( array ('required' => true ) ), 
 			'contact_phone' => new sfValidatorString ( array ('max_length' => 45, 'required' => false ) ), 
-			'notes' => new sfValidatorString ( array ('required' => false ) ), 
+			//'notes' => new sfValidatorString ( array ('required' => false ) ), 
 			'estimate' => new sfValidatorInteger ( array ('required' => false ) ), 
 			'photo_type' => new sfValidatorPropelChoice ( array ('model' => 'PhotoType', 'column' => 'id', 'required' => false ) ),  
 			'acct_num' => new sfValidatorString ( array ('max_length' => 32, 'required' => false ) ), 
@@ -122,7 +125,7 @@ class RequestJobForm extends sfForm {
 		$j->setEvent ( $this->getValue ( "event" ) );
 		$j->setStartTime ( $this->getValue ( "start_time" ) );
 		$j->setEndTime ( $this->getValue ( "end_time" ) );
-		$j->setNotes ( $this->getValue ( "notes" ) );
+		//$j->setNotes ( $this->getValue ( "notes" ) );
 		$j->setDate ( $this->getValue ( "date" ) );
 		$j->setDueDate ( $this->getValue ( "due_date" ) );
 		$j->setAcctNum ( $this->getValue ( "acct_num" ) );

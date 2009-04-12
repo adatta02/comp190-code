@@ -1,7 +1,6 @@
 <?php use_helper("JavascriptBase"); ?>
 
-<?php $ques = explode(":", $job->getOther()); ?>
-
+<?php echo $ques[1]; ?>
 <table width="100%" id="photography-info-table">
   <tr>
     <td width="20%">Photo Type</td>
@@ -25,9 +24,15 @@
        method="post">
 	<table id="photography-edit-table" style="display: none">
 	   <?php echo $form["photo_type"]->renderRow(); ?> 
-    	   <?php echo $form["ques1"]->renderRow(); ?>
-    	   <?php echo $form["ques2"]->renderRow(); ?>
-    	   <?php echo $form["ques3"]->renderRow(); ?>
+	   <?php if(count($ques) == 3){ 
+	    	      echo $form["ques1"]->renderRow();
+           	      echo $form["ques2"]->renderRow();
+           	      echo $form["ques3"]->renderRow();
+           	 }
+           	 else{ 
+		     echo $form["other"]->renderRow();
+           	 } ?>
+
 	   <tr><td><?php echo button_to_function("Save", "savePhotographyInfo()"); ?>
 	</table>
 </form>

@@ -61,7 +61,7 @@
 </td>
 <td>
 <h3>Photography</h3>
-<table cellpadding="3">
+<table cellpadding="5">
     <tr><?php echo $form["photo_type"]->renderRow(); ?> </tr>
     <tr><?php echo $form["ques1"]->renderRow(); ?> </tr>
     <tr><?php echo $form["ques2"]->renderRow(); ?> </tr>

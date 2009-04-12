@@ -56,7 +56,7 @@
     <td><?php echo $form["zip"]->renderRow(); ?> </td></tr>
 
     <tr><?php echo $form["due_date"]->renderRow(); ?> </tr>
-    <tr><?php echo $form["notes"]->renderRow(); ?> </tr>
+    
 </table>
 </td>
 <td>
