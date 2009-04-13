@@ -140,15 +140,43 @@ class jobActions extends PMActions
                               "form" => $form));
         	break;
 	case "photography":
-         $form = new PhotogrpahyInfoJobForm($job);
+         $form = new PhotographyInfoJobForm($job);
          $this->bindAndValidateForm($form ,$request);
          $this->renderPartial("photographyInfo", array("job" => $job, 
                               "form" => $form));
-         break;
+         break;        
+
+	case "internal":
+        	$newVal = $request->getParameter("internal-edit");
+        	$job->setNotes($newVal);
+        	$job->save();
+        	$this->renderPartial("internalNotes", array("job" => $job));
+        	break;
         default: break;
       }
       
       return sfView::NONE;
+	}
+	
+	public function executeViewNotes(sfWebRequest $request){
+		$this->job = $this->getRoute()->getObject();
+		
+		$c = new Criteria();
+		$c->add(JobNotesPeer::JOB_ID, $this->job->getId());
+		
+    $this->pager = new sfPropelPager ( "JobNotes", sfConfig::get("app_items_per_page") );
+    $this->pager->setCriteria ( $c );
+    $this->pager->setPage ( $this->page );
+    $this->pager->setPeerMethod("doSelectJoinAll");
+    $this->pager->init ();
+	}
+	
+	public function executeDiffNotes(sfWebRequest $request){
+		$job = JobPeer::retrieveByPK($request->getParameter("jobId"));
+		$jobNoteDiff = JobNotesPeer::retrieveByPK($request->getParameter("noteDiffId"));
+		
+		
+		return sfView::NONE;
 	}
 	
 	public function executeShow(sfWebRequest $request){
@@ -156,7 +184,8 @@ class jobActions extends PMActions
 		$this->job = $this->getRoute()->getObject();
 		$this->basicInfoForm = new BasicInfoJobForm($this->job);
 		$this->shootInfoForm = new ShootInfoJobForm($this->job);
- 		$this->photographyInfoForm = new PhotographyInfoJobForm($this->job);
+		$this->photographyInfoForm = new PhotographyInfoJobForm($this->job);
+
 	}
 	
 	private function bindAndValidateForm($form, $request){
@@ -388,5 +417,59 @@ class jobActions extends PMActions
     $this->renderText(json_encode(JobPeer::getJobsForAutocomplete($q)));
     return sfView::NONE;
   }
-  
+
+  public function executeCreateJobEmail(){
+	$job = JobPeer::retrieveByPK($request->getParameter("job_id"));
+	
+	$mail = new sfMail();
+	$mail->initialize();
+	$mail->setMailer('sendmail');
+	$mail->setCharset('utf-8');
+
+	$mail->setSender('katy.aronoff@tufts.edu', 'Katy Aronoff');
+	$mail->setFrom('katy.aronoff@tufts.edu', 'Katy Aronoff');
+	$mail->addReplyTo('katy.aronoff@tufts.edu');
+	$mail->addAddress($job->getContactEmail());
+	$mail->setSubject('Your job have been created');
+	
+	$mail->setBody('
+		Dear ' .$job->getContactName(). '
+
+		 Your job has been created as Job #'.$job->getId().'. It is currently Pending. 
+		 Thank you
+
+		  Regards,
+		   Tufts Photo Team		 
+	');
+
+	$mail->send():
+  } 
+
+  public function executeStatusChangeEmail(){
+	$job = JobPeer::retrieveByPK($request->getParameter("job_id"));
+	
+	$mail = new sfMail();
+	$mail->initialize();
+	$mail->setMailer('sendmail');
+	$mail->setCharset('utf-8');
+
+	$mail->setSender('katy.aronoff@tufts.edu', 'Katy Aronoff');
+	$mail->setFrom('katy.aronoff@tufts.edu', 'Katy Aronoff');
+	$mail->addReplyTo('katy.aronoff@tufts.edu');
+	$mail->addAddress($job->getContactEmail());
+	$mail->setSubject('Your job status has changed');
+	
+	$mail->setBody('
+		Dear ' .$job->getContactName(). '
+
+		 Your job has changed status to '.$job->getStatus().'. 
+		 Thank you.
+
+		  Regards,
+		   Tufts Photo Team		 
+	');
+
+	$mail->send():
+  } 
+ 
 }

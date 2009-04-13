@@ -1,6 +1,9 @@
-<?php use_helper("JavascriptBase"); ?>
+<?php use_helper("JavascriptBase");
 
-<?php echo $ques[1]; ?>
+$ques = explode("^", $job->getOther());
+
+?>
+
 <table width="100%" id="photography-info-table">
   <tr>
     <td width="20%">Photo Type</td>

@@ -116,7 +116,8 @@ class RequestJobForm extends sfForm {
 		$this->errorSchema = new sfValidatorErrorSchema ( $this->validatorSchema );
 		
 		$this->validatorSchema->setPostValidator ( new sfValidatorAnd ( array (new sfValidatorSchemaCompare ( 'start_time', sfValidatorSchemaCompare::LESS_THAN_EQUAL, 'end_time', array ('throw_global_error' => true ), array ('invalid' => 'The start date ("%left_field%") must be before the end date! ("%right_field%")' ) ), new sfValidatorSchemaCompare ( 'start_time', sfValidatorSchemaCompare::GREATER_THAN, 'now', array ('throw_global_error' => true ), array ('invalid' => 'The start date ("%left_field%") must be in the future today!' ) ) ) ) );
-		
+
+
 		parent::setup ();
 	}
 	

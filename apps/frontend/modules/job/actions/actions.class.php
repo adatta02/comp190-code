@@ -417,5 +417,7 @@ class jobActions extends PMActions
     $this->renderText(json_encode(JobPeer::getJobsForAutocomplete($q)));
     return sfView::NONE;
   }
+
   
+ 
 }
