@@ -6,6 +6,12 @@ ProjectManager.item2OldColor = null;
 ProjectManager.item1OldColor = null;
 ProjectManager.mouseOverColor = "#0793FF";
 
+function copyClient(){
+  $("#requestjob_contact_name").val( $("#requestjob_name").val() );
+  $("#requestjob_contact_email").val( $("#requestjob_email").val() );
+  $("#requestjob_contact_phone").val( $("#requestjob_phone").val() );
+}
+
 function diffNotes(jobId, originalDiff){
   var obj = new Object();
   obj.noteDiffId = $("input:checked").val();

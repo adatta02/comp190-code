@@ -163,6 +163,7 @@ class jobActions extends PMActions
 		
 		$c = new Criteria();
 		$c->add(JobNotesPeer::JOB_ID, $this->job->getId());
+		$c->addDescendingOrderByColumn(JobNotesPeer::ID);
 		
     $this->pager = new sfPropelPager ( "JobNotes", sfConfig::get("app_items_per_page") );
     $this->pager->setCriteria ( $c );
@@ -172,9 +173,9 @@ class jobActions extends PMActions
 	}
 	
 	public function executeDiffNotes(sfWebRequest $request){
-		$job = JobPeer::retrieveByPK($request->getParameter("jobId"));
-		$jobNoteDiff = JobNotesPeer::retrieveByPK($request->getParameter("noteDiffId"));
 		
+		$jobNoteDiff = JobNotesPeer::retrieveByPK($request->getParameter("noteDiffId"));
+		$this->renderText($jobNoteDiff->getNotes());
 		
 		return sfView::NONE;
 	}
@@ -381,6 +382,21 @@ class jobActions extends PMActions
   	$this->form = new RequestJobForm();
   	if($request->isMethod("POST")){
       $this->processForm($request, $this->form);
+  	}else{
+  		if($this->getUser()->hasCredential("client")){
+  			$c = new Criteria();
+  			$c->add(ClientPeer::USER_ID, $this->getUser()->getProfile()->getUserId());
+  			$profile = ClientPeer::doSelectOne($c);
+  			
+  			$this->form->setDefault("name", $profile->getName());
+  			$this->form->setDefault("department", $profile->getDepartment());
+  			$this->form->setDefault("address", $profile->getAddress());
+  			$this->form->setDefault("email", $profile->getEmail());
+  			$this->form->setDefault("phone", $profile->getPhone());
+  			$this->form->setDefault("clientId", $profile->getId());
+  		}else if($this->getUser()->hasCredential("admin")){
+  			
+  		}
   	}
   	
   }

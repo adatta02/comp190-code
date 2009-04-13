@@ -45,7 +45,8 @@ class RequestJobForm extends sfForm {
 		'department' => new sfWidgetFormInput ( ), 
 		'address' => new sfWidgetFormInput ( ), 
 		'email' => new sfWidgetFormInput ( ), 
-		'phone' => new sfWidgetFormInput ( ) 
+		'phone' => new sfWidgetFormInput ( ),
+		'clientId' => new sfWidgetFormInputHidden()
 	) );
 		
 		$this->widgetSchema->setLabel ( 'event', 'Event Name' );
@@ -61,6 +62,7 @@ class RequestJobForm extends sfForm {
 		
 		$this->widgetSchema ['now'] = new sfWidgetFormInputHidden ( );
 		$this->widgetSchema ['now']->setDefault ( time () );
+		$this->widgetSchema['clientId']->setDefault("-1");
 		
 		$this->setValidators ( array (
 			'id' => new sfValidatorPropelChoice ( array ('model' => 'Job', 'column' => 'id', 'required' => false ) ),
@@ -96,7 +98,8 @@ class RequestJobForm extends sfForm {
 			'department' => new sfValidatorString ( array ('max_length' => 255, 'required' => false ) ), 
 			'address' => new sfValidatorString ( array ('max_length' => 255, 'required' => false ) ), 
 			'email' => new sfValidatorEmail ( array ('required' => true ) ), 
-			'phone' => new sfValidatorString ( array ('max_length' => 32, 'required' => false ) ) 
+			'phone' => new sfValidatorString ( array ('max_length' => 32, 'required' => false ) ),
+		  'clientId' => new sfValidatorNumber( array('required' => false) )
 	) );
 		
 		$this->validatorSchema ['now'] = new sfValidatorDate ( );
@@ -148,6 +151,13 @@ class RequestJobForm extends sfForm {
 		$j->setProjectId ( $this->getValue ( "project_id" ) );
 		$j->save ();
 	
+		$user = sfContext::getInstance()->getUser();
+		if($this->getValue("clientId") > 0 &&
+		    ($user->hasCredential("client") || $user->hasCredential("admin"))){
+			$client = ClientPeer::retrieveByPK($this->getValue("clientId"));
+			$j->addClient($client);
+		}
+		
 	}
 
 }

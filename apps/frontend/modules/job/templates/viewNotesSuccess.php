@@ -15,7 +15,7 @@
 	
 	<div id="revision-list">
 	
-	<?php echo button_to_function("Diff against current", "diffNotes(" . $job->getId() . ")"); ?>
+	<?php echo button_to_function("View old revision", "diffNotes(" . $job->getId() . ")"); ?>
 	
 	 <table class="job-table" width="100%">
 	   <?php foreach($pager->getResults() as $jn): ?>
@@ -30,6 +30,10 @@
 	 </table>
 	</div>
 	
+	<h3>Current:</h3>
+	<div id="current-note"><?php echo $job->getNotes(); ?></div>
+	
+	<h3>Previous:</h3>
 	<div id="diff-result"></div>
 	
 </div>
