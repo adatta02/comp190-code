@@ -16,6 +16,7 @@ class PhotographyInfoJobForm extends BaseFormPropel
       'photo_type' => new sfWidgetFormPropelChoice(array('model' => 'PhotoType', 'add_empty' => true)), 
       'ques1' => new sfWidgetFormTextarea(),
       'ques2' => new sfWidgetFormTextarea(),
+      'other' => new sfWidgetFormTextarea(),
       'ques3' => new sfWidgetFormTextarea()
       ));
 
@@ -23,6 +24,7 @@ class PhotographyInfoJobForm extends BaseFormPropel
       'photo_type' => new sfValidatorPropelChoice ( array ('model' => 'PhotoType', 'column' => 'id', 'required' => false ) ),  
       'ques1' => new sfValidatorString ( array ('required' => false ) ),
       'ques2' => new sfValidatorString ( array ('required' => false ) ),
+      'other' => new sfValidatorString ( array ('required' => false ) ),
       'ques3' => new sfValidatorString ( array ('required' => false ) )
     ));
 
@@ -34,12 +36,6 @@ class PhotographyInfoJobForm extends BaseFormPropel
     $this->widgetSchema->setNameFormat('job[%s]');
     $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);
 
-    $explode = explode("^", $this->getObject()->getOther());
-    if(count($explode) == 3){
-    $this->widgetSchema['ques1']->setDefault($explode[0]); 
-    $this->widgetSchema['ques2']->setDefault($explode[1]); 
-    $this->widgetSchema['ques3']->setDefault($explode[2]); 
-    }
     parent::setup();
   }
   
@@ -56,7 +52,10 @@ class PhotographyInfoJobForm extends BaseFormPropel
   	}
   	
   	$j->setPhotoType ( $this->getValue ( "photo_type" ) );	
-	$j->setOther ( $this->getValue ( "ques1" ) . "^" . $this->getValue ( "ques2" ) . "^" . $this->getValue( "ques3" ) );		
+	$j->setQues1 ( $this->getValue ( "ques1" ));
+        $j->setQues2 ( $this->getValue ( "ques2" ));
+        $j->setQues3 ( $this->getValue ( "ques3" ));
+	$j->setOther($this->getValue("other"));
 	$j->save();
   }
   

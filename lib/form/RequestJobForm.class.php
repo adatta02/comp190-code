@@ -137,7 +137,10 @@ class RequestJobForm extends sfForm {
 		$j->setState ( $this->getValue ( "state" ) );
 		$j->setZip ( $this->getValue ( "zip" ) );
 		$j->setPhotoType ( $this->getValue ( "photo_type" ) );
-		$j->setOther ( $this->getValue ( "ques1" ) . "^" . $this->getValue ( "ques2" ) . "^" . $this->getValue ( "ques3" ) );		
+		$j->setOther ( $this->getValue ( "other" ));
+		$j->setQues1 ( $this->getValue ( "ques1" ));
+		$j->setQues2 ( $this->getValue ( "ques2" ));
+		$j->setQues3 ( $this->getValue ( "ques3" ));
 		$j->setContactName ( $this->getValue ( "contact_name" ) );
 		$j->setContactPhone ( $this->getValue ( "contact_phone" ) );
 		$j->setContactEmail ( $this->getValue ( "contact_email" ) );

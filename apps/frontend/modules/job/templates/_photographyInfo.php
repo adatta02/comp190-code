@@ -1,8 +1,4 @@
-<?php use_helper("JavascriptBase");
-
-$ques = explode("^", $job->getOther());
-
-?>
+<?php use_helper("JavascriptBase"); ?>
 
 <table width="100%" id="photography-info-table">
   <tr>
@@ -11,12 +7,10 @@ $ques = explode("^", $job->getOther());
   </tr>
   <tr>
      <td width="20%"> Other Info </td>
-
-          <?php if(count($ques) == 3){ ?>
-           <td width="80%"><?php echo $ques[0] . "<br/>" . $ques[1] . "<br/>" . $ques[2]; ?> </td>
-	   <?php } 
-	   else{ ?>
-	     <td width="80%"><?php echo $job->getOther(); ?> </td>
+           <?php if($job->getOther()){?>
+	        <td width="80%"><?php echo $job->getOther(); ?> </td>	   	  
+	   <?php }else{ ?>
+	   	 <td width="80%"><?php echo $job->getQues1() . "<br/>" . $job->getQues2(). "<br/>" . $job->getQues3(); ?> </td>
 	   <?php }
 	    ?>
   </tr>
@@ -27,15 +21,14 @@ $ques = explode("^", $job->getOther());
        method="post">
 	<table id="photography-edit-table" style="display: none">
 	   <?php echo $form["photo_type"]->renderRow(); ?> 
-	   <?php if(count($ques) == 3){ 
-	    	      echo $form["ques1"]->renderRow();
-           	      echo $form["ques2"]->renderRow();
-           	      echo $form["ques3"]->renderRow();
-           	 }
-           	 else{ 
-		     echo $form["other"]->renderRow();
-           	 } ?>
-
+ 
+	   <?php if($job->getOther()){
+	   	 echo $form['other']->renderRow();
+                 }else{
+		 echo $form["ques1"]->renderRow();
+                 echo $form["ques2"]->renderRow();
+                 echo $form["ques3"]->renderRow();
+		 } ?>
 	   <tr><td><?php echo button_to_function("Save", "savePhotographyInfo()"); ?>
 	</table>
 </form>
