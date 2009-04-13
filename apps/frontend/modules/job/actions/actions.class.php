@@ -379,6 +379,7 @@ class jobActions extends PMActions
 	 */
   public function executeCreate(sfWebRequest $request){
   	
+  	$this->isAdmin = $this->getUser()->hasCredential("admin");
   	$this->form = new RequestJobForm();
   	if($request->isMethod("POST")){
       $this->processForm($request, $this->form);
@@ -394,8 +395,6 @@ class jobActions extends PMActions
   			$this->form->setDefault("email", $profile->getEmail());
   			$this->form->setDefault("phone", $profile->getPhone());
   			$this->form->setDefault("clientId", $profile->getId());
-  		}else if($this->getUser()->hasCredential("admin")){
-  			
   		}
   	}
   	

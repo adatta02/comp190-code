@@ -142,7 +142,7 @@
 	   <?php echo input_tag("add-client-name", "", array("size" => 30)); ?>
 	   <?php echo input_hidden_tag("add-client-id"); ?>
 	   <?php echo button_to_function("Add", "addClientToJob()"); ?>
-	 </div>
+</div>
 
 <div id="job-client-list">
     <?php include_partial("clientList", array("job" => $job)); ?>

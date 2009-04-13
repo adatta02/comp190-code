@@ -97,7 +97,7 @@ class RequestJobForm extends sfForm {
 			'name' => new sfValidatorString ( array ('max_length' => 45, 'required' => false ) ), 
 			'department' => new sfValidatorString ( array ('max_length' => 255, 'required' => false ) ), 
 			'address' => new sfValidatorString ( array ('max_length' => 255, 'required' => false ) ), 
-			'email' => new sfValidatorEmail ( array ('required' => true ) ), 
+			'email' => new sfValidatorEmail ( array ('required' => false ) ), 
 			'phone' => new sfValidatorString ( array ('max_length' => 32, 'required' => false ) ),
 		  'clientId' => new sfValidatorNumber( array('required' => false) )
 	) );
@@ -118,7 +118,8 @@ class RequestJobForm extends sfForm {
 		
 		$this->errorSchema = new sfValidatorErrorSchema ( $this->validatorSchema );
 		
-		$this->validatorSchema->setPostValidator ( new sfValidatorAnd ( array (new sfValidatorSchemaCompare ( 'start_time', sfValidatorSchemaCompare::LESS_THAN_EQUAL, 'end_time', array ('throw_global_error' => true ), array ('invalid' => 'The start date ("%left_field%") must be before the end date! ("%right_field%")' ) ), new sfValidatorSchemaCompare ( 'start_time', sfValidatorSchemaCompare::GREATER_THAN, 'now', array ('throw_global_error' => true ), array ('invalid' => 'The start date ("%left_field%") must be in the future today!' ) ) ) ) );
+		$this->validatorSchema->setPostValidator ( new sfValidatorAnd ( array (new sfValidatorSchemaCompare ( 'start_time', sfValidatorSchemaCompare::LESS_THAN_EQUAL, 'end_time', array ('throw_global_error' => true ), array ('invalid' => 'The start date ("%left_field%") must be before the end date! ("%right_field%")' ) ), 
+		  new sfValidatorSchemaCompare ( 'date', sfValidatorSchemaCompare::GREATER_THAN, 'now', array ('throw_global_error' => true ), array ('invalid' => 'The start date ("%left_field%") must be in the future today!' ) ) ) ) );
 
 
 		parent::setup ();

@@ -8,6 +8,31 @@
                           array("sortedBy" => JobPeer::DATE,
                                 "noSort" => true,
                                 "viewingCurrent" => null) ); ?>
+<?php if($isAdmin): ?>
+
+<script type="text/javascript">
+    $(document).ready( function(){ 
+    $("#requestjob_name")
+    .autocomplete('<?php
+        echo url_for ( "@client_autocomplete" )?>', $.extend({}, {
+      dataType: 'json',
+      parse:    function(data) {
+                  var parsed = [];
+                  var obj;
+                  for(var i=0; i < data.length; i++){
+                    obj = new Object();
+                    obj.data = [data[i].name + " &lt;" + data[i].email + "&gt", data[i].id];
+                    obj.value = data[i].name;
+                    obj.result = data[i].name;
+                    parsed.push(obj);
+                  }
+                  return parsed;
+      }}, {width: 300}))
+    .result(function(event, data) { $("#requestjob_clientId").val(data[1]); });
+   });
+</script>
+
+<?php endif; ?>
 <div id="list-container">
   <h2>Request a photographer:</h2>
   <h3><?php echo $form->renderGlobalErrors(); ?></h3>
@@ -17,19 +42,28 @@
     <tr valign="top">
     <td>
     <h3>Client</h3>
-    <table>
-		   <tr><?php echo $form["name"]->renderRow(); ?> </tr>
-		   <tr><?php echo $form["department"]->renderRow(); ?> </tr>
-		   <tr><?php echo $form["address"]->renderRow(); ?> </tr>
-		   <tr><?php echo $form["email"]->renderRow(); ?> </tr>
-		   <tr><?php echo $form["phone"]->renderRow(); ?> </tr>
-		   <tr><?php echo $form["acct_num"]->renderRow(); ?> </tr>
-		   <tr><?php echo $form["dept_id"]->renderRow(); ?> </tr>
-    </table>
+    
+    <?php if(!$isAdmin): ?>
+	    <table>
+			   <tr><?php echo $form["name"]->renderRow(); ?></tr>
+			   <tr><?php echo $form["department"]->renderRow(); ?> </tr>
+			   <tr><?php echo $form["address"]->renderRow(); ?> </tr>
+			   <tr><?php echo $form["email"]->renderRow(); ?> </tr>
+			   <tr><?php echo $form["phone"]->renderRow(); ?> </tr>
+			   <tr><?php echo $form["acct_num"]->renderRow(); ?> </tr>
+			   <tr><?php echo $form["dept_id"]->renderRow(); ?> </tr>
+	    </table>
+    <?php else: ?>
+     <table>
+      <?php echo $form["name"]->renderRow(); ?>
+     </table>
+     <?php endif; ?>
     </td>
   <td>
     <h3>Shoot Contact</h3>
-    <span>Same as client? <?php echo checkbox_tag("copy-client-info", 1, 0, array("onclick" => "javascript:copyClient();")); ?></span>
+    <?php if(!$isAdmin): ?>
+      <span>Same as client? <?php echo checkbox_tag("copy-client-info", 1, 0, array("onclick" => "javascript:copyClient();")); ?></span>
+    <?php endif; ?>
     <table>
 	    <tr><?php echo $form["contact_name"]->renderRow(); ?> </tr>
 	    <tr><?php echo $form["contact_email"]->renderRow(); ?> </tr>
