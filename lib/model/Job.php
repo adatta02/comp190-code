@@ -188,7 +188,7 @@ class Job extends BaseJob
   	$logEntry->setPropelId($this->getId());
   	
   	// see if we need to do revision control on the notes
-  	$updateNotes = in_array(JobPeer::NOTES, $this->modifiedColumns);
+  	$updateNotes = in_array(JobPeer::NOTES, $this->modifiedColumns) && (strlen($this->getNotes() > 1));
   	
   	if(is_null($con)){
   	 $con = Propel::getConnection(JobPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);

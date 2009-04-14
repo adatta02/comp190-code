@@ -155,6 +155,10 @@ job_search:
   url: /job/search
   param: { module: search, action: job }
 
+advanced_search:
+  url: /search/advanced
+  param: { module: search, action: advanced }
+
 view_log:
   url: /log/view
   param: { module: log, action: view }

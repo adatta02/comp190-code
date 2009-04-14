@@ -136,7 +136,7 @@
 		    
 			 foreach($photogs as $i){ ?>
 		   	 <td>
-			     <?php echo $i; ?>
+			     <?php echo link_to($i, "photographer_view_jobs", $i) . " "; ?>
 		   	 </td>
 		   <?php 
 		         }
