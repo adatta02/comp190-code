@@ -9,7 +9,7 @@
   <body>
     
     <div id="header">
-      <h1>Photo@Tufts.edu</h1>
+      <?php echo image_tag("title.jpg", array("style" => "height: 50px;margin-top:20px;margin-bottom:20px;margin-left:260px;")); ?>
     </div>
     
     <div id="content">
