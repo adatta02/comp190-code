@@ -184,10 +184,13 @@
 
 <div class="info-header">Billing and Delivery <a href="#"
 	onclick="javascript:$('#job-billing-info').toggle(); return false;">[tg]</a>
+	<a href="#" onclick="javascript:$('#billing-edit-table').toggle(); $('#billing-info-table').toggle(); return false;">
+    <?php echo image_tag("pencil.png", array("class" => "image-href")) ?>
+  </a>
 </div>
 
 <div id="job-billing-info" class="collapsable">
-  
+  	<?php include_partial("billingInfo", array("job" => $job, "form" => $billingInfoForm)); ?>
 </div>
 
 <hr />

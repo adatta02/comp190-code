@@ -119,7 +119,7 @@
 </div>
 
 <div id="job-photogrpahy-info" class="collapsable"><a href="#shoot"></a>
-  <?php include_partial("photogrpahyInfo", array("job" => $job, "form" => $photographyInfoForm)); ?>
+  <?php include_partial("photographyInfo", array("job" => $job, "form" => $photographyInfoForm)); ?>
 </div>
 
 <hr/>
@@ -142,7 +142,7 @@
 	   <?php echo input_tag("add-client-name", "", array("size" => 30)); ?>
 	   <?php echo input_hidden_tag("add-client-id"); ?>
 	   <?php echo button_to_function("Add", "addClientToJob()"); ?>
-	 </div>
+</div>
 
 <div id="job-client-list">
     <?php include_partial("clientList", array("job" => $job)); ?>
@@ -188,6 +188,19 @@
 
 <div id="job-billing-info" class="collapsable">
   
+</div>
+
+<hr />
+
+<div class="info-header">Internal Notes <a href="#"
+  onclick="javascript:$('#job-internal-notes').toggle(); return false;">[tg]</a>
+  <a href="#" onclick="javascript:$('#internal-notes-edit').toggle(); $('#internal-notes-div').toggle(); return false;">
+    <?php echo image_tag("pencil.png", array("class" => "image-href")) ?>
+  </a>
+</div>
+
+<div id="job-internal-notes" class="collapsable">
+  <?php include_partial("internalNotes", array("job" => $job)); ?>
 </div>
 
 </div>
