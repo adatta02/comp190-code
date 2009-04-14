@@ -4,7 +4,6 @@
 
 	function Invoice(){
 		var invoice = "<html><body>";
-		invoice += "<img src='../../../../../web/css/images/topBar.png'></img>";
 		invoice += "<?php print(Date('l F d,Y')); ?>\n\n";
 		invoice += "<b>INVOICE #<?php echo $job->getId(); ?> </b>\n\n";
 		invoice += "<b>Client (Bill to)</b>\n\n";

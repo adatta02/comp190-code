@@ -144,7 +144,13 @@ class jobActions extends PMActions
          $this->bindAndValidateForm($form ,$request);
          $this->renderPartial("photographyInfo", array("job" => $job, 
                               "form" => $form));
-         break;        
+         break;  
+	 case "billing":
+         $form = new BillingInfoJobForm($job);
+         $this->bindAndValidateForm($form ,$request);
+         $this->renderPartial("BillingInfo", array("job" => $job, 
+                              "form" => $form));
+         break;      
 
 	case "internal":
         	$newVal = $request->getParameter("internal-edit");
@@ -186,6 +192,7 @@ class jobActions extends PMActions
 		$this->basicInfoForm = new BasicInfoJobForm($this->job);
 		$this->shootInfoForm = new ShootInfoJobForm($this->job);
 		$this->photographyInfoForm = new PhotographyInfoJobForm($this->job);
+		$this->billingInfoForm = new BillingInfoJobForm($this->job);
 
 	}
 	

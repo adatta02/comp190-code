@@ -45,7 +45,8 @@ class RequestJobForm extends sfForm {
 		'department' => new sfWidgetFormInput ( ), 
 		'address' => new sfWidgetFormInput ( ), 
 		'email' => new sfWidgetFormInput ( ), 
-		'phone' => new sfWidgetFormInput ( ) 
+		'phone' => new sfWidgetFormInput ( ),
+		'clientId' => new sfWidgetFormInputHidden()
 	) );
 		
 		$this->widgetSchema->setLabel ( 'event', 'Event Name' );
@@ -55,12 +56,14 @@ class RequestJobForm extends sfForm {
 		$this->widgetSchema->setLabel ( 'acct_num', 'Account Num' );
 		$this->widgetSchema->setLabel ( 'ques1', 'Please list specific photos you need, including, for group photos, number of groups and subjects in each.' );
 		$this->widgetSchema->setLabel ( 'ques2', 'Please provide specific instructions for the photographer.' );
-		$this->widgetSchema->setLabel ( 'ques3', 'Please describe in detail the event or story being photographed.' );		
+		$this->widgetSchema->setLabel ( 'ques3', 'Please describe in detail the event or story being photographed.' );
+		$this->widgetSchema->setLabel ( 'estimate', 'Shoot Fee' );		
 
 		$this->widgetSchema ['state']->setDefault ( "MA" );
 		
 		$this->widgetSchema ['now'] = new sfWidgetFormInputHidden ( );
 		$this->widgetSchema ['now']->setDefault ( time () );
+		$this->widgetSchema['clientId']->setDefault("-1");
 		
 		$this->setValidators ( array (
 			'id' => new sfValidatorPropelChoice ( array ('model' => 'Job', 'column' => 'id', 'required' => false ) ),
@@ -95,8 +98,9 @@ class RequestJobForm extends sfForm {
 			'name' => new sfValidatorString ( array ('max_length' => 45, 'required' => false ) ), 
 			'department' => new sfValidatorString ( array ('max_length' => 255, 'required' => false ) ), 
 			'address' => new sfValidatorString ( array ('max_length' => 255, 'required' => false ) ), 
-			'email' => new sfValidatorEmail ( array ('required' => true ) ), 
-			'phone' => new sfValidatorString ( array ('max_length' => 32, 'required' => false ) ) 
+			'email' => new sfValidatorEmail ( array ('required' => false ) ), 
+			'phone' => new sfValidatorString ( array ('max_length' => 32, 'required' => false ) ),
+		  'clientId' => new sfValidatorNumber( array('required' => false) )
 	) );
 		
 		$this->validatorSchema ['now'] = new sfValidatorDate ( );
@@ -115,14 +119,8 @@ class RequestJobForm extends sfForm {
 		
 		$this->errorSchema = new sfValidatorErrorSchema ( $this->validatorSchema );
 		
-		$this->validatorSchema->setPostValidator ( new sfValidatorAnd ( array (new sfValidatorSchemaCompare ( 'start_time', sfValidatorSchemaCompare::LESS_THAN_EQUAL, 'end_time', array ('throw_global_error' => true ), array ('invalid' => 'The start date ("%left_field%") must be before the end date! ("%right_field%")' ) ), new sfValidatorSchemaCompare ( 'start_time', sfValidatorSchemaCompare::GREATER_THAN, 'now', array ('throw_global_error' => true ), array ('invalid' => 'The start date ("%left_field%") must be in the future today!' ) ) ) ) );
-		
-		 $explode = explode("^", $this->getOther());
-    			if(count($explode) == 3){
-    			    $this->widgetSchema['ques1']->setDefault($explode[0]); 
-    			    $this->widgetSchema['ques2']->setDefault($explode[1]); 
-    			    $this->widgetSchema['ques3']->setDefault($explode[2]); 
-    			}
+		$this->validatorSchema->setPostValidator ( new sfValidatorAnd ( array (new sfValidatorSchemaCompare ( 'start_time', sfValidatorSchemaCompare::LESS_THAN_EQUAL, 'end_time', array ('throw_global_error' => true ), array ('invalid' => 'The start date ("%left_field%") must be before the end date! ("%right_field%")' ) ), 
+		  new sfValidatorSchemaCompare ( 'date', sfValidatorSchemaCompare::GREATER_THAN, 'now', array ('throw_global_error' => true ), array ('invalid' => 'The start date ("%left_field%") must be in the future today!' ) ) ) ) );
 
 
 		parent::setup ();
@@ -144,7 +142,11 @@ class RequestJobForm extends sfForm {
 		$j->setState ( $this->getValue ( "state" ) );
 		$j->setZip ( $this->getValue ( "zip" ) );
 		$j->setPhotoType ( $this->getValue ( "photo_type" ) );
-		$j->setOther ( $this->getValue ( "ques1" ) . "^" . $this->getValue ( "ques2" ) . "^" . $this->getValue ( "ques3" ) );		
+		$j->setOther ( $this->getValue ( "other" ));
+		$j->setQues1 ( $this->getValue ( "ques1" ));
+		$j->setQues2 ( $this->getValue ( "ques2" ));
+		$j->setQues3 ( $this->getValue ( "ques3" ));
+		$j->setEstimate ( $this->getValue ( "estimate" ) );
 		$j->setContactName ( $this->getValue ( "contact_name" ) );
 		$j->setContactPhone ( $this->getValue ( "contact_phone" ) );
 		$j->setContactEmail ( $this->getValue ( "contact_email" ) );
@@ -152,6 +154,13 @@ class RequestJobForm extends sfForm {
 		$j->setProjectId ( $this->getValue ( "project_id" ) );
 		$j->save ();
 	
+		$user = sfContext::getInstance()->getUser();
+		if($this->getValue("clientId") > 0 &&
+		    ($user->hasCredential("client") || $user->hasCredential("admin"))){
+			$client = ClientPeer::retrieveByPK($this->getValue("clientId"));
+			$j->addClient($client);
+		}
+		
 	}
 
 }

@@ -56,7 +56,8 @@ class RequestJobForm extends sfForm {
 		$this->widgetSchema->setLabel ( 'acct_num', 'Account Num' );
 		$this->widgetSchema->setLabel ( 'ques1', 'Please list specific photos you need, including, for group photos, number of groups and subjects in each.' );
 		$this->widgetSchema->setLabel ( 'ques2', 'Please provide specific instructions for the photographer.' );
-		$this->widgetSchema->setLabel ( 'ques3', 'Please describe in detail the event or story being photographed.' );		
+		$this->widgetSchema->setLabel ( 'ques3', 'Please describe in detail the event or story being photographed.' );
+		$this->widgetSchema->setLabel ( 'estimate', 'Shoot Fee' );		
 
 		$this->widgetSchema ['state']->setDefault ( "MA" );
 		

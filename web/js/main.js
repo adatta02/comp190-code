@@ -71,6 +71,14 @@ function savePhotographyInfo(){
   $.post( postTo, queryString, function(data){ $("#job-photogrpahy-info").html(data); $("#ajax-loading").hide(); });
 }
 
+function saveBillingInfo(){
+  var queryString = $("#billing-info-form").serialize();
+  var postTo = $("#billing-info-form").attr("action");
+
+  $("#ajax-loading").show();
+  $.post( postTo, queryString, function(data){ $("#job-billing-info").html(data); $("#ajax-loading").hide(); });
+}
+
 function showProjectCreate(){
   $("#create-project-form").show();
 }
