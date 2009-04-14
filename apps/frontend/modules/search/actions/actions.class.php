@@ -24,5 +24,10 @@ class searchActions extends PMActions
                               "slugOn" => "search-box", 
                               "slug" => $this->searchBox));
   }
+
+  public function executeAdvanced(sfWebRequest $request)
+  {
+  	$this->form = new AdvancedSearchForm();
+  }
   
 }
