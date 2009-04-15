@@ -15,7 +15,7 @@ class AdvancedSearchForm extends sfForm {
 		'has_client' => new sfWidgetFormSelectRadio(array( 'choices' => array("Yes", "No", "Either"))),
 	  ));
 		
-		$this->widgetSchema->setLabel ( 'due_date_start', '' );
+		$this->widgetSchema["due_date_start"]->setLabel ( '', '' );
 		$this->widgetSchema->setLabel ( 'due_date_end', '' );
 		$this->widgetSchema->setLabel ( 'shoot_date_start', '' );
 		$this->widgetSchema->setLabel ( 'shoot_date_start', '' );

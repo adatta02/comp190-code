@@ -28,6 +28,15 @@ class searchActions extends PMActions
   public function executeAdvanced(sfWebRequest $request)
   {
   	$this->form = new AdvancedSearchForm();
+  	
+  	if($request->isMethod("POST")){
+      $this->form->bind($request->getParameter($this->form->getName()), 
+      					$request->getFiles($this->form->getName()));
+      					
+     $dueDateStart = $request->getParameter($this->form->getName() . "[due_date_start]");
+     $dueDateEnd = $request->getParameter($this->form->getName() . "[due_date_end]");
+  	}
+  	
   }
   
 }
