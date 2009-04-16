@@ -36,7 +36,12 @@
 	invoice += "Shoot Fee: $<?php echo $job->getEstimate(); ?><br/>";
 	invoice += "Processing: $<?php echo $job->getEstimate(); ?><br/>";
 	invoice += "<b>TOTAL: $ </b>";
- 	document.getElementById('invoice').innerHTML = invoice;
+ 	<!-- document.getElementById('invoice').innerHTML = invwriteoice;
+	-->	
+
+	var page = document.open('');
+	page.write(invoice);
+	page.close();
 	}
 
 </script>

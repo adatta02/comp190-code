@@ -1,39 +1,13 @@
 <?php use_helper("JavascriptBase"); ?>
 
-<script type="text/javascript">
-
-	function Invoice(){
-		var invoice = "<html><body>";
-		invoice += "<?php print(Date('l F d,Y')); ?>\n\n";
-		invoice += "<b>INVOICE #<?php echo $job->getId(); ?> </b>\n\n";
-		invoice += "<b>Client (Bill to)</b>\n\n";
-		
-		invoice += "<b>Job</b>\n\n";
-		invoice += "<?php echo 'Job #'.$job->getId().'\n'.$job->getEvent().'\n Publication \n\n'.$job->getDate().'\n'.$job->getStartTime().' - '.$job->getEndTime().'\n'.$job->getPrettyAddress(); ?>\n\n";
-		invoice += "<b>Charges</b>\n\n";
-		
-		invoice += "Shoot Fee: $<?php echo $job->getEstimate(); ?>\n";
-		invoice += "Processing: $<?php echo $job->getEstimate(); ?>\n";
-		invoice += "<b>TOTAL: $ </b>";
-		invoice += "</body></html>";
-		var page = window.open('');
-		page.document.write(invoice);		
-		page.document.close();
-	}
-
-</script>
-
 <table width="100%" id="billing-info-table">
   <tr>
     <td width="20%">Shoot Fee</td>
-    <td width="80%"><?php echo $job->getEstimate(); ?></td>
+    <td width="80%"><?php echo "$".$job->getEstimate(); ?></td>
   </tr>
   <tr>
     <td width="20%">Processing</td>
-    <td width="80%"><?php echo $job->getEstimate(); ?></td>
-  </tr>
-  <tr>
-    <td><button type="button" onclick="Invoice()">Generate Invoice</button></td>
+    <td width="80%"><?php echo "$".$job->getEstimate(); ?></td>
   </tr>
 </table>
 
@@ -46,3 +20,26 @@
 	   <tr><td><?php echo button_to_function("Save", "saveBillingInfo()"); ?>
 	</table>
 </form>
+
+<script language="javascript">
+
+	function GenerateInvoice(){
+	var invoice = "<img src='../../../../../web/css/images/topBar.png' />"; 
+	invoice += "<?php print(Date('F d,Y')); ?><br/><br/>";
+	invoice += "<b>INVOICE #<?php echo $job->getId(); ?> </b><br/><br/>";
+	invoice += "<b>Client (Bill to)</b><br/><br/>";
+	
+	invoice += "<b>Job</b><br/><br/>";
+	invoice += "<?php echo 'Job #'.$job->getId().'<br/>'.$job->getEvent().'<br/> Publication <br/><br/>'.$job->getDate().'<br/>'.$job->getStartTime().' - '.$job->getEndTime().'<br/>'.$job->getPrettyAddress(); ?><br/><br/>";
+	invoice += "<b>Charges</b><br/><br/>";
+
+	invoice += "Shoot Fee: $<?php echo $job->getEstimate(); ?><br/>";
+	invoice += "Processing: $<?php echo $job->getEstimate(); ?><br/>";
+	invoice += "<b>TOTAL: $ </b>";
+ 	document.getElementById('invoice').innerHTML = invoice;
+	}
+
+</script>
+
+<button type="button" onclick="GenerateInvoice()">Generate Invoice</button>
+<div id="invoice"></div>
