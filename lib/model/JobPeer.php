@@ -56,15 +56,20 @@ class JobPeer extends BaseJobPeer
 	public static function getJobsForAutocomplete($q){
 		sfContext::getInstance()->getConfiguration()->loadHelpers('Url');
 		
-		$c = new Criteria();
-    $c->add(JobPeer::EVENT, $q . "%", Criteria::LIKE);
+    $c = new Criteria();
+    $crit0 = $c->getNewCriterion(JobPeer::EVENT, $q . '%', Criteria::LIKE);
+    $crit1 = $c->getNewCriterion(JobPeer::ID, $q . '%', Criteria::LIKE);
+    // Perform OR at level 0 ($crit0 $crit1 )
+    $crit0->addOr($crit1);
+    // Remember to change the peer class here for the correct one in your model
+    $c->add($crit0);
 		$c->addDescendingOrderByColumn(JobPeer::EVENT);
 		$c->setLimit(10);
 		
 		$jobs = JobPeer::doSelect($c);
 		$arr = array();
 		foreach($jobs as $j){
-			$arr[] = array("name" => $j->getEvent(), 
+			$arr[] = array("name" => $j->getId() . " - " . $j->getEvent(), 
 			               "url" => url_for('job_show', array("slug" => $j->getSlug())));
 		}
 		

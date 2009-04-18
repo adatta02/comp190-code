@@ -95,9 +95,11 @@
 
 <div id="top-search">
   <?php echo form_tag("@job_search", array("method" => "GET")); ?>
-    <?php echo input_tag("search-box"); ?> <?php echo submit_tag("Search"); ?>
+    <?php echo input_tag("search-box", "", array("style" => "width: 240px")); ?> 
+    <?php echo submit_tag("Search"); ?>
   </form>
-  <?php echo link_to("Advanced Search", "advanced_search"); ?>
+  <?php echo link_to("Advanced Search", "advanced_search"); ?> <br/>
+  <a href="#" class="modal">Search by tag</a>
 </div>
 
 <div style="clear: both"></div>
