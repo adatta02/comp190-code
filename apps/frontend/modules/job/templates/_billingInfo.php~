@@ -1,39 +1,13 @@
 <?php use_helper("JavascriptBase"); ?>
 
-<script type="text/javascript">
-
-	function Invoice(){
-		var invoice = "<html><body>";
-		invoice += "<?php print(Date('l F d,Y')); ?>\n\n";
-		invoice += "<b>INVOICE #<?php echo $job->getId(); ?> </b>\n\n";
-		invoice += "<b>Client (Bill to)</b>\n\n";
-		
-		invoice += "<b>Job</b>\n\n";
-		invoice += "<?php echo 'Job #'.$job->getId().'\n'.$job->getEvent().'\n Publication \n\n'.$job->getDate().'\n'.$job->getStartTime().' - '.$job->getEndTime().'\n'.$job->getPrettyAddress(); ?>\n\n";
-		invoice += "<b>Charges</b>\n\n";
-		
-		invoice += "Shoot Fee: $<?php echo $job->getEstimate(); ?>\n";
-		invoice += "Processing: $<?php echo $job->getEstimate(); ?>\n";
-		invoice += "<b>TOTAL: $ </b>";
-		invoice += "</body></html>";
-		var page = window.open('');
-		page.document.write(invoice);		
-		page.document.close();
-	}
-
-</script>
-
 <table width="100%" id="billing-info-table">
   <tr>
     <td width="20%">Shoot Fee</td>
-    <td width="80%"><?php echo $job->getEstimate(); ?></td>
+    <td width="80%"><?php echo "$".$job->getEstimate(); ?></td>
   </tr>
   <tr>
     <td width="20%">Processing</td>
-    <td width="80%"><?php echo $job->getEstimate(); ?></td>
-  </tr>
-  <tr>
-    <td><button type="button" onclick="Invoice()">Generate Invoice</button></td>
+    <td width="80%"><?php echo "$".$job->getEstimate(); ?></td>
   </tr>
 </table>
 
@@ -46,3 +20,36 @@
 	   <tr><td><?php echo button_to_function("Save", "saveBillingInfo()"); ?>
 	</table>
 </form>
+
+<script language="javascript">
+
+	function GenerateInvoice(){
+	
+	var total = 100;
+
+	document.open();
+	document.writeln('<?php echo image_tag("tufts_logo.gif"); ?>');	
+	document.writeln('<p><?php print(Date("F d,Y")); ?></p?');
+	document.writeln('<p><b>INVOICE #<?php echo $job->getId(); ?></b></p>');
+	document.writeln('<p><b>Client (Bill to)</b></p>');
+	document.writeln('<p><?php foreach($job->getClients() as $i){ echo $i->getName(); ?><br>');
+	document.writeln('<?php echo $i->getDepartment(); ?><br>');
+	document.writeln('<?php echo $i->getAddress(); } ?><br>');
+	document.writeln('<p><b>Job</b></p>');
+	document.writeln('<p><?php echo "Job #".$job->getId(); ?><br>');
+	document.writeln('<?php echo $job->getEvent(); ?><br>');	
+	document.writeln('PUBLICATION<br></p>');
+	document.writeln('<p><?php echo $job->getPrettyShootDate(); ?><br>');
+	document.writeln('<?php echo $job->getPrettyAddress(); ?></p>');
+	document.writeln('<p><b>Charges</b></p>');
+	document.writeln('<p><?php foreach($job->getPhotographers() as $i){ echo $i;} ?><br><br>');
+	document.writeln('Shoot Fee: $<?php echo $job->getEstimate(); ?><br>');
+	document.writeln('Processing: $<?php echo $job->getEstimate(); ?><br><br>');
+	document.writeln('<b>TOTAL: $' + total + '</b></p>'); 		
+	document.close();
+	}
+
+</script>
+
+<button type="button" onclick="GenerateInvoice()">Generate Invoice</button>
+<div id="invoice"></div>

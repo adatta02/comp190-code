@@ -24,19 +24,29 @@
 <script language="javascript">
 
 	function GenerateInvoice(){
-	var invoice = "<img src='../../../../../web/css/images/topBar.png' />"; 
-	invoice += "<?php print(Date('F d,Y')); ?><br/><br/>";
-	invoice += "<b>INVOICE #<?php echo $job->getId(); ?> </b><br/><br/>";
-	invoice += "<b>Client (Bill to)</b><br/><br/>";
 	
-	invoice += "<b>Job</b><br/><br/>";
-	invoice += "<?php echo 'Job #'.$job->getId().'<br/>'.$job->getEvent().'<br/> Publication <br/><br/>'.$job->getDate().'<br/>'.$job->getStartTime().' - '.$job->getEndTime().'<br/>'.$job->getPrettyAddress(); ?><br/><br/>";
-	invoice += "<b>Charges</b><br/><br/>";
+	var total = 100;
 
-	invoice += "Shoot Fee: $<?php echo $job->getEstimate(); ?><br/>";
-	invoice += "Processing: $<?php echo $job->getEstimate(); ?><br/>";
-	invoice += "<b>TOTAL: $ </b>";
- 	document.getElementById('invoice').innerHTML = invoice;
+	document.open();
+	document.writeln('<?php echo image_tag("tufts_logo.gif"); ?>');	
+	document.writeln('<p><?php print(Date("F d,Y")); ?></p?');
+	document.writeln('<p><b>INVOICE #<?php echo $job->getId(); ?></b></p>');
+	document.writeln('<p><b>Client (Bill to)</b></p>');
+	document.writeln('<p><?php foreach($job->getClients() as $i){ echo $i->getName(); ?><br>');
+	document.writeln('<?php echo $i->getDepartment(); ?><br>');
+	document.writeln('<?php echo $i->getAddress(); } ?><br>');
+	document.writeln('<p><b>Job</b></p>');
+	document.writeln('<p><?php echo "Job #".$job->getId(); ?><br>');
+	document.writeln('<?php echo $job->getEvent(); ?><br>');	
+	document.writeln('PUBLICATION<br></p>');
+	document.writeln('<p><?php echo $job->getPrettyShootDate(); ?><br>');
+	document.writeln('<?php echo $job->getPrettyAddress(); ?></p>');
+	document.writeln('<p><b>Charges</b></p>');
+	document.writeln('<p><?php foreach($job->getPhotographers() as $i){ echo $i->getName().", ".$i->getAffiliation(); } ?><br><br>');
+	document.writeln('Shoot Fee: $<?php echo $job->getEstimate(); ?><br>');
+	document.writeln('Processing: $<?php echo $job->getEstimate(); ?><br><br>');
+	document.writeln('<b>TOTAL: $' + total + '</b></p>'); 		
+	document.close();
 	}
 
 </script>
