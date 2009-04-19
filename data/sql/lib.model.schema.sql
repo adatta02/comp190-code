@@ -119,6 +119,7 @@ CREATE TABLE `job`
 	`ques3` VARCHAR(255),
 	`slug` VARCHAR(255),
 	`photo_type` INTEGER,
+	`processing` VARCHAR(255),
 	PRIMARY KEY (`id`),
 	INDEX `FI_Shoot_Publication` (`publication_id`),
 	CONSTRAINT `fk_Shoot_Publication`
@@ -173,12 +174,34 @@ CREATE TABLE `photographer`
 	`affiliation` VARCHAR(64),
 	`website` VARCHAR(64),
 	`description` TEXT,
+	`billing_address` TEXT,
 	`slug` VARCHAR(255),
 	PRIMARY KEY (`id`),
 	INDEX `FI_Photographer_User` (`user_id`),
 	CONSTRAINT `fk_Photographer_User`
 		FOREIGN KEY (`user_id`)
 		REFERENCES `sf_guard_user_profile` (`id`)
+)Type=InnoDB;
+
+#-----------------------------------------------------------------------------
+#-- photographer_region
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `photographer_region`;
+
+
+CREATE TABLE `photographer_region`
+(
+	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`photographer_id` INTEGER,
+	`address` TEXT,
+	`latitude` VARCHAR(16),
+	`longitude` VARCHAR(16),
+	PRIMARY KEY (`id`),
+	INDEX `FI_photographer_region_photographer` (`photographer_id`),
+	CONSTRAINT `fk_photographer_region_photographer`
+		FOREIGN KEY (`photographer_id`)
+		REFERENCES `photographer` (`id`)
 )Type=InnoDB;
 
 #-----------------------------------------------------------------------------

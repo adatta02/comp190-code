@@ -67,6 +67,7 @@
    <column name="ques3" type="VARCHAR" size="255"/>
     <column name="slug" type="VARCHAR" size="255"/>
     <column name="photo_type" type="INTEGER"/>
+    <column name="processing" type="VARCHAR" size="255"/>
     <foreign-key name="fk_Shoot_Publication" foreignTable="publication">
       <reference local="publication_id" foreign="id"/>
     </foreign-key>
@@ -89,6 +90,7 @@
       <reference local="job_id" foreign="id"/>
     </foreign-key>
   </table>
+  
   <table name="photographer">
     <column name="id" type="INTEGER" primaryKey="true" required="true" autoIncrement="true"/>
     <column name="user_id" type="INTEGER"/>
@@ -98,11 +100,24 @@
     <column name="affiliation" type="VARCHAR" size="64"/>
     <column name="website" type="VARCHAR" size="64"/>
     <column name="description" type="LONGVARCHAR"/>
+    <column name="billing_address" type="LONGVARCHAR"/>
     <column name="slug" type="VARCHAR" size="255"/>
     <foreign-key name="fk_Photographer_User" foreignTable="sf_guard_user_profile">
       <reference local="user_id" foreign="id"/>
     </foreign-key>
   </table>
+  
+  <table name="photographer_region">
+    <column name="id" type="INTEGER" primaryKey="true" required="true" autoIncrement="true"/>
+    <column name="photographer_id" type="INTEGER"/>
+    <column name="address" type="LONGVARCHAR"/>
+    <column name="latitude" type="VARCHAR" size="16"/>
+    <column name="longitude" type="VARCHAR" size="16"/>
+    <foreign-key name="fk_photographer_region_photographer" foreignTable="photographer" phpName="Photographer">
+      <reference local="photographer_id" foreign="id"/>
+    </foreign-key>
+  </table>
+  
   <table name="client">
     <column name="id" type="INTEGER" primaryKey="true" required="true" autoIncrement="true"/>
     <column name="user_id" type="INTEGER"/>

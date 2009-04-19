@@ -111,14 +111,15 @@
 <hr />
 
 <div class="info-header">Photography <a href="#"
-	onclick="javascript:$('#job-photography-info').toggle(); return false;">[tg]</a>
+	onclick="javascript:$('#job-photogrpahy-info').toggle(); return false;">[tg]</a>
 	 <a href="#" onclick="javascript:$('#photography-edit-table').toggle(); $('#photography-info-table').toggle(); return false;">
     <?php echo image_tag("pencil.png", array("class" => "image-href")) ?>
   </a>
 	
 </div>
 
-<div id="job-photogrpahy-info" class="collapsable"><a href="#shoot"></a>
+<div id="job-photogrpahy-info" class="collapsable">
+  <a href="#photography"></a>
   <?php include_partial("photographyInfo", array("job" => $job, "form" => $photographyInfoForm)); ?>
 </div>
 
