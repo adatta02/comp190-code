@@ -71,7 +71,12 @@ job_view_notes:
 job_diff_notes:
   url: /job/view/notes/diff
   param: { module: job, action: diffNotes }
-
+job_view_history:
+  url: /job/history/:slug
+  class:    sfPropelRoute
+  param: { module: job, action: viewHistory }
+  options: { model: Job, type: object }
+  requirements: {slug: \w+ }
 ################################################
 # photographer
 ################################################

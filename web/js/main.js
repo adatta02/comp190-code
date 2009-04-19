@@ -266,7 +266,13 @@ function addJobTag(jobId){
 
 function setRouteProperties(obj){
   obj.reloadFunction = ProjectManager.reloadFunction;
-  obj.reloadParam = ProjectManager.reloadParam;
+  
+  if(ProjectManager.reloadParam instanceof Function){
+    obj.reloadParam = ProjectManager.reloadParam();
+  }else{
+    obj.reloadParam = ProjectManager.reloadParam;
+  }
+  
   return obj;
 }
 

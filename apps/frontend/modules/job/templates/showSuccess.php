@@ -12,6 +12,12 @@
   ProjectManager.removeJobTagUrl = "<?php echo url_for("@job_remove_tag"); ?>";
   ProjectManager.isViewingJob = true;
   
+  function jumpEditHistoryToPage(page){
+    $("#history-loading").show();
+    $("#job-edit-history").load("<?php echo url_for("job_view_history", array("slug" => $job->getSlug())); ?>", {page: page}, 
+                           function(){ $("#history-loading").hide();});
+  }
+  
   $(document).ready( 
     function(){
     
@@ -205,6 +211,17 @@
 
 <div id="job-internal-notes" class="collapsable">
   <?php include_partial("internalNotes", array("job" => $job)); ?>
+</div>
+
+<div class="info-header">History <a href="#"
+  onclick="javascript:$('#job-edit-history').toggle(); return false;">[tg]</a>
+  <?php echo image_tag("loading.gif", array("id" => "history-loading", "style" => "display: none")); ?> 
+</div>
+
+<hr />
+
+<div id="job-edit-history" class="collapsable">
+  <?php include_partial("logRender", array("pager" => $logPager)); ?>
 </div>
 
 </div>

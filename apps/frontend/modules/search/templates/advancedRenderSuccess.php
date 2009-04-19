@@ -1,6 +1,16 @@
 <?php use_helper("PMRender") ?>
 <?php use_helper("Url"); ?>
 
+<script type="text/javascript">
+  
+  ProjectManager.reloadFunction = "reloadByAdvancedSearch";
+  ProjectManager.reloadParam = function(){ return $("#advanced_search_form").serialize(); };
+  
+  ProjectManager.removeJobTagUrl = "<?php echo url_for ( "job_remove_tag" );?>";
+  ProjectManager.addJobTagUrl = "<?php echo url_for ( "job_add_tag" );?>";
+  ProjectManager.moveJobUrl = "<?php echo url_for("job_move"); ?>";
+</script>
+
 <?php include_component ( "static", "topmenu", array("moveToSkip" => null, "noMenu" => false) ); ?>
 <?php include_component ( "static", "shortcuts", 
                           array("sortedBy" => null, 

@@ -99,6 +99,13 @@ class jobActions extends PMActions
     return $c;
 	}
 	
+	private function reloadByAdvancedSearch($params){
+		echo $params;
+		
+		$this->setTemplate("");
+		return sfView::NONE;
+	}
+	
 	private function createCriteria($stateId = null, $routeArray = null){
 		
 		if(is_null($stateId)){
@@ -117,7 +124,11 @@ class jobActions extends PMActions
 		
 		$c = $this->$reloadFunction($reloadParam);
 		
-		$this->getPager($c, $routeArray);
+		if($c != sfView::NONE){
+		  $this->getPager($c, $routeArray);
+		}else{
+		  return sfView::NONE;
+		}
 	}
 	
 	public function executeEdit(sfWebRequest $request){
@@ -186,6 +197,27 @@ class jobActions extends PMActions
 		return sfView::NONE;
 	}
 	
+	public function executeViewHistory(sfWebRequest $request){
+		$this->job = $this->getRoute()->getObject();
+		$this->getEditHistory($request->getParameter("page"));
+		
+		$this->renderPartial("logRender", array("pager" => $this->logPager));
+		return sfView::NONE;
+	}
+	
+	private function getEditHistory($page = 1){
+    $c = new Criteria();
+    $c->add(LogPeer::PROPEL_CLASS, "Job");
+    $c->add(LogPeer::PROPEL_ID, $this->job->getId());
+    $c->addDescendingOrderByColumn(LogPeer::WHEN);
+    
+    $this->logPager = new sfPropelPager ( "Log", sfConfig::get("app_items_per_page") );
+    $this->logPager->setCriteria ( $c );
+    $this->logPager->setPage ( 1 );
+    $this->logPager->setPeerMethod("doSelectJoinAll");
+    $this->logPager->init ();
+	}
+	
 	public function executeShow(sfWebRequest $request){
 	 
 		$this->job = $this->getRoute()->getObject();
@@ -193,7 +225,8 @@ class jobActions extends PMActions
 		$this->shootInfoForm = new ShootInfoJobForm($this->job);
 		$this->photographyInfoForm = new PhotographyInfoJobForm($this->job);
 		$this->billingInfoForm = new BillingInfoJobForm($this->job);
-
+		
+		$this->getEditHistory(1);
 	}
 	
 	private function bindAndValidateForm($form, $request){
@@ -287,8 +320,8 @@ class jobActions extends PMActions
       JobPeer::setJobProjectIds($jobs, $projectId);
     }
     
-		$this->createCriteria();
     $this->setTemplate("reload");
+		$this->createCriteria();
 	}
 	
   public function executeMove(sfWebRequest $request){
@@ -302,8 +335,8 @@ class jobActions extends PMActions
     
     JobPeer::setJobStateIds($jobs, $toState);
     
-    $this->createCriteria();
     $this->setTemplate("reload");
+    $this->createCriteria();
   }
 	
   public function executeRemoveTag(sfWebRequest $request){
@@ -320,8 +353,8 @@ class jobActions extends PMActions
     }
     
     if(!$viewingJob){
+    	$this->setTemplate("reload");
       $this->createCriteria();
-      $this->setTemplate("reload");
     }else{
       $this->renderPartial("basicInfo", array("job" => $job));
       return sfView::NONE;
@@ -346,8 +379,8 @@ class jobActions extends PMActions
     }
     
     if(!$viewingJob){
+    	$this->setTemplate("reload");
       $this->createCriteria();
-      $this->setTemplate("reload");
     }else{
     	$job = $jobs[0];
       $this->renderPartial("basicInfo", array("job" => $job));

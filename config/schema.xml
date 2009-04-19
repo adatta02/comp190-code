@@ -16,7 +16,7 @@
     <foreign-key name="fk_sf_guard_user_profile_user_type" foreignTable="user_type">
       <reference local="user_type_id" foreign="id"/>
     </foreign-key>
-    <foreign-key name="fk_sf_gaurd_user_profile_user_id" foreignTable="sf_guard_user">
+    <foreign-key name="fk_sf_gaurd_user_profile_user_id" foreignTable="sf_guard_user" phpName="sfGuardUser">
       <reference local="user_id" foreign="id"/>
     </foreign-key>
   </table>
@@ -191,13 +191,16 @@
     <column name="propel_class" type="VARCHAR" size="255"/>
     <column name="sf_guard_user_profile_id" type="INTEGER"/>
     <column name="log_message_type_id" type="INTEGER"/>
-    <foreign-key name="fk_log_sf_guard_user_profile" foreignTable="sf_guard_user_profile">
+    <foreign-key name="fk_log_sf_guard_user_profile" 
+        foreignTable="sf_guard_user_profile" phpName="User">
       <reference local="sf_guard_user_profile_id" foreign="id"/>
     </foreign-key>
-    <foreign-key name="fk_log_log_message_type" foreignTable="log_message_type">
+    <foreign-key name="fk_log_log_message_type" 
+        foreignTable="log_message_type" phpName="MessageType">
       <reference local="log_message_type_id" foreign="id"/>
     </foreign-key>
   </table>
+  
   <table name="log_message_type">
     <column name="id" type="INTEGER" primaryKey="true" required="true" autoIncrement="true"/>
     <column name="type" type="VARCHAR" size="64"/>
