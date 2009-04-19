@@ -118,7 +118,7 @@
 	
 </div>
 
-<div id="job-photogrpahy-info" class="collapsable"><a href="#shoot"></a>
+<div id="job-photogrpahy-info" class="collapsable">
   <?php include_partial("photographyInfo", array("job" => $job, "form" => $photographyInfoForm)); ?>
 </div>
 
