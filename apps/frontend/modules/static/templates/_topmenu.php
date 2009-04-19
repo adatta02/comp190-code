@@ -6,6 +6,23 @@
   $(document).ready( 
     function(){
 
+  // tag-search
+  $("#search-tag").autocomplete('<?php echo url_for ( "@tag_autocomplete" )?>', $.extend({}, {
+      dataType: 'json',
+      parse:    function(data) {
+                  var parsed = [];
+                  var obj;
+                  for(var i=0; i < data.length; i++){
+                    obj = new Object();
+                    obj.data = [data[i].name, data[i].searchUrl];
+                    obj.value = data[i].name;
+                    obj.result = data[i].name;
+                    parsed.push(obj);
+                  }
+                  return parsed;
+      }}, {}))
+    .result(function(event, data) { window.location = data[1]; });
+
   // search-box
   $("#search-box")
     .autocomplete('<?php
@@ -98,8 +115,8 @@
     <?php echo input_tag("search-box", "", array("style" => "width: 240px")); ?> 
     <?php echo submit_tag("Search"); ?>
   </form>
-  <?php echo link_to("Advanced Search", "advanced_search"); ?> <br/>
-  <a href="#" class="modal">Search by tag</a>
+  <a href="#TB_inline?height=100&width=300&inlineId=hiddenSearchByTag&modal=false" class="thickbox">Search by tag</a>
+  <?php echo link_to("Advanced Search", "advanced_search"); ?>
 </div>
 
 <div style="clear: both"></div>
@@ -134,6 +151,11 @@
       <br />
       <?php echo input_hidden_tag("add-project-id"); ?>
       <?php echo button_to_function("Add", "addToProject()"); ?>
-    </div>
+</div>
+
+<div id="hiddenSearchByTag" style="display:none">
+  <h3>Search By Tag</h3>
+  <?php echo input_tag("search-tag", "", array("size" => 25)); ?>
+</div>
 
 </div>

@@ -4,7 +4,8 @@ class JobPeer extends BaseJobPeer
 {
 	public static $LIST_VIEW_SORTABLE = array( JobPeer::ID => "Job Id", 
                                            JobPeer::DATE => "Date", 
-                                           JobPeer::EVENT => "Event Name" );
+                                           JobPeer::EVENT => "Event Name",
+                                           JobPeer::STATUS_ID => "Status" );
   
   public static function setJobProjectIds($jobs, $projectId){  
    $c1 = new Criteria();

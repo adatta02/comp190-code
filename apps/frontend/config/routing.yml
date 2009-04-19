@@ -159,6 +159,10 @@ advanced_search:
   url: /search/advanced
   param: { module: search, action: advanced }
 
+advanced_search_render:
+  url: /search/advanced/view
+  param: { module: search, action: advancedRender }
+
 view_log:
   url: /log/view
   param: { module: log, action: view }
