@@ -1,4 +1,6 @@
-<?php use_helper("Form"); 
+<?php 
+use_helper("Form"); 
+use_helper("JavascriptBase");
 
   function renderLog($log, $classNum){
   ?>
@@ -9,7 +11,9 @@
           <col width="32%"></col>
         <tr>
            <td><?php echo $log->getWhen("F j, Y"); ?></td>
+           <td><?php echo $log->getMessageType()->getType(); ?></td>
            <td><?php echo $log->getMessage(); ?></td>
+           <td><?php echo $log->getUser()->getUserName(); ?></td>
          </tr>
          <tr>
           <td></td>

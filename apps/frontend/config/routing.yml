@@ -98,7 +98,13 @@ photographer_view_jobs:
   param: { module: photographer, action: viewJobs }
   options: { model: Photographer, type: object }
   requirements: {slug: \w+ }
-
+photographer_remove:
+  url: /photographer/delete/:slug
+  class:    sfPropelRoute
+  param: { module: photographer, action: delete }
+  options: { model: Photographer, type: object }
+  requirements: {slug: \w+ }
+ 
 ################################################
 # client
 ################################################
@@ -118,6 +124,12 @@ client_view_jobs:
   url: /client/view/jobs/:slug
   class:    sfPropelRoute
   param: { module: client, action: viewJobs }
+  options: { model: Client, type: object }
+  requirements: {slug: \w+ }
+client_remove:
+  url: /client/delete/:slug
+  param: { module: client, action: delete }
+  class:    sfPropelRoute
   options: { model: Client, type: object }
   requirements: {slug: \w+ }
 

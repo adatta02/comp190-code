@@ -31,6 +31,12 @@ class clientActions extends PMActions
     
   }
   
+  public function executeDelete(sfWebRequest $request){
+  	$client = $this->getRoute()->getObject();
+  	ClientPeer::deleteClient($client);
+  	$this->forward("client", "list");
+  }
+  
   public function executeList(sfWebRequest $request){
     $this->page = $request->getParameter("page");
     $this->q = $request->getParameter("q");

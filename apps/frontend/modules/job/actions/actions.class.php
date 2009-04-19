@@ -100,9 +100,34 @@ class jobActions extends PMActions
 	}
 	
 	private function reloadByAdvancedSearch($params){
-		echo $params;
 		
-		$this->setTemplate("");
+		parse_str($params, $obj);
+		
+		$arr = array();
+    $obj = $obj["advancedsearch"];
+    
+    $page = $obj["page"];
+    $arr["jobStatus"] = $obj["status_id"];
+    $arr["dueDateStart"] = $this->getFormattedDate($obj["due_date_start"]);
+    $arr["dueDateEnd"] = $this->getFormattedDate($obj["due_date_end"]);
+    $arr["shootDateStart"] = $this->getFormattedDate($obj["shoot_date_start"]);
+    $arr["shootDateEnd"] = $this->getFormattedDate($obj["shoot_date_end"]);
+    $arr["clientId"] = $obj["client_id"];
+    $arr["photographerId"] = $obj["photo_id"];
+    $arr["sortOn"] = $obj["sort"];
+    $arr["sortDirection"] = $obj["sort_direction"];
+    
+    $c = $this->createAdvancedSearchCriteria($arr);
+    $pager = new sfPropelPager ( "Job", sfConfig::get("app_items_per_page") );
+    $pager->setCriteria ( $c );
+    $pager->setPage ( $page );
+    $pager->setPeerMethod("doSelectJoinAll");
+    $pager->init ();
+    $results = $pager->getResults();
+    sfPropelActAsTaggableBehavior::preloadTags($results);
+		
+    $this->renderPartial("search/advancedRender", array("pager" => $pager));
+    
 		return sfView::NONE;
 	}
 	
@@ -321,7 +346,8 @@ class jobActions extends PMActions
     }
     
     $this->setTemplate("reload");
-		$this->createCriteria();
+		if($this->createCriteria() == sfView::NONE)
+		  return sfView::NONE;
 	}
 	
   public function executeMove(sfWebRequest $request){
@@ -336,7 +362,8 @@ class jobActions extends PMActions
     JobPeer::setJobStateIds($jobs, $toState);
     
     $this->setTemplate("reload");
-    $this->createCriteria();
+    if($this->createCriteria() == sfView::NONE)
+      return sfView::NONE;
   }
 	
   public function executeRemoveTag(sfWebRequest $request){
@@ -354,7 +381,8 @@ class jobActions extends PMActions
     
     if(!$viewingJob){
     	$this->setTemplate("reload");
-      $this->createCriteria();
+      if($this->createCriteria() == sfView::NONE)
+        return sfView::NONE;
     }else{
       $this->renderPartial("basicInfo", array("job" => $job));
       return sfView::NONE;
@@ -380,7 +408,8 @@ class jobActions extends PMActions
     
     if(!$viewingJob){
     	$this->setTemplate("reload");
-      $this->createCriteria();
+      if($this->createCriteria() == sfView::NONE)
+        return sfView::NONE;
     }else{
     	$job = $jobs[0];
       $this->renderPartial("basicInfo", array("job" => $job));

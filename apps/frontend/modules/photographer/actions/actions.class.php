@@ -32,6 +32,12 @@ class photographerActions extends PMActions
                           "slug" => $this->photographer->getSlug()));
   }
   
+  public function executeDelete(sfWebRequest $request){
+  	$photographer = $this->getRoute()->getObject();
+  	PhotographerPeer::deletePhotographer($photographer);
+  	$this->forward("photographer", "list");
+  }
+  
   public function executeList(sfWebRequest $request){
   	$this->page = $request->getParameter("page");
   	$this->q = $request->getParameter("q");

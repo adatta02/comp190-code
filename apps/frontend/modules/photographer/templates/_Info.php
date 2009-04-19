@@ -24,6 +24,10 @@
     <td><?php echo $photographer->getWebsite(); ?></td>
   </tr>
   <tr>
+    <td>Billing Address</td>
+    <td><?php echo $photographer->getBillingAddress(); ?></td>
+  </tr>
+  <tr>
     <td>Description</td>
     <td><?php echo $photographer->getDescription(); ?></td>
   </tr>
@@ -38,6 +42,7 @@
   <?php echo $InfoForm["phone"]->renderRow(); ?>
   <?php echo $InfoForm["affiliation"]->renderRow(); ?>
   <?php echo $InfoForm["website"]->renderRow(); ?>
+  <?php echo $InfoForm["billing_info"]->renderRow(); ?>
   <?php echo $InfoForm["description"]->renderRow(); ?>
   <tr><td><?php echo button_to_function("Save", "savePhotographerInfo()"); ?>
   <?php echo $InfoForm->renderHiddenFields(); ?>

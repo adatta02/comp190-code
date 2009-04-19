@@ -17,6 +17,7 @@ class logActions extends sfActions
   */
   public function executeView(sfWebRequest $request)
   {
+   $this->page = $request->getParameter("page");
    $c = new Criteria();
    $c->addDescendingOrderByColumn(LogPeer::WHEN);
    

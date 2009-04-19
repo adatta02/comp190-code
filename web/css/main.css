@@ -80,6 +80,12 @@ body{
   width: 70%;
 }
 
+#advanced-search-top {
+  padding-left: 20px;
+  padding-top: 20px;
+  float: left;
+}
+
 .clear{
   clear: both;	
 }
@@ -293,3 +299,7 @@ body{
 .job-list-item table.status7{
     border:1px solid black;
  }
+#delete-link a {
+  color: red;
+  font-size: 11px;  
+}

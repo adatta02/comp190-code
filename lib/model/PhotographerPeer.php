@@ -3,7 +3,14 @@
 class PhotographerPeer extends BasePhotographerPeer
 {
 	
-	// TODO: Switch both of these to use Zend instead of MySQL
+ public static function deletePhotographer($photog){
+   $c1 = new Criteria();
+   $c1->add(JobPhotographerPeer::PHOTOGRAPHER_ID, $photog->getId());
+   JobPhotographerPeer::doDelete($c1);
+   $photog->delete();
+  }
+	
+	
   public static function getArrayForAutocomplete($q){
     
   	$c = self::getCriteriaForAutocomplete($q);

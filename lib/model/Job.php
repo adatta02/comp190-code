@@ -160,13 +160,9 @@ class Job extends BaseJob
 	
 	public function save(PropelPDO $con = null)
   {
-  	$logEntry = new Log();
-  	$logEntry->setWhen(time());
-    $logEntry->setPropelClass("Job");
-    $logEntry->setSfGuardUserProfileId(sfContext::getInstance()->getUser()->getUserId());
-
-	$subject = 'Your job has been created';
-	$message = 'Dear ' .$this->getContactName(). '
+  	
+	 $subject = 'Your job has been created';
+	 $message = 'Dear ' .$this->getContactName(). '
 
 		 Your job has been created as Job #'.$this->getId().'. It is currently Pending. 
 		 Thank you
@@ -176,16 +172,16 @@ class Job extends BaseJob
 
   	// this is a new job
   	if($this->isNew()){
+      $logEntry = new Log();
+      $logEntry->setWhen(time());
+      $logEntry->setPropelClass("Job");
+      $logEntry->setSfGuardUserProfileId(sfContext::getInstance()->getUser()->getUserId());
   		$logEntry->setMessage("Job created.");
   		$logEntry->setLogMessageTypeId(sfConfig::get("app_log_type_create"));
-		//mail($this->getContactEmail(),$subject,$message);
-		mail('alissalcooper@gmail.com', 'Test','This is a test');
-  	}else{
-      $logEntry->setMessage("Job updated.");
-      $logEntry->setLogMessageTypeId(sfConfig::get("app_log_type_update"));
+  		$logEntry->setPropelId($this->getId());
+		  //mail($this->getContactEmail(),$subject,$message);
+		  mail('alissalcooper@gmail.com', 'Test','This is a test');
   	}
-  	
-  	$logEntry->setPropelId($this->getId());
   	
   	// see if we need to do revision control on the notes
   	$updateNotes = in_array(JobPeer::NOTES, $this->modifiedColumns) && (strlen($this->getNotes() > 1));
@@ -196,8 +192,10 @@ class Job extends BaseJob
   	
   	$con->beginTransaction();
     try {
+      if($this->isNew()){
+        $logEntry->save();
+      }
       $ret = parent::save($con);
-      $logEntry->save();
       $con->commit();
     }catch (Exception $e) {
       $con->rollBack();

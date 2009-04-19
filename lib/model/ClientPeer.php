@@ -2,7 +2,13 @@
 
 class ClientPeer extends BaseClientPeer
 {
-	// TODO: Switch these to use Zend not MySQL
+	
+	public static function deleteClient($client){
+   $c1 = new Criteria();
+   $c1->add(JobClientPeer::CLIENT_ID, $client->getId());
+   JobClientPeer::doDelete($c1);
+   $client->delete();
+	}
 	
 	public static function getArrayForAutocomplete($q){
     $c = new Criteria();

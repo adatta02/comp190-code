@@ -10,9 +10,12 @@
 
 <div id="content-container">
 <div id="now-viewing">
-    Viewing client <?php echo $client->getName(); ?>
+    Viewing client <?php echo $client->getName(); ?> 
+   <span id="delete-link">
+      <?php echo link_to_function("Delete Client", "confirmDelete()"); ?>
+   </span>
     <?php echo image_tag("loading.gif", array("id" => "ajax-loading")); ?>
-  </div>
+</div>
 
 <div class="info-header">Information
 <a href="#" onclick="javascript:$('#info-edit').toggle(); return false;">
@@ -23,5 +26,14 @@
 <div id="client-info"><a href="#info"></a>
   <?php include_partial("Info", array("client" => $client, "InfoForm" => $InfoForm)); ?>
 </div>
-
 </div>
+
+<script type="text/javascript">
+  function confirmDelete(){
+    var res = confirm("Are you sure you want to delete this client?");
+    
+    if(res){
+      window.location = "<?php echo url_for("client_remove", $client); ?>";
+    }
+  }
+</script>

@@ -31,4 +31,4 @@ all:
     add_tag: 8
     remove_tag: 9
     move_to_project: 10
-    change_status: 10
+    change_status: 11
