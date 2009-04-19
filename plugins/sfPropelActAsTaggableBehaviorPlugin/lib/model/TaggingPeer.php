@@ -24,14 +24,17 @@ class TaggingPeer extends BaseTaggingPeer
 	}
 	
 	public static function getNamesForAutocomplete($q){
-	  $c = new Criteria();
+	  sfLoader::loadHelpers("Url");
+		$c = new Criteria();
     $c->add(TagPeer::NAME, $q . "%", Criteria::LIKE);
     $c->setLimit(10);
     
     $names = array();
     $tags = TagPeer::doSelect($c);
     foreach($tags as $tag){
-      $names[] = array("id" => $tag->getId(), "name" => $tag->getName());
+      $names[] = array("id" => $tag->getId(), 
+                       "name" => $tag->getName(),
+                       "searchUrl" => url_for("job_listby_tag", $tag));
     }
     
     return $names;
