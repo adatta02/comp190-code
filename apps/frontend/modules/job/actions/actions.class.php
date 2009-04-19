@@ -148,7 +148,7 @@ class jobActions extends PMActions
 	 case "billing":
          $form = new BillingInfoJobForm($job);
          $this->bindAndValidateForm($form ,$request);
-         $this->renderPartial("BillingInfo", array("job" => $job, 
+         $this->renderPartial("billingInfo", array("job" => $job, 
                               "form" => $form));
          break;      
 

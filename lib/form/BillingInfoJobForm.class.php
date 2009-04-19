@@ -42,7 +42,7 @@ class BillingInfoJobForm extends BaseFormPropel
   	}
   	
   	$j->setEstimate ( $this->getValue ( "estimate" ) );
-	//$j->setProcessing ( $this->getValue ( "processing" ) );
+	  $j->setProcessing ( $this->getValue ( "processing" ) );
 	  $j->save();
   }
   
