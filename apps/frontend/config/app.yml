@@ -4,6 +4,7 @@ all:
     # check_password_callable: [LDAPAuth, checkLDAPPassword]
     success_signin_url: @welcome_loggedin
   ldap_server: ldaps://ldap.tufts.edu/
+  gmap_key: ABQIAAAA8FqJJOi4iXIzIN_n1D7zfRSYwoWwlxMuek8fitS573XaxON4MhSYlDh2OUNOKWkxo44SFPF4ARc-GA
   job_status:
     pending: 1
     accepted: 2

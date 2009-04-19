@@ -57,6 +57,16 @@ class PhotographyInfoJobForm extends BaseFormPropel
         $j->setQues3 ( $this->getValue ( "ques3" ));
 	$j->setOther($this->getValue("other"));
 	$j->save();
+	
+    $logEntry = new Log ( );
+    $logEntry->setWhen ( time () );
+    $logEntry->setPropelClass ( "Job" );
+    $logEntry->setSfGuardUserProfileId ( sfContext::getInstance ()->getUser ()->getUserId () );
+    $logEntry->setMessage ( "Photography info updated." );
+    $logEntry->setLogMessageTypeId ( sfConfig::get ( "app_log_type_update" ) );
+    $logEntry->setPropelId ( $j->getId () );
+    $logEntry->save ();
+	
   }
   
   public function getModelName()

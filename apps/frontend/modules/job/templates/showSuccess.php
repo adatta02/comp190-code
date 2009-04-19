@@ -1,6 +1,12 @@
 <?php use_helper("PMRender"); ?>
 <?php echo include_javascripts_for_form($basicInfoForm); ?>
 <?php echo include_stylesheets_for_form($basicInfoForm); ?>
+
+<script 
+  src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=true_or_false&amp;key=<?php echo sfConfig::get("app_gmap_key"); ?>"
+  type="text/javascript">
+</script>
+
 <script type="text/javascript">
   
   ProjectManager.viewingJobId = <?php echo $job->getId(); ?>;

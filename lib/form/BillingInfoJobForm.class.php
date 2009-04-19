@@ -44,6 +44,16 @@ class BillingInfoJobForm extends BaseFormPropel
   	$j->setEstimate ( $this->getValue ( "estimate" ) );
 	  $j->setProcessing ( $this->getValue ( "processing" ) );
 	  $j->save();
+	  
+    $logEntry = new Log ( );
+    $logEntry->setWhen ( time () );
+    $logEntry->setPropelClass ( "Job" );
+    $logEntry->setSfGuardUserProfileId ( sfContext::getInstance ()->getUser ()->getUserId () );
+    $logEntry->setMessage ( "Billing info updated." );
+    $logEntry->setLogMessageTypeId ( sfConfig::get ( "app_log_type_update" ) );
+    $logEntry->setPropelId ( $j->getId () );
+    $logEntry->save ();
+	  
   }
   
   public function getModelName()

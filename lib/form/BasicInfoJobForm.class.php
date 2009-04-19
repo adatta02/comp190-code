@@ -74,6 +74,16 @@ class BasicInfoJobForm extends BaseFormPropel
     $j->setContactEmail($this->getValue("contact_email"));
   	$j->setAcctNum($this->getValue("acct_num"));
 	  $j->save();
+	  
+    $logEntry = new Log ( );
+    $logEntry->setWhen ( time () );
+    $logEntry->setPropelClass ( "Job" );
+    $logEntry->setSfGuardUserProfileId ( sfContext::getInstance ()->getUser ()->getUserId () );
+    $logEntry->setMessage ( "Basic info updated." );
+    $logEntry->setLogMessageTypeId ( sfConfig::get ( "app_log_type_update" ) );
+    $logEntry->setPropelId ( $j->getId () );
+    $logEntry->save ();
+	  
   }
   
   public function getModelName()

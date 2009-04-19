@@ -49,6 +49,16 @@ class ShootInfoJobForm extends BaseFormPropel
   	$j->setZip($this->getValue("zip"));
   	$j->setStreet($this->getValue("street"));
 	  $j->save();
+	  
+    $logEntry = new Log ( );
+    $logEntry->setWhen ( time () );
+    $logEntry->setPropelClass ( "Job" );
+    $logEntry->setSfGuardUserProfileId ( sfContext::getInstance ()->getUser ()->getUserId () );
+    $logEntry->setMessage ( "Shoot info updated." );
+    $logEntry->setLogMessageTypeId ( sfConfig::get ( "app_log_type_update" ) );
+    $logEntry->setPropelId ( $j->getId () );
+    $logEntry->save ();
+	  
   }
   
   public function getModelName()
