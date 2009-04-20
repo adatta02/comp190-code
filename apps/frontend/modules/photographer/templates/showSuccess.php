@@ -27,7 +27,18 @@
   <?php include_partial("Info", array("photographer" => $photographer, "InfoForm" => $InfoForm)); ?>
 </div>
 
+<script language="javascript">
+
+
+ß</scipt>
+
+
+
 <div class="info-header">Locations</div>
+<form id="locations">
+	<input type="text" name="loc" />
+</form> 
+	<button type="button" onclick="getLocations();">Add Location</button>
 <div id="location-container">
 
 </div>

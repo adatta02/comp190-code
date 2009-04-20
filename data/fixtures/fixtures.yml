@@ -25,9 +25,6 @@ UserType:
   UserType_4:
     type: user
     permissions: '1'
-sfGuardUserProfile:
-  sfGuardUserProfile_1:
-    user_id: sfGuardUser_1
 Status:
   Status_1:
     state: Pending
@@ -43,6 +40,26 @@ Status:
     state: Paid
   Status_7:
     state: Archived
+Publication:
+  Publication_1:
+    name: 'Tufts Journal'
+  Publication_2:
+    name: 'Tufts Magazine'
+  Publication_3:
+    name: 'Tufts Dental Magazine'
+  Publication_4:
+    name: 'Tufts Veterinary Medicine'
+  Publication_5:
+    name: 'Tufts Medicine'
+  Publication_6:
+    name: 'Tufts Nutrition'
+    contact_name: ''
+  Publication_7:
+    name: www.tufts.edu
+  Publication_8:
+    name: 'Alma Matters'
+  Publication_9:
+    name: Blueprint
 PhotoType:
   PhotoType_1:
     name: Headshot
@@ -52,6 +69,9 @@ PhotoType:
     name: Candids
   PhotoType_4:
     name: 'Group Photos'
+sfGuardUserProfile:
+  sfGuardUserProfile_1:
+    user_id: sfGuardUser_1
 LogMessageType:
   LogMessageType_1:
     type: Create

@@ -10,7 +10,10 @@
 
 <div id="content-container">
 <div id="now-viewing">
-    Viewing client <?php echo $client->getName(); ?>
+    Viewing photographer <?php echo $photographer->getName(); ?>
+   <span id="delete-link">
+      <?php echo link_to_function("Delete Photographer", "confirmDelete()"); ?>
+   </span>
     <?php echo image_tag("loading.gif", array("id" => "ajax-loading")); ?>
   </div>
 
@@ -20,8 +23,25 @@
 </a>
 </div>
 
-<div id="client-info"><a href="#info"></a>
-  <?php include_partial("Info", array("client" => $client, "InfoForm" => $InfoForm)); ?>
+<div id="photographer-info"><a href="#info"></a>
+  <?php include_partial("Info", array("photographer" => $photographer, "InfoForm" => $InfoForm)); ?>
 </div>
 
+<div class="info-header">Locations</div>
+<form id="locations">
+	Add Location <input type="text" name="loc" />
+</form> 
+<div id="location-container">
+
 </div>
+</div>
+
+<script type="text/javascript">
+  function confirmDelete(){
+    var res = confirm("Are you sure you want to delete this photographer?");
+    
+    if(res){
+      window.location = "<?php echo url_for("photographer_remove", $photographer); ?>";
+    }
+  }
+</script>
