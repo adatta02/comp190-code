@@ -120,6 +120,7 @@ CREATE TABLE `job`
 	`slug` VARCHAR(255),
 	`photo_type` INTEGER,
 	`processing` VARCHAR(255),
+	`g_cal_id` VARCHAR(255),
 	PRIMARY KEY (`id`),
 	INDEX `FI_Shoot_Publication` (`publication_id`),
 	CONSTRAINT `fk_Shoot_Publication`

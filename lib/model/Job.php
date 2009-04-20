@@ -17,7 +17,7 @@ class Job extends BaseJob
   }
 	
 	public function getPrettyShootDate(){
-		return $this->getDate("F n, o") . " " 
+		return $this->getDate("F j, o") . " " 
 		        . $this->getStartTime("g:i A") 
 		        . " to " . $this->getEndTime("g:i A");
 	}
@@ -158,6 +158,16 @@ class Job extends BaseJob
    parent::delete($con);
 	}
 	
+	public function getStartTimestamp(){
+		$datetime = $this->getDate("Y-m-d") . " " . $this->getStartTime();
+		return strtotime($datetime);
+	}
+	
+  public function getEndTimestamp(){
+    $datetime = $this->getDate("Y-m-d") . " " . $this->getEndTime();
+    return strtotime($datetime);
+  }
+	
 	public function save(PropelPDO $con = null)
   {
   	
@@ -179,8 +189,8 @@ class Job extends BaseJob
   		$logEntry->setMessage("Job created.");
   		$logEntry->setLogMessageTypeId(sfConfig::get("app_log_type_create"));
   		$logEntry->setPropelId($this->getId());
-		  //mail($this->getContactEmail(),$subject,$message);
-		  mail('alissalcooper@gmail.com', 'Test','This is a test');
+		  // mail($this->getContactEmail(),$subject,$message);
+		  // mail('alissalcooper@gmail.com', 'Test','This is a test');
   	}
   	
   	// see if we need to do revision control on the notes
@@ -192,9 +202,10 @@ class Job extends BaseJob
   	
   	$con->beginTransaction();
     try {
-      if($this->isNew()){
+    	if($this->isNew()){
         $logEntry->save();
       }
+      
       $ret = parent::save($con);
       $con->commit();
     }catch (Exception $e) {
@@ -202,6 +213,21 @@ class Job extends BaseJob
       throw $e;
     }
     
+    $jobUrl = sfContext::getInstance ()->getRouting ()->generate ( "job_show", $this, true );
+		$arr = array ();
+		$arr ["title"] = $this->getId() . " - " . $this->getEvent ();
+		$arr ["location"] = str_replace ( "<br/>", "\n", $this->getPrettyAddress () );
+		$arr ["content"] = $this->getEvent () . "\n" . "<a href='" . $jobUrl . "'>View Job</a>";
+		$arr ["startTime"] = sfGCalendar::timestampToRFC3339 ( $this->getStartTimestamp () );
+		$arr ["endTime"] = sfGCalendar::timestampToRFC3339 ( $this->getEndTimestamp () );
+		
+		if ($this->isNew ()) {
+			$event = sfGCalendar::createJobEvent ( $arr );
+			$this->setGCalId ( $event->id );
+		} else {
+			sfGCalendar::updateJobEventById ( $this->getGCalId (), $arr );
+		}
+      
     if($updateNotes){
     	$c = new Criteria();
     	$c->add(JobNotesPeer::JOB_ID, $this->getId());

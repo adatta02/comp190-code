@@ -5,6 +5,8 @@ all:
     success_signin_url: @welcome_loggedin
   ldap_server: ldaps://ldap.tufts.edu/
   gmap_key: ABQIAAAA8FqJJOi4iXIzIN_n1D7zfRSYwoWwlxMuek8fitS573XaxON4MhSYlDh2OUNOKWkxo44SFPF4ARc-GA
+  gcal_user: contact@setfive.com
+  gcal_password: tuftsphoto
   job_status:
     pending: 1
     accepted: 2

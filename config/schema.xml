@@ -62,12 +62,13 @@
     <column name="dept_id" type="VARCHAR" size="32"/>
     <column name="grant_id" type="VARCHAR" size="32"/>
     <column name="other" type="VARCHAR" size="255"/>
-   <column name="ques1" type="VARCHAR" size="255"/>
-   <column name="ques2" type="VARCHAR" size="255"/>
-   <column name="ques3" type="VARCHAR" size="255"/>
+    <column name="ques1" type="VARCHAR" size="255"/>
+    <column name="ques2" type="VARCHAR" size="255"/>
+    <column name="ques3" type="VARCHAR" size="255"/>
     <column name="slug" type="VARCHAR" size="255"/>
     <column name="photo_type" type="INTEGER"/>
     <column name="processing" type="VARCHAR" size="255"/>
+    <column name="g_cal_id" type="VARCHAR" size="255"/>
     <foreign-key name="fk_Shoot_Publication" foreignTable="publication">
       <reference local="publication_id" foreign="id"/>
     </foreign-key>

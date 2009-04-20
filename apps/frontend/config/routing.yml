@@ -188,6 +188,10 @@ view_log:
 # misc login and redirect routes
 ################################################
 
+calendar_view:
+  url: /calendar/
+  param: { module: calendar, action: index }
+
 # where you go after you log in succesfully
 welcome_loggedin:
   url: /home/
