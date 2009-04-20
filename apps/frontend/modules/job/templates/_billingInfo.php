@@ -7,7 +7,7 @@
   </tr>
   <tr>
     <td width="20%">Processing</td>
-    <td width="80%"><?php echo "$".$job->getEstimate(); ?></td>
+    <td width="80%"><?php echo "$".$job->getProcessing(); ?></td>
   </tr>
 </table>
 
@@ -25,12 +25,18 @@
 
 	function GenerateInvoice(){
 	
-	var total = 100;
+	<?php $shoot = $job->getEstimate();
+	      $processing = $job->getProcessing();
+	      $total = $shoot + $processing;
+	      echo $total;
+	?>
+
+	var total = <?php echo $total; ?>;
 
 	document.open();
-	document.writeln('<div style="width:800px;height:850px;border:0px;"><?php echo image_tag("topBar.png"); ?>');
-	document.writeln('<p align="right" style="font-family:arial;"><b>University Relations</b><br><br>University Photography</p>');	
-	document.writeln('<p><?php print(Date("F d,Y")); ?></p?');
+	document.writeln('<div style="width:600px;height:800px;"><p style="margin-left:50px;"><?php echo image_tag("topBar.png"); ?></p>');
+	document.writeln('<p align="right" style="padding-right:50px;margin-top:-30px;font-family:arial;"><b>University Relations</b><br><br>University Photography</p>');	
+	document.writeln('<div style="padding-left:20px;"><p><?php print(Date("F d,Y")); ?></p?');
 	document.writeln('<p><b>INVOICE #<?php echo $job->getId(); ?></b></p>');
 	document.writeln('<p><b>Client (Bill to)</b></p>');
 	document.writeln('<p><?php foreach($job->getClients() as $i){ echo $i->getName(); ?><br>');
@@ -39,16 +45,16 @@
 	document.writeln('<p><b>Job</b></p>');
 	document.writeln('<p><?php echo "Job #".$job->getId(); ?><br>');
 	document.writeln('<?php echo $job->getEvent(); ?><br>');	
-	document.writeln('PUBLICATION<br></p>');
+	document.writeln('<?php if($job->getPublicationId()){ echo $job->getPublication()->getName(); } ?><br></p>');
 	document.writeln('<p><?php if(!is_null($job->getDate())){ echo $job->getDate("F d, Y"); } ?><br>');
 	document.writeln('<?php echo $job->getStartTime().' - '.$job->getEndTime(); ?><br>');
 	document.writeln('<?php echo $job->getPrettyAddress(); ?></p>');
 	document.writeln('<p><b>Charges</b></p>');
 	document.writeln('<p><?php foreach($job->getPhotographers() as $i){ echo $i->getName().", ".$i->getAffiliation(); } ?><br><br>');
 	document.writeln('Shoot Fee: $<?php echo $job->getEstimate(); ?><br>');
-	document.writeln('Processing: $<?php echo $job->getEstimate(); ?><br><br>');
-	document.writeln('<b>TOTAL: $' + total + '</b></p>'); 
-	document.writeln('<div><p style="font-family:arial;color:grey;float:bottom;">80 George Street, Medford, MA 02155 | TEL: 617.627.3549 | FAX: 617.627.3549</p></div></div>');		
+	document.writeln('Processing: $<?php echo $job->getProcessing(); ?><br><br>');
+	document.writeln('<b>TOTAL: $' + total + '</b></p></div>'); 
+	document.writeln('<div style="margin-top:75px;margin-left:10px;"><p style="font-family:arial;color:grey;">80 George Street, Medford, MA 02155 | TEL: 617.627.3549 | FAX: 617.627.3549</p></div></div>');		
 	document.close();
 	}
 

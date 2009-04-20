@@ -115,16 +115,24 @@
     <?php echo input_tag("search-box", "", array("style" => "width: 240px")); ?> 
     <?php echo submit_tag("Search"); ?>
   </form>
-  <a href="#TB_inline?height=100&width=300&inlineId=hiddenSearchByTag&modal=false" class="thickbox">Search by tag</a>
-  <?php echo link_to("Advanced Search", "advanced_search"); ?>
 </div>
 
 <div style="clear: both"></div>
 
+
+<div id="botMenu">
 <div id="check-menu">Select: <a href="#all"
 	onclick="return toggle(ProjectManager.ALL); return false;">All</a> * <a
 	href="#none" onclick="return toggle(ProjectManager.NONE); return false;">None</a> * <a
-	href="#toggle" onclick="return toggle(ProjectManager.TOGGLE); return false;">Toggle</a></div>
+	href="#toggle" onclick="return toggle(ProjectManager.TOGGLE); return false;">Toggle</a>
+
+</div>
+<div id="otherSearch">
+     <a href="#TB_inline?height=100&width=300&inlineId=hiddenSearchByTag&modal=false" class="thickbox">Search by tag</a>
+     <?php echo link_to("Advanced Search", "advanced_search"); ?>
+</div>
+
+</div>
 
 <div id="add-tag-menu">
 				   <?php echo input_tag("add-tag"); ?>
