@@ -18,6 +18,9 @@ class welcomeActions extends sfActions
   public function executeIndex(sfWebRequest $request)
   {
     $this->form = new sfGuardFormSignin();
+    if($this->getUser()->isAuthenticated()){
+    	$this->forward("welcome", "redirect");
+    }
   }
   
   public function executeRedirect(sfWebRequest $request){
