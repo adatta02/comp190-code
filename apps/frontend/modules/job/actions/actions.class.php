@@ -263,6 +263,86 @@ class jobActions extends PMActions
    return false;
 	}
 	
+	public function executeInvoice(sfWebRequest $request){
+		sfLoader::loadHelpers(array("Asset", "Tag"));
+		
+		$job = $this->getRoute()->getObject();
+		$pdf = new HTML2FPDF();
+		
+		$img = "<img src='http://photo.tufts.edu/images/tufts_logo_226x78.jpg'></a>";
+		$date = date("F d, Y");
+		$jobId = $job->getId();
+		$publicationName = ( $job->getPublicationId() ? $job->getPublication()->getName() : "" );
+		$jobDate = ($job->getDate() ? $job->getDate("F d, Y") : "");
+		$total = $job->getEstimate() + $job->getProcessing();
+		$clients = "";
+		$photographers = "";
+    
+		foreach($job->getClients() as $i){ 
+			$clients .= $i->getName() . "<br />";
+			$clients .= $i->getDepartment() . "<br />";
+			$clients .= $i->getAddress() . "<br />";
+			
+		}
+		
+    foreach($job->getPhotographers() as $i){ 
+    	$photographers .= $i->getName() . ", " . $i->getAffiliation() . "<br><br>";
+    }
+    
+		$invoiceHTML = <<<EOF
+		<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+            "http://www.w3.org/TR/html4/loose.dtd">
+		<html>
+		  <head><title></title></head>
+		  <body>
+      <div style="width:600px;height:800px;">
+        <p style="margin-left:50px; float: left;">
+        {$img}
+        </p>
+        <p align="right" style="padding-right:50px;margin-top:-30px;font-family:arial;">
+          <b>University Relations</b>
+          <br><br>
+          University Photography
+       </p>  
+      <div style="padding-left:20px;">
+        <p>($date)</p>
+        <p><b>INVOICE #{$jobId}</b></p>
+        <p><b>Client (Bill to)</b></p>
+        {$clients}
+        <p><b>Job</b></p>
+        <p>Job #{$jobId}<br>
+           {$job->getEvent()}<br>  
+           {$publicationName}<br>
+        </p>
+        <p>{$jobDate}<br>
+          {$job->getStartTime()} - {$job->getEndTime()}<br>
+          {$job->getPrettyAddress()}
+        </p>
+        <p><b>Charges</b></p>
+        <p>{$photographers}</p>
+        <p>
+          Shoot Fee: \${$job->getEstimate()}<br>
+          Processing: \${$job->getProcessing()}<br>
+        </p>
+        <b>TOTAL: \${$total}</b></div> 
+  <div style="margin-top:75px;margin-left:10px;">
+    <p style="font-family:arial; color:#cccccc;">
+      80 George Street, Medford, MA 02155 | TEL: 617.627.3549 | FAX: 617.627.3549
+    </p>
+ </div>
+</div>
+</body>
+</html>
+EOF;
+		
+    // $this->renderText($invoiceHTML);
+	  $pdf->AddPage();
+		$pdf->WriteHTML($invoiceHTML);
+		$pdf->Output("", "I");
+		
+		return sfView::NONE;
+	}
+	
 	public function executeAddPhotographer(sfWebRequest $request){
 		$obj = json_decode($request->getParameter("obj"), true);
 		$job = JobPeer::retrieveByPK($obj["viewingJobId"]);

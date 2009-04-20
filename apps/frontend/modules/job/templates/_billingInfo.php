@@ -60,5 +60,5 @@
 
 </script>
 
-<button type="button" onclick="GenerateInvoice()">Generate Invoice</button>
+<?php echo link_to("Print Invoice", "job_invoice", array("slug" => $job->getSlug()), array("target" => "_blank")) ?>
 <div id="invoice"></div>
