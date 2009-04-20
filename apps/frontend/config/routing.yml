@@ -206,7 +206,7 @@ welcome_loggedin:
 
 # sfguard
 sf_guard_signin:
-  url:   /login
+  url:   /login/
   param: { module: sfGuardAuth, action: signin }
  
 sf_guard_signout:
