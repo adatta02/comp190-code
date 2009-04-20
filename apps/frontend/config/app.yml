@@ -35,3 +35,4 @@ all:
     remove_tag: 9
     move_to_project: 10
     change_status: 11
+  photoshelter_private_key: lib/pskey.pem
