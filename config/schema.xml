@@ -114,6 +114,9 @@
     <column name="address" type="LONGVARCHAR"/>
     <column name="latitude" type="VARCHAR" size="16"/>
     <column name="longitude" type="VARCHAR" size="16"/>
+    <column name="x" type="VARCHAR" size="16"/>
+    <column name="y" type="VARCHAR" size="16"/>
+    
     <foreign-key name="fk_photographer_region_photographer" foreignTable="photographer" phpName="Photographer">
       <reference local="photographer_id" foreign="id"/>
     </foreign-key>
