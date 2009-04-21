@@ -2,6 +2,12 @@
 <?php echo include_javascripts_for_form($InfoForm); ?>
 
 
+<script 
+  src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=true_or_false&amp;key=<?php echo sfConfig::get("app_gmap_key"); ?>"
+  type="text/javascript">
+</script>
+
+
 <?php include_component ( "static", "topmenu", array("moveToSkip" => null, "noMenu" => true) ); ?>
 <?php include_component ( "static", "shortcuts",
                           array("sortedBy" => null,
@@ -27,18 +33,10 @@
   <?php include_partial("Info", array("photographer" => $photographer, "InfoForm" => $InfoForm)); ?>
 </div>
 
-<script language="javascript">
-
-
-ß</scipt>
-
-
-
 <div class="info-header">Locations</div>
 <form id="locations">
-	<input type="text" name="loc" />
+	<input type="text" id="loc" /><button type="button" onclick="getLocations()">Add Location</button>
 </form> 
-	<button type="button" onclick="getLocations();">Add Location</button>
 <div id="location-container">
 
 </div>
@@ -52,4 +50,39 @@
       window.location = "<?php echo url_for("photographer_remove", $photographer); ?>";
     }
   }
+
+  function getLocations(address){
+	var geocoder = new GClientGeocoder();
+	var address = document.getElementById('loc');
+	var latlng;
+	
+	geocoder.getLatLng(
+                  address.value,
+                    function(point) {
+                      if (!point) {
+                        alert(address.value + " not found");
+                    } else {
+                        latlng = point;
+			var coords = new GPoint();
+			var p = new GPoint();
+			var curProj = G_NORMAL_MAP.getProjection();
+			p = curProj.fromLatLngToPixel(latlng, 10);
+			coords.x = Math.floor(p.x / 256);
+			coords.y = Math.floor(p.y / 256);
+			
+			
+                    }
+                  }
+                );
+	}
+
+	function distance(destX, destY, phoX, phoY, dist){
+		var x = Math.pow((phoX - destX),2);
+		var y = Math.pow((phoY - destY),2);
+		actualDist = Math.sqrt(x + y);
+		if(dist <= actualDist){
+		}
+	}
+	
+
 </script>

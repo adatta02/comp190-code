@@ -1,6 +1,12 @@
 <?php use_helper("PMRender"); ?>
 <?php echo include_javascripts_for_form($basicInfoForm); ?>
 <?php echo include_stylesheets_for_form($basicInfoForm); ?>
+
+<script 
+  src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=true_or_false&amp;key=<?php echo sfConfig::get("app_gmap_key"); ?>"
+  type="text/javascript">
+</script>
+
 <script type="text/javascript">
   
   ProjectManager.viewingJobId = <?php echo $job->getId(); ?>;
@@ -11,6 +17,12 @@
   ProjectManager.addJobTagUrl = "<?php echo url_for("@job_add_tag"); ?>";
   ProjectManager.removeJobTagUrl = "<?php echo url_for("@job_remove_tag"); ?>";
   ProjectManager.isViewingJob = true;
+  
+  function jumpEditHistoryToPage(page){
+    $("#history-loading").show();
+    $("#job-edit-history").load("<?php echo url_for("job_view_history", array("slug" => $job->getSlug())); ?>", {page: page}, 
+                           function(){ $("#history-loading").hide();});
+  }
   
   $(document).ready( 
     function(){
@@ -69,6 +81,11 @@
     .result(function(event, data) { $("#add-photographer-id").val(data[1]); });
     
    });
+
+   
+
+
+
 </script>
 
 <?php include_component ( "static", "topmenu", array("moveToSkip" => null, "noMenu" => true) ); ?>
@@ -80,8 +97,19 @@
 <div id="content-container">
 <div id="now-viewing">
     Viewing job #<?php echo $job->getId(); ?>
+    <form action="sendEmail.php" method="post">
+<select name="temp">
+<option value="acceptance">Job Acceptance</option>
+<option value="completion">Job Completion</option>
+<option value="assign">Photographer Assignment</option>
+<option value="service">Photography Services Job</option>
+</select>
+<input type="submit" value="Send Email" />
+</form>    
     <?php echo image_tag("loading.gif", array("id" => "ajax-loading")); ?> 
-  </div>
+    
+
+</div>
 
 <div class="info-header">Basic 
 <a href="#" onclick="javascript:$('#job-basic-info').toggle(); return false;">[tg]</a>
@@ -111,14 +139,15 @@
 <hr />
 
 <div class="info-header">Photography <a href="#"
-	onclick="javascript:$('#job-photography-info').toggle(); return false;">[tg]</a>
+	onclick="javascript:$('#job-photogrpahy-info').toggle(); return false;">[tg]</a>
 	 <a href="#" onclick="javascript:$('#photography-edit-table').toggle(); $('#photography-info-table').toggle(); return false;">
     <?php echo image_tag("pencil.png", array("class" => "image-href")) ?>
   </a>
 	
 </div>
 
-<div id="job-photogrpahy-info" class="collapsable"><a href="#photography"></a>
+<div id="job-photogrpahy-info" class="collapsable">
+  <a href="#photography"></a>
   <?php include_partial("photographyInfo", array("job" => $job, "form" => $photographyInfoForm)); ?>
 </div>
 
@@ -204,6 +233,25 @@
 
 <div id="job-internal-notes" class="collapsable">
   <?php include_partial("internalNotes", array("job" => $job)); ?>
+</div>
+
+<div class="info-header">History <a href="#"
+  onclick="javascript:$('#job-edit-history').toggle(); return false;">[tg]</a>
+  <?php echo image_tag("loading.gif", array("id" => "history-loading", "style" => "display: none")); ?> 
+</div>
+
+<hr />
+
+<div id="job-edit-history" class="collapsable">
+  <?php include_partial("logRender", array("pager" => $logPager)); ?>
+</div>
+
+<hr/>
+
+<div class="info-header">Email
+<br>
+
+
 </div>
 
 </div>
