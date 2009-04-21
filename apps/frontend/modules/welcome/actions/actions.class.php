@@ -37,6 +37,10 @@ class welcomeActions extends sfActions
      
   }
   
+  public function executeRedirectError(sfWebRequest $request){
+  	
+  }
+  
   public function executePhotoshelter(sfWebRequest $request){
   	$user = $this->getUser();
   	$profile = $user->getProfile();
@@ -48,30 +52,38 @@ class welcomeActions extends sfActions
     $tuftsPrivateKey = openssl_pkey_get_private($keyText); 
   	
     $arr = array();
-  	$arr["U_EMAIL"] = $profile->getEmail();
+  	$arr["U_EMAIL"] = "ashish.datta@tufts.edu";
   	$arr["U_PASSWORD"] = "somepass";
   	$arr["U_FIRST_NAME"] = "Ashish";
   	$arr["U_LAST_NAME"] = "Datta";
-  	$arr["RL_E"] = "http://www.google.com/";
-  	$arr["RL_S"] = "http://www.setfive.com/";
-  	$arr["ETIME"] = "60";
+  	$arr["RL_E"] = $this->generateUrl("photoshelter_error", array(), true);
+  	$arr["RL_S"] = "http://pa.photoshelter.com/c/tuftsphoto";
+  	$arr["ETIME"] = time() + 60;
   	
   	$queryString = http_build_query($arr);
   	
   	$res = openssl_sign($queryString, $signature, $tuftsPrivateKey);
   	if(!$res){ throw new sfException("Could not sign the payload!", 1); }
 
-  	$res = openssl_public_encrypt($queryString, $crypt, $photoShelterPublic);
-
+  	$t = openssl_pkey_get_details($photoShelterPublic);
+    $t = (int) ($t['bits'] / 8) - 11;
+    $l=strlen($queryString);
+    $cryptPayload = '';
+    
+    for ($i=0; $i<$l; $i+= $t) {
+    	$block = substr($queryString, $i, $t);
+    	if (!openssl_public_encrypt($block,$tS, $photoShelterPublic)){
+                       throw new AssertErr('failed encrypt');
+    	}
+    	$cryptPayload .= $tS;
+    }
+  	
     if(!$res){ 
       throw new sfException("Could not encrypt the payload!", 1);
     }
 
     $this->encodedSignature = base64_encode($signature);
-    $this->encodedData = base64_encode($crypt);
-    
-    var_dump($this->encodedData);
-    die();
+    $this->encodedData = base64_encode($cryptPayload);
   }
     
 }

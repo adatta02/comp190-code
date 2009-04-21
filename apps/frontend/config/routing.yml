@@ -199,6 +199,10 @@ view_photos:
   url: /view/photoshelter
   param: { module: welcome, action: photoshelter }
 
+photoshelter_error:
+  url: /redirect/error
+  param: { module: welcome, action: redirectError }
+
 calendar_view:
   url: /calendar/
   param: { module: calendar, action: index }

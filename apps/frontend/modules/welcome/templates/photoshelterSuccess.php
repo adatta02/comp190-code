@@ -1,6 +1,6 @@
 <?php use_helper("Form"); ?>
 <div id="login-container">
-  <h2>Redirecting...</h2>
+  <h2>Redirecting to Photoshelter.com</h2>
  
   <?php 
     echo form_tag("http://pa.photoshelter.com/bsapi/custom/tuftsphotoAuth", 
