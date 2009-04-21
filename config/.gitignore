@@ -1,2 +1,5 @@
 ProjectConfiguration.class.php
 databases.yml
+privatekey.pem
+publickey.pem
+photoshelterpublic.pem
