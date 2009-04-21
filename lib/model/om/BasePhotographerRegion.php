@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Base class that represents a row from the 'job_photographer' table.
+ * Base class that represents a row from the 'photographer_region' table.
  *
  * 
  *
@@ -11,16 +11,16 @@
  *
  * @package    lib.model.om
  */
-abstract class BaseJobPhotographer extends BaseObject  implements Persistent {
+abstract class BasePhotographerRegion extends BaseObject  implements Persistent {
 
 
-  const PEER = 'JobPhotographerPeer';
+  const PEER = 'PhotographerRegionPeer';
 
 	/**
 	 * The Peer class.
 	 * Instance provides a convenient way of calling static methods on a class
 	 * that calling code may not be able to identify.
-	 * @var        JobPhotographerPeer
+	 * @var        PhotographerRegionPeer
 	 */
 	protected static $peer;
 
@@ -37,20 +37,39 @@ abstract class BaseJobPhotographer extends BaseObject  implements Persistent {
 	protected $photographer_id;
 
 	/**
-	 * The value for the job_id field.
-	 * @var        int
+	 * The value for the address field.
+	 * @var        string
 	 */
-	protected $job_id;
+	protected $address;
+
+	/**
+	 * The value for the latitude field.
+	 * @var        string
+	 */
+	protected $latitude;
+
+	/**
+	 * The value for the longitude field.
+	 * @var        string
+	 */
+	protected $longitude;
+
+	/**
+	 * The value for the x field.
+	 * @var        string
+	 */
+	protected $x;
+
+	/**
+	 * The value for the y field.
+	 * @var        string
+	 */
+	protected $y;
 
 	/**
 	 * @var        Photographer
 	 */
 	protected $aPhotographer;
-
-	/**
-	 * @var        Job
-	 */
-	protected $aJob;
 
 	/**
 	 * Flag to prevent endless save loop, if this object is referenced
@@ -67,7 +86,7 @@ abstract class BaseJobPhotographer extends BaseObject  implements Persistent {
 	protected $alreadyInValidation = false;
 
 	/**
-	 * Initializes internal state of BaseJobPhotographer object.
+	 * Initializes internal state of BasePhotographerRegion object.
 	 * @see        applyDefaults()
 	 */
 	public function __construct()
@@ -107,20 +126,60 @@ abstract class BaseJobPhotographer extends BaseObject  implements Persistent {
 	}
 
 	/**
-	 * Get the [job_id] column value.
+	 * Get the [address] column value.
 	 * 
-	 * @return     int
+	 * @return     string
 	 */
-	public function getJobId()
+	public function getAddress()
 	{
-		return $this->job_id;
+		return $this->address;
+	}
+
+	/**
+	 * Get the [latitude] column value.
+	 * 
+	 * @return     string
+	 */
+	public function getLatitude()
+	{
+		return $this->latitude;
+	}
+
+	/**
+	 * Get the [longitude] column value.
+	 * 
+	 * @return     string
+	 */
+	public function getLongitude()
+	{
+		return $this->longitude;
+	}
+
+	/**
+	 * Get the [x] column value.
+	 * 
+	 * @return     string
+	 */
+	public function getX()
+	{
+		return $this->x;
+	}
+
+	/**
+	 * Get the [y] column value.
+	 * 
+	 * @return     string
+	 */
+	public function getY()
+	{
+		return $this->y;
 	}
 
 	/**
 	 * Set the value of [id] column.
 	 * 
 	 * @param      int $v new value
-	 * @return     JobPhotographer The current object (for fluent API support)
+	 * @return     PhotographerRegion The current object (for fluent API support)
 	 */
 	public function setId($v)
 	{
@@ -130,7 +189,7 @@ abstract class BaseJobPhotographer extends BaseObject  implements Persistent {
 
 		if ($this->id !== $v) {
 			$this->id = $v;
-			$this->modifiedColumns[] = JobPhotographerPeer::ID;
+			$this->modifiedColumns[] = PhotographerRegionPeer::ID;
 		}
 
 		return $this;
@@ -140,7 +199,7 @@ abstract class BaseJobPhotographer extends BaseObject  implements Persistent {
 	 * Set the value of [photographer_id] column.
 	 * 
 	 * @param      int $v new value
-	 * @return     JobPhotographer The current object (for fluent API support)
+	 * @return     PhotographerRegion The current object (for fluent API support)
 	 */
 	public function setPhotographerId($v)
 	{
@@ -150,7 +209,7 @@ abstract class BaseJobPhotographer extends BaseObject  implements Persistent {
 
 		if ($this->photographer_id !== $v) {
 			$this->photographer_id = $v;
-			$this->modifiedColumns[] = JobPhotographerPeer::PHOTOGRAPHER_ID;
+			$this->modifiedColumns[] = PhotographerRegionPeer::PHOTOGRAPHER_ID;
 		}
 
 		if ($this->aPhotographer !== null && $this->aPhotographer->getId() !== $v) {
@@ -161,28 +220,104 @@ abstract class BaseJobPhotographer extends BaseObject  implements Persistent {
 	} // setPhotographerId()
 
 	/**
-	 * Set the value of [job_id] column.
+	 * Set the value of [address] column.
 	 * 
-	 * @param      int $v new value
-	 * @return     JobPhotographer The current object (for fluent API support)
+	 * @param      string $v new value
+	 * @return     PhotographerRegion The current object (for fluent API support)
 	 */
-	public function setJobId($v)
+	public function setAddress($v)
 	{
 		if ($v !== null) {
-			$v = (int) $v;
+			$v = (string) $v;
 		}
 
-		if ($this->job_id !== $v) {
-			$this->job_id = $v;
-			$this->modifiedColumns[] = JobPhotographerPeer::JOB_ID;
-		}
-
-		if ($this->aJob !== null && $this->aJob->getId() !== $v) {
-			$this->aJob = null;
+		if ($this->address !== $v) {
+			$this->address = $v;
+			$this->modifiedColumns[] = PhotographerRegionPeer::ADDRESS;
 		}
 
 		return $this;
-	} // setJobId()
+	} // setAddress()
+
+	/**
+	 * Set the value of [latitude] column.
+	 * 
+	 * @param      string $v new value
+	 * @return     PhotographerRegion The current object (for fluent API support)
+	 */
+	public function setLatitude($v)
+	{
+		if ($v !== null) {
+			$v = (string) $v;
+		}
+
+		if ($this->latitude !== $v) {
+			$this->latitude = $v;
+			$this->modifiedColumns[] = PhotographerRegionPeer::LATITUDE;
+		}
+
+		return $this;
+	} // setLatitude()
+
+	/**
+	 * Set the value of [longitude] column.
+	 * 
+	 * @param      string $v new value
+	 * @return     PhotographerRegion The current object (for fluent API support)
+	 */
+	public function setLongitude($v)
+	{
+		if ($v !== null) {
+			$v = (string) $v;
+		}
+
+		if ($this->longitude !== $v) {
+			$this->longitude = $v;
+			$this->modifiedColumns[] = PhotographerRegionPeer::LONGITUDE;
+		}
+
+		return $this;
+	} // setLongitude()
+
+	/**
+	 * Set the value of [x] column.
+	 * 
+	 * @param      string $v new value
+	 * @return     PhotographerRegion The current object (for fluent API support)
+	 */
+	public function setX($v)
+	{
+		if ($v !== null) {
+			$v = (string) $v;
+		}
+
+		if ($this->x !== $v) {
+			$this->x = $v;
+			$this->modifiedColumns[] = PhotographerRegionPeer::X;
+		}
+
+		return $this;
+	} // setX()
+
+	/**
+	 * Set the value of [y] column.
+	 * 
+	 * @param      string $v new value
+	 * @return     PhotographerRegion The current object (for fluent API support)
+	 */
+	public function setY($v)
+	{
+		if ($v !== null) {
+			$v = (string) $v;
+		}
+
+		if ($this->y !== $v) {
+			$this->y = $v;
+			$this->modifiedColumns[] = PhotographerRegionPeer::Y;
+		}
+
+		return $this;
+	} // setY()
 
 	/**
 	 * Indicates whether the columns in this object are only set to default values.
@@ -223,7 +358,11 @@ abstract class BaseJobPhotographer extends BaseObject  implements Persistent {
 
 			$this->id = ($row[$startcol + 0] !== null) ? (int) $row[$startcol + 0] : null;
 			$this->photographer_id = ($row[$startcol + 1] !== null) ? (int) $row[$startcol + 1] : null;
-			$this->job_id = ($row[$startcol + 2] !== null) ? (int) $row[$startcol + 2] : null;
+			$this->address = ($row[$startcol + 2] !== null) ? (string) $row[$startcol + 2] : null;
+			$this->latitude = ($row[$startcol + 3] !== null) ? (string) $row[$startcol + 3] : null;
+			$this->longitude = ($row[$startcol + 4] !== null) ? (string) $row[$startcol + 4] : null;
+			$this->x = ($row[$startcol + 5] !== null) ? (string) $row[$startcol + 5] : null;
+			$this->y = ($row[$startcol + 6] !== null) ? (string) $row[$startcol + 6] : null;
 			$this->resetModified();
 
 			$this->setNew(false);
@@ -233,10 +372,10 @@ abstract class BaseJobPhotographer extends BaseObject  implements Persistent {
 			}
 
 			// FIXME - using NUM_COLUMNS may be clearer.
-			return $startcol + 3; // 3 = JobPhotographerPeer::NUM_COLUMNS - JobPhotographerPeer::NUM_LAZY_LOAD_COLUMNS).
+			return $startcol + 7; // 7 = PhotographerRegionPeer::NUM_COLUMNS - PhotographerRegionPeer::NUM_LAZY_LOAD_COLUMNS).
 
 		} catch (Exception $e) {
-			throw new PropelException("Error populating JobPhotographer object", $e);
+			throw new PropelException("Error populating PhotographerRegion object", $e);
 		}
 	}
 
@@ -258,9 +397,6 @@ abstract class BaseJobPhotographer extends BaseObject  implements Persistent {
 
 		if ($this->aPhotographer !== null && $this->photographer_id !== $this->aPhotographer->getId()) {
 			$this->aPhotographer = null;
-		}
-		if ($this->aJob !== null && $this->job_id !== $this->aJob->getId()) {
-			$this->aJob = null;
 		}
 	} // ensureConsistency
 
@@ -285,13 +421,13 @@ abstract class BaseJobPhotographer extends BaseObject  implements Persistent {
 		}
 
 		if ($con === null) {
-			$con = Propel::getConnection(JobPhotographerPeer::DATABASE_NAME, Propel::CONNECTION_READ);
+			$con = Propel::getConnection(PhotographerRegionPeer::DATABASE_NAME, Propel::CONNECTION_READ);
 		}
 
 		// We don't need to alter the object instance pool; we're just modifying this instance
 		// already in the pool.
 
-		$stmt = JobPhotographerPeer::doSelectStmt($this->buildPkeyCriteria(), $con);
+		$stmt = PhotographerRegionPeer::doSelectStmt($this->buildPkeyCriteria(), $con);
 		$row = $stmt->fetch(PDO::FETCH_NUM);
 		$stmt->closeCursor();
 		if (!$row) {
@@ -302,7 +438,6 @@ abstract class BaseJobPhotographer extends BaseObject  implements Persistent {
 		if ($deep) {  // also de-associate any related objects?
 
 			$this->aPhotographer = null;
-			$this->aJob = null;
 		} // if (deep)
 	}
 
@@ -318,7 +453,7 @@ abstract class BaseJobPhotographer extends BaseObject  implements Persistent {
 	public function delete(PropelPDO $con = null)
 	{
 
-    foreach (sfMixer::getCallables('BaseJobPhotographer:delete:pre') as $callable)
+    foreach (sfMixer::getCallables('BasePhotographerRegion:delete:pre') as $callable)
     {
       $ret = call_user_func($callable, $this, $con);
       if ($ret)
@@ -333,12 +468,12 @@ abstract class BaseJobPhotographer extends BaseObject  implements Persistent {
 		}
 
 		if ($con === null) {
-			$con = Propel::getConnection(JobPhotographerPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+			$con = Propel::getConnection(PhotographerRegionPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
 		}
 		
 		$con->beginTransaction();
 		try {
-			JobPhotographerPeer::doDelete($this, $con);
+			PhotographerRegionPeer::doDelete($this, $con);
 			$this->setDeleted(true);
 			$con->commit();
 		} catch (PropelException $e) {
@@ -347,7 +482,7 @@ abstract class BaseJobPhotographer extends BaseObject  implements Persistent {
 		}
 	
 
-    foreach (sfMixer::getCallables('BaseJobPhotographer:delete:post') as $callable)
+    foreach (sfMixer::getCallables('BasePhotographerRegion:delete:post') as $callable)
     {
       call_user_func($callable, $this, $con);
     }
@@ -369,7 +504,7 @@ abstract class BaseJobPhotographer extends BaseObject  implements Persistent {
 	public function save(PropelPDO $con = null)
 	{
 
-    foreach (sfMixer::getCallables('BaseJobPhotographer:save:pre') as $callable)
+    foreach (sfMixer::getCallables('BasePhotographerRegion:save:pre') as $callable)
     {
       $affectedRows = call_user_func($callable, $this, $con);
       if (is_int($affectedRows))
@@ -384,19 +519,19 @@ abstract class BaseJobPhotographer extends BaseObject  implements Persistent {
 		}
 
 		if ($con === null) {
-			$con = Propel::getConnection(JobPhotographerPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+			$con = Propel::getConnection(PhotographerRegionPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
 		}
 		
 		$con->beginTransaction();
 		try {
 			$affectedRows = $this->doSave($con);
 			$con->commit();
-    foreach (sfMixer::getCallables('BaseJobPhotographer:save:post') as $callable)
+    foreach (sfMixer::getCallables('BasePhotographerRegion:save:post') as $callable)
     {
       call_user_func($callable, $this, $con, $affectedRows);
     }
 
-			JobPhotographerPeer::addInstanceToPool($this);
+			PhotographerRegionPeer::addInstanceToPool($this);
 			return $affectedRows;
 		} catch (PropelException $e) {
 			$con->rollBack();
@@ -433,21 +568,14 @@ abstract class BaseJobPhotographer extends BaseObject  implements Persistent {
 				$this->setPhotographer($this->aPhotographer);
 			}
 
-			if ($this->aJob !== null) {
-				if ($this->aJob->isModified() || $this->aJob->isNew()) {
-					$affectedRows += $this->aJob->save($con);
-				}
-				$this->setJob($this->aJob);
-			}
-
 			if ($this->isNew() ) {
-				$this->modifiedColumns[] = JobPhotographerPeer::ID;
+				$this->modifiedColumns[] = PhotographerRegionPeer::ID;
 			}
 
 			// If this object has been modified, then save it to the database.
 			if ($this->isModified()) {
 				if ($this->isNew()) {
-					$pk = JobPhotographerPeer::doInsert($this, $con);
+					$pk = PhotographerRegionPeer::doInsert($this, $con);
 					$affectedRows += 1; // we are assuming that there is only 1 row per doInsert() which
 										 // should always be true here (even though technically
 										 // BasePeer::doInsert() can insert multiple rows).
@@ -456,7 +584,7 @@ abstract class BaseJobPhotographer extends BaseObject  implements Persistent {
 
 					$this->setNew(false);
 				} else {
-					$affectedRows += JobPhotographerPeer::doUpdate($this, $con);
+					$affectedRows += PhotographerRegionPeer::doUpdate($this, $con);
 				}
 
 				$this->resetModified(); // [HL] After being saved an object is no longer 'modified'
@@ -539,14 +667,8 @@ abstract class BaseJobPhotographer extends BaseObject  implements Persistent {
 				}
 			}
 
-			if ($this->aJob !== null) {
-				if (!$this->aJob->validate($columns)) {
-					$failureMap = array_merge($failureMap, $this->aJob->getValidationFailures());
-				}
-			}
 
-
-			if (($retval = JobPhotographerPeer::doValidate($this, $columns)) !== true) {
+			if (($retval = PhotographerRegionPeer::doValidate($this, $columns)) !== true) {
 				$failureMap = array_merge($failureMap, $retval);
 			}
 
@@ -569,7 +691,7 @@ abstract class BaseJobPhotographer extends BaseObject  implements Persistent {
 	 */
 	public function getByName($name, $type = BasePeer::TYPE_PHPNAME)
 	{
-		$pos = JobPhotographerPeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
+		$pos = PhotographerRegionPeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
 		$field = $this->getByPosition($pos);
 		return $field;
 	}
@@ -591,7 +713,19 @@ abstract class BaseJobPhotographer extends BaseObject  implements Persistent {
 				return $this->getPhotographerId();
 				break;
 			case 2:
-				return $this->getJobId();
+				return $this->getAddress();
+				break;
+			case 3:
+				return $this->getLatitude();
+				break;
+			case 4:
+				return $this->getLongitude();
+				break;
+			case 5:
+				return $this->getX();
+				break;
+			case 6:
+				return $this->getY();
 				break;
 			default:
 				return null;
@@ -612,11 +746,15 @@ abstract class BaseJobPhotographer extends BaseObject  implements Persistent {
 	 */
 	public function toArray($keyType = BasePeer::TYPE_PHPNAME, $includeLazyLoadColumns = true)
 	{
-		$keys = JobPhotographerPeer::getFieldNames($keyType);
+		$keys = PhotographerRegionPeer::getFieldNames($keyType);
 		$result = array(
 			$keys[0] => $this->getId(),
 			$keys[1] => $this->getPhotographerId(),
-			$keys[2] => $this->getJobId(),
+			$keys[2] => $this->getAddress(),
+			$keys[3] => $this->getLatitude(),
+			$keys[4] => $this->getLongitude(),
+			$keys[5] => $this->getX(),
+			$keys[6] => $this->getY(),
 		);
 		return $result;
 	}
@@ -633,7 +771,7 @@ abstract class BaseJobPhotographer extends BaseObject  implements Persistent {
 	 */
 	public function setByName($name, $value, $type = BasePeer::TYPE_PHPNAME)
 	{
-		$pos = JobPhotographerPeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
+		$pos = PhotographerRegionPeer::translateFieldName($name, $type, BasePeer::TYPE_NUM);
 		return $this->setByPosition($pos, $value);
 	}
 
@@ -655,7 +793,19 @@ abstract class BaseJobPhotographer extends BaseObject  implements Persistent {
 				$this->setPhotographerId($value);
 				break;
 			case 2:
-				$this->setJobId($value);
+				$this->setAddress($value);
+				break;
+			case 3:
+				$this->setLatitude($value);
+				break;
+			case 4:
+				$this->setLongitude($value);
+				break;
+			case 5:
+				$this->setX($value);
+				break;
+			case 6:
+				$this->setY($value);
 				break;
 		} // switch()
 	}
@@ -679,11 +829,15 @@ abstract class BaseJobPhotographer extends BaseObject  implements Persistent {
 	 */
 	public function fromArray($arr, $keyType = BasePeer::TYPE_PHPNAME)
 	{
-		$keys = JobPhotographerPeer::getFieldNames($keyType);
+		$keys = PhotographerRegionPeer::getFieldNames($keyType);
 
 		if (array_key_exists($keys[0], $arr)) $this->setId($arr[$keys[0]]);
 		if (array_key_exists($keys[1], $arr)) $this->setPhotographerId($arr[$keys[1]]);
-		if (array_key_exists($keys[2], $arr)) $this->setJobId($arr[$keys[2]]);
+		if (array_key_exists($keys[2], $arr)) $this->setAddress($arr[$keys[2]]);
+		if (array_key_exists($keys[3], $arr)) $this->setLatitude($arr[$keys[3]]);
+		if (array_key_exists($keys[4], $arr)) $this->setLongitude($arr[$keys[4]]);
+		if (array_key_exists($keys[5], $arr)) $this->setX($arr[$keys[5]]);
+		if (array_key_exists($keys[6], $arr)) $this->setY($arr[$keys[6]]);
 	}
 
 	/**
@@ -693,11 +847,15 @@ abstract class BaseJobPhotographer extends BaseObject  implements Persistent {
 	 */
 	public function buildCriteria()
 	{
-		$criteria = new Criteria(JobPhotographerPeer::DATABASE_NAME);
+		$criteria = new Criteria(PhotographerRegionPeer::DATABASE_NAME);
 
-		if ($this->isColumnModified(JobPhotographerPeer::ID)) $criteria->add(JobPhotographerPeer::ID, $this->id);
-		if ($this->isColumnModified(JobPhotographerPeer::PHOTOGRAPHER_ID)) $criteria->add(JobPhotographerPeer::PHOTOGRAPHER_ID, $this->photographer_id);
-		if ($this->isColumnModified(JobPhotographerPeer::JOB_ID)) $criteria->add(JobPhotographerPeer::JOB_ID, $this->job_id);
+		if ($this->isColumnModified(PhotographerRegionPeer::ID)) $criteria->add(PhotographerRegionPeer::ID, $this->id);
+		if ($this->isColumnModified(PhotographerRegionPeer::PHOTOGRAPHER_ID)) $criteria->add(PhotographerRegionPeer::PHOTOGRAPHER_ID, $this->photographer_id);
+		if ($this->isColumnModified(PhotographerRegionPeer::ADDRESS)) $criteria->add(PhotographerRegionPeer::ADDRESS, $this->address);
+		if ($this->isColumnModified(PhotographerRegionPeer::LATITUDE)) $criteria->add(PhotographerRegionPeer::LATITUDE, $this->latitude);
+		if ($this->isColumnModified(PhotographerRegionPeer::LONGITUDE)) $criteria->add(PhotographerRegionPeer::LONGITUDE, $this->longitude);
+		if ($this->isColumnModified(PhotographerRegionPeer::X)) $criteria->add(PhotographerRegionPeer::X, $this->x);
+		if ($this->isColumnModified(PhotographerRegionPeer::Y)) $criteria->add(PhotographerRegionPeer::Y, $this->y);
 
 		return $criteria;
 	}
@@ -712,9 +870,9 @@ abstract class BaseJobPhotographer extends BaseObject  implements Persistent {
 	 */
 	public function buildPkeyCriteria()
 	{
-		$criteria = new Criteria(JobPhotographerPeer::DATABASE_NAME);
+		$criteria = new Criteria(PhotographerRegionPeer::DATABASE_NAME);
 
-		$criteria->add(JobPhotographerPeer::ID, $this->id);
+		$criteria->add(PhotographerRegionPeer::ID, $this->id);
 
 		return $criteria;
 	}
@@ -745,7 +903,7 @@ abstract class BaseJobPhotographer extends BaseObject  implements Persistent {
 	 * If desired, this method can also make copies of all associated (fkey referrers)
 	 * objects.
 	 *
-	 * @param      object $copyObj An object of JobPhotographer (or compatible) type.
+	 * @param      object $copyObj An object of PhotographerRegion (or compatible) type.
 	 * @param      boolean $deepCopy Whether to also copy all rows that refer (by fkey) to the current row.
 	 * @throws     PropelException
 	 */
@@ -754,7 +912,15 @@ abstract class BaseJobPhotographer extends BaseObject  implements Persistent {
 
 		$copyObj->setPhotographerId($this->photographer_id);
 
-		$copyObj->setJobId($this->job_id);
+		$copyObj->setAddress($this->address);
+
+		$copyObj->setLatitude($this->latitude);
+
+		$copyObj->setLongitude($this->longitude);
+
+		$copyObj->setX($this->x);
+
+		$copyObj->setY($this->y);
 
 
 		$copyObj->setNew(true);
@@ -772,7 +938,7 @@ abstract class BaseJobPhotographer extends BaseObject  implements Persistent {
 	 * objects.
 	 *
 	 * @param      boolean $deepCopy Whether to also copy all rows that refer (by fkey) to the current row.
-	 * @return     JobPhotographer Clone of current object.
+	 * @return     PhotographerRegion Clone of current object.
 	 * @throws     PropelException
 	 */
 	public function copy($deepCopy = false)
@@ -791,12 +957,12 @@ abstract class BaseJobPhotographer extends BaseObject  implements Persistent {
 	 * same instance for all member of this class. The method could therefore
 	 * be static, but this would prevent one from overriding the behavior.
 	 *
-	 * @return     JobPhotographerPeer
+	 * @return     PhotographerRegionPeer
 	 */
 	public function getPeer()
 	{
 		if (self::$peer === null) {
-			self::$peer = new JobPhotographerPeer();
+			self::$peer = new PhotographerRegionPeer();
 		}
 		return self::$peer;
 	}
@@ -805,7 +971,7 @@ abstract class BaseJobPhotographer extends BaseObject  implements Persistent {
 	 * Declares an association between this object and a Photographer object.
 	 *
 	 * @param      Photographer $v
-	 * @return     JobPhotographer The current object (for fluent API support)
+	 * @return     PhotographerRegion The current object (for fluent API support)
 	 * @throws     PropelException
 	 */
 	public function setPhotographer(Photographer $v = null)
@@ -821,7 +987,7 @@ abstract class BaseJobPhotographer extends BaseObject  implements Persistent {
 		// Add binding for other direction of this n:n relationship.
 		// If this object has already been added to the Photographer object, it will not be re-added.
 		if ($v !== null) {
-			$v->addJobPhotographer($this);
+			$v->addPhotographerRegion($this);
 		}
 
 		return $this;
@@ -846,61 +1012,10 @@ abstract class BaseJobPhotographer extends BaseObject  implements Persistent {
 			   to this object.  This level of coupling may, however, be
 			   undesirable since it could result in an only partially populated collection
 			   in the referenced object.
-			   $this->aPhotographer->addJobPhotographers($this);
+			   $this->aPhotographer->addPhotographerRegions($this);
 			 */
 		}
 		return $this->aPhotographer;
-	}
-
-	/**
-	 * Declares an association between this object and a Job object.
-	 *
-	 * @param      Job $v
-	 * @return     JobPhotographer The current object (for fluent API support)
-	 * @throws     PropelException
-	 */
-	public function setJob(Job $v = null)
-	{
-		if ($v === null) {
-			$this->setJobId(NULL);
-		} else {
-			$this->setJobId($v->getId());
-		}
-
-		$this->aJob = $v;
-
-		// Add binding for other direction of this n:n relationship.
-		// If this object has already been added to the Job object, it will not be re-added.
-		if ($v !== null) {
-			$v->addJobPhotographer($this);
-		}
-
-		return $this;
-	}
-
-
-	/**
-	 * Get the associated Job object
-	 *
-	 * @param      PropelPDO Optional Connection object.
-	 * @return     Job The associated Job object.
-	 * @throws     PropelException
-	 */
-	public function getJob(PropelPDO $con = null)
-	{
-		if ($this->aJob === null && ($this->job_id !== null)) {
-			$c = new Criteria(JobPeer::DATABASE_NAME);
-			$c->add(JobPeer::ID, $this->job_id);
-			$this->aJob = JobPeer::doSelectOne($c, $con);
-			/* The following can be used additionally to
-			   guarantee the related object contains a reference
-			   to this object.  This level of coupling may, however, be
-			   undesirable since it could result in an only partially populated collection
-			   in the referenced object.
-			   $this->aJob->addJobPhotographers($this);
-			 */
-		}
-		return $this->aJob;
 	}
 
 	/**
@@ -918,15 +1033,14 @@ abstract class BaseJobPhotographer extends BaseObject  implements Persistent {
 		} // if ($deep)
 
 			$this->aPhotographer = null;
-			$this->aJob = null;
 	}
 
 
   public function __call($method, $arguments)
   {
-    if (!$callable = sfMixer::getCallable('BaseJobPhotographer:'.$method))
+    if (!$callable = sfMixer::getCallable('BasePhotographerRegion:'.$method))
     {
-      throw new sfException(sprintf('Call to undefined method BaseJobPhotographer::%s', $method));
+      throw new sfException(sprintf('Call to undefined method BasePhotographerRegion::%s', $method));
     }
 
     array_unshift($arguments, $this);
@@ -935,4 +1049,4 @@ abstract class BaseJobPhotographer extends BaseObject  implements Persistent {
   }
 
 
-} // BaseJobPhotographer
+} // BasePhotographerRegion

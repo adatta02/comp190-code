@@ -35,6 +35,7 @@ CREATE TABLE `sf_guard_user_profile`
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
 	`user_type_id` INTEGER,
 	`user_id` INTEGER,
+	`email` VARCHAR(255),
 	PRIMARY KEY (`id`),
 	INDEX `FI_sf_guard_user_profile_user_type` (`user_type_id`),
 	CONSTRAINT `fk_sf_guard_user_profile_user_type`
@@ -198,6 +199,8 @@ CREATE TABLE `photographer_region`
 	`address` TEXT,
 	`latitude` VARCHAR(16),
 	`longitude` VARCHAR(16),
+	`x` VARCHAR(16),
+	`y` VARCHAR(16),
 	PRIMARY KEY (`id`),
 	INDEX `FI_photographer_region_photographer` (`photographer_id`),
 	CONSTRAINT `fk_photographer_region_photographer`

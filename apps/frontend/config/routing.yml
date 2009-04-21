@@ -231,7 +231,7 @@ sf_guard_password:
 
 homepage:
   url:   /
-  param: { module: welcome, action: index }
+  param: { module: welcome, action: redirect }
 
 default_index:
   url:   /:module

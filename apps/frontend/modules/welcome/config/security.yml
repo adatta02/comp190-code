@@ -1,2 +1,4 @@
 index:
   is_secure: off
+redirect:
+  is_secure: off

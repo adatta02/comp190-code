@@ -17,24 +17,23 @@ class welcomeActions extends sfActions
   */
   public function executeIndex(sfWebRequest $request)
   {
+  	
+  	$route = str_replace("@", "", sfContext::getInstance()->getRouting()->getCurrentInternalUri(true));
+  	$url = sfContext::getInstance()->getRouting()->generate($route);
+  	
     $this->form = new sfGuardFormSignin();
-    if($this->getUser()->isAuthenticated()){
-    	$this->forward("welcome", "redirect");
-    }
+    $this->getUser()->setReferer($url);
   }
   
   public function executeRedirect(sfWebRequest $request){
+
+  	if($this->getUser()->isAuthenticated()){
+      if( $this->getUser()->getProfile() ){
+        $credential = $this->getUser()->getProfile()->getUserType()->getType();
+        $this->getUser()->addCredential($credential);
+      }
+    }
   	
-  	// check if the logged in user is an admin/client
-  	// if they are an admin forward them to the admin panel
-  	// if their email address is attached to a job ask if they want to view details of that job
-  	// otherwise present the choice of photoshelter or request a job
-    
-  	if( $this->getUser()->getProfile() ){
-      $credential = $this->getUser()->getProfile()->getUserType()->getType();
-      $this->getUser()->addCredential($credential);
-     }
-     
   }
   
   public function executeRedirectError(sfWebRequest $request){

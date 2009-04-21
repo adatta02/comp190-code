@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Base static class for performing query and update operations on the 'client' table.
+ * Base static class for performing query and update operations on the 'photographer_region' table.
  *
  * 
  *
@@ -11,52 +11,49 @@
  *
  * @package    lib.model.om
  */
-abstract class BaseClientPeer {
+abstract class BasePhotographerRegionPeer {
 
 	/** the default database name for this class */
 	const DATABASE_NAME = 'propel';
 
 	/** the table name for this class */
-	const TABLE_NAME = 'client';
+	const TABLE_NAME = 'photographer_region';
 
 	/** A class that can be returned by this peer. */
-	const CLASS_DEFAULT = 'lib.model.Client';
+	const CLASS_DEFAULT = 'lib.model.PhotographerRegion';
 
 	/** The total number of columns. */
-	const NUM_COLUMNS = 8;
+	const NUM_COLUMNS = 7;
 
 	/** The number of lazy-loaded columns. */
 	const NUM_LAZY_LOAD_COLUMNS = 0;
 
 	/** the column name for the ID field */
-	const ID = 'client.ID';
+	const ID = 'photographer_region.ID';
 
-	/** the column name for the USER_ID field */
-	const USER_ID = 'client.USER_ID';
-
-	/** the column name for the NAME field */
-	const NAME = 'client.NAME';
-
-	/** the column name for the DEPARTMENT field */
-	const DEPARTMENT = 'client.DEPARTMENT';
+	/** the column name for the PHOTOGRAPHER_ID field */
+	const PHOTOGRAPHER_ID = 'photographer_region.PHOTOGRAPHER_ID';
 
 	/** the column name for the ADDRESS field */
-	const ADDRESS = 'client.ADDRESS';
+	const ADDRESS = 'photographer_region.ADDRESS';
 
-	/** the column name for the EMAIL field */
-	const EMAIL = 'client.EMAIL';
+	/** the column name for the LATITUDE field */
+	const LATITUDE = 'photographer_region.LATITUDE';
 
-	/** the column name for the PHONE field */
-	const PHONE = 'client.PHONE';
+	/** the column name for the LONGITUDE field */
+	const LONGITUDE = 'photographer_region.LONGITUDE';
 
-	/** the column name for the SLUG field */
-	const SLUG = 'client.SLUG';
+	/** the column name for the X field */
+	const X = 'photographer_region.X';
+
+	/** the column name for the Y field */
+	const Y = 'photographer_region.Y';
 
 	/**
-	 * An identiy map to hold any loaded instances of Client objects.
+	 * An identiy map to hold any loaded instances of PhotographerRegion objects.
 	 * This must be public so that other peer classes can access this when hydrating from JOIN
 	 * queries.
-	 * @var        array Client[]
+	 * @var        array PhotographerRegion[]
 	 */
 	public static $instances = array();
 
@@ -73,11 +70,11 @@ abstract class BaseClientPeer {
 	 * e.g. self::$fieldNames[self::TYPE_PHPNAME][0] = 'Id'
 	 */
 	private static $fieldNames = array (
-		BasePeer::TYPE_PHPNAME => array ('Id', 'UserId', 'Name', 'Department', 'Address', 'Email', 'Phone', 'Slug', ),
-		BasePeer::TYPE_STUDLYPHPNAME => array ('id', 'userId', 'name', 'department', 'address', 'email', 'phone', 'slug', ),
-		BasePeer::TYPE_COLNAME => array (self::ID, self::USER_ID, self::NAME, self::DEPARTMENT, self::ADDRESS, self::EMAIL, self::PHONE, self::SLUG, ),
-		BasePeer::TYPE_FIELDNAME => array ('id', 'user_id', 'name', 'department', 'address', 'email', 'phone', 'slug', ),
-		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, )
+		BasePeer::TYPE_PHPNAME => array ('Id', 'PhotographerId', 'Address', 'Latitude', 'Longitude', 'X', 'Y', ),
+		BasePeer::TYPE_STUDLYPHPNAME => array ('id', 'photographerId', 'address', 'latitude', 'longitude', 'x', 'y', ),
+		BasePeer::TYPE_COLNAME => array (self::ID, self::PHOTOGRAPHER_ID, self::ADDRESS, self::LATITUDE, self::LONGITUDE, self::X, self::Y, ),
+		BasePeer::TYPE_FIELDNAME => array ('id', 'photographer_id', 'address', 'latitude', 'longitude', 'x', 'y', ),
+		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, )
 	);
 
 	/**
@@ -87,11 +84,11 @@ abstract class BaseClientPeer {
 	 * e.g. self::$fieldNames[BasePeer::TYPE_PHPNAME]['Id'] = 0
 	 */
 	private static $fieldKeys = array (
-		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'UserId' => 1, 'Name' => 2, 'Department' => 3, 'Address' => 4, 'Email' => 5, 'Phone' => 6, 'Slug' => 7, ),
-		BasePeer::TYPE_STUDLYPHPNAME => array ('id' => 0, 'userId' => 1, 'name' => 2, 'department' => 3, 'address' => 4, 'email' => 5, 'phone' => 6, 'slug' => 7, ),
-		BasePeer::TYPE_COLNAME => array (self::ID => 0, self::USER_ID => 1, self::NAME => 2, self::DEPARTMENT => 3, self::ADDRESS => 4, self::EMAIL => 5, self::PHONE => 6, self::SLUG => 7, ),
-		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'user_id' => 1, 'name' => 2, 'department' => 3, 'address' => 4, 'email' => 5, 'phone' => 6, 'slug' => 7, ),
-		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, )
+		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'PhotographerId' => 1, 'Address' => 2, 'Latitude' => 3, 'Longitude' => 4, 'X' => 5, 'Y' => 6, ),
+		BasePeer::TYPE_STUDLYPHPNAME => array ('id' => 0, 'photographerId' => 1, 'address' => 2, 'latitude' => 3, 'longitude' => 4, 'x' => 5, 'y' => 6, ),
+		BasePeer::TYPE_COLNAME => array (self::ID => 0, self::PHOTOGRAPHER_ID => 1, self::ADDRESS => 2, self::LATITUDE => 3, self::LONGITUDE => 4, self::X => 5, self::Y => 6, ),
+		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'photographer_id' => 1, 'address' => 2, 'latitude' => 3, 'longitude' => 4, 'x' => 5, 'y' => 6, ),
+		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, )
 	);
 
 	/**
@@ -101,7 +98,7 @@ abstract class BaseClientPeer {
 	public static function getMapBuilder()
 	{
 		if (self::$mapBuilder === null) {
-			self::$mapBuilder = new ClientMapBuilder();
+			self::$mapBuilder = new PhotographerRegionMapBuilder();
 		}
 		return self::$mapBuilder;
 	}
@@ -151,12 +148,12 @@ abstract class BaseClientPeer {
 	 *		$c->addJoin(TablePeer::alias("alias1", TablePeer::PRIMARY_KEY_COLUMN), TablePeer::PRIMARY_KEY_COLUMN);
 	 * </code>
 	 * @param      string $alias The alias for the current table.
-	 * @param      string $column The column name for current table. (i.e. ClientPeer::COLUMN_NAME).
+	 * @param      string $column The column name for current table. (i.e. PhotographerRegionPeer::COLUMN_NAME).
 	 * @return     string
 	 */
 	public static function alias($alias, $column)
 	{
-		return str_replace(ClientPeer::TABLE_NAME.'.', $alias.'.', $column);
+		return str_replace(PhotographerRegionPeer::TABLE_NAME.'.', $alias.'.', $column);
 	}
 
 	/**
@@ -173,21 +170,19 @@ abstract class BaseClientPeer {
 	public static function addSelectColumns(Criteria $criteria)
 	{
 
-		$criteria->addSelectColumn(ClientPeer::ID);
+		$criteria->addSelectColumn(PhotographerRegionPeer::ID);
 
-		$criteria->addSelectColumn(ClientPeer::USER_ID);
+		$criteria->addSelectColumn(PhotographerRegionPeer::PHOTOGRAPHER_ID);
 
-		$criteria->addSelectColumn(ClientPeer::NAME);
+		$criteria->addSelectColumn(PhotographerRegionPeer::ADDRESS);
 
-		$criteria->addSelectColumn(ClientPeer::DEPARTMENT);
+		$criteria->addSelectColumn(PhotographerRegionPeer::LATITUDE);
 
-		$criteria->addSelectColumn(ClientPeer::ADDRESS);
+		$criteria->addSelectColumn(PhotographerRegionPeer::LONGITUDE);
 
-		$criteria->addSelectColumn(ClientPeer::EMAIL);
+		$criteria->addSelectColumn(PhotographerRegionPeer::X);
 
-		$criteria->addSelectColumn(ClientPeer::PHONE);
-
-		$criteria->addSelectColumn(ClientPeer::SLUG);
+		$criteria->addSelectColumn(PhotographerRegionPeer::Y);
 
 	}
 
@@ -207,27 +202,27 @@ abstract class BaseClientPeer {
 		// We need to set the primary table name, since in the case that there are no WHERE columns
 		// it will be impossible for the BasePeer::createSelectSql() method to determine which
 		// tables go into the FROM clause.
-		$criteria->setPrimaryTableName(ClientPeer::TABLE_NAME);
+		$criteria->setPrimaryTableName(PhotographerRegionPeer::TABLE_NAME);
 
 		if ($distinct && !in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
 			$criteria->setDistinct();
 		}
 
 		if (!$criteria->hasSelectClause()) {
-			ClientPeer::addSelectColumns($criteria);
+			PhotographerRegionPeer::addSelectColumns($criteria);
 		}
 
 		$criteria->clearOrderByColumns(); // ORDER BY won't ever affect the count
 		$criteria->setDbName(self::DATABASE_NAME); // Set the correct dbName
 
 		if ($con === null) {
-			$con = Propel::getConnection(ClientPeer::DATABASE_NAME, Propel::CONNECTION_READ);
+			$con = Propel::getConnection(PhotographerRegionPeer::DATABASE_NAME, Propel::CONNECTION_READ);
 		}
 
 
-    foreach (sfMixer::getCallables('BaseClientPeer:doCount:doCount') as $callable)
+    foreach (sfMixer::getCallables('BasePhotographerRegionPeer:doCount:doCount') as $callable)
     {
-      call_user_func($callable, 'BaseClientPeer', $criteria, $con);
+      call_user_func($callable, 'BasePhotographerRegionPeer', $criteria, $con);
     }
 
 
@@ -247,7 +242,7 @@ abstract class BaseClientPeer {
 	 *
 	 * @param      Criteria $criteria object used to create the SELECT statement.
 	 * @param      PropelPDO $con
-	 * @return     Client
+	 * @return     PhotographerRegion
 	 * @throws     PropelException Any exceptions caught during processing will be
 	 *		 rethrown wrapped into a PropelException.
 	 */
@@ -255,7 +250,7 @@ abstract class BaseClientPeer {
 	{
 		$critcopy = clone $criteria;
 		$critcopy->setLimit(1);
-		$objects = ClientPeer::doSelect($critcopy, $con);
+		$objects = PhotographerRegionPeer::doSelect($critcopy, $con);
 		if ($objects) {
 			return $objects[0];
 		}
@@ -272,7 +267,7 @@ abstract class BaseClientPeer {
 	 */
 	public static function doSelect(Criteria $criteria, PropelPDO $con = null)
 	{
-		return ClientPeer::populateObjects(ClientPeer::doSelectStmt($criteria, $con));
+		return PhotographerRegionPeer::populateObjects(PhotographerRegionPeer::doSelectStmt($criteria, $con));
 	}
 	/**
 	 * Prepares the Criteria object and uses the parent doSelect() method to execute a PDOStatement.
@@ -290,19 +285,19 @@ abstract class BaseClientPeer {
 	public static function doSelectStmt(Criteria $criteria, PropelPDO $con = null)
 	{
 
-    foreach (sfMixer::getCallables('BaseClientPeer:doSelectStmt:doSelectStmt') as $callable)
+    foreach (sfMixer::getCallables('BasePhotographerRegionPeer:doSelectStmt:doSelectStmt') as $callable)
     {
-      call_user_func($callable, 'BaseClientPeer', $criteria, $con);
+      call_user_func($callable, 'BasePhotographerRegionPeer', $criteria, $con);
     }
 
 
 		if ($con === null) {
-			$con = Propel::getConnection(ClientPeer::DATABASE_NAME, Propel::CONNECTION_READ);
+			$con = Propel::getConnection(PhotographerRegionPeer::DATABASE_NAME, Propel::CONNECTION_READ);
 		}
 
 		if (!$criteria->hasSelectClause()) {
 			$criteria = clone $criteria;
-			ClientPeer::addSelectColumns($criteria);
+			PhotographerRegionPeer::addSelectColumns($criteria);
 		}
 
 		// Set the correct dbName
@@ -320,10 +315,10 @@ abstract class BaseClientPeer {
 	 * to the cache in order to ensure that the same objects are always returned by doSelect*()
 	 * and retrieveByPK*() calls.
 	 *
-	 * @param      Client $value A Client object.
+	 * @param      PhotographerRegion $value A PhotographerRegion object.
 	 * @param      string $key (optional) key to use for instance map (for performance boost if key was already calculated externally).
 	 */
-	public static function addInstanceToPool(Client $obj, $key = null)
+	public static function addInstanceToPool(PhotographerRegion $obj, $key = null)
 	{
 		if (Propel::isInstancePoolingEnabled()) {
 			if ($key === null) {
@@ -341,18 +336,18 @@ abstract class BaseClientPeer {
 	 * methods in your stub classes -- you may need to explicitly remove objects
 	 * from the cache in order to prevent returning objects that no longer exist.
 	 *
-	 * @param      mixed $value A Client object or a primary key value.
+	 * @param      mixed $value A PhotographerRegion object or a primary key value.
 	 */
 	public static function removeInstanceFromPool($value)
 	{
 		if (Propel::isInstancePoolingEnabled() && $value !== null) {
-			if (is_object($value) && $value instanceof Client) {
+			if (is_object($value) && $value instanceof PhotographerRegion) {
 				$key = (string) $value->getId();
 			} elseif (is_scalar($value)) {
 				// assume we've been passed a primary key
 				$key = (string) $value;
 			} else {
-				$e = new PropelException("Invalid value passed to removeInstanceFromPool().  Expected primary key or Client object; got " . (is_object($value) ? get_class($value) . ' object.' : var_export($value,true)));
+				$e = new PropelException("Invalid value passed to removeInstanceFromPool().  Expected primary key or PhotographerRegion object; got " . (is_object($value) ? get_class($value) . ' object.' : var_export($value,true)));
 				throw $e;
 			}
 
@@ -367,7 +362,7 @@ abstract class BaseClientPeer {
 	 * a multi-column primary key, a serialize()d version of the primary key will be returned.
 	 *
 	 * @param      string $key The key (@see getPrimaryKeyHash()) for this instance.
-	 * @return     Client Found object or NULL if 1) no instance exists for specified key or 2) instance pooling has been disabled.
+	 * @return     PhotographerRegion Found object or NULL if 1) no instance exists for specified key or 2) instance pooling has been disabled.
 	 * @see        getPrimaryKeyHash()
 	 */
 	public static function getInstanceFromPool($key)
@@ -421,12 +416,12 @@ abstract class BaseClientPeer {
 		$results = array();
 	
 		// set the class once to avoid overhead in the loop
-		$cls = ClientPeer::getOMClass();
+		$cls = PhotographerRegionPeer::getOMClass();
 		$cls = substr('.'.$cls, strrpos('.'.$cls, '.') + 1);
 		// populate the object(s)
 		while ($row = $stmt->fetch(PDO::FETCH_NUM)) {
-			$key = ClientPeer::getPrimaryKeyHashFromRow($row, 0);
-			if (null !== ($obj = ClientPeer::getInstanceFromPool($key))) {
+			$key = PhotographerRegionPeer::getPrimaryKeyHashFromRow($row, 0);
+			if (null !== ($obj = PhotographerRegionPeer::getInstanceFromPool($key))) {
 				// We no longer rehydrate the object, since this can cause data loss.
 				// See http://propel.phpdb.org/trac/ticket/509
 				// $obj->hydrate($row, 0, true); // rehydrate
@@ -436,7 +431,7 @@ abstract class BaseClientPeer {
 				$obj = new $cls();
 				$obj->hydrate($row);
 				$results[] = $obj;
-				ClientPeer::addInstanceToPool($obj, $key);
+				PhotographerRegionPeer::addInstanceToPool($obj, $key);
 			} // if key exists
 		}
 		$stmt->closeCursor();
@@ -444,7 +439,7 @@ abstract class BaseClientPeer {
 	}
 
 	/**
-	 * Returns the number of rows matching criteria, joining the related sfGuardUserProfile table
+	 * Returns the number of rows matching criteria, joining the related Photographer table
 	 *
 	 * @param      Criteria $c
 	 * @param      boolean $distinct Whether to select only distinct columns; deprecated: use Criteria->setDistinct() instead.
@@ -452,7 +447,7 @@ abstract class BaseClientPeer {
 	 * @param      String    $join_behavior the type of joins to use, defaults to Criteria::LEFT_JOIN
 	 * @return     int Number of matching rows.
 	 */
-	public static function doCountJoinsfGuardUserProfile(Criteria $criteria, $distinct = false, PropelPDO $con = null, $join_behavior = Criteria::LEFT_JOIN)
+	public static function doCountJoinPhotographer(Criteria $criteria, $distinct = false, PropelPDO $con = null, $join_behavior = Criteria::LEFT_JOIN)
 	{
 		// we're going to modify criteria, so copy it first
 		$criteria = clone $criteria;
@@ -460,14 +455,14 @@ abstract class BaseClientPeer {
 		// We need to set the primary table name, since in the case that there are no WHERE columns
 		// it will be impossible for the BasePeer::createSelectSql() method to determine which
 		// tables go into the FROM clause.
-		$criteria->setPrimaryTableName(ClientPeer::TABLE_NAME);
+		$criteria->setPrimaryTableName(PhotographerRegionPeer::TABLE_NAME);
 
 		if ($distinct && !in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
 			$criteria->setDistinct();
 		}
 
 		if (!$criteria->hasSelectClause()) {
-			ClientPeer::addSelectColumns($criteria);
+			PhotographerRegionPeer::addSelectColumns($criteria);
 		}
 
 		$criteria->clearOrderByColumns(); // ORDER BY won't ever affect the count
@@ -476,15 +471,15 @@ abstract class BaseClientPeer {
 		$criteria->setDbName(self::DATABASE_NAME);
 
 		if ($con === null) {
-			$con = Propel::getConnection(ClientPeer::DATABASE_NAME, Propel::CONNECTION_READ);
+			$con = Propel::getConnection(PhotographerRegionPeer::DATABASE_NAME, Propel::CONNECTION_READ);
 		}
 
-		$criteria->addJoin(array(ClientPeer::USER_ID,), array(sfGuardUserProfilePeer::ID,), $join_behavior);
+		$criteria->addJoin(array(PhotographerRegionPeer::PHOTOGRAPHER_ID,), array(PhotographerPeer::ID,), $join_behavior);
 
 
-    foreach (sfMixer::getCallables('BaseClientPeer:doCount:doCount') as $callable)
+    foreach (sfMixer::getCallables('BasePhotographerRegionPeer:doCount:doCount') as $callable)
     {
-      call_user_func($callable, 'BaseClientPeer', $criteria, $con);
+      call_user_func($callable, 'BasePhotographerRegionPeer', $criteria, $con);
     }
 
 
@@ -501,20 +496,20 @@ abstract class BaseClientPeer {
 
 
 	/**
-	 * Selects a collection of Client objects pre-filled with their sfGuardUserProfile objects.
+	 * Selects a collection of PhotographerRegion objects pre-filled with their Photographer objects.
 	 * @param      Criteria  $c
 	 * @param      PropelPDO $con
 	 * @param      String    $join_behavior the type of joins to use, defaults to Criteria::LEFT_JOIN
-	 * @return     array Array of Client objects.
+	 * @return     array Array of PhotographerRegion objects.
 	 * @throws     PropelException Any exceptions caught during processing will be
 	 *		 rethrown wrapped into a PropelException.
 	 */
-	public static function doSelectJoinsfGuardUserProfile(Criteria $c, $con = null, $join_behavior = Criteria::LEFT_JOIN)
+	public static function doSelectJoinPhotographer(Criteria $c, $con = null, $join_behavior = Criteria::LEFT_JOIN)
 	{
 
-    foreach (sfMixer::getCallables('BaseClientPeer:doSelectJoin:doSelectJoin') as $callable)
+    foreach (sfMixer::getCallables('BasePhotographerRegionPeer:doSelectJoin:doSelectJoin') as $callable)
     {
-      call_user_func($callable, 'BaseClientPeer', $c, $con);
+      call_user_func($callable, 'BasePhotographerRegionPeer', $c, $con);
     }
 
 
@@ -525,45 +520,45 @@ abstract class BaseClientPeer {
 			$c->setDbName(self::DATABASE_NAME);
 		}
 
-		ClientPeer::addSelectColumns($c);
-		$startcol = (ClientPeer::NUM_COLUMNS - ClientPeer::NUM_LAZY_LOAD_COLUMNS);
-		sfGuardUserProfilePeer::addSelectColumns($c);
+		PhotographerRegionPeer::addSelectColumns($c);
+		$startcol = (PhotographerRegionPeer::NUM_COLUMNS - PhotographerRegionPeer::NUM_LAZY_LOAD_COLUMNS);
+		PhotographerPeer::addSelectColumns($c);
 
-		$c->addJoin(array(ClientPeer::USER_ID,), array(sfGuardUserProfilePeer::ID,), $join_behavior);
+		$c->addJoin(array(PhotographerRegionPeer::PHOTOGRAPHER_ID,), array(PhotographerPeer::ID,), $join_behavior);
 		$stmt = BasePeer::doSelect($c, $con);
 		$results = array();
 
 		while ($row = $stmt->fetch(PDO::FETCH_NUM)) {
-			$key1 = ClientPeer::getPrimaryKeyHashFromRow($row, 0);
-			if (null !== ($obj1 = ClientPeer::getInstanceFromPool($key1))) {
+			$key1 = PhotographerRegionPeer::getPrimaryKeyHashFromRow($row, 0);
+			if (null !== ($obj1 = PhotographerRegionPeer::getInstanceFromPool($key1))) {
 				// We no longer rehydrate the object, since this can cause data loss.
 				// See http://propel.phpdb.org/trac/ticket/509
 				// $obj1->hydrate($row, 0, true); // rehydrate
 			} else {
 
-				$omClass = ClientPeer::getOMClass();
+				$omClass = PhotographerRegionPeer::getOMClass();
 
 				$cls = substr('.'.$omClass, strrpos('.'.$omClass, '.') + 1);
 				$obj1 = new $cls();
 				$obj1->hydrate($row);
-				ClientPeer::addInstanceToPool($obj1, $key1);
+				PhotographerRegionPeer::addInstanceToPool($obj1, $key1);
 			} // if $obj1 already loaded
 
-			$key2 = sfGuardUserProfilePeer::getPrimaryKeyHashFromRow($row, $startcol);
+			$key2 = PhotographerPeer::getPrimaryKeyHashFromRow($row, $startcol);
 			if ($key2 !== null) {
-				$obj2 = sfGuardUserProfilePeer::getInstanceFromPool($key2);
+				$obj2 = PhotographerPeer::getInstanceFromPool($key2);
 				if (!$obj2) {
 
-					$omClass = sfGuardUserProfilePeer::getOMClass();
+					$omClass = PhotographerPeer::getOMClass();
 
 					$cls = substr('.'.$omClass, strrpos('.'.$omClass, '.') + 1);
 					$obj2 = new $cls();
 					$obj2->hydrate($row, $startcol);
-					sfGuardUserProfilePeer::addInstanceToPool($obj2, $key2);
+					PhotographerPeer::addInstanceToPool($obj2, $key2);
 				} // if obj2 already loaded
 
-				// Add the $obj1 (Client) to $obj2 (sfGuardUserProfile)
-				$obj2->addClient($obj1);
+				// Add the $obj1 (PhotographerRegion) to $obj2 (Photographer)
+				$obj2->addPhotographerRegion($obj1);
 
 			} // if joined row was not null
 
@@ -591,14 +586,14 @@ abstract class BaseClientPeer {
 		// We need to set the primary table name, since in the case that there are no WHERE columns
 		// it will be impossible for the BasePeer::createSelectSql() method to determine which
 		// tables go into the FROM clause.
-		$criteria->setPrimaryTableName(ClientPeer::TABLE_NAME);
+		$criteria->setPrimaryTableName(PhotographerRegionPeer::TABLE_NAME);
 
 		if ($distinct && !in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
 			$criteria->setDistinct();
 		}
 
 		if (!$criteria->hasSelectClause()) {
-			ClientPeer::addSelectColumns($criteria);
+			PhotographerRegionPeer::addSelectColumns($criteria);
 		}
 
 		$criteria->clearOrderByColumns(); // ORDER BY won't ever affect the count
@@ -607,14 +602,14 @@ abstract class BaseClientPeer {
 		$criteria->setDbName(self::DATABASE_NAME);
 
 		if ($con === null) {
-			$con = Propel::getConnection(ClientPeer::DATABASE_NAME, Propel::CONNECTION_READ);
+			$con = Propel::getConnection(PhotographerRegionPeer::DATABASE_NAME, Propel::CONNECTION_READ);
 		}
 
-		$criteria->addJoin(array(ClientPeer::USER_ID,), array(sfGuardUserProfilePeer::ID,), $join_behavior);
+		$criteria->addJoin(array(PhotographerRegionPeer::PHOTOGRAPHER_ID,), array(PhotographerPeer::ID,), $join_behavior);
 
-    foreach (sfMixer::getCallables('BaseClientPeer:doCount:doCount') as $callable)
+    foreach (sfMixer::getCallables('BasePhotographerRegionPeer:doCount:doCount') as $callable)
     {
-      call_user_func($callable, 'BaseClientPeer', $criteria, $con);
+      call_user_func($callable, 'BasePhotographerRegionPeer', $criteria, $con);
     }
 
 
@@ -630,21 +625,21 @@ abstract class BaseClientPeer {
 	}
 
 	/**
-	 * Selects a collection of Client objects pre-filled with all related objects.
+	 * Selects a collection of PhotographerRegion objects pre-filled with all related objects.
 	 *
 	 * @param      Criteria  $c
 	 * @param      PropelPDO $con
 	 * @param      String    $join_behavior the type of joins to use, defaults to Criteria::LEFT_JOIN
-	 * @return     array Array of Client objects.
+	 * @return     array Array of PhotographerRegion objects.
 	 * @throws     PropelException Any exceptions caught during processing will be
 	 *		 rethrown wrapped into a PropelException.
 	 */
 	public static function doSelectJoinAll(Criteria $c, $con = null, $join_behavior = Criteria::LEFT_JOIN)
 	{
 
-    foreach (sfMixer::getCallables('BaseClientPeer:doSelectJoinAll:doSelectJoinAll') as $callable)
+    foreach (sfMixer::getCallables('BasePhotographerRegionPeer:doSelectJoinAll:doSelectJoinAll') as $callable)
     {
-      call_user_func($callable, 'BaseClientPeer', $c, $con);
+      call_user_func($callable, 'BasePhotographerRegionPeer', $c, $con);
     }
 
 
@@ -655,49 +650,49 @@ abstract class BaseClientPeer {
 			$c->setDbName(self::DATABASE_NAME);
 		}
 
-		ClientPeer::addSelectColumns($c);
-		$startcol2 = (ClientPeer::NUM_COLUMNS - ClientPeer::NUM_LAZY_LOAD_COLUMNS);
+		PhotographerRegionPeer::addSelectColumns($c);
+		$startcol2 = (PhotographerRegionPeer::NUM_COLUMNS - PhotographerRegionPeer::NUM_LAZY_LOAD_COLUMNS);
 
-		sfGuardUserProfilePeer::addSelectColumns($c);
-		$startcol3 = $startcol2 + (sfGuardUserProfilePeer::NUM_COLUMNS - sfGuardUserProfilePeer::NUM_LAZY_LOAD_COLUMNS);
+		PhotographerPeer::addSelectColumns($c);
+		$startcol3 = $startcol2 + (PhotographerPeer::NUM_COLUMNS - PhotographerPeer::NUM_LAZY_LOAD_COLUMNS);
 
-		$c->addJoin(array(ClientPeer::USER_ID,), array(sfGuardUserProfilePeer::ID,), $join_behavior);
+		$c->addJoin(array(PhotographerRegionPeer::PHOTOGRAPHER_ID,), array(PhotographerPeer::ID,), $join_behavior);
 		$stmt = BasePeer::doSelect($c, $con);
 		$results = array();
 
 		while ($row = $stmt->fetch(PDO::FETCH_NUM)) {
-			$key1 = ClientPeer::getPrimaryKeyHashFromRow($row, 0);
-			if (null !== ($obj1 = ClientPeer::getInstanceFromPool($key1))) {
+			$key1 = PhotographerRegionPeer::getPrimaryKeyHashFromRow($row, 0);
+			if (null !== ($obj1 = PhotographerRegionPeer::getInstanceFromPool($key1))) {
 				// We no longer rehydrate the object, since this can cause data loss.
 				// See http://propel.phpdb.org/trac/ticket/509
 				// $obj1->hydrate($row, 0, true); // rehydrate
 			} else {
-				$omClass = ClientPeer::getOMClass();
+				$omClass = PhotographerRegionPeer::getOMClass();
 
 				$cls = substr('.'.$omClass, strrpos('.'.$omClass, '.') + 1);
 				$obj1 = new $cls();
 				$obj1->hydrate($row);
-				ClientPeer::addInstanceToPool($obj1, $key1);
+				PhotographerRegionPeer::addInstanceToPool($obj1, $key1);
 			} // if obj1 already loaded
 
-			// Add objects for joined sfGuardUserProfile rows
+			// Add objects for joined Photographer rows
 
-			$key2 = sfGuardUserProfilePeer::getPrimaryKeyHashFromRow($row, $startcol2);
+			$key2 = PhotographerPeer::getPrimaryKeyHashFromRow($row, $startcol2);
 			if ($key2 !== null) {
-				$obj2 = sfGuardUserProfilePeer::getInstanceFromPool($key2);
+				$obj2 = PhotographerPeer::getInstanceFromPool($key2);
 				if (!$obj2) {
 
-					$omClass = sfGuardUserProfilePeer::getOMClass();
+					$omClass = PhotographerPeer::getOMClass();
 
 
 					$cls = substr('.'.$omClass, strrpos('.'.$omClass, '.') + 1);
 					$obj2 = new $cls();
 					$obj2->hydrate($row, $startcol2);
-					sfGuardUserProfilePeer::addInstanceToPool($obj2, $key2);
+					PhotographerPeer::addInstanceToPool($obj2, $key2);
 				} // if obj2 loaded
 
-				// Add the $obj1 (Client) to the collection in $obj2 (sfGuardUserProfile)
-				$obj2->addClient($obj1);
+				// Add the $obj1 (PhotographerRegion) to the collection in $obj2 (Photographer)
+				$obj2->addPhotographerRegion($obj1);
 			} // if joined row not null
 
 			$results[] = $obj1;
@@ -734,13 +729,13 @@ abstract class BaseClientPeer {
 	 */
 	public static function getOMClass()
 	{
-		return ClientPeer::CLASS_DEFAULT;
+		return PhotographerRegionPeer::CLASS_DEFAULT;
 	}
 
 	/**
-	 * Method perform an INSERT on the database, given a Client or Criteria object.
+	 * Method perform an INSERT on the database, given a PhotographerRegion or Criteria object.
 	 *
-	 * @param      mixed $values Criteria or Client object containing data that is used to create the INSERT statement.
+	 * @param      mixed $values Criteria or PhotographerRegion object containing data that is used to create the INSERT statement.
 	 * @param      PropelPDO $con the PropelPDO connection to use
 	 * @return     mixed The new primary key.
 	 * @throws     PropelException Any exceptions caught during processing will be
@@ -749,9 +744,9 @@ abstract class BaseClientPeer {
 	public static function doInsert($values, PropelPDO $con = null)
 	{
 
-    foreach (sfMixer::getCallables('BaseClientPeer:doInsert:pre') as $callable)
+    foreach (sfMixer::getCallables('BasePhotographerRegionPeer:doInsert:pre') as $callable)
     {
-      $ret = call_user_func($callable, 'BaseClientPeer', $values, $con);
+      $ret = call_user_func($callable, 'BasePhotographerRegionPeer', $values, $con);
       if (false !== $ret)
       {
         return $ret;
@@ -760,17 +755,17 @@ abstract class BaseClientPeer {
 
 
 		if ($con === null) {
-			$con = Propel::getConnection(ClientPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+			$con = Propel::getConnection(PhotographerRegionPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
 		}
 
 		if ($values instanceof Criteria) {
 			$criteria = clone $values; // rename for clarity
 		} else {
-			$criteria = $values->buildCriteria(); // build Criteria from Client object
+			$criteria = $values->buildCriteria(); // build Criteria from PhotographerRegion object
 		}
 
-		if ($criteria->containsKey(ClientPeer::ID) && $criteria->keyContainsValue(ClientPeer::ID) ) {
-			throw new PropelException('Cannot insert a value for auto-increment primary key ('.ClientPeer::ID.')');
+		if ($criteria->containsKey(PhotographerRegionPeer::ID) && $criteria->keyContainsValue(PhotographerRegionPeer::ID) ) {
+			throw new PropelException('Cannot insert a value for auto-increment primary key ('.PhotographerRegionPeer::ID.')');
 		}
 
 
@@ -789,18 +784,18 @@ abstract class BaseClientPeer {
 		}
 
 		
-    foreach (sfMixer::getCallables('BaseClientPeer:doInsert:post') as $callable)
+    foreach (sfMixer::getCallables('BasePhotographerRegionPeer:doInsert:post') as $callable)
     {
-      call_user_func($callable, 'BaseClientPeer', $values, $con, $pk);
+      call_user_func($callable, 'BasePhotographerRegionPeer', $values, $con, $pk);
     }
 
     return $pk;
 	}
 
 	/**
-	 * Method perform an UPDATE on the database, given a Client or Criteria object.
+	 * Method perform an UPDATE on the database, given a PhotographerRegion or Criteria object.
 	 *
-	 * @param      mixed $values Criteria or Client object containing data that is used to create the UPDATE statement.
+	 * @param      mixed $values Criteria or PhotographerRegion object containing data that is used to create the UPDATE statement.
 	 * @param      PropelPDO $con The connection to use (specify PropelPDO connection object to exert more control over transactions).
 	 * @return     int The number of affected rows (if supported by underlying database driver).
 	 * @throws     PropelException Any exceptions caught during processing will be
@@ -809,9 +804,9 @@ abstract class BaseClientPeer {
 	public static function doUpdate($values, PropelPDO $con = null)
 	{
 
-    foreach (sfMixer::getCallables('BaseClientPeer:doUpdate:pre') as $callable)
+    foreach (sfMixer::getCallables('BasePhotographerRegionPeer:doUpdate:pre') as $callable)
     {
-      $ret = call_user_func($callable, 'BaseClientPeer', $values, $con);
+      $ret = call_user_func($callable, 'BasePhotographerRegionPeer', $values, $con);
       if (false !== $ret)
       {
         return $ret;
@@ -820,7 +815,7 @@ abstract class BaseClientPeer {
 
 
 		if ($con === null) {
-			$con = Propel::getConnection(ClientPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+			$con = Propel::getConnection(PhotographerRegionPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
 		}
 
 		$selectCriteria = new Criteria(self::DATABASE_NAME);
@@ -828,10 +823,10 @@ abstract class BaseClientPeer {
 		if ($values instanceof Criteria) {
 			$criteria = clone $values; // rename for clarity
 
-			$comparison = $criteria->getComparison(ClientPeer::ID);
-			$selectCriteria->add(ClientPeer::ID, $criteria->remove(ClientPeer::ID), $comparison);
+			$comparison = $criteria->getComparison(PhotographerRegionPeer::ID);
+			$selectCriteria->add(PhotographerRegionPeer::ID, $criteria->remove(PhotographerRegionPeer::ID), $comparison);
 
-		} else { // $values is Client object
+		} else { // $values is PhotographerRegion object
 			$criteria = $values->buildCriteria(); // gets full criteria
 			$selectCriteria = $values->buildPkeyCriteria(); // gets criteria w/ primary key(s)
 		}
@@ -842,30 +837,30 @@ abstract class BaseClientPeer {
 		$ret = BasePeer::doUpdate($selectCriteria, $criteria, $con);
 	
 
-    foreach (sfMixer::getCallables('BaseClientPeer:doUpdate:post') as $callable)
+    foreach (sfMixer::getCallables('BasePhotographerRegionPeer:doUpdate:post') as $callable)
     {
-      call_user_func($callable, 'BaseClientPeer', $values, $con, $ret);
+      call_user_func($callable, 'BasePhotographerRegionPeer', $values, $con, $ret);
     }
 
     return $ret;
   }
 
 	/**
-	 * Method to DELETE all rows from the client table.
+	 * Method to DELETE all rows from the photographer_region table.
 	 *
 	 * @return     int The number of affected rows (if supported by underlying database driver).
 	 */
 	public static function doDeleteAll($con = null)
 	{
 		if ($con === null) {
-			$con = Propel::getConnection(ClientPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+			$con = Propel::getConnection(PhotographerRegionPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
 		}
 		$affectedRows = 0; // initialize var to track total num of affected rows
 		try {
 			// use transaction because $criteria could contain info
 			// for more than one table or we could emulating ON DELETE CASCADE, etc.
 			$con->beginTransaction();
-			$affectedRows += BasePeer::doDeleteAll(ClientPeer::TABLE_NAME, $con);
+			$affectedRows += BasePeer::doDeleteAll(PhotographerRegionPeer::TABLE_NAME, $con);
 			$con->commit();
 			return $affectedRows;
 		} catch (PropelException $e) {
@@ -875,9 +870,9 @@ abstract class BaseClientPeer {
 	}
 
 	/**
-	 * Method perform a DELETE on the database, given a Client or Criteria object OR a primary key value.
+	 * Method perform a DELETE on the database, given a PhotographerRegion or Criteria object OR a primary key value.
 	 *
-	 * @param      mixed $values Criteria or Client object or primary key or array of primary keys
+	 * @param      mixed $values Criteria or PhotographerRegion object or primary key or array of primary keys
 	 *              which is used to create the DELETE statement
 	 * @param      PropelPDO $con the connection to use
 	 * @return     int 	The number of affected rows (if supported by underlying database driver).  This includes CASCADE-related rows
@@ -888,20 +883,20 @@ abstract class BaseClientPeer {
 	 public static function doDelete($values, PropelPDO $con = null)
 	 {
 		if ($con === null) {
-			$con = Propel::getConnection(ClientPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
+			$con = Propel::getConnection(PhotographerRegionPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
 		}
 
 		if ($values instanceof Criteria) {
 			// invalidate the cache for all objects of this type, since we have no
 			// way of knowing (without running a query) what objects should be invalidated
 			// from the cache based on this Criteria.
-			ClientPeer::clearInstancePool();
+			PhotographerRegionPeer::clearInstancePool();
 
 			// rename for clarity
 			$criteria = clone $values;
-		} elseif ($values instanceof Client) {
+		} elseif ($values instanceof PhotographerRegion) {
 			// invalidate the cache for this single object
-			ClientPeer::removeInstanceFromPool($values);
+			PhotographerRegionPeer::removeInstanceFromPool($values);
 			// create criteria based on pk values
 			$criteria = $values->buildPkeyCriteria();
 		} else {
@@ -910,11 +905,11 @@ abstract class BaseClientPeer {
 
 
 			$criteria = new Criteria(self::DATABASE_NAME);
-			$criteria->add(ClientPeer::ID, (array) $values, Criteria::IN);
+			$criteria->add(PhotographerRegionPeer::ID, (array) $values, Criteria::IN);
 
 			foreach ((array) $values as $singleval) {
 				// we can invalidate the cache for this single object
-				ClientPeer::removeInstanceFromPool($singleval);
+				PhotographerRegionPeer::removeInstanceFromPool($singleval);
 			}
 		}
 
@@ -939,24 +934,24 @@ abstract class BaseClientPeer {
 	}
 
 	/**
-	 * Validates all modified columns of given Client object.
+	 * Validates all modified columns of given PhotographerRegion object.
 	 * If parameter $columns is either a single column name or an array of column names
 	 * than only those columns are validated.
 	 *
 	 * NOTICE: This does not apply to primary or foreign keys for now.
 	 *
-	 * @param      Client $obj The object to validate.
+	 * @param      PhotographerRegion $obj The object to validate.
 	 * @param      mixed $cols Column name or array of column names.
 	 *
 	 * @return     mixed TRUE if all columns are valid or the error message of the first invalid column.
 	 */
-	public static function doValidate(Client $obj, $cols = null)
+	public static function doValidate(PhotographerRegion $obj, $cols = null)
 	{
 		$columns = array();
 
 		if ($cols) {
-			$dbMap = Propel::getDatabaseMap(ClientPeer::DATABASE_NAME);
-			$tableMap = $dbMap->getTable(ClientPeer::TABLE_NAME);
+			$dbMap = Propel::getDatabaseMap(PhotographerRegionPeer::DATABASE_NAME);
+			$tableMap = $dbMap->getTable(PhotographerRegionPeer::TABLE_NAME);
 
 			if (! is_array($cols)) {
 				$cols = array($cols);
@@ -972,11 +967,11 @@ abstract class BaseClientPeer {
 
 		}
 
-		$res =  BasePeer::doValidate(ClientPeer::DATABASE_NAME, ClientPeer::TABLE_NAME, $columns);
+		$res =  BasePeer::doValidate(PhotographerRegionPeer::DATABASE_NAME, PhotographerRegionPeer::TABLE_NAME, $columns);
     if ($res !== true) {
         $request = sfContext::getInstance()->getRequest();
         foreach ($res as $failed) {
-            $col = ClientPeer::translateFieldname($failed->getColumn(), BasePeer::TYPE_COLNAME, BasePeer::TYPE_PHPNAME);
+            $col = PhotographerRegionPeer::translateFieldname($failed->getColumn(), BasePeer::TYPE_COLNAME, BasePeer::TYPE_PHPNAME);
         }
     }
 
@@ -988,23 +983,23 @@ abstract class BaseClientPeer {
 	 *
 	 * @param      int $pk the primary key.
 	 * @param      PropelPDO $con the connection to use
-	 * @return     Client
+	 * @return     PhotographerRegion
 	 */
 	public static function retrieveByPK($pk, PropelPDO $con = null)
 	{
 
-		if (null !== ($obj = ClientPeer::getInstanceFromPool((string) $pk))) {
+		if (null !== ($obj = PhotographerRegionPeer::getInstanceFromPool((string) $pk))) {
 			return $obj;
 		}
 
 		if ($con === null) {
-			$con = Propel::getConnection(ClientPeer::DATABASE_NAME, Propel::CONNECTION_READ);
+			$con = Propel::getConnection(PhotographerRegionPeer::DATABASE_NAME, Propel::CONNECTION_READ);
 		}
 
-		$criteria = new Criteria(ClientPeer::DATABASE_NAME);
-		$criteria->add(ClientPeer::ID, $pk);
+		$criteria = new Criteria(PhotographerRegionPeer::DATABASE_NAME);
+		$criteria->add(PhotographerRegionPeer::ID, $pk);
 
-		$v = ClientPeer::doSelect($criteria, $con);
+		$v = PhotographerRegionPeer::doSelect($criteria, $con);
 
 		return !empty($v) > 0 ? $v[0] : null;
 	}
@@ -1020,30 +1015,30 @@ abstract class BaseClientPeer {
 	public static function retrieveByPKs($pks, PropelPDO $con = null)
 	{
 		if ($con === null) {
-			$con = Propel::getConnection(ClientPeer::DATABASE_NAME, Propel::CONNECTION_READ);
+			$con = Propel::getConnection(PhotographerRegionPeer::DATABASE_NAME, Propel::CONNECTION_READ);
 		}
 
 		$objs = null;
 		if (empty($pks)) {
 			$objs = array();
 		} else {
-			$criteria = new Criteria(ClientPeer::DATABASE_NAME);
-			$criteria->add(ClientPeer::ID, $pks, Criteria::IN);
-			$objs = ClientPeer::doSelect($criteria, $con);
+			$criteria = new Criteria(PhotographerRegionPeer::DATABASE_NAME);
+			$criteria->add(PhotographerRegionPeer::ID, $pks, Criteria::IN);
+			$objs = PhotographerRegionPeer::doSelect($criteria, $con);
 		}
 		return $objs;
 	}
 
-} // BaseClientPeer
+} // BasePhotographerRegionPeer
 
 // This is the static code needed to register the MapBuilder for this table with the main Propel class.
 //
-// NOTE: This static code cannot call methods on the ClientPeer class, because it is not defined yet.
-// If you need to use overridden methods, you can add this code to the bottom of the ClientPeer class:
+// NOTE: This static code cannot call methods on the PhotographerRegionPeer class, because it is not defined yet.
+// If you need to use overridden methods, you can add this code to the bottom of the PhotographerRegionPeer class:
 //
-// Propel::getDatabaseMap(ClientPeer::DATABASE_NAME)->addTableBuilder(ClientPeer::TABLE_NAME, ClientPeer::getMapBuilder());
+// Propel::getDatabaseMap(PhotographerRegionPeer::DATABASE_NAME)->addTableBuilder(PhotographerRegionPeer::TABLE_NAME, PhotographerRegionPeer::getMapBuilder());
 //
 // Doing so will effectively overwrite the registration below.
 
-Propel::getDatabaseMap(BaseClientPeer::DATABASE_NAME)->addTableBuilder(BaseClientPeer::TABLE_NAME, BaseClientPeer::getMapBuilder());
+Propel::getDatabaseMap(BasePhotographerRegionPeer::DATABASE_NAME)->addTableBuilder(BasePhotographerRegionPeer::TABLE_NAME, BasePhotographerRegionPeer::getMapBuilder());
 

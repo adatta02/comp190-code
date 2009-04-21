@@ -1,3 +1,4 @@
+<?php use_helper("Form"); ?>
 <div id="login-container">
   <div id='box'>
     <h3>Please login using your Tufts UTLN:</h3> <br/>
@@ -7,6 +8,7 @@
       <?php echo $form ?>
     </table>
   <input type="submit" value="sign in" />
+  <?php echo input_hidden_tag("referrer", sfContext::getInstance()->getRouting()->getCurrentInternalUri()) ?>
   </form>
   </div>
 </div>
