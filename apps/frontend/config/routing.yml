@@ -195,6 +195,10 @@ view_log:
 # misc login and redirect routes
 ################################################
 
+view_photos:
+  url: /view/photoshelter
+  param: { module: welcome, action: photoshelter }
+
 calendar_view:
   url: /calendar/
   param: { module: calendar, action: index }

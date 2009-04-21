@@ -530,21 +530,27 @@ EOF;
   	
   	$this->isAdmin = $this->getUser()->hasCredential("admin");
   	$this->form = new RequestJobForm();
+  	
   	if($request->isMethod("POST")){
       $this->processForm($request, $this->form);
   	}else{
+  		
   		if($this->getUser()->hasCredential("client")){
   			$c = new Criteria();
   			$c->add(ClientPeer::USER_ID, $this->getUser()->getProfile()->getUserId());
   			$profile = ClientPeer::doSelectOne($c);
+
+  			if(!is_null($profile)){
+	  			$this->form->setDefault("name", $profile->getName());
+	  			$this->form->setDefault("department", $profile->getDepartment());
+	  			$this->form->setDefault("address", $profile->getAddress());
+	  			$this->form->setDefault("email", $profile->getEmail());
+	  			$this->form->setDefault("phone", $profile->getPhone());
+	  			$this->form->setDefault("clientId", $profile->getId());
+  			}
   			
-  			$this->form->setDefault("name", $profile->getName());
-  			$this->form->setDefault("department", $profile->getDepartment());
-  			$this->form->setDefault("address", $profile->getAddress());
-  			$this->form->setDefault("email", $profile->getEmail());
-  			$this->form->setDefault("phone", $profile->getPhone());
-  			$this->form->setDefault("clientId", $profile->getId());
   		}
+  		
   	}
   	
   }
