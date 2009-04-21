@@ -31,28 +31,12 @@ class PMActions extends sfActions {
 			$c->addAnd ( JobPeer::DATE, $arr ["shootDateEnd"], Criteria::LESS_EQUAL );
 		
 		if (strlen ( $arr ["clientId"] )) {
-			$cc = new Criteria ( );
-			$cc->add ( JobClientPeer::CLIENT_ID, $arr ["clientId"] );
-			$clients = JobClientPeer::doSelectJoinAll ( $cc );
-			$jobIds = array ();
-			
-			foreach ( $clients as $client ) {
-				$jobIds [] = $client->getJob ()->getId ();
-			}
-			
+			$jobIds = JobClientPeer::getJobsByClientId($arr["clientId"]);			
 			$c->add ( JobPeer::ID, $jobIds, Criteria::IN );
 		}
 		
 		if (strlen ( $arr ["photographerId"] )) {
-			$cc = new Criteria ( );
-			$cc->add ( JobPhotographerPeer::PHOTOGRAPHER_ID, $arr ["photographerId"] );
-			$photogs = JobPhotographerPeer::doSelectJoinAll ( $cc );
-			$jobIds = array ();
-			
-			foreach ( $photogs as $ph ) {
-				$jobIds [] = $ph->getJob ()->getId ();
-			}
-			
+			$jobIds = JobPhotographerPeer::getJobsByPhotographerId($arr ["photographerId"]);
 			$c->addAnd ( JobPeer::ID, $jobIds, Criteria::IN );
 		}
 		
