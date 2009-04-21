@@ -32,6 +32,14 @@
 	<input type="text" id="loc" /><button type="button" onclick="getLocations()">Add Location</button>
 </form> 
 <div id="location-container">
+<?php 
+      $pr = PhotographerRegionPeer::doSelect(new Criteria());
+      foreach ($pr as $i){
+         if($pr->getPhotographerId() == $photographer->getId()){
+	      echo $pr->getAddress();
+	 }
+      }
+?>
 
 </div>
 </div>
