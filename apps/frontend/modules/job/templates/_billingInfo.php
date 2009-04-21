@@ -41,7 +41,7 @@
 	document.writeln('<p><b>Client (Bill to)</b></p>');
 	document.writeln('<p><?php foreach($job->getClients() as $i){ echo $i->getName(); ?><br>');
 	document.writeln('<?php echo $i->getDepartment(); ?><br>');
-	document.writeln('<?php echo $i->getAddress(); } ?><br>');
+	document.writeln('<?php echo $i->getAddress(); } ?><br><br>');
 	document.writeln('<p><b>Job</b></p>');
 	document.writeln('<p><?php echo "Job #".$job->getId(); ?><br>');
 	document.writeln('<?php echo $job->getEvent(); ?><br>');	

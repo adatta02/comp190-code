@@ -81,6 +81,11 @@
     .result(function(event, data) { $("#add-photographer-id").val(data[1]); });
     
    });
+
+   
+
+
+
 </script>
 
 <?php include_component ( "static", "topmenu", array("moveToSkip" => null, "noMenu" => true) ); ?>
@@ -91,9 +96,23 @@
 
 <div id="content-container">
 <div id="now-viewing">
+<div style="width:500px;float:left;">
     Viewing job #<?php echo $job->getId(); ?>
-    <?php echo image_tag("loading.gif", array("id" => "ajax-loading")); ?> 
-  </div>
+    <?php echo image_tag("loading.gif", array("id" => "ajax-loading")); ?>
+</div>
+<div id="email">
+<form action="sendEmail.php" method="POST">
+<select name="temp">
+<option value="acceptance">Job Acceptance</option>
+<option value="completion">Job Completion</option>
+<option value="assign">Photographer Assignment</option>
+<option value="service">Photography Services Job</option>
+</select>
+<input type="submit" value="Send Email" />
+</form>
+</div>    
+
+</div>  
 
 <div class="info-header">Basic 
 <a href="#" onclick="javascript:$('#job-basic-info').toggle(); return false;">[tg]</a>
@@ -229,6 +248,8 @@
 <div id="job-edit-history" class="collapsable">
   <?php include_partial("logRender", array("pager" => $logPager)); ?>
 </div>
+
+
 
 </div>
 
