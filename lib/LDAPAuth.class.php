@@ -25,7 +25,8 @@ class LDAPAuth extends sfGuardSecurityUser{
   	
   	// lets try the ldap
   	$res = ldap_connect ( sfConfig::get("app_ldap_server"), 636 );
-  	if(!$res){
+  	$anon = ldap_bind($res);
+  	if(!$res || !$anon){
   		throw new sfException("Could not connect to the LDAP server!", 0);
   	}
   	

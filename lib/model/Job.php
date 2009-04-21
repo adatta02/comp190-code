@@ -179,9 +179,10 @@ class Job extends BaseJob
 
 		  Regards,
 		   Tufts Photo Team';
-
+	 
+	 $isNew = $this->isNew();
   	// this is a new job
-  	if($this->isNew()){
+  	if($isNew){
       $logEntry = new Log();
       $logEntry->setWhen(time());
       $logEntry->setPropelClass("Job");
@@ -202,10 +203,7 @@ class Job extends BaseJob
   	
   	$con->beginTransaction();
     try {
-    	if($this->isNew()){
-        $logEntry->save();
-      }
-      
+    	if($isNew){ $logEntry->save(); }
       $ret = parent::save($con);
       $con->commit();
     }catch (Exception $e) {
@@ -221,9 +219,10 @@ class Job extends BaseJob
 		$arr ["startTime"] = sfGCalendar::timestampToRFC3339 ( $this->getStartTimestamp () );
 		$arr ["endTime"] = sfGCalendar::timestampToRFC3339 ( $this->getEndTimestamp () );
 		
-		if ($this->isNew ()) {
+		if ($isNew) {
 			$event = sfGCalendar::createJobEvent ( $arr );
 			$this->setGCalId ( $event->id );
+			$this->save();
 		} else {
 			sfGCalendar::updateJobEventById ( $this->getGCalId (), $arr );
 		}

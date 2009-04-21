@@ -43,8 +43,10 @@ class welcomeActions extends sfActions
   public function executeLoadPhotoshelterForm(sfWebRequest $request){
     $user = $this->getUser();
     $profile = $user->getProfile();
-    
     $email = $profile->getEmail();
+    
+    // TODO: Users without email addresses cant access photoshelter...
+    
     $password = $request->getParameter("password");
     
     $keyText = file_get_contents(sfConfig::get("sf_root_dir") . "/" . sfConfig::get("app_photoshelter_public_key"));
