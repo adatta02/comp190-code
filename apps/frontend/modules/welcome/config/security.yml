@@ -2,3 +2,5 @@ index:
   is_secure: off
 redirect:
   is_secure: off
+photoshelter:
+  is_secure: off

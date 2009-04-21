@@ -8,7 +8,6 @@
       <?php echo $form ?>
     </table>
   <input type="submit" value="sign in" />
-  <?php echo input_hidden_tag("referrer", sfContext::getInstance()->getRouting()->getCurrentInternalUri()) ?>
   </form>
   </div>
 </div>

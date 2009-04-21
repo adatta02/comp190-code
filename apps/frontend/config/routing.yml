@@ -203,6 +203,14 @@ photoshelter_error:
   url: /redirect/error
   param: { module: welcome, action: redirectError }
 
+load_photoshelter:
+  url: /photoshelter/load
+  param: { module: welcome, action: loadPhotoshelter }
+
+load_photoshelter_form:
+  url: /photoshelter/load/form
+  param: { module: welcome, action: loadPhotoshelterForm }
+
 calendar_view:
   url: /calendar/
   param: { module: calendar, action: index }
