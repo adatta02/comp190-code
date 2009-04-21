@@ -97,7 +97,7 @@
 <div id="content-container">
 <div id="now-viewing">
     Viewing job #<?php echo $job->getId(); ?>
-    <form action="sendEmail.php" method="post">
+<form action="sendEmail.php" method="post">
 <select name="temp">
 <option value="acceptance">Job Acceptance</option>
 <option value="completion">Job Completion</option>
