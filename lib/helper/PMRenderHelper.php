@@ -2,6 +2,14 @@
 use_helper("Form"); 
 use_helper("JavascriptBase");
 
+function GoogleMapsInclude(){
+	$key = sfConfig::get("app_gmap_key");
+	return '<script 
+          src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=' 
+	        . $key . '"
+	        type="text/javascript"></script>';
+}
+
   function renderLog($log, $classNum){
   ?>
      <div class="job-list-item-<?php echo $classNum ?>">

@@ -2,10 +2,7 @@
 <?php echo include_javascripts_for_form($basicInfoForm); ?>
 <?php echo include_stylesheets_for_form($basicInfoForm); ?>
 
-<script 
-  src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=true_or_false&amp;key=<?php echo sfConfig::get("app_gmap_key"); ?>"
-  type="text/javascript">
-</script>
+<?php echo GoogleMapsInclude(); ?>
 
 <script type="text/javascript">
   

@@ -1,12 +1,6 @@
 <?php use_helper("PMRender"); ?>
 <?php echo include_javascripts_for_form($InfoForm); ?>
-
-
-<script 
-  src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=true_or_false&amp;key=<?php echo sfConfig::get("app_gmap_key"); ?>"
-  type="text/javascript">
-</script>
-
+<?php echo GoogleMapsInclude(); ?>
 
 <?php include_component ( "static", "topmenu", array("moveToSkip" => null, "noMenu" => true) ); ?>
 <?php include_component ( "static", "shortcuts",
@@ -69,8 +63,6 @@
 			p = curProj.fromLatLngToPixel(latlng, 10);
 			coords.x = Math.floor(p.x / 256);
 			coords.y = Math.floor(p.y / 256);
-			
-			
                     }
                   }
                 );

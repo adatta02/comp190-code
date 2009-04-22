@@ -4,7 +4,7 @@ all:
     # check_password_callable: [LDAPAuth, checkLDAPPassword]
     # success_signin_url: @my_route?param=value
   ldap_server: ldaps://ldap.tufts.edu/
-  gmap_key: ABQIAAAA8FqJJOi4iXIzIN_n1D7zfRSYwoWwlxMuek8fitS573XaxON4MhSYlDh2OUNOKWkxo44SFPF4ARc-GA
+  gmap_key: ABQIAAAA_6icK9WzMbH5eGCPpoZKHhQ2s80LQuI1NckErksMVT-ro0hA4hSJVIpkoZUajXHvLWpvvpsiV-qO8w
   gcal_user: contact@setfive.com
   gcal_password: tuftsphoto
   job_status:
