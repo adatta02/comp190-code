@@ -112,7 +112,9 @@
 </div>  
 
 <div class="info-header">Basic 
-<a href="#" onclick="javascript:$('#job-basic-info').toggle(); return false;">[tg]</a>
+<a href="#" onclick="javascript:$('#job-basic-info').toggle(); return false;">
+<?php echo image_tag("arrow.png", array("class" =>"image-href", "style" => "width:15px;height:15px;")); ?>
+</a>
 <a href="#" onclick="javascript:$('#basic-info-edit').toggle(); $('#basic-info-table').toggle(); return false;">
   <?php echo image_tag("pencil.png", array("class" => "image-href")) ?>
 </a>
@@ -125,7 +127,8 @@
 <hr />
 
 <div class="info-header">Shoot <a href="#"
-	onclick="javascript:$('#job-shoot-info').toggle(); return false;">[tg]</a>
+	onclick="javascript:$('#job-shoot-info').toggle(); return false;">
+	<?php echo image_tag("arrow.png", array("class" =>"image-href", "style" => "width:15px;height:15px;")); ?></a>
 	 <a href="#" onclick="javascript:$('#shoot-edit-table').toggle(); $('#shoot-info-table').toggle(); return false;">
     <?php echo image_tag("pencil.png", array("class" => "image-href")) ?>
   </a>
@@ -139,7 +142,8 @@
 <hr />
 
 <div class="info-header">Photography <a href="#"
-	onclick="javascript:$('#job-photogrpahy-info').toggle(); return false;">[tg]</a>
+	onclick="javascript:$('#job-photogrpahy-info').toggle(); return false;">
+	<?php echo image_tag("arrow.png", array("class" =>"image-href", "style" => "width:15px;height:15px;")); ?></a>
 	 <a href="#" onclick="javascript:$('#photography-edit-table').toggle(); $('#photography-info-table').toggle(); return false;">
     <?php echo image_tag("pencil.png", array("class" => "image-href")) ?>
   </a>
@@ -154,7 +158,8 @@
 <hr/>
 
 <div class="info-header">Clients <a href="#"
-	onclick="javascript:$('#job-client-info').toggle(); return false;">[tg]</a>
+	onclick="javascript:$('#job-client-info').toggle(); return false;">
+	<?php echo image_tag("arrow.png", array("class" =>"image-href", "style" => "width:15px;height:15px;")); ?></a>
 </div>
 
 <div id="job-client-info" class="collapsable">
@@ -181,7 +186,8 @@
 <hr />
 
 <div class="info-header">Photographers <a href="#"
-	onclick="javascript:$('#job-photographer-info').toggle(); return false;">[tg]</a>
+	onclick="javascript:$('#job-photographer-info').toggle(); return false;">
+<?php echo image_tag("arrow.png", array("class" =>"image-href", "style" => "width:15px;height:15px;")); ?></a>
 </div>
 
 <div id="job-photographer-info" class="collapsable">
@@ -212,7 +218,8 @@
 <hr />
 
 <div class="info-header">Billing and Delivery <a href="#"
-	onclick="javascript:$('#job-billing-info').toggle(); return false;">[tg]</a>
+	onclick="javascript:$('#job-billing-info').toggle(); return false;">
+<?php echo image_tag("arrow.png", array("class" =>"image-href", "style" => "width:15px;height:15px;")); ?></a>
 	<a href="#" onclick="javascript:$('#billing-edit-table').toggle(); $('#billing-info-table').toggle(); return false;">
     <?php echo image_tag("pencil.png", array("class" => "image-href")) ?>
   </a>
@@ -225,7 +232,8 @@
 <hr />
 
 <div class="info-header">Internal Notes <a href="#"
-  onclick="javascript:$('#job-internal-notes').toggle(); return false;">[tg]</a>
+  onclick="javascript:$('#job-internal-notes').toggle(); return false;">
+<?php echo image_tag("arrow.png", array("class" =>"image-href", "style" => "width:15px;height:15px;")); ?></a>
   <a href="#" onclick="javascript:$('#internal-notes-edit').toggle(); $('#internal-notes-div').toggle(); return false;">
     <?php echo image_tag("pencil.png", array("class" => "image-href")) ?>
   </a>
@@ -236,7 +244,8 @@
 </div>
 
 <div class="info-header">History <a href="#"
-  onclick="javascript:$('#job-edit-history').toggle(); return false;">[tg]</a>
+  onclick="javascript:$('#job-edit-history').toggle(); return false;">
+<?php echo image_tag("arrow.png", array("class" =>"image-href", "style" => "width:15px;height:15px;")); ?></a>
   <?php echo image_tag("loading.gif", array("id" => "history-loading", "style" => "display: none")); ?> 
 </div>
 
@@ -245,7 +254,6 @@
 <div id="job-edit-history" class="collapsable">
   <?php include_partial("logRender", array("pager" => $logPager)); ?>
 </div>
-
 
 
 </div>

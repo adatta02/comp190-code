@@ -11,7 +11,7 @@
     <link rel="shortcut icon" href="/favicon.ico" />
     
 </head>
-<body>
+<body link="#996600" vlink="#996600">
 
 <div id="header">
   <div id="logo"><?php echo image_tag("tufts_logo.gif", array("style" => "height: 50px;margin-top:10px;margin-left:20px;")); ?></div>

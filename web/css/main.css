@@ -109,6 +109,10 @@ body{
   z-index:1;
 }
 
+#top-menu a:link{
+  color:#DDDDDD;
+}
+
 #left-top-menu{
   margin-top:3px;
   background-image: url(images/header_left.gif);
@@ -258,47 +262,13 @@ body{
 }
 
 .job-list-item-2{
-	background-color: #DDDDDD;
-}
-
-.names{
-  color: #8BB2D1;
+    background-color: #DDDDDD;
 }
 
 .job-table{;
   width:100%;
 }
 
-.job-list-item{
-}
-
-.job-list-item table.status1{
-    border:1px solid red;
- }
-
-.job-list-item table.status2{
-    border:1px solid blue;
- }
-
-.job-list-item table.status3{
-    border:1px solid green;
- }
-
-.job-list-item table.status4{
-    border:1px solid orange;
- }
-
-.job-list-item table.status5{
-    border:1px solid purple;
- }
-
-.job-list-item table.status6{
-    border:1px solid cyan;
- }
-
-.job-list-item table.status7{
-    border:1px solid black;
- }
 #delete-link a {
   color: red;
   font-size: 11px;  
