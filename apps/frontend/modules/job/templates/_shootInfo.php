@@ -80,7 +80,7 @@
                         map.setCenter(point, 13);
                         var marker = createMarker(point, address);
 			map.addOverlay(marker);
-			marker.openInfoWindowHtml(html);
+			
                     }
                   }
                 );
