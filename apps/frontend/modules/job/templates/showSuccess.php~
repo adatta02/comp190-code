@@ -2,10 +2,7 @@
 <?php echo include_javascripts_for_form($basicInfoForm); ?>
 <?php echo include_stylesheets_for_form($basicInfoForm); ?>
 
-<script 
-  src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=true_or_false&amp;key=<?php echo sfConfig::get("app_gmap_key"); ?>"
-  type="text/javascript">
-</script>
+<?php echo GoogleMapsInclude(); ?>
 
 <script type="text/javascript">
   
@@ -82,10 +79,6 @@
     
    });
 
-   
-
-
-
 </script>
 
 <?php include_component ( "static", "topmenu", array("moveToSkip" => null, "noMenu" => true) ); ?>
@@ -94,25 +87,44 @@
                                 "viewingCurrent" => null,
                                 "noSort" => true) ); ?>
 
+<script language="javascript">
+
+function email(template){
+	<?php 
+	   $to = $job->getContactEmail();
+	?>
+	var to = <?php echo $to; ?>;
+
+}
+
+</script>
+
+
+
 <div id="content-container">
 <div id="now-viewing">
+<div style="width:500px;float:left;">
     Viewing job #<?php echo $job->getId(); ?>
-<form action="sendEmail.php" method="post">
+    <?php echo image_tag("loading.gif", array("id" => "ajax-loading")); ?>
+</div>
+<div id="email">
+<form action="sendEmail.php" method="POST">
 <select name="temp">
 <option value="acceptance">Job Acceptance</option>
 <option value="completion">Job Completion</option>
 <option value="assign">Photographer Assignment</option>
 <option value="service">Photography Services Job</option>
 </select>
-<input type="submit" value="Send Email" />
-</form>    
-    <?php echo image_tag("loading.gif", array("id" => "ajax-loading")); ?> 
-    
+<button type='button' onclick='email(temp.value);'>Send Email</button>
+</form>
+</div>    
 
-</div>
+</div>  
 
 <div class="info-header">Basic 
-<a href="#" onclick="javascript:$('#job-basic-info').toggle(); return false;">[tg]</a>
+<a href="#" onclick="javascript:$('#job-basic-info').toggle(); return false;">
+<?php echo image_tag("arrow.png", array("class" =>"image-href", "style" => "width:15px;height:15px;")); ?>
+</a>
 <a href="#" onclick="javascript:$('#basic-info-edit').toggle(); $('#basic-info-table').toggle(); return false;">
   <?php echo image_tag("pencil.png", array("class" => "image-href")) ?>
 </a>
@@ -125,7 +137,8 @@
 <hr />
 
 <div class="info-header">Shoot <a href="#"
-	onclick="javascript:$('#job-shoot-info').toggle(); return false;">[tg]</a>
+	onclick="javascript:$('#job-shoot-info').toggle(); return false;">
+	<?php echo image_tag("arrow.png", array("class" =>"image-href", "style" => "width:15px;height:15px;")); ?></a>
 	 <a href="#" onclick="javascript:$('#shoot-edit-table').toggle(); $('#shoot-info-table').toggle(); return false;">
     <?php echo image_tag("pencil.png", array("class" => "image-href")) ?>
   </a>
@@ -139,7 +152,8 @@
 <hr />
 
 <div class="info-header">Photography <a href="#"
-	onclick="javascript:$('#job-photogrpahy-info').toggle(); return false;">[tg]</a>
+	onclick="javascript:$('#job-photogrpahy-info').toggle(); return false;">
+	<?php echo image_tag("arrow.png", array("class" =>"image-href", "style" => "width:15px;height:15px;")); ?></a>
 	 <a href="#" onclick="javascript:$('#photography-edit-table').toggle(); $('#photography-info-table').toggle(); return false;">
     <?php echo image_tag("pencil.png", array("class" => "image-href")) ?>
   </a>
@@ -154,7 +168,8 @@
 <hr/>
 
 <div class="info-header">Clients <a href="#"
-	onclick="javascript:$('#job-client-info').toggle(); return false;">[tg]</a>
+	onclick="javascript:$('#job-client-info').toggle(); return false;">
+	<?php echo image_tag("arrow.png", array("class" =>"image-href", "style" => "width:15px;height:15px;")); ?></a>
 </div>
 
 <div id="job-client-info" class="collapsable">
@@ -181,7 +196,8 @@
 <hr />
 
 <div class="info-header">Photographers <a href="#"
-	onclick="javascript:$('#job-photographer-info').toggle(); return false;">[tg]</a>
+	onclick="javascript:$('#job-photographer-info').toggle(); return false;">
+<?php echo image_tag("arrow.png", array("class" =>"image-href", "style" => "width:15px;height:15px;")); ?></a>
 </div>
 
 <div id="job-photographer-info" class="collapsable">
@@ -212,7 +228,8 @@
 <hr />
 
 <div class="info-header">Billing and Delivery <a href="#"
-	onclick="javascript:$('#job-billing-info').toggle(); return false;">[tg]</a>
+	onclick="javascript:$('#job-billing-info').toggle(); return false;">
+<?php echo image_tag("arrow.png", array("class" =>"image-href", "style" => "width:15px;height:15px;")); ?></a>
 	<a href="#" onclick="javascript:$('#billing-edit-table').toggle(); $('#billing-info-table').toggle(); return false;">
     <?php echo image_tag("pencil.png", array("class" => "image-href")) ?>
   </a>
@@ -225,7 +242,8 @@
 <hr />
 
 <div class="info-header">Internal Notes <a href="#"
-  onclick="javascript:$('#job-internal-notes').toggle(); return false;">[tg]</a>
+  onclick="javascript:$('#job-internal-notes').toggle(); return false;">
+<?php echo image_tag("arrow.png", array("class" =>"image-href", "style" => "width:15px;height:15px;")); ?></a>
   <a href="#" onclick="javascript:$('#internal-notes-edit').toggle(); $('#internal-notes-div').toggle(); return false;">
     <?php echo image_tag("pencil.png", array("class" => "image-href")) ?>
   </a>
@@ -236,7 +254,8 @@
 </div>
 
 <div class="info-header">History <a href="#"
-  onclick="javascript:$('#job-edit-history').toggle(); return false;">[tg]</a>
+  onclick="javascript:$('#job-edit-history').toggle(); return false;">
+<?php echo image_tag("arrow.png", array("class" =>"image-href", "style" => "width:15px;height:15px;")); ?></a>
   <?php echo image_tag("loading.gif", array("id" => "history-loading", "style" => "display: none")); ?> 
 </div>
 
@@ -246,13 +265,6 @@
   <?php include_partial("logRender", array("pager" => $logPager)); ?>
 </div>
 
-<hr/>
-
-<div class="info-header">Email
-<br>
-
-
-</div>
 
 </div>
 

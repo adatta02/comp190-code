@@ -1,3 +1,4 @@
+
 var ProjectManager = new Object();
 ProjectManager.NONE = 1;
 ProjectManager.ALL = 2;
@@ -5,9 +6,6 @@ ProjectManager.TOGGLE = 3;
 ProjectManager.item2OldColor = null;
 ProjectManager.item1OldColor = null;
 ProjectManager.mouseOverColor = "#8bb2d1";
-
-f
-
 
 function copyClient(){
   $("#requestjob_contact_name").val( $("#requestjob_name").val() );
