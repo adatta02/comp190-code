@@ -320,7 +320,7 @@ function putIn(template){
 
 <div class="info-header">Email<br><br></div>
 <div>
-<form action="sendEmail.php" method="POST">
+<form>
 <select name="temp">
 <option value="acceptance">Job Acceptance</option>
 <option value="completion">Job Completion</option>
