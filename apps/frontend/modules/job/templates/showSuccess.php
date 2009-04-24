@@ -95,12 +95,17 @@ function email(template){
 	   foreach($job->getPhotographers() as $i){ 
 	      $pName = $i->getName();
 	   }
-        ?>
+	   
+	   $u = url_for('@job_email');	
+
+	?>
         var connam = "<?php echo $cN; ?>";
 	var pn = "<?php echo $pName; ?>";
+	
+	var url = "<?php echo $u; ?>";
 
 	var doc = document.getElementById('emailSec');
-	var emailStuff = "<form><table>";
+	var emailStuff = "<form action='" + url + "' method='POST'><table>";
 	emailStuff += "<tr><td>From</td><td><input type='text' id='from' value='' /></td></tr>";
 
 	   if(template == "acceptance"){
@@ -122,7 +127,7 @@ tography\n80 George St., First Floor\nMedford,MA 02155\nTel:617.627.4282\nFax: 6
 	       emailStuff += "<tr><td colspan='2'><textarea id='body' rows='20' cols='50'>Dear " + pn + ", \n\n Thank you for working on this assignment. If you have any questions, please contact us at the email address or phone number below.\nPlease arrange to deliver the images by FTP or mail within 1-2 business days of the shoot.\n\nGood Luck!\n\nThe Tufts Photo Team \n\nUniversity Photography\n80 George St., First Floor\nMedford,MA 02155\nTel:617.627.4282\nFax: 617.627.3549\nphoto.tufts.edu</textarea></td></tr>";
          }
 
-	emailStuff += '<tr><td colspan="2"><button type="button" onclick="sendEmail()">Send Email</button></td></tr>';
+	emailStuff += '<tr><td colspan="2"><input type="submit" value="Send Email" /></td></tr>';
 	emailStuff += "</table></form>";
 	
 	doc.innerHTML = emailStuff;

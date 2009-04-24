@@ -23,6 +23,9 @@ project_autocomplete:
 job_create:
   url: /job/create
   param: { module: job, action: create }
+job_email:
+  url: /job/email
+  param: { module: job, action: email }
 job_success:
   url: /job/success
   param: { module: job, action: success }

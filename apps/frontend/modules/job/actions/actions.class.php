@@ -230,6 +230,20 @@ class jobActions extends PMActions
 		return sfView::NONE;
 	}
 	
+
+public function executeEmail(sfWebRequest $request){
+
+     $to = "ckatz2009@gmail.com";
+     $from = "From: alissalcooper@gmail.com";
+     $subject = "Test2";
+     $body = "Testing email";
+
+     $sent = mail($to, $subject, $body, $from);
+
+}	
+
+
+
 	private function getEditHistory($page = 1){
     $c = new Criteria();
     $c->add(LogPeer::PROPEL_CLASS, "Job");
