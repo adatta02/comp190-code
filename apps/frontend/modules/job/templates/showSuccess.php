@@ -108,6 +108,12 @@ function email(template){
 	var emailStuff = "<form action='" + url + "' method='POST'><table>";
 	emailStuff += "<tr><td>From</td><td><input type='text' id='from' value='' /></td></tr>";
 
+	   if(template == "details"){
+               emailStuff += "<tr><td>To</td><td><input type='text' id='to' value='' /></td></tr>";
+               emailStuff += "<tr><td>Subject</td><td><input type='text' id='subject' value='Verify Details' /></td></tr>";
+               emailStuff += "<tr><td colspan='2'><textarea id='body' rows='20' cols='50'>Dear " + connam + ", \n\n Thank you for submitting your photo assignment request. Please review and confirm with us the details of your job at LINK.\n\nUnless otherwise noted in your request, delivery time for photos is 10-14 business days. If you have any questions, please contact us at the email address or phone number below.\n\nThanks again!\n\nThe Tufts Photo Team \n\nUniversity Photography\n80 George St., First Floor\nMedford,MA 02155\nTel:617.627.4282\nFax: 617.627.3549\nphoto.tufts.edu</textarea></td></tr>";
+         }
+
 	   if(template == "acceptance"){
 	       emailStuff += "<tr><td>To</td><td><input type='text' id='to' value='' /></td></tr>";
                emailStuff += "<tr><td>Subject</td><td><input type='text' id='subject' value='Job Acceptance' /></td></tr>";
@@ -133,15 +139,6 @@ tography\n80 George St., First Floor\nMedford,MA 02155\nTel:617.627.4282\nFax: 6
 	doc.innerHTML = emailStuff;
 }
 
-function sendEmail(){
-  //var to = document.getElementById('to').value;
-  var to = "ckatz2009@gmail.com";
-  //var from = document.getElementById('from').value;
-  var from = "alissalcooper@gmail.com";
-  var subject = document.getElementById('subject').value;
-  var body = document.getElementById('body').value;
-
-}
 
 function putIn(template){
 	 <?php
@@ -327,10 +324,10 @@ function putIn(template){
 <div>
 <form>
 <select name="temp">
+<option value="details">Verify Details</option>
 <option value="acceptance">Job Acceptance</option>
 <option value="completion">Job Completion</option>
 <option value="assign">Photographer Assignment</option>
-<option value="service">Photography Services Job</option>
 </select>
 <button type='button' onclick='email(temp.value);putIn(temp.value);'>Show Template</button>
 </form>
