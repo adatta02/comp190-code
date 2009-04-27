@@ -119,8 +119,8 @@ class RequestJobForm extends sfForm {
 		
 		$this->errorSchema = new sfValidatorErrorSchema ( $this->validatorSchema );
 		
-		$this->validatorSchema->setPostValidator ( new sfValidatorAnd ( array (new sfValidatorSchemaCompare ( 'start_time', sfValidatorSchemaCompare::LESS_THAN_EQUAL, 'end_time', array ('throw_global_error' => true ), array ('invalid' => 'The start date ("%left_field%") must be before the end date! ("%right_field%")' ) ), 
-		  new sfValidatorSchemaCompare ( 'date', sfValidatorSchemaCompare::GREATER_THAN, 'now', array ('throw_global_error' => true ), array ('invalid' => 'The start date ("%left_field%") must be in the future today!' ) ) ) ) );
+		$this->validatorSchema->setPostValidator ( 
+		  new sfValidatorAnd ( array (new sfValidatorSchemaCompare ( 'start_time', sfValidatorSchemaCompare::LESS_THAN_EQUAL, 'end_time', array ('throw_global_error' => true ), array ('invalid' => 'The start date ("%left_field%") must be before the end date! ("%right_field%")' ) ), )));
 
 
 		parent::setup ();
@@ -154,10 +154,27 @@ class RequestJobForm extends sfForm {
 		$j->save ();
 	
 		$user = sfContext::getInstance()->getUser();
+		
 		if($this->getValue("clientId") > 0 &&
 		    ($user->hasCredential("client") || $user->hasCredential("admin"))){
 			$client = ClientPeer::retrieveByPK($this->getValue("clientId"));
 			$j->addClient($client);
+		}
+		
+		// if they are a user lets make them a client
+		if($user->getProfile()->getUserType()->getId() == sfConfig::get("app_user_type_user")){
+      $clientProfile = new Client();
+      $clientProfile->setUserId($user->getProfile()->getId());
+      $clientProfile->setName($this->getValue("name"));
+      $clientProfile->setDepartment($this->getValue("department"));
+      $clientProfile->setAddress($this->getValue("address"));
+      $clientProfile->setEmail("email");
+      $clientProfile->setPhone($this->getValue("phone"));
+      $clientProfile->save();
+      $j->addClient($clientProfile);
+      
+      $user->getProfile()->setUserTypeId(sfConfig::get("app_user_type_client"));
+      $user->getProfile()->save();
 		}
 		
 	}

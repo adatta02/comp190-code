@@ -181,18 +181,6 @@ class Job extends BaseJob
 		   Tufts Photo Team';
 	 
 	 $isNew = $this->isNew();
-  	// this is a new job
-  	if($isNew){
-      $logEntry = new Log();
-      $logEntry->setWhen(time());
-      $logEntry->setPropelClass("Job");
-      $logEntry->setSfGuardUserProfileId(sfContext::getInstance()->getUser()->getUserId());
-  		$logEntry->setMessage("Job created.");
-  		$logEntry->setLogMessageTypeId(sfConfig::get("app_log_type_create"));
-  		$logEntry->setPropelId($this->getId());
-		  // mail($this->getContactEmail(),$subject,$message);
-		  // mail('alissalcooper@gmail.com', 'Test','This is a test');
-  	}
   	
   	// see if we need to do revision control on the notes
   	$updateNotes = in_array(JobPeer::NOTES, $this->modifiedColumns) && (strlen($this->getNotes() > 1));
@@ -203,7 +191,6 @@ class Job extends BaseJob
   	
   	$con->beginTransaction();
     try {
-    	if($isNew){ $logEntry->save(); }
       $ret = parent::save($con);
       $con->commit();
     }catch (Exception $e) {
@@ -220,6 +207,15 @@ class Job extends BaseJob
 		$arr ["endTime"] = sfGCalendar::timestampToRFC3339 ( $this->getEndTimestamp () );
 		
 		if ($isNew) {
+      $logEntry = new Log();
+      $logEntry->setWhen(time());
+      $logEntry->setPropelClass("Job");
+      $logEntry->setSfGuardUserProfileId(sfContext::getInstance()->getUser()->getUserId());
+      $logEntry->setMessage("Job created.");
+      $logEntry->setLogMessageTypeId(sfConfig::get("app_log_type_create"));
+      $logEntry->setPropelId($this->getId());
+      $logEntry->save();
+      
 			$event = sfGCalendar::createJobEvent ( $arr );
 			$this->setGCalId ( $event->id );
 			$this->save();

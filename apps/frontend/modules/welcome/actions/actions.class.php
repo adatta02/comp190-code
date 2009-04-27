@@ -19,7 +19,13 @@ class welcomeActions extends sfActions
   {
   	
   	$route = str_replace("@", "", sfContext::getInstance()->getRouting()->getCurrentInternalUri(true));
-  	$url = sfContext::getInstance()->getRouting()->generate($route);
+  	
+  	// HACK: theres something wrong when it tries to generate a slugged URL
+  	try{
+  	 $url = sfContext::getInstance()->getRouting()->generate($route);
+  	}catch(Exception $ex){ 
+  		$url = sfContext::getInstance()->getRouting()->generate("homepage");
+  	}
   	
     $this->form = new sfGuardFormSignin();
     $this->getUser()->setReferer($url);

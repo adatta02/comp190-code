@@ -200,7 +200,7 @@
     <column name="log_message_type_id" type="INTEGER"/>
     <foreign-key name="fk_log_sf_guard_user_profile" 
         foreignTable="sf_guard_user_profile" phpName="User">
-      <reference local="sf_guard_user_profile_id" foreign="id"/>
+      <reference local="sf_guard_user_profile_id" foreign="user_id"/>
     </foreign-key>
     <foreign-key name="fk_log_log_message_type" 
         foreignTable="log_message_type" phpName="MessageType">
