@@ -10,7 +10,9 @@ client_myjobs:
 request_add_job:
   url: /addtojob
   param: { module: clientview, action: addJob }
-
+client_myjobs_own:
+  url: /view/mine
+  param: { module: clientview, action: index }
 ################################################
 # projects
 ################################################

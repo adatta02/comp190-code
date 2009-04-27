@@ -25,7 +25,8 @@ class clientviewActions extends sfActions {
 		$this->page = $this->getRequest ()->getParameter ( "page" );
     $this->sortedBy = $this->getRequest ()->getParameter ( "sortBy" );
     $this->invert = $this->getRequest ()->getParameter ( "invert" );
-		
+		$own = $request->getParameter("own");
+    
 		if (! method_exists ( $this->getRoute (), "getObject" )) {
 			$c = new Criteria ( );
 			$c->add ( StatusPeer::ID, sfConfig::get ( "app_project_list_default_view", 1 ) );
@@ -77,6 +78,26 @@ class clientviewActions extends sfActions {
 		  	$c->add(JobPeer::ID, $ids, Criteria::IN);
     }
 		
+    if($own){
+    	$crit = new Criteria();
+    	$crit->add(ClientPeer::USER_ID, $profile->getId());
+    	$client = ClientPeer::doSelectOne($crit);
+    	
+    	if(is_null($client)){
+    		$this->forward404("Please contact Tufts Photo support.");
+    	}
+    	
+      $crit = new Criteria();
+      $crit->add(JobClientPeer::CLIENT_ID, $client->getId());
+      $ids = array();
+      $jobs = JobClientPeer::doSelect($crit);
+        
+      foreach($jobs as $ph){
+      	$ids[] = $ph->getJobId();
+      }
+      $c->add(JobPeer::ID, $ids, Criteria::IN);
+    }
+    
 		$this->pager = new sfPropelPager ( "Job", sfConfig::get ( "app_items_per_page" ) );
 		$this->pager->setCriteria ( $c );
 		$this->pager->setPage ( $this->page );

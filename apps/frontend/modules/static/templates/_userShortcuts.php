@@ -23,8 +23,10 @@
 	 <?php if(in_array($s->getState(), $showStates)): ?>
 	  <li><?php echo link_to($s, "client_myjobs", $s); ?></li>
 	 <?php endif; ?>
-	 
 	<?php endforeach; ?>
+	<?php if(sfContext::getInstance()->getUser()->hasCredential("client")): ?>
+    <li><?php echo link_to("My Jobs", "client_myjobs_own", array("own" => true)); ?></li>
+  <?php endif; ?>
 	</ul>
 	
 	<hr/>
