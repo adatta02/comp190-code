@@ -36,7 +36,7 @@
 
       function createMarker(point,html) {
 
-      html += '<br> <a href="http://maps.google.com/maps?saddr=&daddr=' + html + '" target ="_blank">Directions<\/a>';
+      html += '<br> <a href="http://maps.google.com/maps?saddr=&daddr=' + point.toUrlValue() + '" target ="_blank">Direction<\/a>';
 
         var marker = new GMarker(point);
 	GEvent.addListener(marker, "click", function() {
