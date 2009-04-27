@@ -1,4 +1,4 @@
 index:
-  credentials: [client]
+  credentials: [[photographer, client]]
 addJob:
   credentials: [client]

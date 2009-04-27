@@ -12,7 +12,7 @@ class clientviewActions extends sfActions {
 
 	public function executeAddJob(sfWebRequest $request) {
 			$jobId = $request->getParameter("id");
-			
+			// send the email to tufts photo and such
 	}
 
 /**
@@ -54,6 +54,29 @@ class clientviewActions extends sfActions {
 			$this->page = 1;
 		}
 
+		$profile = $this->getUser()->getProfile();
+		// restrict to only their jobs if they are photogs
+		if($profile->getUserType()->getId() 
+		      == sfConfig::get("app_user_type_photographer")){
+		  	$crit = new Criteria();
+		  	$crit->add(PhotographerPeer::USER_ID, $profile->getId());
+		  	$photo = PhotographerPeer::doSelectOne($crit);
+		  	
+		  	if(is_null($photo)){
+		  		$this->forward404("Please contact Tufts Photo support.");
+		  	}
+		  	
+        $crit = new Criteria();
+		  	$crit->add(JobPhotographerPeer::PHOTOGRAPHER_ID, $photo->getId());
+		  	$ids = array();
+		  	$photos = JobPhotographerPeer::doSelect($crit);
+		  	
+		  	foreach($photos as $ph){
+		  		$ids[] = $ph->getJobId();
+		  	}
+		  	$c->add(JobPeer::ID, $ids, Criteria::IN);
+    }
+		
 		$this->pager = new sfPropelPager ( "Job", sfConfig::get ( "app_items_per_page" ) );
 		$this->pager->setCriteria ( $c );
 		$this->pager->setPage ( $this->page );

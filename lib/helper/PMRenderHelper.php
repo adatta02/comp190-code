@@ -147,9 +147,12 @@ function renderClientJobListView($job, $classNum) {
 			<col width="33%"></col>
 			<col width="33%"></col>
 	    <tr>
-	     <td>Job <?php echo link_to ( $job->getId (), "job_show", $job ); ?></td>
+	     <td>Job #<?php echo $job->getId (); ?></td>
 		   <td><?php echo $job->getEvent ();?></td>
-		   <td><?php echo link_to_function("Add me as client", "addClient(" . $job->getId() . ")"); ?></td>
+		   
+		   <?php if(sfContext::getInstance()->getUser()->hasCredential("client")): ?>
+		    <td><?php echo link_to_function("Add me as client", "addClient(" . $job->getId() . ")"); ?></td>
+		   <?php endif; ?>
 		   <td><?php 
 		        if ($job->getProjectId ()) {
 		          $title = $job->getProject ()->getName ();
