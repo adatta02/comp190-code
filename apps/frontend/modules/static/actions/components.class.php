@@ -7,6 +7,13 @@ class staticComponents extends sfComponents
 		$this->sortBy = JobPeer::$LIST_VIEW_SORTABLE;
 	}
 	
+ public function executeUserShortcuts()
+  {
+    $this->states = StatusPeer::doSelect(new Criteria());
+    $this->sortBy = JobPeer::$LIST_VIEW_SORTABLE;
+    $this->showStates = array("Pending", "Completed", "Accepted");
+  }
+	
 	public function executePager(){
 		
 	}

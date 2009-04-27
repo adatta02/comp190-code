@@ -162,7 +162,7 @@ body{
 
 #move-menu{
 	float:left;
-	padding-left: 200px;
+	padding-left: 45px;
 }
 
 .plus-img, .delete-img, .image-href{
@@ -272,4 +272,8 @@ body{
 #delete-link a {
   color: red;
   font-size: 11px;  
+}
+
+#user-banner {
+  float: left;
 }

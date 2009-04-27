@@ -90,6 +90,10 @@
 <div id="top-menu-one">
 <div id="top-menu-container">
 			  
+			  <div id="user-banner">
+			   <?php echo "Logged in as " . $sf_user->getUserName(); ?>
+			  </div>
+			  
 			  <?php
 			   $noMenu = (isset($noMenu) ? $noMenu : false);  
 			   if(!$noMenu): ?>
@@ -120,7 +124,7 @@
 <div style="clear: both"></div>
 
 
-<div id="botMenu">
+<div id="topMenu">
 <div id="check-menu">Select: <a href="#all"
 	onclick="return toggle(ProjectManager.ALL); return false;">All</a> * <a
 	href="#none" onclick="return toggle(ProjectManager.NONE); return false;">None</a> * <a

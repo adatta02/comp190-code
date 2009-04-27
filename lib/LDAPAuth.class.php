@@ -64,10 +64,11 @@ class LDAPAuth extends sfGuardSecurityUser{
       
 			$sfprofile = $sfGuard->getProfile();
 			$sfprofile->setUserId($sfUser->getId());
-			$sfprofile->setUserTypeId(sfConfig::get("app_user_type_user"));
 			$sfprofile->setEmail($email);
 			$sfprofile->setFirstName($firstName);
 			$sfprofile->setLastName($lastName);
+			if($sfprofile->getUserTypeId() == NULL)
+			 $sfprofile->setUserTypeId(sfConfig::get("app_user_type_user"));
 			$sfprofile->save();
 			
 			return true;

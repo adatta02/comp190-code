@@ -1,4 +1,17 @@
 ################################################
+# user views
+################################################
+client_myjobs:
+  url: /view/myjobs/:state
+  class:    sfPropelRoute
+  param: { module: clientview, action: index }
+  options: { model: Status, type: object }
+  requirements: {Slug: \w+ }
+request_add_job:
+  url: /addtojob
+  param: { module: clientview, action: addJob }
+
+################################################
 # projects
 ################################################
 project_view:

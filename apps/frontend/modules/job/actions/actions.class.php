@@ -511,6 +511,18 @@ EOF;
 	 */
 	public function executeList(sfWebRequest $request) {
 		
+		if(!$this->getUser()->hasCredential("admin")){
+			
+			if($this->getUser()->hasCredential("client")){
+				$this->forward("clientview", "index");
+			}else if($this->getUser()->hasCredential("photographer")){
+				$this->forward("clientview", "index");
+			}else{
+				$this->forward404("Permission denied!");
+			}
+			
+		}
+		
 		if (! method_exists ( $this->getRoute (), "getObject" )) {
 			$c = new Criteria ( );
 			$c->add ( StatusPeer::ID, sfConfig::get ( "app_project_list_default_view", 1 ) );

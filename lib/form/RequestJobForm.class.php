@@ -175,6 +175,8 @@ class RequestJobForm extends sfForm {
       
       $user->getProfile()->setUserTypeId(sfConfig::get("app_user_type_client"));
       $user->getProfile()->save();
+      $user->clearCredentials();
+      $user->addCredential("client");
 		}
 		
 	}
