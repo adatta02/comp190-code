@@ -33,7 +33,7 @@ class welcomeActions extends sfActions
         $this->getUser()->addCredential($credential);
       }
     }
-  	
+  
   }
   
   public function executeRedirectError(sfWebRequest $request){
@@ -44,6 +44,8 @@ class welcomeActions extends sfActions
     $user = $this->getUser();
     $profile = $user->getProfile();
     $email = $profile->getEmail();
+    $firstName = $profile->getFirstName();
+    $lastName = $profile->getLastName();
     
     // TODO: Users without email addresses cant access photoshelter...
     
@@ -58,8 +60,8 @@ class welcomeActions extends sfActions
     $arr = array();
     $arr["U_EMAIL"] = $email;
     $arr["U_PASSWORD"] = $password;
-    $arr["U_FIRST_NAME"] = "John";
-    $arr["U_LAST_NAME"] = "Doe";
+    $arr["U_FIRST_NAME"] = $firstName;
+    $arr["U_LAST_NAME"] = $lastName;
     $arr["RL_E"] = $this->generateUrl("photoshelter_error", array(), true);
     $arr["RL_S"] = "http://pa.photoshelter.com/c/tuftsphoto";
     $arr["ETIME"] = time() + 60;
@@ -77,7 +79,7 @@ class welcomeActions extends sfActions
     for ($i=0; $i<$l; $i+= $t) {
       $block = substr($queryString, $i, $t);
       if (!openssl_public_encrypt($block,$tS, $photoShelterPublic)){
-                       throw new AssertErr('failed encrypt');
+                       throw new sfException('failed encrypt', 1);
       }
       $cryptPayload .= $tS;
     }

@@ -14,6 +14,8 @@
     <column name="user_type_id" type="INTEGER"/>
     <column name="user_id" type="INTEGER"/>
     <column name="email" type="VARCHAR" size="255"/>
+    <column name="first_name" type="VARCHAR" size="255"/>
+    <column name="last_name" type="VARCHAR" size="255"/>
     <foreign-key name="fk_sf_guard_user_profile_user_type" foreignTable="user_type">
       <reference local="user_type_id" foreign="id"/>
     </foreign-key>

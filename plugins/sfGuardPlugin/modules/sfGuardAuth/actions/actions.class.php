@@ -40,6 +40,7 @@ class sfGuardAuthActions extends BasesfGuardAuthActions
 	  	  $u = new sfGuardUser();
 	  	  $u->setUsername($username);
 	  	  $u->save();
+	  	  $u->getProfile();
 	  	}
   	}
   	
