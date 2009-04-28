@@ -145,8 +145,8 @@ function putIn(template){
            $toEmail = $job->getContactEmail();
            $cName = $job->getContactName();
 
-	  $fromEmail = $sfGuardUserProfile->getEmail();
-
+	  // $fromEmail = $sfGuardUserProfile->getEmail();
+	  //  $fromEmail = sfContext::getInstance()->getUser()->get
 	   foreach($job->getPhotographers() as $i){
               $pEmail = $i->getEmail();
            }

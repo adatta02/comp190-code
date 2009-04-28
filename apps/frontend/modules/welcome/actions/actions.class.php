@@ -44,7 +44,7 @@ class welcomeActions extends sfActions
   }
   
   public function executeRedirectError(sfWebRequest $request){
-  	
+  	$this->error = $request->getParameter("e");
   }
   
   public function executeLoadPhotoshelterForm(sfWebRequest $request){
