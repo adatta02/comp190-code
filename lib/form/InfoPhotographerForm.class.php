@@ -10,9 +10,27 @@
  */
 class InfoPhotographerForm extends BaseFormPropel {
 	public function setup() {
-		$this->setWidgets ( array ('name' => new sfWidgetFormInput ( ), 'email' => new sfWidgetFormInput ( ), 'phone' => new sfWidgetFormInput ( ), 'affiliation' => new sfWidgetFormInput ( ), 'website' => new sfWidgetFormInput ( ), 'description' => new sfWidgetFormTextarea ( ), 'billing_info' => new sfWidgetFormTextarea ( ), 'photographer_id' => new sfWidgetFormInputHidden ( ) ) );
+		$this->setWidgets ( array ('name' => new sfWidgetFormInput ( ), 
+		                           'email' => new sfWidgetFormInput ( ), 
+		                           'phone' => new sfWidgetFormInput ( ), 
+		                           'affiliation' => new sfWidgetFormInput ( ), 
+		                           'website' => new sfWidgetFormInput ( ), 
+		                           'description' => new sfWidgetFormTextarea ( ), 
+		                           'billing_info' => new sfWidgetFormTextarea ( ), 
+		                           'photographer_id' => new sfWidgetFormInputHidden ( ),
+		                           'reset_password' => new sfWidgetFormInputCheckbox(),
+		                           'password' => new sfWidgetFormInputPassword() ));
 		
-		$this->setValidators ( array ('name' => new sfValidatorString ( array ('max_length' => 45, 'required' => false ) ), 'email' => new sfValidatorString ( array ('max_length' => 64, 'required' => false ) ), 'phone' => new sfValidatorString ( array ('max_length' => 45, 'required' => false ) ), 'affiliation' => new sfValidatorString ( array ('max_length' => 64, 'required' => false ) ), 'website' => new sfValidatorString ( array ('max_length' => 64, 'required' => false ) ), 'description' => new sfValidatorString ( array ('max_length' => 65000, 'required' => false ) ), 'billing_info' => new sfValidatorString ( array ('max_length' => 65000, 'required' => false ) ), 'photographer_id' => new sfValidatorNumber ( array ('required' => true ) ) ) );
+		$this->setValidators ( array ('name' => new sfValidatorString ( array ('max_length' => 45, 'required' => true ) ), 
+		                              'email' => new sfValidatorString ( array ('max_length' => 64, 'required' => true ) ), 
+		                              'phone' => new sfValidatorString ( array ('max_length' => 45, 'required' => false ) ), 
+		                              'affiliation' => new sfValidatorString ( array ('max_length' => 64, 'required' => false ) ), 
+		                              'website' => new sfValidatorString ( array ('max_length' => 64, 'required' => false ) ), 
+		                              'description' => new sfValidatorString ( array ('max_length' => 65000, 'required' => false ) ), 
+		                              'billing_info' => new sfValidatorString ( array ('max_length' => 65000, 'required' => false ) ),
+		                              'password' => new sfValidatorString( array ('max_length' => 64, 'required' => false ) ),
+		                              'reset_password' => new sfValidatorBoolean(array('required' => false)),
+		                              'photographer_id' => new sfValidatorNumber ( array ('required' => false ))));
 		
 		$this->widgetSchema->setNameFormat ( 'photographer[%s]' );
 		$this->errorSchema = new sfValidatorErrorSchema ( $this->validatorSchema );
@@ -30,10 +48,25 @@ class InfoPhotographerForm extends BaseFormPropel {
 	
 	public function save($con = null) {
 		
-		if ($this->getObject ()) {
+		if (!is_null($this->getValue ( "photographer_id" ))) {
 			$p = $this->getObject ();
 		} else {
+			$sfUser = new sfGuardUser();
+			$sfUser->setUsername($this->getValue ( "email" ));
+			$sfUser->setPassword( $this->getValue ( "password" ) );
+			$sfUser->save();
+			
+			list($firstName, $lastName) = explode(" " , $this->getValue ( "name" ));
+			$sfProfile = new sfGuardUserProfile();
+			$sfProfile->setUserTypeId(sfConfig::get("app_user_type_photographer"));
+			$sfProfile->setUserId($sfUser->getId());
+			$sfProfile->setEmail($this->getValue ( "email" ));
+			$sfProfile->setFirstName($firstName);
+			$sfProfile->setLastName($lastName);
+			$sfProfile->save();
+			
 			$p = new Photographer ( );
+			$p->setUserId($sfProfile->getId());
 		}
 		
 		$p->setName ( $this->getValue ( "name" ) );
@@ -43,8 +76,13 @@ class InfoPhotographerForm extends BaseFormPropel {
 		$p->setWebsite ( $this->getValue ( "website" ) );
 		$p->setDescription ( $this->getValue ( "description" ) );
 		$p->setBillingAddress ( $this->getValue ( "billing_info" ) );
-		
 		$p->save ();
+		
+		if( $this->getValue ( "reset_password" ) ){
+			$user = $p->getsfGuardUserProfile()->getsfGuardUser();
+			$user->setPassword( $this->getValue ( "password" ) );
+			$user->save();
+		}
 	}
 	
 	public function getModelName() {

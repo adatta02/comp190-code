@@ -21,11 +21,12 @@ class welcomeActions extends sfActions
   	$route = str_replace("@", "", sfContext::getInstance()->getRouting()->getCurrentInternalUri(true));
   	
   	// HACK: theres something wrong when it tries to generate a slugged URL
-  	try{
+  	/* try{
   	 $url = sfContext::getInstance()->getRouting()->generate($route);
   	}catch(Exception $ex){ 
   		$url = sfContext::getInstance()->getRouting()->generate("homepage");
-  	}
+  	} */
+  	$url = sfContext::getInstance()->getRouting()->generate($route);
   	
     $this->form = new sfGuardFormSignin();
     $this->getUser()->setReferer($url);

@@ -129,7 +129,10 @@ photographer_remove:
   param: { module: photographer, action: delete }
   options: { model: Photographer, type: object }
   requirements: {slug: \w+ }
- 
+photographer_create:
+  url: /photographer/create
+  param: { module: photographer, action: create }
+
 ################################################
 # client
 ################################################

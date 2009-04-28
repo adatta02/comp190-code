@@ -39,6 +39,8 @@
 <table id="info-edit" style="display: none">
   <?php echo $InfoForm["name"]->renderRow(); ?>
   <?php echo $InfoForm["email"]->renderRow(); ?>
+  <?php echo $InfoForm["reset_password"]->renderRow(); ?>
+  <?php echo $InfoForm["password"]->renderRow(); ?>
   <?php echo $InfoForm["phone"]->renderRow(); ?>
   <?php echo $InfoForm["affiliation"]->renderRow(); ?>
   <?php echo $InfoForm["website"]->renderRow(); ?>

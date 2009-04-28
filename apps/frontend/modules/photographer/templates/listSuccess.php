@@ -19,6 +19,10 @@
     <?php echo input_tag("live-search-photographers", $q); ?>
   </div>
   
+  <div id="create-photo">
+    <?php echo link_to("Create Photographer", "photographer_create") ?>
+  </div>
+  
   <div id="photographer-list" style="display:none">
    <?php include_partial("renderList", array("pager" => $pager, "q" => $q)); ?>
   </div>
