@@ -35,6 +35,7 @@
 <?php endif; ?>
 <div id="list-container">
   <h2>Request a photographer:</h2>
+  &nbsp;<font color='red'>Required *</font>
   <h3><?php echo $form->renderGlobalErrors(); ?></h3>
   
   <form action="<?php echo url_for('@job_create') ?>" method="POST">
@@ -65,9 +66,9 @@
       <span>Same as client? <?php echo checkbox_tag("copy-client-info", 1, 0, array("onclick" => "javascript:copyClient();")); ?></span>
     <?php endif; ?>
     <table>
-	    <tr><?php echo $form["contact_name"]->renderRow(); ?> </tr>
-	    <tr><?php echo $form["contact_email"]->renderRow(); ?> </tr>
-	    <tr><?php echo $form["contact_phone"]->renderRow(); ?> </tr>
+	    <tr><?php echo $form["contact_name"]->renderRow(); ?><font color='red'>*</font> </tr>
+	    <tr><?php echo $form["contact_email"]->renderRow(); ?> <font color='red'>*</font></tr>
+	    <tr><?php echo $form["contact_phone"]->renderRow(); ?> <font color='red'>*</font></tr>
     </table>
   </td>
 </tr>
@@ -77,16 +78,16 @@
     <h3>Shoot</h3>
     <table>
 		    <tr><?php echo $form["publication_id"]->renderRow(); ?> </tr>
-		    <tr><?php echo $form["event"]->renderRow(); ?> </tr>
+		    <tr><?php echo $form["event"]->renderRow(); ?><font color='red'>*</font> </tr>
 		    <tr><?php echo $form["project_id"]->renderRow(); ?> </tr>
 	      <tr><?php echo $form["date"]->renderRow(); ?> </tr>
 	      <tr><td></td><td><small>If time is TBD leave blank</small></td></tr>
 		    <tr><?php echo $form["start_time"]->renderRow(); ?> </tr>
 		    <tr><?php echo $form["end_time"]->renderRow(); ?> </tr>
-		    <tr><?php echo $form["street"]->renderRow(); ?> </tr>
-		    <tr><?php echo $form["city"]->renderRow(); ?></tr>
-		    <tr><td><?php echo $form["state"]->renderRow(); ?> </td>
-		    <td><?php echo $form["zip"]->renderRow(); ?> </td></tr>
+		    <tr><?php echo $form["street"]->renderRow(); ?><font color='red'>*</font> </tr>
+		    <tr><?php echo $form["city"]->renderRow(); ?><font color='red'>*</font></tr>
+		    <tr><td><?php echo $form["state"]->renderRow(); ?><font color='red'>*</font> </td>
+		    <td><?php echo $form["zip"]->renderRow(); ?> </td><font color='red'>*</font></tr>
 		    <tr><?php echo $form["due_date"]->renderRow(); ?> </tr>
       </table>
     </td>
