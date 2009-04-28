@@ -49,7 +49,6 @@ class RequestJobForm extends sfForm {
 		'clientId' => new sfWidgetFormInputHidden()
 	) );
 		
-		$this->widgetSchema->setLabel ( 'event', 'Event Name' );
 		$this->widgetSchema->setLabel ( 'publication_id', 'Publication' );
 		$this->widgetSchema->setLabel ( 'project_id', 'Project' );
 		$this->widgetSchema->setLabel ( 'dept_id', 'Department Id' );
@@ -59,6 +58,15 @@ class RequestJobForm extends sfForm {
 		$this->widgetSchema->setLabel ( 'ques3', 'Please describe in detail the event or story being photographed.' );
 		$this->widgetSchema->setLabel ( 'estimate', 'Shoot Fee' );		
 
+		$this->widgetSchema->setLabel ( 'contact_name', 'Contact Name <font class="required">*</font>' );
+		$this->widgetSchema->setLabel ( 'contact_email', 'Contact Email <font class="required">*</font>' );
+		$this->widgetSchema->setLabel ( 'contact_phone', 'Contact Phone <font class="required">*</font>' );
+		$this->widgetSchema->setLabel ( 'event', 'Event Name <font class="required">*</font>' );
+		$this->widgetSchema->setLabel ( 'street', 'Street <font class="required">*</font>' );
+		$this->widgetSchema->setLabel ( 'city', 'City <font class="required">*</font>' );
+		$this->widgetSchema->setLabel ( 'state', 'State <font class="required">*</font>' );
+		$this->widgetSchema->setLabel ( 'zip', 'Zipcode <font class="required">*</font>' );
+		
 		$this->widgetSchema ['state']->setDefault ( "MA" );
 		
 		$this->widgetSchema ['now'] = new sfWidgetFormInputHidden ( );
