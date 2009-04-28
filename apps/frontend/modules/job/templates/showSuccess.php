@@ -144,6 +144,9 @@ function putIn(template){
 	 <?php
            $toEmail = $job->getContactEmail();
            $cName = $job->getContactName();
+
+	  $fromEmail = $sfGuardUserProfile->getEmail();
+
 	   foreach($job->getPhotographers() as $i){
               $pEmail = $i->getEmail();
            }
@@ -152,12 +155,16 @@ function putIn(template){
 	?>
         var cn = "<?php echo $cName; ?>";
 	var t;
+
+	var f = "<?php echo $fEmail; ?>";
+
 	if(template == "assign"){
             t = "<?php echo $pEmail; ?>";	
 	}else{
 	    t = "<?php echo $toEmail; ?>";
         }
-	 document.getElementById('from').value = "FROM";
+	
+	 document.getElementById('from').value = f;
  	 document.getElementById('to').value = t;
 	
 }
