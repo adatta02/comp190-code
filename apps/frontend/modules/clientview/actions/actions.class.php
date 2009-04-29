@@ -26,6 +26,8 @@ class clientviewActions extends sfActions {
     $this->sortedBy = $this->getRequest ()->getParameter ( "sortBy" );
     $this->invert = $this->getRequest ()->getParameter ( "invert" );
 		$own = $request->getParameter("own");
+		$this->own = $own;
+    $profile = $this->getUser()->getProfile();
     
 		if (! method_exists ( $this->getRoute (), "getObject" )) {
 			$c = new Criteria ( );
@@ -37,8 +39,29 @@ class clientviewActions extends sfActions {
 	  $this->showType = $showType;
 	  		
 		$c = new Criteria();
-    $c->add(JobPeer::STATUS_ID, $showType->getId());
 		
+	   if($own){
+      $crit = new Criteria();
+      $crit->add(ClientPeer::USER_ID, $profile->getId());
+      $client = ClientPeer::doSelectOne($crit);
+      
+      if(is_null($client)){
+        $this->forward404("Please contact Tufts Photo support.");
+      }
+      
+      $crit = new Criteria();
+      $crit->add(JobClientPeer::CLIENT_ID, $client->getId());
+      $ids = array();
+      $jobs = JobClientPeer::doSelect($crit);
+        
+      foreach($jobs as $ph){
+        $ids[] = $ph->getJobId();
+      }
+      $c->add(JobPeer::ID, $ids, Criteria::IN);
+    }else{
+    	$c->add(JobPeer::STATUS_ID, $showType->getId());
+    }
+    
 		if (is_null ( $this->sortedBy )) {
 			$this->sortedBy = JobPeer::DATE;
 		}
@@ -55,7 +78,6 @@ class clientviewActions extends sfActions {
 			$this->page = 1;
 		}
 
-		$profile = $this->getUser()->getProfile();
 		// restrict to only their jobs if they are photogs
 		if($profile->getUserType()->getId() 
 		      == sfConfig::get("app_user_type_photographer")){
@@ -76,26 +98,6 @@ class clientviewActions extends sfActions {
 		  		$ids[] = $ph->getJobId();
 		  	}
 		  	$c->add(JobPeer::ID, $ids, Criteria::IN);
-    }
-		
-    if($own){
-    	$crit = new Criteria();
-    	$crit->add(ClientPeer::USER_ID, $profile->getId());
-    	$client = ClientPeer::doSelectOne($crit);
-    	
-    	if(is_null($client)){
-    		$this->forward404("Please contact Tufts Photo support.");
-    	}
-    	
-      $crit = new Criteria();
-      $crit->add(JobClientPeer::CLIENT_ID, $client->getId());
-      $ids = array();
-      $jobs = JobClientPeer::doSelect($crit);
-        
-      foreach($jobs as $ph){
-      	$ids[] = $ph->getJobId();
-      }
-      $c->add(JobPeer::ID, $ids, Criteria::IN);
     }
     
 		$this->pager = new sfPropelPager ( "Job", sfConfig::get ( "app_items_per_page" ) );

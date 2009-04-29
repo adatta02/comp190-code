@@ -511,6 +511,11 @@ EOF;
 	 */
 	public function executeList(sfWebRequest $request) {
 		
+	   if( $this->getUser()->getProfile() ){
+        $credential = $this->getUser()->getProfile()->getUserType()->getType();
+        $this->getUser()->addCredential($credential);
+      }
+		
 		if(!$this->getUser()->hasCredential("admin")){
 			
 			if($this->getUser()->hasCredential("client")){
