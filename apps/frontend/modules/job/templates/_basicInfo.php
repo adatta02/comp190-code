@@ -46,6 +46,14 @@
        </td>
   </tr>
   <tr>
+    <td>Department Id</td>
+    <td><?php echo $job->getDeptId() ?></td>
+  </tr>
+  <tr>
+    <td>Account Number</td>
+    <td><?php echo $job->getAcctNum() ?></td>
+  </tr>
+  <tr>
     <td>Tags <a href="" onclick="$('#add-tag').show(); return false;">
             <?php echo image_tag("add.png", array("class" => "plus-img")); ?></a></td>
     <td>
