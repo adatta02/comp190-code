@@ -24,9 +24,13 @@ class welcomeActions extends sfActions
   	/* try{
   	 $url = sfContext::getInstance()->getRouting()->generate($route);
   	}catch(Exception $ex){ 
-  		$url = sfContext::getInstance()->getRouting()->generate("homepage");
+  		
   	} */
-  	$url = sfContext::getInstance()->getRouting()->generate($route);
+  	
+  	if(strpos($route, "?"))
+  	 $url = sfContext::getInstance()->getRouting()->generate($route);
+  	else 
+  	 $url = sfContext::getInstance()->getRouting()->generate("homepage");
   	
     $this->form = new sfGuardFormSignin();
     $this->getUser()->setReferer($url);
