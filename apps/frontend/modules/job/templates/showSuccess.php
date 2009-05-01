@@ -79,6 +79,73 @@
     
    });
 
+var lastEmailName = "%name%";
+
+function updateEmail(name, email){
+  $("#email-to").val( email );
+  $("#email-body").val( $("#email-body").val().replace(lastEmailName, name) );
+  lastEmailName = name;
+}
+
+function showEmailTemplate(){
+  $("#email-container").show();
+  $("#email-photographers").hide();
+  $("#email-to").val( "" );
+  
+  var template = $("#email-template").val();
+  var contactEmail = "<?php echo $job->getContactEmail(); ?>";
+  var contactName = "<?php echo $job->getContactName(); ?>";
+  
+  if(template == "details"){
+    $("#email-subject").val( "Verify Details" );
+    $("#email-body").val( $("#email-template-details").html() );
+    $("#email-to").val( contactEmail );
+  }
+  
+  if(template == "acceptance"){
+    $("#email-subject").val( "Job Acceptance" );
+    $("#email-body").val( $("#email-template-acceptance").html() );
+    $("#email-to").val( contactEmail );
+  }
+
+  if(template == "completion"){
+    $("#email-subject").val( "Job Completion" );
+    $("#email-body").val( $("#email-template-completion").html() );
+    $("#email-to").val( contactEmail );
+   }
+   
+   if(template == "assign"){         
+    $("#email-subject").val( "Photographer Assignment" );
+    $("#email-photographers").show();
+    $("#email-body").val( $("#email-template-assign").html() );
+   }
+}
+
+function sendEmail(){
+  var obj = new Object();
+  
+  if($("#email-to").val().length == 0){
+    alert("Please enter something in the 'TO' field!");
+    return;
+  }
+  
+  obj.to = $("#email-to").val();
+  obj.from = $("#email-from").val();
+  obj.subject = $("#email-subject").val();
+  obj.body = $("#email-body").val();
+  obj.jobId = "<?php echo $job->getId(); ?>";
+  
+  $("#email-container").hide();
+  $("#email-loading").show();
+  
+  $.getJSON("<?php echo url_for("job_email"); ?>", obj, 
+              function(data){
+                $("#email-loading").hide(); 
+                alert(data);
+              });
+  
+}
+
 </script>
 
 <?php include_component ( "static", "topmenu", array("moveToSkip" => null, "noMenu" => true) ); ?>
@@ -86,92 +153,6 @@
                           array("sortedBy" => null, 
                                 "viewingCurrent" => null,
                                 "noSort" => true) ); ?>
-
-<script language="javascript">
-
-function email(template){
-	  <?php
-     $cN = $job->getContactName();
-     $pName = "";
-	   foreach($job->getPhotographers() as $i){ 
-	      $pName = $i->getName();
-	   }
-	   
-	   $u = url_for('@job_email');	
-
-	?>
-  var connam = "<?php echo $cN; ?>";
-	var pn = "<?php echo $pName; ?>";
-	
-	var url = "<?php echo $u; ?>";
-
-	var doc = document.getElementById('emailSec');
-	var emailStuff = "<form action='" + url + "' method='POST'><table>";
-	emailStuff += "<tr><td>From</td><td><input type='text' id='from' value='' /></td></tr>";
-
-	   if(template == "details"){
-               emailStuff += "<tr><td>To</td><td><input type='text' id='to' value='' /></td></tr>";
-               emailStuff += "<tr><td>Subject</td><td><input type='text' id='subject' value='Verify Details' /></td></tr>";
-               emailStuff += "<tr><td colspan='2'><textarea id='body' rows='20' cols='50'>Dear " + connam + ", \n\n Thank you for submitting your photo assignment request. Please review and confirm with us the details of your job by logging into http://jobs.tuftsphoto.com.\n\nUnless otherwise noted in your request, delivery time for photos is 10-14 business days. If you have any questions, please contact us at the email address or phone number below.\n\nThanks again!\n\nThe Tufts Photo Team \n\nUniversity Photography\n80 George St., First Floor\nMedford,MA 02155\nTel:617.627.4282\nFax: 617.627.3549\nphoto.tufts.edu</textarea></td></tr>";
-         }
-
-	   if(template == "acceptance"){
-	       emailStuff += "<tr><td>To</td><td><input type='text' id='to' value='' /></td></tr>";
-               emailStuff += "<tr><td>Subject</td><td><input type='text' id='subject' value='Job Acceptance' /></td></tr>";
-               emailStuff += "<tr><td colspan='2'><textarea id='body' rows='20' cols='50'>Dear " + connam + ", \n\n Here is your final approved photo request. Please review the details and contact us as soon as possible if you need to make changes.\n\nWe look forward to working with you on this assignment.\n\nThe Tufts Photo Team \n\nUniversity Pho\
-tography\n80 George St., First Floor\nMedford,MA 02155\nTel:617.627.4282\nFax: 617.627.3549\nphoto.tufts.edu</textarea></td></tr>";
-         }
-
-	if(template == "completion"){
-	       emailStuff += "<tr><td>To</td><td><input type='text' id='to' value='' /></td></tr>";
-               emailStuff += "<tr><td>Subject</td><td><input type='text' id='subject' value='Job Completion' /></td></tr>";
-	       emailStuff += "<tr><td colspan='2'><textarea id='body' rows='20' cols='50'>Dear " + connam + ", \n\n We have photographed our assignment. The photos are being processed and will be delivered to you within 10-14 business days unless otherwise noted. \n\nThanks for choosing University Photography!\n\nThe Tufts Photo Team \n\nUniversity Photography\n80 George St., First Floor\nMedford,MA 02155\nTel:617.627.4282\nFax: 617.627.3549\nphoto.tufts.edu</textarea></td></tr>";
-    	 }
-	 
-	 if(template == "assign"){	 	     
-	       emailStuff += "<tr><td>To</td><td><input type='text' id='to' value='' /></td></tr>";
-               emailStuff += "<tr><td>Subject</td><td><input type='text' id='subject' value='Photographer Assignment' /></td></tr>";
-	       emailStuff += "<tr><td colspan='2'><textarea id='body' rows='20' cols='50'>Dear " + pn + ", \n\n Thank you for working on this assignment. If you have any questions, please contact us at the email address or phone number below.\nPlease arrange to deliver the images by FTP or mail within 1-2 business days of the shoot.\n\nGood Luck!\n\nThe Tufts Photo Team \n\nUniversity Photography\n80 George St., First Floor\nMedford,MA 02155\nTel:617.627.4282\nFax: 617.627.3549\nphoto.tufts.edu</textarea></td></tr>";
-         }
-
-	emailStuff += '<tr><td colspan="2"><input type="submit" value="Send Email" /></td></tr>';
-	emailStuff += "</table></form>";
-	
-	doc.innerHTML = emailStuff;
-}
-
-
-function putIn(template){
-	 <?php
-           $toEmail = $job->getContactEmail();
-           $cName = $job->getContactName();
-
-	  $fEmail = sfContext::getInstance()->getUser()->getProfile()->getEmail();
-	   foreach($job->getPhotographers() as $i){
-              $pEmail = $i->getEmail();
-           }
-
-
-	?>
-        var cn = "<?php echo $cName; ?>";
-	var t;
-
-	var f = "<?php echo $fEmail; ?>";
-
-	if(template == "assign"){
-            t = "<?php echo $pEmail; ?>";	
-	}else{
-	    t = "<?php echo $toEmail; ?>";
-        }
-	
-	 document.getElementById('from').value = f;
- 	 document.getElementById('to').value = t;
-	
-}
-
-</script>
-
-
 
 <div id="content-container">
 <div id="now-viewing">
@@ -333,22 +314,120 @@ function putIn(template){
 <hr/>
 
 
-<div class="info-header">Email<br><br></div>
-<div>
+<div id="email-templates" class="collapsable" style="height: 150px">
+
+<div class="info-header">Email <?php echo image_tag("loading.gif", 
+                                                    array("class" => "ajax-loading", "id" => "email-loading", "style" => "display: none")) ?> </div>
+
 <form>
-<select name="temp">
-<option value="details">Verify Details</option>
-<option value="acceptance">Job Acceptance</option>
-<option value="completion">Job Completion</option>
-<option value="assign">Photographer Assignment</option>
-</select>
-<button type='button' onclick='email(temp.value);putIn(temp.value);'>Show Template</button>
+	<select id="email-template" onchange="showEmailTemplate()">
+	  <option value=''>Select a template</option>
+		<option value="details">Verify Details</option>
+		<option value="acceptance">Job Acceptance</option>
+		<option value="completion">Job Completion</option>
+		<option value="assign">Photographer Assignment</option>
+	</select>
 </form>
-<br><br>
+
+<br/><br/>
+
+<div id=email-container style="display: none">
+  <form action="<?php echo url_for("job_email"); ?>" method='POST' onsubmit="javascript:sendEmail(); return false;">
+    <label for="email-to">To</label> <input type='text' id='email-to' value='' /> <br />
+    
+    <div id="email-photographers" style="display: none">
+      <optgroup>
+      <?php foreach($job->getPhotographers() as $ph): ?>
+        <?php echo $ph->getName() . 
+              radiobutton_tag("email-photog", $ph->getEmail(), 0,
+                              array("onclick" => "updateEmail('" . $ph->getName() . "', '" . $ph->getEmail() . "')" )
+                              ); ?> <br/>
+      <?php endforeach; ?>
+      </optgroup>
+    </div>
+    
+    <label for="email-from">From</label> <input type='text' id='email-from' value='photo@tufts.edu' /> <br />
+    <label for="email-subject">Subject</label> <input type='text' id='email-subject' value='' /> <br />
+    <textarea id='email-body' rows='20' cols='50'>
+    </textarea>
+    <input type="submit" value="Send" />
+  </form>
+</div>
 </div>
 
-<div id="emailSec"></div>
+</div>
 
+<div id="email-template-assign" style="display: none">
+Dear %name%,
 
+Thank you for working on this assignment. 
+
+If you have any questions, please contact us at the email address or phone number below.
+Please arrange to deliver the images by FTP or mail within 1-2 business days of the shoot.
+
+Good Luck!
+
+The Tufts Photo Team
+
+University Photography
+80 George St., First Floor
+Medford,MA 02155
+Tel:617.627.4282
+Fax: 617.627.3549
+photo.tufts.edu
+</div>
+
+<div id="email-template-completion" style="display: none">
+Dear <?php echo $job->getContactName(); ?>, 
+
+We have photographed our assignment. 
+The photos are being processed and will be delivered to you within 10-14 business days unless otherwise noted. 
+
+Thanks for choosing University Photography!
+
+The Tufts Photo Team
+University Photography
+80 George St., First Floor
+Medford,MA 02155
+Tel:617.627.4282
+Fax: 617.627.3549
+photo.tufts.edu
+</div>
+
+<div id="email-template-acceptance" style="display: none">
+Dear <?php echo $job->getContactName(); ?>,
+
+Here is your final approved photo request. 
+Please review the details and contact us as soon as possible if you need to make changes.
+
+We look forward to working with you on this assignment.
+
+The Tufts Photo Team
+
+University Phototography
+80 George St., First Floor
+Medford,MA 02155
+Tel:617.627.4282
+Fax: 617.627.3549
+photo.tufts.edu
+</div>
+
+<div id="email-template-details" style="display: none">
+Dear <?php echo $job->getContactName(); ?>,
+
+Thank you for submitting your photo assignment request. 
+Please review and confirm with us the details of your job by logging into 
+http://jobs.tuftsphoto.com.
+Unless otherwise noted in your request, delivery time for photos is 10-14 business days. 
+If you have any questions, please contact us at the email address or phone number below.
+Thanks again!
+The Tufts Photo Team 
+
+University Photography
+80 George St., First Floor
+Medford,MA 02155
+Tel:617.627.4282
+Fax: 617.627.3549
+photo.tufts.edu
 </div>
 

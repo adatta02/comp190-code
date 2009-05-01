@@ -3,7 +3,7 @@
 class Job extends BaseJob
 {
 	
-	public function getNumberRevisions(){
+  public function getNumberRevisions(){
 		$c = new Criteria();
 		$c->add(JobNotesPeer::JOB_ID, $this->getId());
 		return JobNotesPeer::doCount($c);

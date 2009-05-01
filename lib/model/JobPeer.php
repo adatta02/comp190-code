@@ -76,4 +76,16 @@ class JobPeer extends BaseJobPeer
 		
 		return $arr;
 	}
+	
+	public static function addEmailLogMessage($jobId, $emailType, $toUser){
+		$logEntry = new Log();
+    $logEntry->setWhen(time());
+    $logEntry->setPropelClass("Job");
+    $logEntry->setSfGuardUserProfileId(sfContext::getInstance()->getUser()->getUserId());
+    $logEntry->setMessage($emailType . " sent to user " . $toUser);
+    $logEntry->setLogMessageTypeId(sfConfig::get("app_log_type_email"));
+    $logEntry->setPropelId($jobId);
+    $logEntry->save();
+	}
+	
 }

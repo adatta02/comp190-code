@@ -20,7 +20,14 @@ class clientviewActions extends sfActions {
 
 	public function executeAddJob(sfWebRequest $request) {
 			$jobId = $request->getParameter("id");
-			// send the email to tufts photo and such
+			$job = JobPeer::retrieveByPK($jobId);
+			$profile = $this->getUser()->getProfile();
+			
+			$to = "photo@tufts.edu";
+			$subject = $profile->getFirstName() . " " . $profile->getLastName() . " is requestting to be added to job " . $job->getEvent();
+			
+			mail($to, $subject, $subject);
+			JobPeer::addEmailLogMessage($jobId, "Request to be added", "photo@tufts.edu");
 	}
 
 /**
@@ -34,18 +41,18 @@ class clientviewActions extends sfActions {
     $this->sortedBy = $this->getRequest ()->getParameter ( "sortBy" );
     $this->invert = $this->getRequest ()->getParameter ( "invert" );
 		$own = $request->getParameter("own");
+		$all = $request->getParameter("all");
+		$this->all = $all;
 		$this->own = $own;
-    $profile = $this->getUser()->getProfile();
     
-		if (! method_exists ( $this->getRoute (), "getObject" )) {
-			$c = new Criteria ( );
-			$c->add ( StatusPeer::ID, sfConfig::get ( "app_project_list_default_view", 1 ) );
-			$showType = StatusPeer::doSelectOne ( $c );
-		} else {
-			$showType = $this->getRoute ()->getObject ();
-		}
-	  $this->showType = $showType;
-	  		
+		$profile = $this->getUser()->getProfile();
+    
+		if(is_null($all))
+		  $all = false;
+    if(is_null($own))
+      $own = false;
+		  
+		
 		$c = new Criteria();
 		
 	  if($own){
@@ -67,7 +74,39 @@ class clientviewActions extends sfActions {
       }
       $c->add(JobPeer::ID, $ids, Criteria::IN);
     }else{
-    	$c->add(JobPeer::STATUS_ID, $showType->getId());
+    	// $c->add(JobPeer::STATUS_ID, sfConfig::get("job_status_pending"));
+    	$c = new Criteria();
+      
+    	$crit0 = $c->getNewCriterion(JobPeer::STATUS_ID, sfConfig::get("app_job_status_pending"));
+			$crit1 = $c->getNewCriterion(JobPeer::STATUS_ID, sfConfig::get("app_job_status_accepted"));
+			$crit2 = $c->getNewCriterion(JobPeer::STATUS_ID, sfConfig::get("app_job_status_completed"));
+			// Perform OR at level 0 ($crit0 $crit1 $crit2 )
+			$crit0->addOr($crit1);
+			$crit0->addOr($crit2);
+			// Remember to change the peer class here for the correct one in your model
+			$c->add($crit0);
+    }
+    
+	  // restrict to only their jobs if they are photogs
+    if($profile->getUserType()->getId() 
+          == sfConfig::get("app_user_type_photographer")){
+        $crit = new Criteria();
+        $crit->add(PhotographerPeer::USER_ID, $profile->getId());
+        $photo = PhotographerPeer::doSelectOne($crit);
+        
+        if(is_null($photo)){
+          $this->forward404("Please contact Tufts Photo support.");
+        }
+        
+        $crit = new Criteria();
+        $crit->add(JobPhotographerPeer::PHOTOGRAPHER_ID, $photo->getId());
+        $ids = array();
+        $photos = JobPhotographerPeer::doSelectJoinAll($crit);
+        
+        foreach($photos as $ph){
+          $ids[] = $ph->getJobId();
+        }
+        $c->add(JobPeer::ID, $ids, Criteria::IN);
     }
     
 		if (is_null ( $this->sortedBy )) {
@@ -86,28 +125,6 @@ class clientviewActions extends sfActions {
 			$this->page = 1;
 		}
     
-		// restrict to only their jobs if they are photogs
-		if($profile->getUserType()->getId() 
-		      == sfConfig::get("app_user_type_photographer")){
-		  	$crit = new Criteria();
-		  	$crit->add(PhotographerPeer::USER_ID, $profile->getId());
-		  	$photo = PhotographerPeer::doSelectOne($crit);
-		  	
-		  	if(is_null($photo)){
-		  		$this->forward404("Please contact Tufts Photo support.");
-		  	}
-		  	
-        $crit = new Criteria();
-		  	$crit->add(JobPhotographerPeer::PHOTOGRAPHER_ID, $photo->getId());
-		  	$ids = array();
-		  	$photos = JobPhotographerPeer::doSelectJoinAll($crit);
-		  	
-		  	foreach($photos as $ph){
-		  		$ids[] = $ph->getJobId();
-		  	}
-		  	$c->add(JobPeer::ID, $ids, Criteria::IN);
-    }
-    
 		$this->pager = new sfPropelPager ( "Job", sfConfig::get ( "app_items_per_page" ) );
 		$this->pager->setCriteria ( $c );
 		$this->pager->setPage ( $this->page );
@@ -119,8 +136,8 @@ class clientviewActions extends sfActions {
 	  $sortUrls = array ();
 		
 	  foreach ( JobPeer::$LIST_VIEW_SORTABLE as $key => $val ) {
-	  	$sortUrls [$key] ["true"] = $this->generateUrl ( "client_myjobs", array ("state" => $showType->getState(), "sortBy" => $key, "invert" => "true" ) );
-	  	$sortUrls [$key] ["false"] = $this->generateUrl ( "client_myjobs", array ("state" => $showType->getState(), "sortBy" => $key, "invert" => "false" ) );
+	  	$sortUrls [$key] ["true"] = $this->generateUrl ( "client_myjobs_own", array ("own" => $own, "all" => $all, "sortBy" => $key, "invert" => "true" ) );
+	  	$sortUrls [$key] ["false"] = $this->generateUrl ( "client_myjobs_own", array ("own" => $own, "all" => $all, "sortBy" => $key, "invert" => "false" ) );
 	  }
 	  
 	  $this->sortUrlJson = json_encode ( $sortUrls );

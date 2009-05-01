@@ -228,13 +228,14 @@ class jobActions extends PMActions {
 	
 	public function executeEmail(sfWebRequest $request) {
 		
-		$to = "ckatz2009@gmail.com";
-		$from = "From: alissalcooper@gmail.com";
-		$subject = "Test2";
-		$body = "Testing email";
+		$to = $request->getParameter("to");
+		$from = "From: " . $request->getParameter("from");
+		$subject = $request->getParameter("subject");
+		$body = $request->getParameter("body");
+		$this->sent = mail ( $to, $subject, $body, $from );
+		$jobId = $request->getParameter("jobId");
 		
-		$sent = mail ( $to, $subject, $body, $from );
-	
+		JobPeer::addEmailLogMessage($jobId, ucfirst($subject), $to);
 	}
 	
 	private function getEditHistory($page = 1) {
@@ -483,6 +484,8 @@ EOF;
 		$tags = $obj ["tags"];
 		$viewingJob = array_key_exists ( "viewingJob", $obj );
 		
+		$tags = preg_replace("/[^a-zA-Z0-9\s]/", "", $tags);
+		
 		$c = new Criteria ( );
 		$c->add ( JobPeer::ID, $jobs, Criteria::IN );
 		$jobs = JobPeer::doSelect ( $c );
@@ -519,13 +522,14 @@ EOF;
 		if(!$this->getUser()->hasCredential("admin")){
 			
 			if($this->getUser()->hasCredential("client")){
-				$this->forward("clientview", "index");
+				$url = $this->generateUrl("client_myjobs_own", array("own" => "true"));
 			}else if($this->getUser()->hasCredential("photographer")){
-				$this->forward("clientview", "index");
+				$url = $this->generateUrl("client_myjobs_own");
 			}else{
-				$this->forward404("Permission denied!");
+				$this->redirect404();
 			}
 			
+			$this->redirect($url);
 		}
 		
 		if (! method_exists ( $this->getRoute (), "getObject" )) {

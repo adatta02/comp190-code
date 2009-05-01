@@ -148,12 +148,24 @@ function renderClientJobListView($job, $classNum) {
 			<col width="33%"></col>
 	    <tr>
 	     <td>
-	       <?php if(JobClientPeer::isOwner($job->getId(), 
-	                 sfContext::getInstance()->getUser()->getProfile()->getId())): ?>
-	         Job <?php echo link_to($job->getId(), "clientview_job_show", $job); ?>
-	       <?php else: ?>
-	         Job <?php echo $job->getId (); ?>
+	       <?php if(sfContext::getInstance()->getUser()->hasCredential("client")): ?>
+		       <?php if(JobClientPeer::isOwner($job->getId(), 
+		                 sfContext::getInstance()->getUser()->getProfile()->getId())): ?>
+		         Job <?php echo link_to($job->getId(), "clientview_job_show", $job); ?>
+		       <?php else: ?>
+		         Job <?php echo $job->getId (); ?>
+		       <?php endif; ?>
 	       <?php endif; ?>
+	       
+	      <?php if(sfContext::getInstance()->getUser()->hasCredential("photographer")): ?>
+           <?php if(JobPhotographerPeer::isOwner($job->getId(), 
+                     sfContext::getInstance()->getUser()->getProfile()->getId())): ?>
+             Job <?php echo link_to($job->getId(), "clientview_job_show", $job); ?>
+           <?php else: ?>
+             Job <?php echo $job->getId (); ?>
+           <?php endif; ?>
+        <?php endif; ?>
+	       
 	     </td>
 		   <td><?php echo $job->getEvent ();?></td>
 		   

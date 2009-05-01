@@ -9,7 +9,8 @@
     
     echo link_to("<<", $url, array( "page" => $pager->getFirstPage() ));
     for($i=$pageFrom; $i <= $pageTo; $i++){
-      echo ($i == $page) ? $i : link_to($i, $url, array( "page" => $i ));
+    	$params["page"] = $i;
+      echo ($i == $page) ? $i : link_to($i, $url, $params);
       echo " ";
     }
     echo link_to(">>", $url, array("page" => $pager->getLastPage()));

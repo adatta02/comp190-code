@@ -8,13 +8,13 @@
 
 <?php include_component ( "static", "topmenu", array("moveToSkip" => null, "noMenu" => true) ); ?>
 <?php include_component ( "static", "userShortcuts",
-                          array("sortedBy" => null,
+                          array("sortedBy" => $sortedBy,
                                 "viewingCurrent" => null,
                                 "noSort" => false) ); ?>
 
 <div id="content-container">
 <div id="now-viewing">
-  Viewing <?php echo ($own ? "My Jobs" : $showType) ?> jobs
+  Viewing <?php echo ($own ? "My Jobs" : "All Jobs") ?>
 </div>
 
 <div id="server-msg"></div>
@@ -31,11 +31,10 @@ foreach($pager->getResults() as $i){
 <div class="clear"></div>
 
 <?php include_component("static", 
-                        "propelPager", 
+                        "pager", 
                          array("pager" => $pager, 
-                               "route" => "client_myjobs",
-                               "propelType" => "state", 
-                               "object" => $showType)); ?>
+                               "url" => "client_myjobs_own",
+                               "params" => array("own" => $own, "all" => $all))); ?>
 
 </div>
 

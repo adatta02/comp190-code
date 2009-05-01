@@ -16,17 +16,15 @@
 	
 	<h3>Shortcuts</h3>
 	<ul id="menu-list">
-	<?php foreach($states as $s): ?>
-	 <?php if($s->getState() == $viewingCurrent): ?>
-	   <li><strong><?php echo $s ?></strong></li>
-	 <?php endif; ?>
-	 <?php if(in_array($s->getState(), $showStates)): ?>
-	  <li><?php echo link_to($s, "client_myjobs", $s); ?></li>
-	 <?php endif; ?>
-	<?php endforeach; ?>
 	<?php if(sfContext::getInstance()->getUser()->hasCredential("client")): ?>
-    <li><?php echo link_to("My Jobs", "client_myjobs_own", array("own" => true)); ?></li>
-  <?php endif; ?>
+	 <li><?php echo link_to("All Jobs", "client_myjobs_own", array("all" => true)); ?></li>
+		<li><?php echo link_to("My Jobs", "client_myjobs_own", array("own" => true)); ?></li>
+	<?php endif; ?>
+	
+	<?php if(sfContext::getInstance()->getUser()->hasCredential("photographer")): ?>
+	 <li><?php echo link_to("My Jobs", "client_myjobs_own"); ?></li>
+	<?php endif; ?>
+	
 	</ul>
 	
 	<hr/>

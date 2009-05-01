@@ -95,3 +95,5 @@ LogMessageType:
     type: 'Move to project'
   LogMessageType_11:
     type: 'Change status'
+  LogMessageType_12:
+    type: 'Email Sent'
