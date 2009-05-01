@@ -1,91 +1,11 @@
 <?php use_helper("PMRender"); ?>
-<?php echo include_javascripts_for_form($basicInfoForm); ?>
-<?php echo include_stylesheets_for_form($basicInfoForm); ?>
-
 <?php echo GoogleMapsInclude(); ?>
 
-<script type="text/javascript">
-  
-  ProjectManager.viewingJobId = <?php echo $job->getId(); ?>;
-  ProjectManager.addClientToJobUrl = "<?php echo url_for("@job_add_client"); ?>";
-  ProjectManager.removeClientFromJob = "<?php echo url_for("@job_remove_client"); ?>";
-  ProjectManager.addPhotographerToJobUrl = "<?php echo url_for("@job_add_photographer"); ?>";
-  ProjectManager.removePhotographerFromJobUrl = "<?php echo url_for("@job_remove_photographer"); ?>";
-  ProjectManager.addJobTagUrl = "<?php echo url_for("@job_add_tag"); ?>";
-  ProjectManager.removeJobTagUrl = "<?php echo url_for("@job_remove_tag"); ?>";
-  ProjectManager.isViewingJob = true;
-  
-  function jumpEditHistoryToPage(page){
-    $("#history-loading").show();
-    $("#job-edit-history").load("<?php echo url_for("job_view_history", array("slug" => $job->getSlug())); ?>", {page: page}, 
-                           function(){ $("#history-loading").hide();});
-  }
-  
-  $(document).ready( 
-    function(){
-    
-	  $("#add-tag-val")
-	    .autocomplete('<?php echo url_for ( "@tag_autocomplete" )?>', $.extend({}, {
-	      dataType: 'json',
-	      parse:    function(data) {
-	                  var parsed = [];
-	                  var obj;
-	                  for(var i=0; i < data.length; i++){
-	                    obj = new Object();
-	                    obj.data = [data[i].name, data[i].id];
-	                    obj.value = data[i].name;
-	                    obj.result = data[i].name;
-	                    parsed.push(obj);
-	                  }
-	                  return parsed;
-	      }}, {}))
-	    .result(function(event, data) { });
-    
-    $("#add-client-name")
-    .autocomplete('<?php
-        echo url_for ( "@client_autocomplete" )?>', $.extend({}, {
-      dataType: 'json',
-      parse:    function(data) {
-                  var parsed = [];
-                  var obj;
-                  for(var i=0; i < data.length; i++){
-                    obj = new Object();
-                    obj.data = [data[i].name + " &lt;" + data[i].email + "&gt", data[i].id];
-                    obj.value = data[i].name;
-                    obj.result = data[i].name;
-                    parsed.push(obj);
-                  }
-                  return parsed;
-      }}, {width: 300}))
-    .result(function(event, data) { $("#add-client-id").val(data[1]); });
-    
-    $("#add-photographer-name")
-    .autocomplete('<?php
-        echo url_for ( "@photographer_autocomplete" )?>', $.extend({}, {
-      dataType: 'json',
-      parse:    function(data) {
-                  var parsed = [];
-                  var obj;
-                  for(var i=0; i < data.length; i++){
-                    obj = new Object();
-                    obj.data = [data[i].name + " &lt;" + data[i].email + "&gt", data[i].id];
-                    obj.value = data[i].name;
-                    obj.result = data[i].name;
-                    parsed.push(obj);
-                  }
-                  return parsed;
-      }}, {width: 300}))
-    .result(function(event, data) { $("#add-photographer-id").val(data[1]); });
-    
-   });
-
-</script>
-
 <?php include_component ( "static", "topmenu", array("moveToSkip" => null, "noMenu" => true) ); ?>
-<?php include_component ( "static", "shortcuts", 
-                          array("sortedBy" => null, 
+<?php include_component ( "static", "userShortcuts",
+                          array("sortedBy" => null,
                                 "viewingCurrent" => null,
-                                "noSort" => true) ); ?>
+                                "noSort" => false) ); ?>
 
 <div id="content-container">
 <div id="now-viewing">
@@ -98,13 +18,12 @@
 <a href="#" onclick="javascript:$('#job-basic-info').toggle(); return false;">
 <?php echo image_tag("arrow.png", array("class" =>"image-href", "style" => "width:15px;height:15px;")); ?>
 </a>
-<a href="#" onclick="javascript:$('#basic-info-edit').toggle(); $('#basic-info-table').toggle(); return false;">
-  <?php echo image_tag("pencil.png", array("class" => "image-href")) ?>
-</a>
+
 </div>
 
 <div id="job-basic-info" class="collapsable"><a href="#basic"></a>
-  <?php include_partial("basicInfo", array("job" => $job, "basicInfoForm" => $basicInfoForm)); ?>
+  <?php include_partial("job/basicInfo", 
+          array("job" => $job, "basicInfoForm" => null)); ?>
 </div>
 
 <hr />
@@ -112,14 +31,10 @@
 <div class="info-header">Shoot <a href="#"
 	onclick="javascript:$('#job-shoot-info').toggle(); return false;">
 	<?php echo image_tag("arrow.png", array("class" =>"image-href", "style" => "width:15px;height:15px;")); ?></a>
-	 <a href="#" onclick="javascript:$('#shoot-edit-table').toggle(); $('#shoot-info-table').toggle(); return false;">
-    <?php echo image_tag("pencil.png", array("class" => "image-href")) ?>
-  </a>
-	
 </div>
 
 <div id="job-shoot-info" class="collapsable"><a href="#shoot"></a>
-  <?php include_partial("shootInfo", array("job" => $job, "form" => $shootInfoForm)); ?>
+  <?php include_partial("job/shootInfo", array("job" => $job, "form" => null)); ?>
 </div>
 
 <hr />
@@ -127,15 +42,11 @@
 <div class="info-header">Photography <a href="#"
 	onclick="javascript:$('#job-photogrpahy-info').toggle(); return false;">
 	<?php echo image_tag("arrow.png", array("class" =>"image-href", "style" => "width:15px;height:15px;")); ?></a>
-	 <a href="#" onclick="javascript:$('#photography-edit-table').toggle(); $('#photography-info-table').toggle(); return false;">
-    <?php echo image_tag("pencil.png", array("class" => "image-href")) ?>
-  </a>
-	
 </div>
 
 <div id="job-photogrpahy-info" class="collapsable">
   <a href="#photography"></a>
-  <?php include_partial("photographyInfo", array("job" => $job, "form" => $photographyInfoForm)); ?>
+  <?php include_partial("job/photographyInfo", array("job" => $job, "form" => null)); ?>
 </div>
 
 <hr/>
@@ -146,51 +57,22 @@
 </div>
 
 <div id="job-client-info" class="collapsable">
-<div class="info-header-small">Current Clients: <a
-	href="#TB_inline?height=200&width=330&inlineId=hiddenAddClient&modal=false"
-	class="thickbox">
-	   <?php echo image_tag("add.png", array("class" => "plus-img")); ?>
-	   </a></div>
+<div class="info-header-small">Current Clients:</div>
 
 <div id="job-client-list">
-    <?php include_partial("clientList", array("job" => $job)); ?>
-	</div>
-
+  <?php include_partial("job/clientList", array("job" => $job)); ?>
 </div>
-<hr />
-
-<div class="info-header">Photographers <a href="#"
-	onclick="javascript:$('#job-photographer-info').toggle(); return false;">
-<?php echo image_tag("arrow.png", array("class" =>"image-href", "style" => "width:15px;height:15px;")); ?></a>
-</div>
-
-<div id="job-photographer-info" class="collapsable">
-  <div class="info-header-small">
-    Current Photographers: 
-    <a href="#TB_inline?height=200&width=330&inlineId=hiddenAddPhotographer&modal=false"
-        class="thickbox">
-      <?php echo image_tag("add.png", array("class" => "plus-img")); ?>
-    </a>
-  </div>
-
-	<div id="job-photographer-list">
-	  <?php include_partial("photographerList", array("job" => $job)); ?>
-	</div>
-
 </div>
 
 <hr />
 
 <div class="info-header">Billing and Delivery <a href="#"
 	onclick="javascript:$('#job-billing-info').toggle(); return false;">
-<?php echo image_tag("arrow.png", array("class" =>"image-href", "style" => "width:15px;height:15px;")); ?></a>
-	<a href="#" onclick="javascript:$('#billing-edit-table').toggle(); $('#billing-info-table').toggle(); return false;">
-    <?php echo image_tag("pencil.png", array("class" => "image-href")) ?>
-  </a>
+  <?php echo image_tag("arrow.png", array("class" =>"image-href", "style" => "width:15px;height:15px;")); ?></a>
 </div>
 
 <div id="job-billing-info" class="collapsable">
-  	<?php include_partial("billingInfo", array("job" => $job, "form" => $billingInfoForm)); ?>
+  	<?php include_partial("job/billingInfo", array("job" => $job, "form" => null)); ?>
 </div>
 
 </div>

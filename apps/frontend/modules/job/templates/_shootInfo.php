@@ -7,6 +7,8 @@
   </tr>
 </table>
 
+<?php if(!is_null($form)): ?>
+
 <form id="shoot-info-form"
        action="<?php echo url_for("job_edit", array("form" => 'shoot', "job_id" => $job->getId())); ?>"
        method="post">
@@ -18,6 +20,7 @@
 	   <tr><td><?php echo button_to_function("Save", "saveShootInfo()"); ?>
 	</table>
 </form>
+<?php endif; ?>
 
 <script type="text/javascript">
   $(document).ready(function(){ initialize(); });

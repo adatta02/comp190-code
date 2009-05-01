@@ -41,6 +41,7 @@
     <column name="job_id" type="INTEGER" />
     <column name="user_id" type="INTEGER" />
     <column name="file_name" type="VARCHAR" size="255"/>
+    <column name="original_file_name" type="VARCHAR" size="255"/>
     <foreign-key name="job_attachment_user_id" phpName="User" foreignTable="sf_guard_user_profile">
       <reference local="user_id" foreign="user_id"/>
     </foreign-key>

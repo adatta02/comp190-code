@@ -70,6 +70,8 @@
   </tr>
 </table>
 
+<?php if(!is_null($basicInfoForm)): ?>
+
 <form id="basic-info-form"
        action="<?php echo url_for("job_edit", array("form" => 'basic', "job_id" => $job->getId())); ?>"
        method="post">
@@ -89,3 +91,5 @@
   </td></tr>
 </table>
 </form>
+
+<?php endif; ?>

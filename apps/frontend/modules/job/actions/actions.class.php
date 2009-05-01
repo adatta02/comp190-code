@@ -540,6 +540,20 @@ EOF;
 		$this->createCriteria ( $showType->getId (), array ("route" => "job_list_by", "slugOn" => "state", "slug" => $this->routeObject ) );
 	}
 	
+ public function executeAttach(sfWebRequest $request) {
+    $jobId = $request->getParameter("jobId");
+    $job = JobPeer::retrieveByPK($jobId);
+    
+    $attachForm = new JobAttachmentFormCustom ( );
+    $attachForm->bind( $request->getParameter ( $attachForm->getName () ), 
+                       $request->getFiles ( $attachForm->getName () ) );
+    $attachForm->setJobId($jobId);
+    $attachForm->save();
+    
+    $this->redirect($this->generateUrl("job_show", array("slug" => $job->getSlug())));
+     
+  }
+	
 	/**
 	 * Executes the create action. 
 	 * Displays a form to the user or deals with the save.
@@ -579,6 +593,7 @@ EOF;
 	
 	}
 	
+	
 	/**
 	 * Deals with processing and saving the form.
 	 *
@@ -595,8 +610,8 @@ EOF;
 		if ($form->isValid () && $attachForm->isValid()) {
 			$jid = $form->save ();
 			$attachForm->setJobId($jid);
-			$attachForm->save(null);
-			
+			$attachForm->save();			
+
 			if ($this->getUser ()->hasCredential ( "admin" )) {
 				$this->redirect ( "@job_list" );
 			} else {

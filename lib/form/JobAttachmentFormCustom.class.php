@@ -47,14 +47,16 @@ class JobAttachmentFormCustom extends sfForm {
   		$file = $this->getValue("file_" . $i);
   		
   		if(!is_null($file)){
-  			$shaName = sha1($file->getOriginalName());
-  			$filePath = sfConfig::get('sf_upload_dir') . "/" . $shaName;
+  			$shaName = sha1($file->getOriginalName() . time());
+  			$extension = $file->getExtension( $file->getOriginalExtension() );
+  			$filePath = sfConfig::get('sf_upload_dir') . "/" . $shaName . "." . $extension;
   			$file->save($filePath);
   			
   			$ja = new JobAttachment();
   			$ja->setJobId($jobId);
   			$ja->setUserId( sfContext::getInstance()->getUser()->getProfile()->getId() );
-  			$ja->setFileName($shaName);
+  			$ja->setFileName($shaName . "." . $extension);
+  			$ja->setOriginalFileName($file->getOriginalName());
   			$ja->save();
   			
   			chmod($filePath, 0644);

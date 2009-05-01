@@ -12,12 +12,7 @@ class clientviewActions extends sfActions {
 	
 	
 	public function executeShow(sfWebRequest $request) {
-		
 		$this->job = $this->getRoute ()->getObject ();
-		$this->basicInfoForm = new BasicInfoJobForm ( $this->job );
-		$this->shootInfoForm = new ShootInfoJobForm ( $this->job );
-		$this->photographyInfoForm = new PhotographyInfoJobForm ( $this->job );
-		$this->billingInfoForm = new BillingInfoJobForm ( $this->job );
 		
 	}
 
@@ -53,7 +48,7 @@ class clientviewActions extends sfActions {
 	  		
 		$c = new Criteria();
 		
-	   if($own){
+	  if($own){
       $crit = new Criteria();
       $crit->add(ClientPeer::USER_ID, $profile->getId());
       $client = ClientPeer::doSelectOne($crit);
@@ -63,9 +58,9 @@ class clientviewActions extends sfActions {
       }
       
       $crit = new Criteria();
-      $crit->add(JobClientPeer::CLIENT_ID, $client->getId());
       $ids = array();
-      $jobs = JobClientPeer::doSelect($crit);
+      $crit->add(JobClientPeer::CLIENT_ID, $client->getId());
+      $jobs = JobClientPeer::doSelectJoinAll($crit);
         
       foreach($jobs as $ph){
         $ids[] = $ph->getJobId();
@@ -90,7 +85,7 @@ class clientviewActions extends sfActions {
 		if (! is_numeric ( $this->page )){
 			$this->page = 1;
 		}
-
+    
 		// restrict to only their jobs if they are photogs
 		if($profile->getUserType()->getId() 
 		      == sfConfig::get("app_user_type_photographer")){
@@ -105,7 +100,7 @@ class clientviewActions extends sfActions {
         $crit = new Criteria();
 		  	$crit->add(JobPhotographerPeer::PHOTOGRAPHER_ID, $photo->getId());
 		  	$ids = array();
-		  	$photos = JobPhotographerPeer::doSelect($crit);
+		  	$photos = JobPhotographerPeer::doSelectJoinAll($crit);
 		  	
 		  	foreach($photos as $ph){
 		  		$ids[] = $ph->getJobId();

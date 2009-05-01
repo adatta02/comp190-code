@@ -16,6 +16,8 @@
   </tr>
 </table>
 
+<?php if(!is_null($form)): ?>
+
 <form id="photography-info-form"
        action="<?php echo url_for("job_edit", array("form" => 'photography', "job_id" => $job->getId())); ?>"
        method="post">
@@ -25,10 +27,12 @@
 	   <?php if($job->getOther()){
 	   	 echo $form['other']->renderRow();
                  }else{
-		 echo $form["ques1"]->renderRow();
+		   echo $form["ques1"]->renderRow();
                  echo $form["ques2"]->renderRow();
                  echo $form["ques3"]->renderRow();
 		 } ?>
 	   <tr><td><?php echo button_to_function("Save", "savePhotographyInfo()"); ?>
 	</table>
 </form>
+
+<?php endif; ?>
