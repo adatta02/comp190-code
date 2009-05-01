@@ -2,16 +2,19 @@
 
 <div id="login-container">
   <div id='box'>
-    <h3>Please login using your Tufts UTLN:</h3> <br/>
+    <h3>For security, please re-enter your password:</h3> <br/>
     <div id="loading" style="display: none">Loading...</div> 
     <div id="login-form">
       <form id="sfguard-login" onsubmit="sfguardLogin(); return false;" 
-            action="<?php echo url_for('@sf_guard_signin') ?>" method="post">
+            action="<?php echo url_for('@load_photoshelter_form') ?>" method="post">
 	    <table>
-	      <?php echo $form ?>
+	      <?php echo $form["password"]->renderRow(); ?>
 	    </table>
 	  <input type="submit" value="sign in" />
 	  </form>
+	  
+	  <br />
+	  <?php echo link_to("Return to homepage", "homepage") ?>
   </div>
 </div>
 <div id="ps-form"></div>
@@ -23,14 +26,9 @@
 
   function sfguardLogin(){
     $("#loading").show();
-    var r = ($("#signin_remember:checked").val() == "on" ? "on" : "");
-    $("#login-form").load($("#login-form form").attr("action"), 
-                            {"signin[username]": $("#signin_username").val(),
-                            "signin[password]": $("#signin_password").val(),
-                            "signin[remember]": r},
-                           function(){
-                            $("#login-form form").submit(function(){ sfguardLogin(); return false; });
-                           });
+    
+    $("#login-form").load($("#login-form form").attr("action"),
+                          {"password": $("#signin_password").val()});
   }
 
 </script>

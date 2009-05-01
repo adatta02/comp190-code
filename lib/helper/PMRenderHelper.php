@@ -29,7 +29,6 @@ function renderLog($log, $classNum) {
 	?></td>
 		<td><?php
 	echo $log->getUser ()->getUserName ();
-	$log->getUser();
 	?></td>
 	</tr>
 	<tr>

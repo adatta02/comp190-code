@@ -33,7 +33,8 @@
 		
 	<ul id="menu-bottom">
 	  <li><?php echo link_to("Request Job", "job_create"); ?></li>
-	 <li> <a href="http://photo.tufts.edu/?pid=24&c=21">FAQ </a></li>
+	  <li><a target="_new" href="http://photo.tufts.edu/?pid=24&c=21">FAQ </a></li>
+	  <li><?php echo link_to("View Photos", "@view_photos"); ?></li>
 	  <li><?php echo link_to("Logout", "sf_guard_signout"); ?></li>
 	</ul>
 </div>

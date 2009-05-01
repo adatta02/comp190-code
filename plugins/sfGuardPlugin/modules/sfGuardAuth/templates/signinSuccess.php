@@ -2,6 +2,5 @@
   <table>
     <?php echo $form ?>
   </table>
-
   <input type="submit" value="sign in" />
 </form>

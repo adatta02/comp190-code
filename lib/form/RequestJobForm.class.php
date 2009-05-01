@@ -185,8 +185,21 @@ class RequestJobForm extends sfForm {
       $user->getProfile()->save();
       $user->clearCredentials();
       $user->addCredential("client");
+		}else if($user->getProfile()->getUserType()->getId() 
+		          == sfConfig::get("app_user_type_client")){
+			$c = new Criteria();
+			$c->add(ClientPeer::USER_ID, $this->getUser ()->getProfile ()->getId ());
+			$clientProfile = ClientPeer::doSelectOne($c);
+      $clientProfile->setUserId($user->getProfile()->getId());
+      $clientProfile->setName($this->getValue("name"));
+      $clientProfile->setDepartment($this->getValue("department"));
+      $clientProfile->setAddress($this->getValue("address"));
+      $clientProfile->setEmail("email");
+      $clientProfile->setPhone($this->getValue("phone"));
+      $clientProfile->save();
 		}
 		
+		return $j->getId();
 	}
 
 }

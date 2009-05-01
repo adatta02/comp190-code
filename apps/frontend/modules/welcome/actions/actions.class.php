@@ -18,6 +18,11 @@ class welcomeActions extends sfActions
   public function executeIndex(sfWebRequest $request)
   {
   	
+  	if($this->getUser()->isAuthenticated()){
+  		$url = sfContext::getInstance()->getRouting()->generate("welcome_loggedin");
+  		$this->redirect($url);
+  	}
+  	
   	$route = str_replace("@", "", sfContext::getInstance()->getRouting()->getCurrentInternalUri(true));
   	
   	// HACK: theres something wrong when it tries to generate a slugged URL
@@ -27,7 +32,7 @@ class welcomeActions extends sfActions
   		
   	} */
   	
-  	if(strpos($route, "?"))
+  	if(strpos($route, "?") === false)
   	 $url = sfContext::getInstance()->getRouting()->generate($route);
   	else 
   	 $url = sfContext::getInstance()->getRouting()->generate("homepage");
@@ -54,6 +59,11 @@ class welcomeActions extends sfActions
   public function executeLoadPhotoshelterForm(sfWebRequest $request){
     $user = $this->getUser();
     $profile = $user->getProfile();
+    
+    if(is_null($profile)){
+    	die("Could not get user profile?");
+    }
+    
     $email = $profile->getEmail();
     $firstName = $profile->getFirstName();
     $lastName = $profile->getLastName();
@@ -105,12 +115,11 @@ class welcomeActions extends sfActions
   
   public function executeLoadPhotoshelter(sfWebRequest $request){
   	$this->setLayout("none");
+  	$this->getUser()->setReferer("@load_photoshelter_form");
   }
   
   public function executePhotoshelter(sfWebRequest $request){
-  	$this->getUser()->setAuthenticated(false);
   	$this->form = new sfGuardFormSignin();
-  	$this->getUser()->setReferer("@load_photoshelter");
   }
     
 }

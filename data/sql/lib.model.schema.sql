@@ -36,7 +36,11 @@ CREATE TABLE `sf_guard_user_profile`
 	`user_type_id` INTEGER,
 	`user_id` INTEGER,
 	`email` VARCHAR(255),
+	`first_name` VARCHAR(255),
+	`last_name` VARCHAR(255),
 	PRIMARY KEY (`id`),
+	INDEX `I_referenced_job_attachment_user_id_1` (`user_id`),
+	INDEX `I_referenced_fk_log_sf_guard_user_profile_2` (`user_id`),
 	INDEX `FI_sf_guard_user_profile_user_type` (`user_type_id`),
 	CONSTRAINT `fk_sf_guard_user_profile_user_type`
 		FOREIGN KEY (`user_type_id`)
@@ -67,6 +71,30 @@ CREATE TABLE `job_notes`
 	CONSTRAINT `job_notes_user_id`
 		FOREIGN KEY (`user_id`)
 		REFERENCES `sf_guard_user_profile` (`id`)
+)Type=InnoDB;
+
+#-----------------------------------------------------------------------------
+#-- job_attachment
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `job_attachment`;
+
+
+CREATE TABLE `job_attachment`
+(
+	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`job_id` INTEGER,
+	`user_id` INTEGER,
+	`file_name` VARCHAR(255),
+	PRIMARY KEY (`id`),
+	INDEX `FI__attachment_user_id` (`user_id`),
+	CONSTRAINT `job_attachment_user_id`
+		FOREIGN KEY (`user_id`)
+		REFERENCES `sf_guard_user_profile` (`user_id`),
+	INDEX `FI__attachment_job_id` (`job_id`),
+	CONSTRAINT `job_attachment_job_id`
+		FOREIGN KEY (`job_id`)
+		REFERENCES `job` (`id`)
 )Type=InnoDB;
 
 #-----------------------------------------------------------------------------
@@ -369,7 +397,7 @@ CREATE TABLE `log`
 	INDEX `FI_log_sf_guard_user_profile` (`sf_guard_user_profile_id`),
 	CONSTRAINT `fk_log_sf_guard_user_profile`
 		FOREIGN KEY (`sf_guard_user_profile_id`)
-		REFERENCES `sf_guard_user_profile` (`id`),
+		REFERENCES `sf_guard_user_profile` (`user_id`),
 	INDEX `FI_log_log_message_type` (`log_message_type_id`),
 	CONSTRAINT `fk_log_log_message_type`
 		FOREIGN KEY (`log_message_type_id`)

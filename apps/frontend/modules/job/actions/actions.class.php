@@ -550,25 +550,29 @@ EOF;
 		
 		$this->isAdmin = $this->getUser ()->hasCredential ( "admin" );
 		$this->form = new RequestJobForm ( );
+		$this->attachForm = new JobAttachmentFormCustom ( );
+		
+		if ($this->getUser ()->getProfile()->getUserTypeId() == sfConfig::get("app_user_type_client") ) {
+			$c = new Criteria ( );
+      $c->add ( ClientPeer::USER_ID, $this->getUser ()->getProfile ()->getId () );
+      $profile = ClientPeer::doSelectOne ( $c );
+      $this->isReadonly = !is_null ( $profile );
+		}else{
+			$profile = null;
+			$this->isReadonly = false;
+		}
 		
 		if ($request->isMethod ( "POST" )) {
-			$this->processForm ( $request, $this->form );
+			$this->processForm ( $request, $this->form, $this->attachForm );
 		} else {
 			
-			if ($this->getUser ()->hasCredential ( "client" )) {
-				$c = new Criteria ( );
-				$c->add ( ClientPeer::USER_ID, $this->getUser ()->getProfile ()->getUserId () );
-				$profile = ClientPeer::doSelectOne ( $c );
-				
-				if (! is_null ( $profile )) {
-					$this->form->setDefault ( "name", $profile->getName () );
-					$this->form->setDefault ( "department", $profile->getDepartment () );
-					$this->form->setDefault ( "address", $profile->getAddress () );
-					$this->form->setDefault ( "email", $profile->getEmail () );
-					$this->form->setDefault ( "phone", $profile->getPhone () );
-					$this->form->setDefault ( "clientId", $profile->getId () );
-				}
-			
+			if (! is_null ( $profile )) {
+				$this->form->setDefault ( "name", $profile->getName () );
+				$this->form->setDefault ( "department", $profile->getDepartment () );
+				$this->form->setDefault ( "address", $profile->getAddress () );
+				$this->form->setDefault ( "email", $profile->getEmail () );
+				$this->form->setDefault ( "phone", $profile->getPhone () );
+				$this->form->setDefault ( "clientId", $profile->getId () );
 			}
 		
 		}
@@ -581,12 +585,17 @@ EOF;
 	 * @param sfWebRequest $request
 	 * @param sfForm $form
 	 */
-	private function processForm(sfWebRequest $request, sfForm $form) {
+	private function processForm(sfWebRequest $request, sfForm $form, sfForm $attachForm) {
+    $attachForm->bind( $request->getParameter ( $attachForm->getName () ), 
+                       $request->getFiles ( $attachForm->getName () ) );
+		
 		$form->bind ( $request->getParameter ( $form->getName () ), 
 		              $request->getFiles ( $form->getName () ) );
-		
-		if ($form->isValid ()) {
-			$form->save ();
+		                                
+		if ($form->isValid () && $attachForm->isValid()) {
+			$jid = $form->save ();
+			$attachForm->setJobId($jid);
+			$attachForm->save(null);
 			
 			if ($this->getUser ()->hasCredential ( "admin" )) {
 				$this->redirect ( "@job_list" );

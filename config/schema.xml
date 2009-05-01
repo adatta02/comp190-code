@@ -36,6 +36,19 @@
     </foreign-key>
   </table>
   
+  <table name="job_attachment">
+    <column name="id" type="INTEGER" primaryKey="true" required="true" autoIncrement="true"/>
+    <column name="job_id" type="INTEGER" />
+    <column name="user_id" type="INTEGER" />
+    <column name="file_name" type="VARCHAR" size="255"/>
+    <foreign-key name="job_attachment_user_id" phpName="User" foreignTable="sf_guard_user_profile">
+      <reference local="user_id" foreign="user_id"/>
+    </foreign-key>
+    <foreign-key name="job_attachment_job_id" phpName="Job" foreignTable="job">
+      <reference local="job_id" foreign="id"/>
+    </foreign-key>
+  </table>
+  
   <table name="photo_type">
     <column name="id" type="INTEGER" primaryKey="true" required="true" autoIncrement="true"/>
     <column name="name" type="VARCHAR" size="64"/>

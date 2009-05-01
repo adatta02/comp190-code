@@ -9,6 +9,19 @@
  * @version    SVN: $Id: actions.class.php 12479 2008-10-31 10:54:40Z fabien $
  */
 class clientviewActions extends sfActions {
+	
+	
+	public function executeShow(sfWebRequest $request) {
+		
+		$this->job = $this->getRoute ()->getObject ();
+		$this->basicInfoForm = new BasicInfoJobForm ( $this->job );
+		$this->shootInfoForm = new ShootInfoJobForm ( $this->job );
+		$this->photographyInfoForm = new PhotographyInfoJobForm ( $this->job );
+		$this->billingInfoForm = new BillingInfoJobForm ( $this->job );
+		
+	}
+
+	
 
 	public function executeAddJob(sfWebRequest $request) {
 			$jobId = $request->getParameter("id");

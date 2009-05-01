@@ -29,6 +29,7 @@
 	<hr/>
 	
 	<ul id="middle-menu">
+	 <li><?php echo link_to("View Photos", "@view_photos"); ?></li>
 	 <li><?php echo link_to("View Projects", "project_list"); ?></li>
 	 <li><?php echo link_to("View Photographers", "photographer_list"); ?></li>
 	 <li><?php echo link_to("View Clients", "client_list"); ?></li>

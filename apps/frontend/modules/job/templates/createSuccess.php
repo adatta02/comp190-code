@@ -8,9 +8,13 @@
                           array("sortedBy" => JobPeer::DATE,
                                 "noSort" => true,
                                 "viewingCurrent" => null) ); ?>
-<?php if($isAdmin): ?>
-
 <script type="text/javascript">
+
+function showFileInput(id){
+  $("#jobattach_file_" + id).show();
+}
+
+<?php if($isAdmin): ?>
     $(document).ready( function(){ 
     $("#requestjob_name")
     .autocomplete('<?php
@@ -30,29 +34,38 @@
       }}, {width: 300}))
     .result(function(event, data) { $("#requestjob_clientId").val(data[1]); });
    });
-</script>
-
 <?php endif; ?>
+
+   function editInfo(){
+    var res = confirm("Are you sure you want to edit? The changes will be saved in our database.");
+    if(res){
+      $("#client-table input").each(function(){ $(this).attr("readonly", false); });
+    }
+   }
+</script>
 <div id="list-container">
   <h2>Request a photographer:</h2>
   &nbsp;<font color='red'>Required *</font>
   <h3><?php echo $form->renderGlobalErrors(); ?></h3>
+  <h3><?php echo $attachForm->renderGlobalErrors(); ?></h3>
   
-  <form action="<?php echo url_for('@job_create') ?>" method="POST">
+  <form action="<?php echo url_for('@job_create') ?>" method="POST" enctype="multipart/form-data">
   <table id="formTable" cellspacing="4">
     <tr valign="top">
     <td>
     <h3>Client</h3>
-    
+    <?php if($isReadonly): ?>
+      <small><a href="#" onclick="javascript:editInfo(); return false;">Edit my information</a></small>
+    <?php endif; ?>
     <?php if(!$isAdmin): ?>
-	    <table>
-			   <tr><?php echo $form["name"]->renderRow(); ?></tr>
-			   <tr><?php echo $form["department"]->renderRow(); ?> </tr>
-			   <tr><?php echo $form["address"]->renderRow(); ?> </tr>
-			   <tr><?php echo $form["email"]->renderRow(); ?> </tr>
-			   <tr><?php echo $form["phone"]->renderRow(); ?> </tr>
-			   <tr><?php echo $form["acct_num"]->renderRow(); ?> </tr>
-			   <tr><?php echo $form["dept_id"]->renderRow(); ?> </tr>
+	    <table id="client-table">
+			   <tr><?php echo $form["name"]->renderRow(array("readonly" => $isReadonly)); ?></tr>
+			   <tr><?php echo $form["department"]->renderRow(array("readonly" => $isReadonly)); ?> </tr>
+			   <tr><?php echo $form["address"]->renderRow(array("readonly" => $isReadonly)); ?> </tr>
+			   <tr><?php echo $form["email"]->renderRow(array("readonly" => $isReadonly)); ?> </tr>
+			   <tr><?php echo $form["phone"]->renderRow(array("readonly" => $isReadonly)); ?> </tr>
+			   <tr><?php echo $form["acct_num"]->renderRow(array("readonly" => $isReadonly)); ?> </tr>
+			   <tr><?php echo $form["dept_id"]->renderRow(array("readonly" => $isReadonly)); ?> </tr>
 	    </table>
     <?php else: ?>
      <table>
@@ -103,12 +116,29 @@
 </tr>
 
 <tr>
-<td align="right">
-    <input type="submit" value="submit" />
-    <?php echo $form->renderHiddenFields(); ?>
-</td>
+  <td>Attach Files:</td>
 </tr>
+<table align="left">
+  <tr>
+    <td><?php echo $attachForm["file_0"]->render( array("align" => "right", "onchange" => "javascript:showFileInput(1)") ); ?></td>
+  </tr>
+  <tr>
+    <td><?php echo $attachForm["file_1"]->render( array("align" => "right", "style" => "display: none", "onchange" => "javascript:showFileInput(2)") ); ?></td>
+  </tr>
+  <tr>
+    <td><?php echo $attachForm["file_2"]->render( array("align" => "right", "style" => "display: none", "onchange" => "javascript:showFileInput(3)") ); ?></td>
+  </tr>
+  <tr>
+    <td><?php echo $attachForm["file_3"]->render( array("align" => "right", "style" => "display: none", "onchange" => "javascript:showFileInput(4)") ); ?></td>
+  </tr>
+  <tr>
+    <td><?php echo $attachForm["file_4"]->render( array("align" => "right", "style" => "display: none") ); ?></td>
+  </tr>
 </table>
+</table>
+<br />
+  <input type="submit" value="submit" />
+  <?php echo $form->renderHiddenFields(); ?>
 </form>
 
   </div>

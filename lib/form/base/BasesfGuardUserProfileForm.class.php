@@ -6,7 +6,7 @@
  * @package    projectmanager
  * @subpackage form
  * @author     Your name here
- * @version    SVN: $Id: sfPropelFormGeneratedTemplate.php 12815 2008-11-09 10:43:58Z fabien $
+ * @version    SVN: $Id: sfPropelFormGeneratedTemplate.php 15484 2009-02-13 13:13:51Z fabien $
  */
 class BasesfGuardUserProfileForm extends BaseFormPropel
 {
@@ -16,12 +16,18 @@ class BasesfGuardUserProfileForm extends BaseFormPropel
       'id'           => new sfWidgetFormInputHidden(),
       'user_type_id' => new sfWidgetFormPropelChoice(array('model' => 'UserType', 'add_empty' => true)),
       'user_id'      => new sfWidgetFormPropelChoice(array('model' => 'sfGuardUser', 'add_empty' => true)),
+      'email'        => new sfWidgetFormInput(),
+      'first_name'   => new sfWidgetFormInput(),
+      'last_name'    => new sfWidgetFormInput(),
     ));
 
     $this->setValidators(array(
       'id'           => new sfValidatorPropelChoice(array('model' => 'sfGuardUserProfile', 'column' => 'id', 'required' => false)),
       'user_type_id' => new sfValidatorPropelChoice(array('model' => 'UserType', 'column' => 'id', 'required' => false)),
       'user_id'      => new sfValidatorPropelChoice(array('model' => 'sfGuardUser', 'column' => 'id', 'required' => false)),
+      'email'        => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'first_name'   => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'last_name'    => new sfValidatorString(array('max_length' => 255, 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('sf_guard_user_profile[%s]');
