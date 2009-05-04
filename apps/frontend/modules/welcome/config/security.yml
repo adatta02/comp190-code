@@ -1,7 +1,7 @@
 index:
   is_secure: off
 redirect:
-  is_secure: off
+  is_secure: on
 photoshelter:
   is_secure: off
 all:

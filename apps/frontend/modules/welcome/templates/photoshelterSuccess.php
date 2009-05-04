@@ -27,8 +27,7 @@
   function sfguardLogin(){
     $("#loading").show();
     
-    $("#login-form").load($("#login-form form").attr("action"),
-                          {"password": $("#signin_password").val()});
+    $("#login-form").load($("#login-form form").attr("action"), {"password": $("#signin_password").val()});
   }
 
 </script>
