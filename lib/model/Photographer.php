@@ -37,13 +37,19 @@ class Photographer extends BasePhotographer
    parent::delete($con);
   }
   
+  public function getPhotographerRegions(){
+  	$c = new Criteria();
+  	$c->add(PhotographerRegionPeer::PHOTOGRAPHER_ID, $this->getId());
+  	return PhotographerRegionPeer::doSelect($c);
+  }
+  
   public function getNumberOfJobs(){
   	$c = new Criteria();
   	$c->add(JobPhotographerPeer::PHOTOGRAPHER_ID, $this->getId());
   	return JobPhotographerPeer::doCount($c);
   }
 
-public function __toString(){
+  public function __toString(){
    	  return $this->getName();
    }  
 

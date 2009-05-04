@@ -32,6 +32,7 @@
 	 <li><?php echo link_to("View Photos", "@view_photos"); ?></li>
 	 <li><?php echo link_to("View Projects", "project_list"); ?></li>
 	 <li><?php echo link_to("View Photographers", "photographer_list"); ?></li>
+	 <li><?php echo link_to("Search Photographers", "photographer_search_location"); ?></li>
 	 <li><?php echo link_to("View Clients", "client_list"); ?></li>
 	 <li><?php echo link_to("View Calendar", "calendar_view"); ?></li>
 	 <li><?php echo link_to("View Log", "view_log"); ?></li>

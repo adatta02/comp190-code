@@ -6,7 +6,12 @@ ProjectManager.item2OldColor = null;
 ProjectManager.item1OldColor = null;
 ProjectManager.mouseOverColor = "#8bb2d1";
 
-
+  function createMarker(point, caption){
+   var marker = new GMarker(point);
+   
+   GEvent.addListener(marker, "click", function() { marker.openInfoWindowHtml(caption); });
+   return marker;
+  }
 
 function copyClient(){
   $("#requestjob_contact_name").val( $("#requestjob_name").val() );

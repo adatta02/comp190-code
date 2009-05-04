@@ -76,7 +76,76 @@ class photographerActions extends PMActions {
 	public function executeShow(sfWebRequest $request) {
 		$this->photographer = $this->getRoute ()->getObject ();
 		$this->InfoForm = new InfoPhotographerForm ( $this->photographer );
+	}
 	
+	public function executeSearchLocation(sfWebRequest $request) {
+		
+		if($request->isXmlHttpRequest()){
+			$lat = $request->getParameter("lat");
+			$lng = $request->getParameter("lng");
+			
+	    $sql = "SELECT *, 
+	        (
+	        asin(
+	          POW(sin((RADIANS(latitude)-RADIANS({$lat}))/2),2) + 
+	          ( cos(RADIANS(latitude)) * cos(RADIANS({$lat})) * POW(sin( (RADIANS(longitude) - RADIANS({$lng})) / 2 ),2) )
+	        )
+	        * 2 * 6367000) AS haversineDistance
+	        FROM photographer_region WHERE 1
+	        ORDER BY haversineDistance ASC LIMIT 25";
+	
+	    $connection = Propel::getConnection();
+	    $statement = $connection->prepare($sql);
+	    $statement->execute();
+	    
+	    $objects = array();
+	    while( $resultset = $statement->fetch(PDO::FETCH_OBJ) ){
+	    	$p = PhotographerPeer::retrieveByPK($resultset->photographer_id);
+	    	
+	    	$arr = array();
+	    	$arr["latitude"] = $resultset->latitude;
+	    	$arr["longitude"] = $resultset->longitude;
+	    	$arr["address"] = $resultset->address;
+	    	$arr["photographer_name"] = $p->getName();
+	      $arr["distance"] = $resultset->haversineDistance;
+	      $arr["link"] = sfContext::getInstance()->getRouting()->generate("photographer_view", array("slug" => $p->getSlug()));
+	      
+	    	$objects[] = $arr;
+	    }
+	    
+	    $this->renderText( json_encode($objects) );
+			return sfView::NONE;
+		}
+	}
+	
+	public function executeRemoveLocation(sfWebRequest $request) {
+		$regionId = $request->getParameter("id");
+		$photog = $request->getParameter("photogId");
+		$photographer = PhotographerPeer::retrieveByPK($photog);
+		$region = PhotographerRegionPeer::retrieveByPK($regionId);
+		
+		$region->delete();
+    $this->renderPartial("regionList", array("photographer" => $photographer));
+    return sfView::NONE;
+	}
+	
+	public function executeAddLocation(sfWebRequest $request) {
+		
+		$lat = $request->getParameter("lat");
+		$lng = $request->getParameter("lng");
+		$photog = $request->getParameter("photogId");
+		$address = $request->getParameter("address");
+		$photographer = PhotographerPeer::retrieveByPK($photog);
+		
+		$pr = new PhotographerRegion();
+		$pr->setLatitude($lat);
+		$pr->setLongitude($lng);
+		$pr->setPhotographerId($photog);
+		$pr->setAddress($address);
+		$pr->save();
+		
+		$this->renderPartial("regionList", array("photographer" => $photographer));
+		return sfView::NONE;
 	}
 	
 	public function executeCreate(sfWebRequest $request) {

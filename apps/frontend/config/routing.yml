@@ -135,6 +135,15 @@ photographer_remove:
 photographer_create:
   url: /photographer/create
   param: { module: photographer, action: create }
+photographer_save_location:
+  url: /photographer/locations/add
+  param: { module: photographer, action: addLocation }
+photographer_delete_location:
+  url: /photographer/locations/remove
+  param: { module: photographer, action: removeLocation }
+photographer_search_location:
+  url: /photographer/locations/search
+  param: { module: photographer, action: searchLocation }
 
 ################################################
 # client

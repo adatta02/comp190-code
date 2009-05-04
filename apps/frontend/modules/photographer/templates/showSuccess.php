@@ -8,6 +8,107 @@
                                 "viewingCurrent" => null,
                                 "noSort" => true) ); ?>
 
+<script type="text/javascript">
+
+  <?php 
+  $points = array();
+  foreach ($photographer->getPhotographerRegions() as $pr){
+    $obj = array();
+    $obj["lat"] = $pr->getLatitude();
+    $obj["lng"] = $pr->getLongitude();
+    $obj["address"] = $pr->getAddress();
+    $points[] = $obj;
+  }?>
+
+  var map;
+  var points = <?php echo json_encode($points) ?>;
+  var markers = new Array();
+  
+  $(document).ready(function(){ initialize(); });
+  $(document).unload( function(){ GUnload(); });
+   
+  function initialize() {
+    if (!GBrowserIsCompatible()) {
+      return;
+    }
+    
+    map = new GMap2(document.getElementById("location-map"));
+    map.setCenter(new GLatLng(42.85986,-71.05957), 5);
+    map.setUIToDefault();
+    
+    loadPoints(points);
+  }
+  
+  function loadPoints(pointsToLoad){
+    $.each(pointsToLoad, 
+     function(i, n){ 
+       var latlng = new GLatLng(n.lat, n.lng);
+       map.addOverlay( createMarker(latlng, n.address) );
+     });
+  }
+  
+  function confirmDelete(){
+    var res = confirm("Are you sure you want to delete this photographer?");
+    
+    if(res){
+      window.location = "<?php echo url_for("photographer_remove", $photographer); ?>";
+    }
+  }
+
+  function deleteLocation(id, address){
+    var res = confirm("Are you sure you want to delete this location?");
+    if(res){
+    
+      var newPoints = new Array();
+      $.each(points, function(i, n){
+        if(n.address != address){
+          newPoints.push( n );
+        }
+      });
+      
+      points = newPoints;
+      map.clearOverlays();
+      loadPoints(points);
+    
+      $("#loading").show();
+      $("#location-list").load("<?php echo url_for("photographer_delete_location"); ?>", 
+                              {id: id, photogId: <?php echo $photographer->getId() ?>}, 
+                              function(data){ 
+                                $("#loading").hide(); 
+                              });
+    }
+  }
+
+  function getLocations(address){
+   var geocoder = new GClientGeocoder();
+   var address = $("#loc").val();
+   var latlng;
+  
+    geocoder.getLatLng(address, 
+       function(point) {
+         if (!point) {
+           alert("Sorry! We couldn't geocode " + address);
+           return;
+         }
+        
+        points.push( {lat: point.lat(), lng: point.lng(), address: address} );
+        
+        $("#loading").show();
+        $("#location-list").load("<?php echo url_for("photographer_save_location"); ?>", 
+                   {lat: point.lat(), 
+                    lng: point.lng(), 
+                    address: address, photogId: "<?php echo $photographer->getId() ?>"}, 
+                   function(data){ 
+                     $("#loading").hide();
+                     map.addOverlay( createMarker(point, address) );
+                   });
+                
+     });
+  }
+
+</script>
+
+
 <div id="content-container">
 <div id="now-viewing">
     Viewing photographer <?php echo $photographer->getName(); ?>
@@ -17,72 +118,30 @@
     <?php echo image_tag("loading.gif", array("id" => "ajax-loading")); ?>
   </div>
 
-<div class="info-header">Information
-<a href="#" onclick="javascript:$('#info-edit').toggle(); return false;">
-  <?php echo image_tag("pencil.png", array("class" => "image-href")) ?>
-</a>
+<div class="info-header">
+<?php echo link_to ( "View jobs by " . $photographer->getName(), "photographer_view_jobs", $photographer )?>
 </div>
+
+<div class="info-header">Information <a href="#"
+	onclick="javascript:$('#info-edit').toggle(); return false;">
+  <?php echo image_tag("pencil.png", array("class" => "image-href")) ?>
+</a></div>
 
 <div id="photographer-info"><a href="#info"></a>
   <?php include_partial("Info", array("photographer" => $photographer, "InfoForm" => $InfoForm)); ?>
 </div>
 
 <div class="info-header">Locations</div>
-<form id="locations">
-	<input type="text" id="loc" /><button type="button" onclick="getLocations()">Add Location</button>
-</form> 
-<div id="location-container">
-<?php 
-      $pr = PhotographerRegionPeer::doSelect(new Criteria());
-      foreach ($pr as $i){
-         if($pr->getPhotographerId() == $photographer->getId()){
-	      echo $pr->getAddress();
-	 }
-      }
-?>
-
+<div id="location-list">
+  <?php include_partial("regionList", array("photographer" => $photographer)); ?>
 </div>
+	<form id="locations"><input type="text" id="loc" />
+	<button type="button" onclick="getLocations()">Add Location</button>
+	<?php echo image_tag("loading.gif", array("id" => "loading", "style" => "display: none")) ?>
+</form>
+
+<br />
+
+<div id="location-container"></div>
+  <div id="location-map" style="width: 500px; height: 300px">
 </div>
-
-<script type="text/javascript">
-  function confirmDelete(){
-    var res = confirm("Are you sure you want to delete this photographer?");
-    
-    if(res){
-      window.location = "<?php echo url_for("photographer_remove", $photographer); ?>";
-    }
-  }
-
-  function getLocations(address){
-	var geocoder = new GClientGeocoder();
-	var address = document.getElementById('loc');
-	var latlng;
-	
-	geocoder.getLatLng(
-                  address.value,
-                    function(point) {
-                      if (!point) {
-                        alert(address.value + " not found");
-                    } else {
-                        latlng = point;
-			var coords = new GPoint();
-			var p = new GPoint();
-			var curProj = G_NORMAL_MAP.getProjection();
-			p = curProj.fromLatLngToPixel(latlng, 10);
-			coords.x = Math.floor(p.x / 256);
-			coords.y = Math.floor(p.y / 256);
-                    }
-                  }
-                );
-	}
-
-	function distance(destX, destY, phoX, phoY, dist){
-		var x = Math.pow((phoX - destX),2);
-		var y = Math.pow((phoY - destY),2);
-		actualDist = Math.sqrt(x + y);
-		if(dist <= actualDist){
-		}
-	}
-	
-
-</script>

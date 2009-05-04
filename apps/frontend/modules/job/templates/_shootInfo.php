@@ -42,7 +42,7 @@
       html += '<br> <a href="http://maps.google.com/maps?saddr=&daddr=' + html + '" target ="_blank">Directions<\/a>';
 
         var marker = new GMarker(point);
-	GEvent.addListener(marker, "click", function() {
+	        GEvent.addListener(marker, "click", function() {
           marker.openInfoWindowHtml(html);
         });
         return marker;
