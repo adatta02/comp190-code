@@ -14,8 +14,9 @@
 <body link="#996600" vlink="#996600">
 
 <div id="header">
-  <div id="logo"><?php echo image_tag("tufts_logo.gif", array("style" => "height: 50px;margin-top:10px;margin-left:20px;")); ?></div>
-  <div id="title"><?php echo image_tag("title.jpg", array("style" => "height: 50px;margin-top:20px;margin-left:10px;")); ?></div>
+  <div id="logo">
+    <?php echo image_tag("tufts_logo.gif", array("style" => "height: 50px;margin-top:10px;")); ?></div>
+  <p id="header-title">University Photography Management System</p>
 </div>
 
 <div class="clear"></div>
@@ -23,6 +24,10 @@
 <div id="content">
   <?php echo $sf_content?>
 </div>
+
+<script type="text/javascript">
+$(document).ready( function(){ $(".tooltip").tooltip(); } );
+</script>
 
 </body>
 </html>

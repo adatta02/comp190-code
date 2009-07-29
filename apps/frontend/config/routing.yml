@@ -53,6 +53,9 @@ job_show:
 job_edit:
   url: /job/edit
   param: { module: job, action: edit }
+job_welcome:
+  url: /job/active
+  param: { module: job, action: welcome }
 job_list:
   url: /job/list/Pending
   param: { module: job, action: list }
@@ -252,6 +255,10 @@ calendar_view:
 welcome_loggedin:
   url: /home/
   param: { module: welcome, action: redirect }
+
+building_autocomplete:
+  url: /building/search
+  param: { module: search, action: building }
 
 # sfguard
 sf_guard_signin:

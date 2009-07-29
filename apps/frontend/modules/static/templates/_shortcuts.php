@@ -14,8 +14,15 @@
 	</div>
 	<?php endif; ?>
 	
-	<h3>Shortcuts</h3>
+	<h3>Job Shortcuts</h3>
 	<ul id="menu-list">
+	<li>
+	 <?php if($viewingCurrent == "Active"): ?>
+	   <strong>Active Jobs</strong>
+	 <?php else: ?>
+	   <?php echo link_to("Active Jobs", "job_welcome"); ?>
+	 <?php endif; ?>
+	</li>
 	<?php foreach($states as $s): ?>
 	 <?php if($s->getState() == $viewingCurrent): ?>
 	   <li><strong><?php echo $s ?></strong></li>
@@ -27,16 +34,22 @@
 	</ul>
 	
 	<hr/>
-	
-	<ul id="middle-menu">
-	 <li><?php echo link_to("View Photos", "@view_photos"); ?></li>
-	 <li><?php echo link_to("View Projects", "project_list"); ?></li>
-	 <li><?php echo link_to("View Photographers", "photographer_list"); ?></li>
-	 <li><?php echo link_to("Search Photographers", "photographer_search_location"); ?></li>
-	 <li><?php echo link_to("View Clients", "client_list"); ?></li>
-	 <li><?php echo link_to("View Calendar", "calendar_view"); ?></li>
-	 <li><?php echo link_to("View Log", "view_log"); ?></li>
+		
+	<h3>View</h3>
+	<ul id="bottom-menu">
+	 <li><?php echo link_to("Photos", "@view_photos"); ?></li>
+	 <li><?php echo link_to("Projects", "project_list"); ?></li>
+	 <li><?php echo link_to("Photographers", "photographer_list"); ?></li>
+   <li><?php echo link_to("Clients", "client_list"); ?></li>
+   <li><?php echo link_to("Calendar", "calendar_view"); ?></li>
+   <li><?php echo link_to("Log", "view_log"); ?></li>
 	</ul>
+	
+	<hr/>
+	
+  <ul id="middle-menu">
+   <li><?php echo link_to("Search Photographers", "photographer_search_location"); ?></li>
+  </ul>
 	
 	<hr/>
 	

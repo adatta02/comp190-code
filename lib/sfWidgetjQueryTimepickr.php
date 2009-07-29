@@ -73,9 +73,15 @@ class sfWidgetjQueryTimepickr extends sfWidgetFormInput
    */
   public function render($name, $value = null, $attributes = array(), $errors = array())
   {
-    return 
+  	
+  	if(isset($attributes["nojs"]) && $attributes["nojs"]){
+  		return $this->renderTag('input', array_merge(array('type' => $this->getOption('type'), 'name' => $name, 'value' => $value), $attributes));
+  	}
+  	
+  	return 
       "<script type='text/javascript'>
-        $(function(){
+        $(document).ready( function(){
+          return false;
           $('#" . $this->generateId($name) . "')
             .timepickr({
               convention: " . $this->getOption('convention') . ",
@@ -94,7 +100,6 @@ class sfWidgetjQueryTimepickr extends sfWidgetFormInput
               resetOnBlur: " . json_encode($this->getOption('resetOnBlur')) . "
             });
         });
-        
         </script>" 
        . $this->renderTag('input', array_merge(array('type' => $this->getOption('type'), 'name' => $name, 'value' => $value), $attributes));
   }

@@ -3,10 +3,12 @@
 <?php use_helper("JavascriptBase"); ?>
 
 <table width="100%" border="0" id="basic-info-table">
+  
   <tr>
     <td width="20%">Event</td>
     <td width="80%"><?php echo $job->getEvent(); ?></td>
   </tr>
+  
   <tr>
     <td>Status</td>
     <td><?php echo $job->getStatus()->getState(); ?></td>
@@ -80,8 +82,10 @@
   <?php echo $basicInfoForm["status_id"]->renderRow(); ?>
   <?php echo $basicInfoForm["publication_id"]->renderRow(); ?>
   <?php echo $basicInfoForm["date"]->renderRow(); ?>
-  <?php echo $basicInfoForm["start_time"]->renderRow(array("size" => 7)); ?>
-  <?php echo $basicInfoForm["end_time"]->renderRow(array("size" => 7)); ?>
+  <tr><th>Start Time</th>
+  <td><?php echo $basicInfoForm["start_time"]->render(array("size" => 7, "nojs" => true)); ?></td></tr>
+  <tr><th>End Time</th>
+  <td><?php echo $basicInfoForm["end_time"]->render(array("size" => 7, "nojs" => true)); ?></td></tr>
   <?php echo $basicInfoForm["due_date"]->renderRow(); ?>
   <?php echo $basicInfoForm["contact_name"]->renderRow(); ?>
   <?php echo $basicInfoForm["contact_email"]->renderRow(); ?>

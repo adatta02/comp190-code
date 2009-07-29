@@ -146,16 +146,24 @@ class Job extends BaseJob
 	
 	public function delete(PropelPDO $con = null)
 	{
-   $logEntry = new Log ( );
-   $logEntry->setWhen ( time () );
-   $logEntry->setPropelClass ( "Job" );
-   $logEntry->setSfGuardUserProfileId ( sfContext::getInstance ()->getUser ()->getUserId () );
-   $logEntry->setMessage ( "Job deleted." );
-   $logEntry->setLogMessageTypeId ( sfConfig::get ( "app_log_type_delete" ) );
-   $logEntry->setPropelId ( $this->getId () );
-   $logEntry->save ();
    
-   parent::delete($con);
+		parent::delete($con);
+		
+		$logEntry = new Log ( );
+		$logEntry->setWhen ( time () );
+    $logEntry->setPropelClass ( "Job" );
+    $logEntry->setSfGuardUserProfileId ( sfContext::getInstance ()->getUser ()->getUserId () );
+    $logEntry->setMessage ( "Job deleted." );
+    $logEntry->setLogMessageTypeId ( sfConfig::get ( "app_log_type_delete" ) );
+    $logEntry->setPropelId ( $this->getId () );
+    $logEntry->save ();
+   
+    sfGCalendar::deleteEventById( $this->getGCalId() );
+    
+    if( !is_null($this->getGCalIdCustom()) ){
+    	sfGCalendar::deleteEventById( $this->getGCalIdCustom() );
+    }
+    
 	}
 	
 	public function getStartTimestamp(){
@@ -168,6 +176,22 @@ class Job extends BaseJob
     return strtotime($datetime);
   }
 	
+  public function createCalendarArray(){
+  	
+  	$prettyLoc = str_replace ( "<br/>", "\n", $this->getPrettyAddress () );
+    if(strlen($prettyLoc) == 0){ $prettyLoc = "UNKNOWN"; }
+    
+    $jobUrl = sfContext::getInstance ()->getRouting ()->generate ( "job_show", $this, true );
+    
+  	$arr = array ();
+    $arr ["title"] = $this->getId() . " - " . $this->getEvent () . " : " . $this->getSlug();
+    $arr ["location"] = $prettyLoc;
+    $arr ["content"] = $this->getEvent () . "\n\n" . "<a href='" . $jobUrl . "'>View Job</a>";
+    $arr ["startTime"] = sfGCalendar::timestampToRFC3339 ( $this->getStartTimestamp () );
+    $arr ["endTime"] = sfGCalendar::timestampToRFC3339 ( $this->getEndTimestamp () );
+    return $arr;
+  }
+  
 	public function save(PropelPDO $con = null)
   {
   	
@@ -198,29 +222,42 @@ class Job extends BaseJob
       throw $e;
     }
     
-    $jobUrl = sfContext::getInstance ()->getRouting ()->generate ( "job_show", $this, true );
-		$arr = array ();
-		$arr ["title"] = $this->getId() . " - " . $this->getEvent ();
-		$arr ["location"] = str_replace ( "<br/>", "\n", $this->getPrettyAddress () );
-		$arr ["content"] = $this->getEvent () . "\n" . "<a href='" . $jobUrl . "'>View Job</a>";
-		$arr ["startTime"] = sfGCalendar::timestampToRFC3339 ( $this->getStartTimestamp () );
-		$arr ["endTime"] = sfGCalendar::timestampToRFC3339 ( $this->getEndTimestamp () );
+    $arr = $this->createCalendarArray();
+		
+		$uid = sfContext::getInstance()->getUser()->getUserId();
+    if(is_null($uid)){ $uid = 1; }
 		
 		if ($isNew) {
       $logEntry = new Log();
       $logEntry->setWhen(time());
       $logEntry->setPropelClass("Job");
-      $logEntry->setSfGuardUserProfileId(sfContext::getInstance()->getUser()->getUserId());
+      $logEntry->setSfGuardUserProfileId($uid);
       $logEntry->setMessage("Job created.");
       $logEntry->setLogMessageTypeId(sfConfig::get("app_log_type_create"));
       $logEntry->setPropelId($this->getId());
       $logEntry->save();
       
-			$event = sfGCalendar::createJobEvent ( $arr );
-			$this->setGCalId ( $event->id );
-			$this->save();
+      if( !is_null($this->getDate()) ){
+        $event = sfGCalendar::createJobEvent ( $arr );
+        $this->setGCalId ( $event->id );
+			  $this->save();
+      }
+      
 		} else {
-			sfGCalendar::updateJobEventById ( $this->getGCalId (), $arr );
+			
+			if( is_null($this->getGCalId()) ){
+        $event = sfGCalendar::createJobEvent ( $arr );
+        $this->setGCalId ( $event->id );
+        $this->save();
+			}else{
+				sfGCalendar::updateJobEventById ( $this->getGCalId (), $arr );
+			}
+			
+			if( !is_null($this->getGCalIdCustom()) ){
+				$arr["calUrl"] = $this->getGCalIdCustomUrl();
+			  sfGCalendar::updateJobEventById ( $this->getGCalIdCustom (), $arr );	
+			}
+			
 		}
       
     if($updateNotes){
@@ -229,7 +266,7 @@ class Job extends BaseJob
     	$c->addDescendingOrderByColumn(JobNotesPeer::ID);
     	$old = JobNotesPeer::doSelectOne($c);
     	$rev = (!is_null($old) ? ($old->getRevision() + 1) : 1);
-    	
+    	    	
     	$jn = new JobNotes();
     	$jn->setJobId($this->getId());
     	$jn->setNotes($this->getNotes());

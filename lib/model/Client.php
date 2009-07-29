@@ -3,6 +3,10 @@
 class Client extends BaseClient
 {
 	
+	public function __toString(){
+		return $this->getName();
+	}
+	
   public function save(PropelPDO $con = null)
   {
     $logEntry = new Log();

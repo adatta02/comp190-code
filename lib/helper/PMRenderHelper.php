@@ -1,6 +1,7 @@
 <?php
 use_helper ( "Form" );
 use_helper ( "JavascriptBase" );
+use_helper ( "Text" );
 
 function GoogleMapsInclude() {
 	$key = sfConfig::get ( "app_gmap_key" );
@@ -228,80 +229,58 @@ function renderJobListView($job, $classNum, $renderStatus = false) {
 	$eTime = substr ( $eTime, - 8, 5 );
 	?>
 	<table class="job-table" width="100%">
-	<col width="4%"></col>
-	<col width="30%"></col>
-	<col width="33%"></col>
-	<col width="33%"></col>
 	<tr>
-		<td rowspan="2">
-        <?php
-	echo checkbox_tag ( 'job-' . $job->getId (), $job->getId (), 0, array ("class" => "job-check" ) );
-	?> 
-		   </td>
-		<td>Job <?php
-	echo link_to ( $job->getId (), "job_show", $job );
-	?></td>
-		<td>
-         <?php
-	echo $job->getEvent ();
-	?>
-		   </td>
-		<td>       
+		<td style="width: 200px"><?php echo checkbox_tag ( 'job-' . $job->getId (), $job->getId (), 0, array ("class" => "job-check" ) );?> 
+		    Job #<?php echo link_to ( $job->getId (), "job_show", $job ); ?></td>
+		
+		<td style="width: 250px"><small>Event:</small> <?php echo ( truncate_text($job->getEvent(), 24) == $job->getEvent () ) 
+		            ? $job->getEvent () : "<span class='tooltip' title=\"" . str_replace('"', "'", $job->getEvent()) . "\">" . truncate_text($job->getEvent(), 30) . "<span>";?></td>
+				
+		<td style="width: 250px">       
 		  <?php
-	if ($job->getProjectId ()) {
-		$title = $job->getProject ()->getName ();
-		$title = (substr ( $title, 0, 30 ) == $title) ? $title : substr ( $title, 0, 30 ) . "...";
-		echo link_to ( $title, "project_view", $job->getProject () );
-	}
-	?> 
-       </td>
+			if ($job->getProjectId ()) {
+				$title = truncate_text($job->getProject ()->getName (), 24);
+				if( $title == $job->getProject ()->getName () ){
+				  echo "<small>Project:</small> " . link_to ( $title, "project_view", $job->getProject () );
+				}else{
+					echo "<small>Project:</small> <span class='tooltip' title=\"" . 
+					         str_replace('"', "'", $job->getProject ()->getName ()) . "\">" . link_to ( $title, "project_view", $job->getProject () ) . "</span>";
+					
+				}
+			}
+	   ?> 
+    </td>
+    
+    <td style="width: 250px">
+      <?php if ($renderStatus) : ?><small>Status:</small> <?php echo $job->getStatus ()->getState (); ?><?php endif; ?>
+    </td>
+    
 	</tr>
 	<tr>
-		<td> <?php
-	echo $job->getDate ( "F j, Y" ) . " " . $sTime . " - " . $eTime?> </td>
-		<td>Tags: <?php
-	renderTagList ( $job );
-	?></td>
-
-       <?php
-	if ($renderStatus) :
-		?>
-          <td align="left">
-          Status:
-          <?php
-		echo $job->getStatus ()->getState ();
-		?>
-          </td>
-       
-	<?php endif;
-	?>
-       
-		   <?php
-	$photogs = $job->getPhotographers ();
-	if (count ( $photogs ) == 1) :
-		
-		foreach ( $photogs as $i ) {
-			?>
-		   	 <td>
-			     <?php
-			echo link_to ( $i, "photographer_view_jobs", $i ) . " ";
-			?>
-		   	 </td>
-		   <?php
-		}
-	 elseif (count ( $photogs ) == 0) :
-		?>
-		           <td> <?php
-		echo "No Photographer";
-		?> </td>
-		      
-	 <?php else : ?>
-		        <td> <?php
-		echo count ( $photogs ) . " Photographers";
-		?> </td>
-			   
-		   
-	<?php endif; ?>
+		<td><?php echo $job->getDate ( "n/j/Y" ) . " " . $sTime . " - " . $eTime?></td>
+	  <td><small>Tags:</small> <?php renderTagList ( $job ); ?></td>
+    <?php
+	     $photogs = $job->getPhotographers ();
+	     if (count ( $photogs ) == 1) :
+	       $i = array_pop( $photogs );
+		 ?>
+		    <td><small>Photographer:</small> <?php $name = truncate_text($i->getName(), "16"); echo link_to ( $name, "photographer_view_jobs", $i ) . " "; ?></td>
+			<?php elseif (count ( $photogs ) == 0) : ?>
+			    <td><small>Photographer:</small> None</td>
+		  <?php else : ?>
+		      <td><small>Photographer:</small> <?php echo count ( $photogs ); ?> Assigned</td>
+	    <?php endif; ?>
+	    
+	   <td><?php $clients = $job->getClients(); ?>
+	     <small>Client:</small>  
+	     <?php if(count($clients) == 1){ 
+	     	       $n = array_pop($clients); echo $n;
+	           }else if(count($clients) > 1){
+	             echo count( $clients );
+             }else{
+               echo "None";
+             }?>
+	   </td>
 	</tr>
 </table>
 </div>

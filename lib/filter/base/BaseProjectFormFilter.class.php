@@ -8,18 +8,22 @@ require_once(sfConfig::get('sf_lib_dir').'/filter/base/BaseFormFilterPropel.clas
  * @package    projectmanager
  * @subpackage filter
  * @author     Your name here
- * @version    SVN: $Id: sfPropelFormFilterGeneratedTemplate.php 13459 2008-11-28 14:48:12Z fabien $
+ * @version    SVN: $Id: sfPropelFormFilterGeneratedTemplate.php 15484 2009-02-13 13:13:51Z fabien $
  */
 class BaseProjectFormFilter extends BaseFormFilterPropel
 {
   public function setup()
   {
     $this->setWidgets(array(
-      'name' => new sfWidgetFormFilterInput(),
+      'name'      => new sfWidgetFormFilterInput(),
+      'status_id' => new sfWidgetFormPropelChoice(array('model' => 'Status', 'add_empty' => true)),
+      'slug'      => new sfWidgetFormFilterInput(),
     ));
 
     $this->setValidators(array(
-      'name' => new sfValidatorPass(array('required' => false)),
+      'name'      => new sfValidatorPass(array('required' => false)),
+      'status_id' => new sfValidatorPropelChoice(array('required' => false, 'model' => 'Status', 'column' => 'id')),
+      'slug'      => new sfValidatorPass(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('project_filters[%s]');
@@ -37,8 +41,10 @@ class BaseProjectFormFilter extends BaseFormFilterPropel
   public function getFields()
   {
     return array(
-      'id'   => 'Number',
-      'name' => 'Text',
+      'id'        => 'Number',
+      'name'      => 'Text',
+      'status_id' => 'ForeignKey',
+      'slug'      => 'Text',
     );
   }
 }

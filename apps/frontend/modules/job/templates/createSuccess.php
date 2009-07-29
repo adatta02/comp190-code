@@ -50,44 +50,53 @@ function showFileInput(id){
   <h3><?php echo $attachForm->renderGlobalErrors(); ?></h3>
   
   <form action="<?php echo url_for('@job_create') ?>" method="POST" enctype="multipart/form-data">
+  
   <table id="formTable" cellspacing="4">
     <tr valign="top">
-    <td>
-    <h3>Client</h3>
-    <?php if($isReadonly): ?>
-      <small><a href="#" onclick="javascript:editInfo(); return false;">Edit my information</a></small>
-    <?php endif; ?>
-    <?php if(!$isAdmin): ?>
-	    <table id="client-table">
+    
+    <td class="form-td">
+      <h3>Client</h3>
+      
+      <?php if($isReadonly): ?>
+        <small><a href="#" onclick="javascript:editInfo(); return false;">Edit my information</a></small>
+      <?php endif; ?>
+      
+      <?php if(!$isAdmin): ?>
+	    <table id="client-table" class="form-td">
 			   <tr><?php echo $form["name"]->renderRow(array("readonly" => $isReadonly)); ?></tr>
-			   <tr><?php echo $form["department"]->renderRow(array("readonly" => $isReadonly)); ?> </tr>
-			   <tr><?php echo $form["address"]->renderRow(array("readonly" => $isReadonly)); ?> </tr>
-			   <tr><?php echo $form["email"]->renderRow(array("readonly" => $isReadonly)); ?> </tr>
-			   <tr><?php echo $form["phone"]->renderRow(array("readonly" => $isReadonly)); ?> </tr>
-			   <tr><?php echo $form["acct_num"]->renderRow(array("readonly" => $isReadonly)); ?> </tr>
-			   <tr><?php echo $form["dept_id"]->renderRow(array("readonly" => $isReadonly)); ?> </tr>
+			   <tr><?php echo $form["department"]->renderRow(array("readonly" => $isReadonly)); ?></tr>
+			   <tr><?php echo $form["address"]->renderRow(array("readonly" => $isReadonly)); ?></tr>
+			   <tr><?php echo $form["email"]->renderRow(array("readonly" => $isReadonly)); ?></tr>
+			   <tr><?php echo $form["phone"]->renderRow(array("readonly" => $isReadonly)); ?></tr>
+			   <tr><?php echo $form["acct_num"]->renderRow(array("readonly" => $isReadonly)); ?></tr>
+			   <tr><?php echo $form["dept_id"]->renderRow(array("readonly" => $isReadonly)); ?></tr>
 	    </table>
     <?php else: ?>
-     <table>
-      <?php echo $form["name"]->renderRow(); ?>
-     </table>
-     <?php endif; ?>
+      <?php echo $form["name"]->render(); ?>
+    <?php endif; ?>
+    
     </td>
-  <td>
+    
+  <td class="form-td-right">
+  
     <h3>Shoot Contact</h3>
+    
     <?php if(!$isAdmin): ?>
       <span>Same as client? <?php echo checkbox_tag("copy-client-info", 1, 0, array("onclick" => "javascript:copyClient();")); ?></span>
     <?php endif; ?>
+    
     <table>
 	    <tr><?php echo $form["contact_name"]->renderRow(); ?></tr>
 	    <tr><?php echo $form["contact_email"]->renderRow(); ?></tr>
 	    <tr><?php echo $form["contact_phone"]->renderRow(); ?></tr>
     </table>
+    
   </td>
+  
 </tr>
 
 <tr valign="top">
-  <td>
+  <td class="form-td">
     <h3>Shoot</h3>
     <table>
 		    <tr><?php echo $form["publication_id"]->renderRow(); ?> </tr>
@@ -105,20 +114,24 @@ function showFileInput(id){
       </table>
     </td>
   <td>
-<h3>Photography</h3>
-<table cellpadding="5">
+  
+<table cellpadding="5" class="form-td-right">
+    <tr><td><h3>Photography</h3></td></tr>
     <tr><?php echo $form["photo_type"]->renderRow(); ?> </tr>
     <tr><?php echo $form["ques1"]->renderRow(); ?> </tr>
     <tr><?php echo $form["ques2"]->renderRow(); ?> </tr>
     <tr><?php echo $form["ques3"]->renderRow(); ?> </tr>
 </table>
+
 </td>
 </tr>
 
+</table>
+
+<table style="margin-left: 20px"><tbody>
 <tr>
   <td>Attach Files:</td>
 </tr>
-<table align="left">
   <tr>
     <td><?php echo $attachForm["file_0"]->render( array("align" => "right", "onchange" => "javascript:showFileInput(1)") ); ?></td>
   </tr>
@@ -134,9 +147,8 @@ function showFileInput(id){
   <tr>
     <td><?php echo $attachForm["file_4"]->render( array("align" => "right", "style" => "display: none") ); ?></td>
   </tr>
-</table>
-</table>
-<br />
+</tbody></table>
+
   <input type="submit" value="submit" />
   <?php echo $form->renderHiddenFields(); ?>
 </form>

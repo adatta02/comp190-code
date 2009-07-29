@@ -26,6 +26,21 @@ class sfGCalendar {
     self::$IS_REGISTERED = true;
   }
   
+  public static function getCalendarList(){
+  	
+  	if(!self::$IS_REGISTERED)
+     self::register();
+  	
+     $calFeed = self::$service->getCalendarListFeed();
+     $arr = array();
+     
+     foreach ($calFeed as $calendar) {
+     	$arr[] = array( $calendar->title->text, $calendar->getLink("alternate")->href   );
+     }
+  	
+     return $arr;
+  }
+  
   public static function getEventById($id){
   
     if(!self::$IS_REGISTERED)
@@ -66,6 +81,27 @@ class sfGCalendar {
   	return true;
   }
   
+  public static function deleteEventById($eventId){
+    if(!self::$IS_REGISTERED)
+     self::register();
+    
+    try{
+     $event = self::$service->getCalendarEventEntry($eventId);
+    }catch(sfException $ex){
+    	echo $ex->getMessage();
+      return false;
+    }
+    
+    try{
+    	$event->delete();
+    }catch(sfException $ex){
+    	echo $ex->getMessage();
+      return false;
+    }
+    
+    return true;
+  }
+  
   public static function createJobEvent($arr){
     
   	if(!self::$IS_REGISTERED)
@@ -86,9 +122,24 @@ class sfGCalendar {
     $when->endTime = $arr["endTime"];
     $event->when = array($when);
     
+    $url = null;
+    if(array_key_exists("calUrl", $arr)){
+    	$url = $arr["calUrl"];
+    }
+    
     // Upload the event to the calendar server
     // A copy of the event as it is recorded on the server is returned
-    $newEvent = self::$service->insertEvent($event);
+    
+    if(is_null($url)){
+    	try{
+    	   $newEvent = self::$service->insertEvent($event);
+    	}catch(Exception $ex){ }
+    }else{
+    	try{
+    	 $newEvent = self::$service->insertEvent($event, $url);
+    	}catch(Exception $e){ }
+    }
+    
     return $newEvent;
   }
   

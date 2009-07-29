@@ -4,7 +4,7 @@ all:
     check_password_callable: [LDAPAuth, checkLDAPPassword]
     success_signin_url: welcome/redirect
   ldap_server: ldaps://ldap.tufts.edu/
-  gmap_key: ABQIAAAA_6icK9WzMbH5eGCPpoZKHhQ2s80LQuI1NckErksMVT-ro0hA4hSJVIpkoZUajXHvLWpvvpsiV-qO8w
+  gmap_key: ABQIAAAA_6icK9WzMbH5eGCPpoZKHhRS6KZSpdZuOHqmMy0G4GMdSu_INhQl-wtK1iSb5m0ZpacQPu-h6REVkg
   gcal_user: contact@setfive.com
   gcal_password: tuftsphoto
   job_status:
@@ -22,7 +22,7 @@ all:
     client: 2
     photographer: 3
     user: 4
-  items_per_page: 20
+  items_per_page: 75
   log_type:
     create: 1
     update: 2

@@ -25,6 +25,13 @@ class searchActions extends PMActions
                               "slug" => $this->searchBox));
   }
 
+  public function executeBuilding(sfWebRequest $request)
+  {
+  	$q = $request->getParameter("q");
+  	$this->renderText( json_encode(CampusBuildingPeer::retrieveForAutocomplete($q)) );
+  	return sfView::NONE;
+  }
+  
   public function executeAdvanced(sfWebRequest $request)
   {
   	$this->form = new AdvancedSearchForm();

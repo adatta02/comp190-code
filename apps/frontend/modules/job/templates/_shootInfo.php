@@ -23,14 +23,17 @@
 <?php endif; ?>
 
 <script type="text/javascript">
+  var map;
+  
   $(document).ready(function(){ initialize(); });
+  
   function initialize() {
     
     if (GBrowserIsCompatible()) {
-      var map = new GMap2(document.getElementById("map"));
+      map = new GMap2(document.getElementById("map"));
       var geocoder = new GClientGeocoder();
       map.setUIToDefault();
-
+      
       var gmarkers = [];
       var htmls = [];
       var to_htmls = [];
@@ -56,10 +59,9 @@
                       if (!point) {
                         alert(address + " not found");
                     } else {
-                        map.setCenter(point, 13);
                         var marker = createMarker(point, address);
-			map.addOverlay(marker);
-			
+			                  map.addOverlay(marker);
+			                  map.setCenter(point, 15);
                     }
                   }
                 );
@@ -67,6 +69,17 @@
     }
  </script>
 
-<div id="map" style="width: 500px; height: 300px" onunload="GUnload()">
-
+<div id="map" style="width: 500px; height: 300px; float: left" onunload="GUnload()">
 </div>
+
+<div style="float: left; padding-left: 10px">
+  <p style="font-weight: bold; font-size: 12px">
+    Find an on campus building:
+  </p>
+  
+  <p>
+    <?php echo input_tag("building-search"); ?>
+  </p>
+</div>
+
+<div class="clear"></div>

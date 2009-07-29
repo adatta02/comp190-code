@@ -59,15 +59,14 @@ class JobPeer extends BaseJobPeer
 		
     $c = new Criteria();
     $crit0 = $c->getNewCriterion(JobPeer::EVENT, $q . '%', Criteria::LIKE);
-    $crit1 = $c->getNewCriterion(JobPeer::ID, $q . '%', Criteria::LIKE);
-    // Perform OR at level 0 ($crit0 $crit1 )
+    $crit1 = $c->getNewCriterion(JobPeer::ID, $q . '%', Criteria::LIKE);    
     $crit0->addOr($crit1);
-    // Remember to change the peer class here for the correct one in your model
     $c->add($crit0);
 		$c->addDescendingOrderByColumn(JobPeer::EVENT);
 		$c->setLimit(10);
 		
 		$jobs = JobPeer::doSelect($c);
+		
 		$arr = array();
 		foreach($jobs as $j){
 			$arr[] = array("name" => $j->getId() . " - " . $j->getEvent(), 

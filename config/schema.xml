@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <database defaultIdMethod="native" name="propel" package="lib.model">
+
+  <table name="campus_building">
+    <column name="id" type="INTEGER" primaryKey="true" required="true" autoIncrement="true"/>
+    <column name="name" type="VARCHAR" size="255"/>
+    <column name="address" type="VARCHAR" size="128"/>
+    <column name="latitude" type="VARCHAR" size="32"/>
+    <column name="longitude" type="VARCHAR" size="32"/>
+  </table>
+  
   <table name="project">
     <column name="id" type="INTEGER" primaryKey="true" required="true" autoIncrement="true"/>
     <column name="name" type="VARCHAR" size="45"/>
@@ -69,7 +78,7 @@
     <column name="street" type="VARCHAR" size="64"/>
     <column name="city" type="VARCHAR" size="64"/>
     <column name="state" type="VARCHAR" size="64"/>
-    <column name="zip" type="INTEGER"/>
+    <column name="zip" type="VARCHAR" size="8"/>
     <column name="contact_name" type="VARCHAR" size="45"/>
     <column name="contact_email" type="VARCHAR" size="64"/>
     <column name="contact_phone" type="VARCHAR" size="45"/>
@@ -86,6 +95,8 @@
     <column name="photo_type" type="INTEGER"/>
     <column name="processing" type="VARCHAR" size="255"/>
     <column name="g_cal_id" type="VARCHAR" size="255"/>
+    <column name="g_cal_id_custom" type="VARCHAR" size="255"/>
+    <column name="g_cal_id_custom_url" type="VARCHAR" size="255"/>
     <foreign-key name="fk_Shoot_Publication" foreignTable="publication">
       <reference local="publication_id" foreign="id"/>
     </foreign-key>

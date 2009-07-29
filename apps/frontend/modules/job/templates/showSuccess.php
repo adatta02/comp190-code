@@ -1,5 +1,5 @@
 <?php use_helper("PMRender"); ?>
-<?php echo include_javascripts_for_form($basicInfoForm); ?>
+<?php // echo include_javascripts_for_form($basicInfoForm); ?>
 <?php echo include_stylesheets_for_form($basicInfoForm); ?>
 
 <?php echo GoogleMapsInclude(); ?>
@@ -23,6 +23,33 @@
   
   $(document).ready( 
     function(){
+
+    $("#building-search")
+      .autocomplete('<?php echo url_for ( "@building_autocomplete" )?>', $.extend({}, {
+        dataType: 'json',
+        parse:    function(data) {
+                    var parsed = [];
+                    var obj;
+                    for(var i=0; i < data.length; i++){
+                      obj = new Object();
+                      obj.data = [data[i].name, data[i].address, data[i].lat, data[i].lng];
+                      obj.value = data[i].name;
+                      obj.result = data[i].name;
+                      parsed.push(obj);
+                    }
+                    return parsed;
+        }}, {}))
+      .result(function(event, data) { 
+        var html = "<strong>" + data[0] + "</strong><br />" + data[1];
+        var point = new GLatLng( data[2], data[3] );
+        var marker = createMarker(point, html);
+        
+        map.clearOverlays();
+        map.addOverlay(marker);
+        map.setCenter(point, 15);
+        marker.openInfoWindowHtml(html);
+        
+       });
     
 	  $("#add-tag-val")
 	    .autocomplete('<?php echo url_for ( "@tag_autocomplete" )?>', $.extend({}, {
@@ -170,7 +197,8 @@ function sendEmail(){
 </a>
 </div>
 
-<div id="job-basic-info" class="collapsable"><a href="#basic"></a>
+<div id="job-basic-info" class="collapsable">
+  <a href="#basic"></a>
   <?php include_partial("basicInfo", array("job" => $job, "basicInfoForm" => $basicInfoForm)); ?>
 </div>
 
@@ -230,7 +258,7 @@ function sendEmail(){
 
 <div id="job-client-list">
     <?php include_partial("clientList", array("job" => $job)); ?>
-	</div>
+</div>
 
 </div>
 <hr />

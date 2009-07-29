@@ -10,6 +10,25 @@
  */
 class jobActions extends PMActions {
 	
+	private function reloadByWelcome($null){
+    $c = new Criteria ( );
+    $c->addAscendingOrderByColumn( JobPeer::STATUS_ID );
+    $crit0 = $c->getNewCriterion ( JobPeer::STATUS_ID, sfConfig::get ( "app_job_status_pending" ) );
+    $crit1 = $c->getNewCriterion ( JobPeer::STATUS_ID, sfConfig::get ( "app_job_status_accepted" ) );
+    $crit2 = $c->getNewCriterion ( JobPeer::STATUS_ID, sfConfig::get ( "app_job_status_completed" ) );
+    $crit0->addOr ( $crit1 );
+    $crit0->addOr ( $crit2 );
+    $c->add ( $crit0 );
+		
+    $this->routeObject = null;
+    $this->route = "job_welcome";
+    $this->propelType = "slug";
+    $this->renderStatus = true;
+    $this->viewingCaption = "Active Jobs";
+    
+    return $c;
+	}
+	
 	private function reloadByClient($clientId) {
 		$c = new Criteria ( );
 		$this->routeObject = ClientPeer::retrieveByPK ( $clientId );
@@ -59,6 +78,7 @@ class jobActions extends PMActions {
 	private function reloadByState($stateId) {
 		$c = new Criteria ( );
 		$c->add ( JobPeer::STATUS_ID, $stateId );
+		
 		
 		$this->routeObject = StatusPeer::retrieveByPK ( $stateId );
 		$this->route = "job_list_by";
@@ -504,6 +524,35 @@ EOF;
 			$this->renderPartial ( "basicInfo", array ("job" => $job ) );
 			return sfView::NONE;
 		}
+	}
+	
+	public function executeWelcome(sfWebRequest $request) {
+
+		if(!$this->getUser()->hasCredential("admin")){
+      
+      if($this->getUser()->hasCredential("client")){
+        $url = $this->generateUrl("client_myjobs_own", array("own" => "true"));
+      }else if($this->getUser()->hasCredential("photographer")){
+        $url = $this->generateUrl("client_myjobs_own");
+      }else{
+        $this->redirect404();
+      }
+      
+      $this->redirect($url);
+    }
+		
+		$c = new Criteria ( );
+		$c->addAscendingOrderByColumn( JobPeer::STATUS_ID );
+		$crit0 = $c->getNewCriterion ( JobPeer::STATUS_ID, sfConfig::get ( "app_job_status_pending" ) );
+		$crit1 = $c->getNewCriterion ( JobPeer::STATUS_ID, sfConfig::get ( "app_job_status_accepted" ) );
+		$crit2 = $c->getNewCriterion ( JobPeer::STATUS_ID, sfConfig::get ( "app_job_status_completed" ) );
+		$crit0->addOr ( $crit1 );
+		$crit0->addOr ( $crit2 );
+		$c->add ( $crit0 );
+    
+    $routeArray = array ("route" => "job_welcome", "slugOn" => "", "slug" => "" );
+    $this->getPager ( $c, $routeArray );
+    $this->routeObject = "Welcome";
 	}
 	
 	/**

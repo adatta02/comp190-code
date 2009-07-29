@@ -6,7 +6,7 @@
 	     <span class='desc'>Request a photographer for your event or publication.</span>
 	     <br/><br/>
 	     <span class='link'>
-	         <?php echo link_to("View Jobs", "@job_list"); ?>
+	         <?php echo link_to("View Jobs", "@job_welcome"); ?>
 	     </span>
 	     <br/><br/>
 	     <span class='desc'>View and edit requests, create and assign photographers, manage emails.</span>

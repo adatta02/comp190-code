@@ -4,6 +4,23 @@
 SET FOREIGN_KEY_CHECKS = 0;
 
 #-----------------------------------------------------------------------------
+#-- campus_building
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `campus_building`;
+
+
+CREATE TABLE `campus_building`
+(
+	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`name` VARCHAR(255),
+	`address` VARCHAR(128),
+	`latitude` VARCHAR(32),
+	`longitude` VARCHAR(32),
+	PRIMARY KEY (`id`)
+)Type=InnoDB;
+
+#-----------------------------------------------------------------------------
 #-- project
 #-----------------------------------------------------------------------------
 
@@ -86,6 +103,7 @@ CREATE TABLE `job_attachment`
 	`job_id` INTEGER,
 	`user_id` INTEGER,
 	`file_name` VARCHAR(255),
+	`original_file_name` VARCHAR(255),
 	PRIMARY KEY (`id`),
 	INDEX `FI__attachment_user_id` (`user_id`),
 	CONSTRAINT `job_attachment_user_id`
@@ -133,7 +151,7 @@ CREATE TABLE `job`
 	`street` VARCHAR(64),
 	`city` VARCHAR(64),
 	`state` VARCHAR(64),
-	`zip` INTEGER,
+	`zip` VARCHAR(8),
 	`contact_name` VARCHAR(45),
 	`contact_email` VARCHAR(64),
 	`contact_phone` VARCHAR(45),
@@ -150,6 +168,8 @@ CREATE TABLE `job`
 	`photo_type` INTEGER,
 	`processing` VARCHAR(255),
 	`g_cal_id` VARCHAR(255),
+	`g_cal_id_custom` VARCHAR(255),
+	`g_cal_id_custom_url` VARCHAR(255),
 	PRIMARY KEY (`id`),
 	INDEX `FI_Shoot_Publication` (`publication_id`),
 	CONSTRAINT `fk_Shoot_Publication`
@@ -225,10 +245,8 @@ CREATE TABLE `photographer_region`
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
 	`photographer_id` INTEGER,
 	`address` TEXT,
-	`latitude` VARCHAR(16),
-	`longitude` VARCHAR(16),
-	`x` VARCHAR(16),
-	`y` VARCHAR(16),
+	`latitude` DOUBLE,
+	`longitude` DOUBLE,
 	PRIMARY KEY (`id`),
 	INDEX `FI_photographer_region_photographer` (`photographer_id`),
 	CONSTRAINT `fk_photographer_region_photographer`

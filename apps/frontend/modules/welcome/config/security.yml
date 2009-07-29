@@ -2,7 +2,9 @@ index:
   is_secure: off
 redirect:
   is_secure: on
+  credentials: []
 photoshelter:
-  is_secure: off
+  is_secure: on
+  credentials: []
 all:
   is_secure: off

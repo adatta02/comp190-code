@@ -85,10 +85,9 @@
 </script>
 
 <div id="top-menu">
-<div id="left-top-menu"></div>
 
 <div id="top-menu-one">
-<div id="top-menu-container">
+<div class="top-menu-container">
 			  
 			  <div id="user-banner">
 			   <?php echo "Logged in as " . $sf_user->getUserName(); ?>
@@ -98,56 +97,61 @@
 			   $noMenu = (isset($noMenu) ? $noMenu : false);  
 			   if(!$noMenu): ?>
 				  <div id="move-menu">
-				    Move to: <?php echo select_tag("move-to", options_for_select($options, "")); ?>
+				    <ul class="nobullet-ul">
+				      <li>Move to: <?php echo select_tag("move-to", options_for_select($options, "")); ?></li>
+				      <li>Select: 
+				          <a href="#all" onclick="return toggle(ProjectManager.ALL); return false;">All</a> | 
+				          <a href="#none" onclick="return toggle(ProjectManager.NONE); return false;">None</a> | 
+				          <a href="#toggle" onclick="return toggle(ProjectManager.TOGGLE); return false;">Toggle</a>
+				        </li>
+				    </ul>
 				  </div>
 
-<div id="tag-menu">
-     <a href="#tag"
-	   onclick="javascript:$('#add-tag-menu').toggle(); return false;">
-	            <?php echo image_tag("add.png", array("class" => "plus-img")); ?> Tag
-	          </a></div>
-
-<div id="project-menu"><a
-	href="#TB_inline?height=155&width=300&inlineId=hiddenAddProjectContent&modal=false"
-	class="thickbox">
-	          <?php echo image_tag("add.png", array("class" => "plus-img")); ?> Project
-	          </a></div>
-
+          <div id="tag-menu">
+            <ul class="nobullet-ul">
+	           <li>
+	             <a href="#TB_inline?height=155&width=300&inlineId=add-tag-menu&modal=false" class="thickbox">
+		            <?php echo image_tag("add.png", array("class" => "plus-img")); ?> Tag
+		          </a>
+		         </li>
+		         <li>
+              <a href="#TB_inline?height=200&width=400&inlineId=hiddenAddProjectContent&modal=false" class="thickbox">
+                <?php echo image_tag("add.png", array("class" => "plus-img")); ?> Project
+              </a>
+		         </li>
+		        </ul>
+	        </div>
 
 <div id="top-search">
-  <?php echo form_tag("@job_search", array("method" => "GET")); ?>
-    <?php echo input_tag("search-box", "", array("style" => "width: 240px")); ?> 
-    <?php echo submit_tag("Search"); ?>
-  </form>
+  <ul class="nobullet-ul">
+	  <li>
+	  <?php echo form_tag("@job_search", array("method" => "GET")); ?>
+	    <?php echo input_tag("search-box", "", array("style" => "width: 240px")); ?> 
+	    <?php echo submit_tag("Search"); ?>
+	  </form>
+	  </li>
+	  <li>
+	    <a href="#TB_inline?height=100&width=300&inlineId=hiddenSearchByTag&modal=false" class="thickbox">Search by tag</a> 
+	     |  
+	    <?php echo link_to("Advanced Search", "advanced_search"); ?>
+	  </li>
+  </ul>
 </div>
 
 <div style="clear: both"></div>
 
-
-<div id="topMenu">
-<div id="check-menu">Select: <a href="#all"
-	onclick="return toggle(ProjectManager.ALL); return false;">All</a> * <a
-	href="#none" onclick="return toggle(ProjectManager.NONE); return false;">None</a> * <a
-	href="#toggle" onclick="return toggle(ProjectManager.TOGGLE); return false;">Toggle</a>
-
-</div>
-<div id="otherSearch">
-     <a href="#TB_inline?height=100&width=300&inlineId=hiddenSearchByTag&modal=false" class="thickbox">Search by tag</a>
-     <?php echo link_to("Advanced Search", "advanced_search"); ?>
-</div>
-
-</div>
-
-<div id="add-tag-menu">
-				   <?php echo input_tag("add-tag"); ?>
-				   <?php echo input_hidden_tag("add-tag-id"); ?>
-				   <?php echo button_to_function("Add", "addJobTag()"); ?>
-				  </div>
-			  <?php endif; ?>
+  <div id="add-tag-menu">
+    <p style="padding-top: 10px">
+      <label for="add-tag">Enter Tag</label>
+      <?php echo input_tag("add-tag"); ?>
+      <?php echo input_hidden_tag("add-tag-id"); ?>
+      <?php echo button_to_function("Add", "addJobTag()"); ?>
+    </p>
+    </p>
+  </div>
+    <?php endif; ?>
 		  </div>
 </div>
-
-<div id="right-top-menu"></div>
 
 <div class="clear"></div>
 <div id="hiddenAddProjectContent" style="display: none">

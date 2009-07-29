@@ -9,7 +9,7 @@
   <body>
     
     <div id="header">
-      <?php echo image_tag("title.jpg", array("style" => "height: 50px;margin-top:20px;margin-bottom:20px;margin-left:260px;")); ?>
+      <p id="header-title">University Photography Management System</p>
     </div>
     
     <div id="content">
