@@ -1,3 +1,12 @@
+publication:
+  class: sfPropelRouteCollection
+  options:
+    model:                Publication
+    module:               publication
+    prefix_path:          publication
+    column:               id
+    with_wildcard_routes: true
+
 ################################################
 # user views
 ################################################
@@ -260,6 +269,16 @@ building_autocomplete:
   url: /building/search
   param: { module: search, action: building }
 
+manage_publications:
+  url: /publications
+  param: { module: publication, action: index }
+add_publication:
+  url: /publications/add
+  param: { module: publication, action: add }
+delete_publication:
+  url: /publications/delete
+  param: { module: publication, action: delete }
+  
 # sfguard
 sf_guard_signin:
   url:   /login/

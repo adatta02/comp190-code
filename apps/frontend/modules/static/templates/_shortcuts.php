@@ -42,6 +42,7 @@
 	 <li><?php echo link_to("Photographers", "photographer_list"); ?></li>
    <li><?php echo link_to("Clients", "client_list"); ?></li>
    <li><?php echo link_to("Calendar", "calendar_view"); ?></li>
+   <li><?php echo link_to("Publications", "manage_publications"); ?></li>
    <li><?php echo link_to("Log", "view_log"); ?></li>
 	</ul>
 	

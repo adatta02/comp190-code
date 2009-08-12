@@ -18,18 +18,14 @@ class BasePhotographerRegionForm extends BaseFormPropel
       'address'         => new sfWidgetFormTextarea(),
       'latitude'        => new sfWidgetFormInput(),
       'longitude'       => new sfWidgetFormInput(),
-      'x'               => new sfWidgetFormInput(),
-      'y'               => new sfWidgetFormInput(),
     ));
 
     $this->setValidators(array(
       'id'              => new sfValidatorPropelChoice(array('model' => 'PhotographerRegion', 'column' => 'id', 'required' => false)),
       'photographer_id' => new sfValidatorPropelChoice(array('model' => 'Photographer', 'column' => 'id', 'required' => false)),
       'address'         => new sfValidatorString(array('required' => false)),
-      'latitude'        => new sfValidatorString(array('max_length' => 16, 'required' => false)),
-      'longitude'       => new sfValidatorString(array('max_length' => 16, 'required' => false)),
-      'x'               => new sfValidatorString(array('max_length' => 16, 'required' => false)),
-      'y'               => new sfValidatorString(array('max_length' => 16, 'required' => false)),
+      'latitude'        => new sfValidatorNumber(array('required' => false)),
+      'longitude'       => new sfValidatorNumber(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('photographer_region[%s]');

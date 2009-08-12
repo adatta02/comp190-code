@@ -27,6 +27,7 @@ class Publication extends BasePublication
     $logEntry->setPropelId($this->getId());
     $logEntry->save();
     */
+  	parent::save( $con );
   }
 	
 }

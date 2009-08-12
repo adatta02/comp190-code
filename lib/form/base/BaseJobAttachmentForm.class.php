@@ -13,17 +13,19 @@ class BaseJobAttachmentForm extends BaseFormPropel
   public function setup()
   {
     $this->setWidgets(array(
-      'id'        => new sfWidgetFormInputHidden(),
-      'job_id'    => new sfWidgetFormPropelChoice(array('model' => 'Job', 'add_empty' => true)),
-      'user_id'   => new sfWidgetFormPropelChoice(array('model' => 'sfGuardUserProfile', 'add_empty' => true, 'key_method' => 'getUserId')),
-      'file_name' => new sfWidgetFormInput(),
+      'id'                 => new sfWidgetFormInputHidden(),
+      'job_id'             => new sfWidgetFormPropelChoice(array('model' => 'Job', 'add_empty' => true)),
+      'user_id'            => new sfWidgetFormPropelChoice(array('model' => 'sfGuardUserProfile', 'add_empty' => true, 'key_method' => 'getUserId')),
+      'file_name'          => new sfWidgetFormInput(),
+      'original_file_name' => new sfWidgetFormInput(),
     ));
 
     $this->setValidators(array(
-      'id'        => new sfValidatorPropelChoice(array('model' => 'JobAttachment', 'column' => 'id', 'required' => false)),
-      'job_id'    => new sfValidatorPropelChoice(array('model' => 'Job', 'column' => 'id', 'required' => false)),
-      'user_id'   => new sfValidatorPropelChoice(array('model' => 'sfGuardUserProfile', 'column' => 'user_id', 'required' => false)),
-      'file_name' => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'id'                 => new sfValidatorPropelChoice(array('model' => 'JobAttachment', 'column' => 'id', 'required' => false)),
+      'job_id'             => new sfValidatorPropelChoice(array('model' => 'Job', 'column' => 'id', 'required' => false)),
+      'user_id'            => new sfValidatorPropelChoice(array('model' => 'sfGuardUserProfile', 'column' => 'user_id', 'required' => false)),
+      'file_name'          => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'original_file_name' => new sfValidatorString(array('max_length' => 255, 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('job_attachment[%s]');

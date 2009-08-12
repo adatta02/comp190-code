@@ -103,7 +103,26 @@ function renderPhotographer($photographer, $classNum) {
 </div>
 <?php
 }
-
+ 
+function renderPublication($pub, $classNum) {
+  ?>
+<div class="job-list-item-<?php echo $classNum ?>">
+  <div style="float:left"><?php echo $pub->getName(); ?></div>
+  <div style="float: right">
+  
+    <a href="#" onclick="editPub(<?php echo $pub->getId()?>, '<?php echo $pub->getName()?>'); return false;">
+      <?php echo image_tag("pencil.png", array("class" => "delete-img")); ?> | 
+    </a>
+    <a href="#" onclick="deletePub(<?php echo $pub->getId()?>); return false;">
+      <?php echo image_tag("delete.png", array("class" => "delete-img")); ?>
+    </a>
+    
+  </div>
+  <div class="clear"></div>
+</div>
+<?php
+}
+ 
 function renderProject($project, $classNum) {
 	?>
 <div class="job-list-item-<?php
