@@ -61,7 +61,7 @@ class RequestJobForm extends sfForm {
 		$this->widgetSchema->setLabel ( 'contact_name', 'Contact Name <font class="required">*</font>' );
 		$this->widgetSchema->setLabel ( 'contact_email', 'Contact Email <font class="required">*</font>' );
 		$this->widgetSchema->setLabel ( 'contact_phone', 'Contact Phone <font class="required">*</font>' );
-		$this->widgetSchema->setLabel ( 'event', 'Event Name <font class="required">*</font>' );
+		$this->widgetSchema->setLabel ( 'event', 'Event/Subject <font class="required">*</font>' );
 		$this->widgetSchema->setLabel ( 'street', 'Street <font class="required">*</font>' );
 		$this->widgetSchema->setLabel ( 'city', 'City <font class="required">*</font>' );
 		$this->widgetSchema->setLabel ( 'state', 'State <font class="required">*</font>' );

@@ -23,8 +23,8 @@ class Job extends BaseJob
 	}
 	
 	public function getPrettyAddress(){
-		return $this->getStreet() . "<br/>" 
-		       . $this->getCity() . "<br/>" 
+		return $this->getStreet() . "\n" 
+		       . $this->getCity() . "\n" 
 		       . $this->getState() . ", " . $this->getZip();
 	}
 	
@@ -181,14 +181,29 @@ class Job extends BaseJob
   	$prettyLoc = str_replace ( "<br/>", "\n", $this->getPrettyAddress () );
     if(strlen($prettyLoc) == 0){ $prettyLoc = "UNKNOWN"; }
     
-    $jobUrl = sfContext::getInstance ()->getRouting ()->generate ( "job_show", $this, true );
+    $jobUrl = "https://jobs.tuftsphoto.com/job/show/" . $this->getSlug();
     
   	$arr = array ();
-    $arr ["title"] = $this->getId() . " - " . $this->getEvent () . " : " . $this->getSlug();
+  	
+  	$tags = $this->getTags ();
+  	$slugs = array();
+  	foreach($tags as $key => $val){ $slugs[] = $key; }
+  	$slugs = implode(", ", $slugs);
+  	
+    $arr ["title"] = $this->getId() . " - " . $this->getEvent () . " : " . $slugs;
     $arr ["location"] = $prettyLoc;
     $arr ["content"] = $this->getEvent () . "\n\n" . "<a href='" . $jobUrl . "'>View Job</a>";
-    $arr ["startTime"] = sfGCalendar::timestampToRFC3339 ( $this->getStartTimestamp () );
-    $arr ["endTime"] = sfGCalendar::timestampToRFC3339 ( $this->getEndTimestamp () );
+    
+    $arr ["startTime"] = $this->getStartTimestamp ();
+    $arr ["endTime"] = $this->getEndTimestamp();
+    
+    if( $arr["endTime"] == $arr["startTime"] ){  
+    	$arr ["endTime"] += 60; // add on a minute
+    }
+    
+    $arr ["startTime"] = sfGCalendar::timestampToRFC3339 ( $arr ["startTime"] );
+    $arr ["endTime"] = sfGCalendar::timestampToRFC3339 ( $arr ["endTime"] );
+    
     return $arr;
   }
   
@@ -255,7 +270,7 @@ class Job extends BaseJob
 			
 			if( !is_null($this->getGCalIdCustom()) ){
 				$arr["calUrl"] = $this->getGCalIdCustomUrl();
-			  sfGCalendar::updateJobEventById ( $this->getGCalIdCustom (), $arr );	
+			  // sfGCalendar::updateJobEventById ( $this->getGCalIdCustom (), $arr );	
 			}
 			
 		}

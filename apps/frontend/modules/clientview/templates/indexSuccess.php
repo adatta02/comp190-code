@@ -22,7 +22,7 @@
 <?php
 $count = 0;
 foreach($pager->getResults() as $i){
-  renderClientJobListView($i, (($count % 2 == 0) ? "1" : "2"));
+  renderClientJobListView($i, (($count % 2 == 0) ? "1" : "2"), !$own);
   $count += 1;
 }
 

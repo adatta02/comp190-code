@@ -9,7 +9,7 @@
   <body>
     
     <div id="header">
-      <p id="header-title">University Photography Management System</p>
+      <p id="header-title" style="padding-right: 60px">University Photography Management System</p>
     </div>
     
     <div id="content">

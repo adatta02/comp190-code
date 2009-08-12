@@ -568,6 +568,8 @@ EOF;
         $this->getUser()->addCredential($credential);
       }
 		
+      die("hi!");
+      
 		if(!$this->getUser()->hasCredential("admin")){
 			
 			if($this->getUser()->hasCredential("client")){
@@ -619,7 +621,8 @@ EOF;
 		$this->form = new RequestJobForm ( );
 		$this->attachForm = new JobAttachmentFormCustom ( );
 		
-		if ($this->getUser ()->getProfile()->getUserTypeId() == sfConfig::get("app_user_type_client") ) {
+		if ($this->getUser ()->getProfile()->getUserTypeId() 
+		      == sfConfig::get("app_user_type_client") ) {
 			$c = new Criteria ( );
       $c->add ( ClientPeer::USER_ID, $this->getUser ()->getProfile ()->getId () );
       $profile = ClientPeer::doSelectOne ( $c );

@@ -130,12 +130,19 @@ function renderTagList($job) {
 	$tags = $job->getTags ();
 	
 	foreach ( $tags as $key => $val ) {
-		echo "<span class='job-tag'>" . link_to ( $key, "job_listby_tag", array ("slug" => $key ) ) . " <a onclick='javascript:removeJobTag(\"" . $job->getId () . "\", \"" . $key . "\");' href='#'>" . image_tag ( "delete.png", array ("class" => "delete-img" ) ) . "</a></span>";
+		if(sfContext::getInstance()->getUser()->hasCredential("admin")){
+		  echo "<span class='job-tag'>" . 
+		    link_to ( $key, "job_listby_tag", array ("slug" => $key ) ) . 
+		          " <a onclick='javascript:removeJobTag(\"" . $job->getId () . "\", \"" . $key . "\");' href='#'>" . 
+		    image_tag ( "delete.png", array ("class" => "delete-img" ) ) . "</a></span>";
+		}else{
+			echo "<span class='job-tag'>" . $key . "</span>";
+		}
 	}
 
 }
 
-function renderClientJobListView($job, $classNum) {
+function renderClientJobListView($job, $classNum, $canAdd) {
 	?>
   <div class="job-list-item-<?php echo $classNum?>">
 	  <?php
@@ -170,7 +177,7 @@ function renderClientJobListView($job, $classNum) {
 	     </td>
 		   <td><?php echo $job->getEvent ();?></td>
 		   
-		   <?php if(sfContext::getInstance()->getUser()->hasCredential("client")): ?>
+		   <?php if($canAdd && sfContext::getInstance()->getUser()->hasCredential("client")): ?>
 		    <td><?php echo link_to_function("Add me as client", "addClient(" . $job->getId() . ")"); ?></td>
 		   <?php endif; ?>
 		   <td><?php 

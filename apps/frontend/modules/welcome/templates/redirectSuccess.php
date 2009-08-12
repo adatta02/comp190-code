@@ -6,7 +6,13 @@
 	     <span class='desc'>Request a photographer for your event or publication.</span>
 	     <br/><br/>
 	     <span class='link'>
-	         <?php echo link_to("View Jobs", "@job_welcome"); ?>
+	       <?php if($sf_user->hasCredential("admin")){
+	         echo link_to("View Jobs", "@job_welcome");
+	       }elseif ($sf_user->hasCredential("client")){
+	       	echo link_to("View Jobs", "client_myjobs_own", array("own" => "true"));
+	       }elseif($sf_user->hasCredential("photographer")){
+	       	echo link_to("View Jobs", "client_myjobs_own");
+	       } ?>
 	     </span>
 	     <br/><br/>
 	     <span class='desc'>View and edit requests, create and assign photographers, manage emails.</span>

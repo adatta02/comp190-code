@@ -56,8 +56,12 @@
     <td><?php echo $job->getAcctNum() ?></td>
   </tr>
   <tr>
-    <td>Tags <a href="" onclick="$('#add-tag').show(); return false;">
-            <?php echo image_tag("add.png", array("class" => "plus-img")); ?></a></td>
+    <td>Tags
+      <?php if($sf_user->hasCredential("admin")) :?> 
+        <a href="" onclick="$('#add-tag').show(); return false;">
+        <?php echo image_tag("add.png", array("class" => "plus-img")); ?></a>
+      <?php endif; ?>
+    </td>
     <td>
       <?php renderTagList($job); ?>
    </td>

@@ -84,7 +84,7 @@ class welcomeActions extends sfActions
     $arr["U_FIRST_NAME"] = $firstName;
     $arr["U_LAST_NAME"] = $lastName;
     $arr["RL_E"] = $this->generateUrl("photoshelter_error", array(), true);
-    $arr["RL_S"] = "http://pa.photoshelter.com/c/tuftsphoto";
+    $arr["RL_S"] = "http://pa.photoshelter.com/c/tuftsphoto/gallery/G0000D.WWlxRw.kY";
     $arr["ETIME"] = time() + 60;
     
     $queryString = http_build_query($arr);

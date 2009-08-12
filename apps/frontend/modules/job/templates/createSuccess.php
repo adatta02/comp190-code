@@ -4,10 +4,22 @@
  
 <?php include_component ( "static", "topmenu",
                           array("moveToSkip" => null, "noMenu" => true) ); ?>
-<?php include_component ( "static", "shortcuts",
+
+<?php 
+
+if($sf_user->hasCredential("admin")){
+
+  include_component ( "static", "shortcuts",
                           array("sortedBy" => JobPeer::DATE,
                                 "noSort" => true,
-                                "viewingCurrent" => null) ); ?>
+                                "viewingCurrent" => null) );
+}else{
+	include_component ( "static", "userShortcuts",
+                          array("sortedBy" => JobPeer::DATE,
+                                "viewingCurrent" => null,
+                                "noSort" => false) ); 
+}
+?>
 <script type="text/javascript">
 
 function showFileInput(id){
@@ -55,7 +67,7 @@ function showFileInput(id){
     <tr valign="top">
     
     <td class="form-td">
-      <h3>Client</h3>
+      <h3>Client Name</h3>
       
       <?php if($isReadonly): ?>
         <small><a href="#" onclick="javascript:editInfo(); return false;">Edit my information</a></small>
@@ -97,7 +109,7 @@ function showFileInput(id){
 
 <tr valign="top">
   <td class="form-td">
-    <h3>Shoot</h3>
+    <h3>Shoot Details</h3>
     <table>
 		    <tr><?php echo $form["publication_id"]->renderRow(); ?> </tr>
 		    <tr><?php echo $form["event"]->renderRow(); ?></tr>
@@ -116,7 +128,7 @@ function showFileInput(id){
   <td>
   
 <table cellpadding="5" class="form-td-right">
-    <tr><td><h3>Photography</h3></td></tr>
+    <tr><td><h3>Photography Instructions</h3></td></tr>
     <tr><?php echo $form["photo_type"]->renderRow(); ?> </tr>
     <tr><?php echo $form["ques1"]->renderRow(); ?> </tr>
     <tr><?php echo $form["ques2"]->renderRow(); ?> </tr>

@@ -19,10 +19,13 @@
        <?php foreach($job->getClients() as $c): ?>
        <tr>
 		<td>
-		  <?php 
-		    echo link_to_function(
+		  <?php
+		    if( $sf_user->hasCredential("admin")){ 
+		      echo link_to_function(
 		          image_tag("delete.png", array("class" => "plus-img")), 
-		          "removeClientFromJob(" . $c->getId() . ")"); ?>
+		          "removeClientFromJob(" . $c->getId() . ")");
+		    } 
+        ?>
 	  </td>
 		<td><?php echo $c->getName() ?></td>
 		<td><?php echo $c->getEmail() ?></td>
