@@ -165,7 +165,7 @@ CREATE TABLE `job`
 	`ques2` VARCHAR(255),
 	`ques3` VARCHAR(255),
 	`slug` VARCHAR(255),
-	`photo_type` INTEGER,
+	`photo_type` VARCHAR(255),
 	`processing` VARCHAR(255),
 	`g_cal_id` VARCHAR(255),
 	`g_cal_id_custom` VARCHAR(255),
@@ -182,11 +182,7 @@ CREATE TABLE `job`
 	INDEX `FI_Job_Status` (`status_id`),
 	CONSTRAINT `fk_Job_Status`
 		FOREIGN KEY (`status_id`)
-		REFERENCES `status` (`id`),
-	INDEX `FI_Job_Photo_type` (`photo_type`),
-	CONSTRAINT `fk_Job_Photo_type`
-		FOREIGN KEY (`photo_type`)
-		REFERENCES `photo_type` (`id`)
+		REFERENCES `status` (`id`)
 )Type=InnoDB;
 
 #-----------------------------------------------------------------------------

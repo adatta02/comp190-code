@@ -55,7 +55,7 @@ class sfWidgetjQueryTimepickr extends sfWidgetFormInput
   	$this->addOption('rangeMin', array('00', '15', '30', '45'));
   	$this->addOption('rangeSec', array('00', '15', '30', '45'));
   	$this->addOption('updateLive', "true");
-  	$this->addOption('resetOnBlur', "true");
+  	$this->addOption('resetOnBlur', "false");
   	
     $this->addOption('type', 'text');
     $this->setOption('is_hidden', false);
@@ -81,7 +81,7 @@ class sfWidgetjQueryTimepickr extends sfWidgetFormInput
   	return 
       "<script type='text/javascript'>
         $(document).ready( function(){
-          return false;
+        
           $('#" . $this->generateId($name) . "')
             .timepickr({
               convention: " . $this->getOption('convention') . ",
@@ -115,8 +115,8 @@ class sfWidgetjQueryTimepickr extends sfWidgetFormInput
  
   public function getJavaScripts()
   {
-    return array('/js/jquery.strings.js', '/js/jquery.utils.js', 
-                 '/js/ui.dropslide.js', '/js/jquery.timepickr.js', '/js/ui.timepickr.js');
+    return array('/js/ui.dropslide.js', '/js/jquery.strings.js', '/js/jquery.utils.js', 
+                 '/js/jquery.timepickr.js');
   }
   
 }

@@ -1349,7 +1349,7 @@ $.ui.mouse.defaults = {
         _createRow: function(range, format, className) {
             var row = $.tpl('timepickr.row');
             var button = this._createButton;
-            // Thanks to Christoph Müller-Spengler for the bug report
+            // Thanks to Christoph Mï¿½ller-Spengler for the bug report
             $.each(range, function(idx, val){
                 row.append(button(val, format || false, className || false));
             });
@@ -2243,7 +2243,7 @@ $.ui.mouse.defaults = {
         _createRow: function(range, format, className) {
             var row = $.tpl('timepickr.row');
             var button = this._createButton;
-            // Thanks to Christoph Müller-Spengler for the bug report
+            // Thanks to Christoph Mï¿½ller-Spengler for the bug report
             $.each(range, function(idx, val){
                 row.append(button(val, format || false, className || false));
             });

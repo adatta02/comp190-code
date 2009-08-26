@@ -145,7 +145,10 @@ class sfGCalendar {
     return $newEvent;
   }
   
-  public static function timestampToRFC3339($timestamp=0) {
+  public static function timestampToRFC3339($timestamp = 0) {
+  	
+  	if( is_null($timestamp) ){ return null; }
+  	
     if (!$timestamp) { $timestamp = time(); }
     $date = date(DATE_RFC3339, $timestamp);
     return $date;

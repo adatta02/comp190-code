@@ -11,6 +11,13 @@
 
 class RequestJobForm extends sfForm {
 	public function setup() {
+	  
+	  $photoTypeOptions = array();
+	  
+	  foreach( PhotoTypePeer::doSelect( new Criteria() ) as $pt ){
+	     $photoTypeOptions[ $pt->getName() ] = $pt->getName();
+	  }
+	  
 		$this->setWidgets ( array (
 		 'id' => new sfWidgetFormInputHidden ( ), 
 		'project_id' => new sfWidgetFormPropelChoice ( array ('model' => 'Project', 'add_empty' => true ) ), 
@@ -31,7 +38,7 @@ class RequestJobForm extends sfForm {
 		'contact_phone' => new sfWidgetFormInput ( ), 
 		//'notes' => new sfWidgetFormTextarea ( ), 
 		'estimate' => new sfWidgetFormInput ( ), 
-		'photo_type' => new sfWidgetFormPropelChoice(array('model' => 'PhotoType', 'add_empty' => true)), 
+		'photo_type' => new sfWidgetFormChoiceMany(array( "multiple" => true, "choices" => $photoTypeOptions )),
 		'acct_num' => new sfWidgetFormInput ( ), 
 		'dept_id' => new sfWidgetFormInput ( ), 
 		'grant_id' => new sfWidgetFormInput ( ), 
@@ -93,7 +100,7 @@ class RequestJobForm extends sfForm {
 			'contact_phone' => new sfValidatorString ( array ('max_length' => 45, 'required' => false ) ), 
 			//'notes' => new sfValidatorString ( array ('required' => false ) ), 
 			'estimate' => new sfValidatorInteger ( array ('required' => false ) ), 
-			'photo_type' => new sfValidatorPropelChoice ( array ('model' => 'PhotoType', 'column' => 'id', 'required' => false ) ),  
+			'photo_type' => new sfValidatorChoice ( array ("choices" => $photoTypeOptions, "multiple" => true, "required" => false ) ),  
 			'acct_num' => new sfValidatorString ( array ('max_length' => 32, 'required' => false ) ), 
 			'dept_id' => new sfValidatorString ( array ('max_length' => 32, 'required' => false ) ), 
 			'grant_id' => new sfValidatorString ( array ('max_length' => 32, 'required' => false ) ), 
@@ -135,6 +142,7 @@ class RequestJobForm extends sfForm {
 	}
 	
 	public function save($con = null) {
+	  
 		$j = new Job ( );
 		$j->setEvent ( $this->getValue ( "event" ) );
 		$j->setStartTime ( $this->getValue ( "start_time" ) );
@@ -149,7 +157,7 @@ class RequestJobForm extends sfForm {
 		$j->setCity ( $this->getValue ( "city" ) );
 		$j->setState ( $this->getValue ( "state" ) );
 		$j->setZip ( $this->getValue ( "zip" ) );
-		$j->setPhotoType ( $this->getValue ( "photo_type" ) );
+		$j->setPhotoType ( implode(", ", $this->getValue ( "photo_type" )) );
 		$j->setOther ( $this->getValue ( "other" ));
 		$j->setQues1 ( $this->getValue ( "ques1" ));
 		$j->setQues2 ( $this->getValue ( "ques2" ));

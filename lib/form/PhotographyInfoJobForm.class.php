@@ -12,8 +12,16 @@ class PhotographyInfoJobForm extends BaseFormPropel
 {
   public function setup()
   {
+    
+    $photoTypeOptions = array();
+    
+    foreach( PhotoTypePeer::doSelect( new Criteria() ) as $pt ){
+       $photoTypeOptions[ $pt->getName() ] = $pt->getName();
+    }
+    
     $this->setWidgets(array(
-      'photo_type' => new sfWidgetFormPropelChoice(array('model' => 'PhotoType', 'add_empty' => true)), 
+      'photo_type' => new sfWidgetFormChoiceMany(array( "multiple" => true, "expanded" => true,
+                                                        "choices" => $photoTypeOptions )), 
       'ques1' => new sfWidgetFormTextarea(),
       'ques2' => new sfWidgetFormTextarea(),
       'other' => new sfWidgetFormTextarea(),
@@ -21,7 +29,8 @@ class PhotographyInfoJobForm extends BaseFormPropel
       ));
 
     $this->setValidators(array(
-      'photo_type' => new sfValidatorPropelChoice ( array ('model' => 'PhotoType', 'column' => 'id', 'required' => false ) ),  
+      'photo_type' => new sfValidatorChoice ( array ("choices" => $photoTypeOptions, "required" => false,
+                                                    "multiple" => true ) ),  
       'ques1' => new sfValidatorString ( array ('required' => false ) ),
       'ques2' => new sfValidatorString ( array ('required' => false ) ),
       'other' => new sfValidatorString ( array ('required' => false ) ),
@@ -36,6 +45,8 @@ class PhotographyInfoJobForm extends BaseFormPropel
     $this->widgetSchema->setNameFormat('job[%s]');
     $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);
 
+
+    
     parent::setup();
   }
   
@@ -51,7 +62,7 @@ class PhotographyInfoJobForm extends BaseFormPropel
   		$j = new Job();
   	}
   	
-  	$j->setPhotoType ( $this->getValue ( "photo_type" ) );	
+  	$j->setPhotoType ( implode(", ", $this->getValue ( "photo_type" )) );	
 	$j->setQues1 ( $this->getValue ( "ques1" ));
         $j->setQues2 ( $this->getValue ( "ques2" ));
         $j->setQues3 ( $this->getValue ( "ques3" ));

@@ -1138,7 +1138,8 @@ $.ui.mouse.defaults = {
 
         // essentially reposition each ol
         _redraw: function() {
-            var prevLI ,prevOL, nextOL, pos = false;
+
+        	var prevLI ,prevOL, nextOL, pos = false;
             var offset = this.element.position().left + this.options.left;
             var ols    = $(this.wrapper).find('ol');
 

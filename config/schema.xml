@@ -92,7 +92,7 @@
     <column name="ques2" type="VARCHAR" size="255"/>
     <column name="ques3" type="VARCHAR" size="255"/>
     <column name="slug" type="VARCHAR" size="255"/>
-    <column name="photo_type" type="INTEGER"/>
+    <column name="photo_type" type="VARCHAR" size="255" />
     <column name="processing" type="VARCHAR" size="255"/>
     <column name="g_cal_id" type="VARCHAR" size="255"/>
     <column name="g_cal_id_custom" type="VARCHAR" size="255"/>
@@ -105,9 +105,6 @@
     </foreign-key>
     <foreign-key name="fk_Job_Status" foreignTable="status">
       <reference local="status_id" foreign="id"/>
-    </foreign-key>
-    <foreign-key name="fk_Job_Photo_type" foreignTable="photo_type">
-      <reference local="photo_type" foreign="id"/>
     </foreign-key>
   </table>
   

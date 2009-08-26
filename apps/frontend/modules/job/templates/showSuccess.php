@@ -192,10 +192,55 @@ function sendEmail(){
 <a href="#" onclick="javascript:$('#job-basic-info').toggle(); return false;">
 <?php echo image_tag("arrow.png", array("class" =>"image-href", "style" => "width:15px;height:15px;")); ?>
 </a>
-<a href="#" onclick="javascript:$('#basic-info-edit').toggle(); $('#basic-info-table').toggle(); return false;">
+<a href="#" 
+  onclick="javascript: $('#basic-info-edit').toggle(); $('#basic-info-table').toggle(); activateTimepickrs(); return false;">
   <?php echo image_tag("pencil.png", array("class" => "image-href")) ?>
 </a>
 </div>
+
+<script type="text/javascript">
+function activateTimepickrs(){
+	$('#job_start_time').show();
+	$('#job_start_time')
+	 .timepickr({
+	 convention: 12,
+	 dropslide: {trigger: 'focus'},
+	 format12: '{h:02.d}:{m:02.d} {suffix:s}',
+	 format24: '{h:02.d}:{m:02.d}',
+	 handle: false,
+	 hours: true,
+	 minutes: true,
+	 seconds: false,
+	 prefix: ["am","pm"],
+	 suffix: ["am","pm"],
+	 rangeMin: ["00","15","30","45"],
+	 rangeSec: ["00","15","30","45"],
+	 updateLive: "true",
+	 resetOnBlur: "false"
+	});
+
+	  $('#job_end_time').show();
+	  $('#job_end_time')
+	   .timepickr({
+	   convention: 12,
+	   dropslide: {trigger: 'focus'},
+	   format12: '{h:02.d}:{m:02.d} {suffix:s}',
+	   format24: '{h:02.d}:{m:02.d}',
+	   handle: false,
+	   hours: true,
+	   minutes: true,
+	   seconds: false,
+	   prefix: ["am","pm"],
+	   suffix: ["am","pm"],
+	   rangeMin: ["00","15","30","45"],
+	   rangeSec: ["00","15","30","45"],
+	   updateLive: "true",
+	   resetOnBlur: "false"
+	  });
+	  
+	
+}
+</script>
 
 <div id="job-basic-info" class="collapsable">
   <a href="#basic"></a>

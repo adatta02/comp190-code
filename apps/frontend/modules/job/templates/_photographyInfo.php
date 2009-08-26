@@ -3,7 +3,7 @@
 <table width="100%" id="photography-info-table">
   <tr>
     <td width="20%">Photo Type</td>
-    <td width="80%"><?php echo $job->getPhotoTypeRelatedByPhotoType(); ?></td>
+    <td width="80%"><?php echo $job->getPhotoType(); ?></td>
   </tr>
   <tr>
      <td width="20%"> Other Info </td>

@@ -24,12 +24,14 @@
 
 <script type="text/javascript">
   var map;
-  
-  $(document).ready(function(){ initialize(); });
-  
+
+  $(document).ready( function(){
+	  initialize();
+  });
   function initialize() {
     
-    if (GBrowserIsCompatible()) {
+    if ( GBrowserIsCompatible() ) {
+        
       map = new GMap2(document.getElementById("map"));
       var geocoder = new GClientGeocoder();
       map.setUIToDefault();
@@ -66,10 +68,12 @@
                   }
                 );
       }
+    
     }
  </script>
 
-<div id="map" style="width: 500px; height: 300px; float: left" onunload="GUnload()">
+<div id="map" style="width: 500px; height: 300px; float: left" 
+  onunload="GUnload()">
 </div>
 
 <div style="float: left; padding-left: 10px">

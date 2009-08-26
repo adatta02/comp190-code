@@ -197,12 +197,14 @@ class Job extends BaseJob
     $arr ["startTime"] = $this->getStartTimestamp ();
     $arr ["endTime"] = $this->getEndTimestamp();
     
-    if( $arr["endTime"] == $arr["startTime"] ){  
-    	$arr ["endTime"] += 60; // add on a minute
+    if( $arr["endTime"] == $arr["startTime"] 
+          || $arr["endTime"] < $arr["startTime"]){  
+    	$arr ["startTime"] = $this->getDate("Y-m-d");
+    	$arr ["endTime"] = $this->getDate("Y-m-d");
+    }else{
+    	$arr ["startTime"] = sfGCalendar::timestampToRFC3339 ( $arr ["startTime"] );
+      $arr ["endTime"] = sfGCalendar::timestampToRFC3339 ( $arr ["endTime"] );
     }
-    
-    $arr ["startTime"] = sfGCalendar::timestampToRFC3339 ( $arr ["startTime"] );
-    $arr ["endTime"] = sfGCalendar::timestampToRFC3339 ( $arr ["endTime"] );
     
     return $arr;
   }
@@ -260,17 +262,20 @@ class Job extends BaseJob
       
 		} else {
 			
-			if( is_null($this->getGCalId()) ){
-        $event = sfGCalendar::createJobEvent ( $arr );
-        $this->setGCalId ( $event->id );
-        $this->save();
-			}else{
-				sfGCalendar::updateJobEventById ( $this->getGCalId (), $arr );
-			}
-			
-			if( !is_null($this->getGCalIdCustom()) ){
-				$arr["calUrl"] = $this->getGCalIdCustomUrl();
-			  // sfGCalendar::updateJobEventById ( $this->getGCalIdCustom (), $arr );	
+			if( !is_null($this->getDate()) ){
+				if( is_null($this->getGCalId()) ){
+	        $event = sfGCalendar::createJobEvent ( $arr );
+	        $this->setGCalId ( $event->id );
+	        $this->save();
+				}else{
+					sfGCalendar::updateJobEventById ( $this->getGCalId (), $arr );
+				}
+				
+				if( !is_null($this->getGCalIdCustom()) ){
+					$arr["calUrl"] = $this->getGCalIdCustomUrl();
+				  sfGCalendar::updateJobEventById ( $this->getGCalIdCustom (), $arr );	
+				}
+				
 			}
 			
 		}

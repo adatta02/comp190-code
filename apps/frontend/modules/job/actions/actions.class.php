@@ -277,6 +277,9 @@ class jobActions extends PMActions {
 		$this->basicInfoForm = new BasicInfoJobForm ( $this->job );
 		$this->shootInfoForm = new ShootInfoJobForm ( $this->job );
 		$this->photographyInfoForm = new PhotographyInfoJobForm ( $this->job );
+		$selected = explode(", ", $this->job->getPhotoType());
+		$this->photographyInfoForm->setDefault("photo_type", $selected);
+		
 		$this->billingInfoForm = new BillingInfoJobForm ( $this->job );
 		
 		$this->getEditHistory ( 1 );
@@ -567,8 +570,6 @@ EOF;
         $credential = $this->getUser()->getProfile()->getUserType()->getType();
         $this->getUser()->addCredential($credential);
       }
-		
-      die("hi!");
       
 		if(!$this->getUser()->hasCredential("admin")){
 			
