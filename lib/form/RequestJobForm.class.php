@@ -73,6 +73,8 @@ class RequestJobForm extends sfForm {
 		$this->widgetSchema->setLabel ( 'city', 'City <font class="required">*</font>' );
 		$this->widgetSchema->setLabel ( 'state', 'State <font class="required">*</font>' );
 		$this->widgetSchema->setLabel ( 'zip', 'Zipcode <font class="required">*</font>' );
+		$this->widgetSchema->setLabel ( 'photo_type', 'Photo Type <small>Select multiple with click+crtl</small>' );
+		
 		
 		$this->widgetSchema ['state']->setDefault ( "MA" );
 		

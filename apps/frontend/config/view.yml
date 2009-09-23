@@ -1,16 +1,11 @@
 default:
   http_metas:
     content-type: text/html
-
+  
   metas:
     title:         Tufts Photography - Project Manager
-    #description:  symfony project
-    #keywords:     symfony, project
-    #language:     en
-    #robots:       index, follow
-
-  stylesheets:    [main.css, jquery.ui.all.css, jquery.autocomplete.css, jquery.thickbox.css]
-
+  
+  stylesheets:    [screen.css, liquid.css, main.css, jquery.ui.all.css, jquery.autocomplete.css, jquery.thickbox.css]
 
   javascripts:    [jquery.js, jquery.ui.all.js, main.js, jquery.json-1.3.min.js, jquery.autocomplete.js, jquery.thickbox.js, jquery.dimensions.min.js, jquery.tooltip.pack.js, jquery.strings.js, jquery.utils.js, ui.dropslide.js, jquery.timepickr.js]
 

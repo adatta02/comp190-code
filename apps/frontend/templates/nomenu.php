@@ -8,11 +8,10 @@
   </head>
   <body>
     
-    <div id="header">
-      <p id="header-title" style="padding-right: 60px">University Photography Management System</p>
+    <div class="header">
+      <h2>Tufts University Photography Management</h2>
     </div>
-    
-    <div id="content">
+    <div class="container body">
       <?php echo $sf_content ?>
     </div>
     
