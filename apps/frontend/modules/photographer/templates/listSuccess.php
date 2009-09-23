@@ -2,29 +2,33 @@
   ProjectManager.photographerLiveSearchUrl = "<?php echo url_for("photographer_list"); ?>";
 </script>
 
-<?php include_component ( "static", "topmenu", 
-                          array("moveToSkip" => null, "noMenu" => true) ); ?>
-<?php include_component ( "static", "shortcuts", 
-                          array("sortedBy" => JobPeer::DATE,
-                                "noSort" => true,
-                                "viewingCurrent" => null) ); ?>
-<div id="list-container">
-  <div id="now-viewing"> 
-    Viewing all photographers 
-      <?php echo image_tag("loading.gif", array("id" => "ajax-loading")); ?>
-  </div>
-  
-  <div id="search-photogs">
-    <label for="live-search-photographers">Live Search </label>
-    <?php echo input_tag("live-search-photographers", $q); ?>
-  </div>
-  
-  <div id="create-photo">
-    <?php echo link_to("Create Photographer", "photographer_create") ?>
-  </div>
-  
-  <div id="photographer-list" style="display:none">
-   <?php include_partial("renderList", array("pager" => $pager, "q" => $q)); ?>
+<div class="span-6">
+  <?php include_component ( "static", "shortcuts", 
+                            array("sortedBy" => JobPeer::DATE,
+                                  "noSort" => true,
+                                  "viewingCurrent" => null) ); ?>
+</div>
+
+<div class="span-17 last">
+<div id="list-container" class="box">
+    <div id="now-viewing"> 
+      Viewing all photographers 
+        <?php echo image_tag("loading.gif", array("id" => "ajax-loading")); ?>
+    </div>
+    
+    <div id="search-photogs">
+      <label for="live-search-photographers">Live Search </label>
+      <?php echo input_tag("live-search-photographers", $q); ?>
+    </div>
+    
+    <div id="create-photo">
+      <?php echo link_to("Create Photographer", "photographer_create") ?>
+    </div>
+    
+    <div id="photographer-list" style="display:none">
+     <?php include_partial("renderList", array("pager" => $pager, "q" => $q)); ?>
+    </div>
+    
   </div>
 </div>
 

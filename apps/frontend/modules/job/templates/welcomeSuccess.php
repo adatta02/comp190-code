@@ -12,16 +12,20 @@
 </script>
 
 <?php include_component ( "static", "topmenu", array("moveToSkip" => null) ); ?>
+
+<div class="span-6">
 <?php include_component ( "static", "shortcuts", 
                           array("sortedBy" => $sortedBy, 
                                 "viewingCurrent" => "Active") ); ?>
+</div>
 
-<div id="list-container">
+<div class="span-17 last">
+  <div class="box" id="list-container">
 
-<?php include_partial("renderList", 
+  <?php include_partial("renderList", 
                        array("pager" => $pager,
                              "viewingCaption" => "Active Jobs", 
                              "object" => null,
                              "renderStatus" => true)); ?>
-                          
+  </div>                        
 </div>

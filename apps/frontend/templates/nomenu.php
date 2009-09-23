@@ -9,8 +9,21 @@
   <body>
     
     <div class="header">
-      <h2>Tufts University Photography Management</h2>
+      <div class="container">
+        <h2>Tufts University Photography Management</h2>
+      </div>
+      
     </div>
+    
+    <div class="header-spacer">
+      <?php if($sf_user->isAuthenticated()): ?>
+        <div class="container user-banner">
+            Logged in as <?php echo $sf_user->getUsername(); ?>
+            | <?php echo link_to("Logout", "sf_guard_signout"); ?>
+        </div>
+      <?php endif; ?>
+    </div>
+    
     <div class="container body">
       <?php echo $sf_content ?>
     </div>

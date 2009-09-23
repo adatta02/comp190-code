@@ -1,30 +1,32 @@
 <?php use_helper("PMRender"); ?>
 <?php echo GoogleMapsInclude(); ?>
 
-<?php include_component ( "static", "topmenu", array("moveToSkip" => null, "noMenu" => true) ); ?>
-<?php include_component ( "static", "shortcuts",
-                          array("sortedBy" => null,
-                                "viewingCurrent" => null,
-                                "noSort" => true) ); ?>
-                          
-<div id="content-container">
-  <div id="now-viewing">Viewing photographer location search</div>
-  <?php echo form_tag("", array("onsubmit" => "locationSearch(); return false;")) ?>
-    <label for="search-for">Search</label>
-    <?php echo input_tag("search-for", null, array("id" => "search-for")); ?>
-    <?php echo submit_tag("Search"); ?>
-    <?php echo image_tag("loading.gif", array("id" => "loading", "style" => "display: none")) ?>
-  </form>
-  
-  <div id="map-container" style="padding-top: 10px;">
-    <div id="map" style="height: 500px; width: 800px"></div>
+<div class="span-6">
+  <?php include_component ( "static", "shortcuts",
+                            array("sortedBy" => null,
+                                  "viewingCurrent" => null,
+                                  "noSort" => true) ); ?>
+</div>
+
+<div class="span-17 last">
+  <div class="box" id="content-container">
+    <div id="now-viewing">Viewing photographer location search</div>
+    <?php echo form_tag("", array("onsubmit" => "locationSearch(); return false;")) ?>
+      <label for="search-for">Search</label>
+      <?php echo input_tag("search-for", null, array("id" => "search-for")); ?>
+      <?php echo submit_tag("Search"); ?>
+      <?php echo image_tag("loading.gif", array("id" => "loading", "style" => "display: none")) ?>
+    </form>
+    
+    <div id="map-container" style="padding-top: 10px;">
+      <div id="map" style="height: 500px; width: 800px"></div>
+    </div>
+    
+    <div id="result-list-container" style="padding-top: 10px">
+      <div class="info-header">Results</div>
+      <div id="result-list"></div>
+    </div>
   </div>
-  
-  <div id="result-list-container" style="padding-top: 10px">
-    <div class="info-header">Results</div>
-    <div id="result-list"></div>
-  </div>
-  
 </div>
 
 <script type="text/javascript">

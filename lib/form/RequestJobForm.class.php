@@ -36,7 +36,6 @@ class RequestJobForm extends sfForm {
 		'contact_name' => new sfWidgetFormInput ( ), 
 		'contact_email' => new sfWidgetFormInput ( ), 
 		'contact_phone' => new sfWidgetFormInput ( ), 
-		//'notes' => new sfWidgetFormTextarea ( ), 
 		'estimate' => new sfWidgetFormInput ( ), 
 		'photo_type' => new sfWidgetFormChoiceMany(array( "multiple" => true, "choices" => $photoTypeOptions )),
 		'acct_num' => new sfWidgetFormInput ( ), 
@@ -65,15 +64,15 @@ class RequestJobForm extends sfForm {
 		$this->widgetSchema->setLabel ( 'ques3', 'Please describe in detail the event or story being photographed.' );
 		$this->widgetSchema->setLabel ( 'estimate', 'Shoot Fee' );		
 
-		$this->widgetSchema->setLabel ( 'contact_name', 'Contact Name <font class="required">*</font>' );
-		$this->widgetSchema->setLabel ( 'contact_email', 'Contact Email <font class="required">*</font>' );
-		$this->widgetSchema->setLabel ( 'contact_phone', 'Contact Phone <font class="required">*</font>' );
-		$this->widgetSchema->setLabel ( 'event', 'Event/Subject <font class="required">*</font>' );
-		$this->widgetSchema->setLabel ( 'street', 'Street <font class="required">*</font>' );
-		$this->widgetSchema->setLabel ( 'city', 'City <font class="required">*</font>' );
-		$this->widgetSchema->setLabel ( 'state', 'State <font class="required">*</font>' );
-		$this->widgetSchema->setLabel ( 'zip', 'Zipcode <font class="required">*</font>' );
-		$this->widgetSchema->setLabel ( 'photo_type', 'Photo Type <small>Select multiple with click+crtl</small>' );
+		$this->widgetSchema->setLabel ( 'contact_name', 'Contact Name<span class="required">*</span>' );
+		$this->widgetSchema->setLabel ( 'contact_email', 'Contact Email<span class="required">*</span>' );
+		$this->widgetSchema->setLabel ( 'contact_phone', 'Contact Phone<span class="required">*</span>' );
+		$this->widgetSchema->setLabel ( 'event', 'Event/Subject<span class="required">*</span>' );
+		$this->widgetSchema->setLabel ( 'street', 'Street<span class="required">*</span>' );
+		$this->widgetSchema->setLabel ( 'city', 'City<span class="required">*</span>' );
+		$this->widgetSchema->setLabel ( 'state', 'State<span class="required">*</span>' );
+		$this->widgetSchema->setLabel ( 'zip', 'Zipcode<span class="required">*</span>' );
+		$this->widgetSchema->setLabel ( 'photo_type', 'Photo Type<small>Select multiple with click+crtl</small>' );
 		
 		
 		$this->widgetSchema ['state']->setDefault ( "MA" );
@@ -100,7 +99,6 @@ class RequestJobForm extends sfForm {
 			'contact_name' => new sfValidatorString ( array ('max_length' => 45, 'required' => false ) ), 
 			'contact_email' => new sfValidatorEmail ( array ('required' => true ) ), 
 			'contact_phone' => new sfValidatorString ( array ('max_length' => 45, 'required' => false ) ), 
-			//'notes' => new sfValidatorString ( array ('required' => false ) ), 
 			'estimate' => new sfValidatorInteger ( array ('required' => false ) ), 
 			'photo_type' => new sfValidatorChoice ( array ("choices" => $photoTypeOptions, "multiple" => true, "required" => false ) ),  
 			'acct_num' => new sfValidatorString ( array ('max_length' => 32, 'required' => false ) ), 
@@ -128,7 +126,7 @@ class RequestJobForm extends sfForm {
 		$this->validatorSchema ['zip']->setOption ( 'required', true );
 		$this->validatorSchema ['contact_name']->setOption ( 'required', true );
 		$this->validatorSchema ['contact_phone']->setOption ( 'required', true );
-		$this->validatorSchema ['contact_phone']->setOption ( 'min_length', 10 );
+		$this->validatorSchema ['contact_phone']->setOption ( 'min_length', 3 );
 		
 		$this->validatorSchema ['state'] = new sfValidatorChoice ( array ('choices' => sfWidgetFormSelectUSState::getStateAbbreviations () ) );
 		
@@ -149,7 +147,6 @@ class RequestJobForm extends sfForm {
 		$j->setEvent ( $this->getValue ( "event" ) );
 		$j->setStartTime ( $this->getValue ( "start_time" ) );
 		$j->setEndTime ( $this->getValue ( "end_time" ) );
-		//$j->setNotes ( $this->getValue ( "notes" ) );
 		$j->setDate ( $this->getValue ( "date" ) );
 		$j->setDueDate ( $this->getValue ( "due_date" ) );
 		$j->setAcctNum ( $this->getValue ( "acct_num" ) );
@@ -159,7 +156,11 @@ class RequestJobForm extends sfForm {
 		$j->setCity ( $this->getValue ( "city" ) );
 		$j->setState ( $this->getValue ( "state" ) );
 		$j->setZip ( $this->getValue ( "zip" ) );
-		$j->setPhotoType ( implode(", ", $this->getValue ( "photo_type" )) );
+		if( is_array($this->getValue ( "photo_type" )) ){
+		  $j->setPhotoType ( implode(", ", $this->getValue ( "photo_type" )) );
+		}else{
+		  $j->setPhotoType ( $this->getValue ( "photo_type" ) );
+		}
 		$j->setOther ( $this->getValue ( "other" ));
 		$j->setQues1 ( $this->getValue ( "ques1" ));
 		$j->setQues2 ( $this->getValue ( "ques2" ));

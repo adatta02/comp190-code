@@ -1,33 +1,36 @@
 <?php use_helper("Form"); ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-    <?php
-				include_http_metas ()?>
-    <?php
-				include_metas ()?>
-    <?php
-				include_title ()?>
+  <head>
+    <?php include_http_metas() ?>
+    <?php include_metas() ?>
+    <?php include_title() ?>
     <link rel="shortcut icon" href="/favicon.ico" />
+  </head>
+  <body>
     
-</head>
-<body link="#996600" vlink="#996600">
-
-<div id="header">
-  <div id="logo">
-    <?php echo image_tag("tufts_logo.gif", array("style" => "height: 50px;margin-top:10px;")); ?></div>
-  <p id="header-title">University Photography Management System</p>
-</div>
-
-<div class="clear"></div>
-
-<div id="content">
-  <?php echo $sf_content?>
-</div>
-
-<script type="text/javascript">
-$(document).ready( function(){ $(".tooltip").tooltip(); } );
-</script>
-
-</body>
+    <div class="header">
+      <div class="container">
+        <h2>Tufts University Photography Management</h2>
+      </div>
+      
+    </div>
+    
+    <div class="header-spacer">
+      <?php if($sf_user->isAuthenticated()): ?>
+        <div class="container user-banner">
+            Logged in as <?php echo $sf_user->getUsername(); ?>
+            | <?php echo link_to("Logout", "sf_guard_signout"); ?>
+        </div>
+      <?php endif; ?>
+    </div>
+    
+    <div class="container body">
+      <?php echo $sf_content ?>
+    </div>
+    
+  <script type="text/javascript">
+    $(document).ready( function(){ $(".tooltip").tooltip(); } );
+  </script>
+  </body>
 </html>

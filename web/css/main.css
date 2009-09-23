@@ -8,21 +8,148 @@ orange - #D95A11
 
 body {
   font-family: Helvetica, Arial, sans-serif;
-  background-color: #EDF0F4;	
+  background-color: #EDF0F4;  
+}
+
+h1, h2, h4 {
+  color: #0F1D26;
+  font-weight: bold;
+}
+
+h3 {
+  color: #2A2D40;
+  font-weight: bold;	
+}
+
+textarea {
+	width: 250px;
+	height: 100px;
+}
+
+.padding-top {
+  padding-top: 20px;	
+}
+
+.listless {
+  list-style-type: none;
+  margin: 0px;	
+}
+
+.listless li {
+	padding-top: 2px;
+}
+
+.shortcuts {
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+a img {
+	border: 0px none;
+	text-decoration: none;
+}
+
+.shortcuts a {
+  text-decoration: none;
+}
+
+a:link {
+  color: #D95A11;	
+}
+
+a:visited {
+	color: #2A2D40;
 }
 
 .body {
   padding-top: 20px;
 }
 
+.box {
+  background-color: #FFFFFF;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;	
+}
+
 .header {
   padding-top: 10px;
-  padding-left: 50px;
   background-color: #FFFFFF;
   letter-spacing: 1px;
 }
 
-h1, h2, h3, h4 {
-  color: #0F1D26;
+.header-spacer {
+	height: 20px;
+	background-color: #6E6F73;
+}
+
+.header-text {
+  min-width: 950px;
+  margin: 0 auto; 
+}
+
+.user-banner {
+  color: #FFFFFF;	
+}
+
+ .user-banner a {
+  color: #FFFFFF;
   font-weight: bold;
+ }
+
+.welcome-container {
+  height: 300px;	
+}
+
+.boxed-links dt {
+  padding-top: 10px;	
+}
+
+.boxed-links a {
+  font-size: 18px;
+  letter-spacing: 1px;
+  text-decoration: none; 
+}
+
+.marked-required, .required {
+  color: red;
+  font-weight: bold;
+}
+
+.error_list {
+  list-style-type: none;
+  border:2px solid #ddd;
+  background:#FBE3E4;
+  color:#8a1f11;
+  border-color:#FBC2C4;
+  padding-left: 0px;
+  margin-left: 0px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  padding-top: 3px;
+  padding-bottom: 3px;  
+}
+
+#now-viewing {
+	font-size: 18px;
+	font-weight: bold;
+	color: #2A2D40;
+	padding-bottom: 5px;
+	letter-spacing: 1.2px;
+}
+
+#ajax-loading {
+  display: none;
+}
+
+#add-tag-menu {
+  display: none;
+}
+
+#top-search {
+  float: right;
+}
+
+#top-menu-container a {
+  text-decoration: none;
 }

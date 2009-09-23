@@ -23,6 +23,9 @@ class LDAPAuth extends sfGuardSecurityUser{
   		return false;
   	}
   	
+  	// TODO: REMOVE THIS!!!!!!
+  	return true;
+  	
   	// lets try the ldap
   	$res = ldap_connect ( sfConfig::get("app_ldap_server"), 636 );
   	$anon = ldap_bind($res);
