@@ -10,7 +10,7 @@
 	<col width="25%"></col>
 
 	<tr align="left">
-		<th>Remove</th>
+		<th><?php if( $sf_user->hasCredential("admin")){ ?>Remove <?php } ?></th>
 		<th>Name</th>
 		<th>Email</th>
 		<th>Phone</th>

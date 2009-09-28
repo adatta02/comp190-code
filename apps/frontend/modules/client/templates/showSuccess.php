@@ -2,32 +2,35 @@
 <?php echo include_javascripts_for_form($InfoForm); ?>
 
 
-<?php include_component ( "static", "topmenu", array("moveToSkip" => null, "noMenu" => true) ); ?>
-<?php include_component ( "static", "shortcuts",
+<div class="span-6">
+  <?php include_component ( "static", "shortcuts",
                           array("sortedBy" => null,
                                 "viewingCurrent" => null,
                                 "noSort" => true) ); ?>
-
-<div id="content-container">
-<div id="now-viewing">
-    Viewing client <?php echo $client->getName(); ?> 
-   <span id="delete-link">
-      <?php echo link_to_function("Delete Client", "confirmDelete()"); ?>
-   </span>
-    <?php echo image_tag("loading.gif", array("id" => "ajax-loading")); ?>
 </div>
 
-<div class="info-header">Information
-<a href="#" onclick="javascript:$('#info-edit').toggle(); return false;">
-  <?php echo image_tag("pencil.png", array("class" => "image-href")) ?>
-</a>
+<div class="span-17 last">
+  <div id="content-container" class="box">
+  
+  <div id="now-viewing">
+      Viewing client <?php echo $client->getName(); ?> 
+      <?php echo image_tag("loading.gif", array("id" => "ajax-loading")); ?>
+  </div>
+  
+  <?php echo link_to_function("Delete Client", "confirmDelete()"); ?>
+  <hr class="space" />
+  
+  <div class="info-header">Information
+  <a href="#" onclick="javascript:$('#info-edit').toggle(); return false;">
+    <?php echo image_tag("pencil.png", array("class" => "image-href")) ?>
+  </a>
+  </div>
+  
+  <div id="client-info"><a href="#info"></a>
+    <?php include_partial("Info", array("client" => $client, "InfoForm" => $InfoForm)); ?>
+  </div>
+ </div>
 </div>
-
-<div id="client-info"><a href="#info"></a>
-  <?php include_partial("Info", array("client" => $client, "InfoForm" => $InfoForm)); ?>
-</div>
-</div>
-
 <script type="text/javascript">
   function confirmDelete(){
     var res = confirm("Are you sure you want to delete this client?");

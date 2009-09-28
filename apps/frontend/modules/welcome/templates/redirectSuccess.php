@@ -1,6 +1,4 @@
-<div class="span-12">
-
-	<div class="box welcome-container">
+<div class="box centered-container">
 	  
 	 <dl class="boxed-links">
 	   <dt><?php echo link_to("Request a Job", "@job_create"); ?></dt>
@@ -22,5 +20,3 @@
 	 </dl>
 	 
 	</div>
-	
-</div>

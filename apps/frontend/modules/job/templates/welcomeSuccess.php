@@ -19,7 +19,7 @@
                                 "viewingCurrent" => "Active") ); ?>
 </div>
 
-<div class="span-17 last">
+<div class="span-17 last job-container">
   <div class="box" id="list-container">
 
   <?php include_partial("renderList", 

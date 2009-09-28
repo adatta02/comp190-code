@@ -13,7 +13,6 @@ class clientviewActions extends sfActions {
 	
 	public function executeShow(sfWebRequest $request) {
 		$this->job = $this->getRoute ()->getObject ();
-		
 	}
 
 	

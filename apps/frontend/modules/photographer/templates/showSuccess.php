@@ -2,11 +2,12 @@
 <?php echo include_javascripts_for_form($InfoForm); ?>
 <?php echo GoogleMapsInclude(); ?>
 
-<?php include_component ( "static", "topmenu", array("moveToSkip" => null, "noMenu" => true) ); ?>
-<?php include_component ( "static", "shortcuts",
-                          array("sortedBy" => null,
-                                "viewingCurrent" => null,
-                                "noSort" => true) ); ?>
+<div class="span-6">
+  <?php include_component ( "static", "shortcuts",
+                            array("sortedBy" => null,
+                                  "viewingCurrent" => null,
+                                  "noSort" => true) ); ?>
+</div>
 
 <script type="text/javascript">
 
@@ -109,39 +110,42 @@
 </script>
 
 
-<div id="content-container">
-<div id="now-viewing">
+<div class="span-17 last">
+  <div id="content-container" class="box">
+  <div id="now-viewing">
     Viewing photographer <?php echo $photographer->getName(); ?>
-   <span id="delete-link">
-      <?php echo link_to_function("Delete Photographer", "confirmDelete()"); ?>
-   </span>
     <?php echo image_tag("loading.gif", array("id" => "ajax-loading")); ?>
   </div>
 
-<div class="info-header">
-<?php echo link_to ( "View jobs by " . $photographer->getName(), "photographer_view_jobs", $photographer )?>
-</div>
-
-<div class="info-header">Information <a href="#"
-	onclick="javascript:$('#info-edit').toggle(); return false;">
-  <?php echo image_tag("pencil.png", array("class" => "image-href")) ?>
-</a></div>
-
-<div id="photographer-info"><a href="#info"></a>
-  <?php include_partial("Info", array("photographer" => $photographer, "InfoForm" => $InfoForm)); ?>
-</div>
-
-<div class="info-header">Locations</div>
-<div id="location-list">
-  <?php include_partial("regionList", array("photographer" => $photographer)); ?>
-</div>
-	<form id="locations"><input type="text" id="loc" />
-	<button type="button" onclick="getLocations()">Add Location</button>
-	<?php echo image_tag("loading.gif", array("id" => "loading", "style" => "display: none")) ?>
-</form>
-
-<br />
-
-<div id="location-container"></div>
-  <div id="location-map" style="width: 500px; height: 300px">
+  <hr class="space" />
+  <div id="delete-link">
+        <?php echo link_to_function("Delete Photographer", "confirmDelete()"); ?>
+        |
+        <?php echo link_to ( "View jobs by " . $photographer->getName(), "photographer_view_jobs", $photographer )?>
+  </div>
+  <hr class="space" />
+  
+  <div class="info-header">Information <a href="#"
+  	onclick="javascript:$('#info-edit').toggle(); return false;">
+    <?php echo image_tag("pencil.png", array("class" => "image-href")) ?>
+  </a></div>
+  
+  <div id="photographer-info"><a href="#info"></a>
+    <?php include_partial("Info", array("photographer" => $photographer, "InfoForm" => $InfoForm)); ?>
+  </div>
+  
+  <div class="info-header">Locations</div>
+  <div id="location-list">
+    <?php include_partial("regionList", array("photographer" => $photographer)); ?>
+  </div>
+  	<form id="locations"><input type="text" id="loc" />
+  	<button type="button" onclick="getLocations()">Add Location</button>
+  	<?php echo image_tag("loading.gif", array("id" => "loading", "style" => "display: none")) ?>
+  </form>
+  
+  <br />
+  
+  <div id="location-container"></div>
+    <div id="location-map" style="width: 500px; height: 300px">
+  </div>
 </div>

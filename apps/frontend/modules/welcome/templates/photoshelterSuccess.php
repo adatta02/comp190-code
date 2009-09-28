@@ -1,7 +1,7 @@
 <?php use_helper("Form"); ?>
 
-<div id="login-container">
-  <div id='box'>
+<div class="span-12">
+  <div class='box'>
     <h3>For security, please re-enter your password:</h3> <br/>
     <div id="loading" style="display: none">Loading...</div> 
     <div id="login-form">
@@ -10,11 +10,11 @@
 	    <table>
 	      <?php echo $form["password"]->renderRow(); ?>
 	    </table>
-	  <input type="submit" value="sign in" />
+	  <input type="submit" value="Sign In" />
 	  </form>
 	  
-	  <br />
-	  <?php echo link_to("Return to homepage", "homepage") ?>
+	  <hr class="space" />
+	  <h3><?php echo link_to("Return to homepage", "homepage") ?></h3>
   </div>
 </div>
 <div id="ps-form"></div>

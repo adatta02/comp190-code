@@ -1,16 +1,23 @@
+<table>
+  <tbody>
+  <tr>
+    <th>Name</th>
+    <th>Phone</th>
+    <th># Jobs</th>
+  </tr>
+  
 <?php
 use_helper("PMRender");
 
 $count = 1;
 foreach($pager->getResults() as $client){
-  renderClient($client, ($count % 2 == 0 ? 1 : 2));
+  renderClientRow($client, ($count % 2 == 0 ? 1 : 2));
   $count += 1;
 }
 
 ?>
-
-<div class="clear"></div>
-
+  </tbody>
+</table>
 
 <?php include_component("static", 
                         "propelPager", 

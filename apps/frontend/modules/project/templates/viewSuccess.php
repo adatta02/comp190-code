@@ -11,19 +11,21 @@
   ProjectManager.moveJobUrl = "<?php echo url_for("job_move"); ?>";
 </script>
 
-<?php include_component ( "static", "topmenu", array("moveToSkip" => null) ); ?>
-<?php include_component ( "static", "shortcuts", 
-                          array("sortedBy" => $sortedBy, 
-                                "viewingCurrent" => null) ); ?>
+<div class="span-6">
+  <?php include_component ( "static", "shortcuts", 
+                            array("sortedBy" => $sortedBy, 
+                                  "viewingCurrent" => null) ); ?>
+</div>
 
-<div id="list-container">
-
-<?php include_partial("job/renderList", 
-                      array("pager" => $pager,
-                            "viewingCaption" => " project " . $project->getName(),
-                            "object" => $project->getSlug(),
-                            "propelType" => "slug",
-                            "route" => "project_view",
-                            "renderStatus" => true)); ?>
-
+<div class="span-17 last">
+  <div class="box" id="list-container">
+  
+  <?php include_partial("job/renderList", 
+                        array("pager" => $pager,
+                              "viewingCaption" => " project " . $project->getName(),
+                              "object" => $project->getSlug(),
+                              "propelType" => "slug",
+                              "route" => "project_view",
+                              "renderStatus" => true)); ?>
+  </div>
 </div>

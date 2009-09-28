@@ -198,7 +198,8 @@ photo@tufts.edu";
 		}
 		
 		// if they are a user lets make them a client
-		if($user->getProfile()->getUserType()->getId() == sfConfig::get("app_user_type_user")){
+		if($user->getProfile()->getUserType()->getId() 
+		    == sfConfig::get("app_user_type_user")){
       $clientProfile = new Client();
       $clientProfile->setUserId($user->getProfile()->getId());
       $clientProfile->setName($this->getValue("name"));
@@ -207,7 +208,6 @@ photo@tufts.edu";
       $clientProfile->setEmail("email");
       $clientProfile->setPhone($this->getValue("phone"));
       $clientProfile->save();
-      $j->addClient($clientProfile);
       
       $user->getProfile()->setUserTypeId(sfConfig::get("app_user_type_client"));
       $user->getProfile()->save();
@@ -216,8 +216,11 @@ photo@tufts.edu";
 		}else if($user->getProfile()->getUserType()->getId() 
 		          == sfConfig::get("app_user_type_client")){
 			$c = new Criteria();
-			$c->add(ClientPeer::USER_ID, $this->getUser ()->getProfile ()->getId ());
+			$c->add(ClientPeer::USER_ID, $user->getProfile()->getId());
 			$clientProfile = ClientPeer::doSelectOne($c);
+			if( is_null($clientProfile) ){
+			  $clientProfile = new Client();
+			}
       $clientProfile->setUserId($user->getProfile()->getId());
       $clientProfile->setName($this->getValue("name"));
       $clientProfile->setDepartment($this->getValue("department"));
@@ -226,6 +229,8 @@ photo@tufts.edu";
       $clientProfile->setPhone($this->getValue("phone"));
       $clientProfile->save();
 		}
+		
+		$j->addClient($clientProfile);
 		
 		return $j->getId();
 	}

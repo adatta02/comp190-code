@@ -30,7 +30,7 @@
     </div>
     
   <script type="text/javascript">
-    $(document).ready( function(){ $(".tooltip").tooltip(); } );
+    $(document).ready( function(){ $(".tooltip").tooltip({showURL: false}); } );
   </script>
   </body>
 </html>

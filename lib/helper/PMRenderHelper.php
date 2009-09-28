@@ -10,6 +10,8 @@ function GoogleMapsInclude() {
 	        type="text/javascript"></script>';
 }
 
+
+
 function renderLog($log, $classNum) {
 	?>
 <div class="job-list-item-<?php
@@ -38,6 +40,20 @@ function renderLog($log, $classNum) {
 </table>
 </div>
 <?php
+}
+
+function renderClientRow($client, $classNum) {
+  ?>
+  <tr>
+    <td>
+      <?php echo link_to ( $client->getName (), "client_view", $client );?>
+      [<?php echo mail_to ( $client->getEmail (), $client->getEmail () ); ?>]
+    </td>
+    <td><?php echo $client->getPhone (); ?></td>
+    <td><?php echo link_to ( $client->getNumberOfJobs (), 
+                  "client_view_jobs", array ("slug" => $client->getSlug () ) ); ?></td>
+  </tr>
+  <?php
 }
 
 function renderClient($client, $classNum) {
@@ -72,6 +88,21 @@ function renderClient($client, $classNum) {
 </table>
 </div>
 <?php
+}
+
+function renderPhotographerRow($photographer, $classNum) {
+  ?>
+  <tr>
+    <td>
+      <?php echo link_to ( $photographer->getName (), "photographer_view", $photographer ); ?>
+      [<?php echo mail_to ( $photographer->getEmail (), $photographer->getEmail () ); ?>]
+    </td>
+    <td><?php echo $photographer->getPhone (); ?></td>
+    <td><?php echo $photographer->getAffiliation ()?></td>
+    <td><?php echo link_to ( $photographer->getNumberOfJobs (), 
+                    "photographer_view_jobs", $photographer )?></td>
+  </tr>
+  <?php
 }
 
 function renderPhotographer($photographer, $classNum) {
@@ -120,7 +151,16 @@ function renderPublication($pub, $classNum) {
 </li>
 <?php
 }
- 
+
+function renderProjectTable( $project, $classNum ){
+  ?>
+    <tr>
+      <td><?php echo $project->getName(); ?></td>
+      <td><?php echo link_to ( $project->getNumberOfJobs(), "project_view", $project ); ?></td>
+    </tr>
+  <?php
+}
+
 function renderProject($project, $classNum) {
 	?>
 <div class="job-list-item-<?php
@@ -239,6 +279,73 @@ function renderClientJobListView($job, $classNum, $canAdd) {
         </tr>
 </table>
 </div>
+<?php
+}
+
+function renderJobListViewTable($job, $classNum, $renderStatus = false){
+  $showRoute = "job_show";
+  
+  if( sfContext::getInstance()->getUser()->hasCredential("client") ){
+    $showRoute = "clientview_job_show";
+  }
+  
+?>
+    <tr>
+      <td><?php echo checkbox_tag ( 'job-' . $job->getId (), $job->getId(), 0, 
+                                    array ("class" => "job-check" ) );?></td>
+      <td><?php echo link_to ( $job->getId (), $showRoute, $job ); ?></td>
+      <td><?php renderTagList ( $job ); ?></td>
+      <td><?php echo $job->getEvent(); ?>
+      
+        <?php
+          if ($job->getProjectId ()) {
+            echo "[";
+            $title = truncate_text($job->getProject ()->getName (), 16);
+            if( $title == $job->getProject ()->getName () ){
+              echo link_to ( $title, "project_view", $job->getProject () );
+            }else{
+              $titleLong = str_replace('"', "'", $job->getProject ()->getName ());
+              echo link_to ( $title, "project_view", 
+                  $job->getProject (), 
+                  array("class" => "tooltip", "title" => $titleLong));
+            }
+            echo "]";
+        }
+      ?>
+      
+      </td>
+      <td>
+       <?php 
+       $clients = $job->getClients(); 
+        if(count($clients) == 1){ 
+          $n = array_pop($clients); echo $n;
+        }else if(count($clients) > 1){
+          $names = array();
+          foreach( $clients as $n ){ $names[] = $n->__toString(); }
+          echo "<span class='tooltip' title='" 
+                . join(", ", $names) . "'>" . count( $clients ) . "</span>";
+        }else{
+          echo "-";
+        }?>
+      </td>
+      <td>
+      <?php
+       $photogs = $job->getPhotographers ();
+       if (count ( $photogs ) == 1) :
+         $i = array_pop( $photogs );
+         $name = truncate_text($i->getName(), "16"); 
+         echo link_to ( $name, "photographer_view_jobs", $i );
+       elseif (count ( $photogs ) == 0) :
+          echo "-";
+        else:
+          echo count ( $photogs ) . " Assigned";
+       endif;
+      ?>
+      </td>
+      <td>
+        <?php echo $job->getDate ( "n/j/Y" ) ?>
+      </td>
+    </tr>
 <?php
 }
 

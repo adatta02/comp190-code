@@ -33,6 +33,7 @@ all:
     login_action:           index
     secure_module:          sfGuardAuth
     secure_action:          secure
+    standard_helpers:       [Partial, Cache, Form, PMRender]
 
 #all:
 #  .actions:

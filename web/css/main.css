@@ -58,6 +58,10 @@ a:link {
   color: #D95A11;	
 }
 
+.shortcuts a:visited {
+  color: #D95A11;	
+}
+
 a:visited {
 	color: #2A2D40;
 }
@@ -130,12 +134,24 @@ a:visited {
   padding-bottom: 3px;  
 }
 
+.bordered-right {
+  border-right: 1px dashed #CCCCCC;
+  padding-right: 10px;	
+}
+
+.border-bottom {
+	border-bottom: 1px dashed #CCCCCC;
+	background: none;
+}
+
 #now-viewing {
 	font-size: 18px;
 	font-weight: bold;
 	color: #2A2D40;
 	padding-bottom: 5px;
+	margin-bottom: 10px;
 	letter-spacing: 1.2px;
+	border-bottom: 1px solid #6E6F73;
 }
 
 #ajax-loading {
@@ -152,4 +168,30 @@ a:visited {
 
 #top-menu-container a {
   text-decoration: none;
+}
+
+.info-header {
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 1.2px;
+}
+
+.centered-container {
+  margin: 1% auto 0; 
+  width: 400px;
+  border: 1px solid black;
+}
+
+.job-container {
+  padding-left: 20px;	
+}
+
+#list-container td {
+  border-bottom: 1px dashed #6E6F73;
+}
+
+.collapsable {
+  border-bottom: 1px dashed #6E6F73;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
 }

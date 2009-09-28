@@ -18,10 +18,7 @@
     
     <div id="search-photogs">
       <label for="live-search-photographers">Live Search </label>
-      <?php echo input_tag("live-search-photographers", $q); ?>
-    </div>
-    
-    <div id="create-photo">
+      <?php echo input_tag("live-search-photographers", $q); ?> | 
       <?php echo link_to("Create Photographer", "photographer_create") ?>
     </div>
     

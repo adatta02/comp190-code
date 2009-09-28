@@ -6,38 +6,50 @@
   ProjectManager.isInverted = <?php echo ($invert ? 1 : 0) ?>;
 </script>
 
-<?php include_component ( "static", "topmenu", array("moveToSkip" => null, "noMenu" => true) ); ?>
-<?php include_component ( "static", "userShortcuts",
+<div class="span-6">
+  <?php include_component ( "static", "userShortcuts",
                           array("sortedBy" => $sortedBy,
                                 "viewingCurrent" => null,
                                 "noSort" => false) ); ?>
-
-<div id="content-container">
-<div id="now-viewing">
-  Viewing <?php echo ($own ? "My Jobs" : "All Jobs") ?>
 </div>
 
-<div id="server-msg"></div>
+<div class="span-17 last job-container">
+  <div class="box" id="content-container">
+  
+    <div id="now-viewing">Viewing <?php echo ($own ? "My Jobs" : "All Jobs") ?></div>
+    
+    <div id="server-msg"></div>
 
-<?php
-$count = 0;
-foreach($pager->getResults() as $i){
-  renderClientJobListView($i, (($count % 2 == 0) ? "1" : "2"), !$own);
-  $count += 1;
-}
+    <table>
+      <tbody>
+        <tr>
+          <th></th>
+          <th>ID</th>
+          <th>Tags</th>
+          <th>Event</th>
+          <th>Client</th>
+          <th>Photographer</th>
+          <th>Date</th>
+        </tr>
 
-?>
-
-<div class="clear"></div>
-
-<?php include_component("static", 
+    <?php
+    $count = 0;
+    foreach($pager->getResults() as $i){
+      renderJobListViewTable($i, (($count % 2 == 0) ? "1" : "2"), !$own);
+      $count += 1;
+    }
+    ?>
+  
+    </tbody>
+ </table>
+    <?php include_component("static", 
                         "pager", 
                          array("pager" => $pager, 
                                "url" => "client_myjobs_own",
                                "params" => array("own" => $own, "all" => $all))); ?>
 
+  </div>
 </div>
-
 
 <script type="text/javascript">
   activateMouseOvers();

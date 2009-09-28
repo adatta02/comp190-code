@@ -14,12 +14,12 @@
 <?php include_component ( "static", "topmenu", array("moveToSkip" => $routeObject) ); ?>
 
 <div class="span-6">
-<?php include_component ( "static", "shortcuts", 
+  <?php include_component ( "static", "shortcuts", 
                           array("sortedBy" => $sortedBy, 
                                 "viewingCurrent" => $routeObject->__toString()) ); ?>
 </div>
 
-<div class="span-17 last">
+<div class="span-17 last job-container">
   <div class="box" id="list-container">
   <?php include_partial("renderList", 
                        array("pager" => $pager,

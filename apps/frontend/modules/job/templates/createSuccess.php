@@ -43,7 +43,7 @@ if($sf_user->hasCredential("admin")){
     action="<?php echo url_for('@job_create') ?>" 
     method="POST" enctype="multipart/form-data">
   
-  <div class="span-12" style="overflow: hidden">
+  <div class="span-12 bordered-right" style="overflow: hidden">
   
     <h3>Client Name</h3>
       
@@ -74,6 +74,8 @@ if($sf_user->hasCredential("admin")){
       </tbody>
     </table>
     
+    <hr class="border-bottom" />
+    
     <h3>Shoot Contact</h3>
     <table>
       <tbody>
@@ -93,6 +95,8 @@ if($sf_user->hasCredential("admin")){
       
       </tbody>
     </table>
+    
+    <hr class="border-bottom" />
     
     <h3>Shoot Details</h3>
       <table>
