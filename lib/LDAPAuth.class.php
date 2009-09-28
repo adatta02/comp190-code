@@ -22,9 +22,10 @@ class LDAPAuth extends sfGuardSecurityUser{
   		self::removeUser($username);
   		return false;
   	}
-  	
-  	// TODO: REMOVE THIS!!!!!!
-  	return true;
+
+  	if( !function_exists("ldap_connect") ){
+  	  return true;
+  	}
   	
   	// lets try the ldap
   	$res = ldap_connect ( sfConfig::get("app_ldap_server"), 636 );
