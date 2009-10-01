@@ -12,16 +12,20 @@ class JobPhotographer extends BaseJobPhotographer
   	
   	switch( $photoId ){
   		case 5: // Joanie
+  		  $url = "http://www.google.com/calendar/feeds/" . urlencode(sfConfig::get("app_joanie_calendar_id")) . "/private/full";
+  		  
   			$arr = $this->getJob()->createCalendarArray();
-  			$arr["calUrl"] = "http://www.google.com/calendar/feeds/18gp9a10ca95a9j6kr8npq41oc%40group.calendar.google.com/private/full";
+  			$arr["calUrl"] = $url;
   			$event = sfGCalendar::createJobEvent ( $arr );
         $this->getJob()->setGCalIdCustom ( $event->id );
         $this->getJob()->setGCalIdCustomUrl( $arr["calUrl"] );
         $this->getJob()->save();
   			break;
       case 25: // Alonso
+        $url = "http://www.google.com/calendar/feeds/" . sfConfig::get("app_alonso_calendar_id") . "/private/full";
+        
         $arr = $this->getJob()->createCalendarArray();
-        $arr["calUrl"] = "http://www.google.com/calendar/feeds/t21645rjqqbtbch34skj0kjq3g%40group.calendar.google.com/private/full";
+        $arr["calUrl"] = $url;
         $event = sfGCalendar::createJobEvent ( $arr );
         $this->getJob()->setGCalIdCustom ( $event->id );
         $this->getJob()->setGCalIdCustomUrl( $arr["calUrl"] );
@@ -29,6 +33,6 @@ class JobPhotographer extends BaseJobPhotographer
         break;
   		default: break;
   	}
-  	
   }
+  
 }

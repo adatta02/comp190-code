@@ -4,12 +4,17 @@ include_once "../../config/ProjectConfiguration.class.php";
 
 $configuration = ProjectConfiguration::getApplicationConfiguration('frontend', 'prod', true);
 $sfContext = sfContext::createInstance($configuration);
-$sfContext->dispatch();
 
 $jm = new Jm2Transform();
+
+/*
 $jm->transformPhotographers();
 $jm->transformJobsProjects();
 $jm->transformProjects();
+$jm->saveArrays();
+*/
+
+$jm->loadArrays();
 $jm->transformJobs();
 
 class Jm2Transform{
@@ -18,7 +23,21 @@ class Jm2Transform{
 	private $jobKeys;
 	private $photogKeys;
   private $jobProjectKeys;
-  	
+
+  public function loadArrays(){
+    $this->projectKeys = unserialize( file_get_contents("projectKeys") );
+    $this->jobKeys = unserialize( file_get_contents("jobKeys") );
+    $this->photogKeys = unserialize( file_get_contents("photogKeys") );
+    $this->jobProjectKeys = unserialize( file_get_contents("jobProjectKeys") );
+  }
+  
+  public function saveArrays(){
+    file_put_contents("projectKeys", serialize($this->projectKeys));
+    file_put_contents("jobKeys", serialize($this->jobKeys));
+    file_put_contents("photogKeys", serialize($this->photogKeys));
+    file_put_contents("jobProjectKeys", serialize($this->jobProjectKeys));
+  }
+  
 	public function transformJobsProjects(){
 		$this->jobProjectKeys = array();
 		
@@ -167,8 +186,10 @@ class Jm2Transform{
   		$del = new Delivery();
   		
       $jid = 1;
-      $startTime = "";
-      $endTime = "";
+      $startTime = null;
+      $shootStart = null;
+      $shootEnd = null;
+      $endTime = null;
       $notes = "";
       $photog = 0;
       $slug = "";
@@ -182,7 +203,9 @@ class Jm2Transform{
           case "shoot_name": $j->setEvent($child->textContent); break;
           case "shoot_date": $j->setDate($child->textContent); break;
           case "shoot_startT": $startTime = $child->textContent; break;
+          case "shoot_start": $shootStart = $child->textContent; break;
           case "shoot_endT": $endTime = $child->textContent; break;
+          case "shoot_end": $shootEnd = $child->textContent; break;
           case "shoot_duedate": $j->setDueDate($child->textContent); break;
           case "submitted_at": $j->setCreatedAt($child->textContent); break;
           case "requester_address": $j->setStreet($child->textContent); break;
@@ -215,6 +238,9 @@ class Jm2Transform{
         
       }
       
+      if( is_null($endTime) ){ $endTime = $shootEnd; }
+      if( is_null($startTime) ){ $startTime = $shootStart; }
+      
       if($j->getCity() == "Boston"){
        $j->setZip("02101");
       }else{
@@ -223,8 +249,18 @@ class Jm2Transform{
       
       $j->setNotes($notes);
       $j->setState("Massachusetts");
-      $j->setEndTime($j->getDate() . " " . $endTime);
-      $j->setStartTime($j->getDate() . " " . $startTime);
+
+      list($hour, $min, $sec) = explode(":", $endTime);
+      list($shour, $smin, $ssec) = explode(":", $startTime);
+      
+      $t = new DateTime();
+      $t->setTime($hour, $min, $sec);
+      $j->setEndTime($t);
+    
+      $t = new DateTime();
+      $t->setTime($shour, $smin, $ssec);
+      $j->setStartTime($t);
+      
       $j->addTag($slug);
       
       if(isset($this->jobProjectKeys[$jid])){
@@ -243,9 +279,11 @@ class Jm2Transform{
 			
 			$obj = $jobList[ $i ];
 			
-			echo $count . "/" . $total . "\n";
+			echo $i . "/" . $total . "\n";
 			
+			// keep the ids lined up
 			if ($obj == false) {
+			  
 				$myJob = new Job ( );
 				
 				try{
@@ -266,6 +304,7 @@ class Jm2Transform{
 					$j->save ();
 				} catch ( Exception $ex ) {
 					echo $ex->getMessage ();
+					echo $ex->getTraceAsString();
 				}
 				
 				$del->setJobId ( $j->getId () );
@@ -287,7 +326,8 @@ class Jm2Transform{
 				// add the requester as a client
 				$c = new Criteria ( );
 				$c->add ( sfGuardUserPeer::USERNAME, $j->getContactEmail () );
-				if (ClientPeer::doCount ( $c ) == 0 && trim ( strlen ( $j->getContactEmail () ) ) != 0) {
+				if (ClientPeer::doCount ( $c ) == 0 
+				    && trim ( strlen ( $j->getContactEmail () ) ) != 0) {
 					
 					$user = new sfGuardUser ( );
 					$user->setUsername ( $j->getContactEmail () );

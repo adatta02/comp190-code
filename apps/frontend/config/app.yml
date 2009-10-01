@@ -38,3 +38,5 @@ all:
     email: 12
   photoshelter_public_key: config/photoshelterpublic.pem
   tufts_private_key: config/privatekey.pem
+  joanie_calendar_id: 2jiraclg84cftjecs1p9855s8k@group.calendar.google.com
+  alonso_calendar_id: 43df531bd13pdvcnedrurpvvgc@group.calendar.google.com 

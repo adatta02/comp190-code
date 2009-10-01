@@ -15,20 +15,28 @@
 <div class="box">
   <h3>Job Shortcuts</h3>
 	 <ul class="listless shortcuts">
-	   <li>
+	   
+	   <li class="active_link">
 	     <?php if($viewingCurrent == "Active"): ?>
 	       <strong>Active Jobs</strong>
+	       <?php echo image_tag("dot.png", array("height" => "12px")); ?>
 	     <?php else: ?>
 	       <?php echo link_to("Active Jobs", "job_welcome"); ?>
 	     <?php endif; ?>
 	   </li>
+	   
 	   <?php foreach($states as $s): ?>
 	     <?php if($s->getState() == $viewingCurrent): ?>
-	       <li><strong><?php echo $s ?></strong></li>
+	       <li class="shortcut_active">
+	         <strong><?php echo $s ?></strong>
+	         <?php echo image_tag("dot.png", array("height" => "12px")); ?>
+	       </li>
 	     <?php else: ?>
-	       <li><?php echo link_to($s, "job_list_by", $s); ?></li>
+	       <?php $class = strtolower($s) . "_link"; ?>
+	       <li class="<?php echo $class?>"><?php echo link_to($s, "job_list_by", $s); ?></li>
 	     <?php endif; ?>
 	   <?php endforeach; ?>
+	   
 	</ul>
 </div>
 

@@ -1,0 +1,2577 @@
+sfGuardPermission:
+  sfGuardPermission_1:
+    name: admin
+    description: 'Administrator permission'
+sfGuardUser:
+  sfGuardUser_1:
+    username: admin
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-04-06 18:25:09'
+    last_login: '2009-04-06 18:25:09'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_2:
+    username: melody.ko@tufts.edu
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:51'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_3:
+    username: beaulieu.photos@gmail.com
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:51'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_4:
+    username: beatrice.degea@latimes.com
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:51'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_5:
+    username: loebbrian@gmail.com
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:51'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_6:
+    username: joanie.tobin@tufts.edu
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:51'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_7:
+    username: nichole.sobecki@tufts.edu
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:51'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_8:
+    username: photo@slpj.net
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:51'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_9:
+    username: winmartin@rcn.com
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:51'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_10:
+    username: zarafoto@gmail.com
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:52'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_11:
+    username: kristenelaineolson@gmail.com
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:52'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_12:
+    username: aaron.schutzengel@gmail.com
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:52'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_13:
+    username: don@charlesrivermedia.com
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:52'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_14:
+    username: jodihilton@gmail.com
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:52'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_15:
+    username: mx2f8@aol.com
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:52'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_16:
+    username: sally@sally-ryan.com
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:52'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_17:
+    username: veronikalukasova@yahoo.com
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:52'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_18:
+    username: saraharkin@gmail.com
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:52'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_19:
+    username: autumnlind@gmail.com
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:52'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_20:
+    username: photo@tufts.edu
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:53'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_21:
+    username: kim@exposuregallery.org
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:53'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_22:
+    username: bjversoy@earthlink.net
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:53'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_23:
+    username: robert@robertcaplin.com
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:53'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_24:
+    username: Grileyphoto@aol.com
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:53'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_25:
+    username: anjali.nirmalan@tufts.edu
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:53'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_26:
+    username: alonso.nichols@tufts.edu
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:53'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_27:
+    username: jdsloanphotographs@yahoo.com
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:53'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_28:
+    username: 'tiffany@gallerytk.com '
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:53'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_29:
+    username: andrew.cunningham@tufts.edu
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:53'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_30:
+    username: Jesse.Kohn@tufts.edu
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:54'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_31:
+    username: jeff.beers@gmail.com
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:54'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_32:
+    username: trevor.snapp@gmail.com
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:54'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_33:
+    username: NO_EMAIL_33@TUFTS.EDU
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:54'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_34:
+    username: kpicache@gmail.com
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:54'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_35:
+    username: deborah.silver@scripps.com
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:54'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_36:
+    username: scottcookphotography@gmail.com
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:54'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_37:
+    username: juliefurbush@gmail.com
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:55'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_38:
+    username: ajboerner@hotmail.com
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:55'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_39:
+    username: apkanani@gmail.com
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:55'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_40:
+    username: rc@radhikachalasani.com
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:55'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_41:
+    username: chappell@webbchappell.com
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:55'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_42:
+    username: jsherman@johnshermanphotography.com
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:55'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_43:
+    username: laurencekelly@mac.com
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:55'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_44:
+    username: louie@louiepalu.com
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:55'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_45:
+    username: dufflori@hotmail.com
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:55'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_46:
+    username: walkerkim@yahoo.com
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:56'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_47:
+    username: mail@travisdove.com
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:56'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_48:
+    username: jacobsilberberg@yahoo.com
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:56'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_49:
+    username: tiachapman@post.harvard.edu
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:56'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_50:
+    username: ross_taylor@hotmail.com
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:56'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_51:
+    username: rob@robertcarlinphotography.com
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:56'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_52:
+    username: jjq1999@mac.com
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:56'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_53:
+    username: memuck@aol.com
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:56'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_54:
+    username: jasonreblando@yahoo.com
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:56'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_55:
+    username: joshi@joshiradin.com
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:56'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_56:
+    username: NO_EMAIL_56@TUFTS.EDU
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:57'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_57:
+    username: frank@franksiteman.com
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:57'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_58:
+    username: info@39pictures.com
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:57'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_59:
+    username: 'http://www.artisticexplosions.com/port/'
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:57'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_60:
+    username: petrosem@fdu.edu
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:57'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_61:
+    username: chris@arunproductions.co.uk
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:57'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_62:
+    username: gladzor@yahoo.com
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:57'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_63:
+    username: sardari@hotmail.com
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:57'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_64:
+    username: slyanofsky@gmail.com
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:57'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_65:
+    username: info@carlosjortiz.com
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:57'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_66:
+    username: NO_EMAIL_66@TUFTS.EDU
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:57'
+    is_active: '1'
+    is_super_admin: '0'
+  sfGuardUser_67:
+    username: jaredcharney@comcast.net
+    algorithm: sha1
+    salt: ''
+    password: ''
+    created_at: '2009-09-30 12:59:57'
+    is_active: '1'
+    is_super_admin: '0'
+UserType:
+  UserType_1:
+    type: admin
+    permissions: '1111'
+  UserType_2:
+    type: client
+    permissions: '101'
+  UserType_3:
+    type: photographer
+    permissions: '0'
+  UserType_4:
+    type: user
+    permissions: '1'
+sfGuardUserProfile:
+  sfGuardUserProfile_1:
+    user_id: sfGuardUser_1
+  sfGuardUserProfile_2:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_2
+    email: melody.ko@tufts.edu
+    first_name: Melody
+    last_name: Ko
+  sfGuardUserProfile_3:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_3
+    email: beaulieu.photos@gmail.com
+    first_name: Angie
+    last_name: Beaulieu
+  sfGuardUserProfile_4:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_4
+    email: beatrice.degea@latimes.com
+    first_name: Beatrice
+    last_name: deGea
+  sfGuardUserProfile_5:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_5
+    email: loebbrian@gmail.com
+    first_name: Brian
+    last_name: Loeb
+  sfGuardUserProfile_6:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_6
+    email: joanie.tobin@tufts.edu
+    first_name: Joanie
+    last_name: Tobin
+  sfGuardUserProfile_7:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_7
+    email: nichole.sobecki@tufts.edu
+    first_name: Nicki
+    last_name: Sobecki
+  sfGuardUserProfile_8:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_8
+    email: photo@slpj.net
+    first_name: Spencer
+    last_name: Leonard
+  sfGuardUserProfile_9:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_9
+    email: winmartin@rcn.com
+    first_name: Winslow
+    last_name: Martin
+  sfGuardUserProfile_10:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_10
+    email: zarafoto@gmail.com
+    first_name: Zara
+    last_name: Tzanev
+  sfGuardUserProfile_11:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_11
+    email: kristenelaineolson@gmail.com
+    first_name: Kristen
+    last_name: Olson
+  sfGuardUserProfile_12:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_12
+    email: aaron.schutzengel@gmail.com
+    first_name: Aaron
+    last_name: Schutzengel
+  sfGuardUserProfile_13:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_13
+    email: don@charlesrivermedia.com
+    first_name: Don
+    last_name: Schechter
+  sfGuardUserProfile_14:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_14
+    email: jodihilton@gmail.com
+    first_name: Jodi
+    last_name: Hilton
+  sfGuardUserProfile_15:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_15
+    email: mx2f8@aol.com
+    first_name: Mark
+    last_name: Morelli
+  sfGuardUserProfile_16:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_16
+    email: sally@sally-ryan.com
+    first_name: Sally
+    last_name: Ryan
+  sfGuardUserProfile_17:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_17
+    email: veronikalukasova@yahoo.com
+    first_name: Veronika
+    last_name: Lukasova
+  sfGuardUserProfile_18:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_18
+    email: saraharkin@gmail.com
+    first_name: Sarah
+    last_name: Arkin
+  sfGuardUserProfile_19:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_19
+    email: autumnlind@gmail.com
+    first_name: Autumn
+    last_name: Pinette
+  sfGuardUserProfile_20:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_20
+    email: photo@tufts.edu
+    first_name: 'Other,'
+    last_name: Multiple
+  sfGuardUserProfile_21:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_21
+    email: kim@exposuregallery.org
+    first_name: Kim
+    last_name: Komenich
+  sfGuardUserProfile_22:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_22
+    email: bjversoy@earthlink.net
+    first_name: Bethany
+    last_name: Versoy
+  sfGuardUserProfile_23:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_23
+    email: robert@robertcaplin.com
+    first_name: Robert
+    last_name: Caplin
+  sfGuardUserProfile_24:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_24
+    email: Grileyphoto@aol.com
+    first_name: George
+    last_name: Riley
+  sfGuardUserProfile_25:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_25
+    email: anjali.nirmalan@tufts.edu
+    first_name: Anjali
+    last_name: Nirmalan
+  sfGuardUserProfile_26:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_26
+    email: alonso.nichols@tufts.edu
+    first_name: Alonso
+    last_name: Nichols
+  sfGuardUserProfile_27:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_27
+    email: jdsloanphotographs@yahoo.com
+    first_name: JD
+    last_name: Sloan
+  sfGuardUserProfile_28:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_28
+    email: 'tiffany@gallerytk.com '
+    first_name: Tiffany
+    last_name: Knight
+  sfGuardUserProfile_29:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_29
+    email: andrew.cunningham@tufts.edu
+    first_name: Andy
+    last_name: Cunningham
+  sfGuardUserProfile_30:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_30
+    email: Jesse.Kohn@tufts.edu
+    first_name: Jesse
+    last_name: Kohn
+  sfGuardUserProfile_31:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_31
+    email: jeff.beers@gmail.com
+    first_name: Jeff
+    last_name: Beers
+  sfGuardUserProfile_32:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_32
+    email: trevor.snapp@gmail.com
+    first_name: Trevor
+    last_name: Snapp
+  sfGuardUserProfile_33:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_33
+    email: NO_EMAIL_33@TUFTS.EDU
+    first_name: 'Other,'
+    last_name: Multiple
+  sfGuardUserProfile_34:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_34
+    email: kpicache@gmail.com
+    first_name: Karina
+    last_name: Picache
+  sfGuardUserProfile_35:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_35
+    email: deborah.silver@scripps.com
+    first_name: Deborah
+    last_name: Silver
+  sfGuardUserProfile_36:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_36
+    email: scottcookphotography@gmail.com
+    first_name: Scott
+    last_name: Cook
+  sfGuardUserProfile_37:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_37
+    email: juliefurbush@gmail.com
+    first_name: Julie
+    last_name: Furbush
+  sfGuardUserProfile_38:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_38
+    email: ajboerner@hotmail.com
+    first_name: Alex
+    last_name: Boerner
+  sfGuardUserProfile_39:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_39
+    email: apkanani@gmail.com
+    first_name: Aalok
+    last_name: Kanani
+  sfGuardUserProfile_40:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_40
+    email: rc@radhikachalasani.com
+    first_name: Radhika
+    last_name: Chalasani
+  sfGuardUserProfile_41:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_41
+    email: chappell@webbchappell.com
+    first_name: Webb
+    last_name: Chappell
+  sfGuardUserProfile_42:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_42
+    email: jsherman@johnshermanphotography.com
+    first_name: John
+    last_name: Sherman
+  sfGuardUserProfile_43:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_43
+    email: laurencekelly@mac.com
+    first_name: Laurence
+    last_name: Kelly
+  sfGuardUserProfile_44:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_44
+    email: louie@louiepalu.com
+    first_name: Louie
+    last_name: Palu
+  sfGuardUserProfile_45:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_45
+    email: dufflori@hotmail.com
+    first_name: Lori
+    last_name: Duff
+  sfGuardUserProfile_46:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_46
+    email: walkerkim@yahoo.com
+    first_name: Kim
+    last_name: Walker
+  sfGuardUserProfile_47:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_47
+    email: mail@travisdove.com
+    first_name: Travis
+    last_name: Dove
+  sfGuardUserProfile_48:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_48
+    email: jacobsilberberg@yahoo.com
+    first_name: Jacob
+    last_name: Silberberg
+  sfGuardUserProfile_49:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_49
+    email: tiachapman@post.harvard.edu
+    first_name: Tia
+    last_name: Chapman
+  sfGuardUserProfile_50:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_50
+    email: ross_taylor@hotmail.com
+    first_name: Ross
+    last_name: Taylor
+  sfGuardUserProfile_51:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_51
+    email: rob@robertcarlinphotography.com
+    first_name: Robert
+    last_name: Carlin
+  sfGuardUserProfile_52:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_52
+    email: jjq1999@mac.com
+    first_name: Jonathan
+    last_name: Quilter
+  sfGuardUserProfile_53:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_53
+    email: memuck@aol.com
+    first_name: Mary
+    last_name: Muckenhoupt
+  sfGuardUserProfile_54:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_54
+    email: jasonreblando@yahoo.com
+    first_name: Jason
+    last_name: Reblando
+  sfGuardUserProfile_55:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_55
+    email: joshi@joshiradin.com
+    first_name: Joshi
+    last_name: Radin
+  sfGuardUserProfile_56:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_56
+    email: NO_EMAIL_56@TUFTS.EDU
+    first_name: John
+    last_name: Soares
+  sfGuardUserProfile_57:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_57
+    email: frank@franksiteman.com
+    first_name: Frank
+    last_name: Siteman
+  sfGuardUserProfile_58:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_58
+    email: info@39pictures.com
+    first_name: Matthew
+    last_name: Margolin
+  sfGuardUserProfile_59:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_59
+    email: 'http://www.artisticexplosions.com/port/'
+    first_name: Donald
+    last_name: Rockhead
+  sfGuardUserProfile_60:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_60
+    email: petrosem@fdu.edu
+    first_name: Art
+    last_name: Petrosemolo
+  sfGuardUserProfile_61:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_61
+    email: chris@arunproductions.co.uk
+    first_name: Chris
+    last_name: Lucas
+  sfGuardUserProfile_62:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_62
+    email: gladzor@yahoo.com
+    first_name: George
+    last_name: Imirzian
+  sfGuardUserProfile_63:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_63
+    email: sardari@hotmail.com
+    first_name: Kaveh
+    last_name: Sardari
+  sfGuardUserProfile_64:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_64
+    email: slyanofsky@gmail.com
+    first_name: Samantha
+    last_name: Yanofsky
+  sfGuardUserProfile_65:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_65
+    email: info@carlosjortiz.com
+    first_name: Carlos
+    last_name: Javier
+  sfGuardUserProfile_66:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_66
+    email: NO_EMAIL_66@TUFTS.EDU
+    first_name: Patrick
+    last_name: 'O''Connor'
+  sfGuardUserProfile_67:
+    user_type_id: UserType_3
+    user_id: sfGuardUser_67
+    email: jaredcharney@comcast.net
+    first_name: Jared
+    last_name: Charney
+Status:
+  Status_1:
+    state: Pending
+  Status_2:
+    state: Accepted
+  Status_3:
+    state: Completed
+  Status_4:
+    state: Delivered
+  Status_5:
+    state: Invoiced
+  Status_6:
+    state: Paid
+  Status_7:
+    state: Archived
+Project:
+  Project_1:
+    name: 'Commencement 2008'
+    status_id: Status_7
+    slug: commencement_2008
+  Project_2:
+    name: 'Alma Matters Summer 2007'
+    status_id: Status_7
+    slug: alma_matters_summer_2007
+  Project_3:
+    name: 'Financial Aid Brochure 2006-2007'
+    status_id: Status_7
+    slug: financial_aid_brochure_2006_2007
+  Project_4:
+    name: 'Tufts Vet Magazine Fall 2007'
+    status_id: Status_7
+    slug: tufts_vet_magazine_fall_2007
+  Project_5:
+    name: 'Graduate School of Public Health Viewbook 200'
+    status_id: Status_7
+    slug: graduate_school_of_public_health_viewbook_2006
+  Project_6:
+    name: 'Beyond Boundaries Website Profiles'
+    status_id: Status_7
+    slug: beyond_boundaries_website_profiles
+  Project_7:
+    name: 'Sophia Gordon Music Center Opening 2007'
+    status_id: Status_7
+    slug: sophia_gordon_music_center_opening_2007
+  Project_8:
+    name: 'Parents Weekend 2006'
+    status_id: Status_7
+    slug: parents_weekend_2006
+  Project_9:
+    name: 'Commencement 2007'
+    status_id: Status_7
+    slug: commencement_2007
+  Project_10:
+    name: 'Tufts Vet Magazine Winter 2007'
+    status_id: Status_7
+    slug: tufts_vet_magazine_winter_2007
+  Project_11:
+    name: 'Dental School Vertical Expansion'
+    status_id: Status_2
+    slug: dental_school_vertical_expansion
+  Project_12:
+    name: 'Alma Matters'
+    status_id: Status_7
+    slug: alma_matters
+  Project_13:
+    name: 'Computer Science Department Headshots 2007'
+    status_id: Status_7
+    slug: computer_science_department_headshots_2007
+  Project_14:
+    name: 'Medical School Dinner 2007'
+    status_id: Status_7
+    slug: medical_school_dinner_2007
+  Project_15:
+    name: 'President''s Marathon Challenge 2007'
+    status_id: Status_7
+    slug: president_s_marathon_challenge_2007
+  Project_16:
+    name: 'Financial Aid Profiles for Advancement'
+    status_id: Status_7
+    slug: financial_aid_profiles_for_advancement
+  Project_17:
+    name: 'Vet Magazine Summer 2007'
+    status_id: Status_7
+    slug: vet_magazine_summer_2007
+  Project_18:
+    name: 'Matriculation 2007'
+    status_id: Status_7
+    slug: matriculation_2007
+  Project_19:
+    name: 'Nutrition Viewbook 2007'
+    status_id: Status_7
+    slug: nutrition_viewbook_2007
+  Project_20:
+    name: 'November 2007 Isner Lecture'
+    status_id: Status_7
+    slug: november_2007_isner_lecture
+  Project_21:
+    name: 'Tufts Magazine Advancement section Sept. 07 j'
+    status_id: Status_7
+    slug: tufts_magazine_advancement_section_sept_07_jobs
+  Project_22:
+    name: 'GSAS Homepage Profiles Fall 2007'
+    status_id: Status_7
+    slug: gsas_homepage_profiles_fall_2007
+  Project_23:
+    name: 'Tufts Nutrition Magazine Fall 2007'
+    status_id: Status_7
+    slug: tufts_nutrition_magazine_fall_2007
+  Project_24:
+    name: 'Alma Matters Fall 2007'
+    status_id: Status_7
+    slug: alma_matters_fall_2007
+  Project_25:
+    name: 'Parents Weekend 2007'
+    status_id: Status_7
+    slug: parents_weekend_2007
+  Project_26:
+    name: 'Climate Change homepage feature Oct. 2007'
+    status_id: Status_7
+    slug: climate_change_homepage_feature_oct_2007
+  Project_27:
+    name: 'Tufts Alma Matters Spring 2008'
+    status_id: Status_7
+    slug: tufts_alma_matters_spring_2008
+  Project_28:
+    name: 'Tufts Veterinary Medicine Spring 2008'
+    status_id: Status_7
+    slug: tufts_veterinary_medicine_spring_2008
+  Project_29:
+    name: 'Tufts Medicine Spring 2008'
+    status_id: Status_7
+    slug: tufts_medicine_spring_2008
+  Project_30:
+    name: 'Tufts Magazine Spring 2008'
+    status_id: Status_7
+    slug: tufts_magazine_spring_2008
+  Project_31:
+    name: 'Tufts Nutrition Magazine Spring 2008'
+    status_id: Status_7
+    slug: tufts_nutrition_magazine_spring_2008
+  Project_32:
+    name: 'Class of 2010 Homepage Profiles (ongoing)'
+    status_id: Status_7
+    slug: class_of_2010_homepage_profiles_ongoing
+  Project_33:
+    name: 'Arts & Sciences stock Spring 2008'
+    status_id: Status_7
+    slug: arts_sciences_stock_spring_2008
+  Project_34:
+    name: 'Medford Campus Stock Spring 2008'
+    status_id: Status_7
+    slug: medford_campus_stock_spring_2008
+  Project_35:
+    name: 'San Francisco, CA, shoots for Tufts Medicine,'
+    status_id: Status_7
+    slug: san_francisco_ca_shoots_for_tufts_medicine_april_2008
+  Project_36:
+    name: 'Faces of Tufts: Advancement content bank'
+    status_id: Status_7
+    slug: faces_of_tufts_advancement_content_bank
+  Project_37:
+    name: 'Dental Skybreaking, May 2008'
+    status_id: Status_7
+    slug: dental_skybreaking_may_2008
+  Project_38:
+    name: 'Tufts Dental Medicine Summer 2008'
+    status_id: Status_7
+    slug: tufts_dental_medicine_summer_2008
+  Project_39:
+    name: 'Tufts Veterinary Medicine Summer 2008'
+    status_id: Status_7
+    slug: tufts_veterinary_medicine_summer_2008
+  Project_40:
+    name: 'Tufts Alma Matters Fall 2008'
+    status_id: Status_7
+    slug: tufts_alma_matters_fall_2008
+  Project_41:
+    name: 'Tufts Medicine Summer 2008'
+    status_id: Status_7
+    slug: tufts_medicine_summer_2008
+  Project_42:
+    name: 'Matriculation 2008'
+    status_id: Status_7
+    slug: matriculation_2008
+  Project_43:
+    name: 'Summer Session Website (summer 2008)'
+    status_id: Status_7
+    slug: summer_session_website_summer_2008
+  Project_44:
+    name: 'Tufts Medical Student Latrice Goosby''s work a'
+    status_id: Status_7
+    slug: tufts_medical_student_latrice_goosby_s_work_and_family_from_boston_to_washington_dc_to_jackson_ms
+  Project_45:
+    name: 'Beyond Boundaries Fall 2008 Newsletter'
+    status_id: Status_7
+    slug: beyond_boundaries_fall_2008_newsletter
+  Project_46:
+    name: 'Parents Weekend 2008'
+    status_id: Status_7
+    slug: parents_weekend_2008
+  Project_47:
+    name: 'Tufts 360'
+    status_id: Status_7
+    slug: tufts_360
+  Project_48:
+    name: 'Tufts Medicine Winter 2009'
+    status_id: Status_7
+    slug: tufts_medicine_winter_2009
+  Project_49:
+    name: '2009 Fares Lecture'
+    status_id: Status_7
+    slug: 2009_fares_lecture
+  Project_50:
+    name: 'Tufts Dental Medicine Winter 2009'
+    status_id: Status_7
+    slug: tufts_dental_medicine_winter_2009
+  Project_51:
+    name: 'Arts, Sciences & Engineering Classroom Stock '
+    status_id: Status_2
+    slug: arts_sciences_engineering_classroom_stock_spring_2009
+  Project_52:
+    name: 'Commencement 2009'
+    status_id: Status_2
+    slug: commencement_2009
+  Project_53:
+    name: 'Blueprint campaign newsletter Spring 2009'
+    status_id: Status_2
+    slug: blueprint_campaign_newsletter_spring_2009
+  Project_54:
+    name: 'Tufts Veterinary Medicine Spring 2009'
+    status_id: Status_2
+    slug: tufts_veterinary_medicine_spring_2009
+  Project_55:
+    name: 'President''s Marathon Challenge: Boston Marath'
+    status_id: Status_2
+    slug: president_s_marathon_challenge_boston_marathon_2009
+  Project_56:
+    name: 'Alma Matters Spring 2009'
+    status_id: Status_2
+    slug: alma_matters_spring_2009
+  Project_57:
+    name: 'You Make It Happen Spring 2009'
+    status_id: Status_2
+    slug: you_make_it_happen_spring_2009
+Publication:
+  Publication_1:
+    name: 'Tufts Journal'
+  Publication_2:
+    name: 'Tufts Magazine'
+  Publication_3:
+    name: 'Tufts Dental Magazine'
+  Publication_4:
+    name: 'Tufts Veterinary Medicine'
+  Publication_5:
+    name: 'Tufts Medicine'
+  Publication_6:
+    name: 'Tufts Nutrition'
+    contact_name: ''
+  Publication_7:
+    name: www.tufts.edu
+  Publication_8:
+    name: 'Alma Matters'
+  Publication_9:
+    name: Blueprint
+Photographer:
+  Photographer_1:
+    user_id: sfGuardUserProfile_2
+    name: 'Melody Ko'
+    phone: '(617) 627-4763'
+    email: melody.ko@tufts.edu
+    affiliation: 'Tufts Photo'
+    slug: melody_ko_tufts_edu
+  Photographer_2:
+    user_id: sfGuardUserProfile_3
+    name: 'Angie Beaulieu'
+    phone: '508 662 0166'
+    email: beaulieu.photos@gmail.com
+    affiliation: Freelance
+    slug: beaulieu_photos_gmail_com
+  Photographer_3:
+    user_id: sfGuardUserProfile_4
+    name: 'Beatrice deGea '
+    phone: ''
+    email: beatrice.degea@latimes.com
+    affiliation: Freelance
+    slug: beatrice_degea_latimes_com
+  Photographer_4:
+    user_id: sfGuardUserProfile_5
+    name: 'Brian Loeb'
+    phone: '617 459 9814'
+    email: loebbrian@gmail.com
+    affiliation: 'Tufts Photo'
+    slug: loebbrian_gmail_com
+  Photographer_5:
+    user_id: sfGuardUserProfile_6
+    name: 'Joanie Tobin '
+    phone: '617 905 4628'
+    email: joanie.tobin@tufts.edu
+    affiliation: 'Tufts Photo'
+    slug: joanie_tobin_tufts_edu
+  Photographer_6:
+    user_id: sfGuardUserProfile_7
+    name: 'Nicki Sobecki'
+    phone: '914 469 9725'
+    email: nichole.sobecki@tufts.edu
+    affiliation: 'Tufts Photo'
+    slug: nichole_sobecki_tufts_edu
+  Photographer_7:
+    user_id: sfGuardUserProfile_8
+    name: 'Spencer Leonard'
+    phone: '617 359 7802'
+    email: photo@slpj.net
+    affiliation: Freelance
+    slug: photo_slpj_net
+  Photographer_8:
+    user_id: sfGuardUserProfile_9
+    name: 'Winslow Martin'
+    phone: '781 646 5231'
+    email: winmartin@rcn.com
+    affiliation: Freelance
+    slug: winmartin_rcn_com
+  Photographer_9:
+    user_id: sfGuardUserProfile_10
+    name: 'Zara Tzanev'
+    phone: '617 319 2891'
+    email: zarafoto@gmail.com
+    affiliation: Freelance
+    slug: zarafoto_gmail_com
+  Photographer_10:
+    user_id: sfGuardUserProfile_11
+    name: 'Kristen Olson'
+    phone: '508 360 1608'
+    email: kristenelaineolson@gmail.com
+    affiliation: Freelance
+    slug: kristenelaineolson_gmail_com
+  Photographer_11:
+    user_id: sfGuardUserProfile_12
+    name: 'Aaron Schutzengel'
+    phone: '617 519 0739'
+    email: aaron.schutzengel@gmail.com
+    affiliation: 'Tufts Photo'
+    slug: aaron_schutzengel_gmail_com
+  Photographer_12:
+    user_id: sfGuardUserProfile_13
+    name: 'Don Schechter (Video)'
+    phone: '617 596 7893'
+    email: don@charlesrivermedia.com
+    affiliation: Freelance
+    slug: don_charlesrivermedia_com
+  Photographer_13:
+    user_id: sfGuardUserProfile_14
+    name: 'Jodi Hilton'
+    phone: '857 205 5541'
+    email: jodihilton@gmail.com
+    affiliation: Freelance
+    slug: jodihilton_gmail_com
+  Photographer_14:
+    user_id: sfGuardUserProfile_15
+    name: 'Mark Morelli'
+    phone: '617 884 5734'
+    email: mx2f8@aol.com
+    affiliation: Freelance
+    slug: mx2f8_aol_com
+  Photographer_15:
+    user_id: sfGuardUserProfile_16
+    name: 'Sally Ryan '
+    phone: ''
+    email: sally@sally-ryan.com
+    affiliation: Freelance
+    slug: sally_sally_ryan_com
+  Photographer_16:
+    user_id: sfGuardUserProfile_17
+    name: 'Veronika Lukasova '
+    phone: '301 675 6568'
+    email: veronikalukasova@yahoo.com
+    affiliation: Freelance
+    slug: veronikalukasova_yahoo_com
+  Photographer_17:
+    user_id: sfGuardUserProfile_18
+    name: 'Sarah Arkin'
+    phone: '773 818 9205'
+    email: saraharkin@gmail.com
+    affiliation: 'Tufts Photo'
+    slug: saraharkin_gmail_com
+  Photographer_18:
+    user_id: sfGuardUserProfile_19
+    name: 'Autumn Pinette'
+    phone: '860 307 1849'
+    email: autumnlind@gmail.com
+    affiliation: Freelance
+    slug: autumnlind_gmail_com
+  Photographer_19:
+    user_id: sfGuardUserProfile_20
+    name: 'Other, Multiple'
+    phone: 617.627.4763
+    email: photo@tufts.edu
+    affiliation: Freelance
+    slug: photo_tufts_edu
+  Photographer_20:
+    user_id: sfGuardUserProfile_21
+    name: 'Kim Komenich'
+    phone: '415 309 4951 , 415 531 8065'
+    email: kim@exposuregallery.org
+    affiliation: Freelance
+    slug: kim_exposuregallery_org
+  Photographer_21:
+    user_id: sfGuardUserProfile_22
+    name: 'Bethany Versoy'
+    phone: 'h: 617 497 8675, c: 617 943 6724'
+    email: bjversoy@earthlink.net
+    affiliation: Freelance
+    slug: bjversoy_earthlink_net
+  Photographer_22:
+    user_id: sfGuardUserProfile_23
+    name: 'Robert Caplin '
+    phone: 740.591.6557
+    email: robert@robertcaplin.com
+    affiliation: Freelance
+    slug: robert_robertcaplin_com
+  Photographer_23:
+    user_id: sfGuardUserProfile_24
+    name: 'George Riley'
+    phone: '617 387 2049'
+    email: Grileyphoto@aol.com
+    affiliation: Freelance
+    slug: grileyphoto_aol_com
+  Photographer_24:
+    user_id: sfGuardUserProfile_25
+    name: 'Anjali Nirmalan'
+    phone: '518 275 1154'
+    email: anjali.nirmalan@tufts.edu
+    affiliation: 'Tufts Photo'
+    slug: anjali_nirmalan_tufts_edu
+  Photographer_25:
+    user_id: sfGuardUserProfile_26
+    name: 'Alonso Nichols'
+    phone: 508-692-7830
+    email: alonso.nichols@tufts.edu
+    affiliation: 'Tufts Photo'
+    slug: alonso_nichols_tufts_edu
+  Photographer_26:
+    user_id: sfGuardUserProfile_27
+    name: 'JD Sloan'
+    phone: 617.696.6533
+    email: jdsloanphotographs@yahoo.com
+    affiliation: Freelance
+    slug: jdsloanphotographs_yahoo_com
+  Photographer_27:
+    user_id: sfGuardUserProfile_28
+    name: 'Tiffany Knight'
+    phone: 617-686-2580
+    email: 'tiffany@gallerytk.com '
+    affiliation: Freelance
+    slug: tiffany_gallerytk_com
+  Photographer_28:
+    user_id: sfGuardUserProfile_29
+    name: 'Andy Cunningham'
+    phone: ''
+    email: andrew.cunningham@tufts.edu
+    affiliation: 'Tufts Photo'
+    slug: andrew_cunningham_tufts_edu
+  Photographer_29:
+    user_id: sfGuardUserProfile_30
+    name: 'Jesse Kohn'
+    phone: 505-570-0641
+    email: Jesse.Kohn@tufts.edu
+    affiliation: 'Tufts Photo'
+    slug: jesse_kohn_tufts_edu
+  Photographer_30:
+    user_id: sfGuardUserProfile_31
+    name: 'Jeff Beers'
+    phone: '215-470-5143 '
+    email: jeff.beers@gmail.com
+    affiliation: 'Tufts Photo'
+    slug: jeff_beers_gmail_com
+  Photographer_31:
+    user_id: sfGuardUserProfile_32
+    name: 'Trevor Snapp'
+    phone: ''
+    email: trevor.snapp@gmail.com
+    affiliation: Freelance
+    slug: trevor_snapp_gmail_com
+  Photographer_32:
+    user_id: sfGuardUserProfile_33
+    name: 'Other, Multiple'
+    phone: ''
+    email: NO_EMAIL_33@TUFTS.EDU
+    affiliation: 'Tufts Photo'
+    slug: no_email_33_tufts_edu
+  Photographer_33:
+    user_id: sfGuardUserProfile_34
+    name: 'Karina Picache'
+    phone: 203-570-8812
+    email: kpicache@gmail.com
+    affiliation: 'Tufts Photo'
+    slug: kpicache_gmail_com
+  Photographer_34:
+    user_id: sfGuardUserProfile_35
+    name: 'Deborah Silver '
+    phone: ''
+    email: deborah.silver@scripps.com
+    affiliation: Freelance
+    slug: deborah_silver_scripps_com
+  Photographer_35:
+    user_id: sfGuardUserProfile_36
+    name: 'Scott Cook'
+    phone: 561-252-3423
+    email: scottcookphotography@gmail.com
+    affiliation: Freelance
+    slug: scottcookphotography_gmail_com
+  Photographer_36:
+    user_id: sfGuardUserProfile_37
+    name: 'Julie Furbush'
+    phone: '914 420 9752'
+    email: juliefurbush@gmail.com
+    affiliation: 'Tufts Photo'
+    slug: juliefurbush_gmail_com
+  Photographer_37:
+    user_id: sfGuardUserProfile_38
+    name: 'Alex Boerner'
+    phone: '952 210 7380'
+    email: ajboerner@hotmail.com
+    affiliation: Freelance
+    slug: ajboerner_hotmail_com
+  Photographer_38:
+    user_id: sfGuardUserProfile_39
+    name: 'Aalok Kanani'
+    phone: ''
+    email: apkanani@gmail.com
+    affiliation: 'Tufts Photo'
+    slug: apkanani_gmail_com
+  Photographer_39:
+    user_id: sfGuardUserProfile_40
+    name: 'Radhika Chalasani'
+    phone: 646.519.4493
+    email: rc@radhikachalasani.com
+    affiliation: Freelance
+    slug: rc_radhikachalasani_com
+  Photographer_40:
+    user_id: sfGuardUserProfile_41
+    name: 'Webb Chappell'
+    phone: 617.782.1448
+    email: chappell@webbchappell.com
+    affiliation: Freelance
+    slug: chappell_webbchappell_com
+  Photographer_41:
+    user_id: sfGuardUserProfile_42
+    name: 'John Sherman'
+    phone: 802-295-6321
+    email: jsherman@johnshermanphotography.com
+    affiliation: Freelance
+    slug: jsherman_johnshermanphotography_com
+  Photographer_42:
+    user_id: sfGuardUserProfile_43
+    name: 'Laurence Kelly'
+    phone: 617-852-5233
+    email: laurencekelly@mac.com
+    affiliation: Freelance
+    slug: laurencekelly_mac_com
+  Photographer_43:
+    user_id: sfGuardUserProfile_44
+    name: 'Louie Palu'
+    phone: 202-468-6908
+    email: louie@louiepalu.com
+    affiliation: Freelance
+    slug: louie_louiepalu_com
+  Photographer_44:
+    user_id: sfGuardUserProfile_45
+    name: 'Lori Duff'
+    phone: ''
+    email: dufflori@hotmail.com
+    affiliation: Freelance
+    slug: dufflori_hotmail_com
+  Photographer_45:
+    user_id: sfGuardUserProfile_46
+    name: 'Kim Walker'
+    phone: 740-818-6089
+    email: walkerkim@yahoo.com
+    affiliation: Freelance
+    slug: walkerkim_yahoo_com
+  Photographer_46:
+    user_id: sfGuardUserProfile_47
+    name: 'Travis Dove'
+    phone: ''
+    email: mail@travisdove.com
+    affiliation: Freelance
+    slug: mail_travisdove_com
+  Photographer_47:
+    user_id: sfGuardUserProfile_48
+    name: 'Jacob Silberberg'
+    phone: 603.668.6400
+    email: jacobsilberberg@yahoo.com
+    affiliation: Freelance
+    slug: jacobsilberberg_yahoo_com
+  Photographer_48:
+    user_id: sfGuardUserProfile_49
+    name: 'Tia Chapman'
+    phone: '617 653 5800'
+    email: tiachapman@post.harvard.edu
+    affiliation: Freelance
+    slug: tiachapman_post_harvard_edu
+  Photographer_49:
+    user_id: sfGuardUserProfile_50
+    name: 'Ross Taylor'
+    phone: 919-451-8280
+    email: ross_taylor@hotmail.com
+    affiliation: Freelance
+    slug: ross_taylor_hotmail_com
+  Photographer_50:
+    user_id: sfGuardUserProfile_51
+    name: 'Robert Carlin'
+    phone: 917.757.5953
+    email: rob@robertcarlinphotography.com
+    affiliation: Freelance
+    slug: rob_robertcarlinphotography_com
+  Photographer_51:
+    user_id: sfGuardUserProfile_52
+    name: 'Jonathan Quilter'
+    phone: ''
+    email: jjq1999@mac.com
+    affiliation: Freelance
+    slug: jjq1999_mac_com
+  Photographer_52:
+    user_id: sfGuardUserProfile_53
+    name: 'Mary Muckenhoupt'
+    phone: '978 815 7872'
+    email: memuck@aol.com
+    affiliation: Freelance
+    slug: memuck_aol_com
+  Photographer_53:
+    user_id: sfGuardUserProfile_54
+    name: 'Jason Reblando'
+    phone: 312-203-8994
+    email: jasonreblando@yahoo.com
+    affiliation: Freelance
+    slug: jasonreblando_yahoo_com
+  Photographer_54:
+    user_id: sfGuardUserProfile_55
+    name: 'Joshi Radin'
+    phone: '617 821-3224'
+    email: joshi@joshiradin.com
+    affiliation: Freelance
+    slug: joshi_joshiradin_com
+  Photographer_55:
+    user_id: sfGuardUserProfile_56
+    name: 'John Soares'
+    phone: 781.641.3378
+    email: NO_EMAIL_56@TUFTS.EDU
+    affiliation: Freelance
+    slug: no_email_56_tufts_edu
+  Photographer_56:
+    user_id: sfGuardUserProfile_57
+    name: 'Frank Siteman'
+    phone: 781-729-3747
+    email: frank@franksiteman.com
+    affiliation: Freelance
+    slug: frank_franksiteman_com
+  Photographer_57:
+    user_id: sfGuardUserProfile_58
+    name: 'Matthew Margolin'
+    phone: ''
+    email: info@39pictures.com
+    affiliation: Freelance
+    slug: info_39pictures_com
+  Photographer_58:
+    user_id: sfGuardUserProfile_59
+    name: 'Donald Rockhead'
+    phone: '617 461-5868 '
+    email: 'http://www.artisticexplosions.com/port/'
+    affiliation: Freelance
+    slug: http_www_artisticexplosions_com_port
+  Photographer_59:
+    user_id: sfGuardUserProfile_60
+    name: 'Art Petrosemolo'
+    phone: ''
+    email: petrosem@fdu.edu
+    affiliation: Freelance
+    slug: petrosem_fdu_edu
+  Photographer_60:
+    user_id: sfGuardUserProfile_61
+    name: 'Chris Lucas'
+    phone: ''
+    email: chris@arunproductions.co.uk
+    affiliation: Freelance
+    slug: chris_arunproductions_co_uk
+  Photographer_61:
+    user_id: sfGuardUserProfile_62
+    name: 'George Imirzian'
+    phone: 857.205.1181
+    email: gladzor@yahoo.com
+    affiliation: Freelance
+    slug: gladzor_yahoo_com
+  Photographer_62:
+    user_id: sfGuardUserProfile_63
+    name: 'Kaveh Sardari'
+    phone: 703-599-7296
+    email: sardari@hotmail.com
+    affiliation: Freelance
+    slug: sardari_hotmail_com
+  Photographer_63:
+    user_id: sfGuardUserProfile_64
+    name: 'Samantha Yanofsky'
+    phone: 617-838-0432
+    email: slyanofsky@gmail.com
+    affiliation: Freelance
+    slug: slyanofsky_gmail_com
+  Photographer_64:
+    user_id: sfGuardUserProfile_65
+    name: 'Carlos Javier Ortiz'
+    phone: '312-350-0028 '
+    email: info@carlosjortiz.com
+    affiliation: Freelance
+    slug: info_carlosjortiz_com
+  Photographer_65:
+    user_id: sfGuardUserProfile_66
+    name: 'Patrick O''Connor'
+    phone: 508.845.8111
+    email: NO_EMAIL_66@TUFTS.EDU
+    affiliation: Freelance
+    slug: no_email_66_tufts_edu
+  Photographer_66:
+    user_id: sfGuardUserProfile_67
+    name: 'Jared Charney'
+    phone: 917-238-1523
+    email: jaredcharney@comcast.net
+    affiliation: Freelance
+    slug: jaredcharney_comcast_net
+LogMessageType:
+  LogMessageType_1:
+    type: Create
+  LogMessageType_2:
+    type: Update
+  LogMessageType_3:
+    type: Delete
+  LogMessageType_4:
+    type: 'Add Photographer'
+  LogMessageType_5:
+    type: 'Add Client'
+  LogMessageType_6:
+    type: 'Remove Client'
+  LogMessageType_7:
+    type: 'Remove Photographer'
+  LogMessageType_8:
+    type: 'Add Tag'
+  LogMessageType_9:
+    type: 'Remove Tag'
+  LogMessageType_10:
+    type: 'Move to project'
+  LogMessageType_11:
+    type: 'Change status'
+  LogMessageType_12:
+    type: 'Email Sent'
+Log:
+  Log_1:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:51'
+    propel_id: '1'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_2:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:51'
+    propel_id: '2'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_3:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:51'
+    propel_id: '3'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_4:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:51'
+    propel_id: '4'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_5:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:51'
+    propel_id: '5'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_6:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:51'
+    propel_id: '6'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_7:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:51'
+    propel_id: '7'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_8:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:51'
+    propel_id: '8'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_9:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:52'
+    propel_id: '9'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_10:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:52'
+    propel_id: '10'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_11:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:52'
+    propel_id: '11'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_12:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:52'
+    propel_id: '12'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_13:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:52'
+    propel_id: '13'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_14:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:52'
+    propel_id: '14'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_15:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:52'
+    propel_id: '15'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_16:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:52'
+    propel_id: '16'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_17:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:52'
+    propel_id: '17'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_18:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:52'
+    propel_id: '18'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_19:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:53'
+    propel_id: '19'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_20:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:53'
+    propel_id: '20'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_21:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:53'
+    propel_id: '21'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_22:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:53'
+    propel_id: '22'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_23:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:53'
+    propel_id: '23'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_24:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:53'
+    propel_id: '24'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_25:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:53'
+    propel_id: '25'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_26:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:53'
+    propel_id: '26'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_27:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:53'
+    propel_id: '27'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_28:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:53'
+    propel_id: '28'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_29:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:54'
+    propel_id: '29'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_30:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:54'
+    propel_id: '30'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_31:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:54'
+    propel_id: '31'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_32:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:54'
+    propel_id: '32'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_33:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:54'
+    propel_id: '33'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_34:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:54'
+    propel_id: '34'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_35:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:54'
+    propel_id: '35'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_36:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:55'
+    propel_id: '36'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_37:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:55'
+    propel_id: '37'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_38:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:55'
+    propel_id: '38'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_39:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:55'
+    propel_id: '39'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_40:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:55'
+    propel_id: '40'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_41:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:55'
+    propel_id: '41'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_42:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:55'
+    propel_id: '42'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_43:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:55'
+    propel_id: '43'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_44:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:56'
+    propel_id: '44'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_45:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:56'
+    propel_id: '45'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_46:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:56'
+    propel_id: '46'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_47:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:56'
+    propel_id: '47'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_48:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:56'
+    propel_id: '48'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_49:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:56'
+    propel_id: '49'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_50:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:56'
+    propel_id: '50'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_51:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:56'
+    propel_id: '51'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_52:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:56'
+    propel_id: '52'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_53:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:56'
+    propel_id: '53'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_54:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:56'
+    propel_id: '54'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_55:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:57'
+    propel_id: '55'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_56:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:57'
+    propel_id: '56'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_57:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:57'
+    propel_id: '57'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_58:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:57'
+    propel_id: '58'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_59:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:57'
+    propel_id: '59'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_60:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:57'
+    propel_id: '60'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_61:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:57'
+    propel_id: '61'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_62:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:57'
+    propel_id: '62'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_63:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:57'
+    propel_id: '63'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_64:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:57'
+    propel_id: '64'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_65:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:57'
+    propel_id: '65'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_66:
+    message: 'Photographer created.'
+    when: '2009-09-30 12:59:58'
+    propel_id: '66'
+    propel_class: Photographer
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_67:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:00'
+    propel_id: '1'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_68:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:00'
+    propel_id: '2'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_69:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:00'
+    propel_id: '3'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_70:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:00'
+    propel_id: '4'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_71:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:00'
+    propel_id: '5'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_72:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:00'
+    propel_id: '6'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_73:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:01'
+    propel_id: '7'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_74:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:01'
+    propel_id: '8'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_75:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:01'
+    propel_id: '9'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_76:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:01'
+    propel_id: '10'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_77:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:01'
+    propel_id: '11'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_78:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:01'
+    propel_id: '12'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_79:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:01'
+    propel_id: '13'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_80:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:01'
+    propel_id: '14'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_81:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:01'
+    propel_id: '15'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_82:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:01'
+    propel_id: '16'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_83:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:01'
+    propel_id: '17'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_84:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:01'
+    propel_id: '18'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_85:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:01'
+    propel_id: '19'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_86:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:01'
+    propel_id: '20'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_87:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:01'
+    propel_id: '21'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_88:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:01'
+    propel_id: '22'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_89:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:01'
+    propel_id: '23'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_90:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:01'
+    propel_id: '24'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_91:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:01'
+    propel_id: '25'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_92:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:02'
+    propel_id: '26'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_93:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:02'
+    propel_id: '27'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_94:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:02'
+    propel_id: '28'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_95:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:02'
+    propel_id: '29'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_96:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:02'
+    propel_id: '30'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_97:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:02'
+    propel_id: '31'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_98:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:02'
+    propel_id: '32'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_99:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:02'
+    propel_id: '33'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_100:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:02'
+    propel_id: '34'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_101:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:02'
+    propel_id: '35'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_102:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:02'
+    propel_id: '36'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_103:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:02'
+    propel_id: '37'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_104:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:02'
+    propel_id: '38'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_105:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:02'
+    propel_id: '39'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_106:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:02'
+    propel_id: '40'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_107:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:02'
+    propel_id: '41'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_108:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:02'
+    propel_id: '42'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_109:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:02'
+    propel_id: '43'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_110:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:03'
+    propel_id: '44'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_111:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:03'
+    propel_id: '45'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_112:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:03'
+    propel_id: '46'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_113:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:03'
+    propel_id: '47'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_114:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:03'
+    propel_id: '48'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_115:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:03'
+    propel_id: '49'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_116:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:03'
+    propel_id: '50'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_117:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:03'
+    propel_id: '51'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_118:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:03'
+    propel_id: '52'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_119:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:03'
+    propel_id: '53'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_120:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:03'
+    propel_id: '54'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_121:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:03'
+    propel_id: '55'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_122:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:03'
+    propel_id: '56'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+  Log_123:
+    message: 'Project created.'
+    when: '2009-09-30 13:00:03'
+    propel_id: '57'
+    propel_class: Project
+    sf_guard_user_profile_id: sfGuardUserProfile_1
+    log_message_type_id: LogMessageType_1
+PhotoType:
+  PhotoType_1:
+    name: Headshot
+  PhotoType_2:
+    name: Portrait
+  PhotoType_3:
+    name: Candids
+  PhotoType_4:
+    name: 'Group Photos'

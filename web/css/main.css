@@ -58,10 +58,6 @@ a:link {
   color: #D95A11;	
 }
 
-.shortcuts a:visited {
-  color: #D95A11;	
-}
-
 a:visited {
 	color: #2A2D40;
 }
@@ -183,7 +179,7 @@ a:visited {
 }
 
 .job-container {
-  padding-left: 20px;	
+  padding-left: 30px;	
 }
 
 #list-container td {
@@ -195,3 +191,49 @@ a:visited {
   padding-bottom: 10px;
   margin-bottom: 20px;
 }
+
+.active_link a {
+	color: #D95A11;
+}
+
+.pending_bordered {
+  border-right: 1px solid red; 
+  border-left: 1px solid red;
+}
+.pending_link a { color: red;	 }
+
+.accepted_bordered {
+  border-right: 1px solid green; 
+  border-left: 1px solid green;
+}
+.accepted_link a { color: green; }
+
+.completed_bordered {
+  border-right: 1px solid blue; 
+  border-left: 1px solid blue;
+}
+.completed_link a { color: blue; }
+
+.delivered_bordered {
+  border-right: 1px solid purple; 
+  border-left: 1px solid purple;
+}
+.delivered_link a { color: purple; }
+
+.invoiced_bordered {
+  border-right: 1px solid #F0C600; 
+  border-left: 1px solid #F0C600;
+}
+.invoiced_link a { color: #F0C600; }
+
+.paid_bordered {
+  border-right: 1px solid black; 
+  border-left: 1px solid black;
+}
+.paid_link a { color: black; }
+
+.archived_bordered {
+  border-right: 1px solid gray; 
+  border-left: 1px solid gray;
+}
+.archived_link a { color: gray; }

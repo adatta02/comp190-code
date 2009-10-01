@@ -24,14 +24,12 @@
             <tr>
               <th>Name:</th>
               <td><?php echo input_tag("pub-name"); ?></td>
-            </tr>
-            <tr>
-              <td><?php echo submit_tag("Save", array("onclick" => "savePublication()")); ?></td>
+              <td><?php echo submit_tag("Save", array("onclick" => "savePublication()")); ?>
             </tr>
           </tbody>
        </table>
     </div>
-     
+    
     <div id="edit-publication" class="padding-top" style="display: none;">
       <h3>Edit a publication</h3>
         <table>
@@ -41,9 +39,9 @@
               <td><?php echo input_tag("pub-edit-name"); ?>
                   <?php echo input_hidden_tag("pub-edit-id");?>
               </td>
-            </tr>
-            <tr>
-              <td><?php echo submit_tag("Save", array("onclick" => "saveEditPublication()")); ?></td>
+              <td>
+                <?php echo submit_tag("Save", array("onclick" => "saveEditPublication()")); ?>
+              </td>
             </tr>
           </tbody>
        </table>

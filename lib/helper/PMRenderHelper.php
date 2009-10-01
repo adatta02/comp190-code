@@ -289,9 +289,11 @@ function renderJobListViewTable($job, $classNum, $renderStatus = false){
     $showRoute = "clientview_job_show";
   }
   
+  $borderStyle = strtolower(str_replace(" ", "_", $job->getStatus ()->getState ())) . "_bordered";
+  
 ?>
     <tr>
-      <td><?php echo checkbox_tag ( 'job-' . $job->getId (), $job->getId(), 0, 
+      <td class="<?php echo $borderStyle; ?>"><?php echo checkbox_tag ( 'job-' . $job->getId (), $job->getId(), 0, 
                                     array ("class" => "job-check" ) );?></td>
       <td><?php echo link_to ( $job->getId (), $showRoute, $job ); ?></td>
       <td><?php renderTagList ( $job ); ?></td>

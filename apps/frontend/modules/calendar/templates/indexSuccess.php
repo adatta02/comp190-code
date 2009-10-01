@@ -29,15 +29,16 @@ function switchCal( showId ){
     </div>
     
     <div class="cal-container" id="global-cal-container">
-      <iframe src="http://www.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;src=contact%40setfive.com&amp;color=%232952A3&amp;ctz=America%2FNew_York" style=" border-width:0 " width="600" height="500" frameborder="0" scrolling="no"></iframe>
+      <iframe src="http://www.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;src=contact%40setfive.com&amp;color=%232952A3&amp;ctz=America%2FNew_York" 
+        style="border-width:0; width: 95%" height="500" frameborder="0" scrolling="no"></iframe>
     </div>
     
     <div class="cal-container" style="display: none" id="alonso-cal-container">
-      <iframe src="http://www.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;src=t21645rjqqbtbch34skj0kjq3g%40group.calendar.google.com&amp;color=%23AB8B00&amp;ctz=America%2FNew_York" style=" border-width:0 " width="600" height="500" frameborder="0" scrolling="no"></iframe>
+      <iframe src="http://www.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;src=<?php echo urlencode(sfConfig::get("app_alonso_calendar_id")) ?>&amp;color=%23AB8B00&amp;ctz=America%2FNew_York" style=" border-width:0; width: 95%" height="500" frameborder="0" scrolling="no"></iframe>
     </div>  
     
     <div class="cal-container" style="display: none" id="joanie-cal-container">
-      <iframe src="http://www.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;src=18gp9a10ca95a9j6kr8npq41oc%40group.calendar.google.com&amp;color=%23A32929&amp;ctz=America%2FNew_York" style=" border-width:0 " width="600" height="500" frameborder="0" scrolling="no"></iframe>
+      <iframe src="http://www.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;src=<?php echo urlencode(sfConfig::get("app_joanie_calendar_id")) ?>&amp;color=%23A32929&amp;ctz=America%2FNew_York" style=" border-width:0; width: 95%" height="500" frameborder="0" scrolling="no"></iframe>
     </div>
     
     <p>

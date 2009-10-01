@@ -84,7 +84,7 @@
    });
 </script>
 
-<div class="span-24 last box" id="top-menu-container">
+<div class="span-23 last box" id="top-menu-container">
 
   <?php $noMenu = (isset($noMenu) ? $noMenu : false); if(!$noMenu): ?>
     <div class="span-4" id="move-menu">
@@ -137,6 +137,8 @@
     <?php endif; ?>
     
 </div>
+
+<hr class="space" />
 
 <div id="add-tag-menu">
   <h3>Enter Tag</h3>

@@ -158,7 +158,9 @@ class Job extends BaseJob
     $logEntry->setPropelId ( $this->getId () );
     $logEntry->save ();
    
-    sfGCalendar::deleteEventById( $this->getGCalId() );
+    if( !is_null($this->getGCalId()) ){
+      sfGCalendar::deleteEventById( $this->getGCalId() );
+    }
     
     if( !is_null($this->getGCalIdCustom()) ){
     	sfGCalendar::deleteEventById( $this->getGCalIdCustom() );
@@ -209,94 +211,92 @@ class Job extends BaseJob
     return $arr;
   }
   
-	public function save(PropelPDO $con = null)
-  {
-  	
-	 $subject = 'Your job has been created';
-	 $message = 'Dear ' .$this->getContactName(). '
-
-		 Your job has been created as Job #'.$this->getId().'. It is currently Pending. 
-		 Thank you
-
-		  Regards,
-		   Tufts Photo Team';
-	 
-	 $isNew = $this->isNew();
-  	
-  	// see if we need to do revision control on the notes
-  	$updateNotes = in_array(JobPeer::NOTES, $this->modifiedColumns) && (strlen($this->getNotes() > 1));
-  	
-  	if(is_null($con)){
-  	 $con = Propel::getConnection(JobPeer::DATABASE_NAME, Propel::CONNECTION_WRITE);
-  	}
-  	
-  	$con->beginTransaction();
+	public function save(PropelPDO $con = null) {
+    
+    $isNew = $this->isNew ();
+    
+    // see if we need to do revision control on the notes
+    $updateNotes = in_array ( JobPeer::NOTES, $this->modifiedColumns ) 
+                      && (strlen ( $this->getNotes () > 1 ));
+    
+    if (is_null ( $con )) {
+      $con = Propel::getConnection ( JobPeer::DATABASE_NAME, Propel::CONNECTION_WRITE );
+    }
+    
+    $con->beginTransaction ();
+    
     try {
-      $ret = parent::save($con);
-      $con->commit();
-    }catch (Exception $e) {
-      $con->rollBack();
+      $ret = parent::save ( $con );
+      $con->commit ();
+    } catch ( Exception $e ) {
+      $con->rollBack ();
       throw $e;
     }
     
-    $arr = $this->createCalendarArray();
-		
-		$uid = sfContext::getInstance()->getUser()->getUserId();
-    if(is_null($uid)){ $uid = 1; }
-		
-		if ($isNew) {
-      $logEntry = new Log();
-      $logEntry->setWhen(time());
-      $logEntry->setPropelClass("Job");
-      $logEntry->setSfGuardUserProfileId($uid);
-      $logEntry->setMessage("Job created.");
-      $logEntry->setLogMessageTypeId(sfConfig::get("app_log_type_create"));
-      $logEntry->setPropelId($this->getId());
-      $logEntry->save();
-      
-      if( !is_null($this->getDate()) ){
-        $event = sfGCalendar::createJobEvent ( $arr );
-        $this->setGCalId ( $event->id );
-			  $this->save();
-      }
-      
-		} else {
-			
-			if( !is_null($this->getDate()) ){
-				if( is_null($this->getGCalId()) ){
-	        $event = sfGCalendar::createJobEvent ( $arr );
-	        $this->setGCalId ( $event->id );
-	        $this->save();
-				}else{
-					sfGCalendar::updateJobEventById ( $this->getGCalId (), $arr );
-				}
-				
-				if( !is_null($this->getGCalIdCustom()) ){
-					$arr["calUrl"] = $this->getGCalIdCustomUrl();
-				  sfGCalendar::updateJobEventById ( $this->getGCalIdCustom (), $arr );	
-				}
-				
-			}
-			
-		}
-      
-    if($updateNotes){
-    	$c = new Criteria();
-    	$c->add(JobNotesPeer::JOB_ID, $this->getId());
-    	$c->addDescendingOrderByColumn(JobNotesPeer::ID);
-    	$old = JobNotesPeer::doSelectOne($c);
-    	$rev = (!is_null($old) ? ($old->getRevision() + 1) : 1);
-    	    	
-    	$jn = new JobNotes();
-    	$jn->setJobId($this->getId());
-    	$jn->setNotes($this->getNotes());
-    	$jn->setRevision($rev);
-    	$jn->setUserId(sfContext::getInstance()->getUser()->getUserId());
-    	$jn->save();
+    $arr = $this->createCalendarArray ();
+    
+    
+    if( !is_null(sfContext::getInstance ()->getUser ()) ){
+      $uid = sfContext::getInstance ()->getUser ()->getUserId ();
+    }else{
+      $uid = 1;
     }
     
-  }
+    if ($isNew) {
+      
+      $logEntry = new Log ( );
+      $logEntry->setWhen ( time () );
+      $logEntry->setPropelClass ( "Job" );
+      $logEntry->setSfGuardUserProfileId ( $uid );
+      $logEntry->setMessage ( "Job created." );
+      $logEntry->setLogMessageTypeId ( sfConfig::get ( "app_log_type_create" ) );
+      $logEntry->setPropelId ( $this->getId () );
+      $logEntry->save ();
+      
+      if ($this->getDate ( "U" ) > 0) {
+        $event = sfGCalendar::createJobEvent ( $arr );
+        $this->setGCalId ( $event->id );
+        parent::save($con);
+      }
+    
+    } else {
+      
+      if ($this->getDate ( "U" ) > 0) {
+        
+        if (is_null ( $this->getGCalId () )) {
+	        $event = sfGCalendar::createJobEvent ( $arr );
+	        $this->setGCalId ( $event->id );
+          parent::save($con);
+        } else {
+          sfGCalendar::updateJobEventById ( $this->getGCalId (), $arr );
+        }
+        
+        if (! is_null ( $this->getGCalIdCustom () )) {
+          $arr ["calUrl"] = $this->getGCalIdCustomUrl ();
+          sfGCalendar::updateJobEventById ( $this->getGCalIdCustom (), $arr );	
+        }
+      
+      }
+    
+    }
+    
+    if ($updateNotes) {
+      $c = new Criteria ( );
+      $c->add ( JobNotesPeer::JOB_ID, $this->getId () );
+      $c->addDescendingOrderByColumn ( JobNotesPeer::ID );
+      $old = JobNotesPeer::doSelectOne ( $c );
+      $rev = (! is_null ( $old ) ? ($old->getRevision () + 1) : 1);
+      
+      $jn = new JobNotes ( );
+      $jn->setJobId ( $this->getId () );
+      $jn->setNotes ( $this->getNotes () );
+      $jn->setRevision ( $rev );
+      $jn->setUserId ( sfContext::getInstance ()->getUser ()->getUserId () );
+      $jn->save ();
+    }
   
+  }
+
 }
 
 $columns_map = array(  'from'   => JobPeer::EVENT,

@@ -5,33 +5,57 @@ include_once "../../config/ProjectConfiguration.class.php";
 
 $configuration = ProjectConfiguration::getApplicationConfiguration('frontend', 'prod', true);
 $sfContext = sfContext::createInstance($configuration);
-$sfContext->dispatch();
+
+/*
+$c = new Criteria();
+$c->add(JobPeer::G_CAL_ID, null);
+
+foreach( JobPeer::doSelect( $c ) as $job ){
+  
+  list( $hour, $min, $sec ) = explode(":", $job->getStartTime());
+  list( $eHour, $eMin, $eSec ) = explode(":", $job->getEndTime());
+  
+  echo $job->getId() . "\n";
+  
+  if( $hour < 5 && ($eHour+12) < 24 ){
+    $hour += 12;
+    $start = $hour . ":" . $min . ":" . $sec;
+    $job->setStartTime( $start );
+    
+    list( $hour, $min, $sec ) = explode(":", $job->getEndTime());
+    $hour += 12;
+    $end = $hour . ":" . $min . ":" . $sec;
+    
+    $job->setEndTime( $end );
+  }
+  
+  try{
+    $job->save();
+  }catch( Exception $ex ){
+    echo $ex->getMessage();
+    echo $ex->getTraceAsString();
+  }
+  
+  sleep(1);
+}
+
+*/
 
 $c = new Criteria();
 $c->add( JobPhotographerPeer::PHOTOGRAPHER_ID, 5 );
+$c->add( JobPeer::G_CAL_ID_CUSTOM, null);
+$c->addJoin( JobPhotographerPeer::JOB_ID, JobPeer::ID );
+
 $jobs = JobPhotographerPeer::doSelect( $c );
 
 $count = 1;
 foreach( $jobs as $jp ){
-  $j = $jp->getJob();
-  $arr = $j->createCalendarArray();
   
-  if( !is_null($j->getGCalIdCustom()) ){
-  	try{
-  	 sfGCalendar::updateJobEventById( $j->getGCalIdCustom(), $arr );
-  	}catch( Exception $ex ){
-  		echo $ex->getMessage() . " : " . $j->getId() . "\n\n";
-  	}
-  }else{
-  	try{
-      $j->save();
-  	}catch(Exception $ex){
-  		echo $ex->getMessage() . " : " . $j->getId() . "\n\n";
-  	}
-  }
+  $jp->save();
   
   echo ( $count / count($jobs) ) * 100 . "\n";
   $count += 1;
+  sleep(5);
 }
 
 /*
