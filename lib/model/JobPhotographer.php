@@ -8,11 +8,15 @@ class JobPhotographer extends BaseJobPhotographer
   	parent::save($con);
   	
   	$photoId = $this->getPhotographerId();
-  	$arr = $this->getJob()->createCalendarArray();
   	
   	switch( $photoId ){
   		case 5: // Joanie
   		  $url = "http://www.google.com/calendar/feeds/" . urlencode(sfConfig::get("app_joanie_calendar_id")) . "/private/full";
+        
+  		  $this->getJob()->setGCalIdCustomUrl( $url );
+        $this->getJob()->save();
+  	    
+        if( !$this->getJob()->getDate("U") > 0 ){ return; }
   		  
   			$arr = $this->getJob()->createCalendarArray();
   			$arr["calUrl"] = $url;
@@ -23,6 +27,12 @@ class JobPhotographer extends BaseJobPhotographer
   			break;
       case 25: // Alonso
         $url = "http://www.google.com/calendar/feeds/" . sfConfig::get("app_alonso_calendar_id") . "/private/full";
+
+        $this->getJob()->setGCalIdCustomUrl( $url );
+        $this->getJob()->save();
+        
+        if( !$this->getJob()->getDate("U") > 0 ){ return; }
+        
         
         $arr = $this->getJob()->createCalendarArray();
         $arr["calUrl"] = $url;

@@ -42,7 +42,7 @@ foreach( JobPeer::doSelect( $c ) as $job ){
 */
 
 $c = new Criteria();
-$c->add( JobPhotographerPeer::PHOTOGRAPHER_ID, 5 );
+$c->add( JobPhotographerPeer::PHOTOGRAPHER_ID, 25 );
 $c->add( JobPeer::G_CAL_ID_CUSTOM, null);
 $c->addJoin( JobPhotographerPeer::JOB_ID, JobPeer::ID );
 

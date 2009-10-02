@@ -235,7 +235,6 @@ class Job extends BaseJob
     
     $arr = $this->createCalendarArray ();
     
-    
     if( !is_null(sfContext::getInstance ()->getUser ()) ){
       $uid = sfContext::getInstance ()->getUser ()->getUserId ();
     }else{
@@ -271,11 +270,17 @@ class Job extends BaseJob
           sfGCalendar::updateJobEventById ( $this->getGCalId (), $arr );
         }
         
-        if (! is_null ( $this->getGCalIdCustom () )) {
-          $arr ["calUrl"] = $this->getGCalIdCustomUrl ();
-          sfGCalendar::updateJobEventById ( $this->getGCalIdCustom (), $arr );	
+        if( !is_null($this->getGCalIdCustomUrl ()) ){
+          if (! is_null ( $this->getGCalIdCustom () )) {
+            $arr ["calUrl"] = $this->getGCalIdCustomUrl ();
+            sfGCalendar::updateJobEventById ( $this->getGCalIdCustom (), $arr );	
+          }else{
+            $arr["calUrl"] = $url;
+            $event = sfGCalendar::createJobEvent ( $arr );
+            $this->setGCalIdCustom ( $event->id );
+          }
         }
-      
+        
       }
     
     }
