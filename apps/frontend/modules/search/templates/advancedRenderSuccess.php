@@ -12,10 +12,17 @@
 </script>
 
 <?php include_component ( "static", "topmenu", array("moveToSkip" => null, "noMenu" => false) ); ?>
-<?php include_component ( "static", "shortcuts", 
+
+<div class="span-6">
+  <?php include_component ( "static", "shortcuts", 
                           array("sortedBy" => null, 
                                 "viewingCurrent" => null,
                                 "noSort" => true) ); ?>
+</div>
+
+<div class="span-17">
+
+  <div class="box">
 
 <div id="advanced-search-top">
 	<div id="now-viewing"> 
@@ -31,3 +38,6 @@
 </div>
 
 <div class="clear"></div>
+
+  </div>
+</div>

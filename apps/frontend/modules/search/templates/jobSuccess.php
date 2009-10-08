@@ -12,18 +12,28 @@
 </script>
 
 <?php include_component ( "static", "topmenu", array("moveToSkip" => null) ); ?>
-<?php include_component ( "static", "shortcuts", 
+
+<div class="span-6">
+  <?php include_component ( "static", "shortcuts", 
                           array("sortedBy" => $sortedBy, 
                                 "viewingCurrent" => null) ); ?>
+</div>
 
-<div id="list-container">
+<div class="span-17">
 
-<?php include_partial("job/renderList", 
-                      array("pager" => $pager, 
-                            "object" => $searchBox,
-                            "viewingCaption" => " results for " . $searchBox,
-                            "propelType" => "search-box",
-                            "route" => "job_search",
-                            "renderStatus" => true)); ?>
-
+  <div class="box">
+  
+    <div id="list-container">
+    
+    <?php include_partial("job/renderList", 
+                          array("pager" => $pager, 
+                                "object" => $searchBox,
+                                "viewingCaption" => " results for " . $searchBox,
+                                "propelType" => "search-box",
+                                "route" => "job_search",
+                                "renderStatus" => true)); ?>
+    
+    </div>
+  
+  </div>
 </div>
