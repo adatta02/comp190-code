@@ -200,36 +200,42 @@ a:visited {
   border-right: 1px solid red; 
   border-left: 1px solid red;
 }
+.pending_bordered a { color: red }
 .pending_link a { color: red;	 }
 
 .accepted_bordered {
   border-right: 1px solid green; 
   border-left: 1px solid green;
 }
+.accepted_bordered a{ color: green }
 .accepted_link a { color: green; }
 
 .completed_bordered {
   border-right: 1px solid blue; 
   border-left: 1px solid blue;
 }
+.completed_bordered a{ color: blue }
 .completed_link a { color: blue; }
 
 .delivered_bordered {
   border-right: 1px solid purple; 
   border-left: 1px solid purple;
 }
+.delivered_bordered a { color: purple; }
 .delivered_link a { color: purple; }
 
 .invoiced_bordered {
   border-right: 1px solid #F0C600; 
   border-left: 1px solid #F0C600;
 }
+.invoiced_bordered a { color: #F0C600; }
 .invoiced_link a { color: #F0C600; }
 
 .paid_bordered {
   border-right: 1px solid black; 
   border-left: 1px solid black;
 }
+.paid_bordered a { color: black; }
 .paid_link a { color: black; }
 
 .archived_bordered {

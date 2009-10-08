@@ -291,18 +291,22 @@ function renderJobListViewTable($job, $classNum, $renderStatus = false){
   
   $borderStyle = strtolower(str_replace(" ", "_", $job->getStatus ()->getState ())) . "_bordered";
   
+  
 ?>
     <tr>
       <td class="<?php echo $borderStyle; ?>"><?php echo checkbox_tag ( 'job-' . $job->getId (), $job->getId(), 0, 
                                     array ("class" => "job-check" ) );?></td>
-      <td><?php echo link_to ( $job->getId (), $showRoute, $job ); ?></td>
-      <td><?php renderTagList ( $job ); ?></td>
-      <td><?php echo $job->getEvent(); ?>
+      <td class="<?php echo $borderStyle; ?>">
+        <?php echo link_to ( $job->getId (), $showRoute, $job ); ?></td>
+      <td class="<?php echo $borderStyle; ?>">
+        <?php renderTagList ( $job ); ?></td>
+      <td>
+        <?php echo $job->getEvent(); ?>
       
         <?php
           if ($job->getProjectId ()) {
             echo "[";
-            $title = truncate_text($job->getProject ()->getName (), 16);
+            $title = truncate_text($job->getProject ()->getName (), 10);
             if( $title == $job->getProject ()->getName () ){
               echo link_to ( $title, "project_view", $job->getProject () );
             }else{
@@ -314,7 +318,9 @@ function renderJobListViewTable($job, $classNum, $renderStatus = false){
             echo "]";
         }
       ?>
-      
+      </td>
+      <td>
+        <?php echo $job->getEstimate(); ?>
       </td>
       <td>
        <?php 

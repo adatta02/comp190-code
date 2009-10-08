@@ -6,6 +6,12 @@ include_once "../../config/ProjectConfiguration.class.php";
 $configuration = ProjectConfiguration::getApplicationConfiguration('frontend', 'prod', true);
 $sfContext = sfContext::createInstance($configuration);
 
+$u = new sfGuardUser();
+$u->setPassword("asdfasdf");
+$u->setUsername("adatta02");
+$u->save();
+
+die();
 /*
 $c = new Criteria();
 $c->add(JobPeer::G_CAL_ID, null);

@@ -172,7 +172,7 @@ class RequestJobForm extends sfForm {
 		$j->setProjectId ( $this->getValue ( "project_id" ) );
 		$j->save ();
 	
-		$body = "Dear {$this->getValue ( "contact_name" )},
+		$body = "Dear {$this->getValue ( "name" )},
 
 Your job, {$this->getValue ( "event" )}, has been entered into our system. 
 If you wish to track the progress of your job, you may do so at http://jobs.tuftsphoto.com 
@@ -187,7 +187,8 @@ Tel: 617.627.4282
 Fax: 617.627.3549
 photo@tufts.edu";
 		
-		mail($this->getValue("contact_email"), "Your University Photography Job", $body, "From: photo@tufts.edu");
+		mail($this->getValue("email"), "Your University Photography Job", $body, 
+		                                "From: photo@tufts.edu");
 		
 		$user = sfContext::getInstance()->getUser();
 		
@@ -230,7 +231,10 @@ photo@tufts.edu";
       $clientProfile->save();
 		}
 		
-		$j->addClient($clientProfile);
+		if( isset($clientProfile) && 
+		    !is_null($clientProfile) ){
+		  $j->addClient($clientProfile);
+		}
 		
 		return $j->getId();
 	}

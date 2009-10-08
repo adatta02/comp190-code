@@ -12,6 +12,7 @@
       <th>ID</th>
       <th>Tags</th>
       <th>Event</th>
+      <th>Estimate</th>
       <th>Client</th>
       <th>Photographer</th>
       <th>Date</th>
