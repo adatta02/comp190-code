@@ -45,8 +45,8 @@ function switchCal( showId ){
       Export iCal links: <br />
       <ul>
         <li><a href="http://www.google.com/calendar/ical/contact%40setfive.com/public/basic.ics">Global</a></li>
-        <li><a href="http://www.google.com/calendar/ical/18gp9a10ca95a9j6kr8npq41oc%40group.calendar.google.com/public/basic.ics">Alonso's Calendar</a></li>
-        <li><a href="http://www.google.com/calendar/ical/t21645rjqqbtbch34skj0kjq3g%40group.calendar.google.com/public/basic.ics">Joanie's Calendar</a></li>
+        <li><a href="http://www.google.com/calendar/ical/<?php echo urlencode(sfConfig::get("app_alonso_calendar_id")) ?>/public/basic.ics">Alonso's Calendar</a></li>
+        <li><a href="http://www.google.com/calendar/ical/<?php echo urlencode(sfConfig::get("app_joanie_calendar_id")) ?>/public/basic.ics">Joanie's Calendar</a></li>
       </ul>
     </p>
   </div>
