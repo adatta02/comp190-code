@@ -179,6 +179,8 @@ class Jm2Transform{
   	$jobList = array();
   	
   	foreach($jobs as $job){
+  	  
+  	  
   		$jid = 0;
   		$childNodes = $job->childNodes;
 
@@ -277,7 +279,13 @@ class Jm2Transform{
 		
 		for($i=1; $i < count($jobList); $i++){
 			
+		  sleep(1);
+		  
 			$obj = $jobList[ $i ];
+			
+			$c = new Criteria();
+			$c->add(JobPeer::ID, $i);
+			if( JobPeer::doCount($c) > 0 ){ continue; }
 			
 			echo $i . "/" . $total . "\n";
 			

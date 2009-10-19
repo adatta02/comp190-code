@@ -6,7 +6,7 @@
 - http://www.phpmyadmin.net
 -
 - Host: localhost
-- Generation Time: Sep 29, 2009 at 06:26 PM
+- Generation Time: Oct 18, 2009 at 12:50 PM
 - Server version: 5.0.81
 - PHP Version: 5.2.6
 -->
@@ -15,189 +15,6 @@
 - Database: 'tuftsph_jm2db'
 -->
 <tuftsph_jm2db>
-  <!-- Table extras -->
-    <extras>
-        <id>13</id>
-        <job_id>609</job_id>
-        <content_type>application/msword</content_type>
-        <filename>AlmaMatters_PhotoList.doc</filename>
-        <size>35328</size>
-    </extras>
-    <extras>
-        <id>15</id>
-        <job_id>607</job_id>
-        <content_type>application/msword</content_type>
-        <filename>Developmental_Technologies_Research_Group_Article.doc</filename>
-        <size>38912</size>
-    </extras>
-    <extras>
-        <id>16</id>
-        <job_id>611</job_id>
-        <content_type>application/msword</content_type>
-        <filename>DiCorcia_Article.doc</filename>
-        <size>32256</size>
-    </extras>
-    <extras>
-        <id>17</id>
-        <job_id>664</job_id>
-        <content_type>application/msword</content_type>
-        <filename>070925_homecomingschedule.doc</filename>
-        <size>27648</size>
-    </extras>
-    <extras>
-        <id>18</id>
-        <job_id>718</job_id>
-        <content_type>application/pdf</content_type>
-        <filename>CDay_diagram_revised_Sept_21.pdf</filename>
-        <size>27245</size>
-    </extras>
-    <extras>
-        <id>19</id>
-        <job_id>766</job_id>
-        <content_type>application/msword</content_type>
-        <filename>MedSchCampusVisit100507.doc</filename>
-        <size>25088</size>
-    </extras>
-    <extras>
-        <id>20</id>
-        <job_id>849</job_id>
-        <content_type>application/pdf</content_type>
-        <filename>Dean_s_Faculty_Forum_-_Vilenkin.pdf</filename>
-        <size>211395</size>
-    </extras>
-    <extras>
-        <id>21</id>
-        <job_id>944</job_id>
-        <content_type>application/msword</content_type>
-        <filename>200_Boston_Avenue_Article_LM.doc</filename>
-        <size>87040</size>
-    </extras>
-    <extras>
-        <id>22</id>
-        <job_id>945</job_id>
-        <content_type>application/msword</content_type>
-        <filename>Humanities_Center_Article.doc</filename>
-        <size>27648</size>
-    </extras>
-    <extras>
-        <id>23</id>
-        <job_id>948</job_id>
-        <content_type>application/msword</content_type>
-        <filename>FE_goldstein5.doc</filename>
-        <size>34816</size>
-    </extras>
-    <extras>
-        <id>24</id>
-        <job_id>1041</job_id>
-        <content_type>application/msword</content_type>
-        <filename>marathon_edit.doc</filename>
-        <size>27648</size>
-    </extras>
-    <extras>
-        <id>25</id>
-        <job_id>1034</job_id>
-        <content_type>application/msword</content_type>
-        <filename>Sadowski_draft.doc</filename>
-        <size>31232</size>
-    </extras>
-    <extras>
-        <id>26</id>
-        <job_id>1055</job_id>
-        <content_type>application/msword</content_type>
-        <filename>email_invite.doc</filename>
-        <size>259584</size>
-    </extras>
-    <extras>
-        <id>27</id>
-        <job_id>1055</job_id>
-        <content_type>application/msword</content_type>
-        <filename>Dental_Schedule.doc</filename>
-        <size>25088</size>
-    </extras>
-    <extras>
-        <id>28</id>
-        <job_id>1055</job_id>
-        <content_type>application/pdf</content_type>
-        <filename>Banner_for_Sky_Breaking-3.pdf</filename>
-        <size>996839</size>
-    </extras>
-    <extras>
-        <id>29</id>
-        <job_id>1055</job_id>
-        <content_type>application/msword</content_type>
-        <filename>SkybreakingTimelinewithGuestList-1.doc</filename>
-        <size>40960</size>
-    </extras>
-    <extras>
-        <id>30</id>
-        <job_id>1197</job_id>
-        <content_type>application/pdf</content_type>
-        <filename>alumniprofile.pdf</filename>
-        <size>562416</size>
-    </extras>
-    <extras>
-        <id>31</id>
-        <job_id>1201</job_id>
-        <content_type>application/msword</content_type>
-        <filename>Worden_and_Usen.doc</filename>
-        <size>29184</size>
-    </extras>
-    <extras>
-        <id>39</id>
-        <job_id>1557</job_id>
-        <content_type>application/vnd.openxmlformats-officedocument.wordprocessingml.document</content_type>
-        <filename>20091022_sackler_1557.docx</filename>
-        <size>15425</size>
-    </extras>
-    <extras>
-        <id>33</id>
-        <job_id>1365</job_id>
-        <content_type>application/pdf</content_type>
-        <filename>Fares_Brochure_2009_web6.pdf</filename>
-        <size>147758</size>
-    </extras>
-    <extras>
-        <id>34</id>
-        <job_id>1572</job_id>
-        <content_type>application/msword</content_type>
-        <filename>Ashley_Shelden_Profile.doc</filename>
-        <size>33792</size>
-    </extras>
-    <extras>
-        <id>35</id>
-        <job_id>1534</job_id>
-        <content_type>application/msword</content_type>
-        <filename>Nigel_Jacob_Article.doc</filename>
-        <size>34816</size>
-    </extras>
-    <extras>
-        <id>36</id>
-        <job_id>1518</job_id>
-        <content_type>application/vnd.ms-excel</content_type>
-        <filename>Jumbo_Jet_Schedule.xls</filename>
-        <size>27648</size>
-    </extras>
-    <extras>
-        <id>37</id>
-        <job_id>1468</job_id>
-        <content_type>application/msword</content_type>
-        <filename>20090424-1468-reunion-tusm_schedule.doc</filename>
-        <size>40448</size>
-    </extras>
-    <extras>
-        <id>40</id>
-        <job_id>1726</job_id>
-        <content_type>application/pdf</content_type>
-        <filename>20090910-1726-visit.pdf</filename>
-        <size>2360132</size>
-    </extras>
-    <extras>
-        <id>41</id>
-        <job_id>1774</job_id>
-        <content_type>application/msword</content_type>
-        <filename>20090915_Community_Day.doc</filename>
-        <size>29696</size>
-    </extras>
   <!-- Table jobs -->
     <jobs>
         <id>11</id>
@@ -59561,14 +59378,15 @@ TOTAL, two days: $2,675 </billing_notes>
         <delivery_method>Email</delivery_method>
         <delivery_special>Please determine September shoot date in conjunction with Susan Peecher; a placeholder date mid-month has been put into the form. Please also determine: 1) whether or not exterior photography is necessary during this shoot and 2) what, if any, interior shots need to be taken during this shoot. As before, please deliver photos to Liz Austin within two weeks of the shoot.</delivery_special>
         <slug>vertical</slug>
-        <status>Completed</status>
+        <status>Delivered</status>
         <estimate></estimate>
         <estimate2></estimate2>
         <photog_id>28</photog_id>
         <submitted_at>2009-01-20 13:43:23</submitted_at>
         <accepted_at>2009-01-26 16:51:50</accepted_at>
         <completed_at>2009-09-17 10:20:13</completed_at>
-        <internal_notes></internal_notes>
+        <delivered_at>2009-10-08 10:14:24</delivered_at>
+        <internal_notes>9/21:  Delivered via Photoshelter - ANI</internal_notes>
         <billing_notes></billing_notes>
         <category>Other</category>
     </jobs>
@@ -63402,7 +63220,7 @@ Candid shots, posed pictures of the President, Dean, key faculty and key donors 
         <billing_idr></billing_idr>
         <shoot_name>Celebration of the Completion of the Sackler Renovations</shoot_name>
         <shoot_date>2009-10-22</shoot_date>
-        <shoot_start>2:30 pm</shoot_start>
+        <shoot_start>3:00 pm</shoot_start>
         <shoot_end>8:30 pm</shoot_end>
         <shoot_duedate>2009-10-22</shoot_duedate>
         <shoot_contact>Kara Brassil</shoot_contact>
@@ -63424,6 +63242,11 @@ From Jane's schedule:
 â€¢	2:30 â€“ 5:00 PM â€“ Meet in Sackler Lobby;  photograph Ribbon Cutting
 â€¢	4:30 â€“ 8:00 PM â€“ Meet in Sackler Lobby ; photograph reception and speaking program
 â€¢	7:00 â€“ 8:30 PM â€“ Meet Lorraine Fanton in Sackler Lobby to be escorted to Taj Boston Hotel for private reception
+
+-------
+Update 10/15: No ribbon-cutting
+Meet at 3:00 pm
+Megan Bettencourt is photo point person
 </delivery_special>
         <slug>sackler</slug>
         <status>Pending</status>
@@ -69676,7 +69499,7 @@ Alonso recommended photographer Jason Reblando in Chicago. I've given him art di
 
 Please don't do a Goddard Chapel kind of shot -- though I'm not sure what to do...</delivery_special>
         <slug>oleary</slug>
-        <status>Delivered</status>
+        <status>Paid</status>
         <estimate>125</estimate>
         <estimate2>25</estimate2>
         <photog_id>28</photog_id>
@@ -69684,6 +69507,7 @@ Please don't do a Goddard Chapel kind of shot -- though I'm not sure what to do.
         <accepted_at>2009-07-15 09:56:26</accepted_at>
         <completed_at>2009-08-17 13:17:03</completed_at>
         <delivered_at>2009-09-14 09:46:34</delivered_at>
+        <paid_at>2009-09-30 15:15:16</paid_at>
         <internal_notes>6/25: Emailed him.
 -Katy
 
@@ -69782,7 +69606,7 @@ Laura Fitzpatrick, assistant to Aso Tavitian: lfitzpatrick@syncsort.com, (212) 3
         <delivery_method>Email</delivery_method>
         <delivery_special>This shoot will be in the same style as the Tufts 360 shots done previously but we're asking for this to be done by Joanie or Alonso (and not John Soares). Please consult with Mike on the location. I've attached a copy of the profile that will be accompanied by these images. Thanks!</delivery_special>
         <slug>barsam</slug>
-        <status>Invoiced</status>
+        <status>Paid</status>
         <estimate>758</estimate>
         <estimate2></estimate2>
         <photog_id>16</photog_id>
@@ -69791,6 +69615,7 @@ Laura Fitzpatrick, assistant to Aso Tavitian: lfitzpatrick@syncsort.com, (212) 3
         <completed_at>2009-09-02 17:00:26</completed_at>
         <invoiced_at>2009-09-24 14:34:42</invoiced_at>
         <delivered_at>2009-09-14 09:55:57</delivered_at>
+        <paid_at>2009-10-06 14:57:18</paid_at>
         <internal_notes>6/30: Email from Dave:
 
 Katy,
@@ -70163,7 +69988,7 @@ David.Lazzara@tufts.edu</shoot_directions>
         <delivery_method>CD</delivery_method>
         <delivery_special>This shoot needs to take place with David before he leaves the country on July 25 to go to Tibet and India. This is for the VEI Celebration keepsake publication that will feature TUSDM students whose educations are being greatly improved by the Vertical Expansion initiative. Please talk to Mike Sherman in advance of setting up these shoots. Thanks!</delivery_special>
         <slug>lazzara</slug>
-        <status>Invoiced</status>
+        <status>Paid</status>
         <estimate>250</estimate>
         <estimate2>50</estimate2>
         <photog_id>28</photog_id>
@@ -70172,6 +69997,7 @@ David.Lazzara@tufts.edu</shoot_directions>
         <completed_at>2009-08-17 13:17:03</completed_at>
         <invoiced_at>2009-09-24 14:34:43</invoiced_at>
         <delivered_at>2009-09-14 09:48:15</delivered_at>
+        <paid_at>2009-10-06 14:57:18</paid_at>
         <internal_notes>7/6: Emailed him. Alonso to speak w/ Dave &amp; Mike about plans.
 -Katy
 
@@ -70210,7 +70036,7 @@ Hubert.Park@tufts.edu</shoot_directions>
         <delivery_method>Email</delivery_method>
         <delivery_special>This is for the VEI Celebration keepsake publication that will feature TUSDM students whose educations are being greatly improved by the Vertical Expansion initiative. Please talk to Mike Sherman in advance of setting up these shoots. Thanks!</delivery_special>
         <slug>park</slug>
-        <status>Invoiced</status>
+        <status>Paid</status>
         <estimate>250</estimate>
         <estimate2>50</estimate2>
         <photog_id>28</photog_id>
@@ -70218,6 +70044,7 @@ Hubert.Park@tufts.edu</shoot_directions>
         <completed_at>2009-08-05 15:29:27</completed_at>
         <invoiced_at>2009-09-24 14:34:43</invoiced_at>
         <delivered_at>2009-09-14 09:54:18</delivered_at>
+        <paid_at>2009-10-06 14:57:18</paid_at>
         <internal_notes>9/14:  Delivered by ANI via CD to Enza for Day in the Life of Series</internal_notes>
         <billing_notes>2 hours @ $150/hour</billing_notes>
         <category>Other</category>
@@ -70538,7 +70365,7 @@ I will let you know if this gets postponed again (since it's supposed to rain ag
         <delivery_method>CD</delivery_method>
         <delivery_special>Just candid shots please. The reception on the 9th will be a meet-and-greet prior to the prospective students day on July 10 (requests to follow). </delivery_special>
         <slug>reception</slug>
-        <status>Invoiced</status>
+        <status>Paid</status>
         <estimate>250</estimate>
         <estimate2>50</estimate2>
         <photog_id>16</photog_id>
@@ -70547,6 +70374,7 @@ I will let you know if this gets postponed again (since it's supposed to rain ag
         <completed_at>2009-07-17 11:00:13</completed_at>
         <invoiced_at>2009-09-22 15:15:54</invoiced_at>
         <delivered_at>2009-09-09 16:12:00</delivered_at>
+        <paid_at>2009-10-06 15:10:25</paid_at>
         <internal_notes>not positive of status, but jpgs are in photog1 job folder, so it is likely that these were delivered. - jt</internal_notes>
         <billing_notes>2 hours @ $150/hour</billing_notes>
         <category>Event</category>
@@ -70623,7 +70451,7 @@ I will let you know if this gets postponed again (since it's supposed to rain ag
         <delivery_method>CD</delivery_method>
         <delivery_special>Just candid shots please. This will be an ice cream social after the prospective students day.</delivery_special>
         <slug>social</slug>
-        <status>Invoiced</status>
+        <status>Paid</status>
         <estimate>200</estimate>
         <estimate2>25</estimate2>
         <photog_id>16</photog_id>
@@ -70632,6 +70460,7 @@ I will let you know if this gets postponed again (since it's supposed to rain ag
         <completed_at>2009-07-17 11:00:14</completed_at>
         <invoiced_at>2009-09-22 15:15:54</invoiced_at>
         <delivered_at>2009-09-09 16:12:16</delivered_at>
+        <paid_at>2009-10-06 15:10:26</paid_at>
         <internal_notes>not positive of status, but jpgs are in photog1 job folder, so it is likely that these were delivered. - jt</internal_notes>
         <billing_notes>1.5 hours @ $150/hour</billing_notes>
         <category>Event</category>
@@ -70751,13 +70580,14 @@ I will let you know if this gets postponed again (since it's supposed to rain ag
 
 Photos to be used in Blueprint.</delivery_special>
         <slug>matriculation</slug>
-        <status>Delivered</status>
+        <status>Invoiced</status>
         <estimate>2000</estimate>
         <estimate2>250</estimate2>
         <photog_id>35</photog_id>
         <submitted_at>2009-07-07 11:11:43</submitted_at>
         <accepted_at>2009-08-25 10:50:25</accepted_at>
         <completed_at>2009-09-08 10:21:08</completed_at>
+        <invoiced_at>2009-10-13 15:23:53</invoiced_at>
         <delivered_at>2009-09-09 16:43:27</delivered_at>
         <internal_notes>9/2/09: uploaded to merlin and photoshelter. -jt
 
@@ -70814,14 +70644,18 @@ University Photography
         <delivery_method>CD</delivery_method>
         <delivery_special>Exact schedule TBD. We would like to request Alonso to be the photographer. </delivery_special>
         <slug>visit</slug>
-        <status>Accepted</status>
+        <status>Delivered</status>
         <estimate>1462.50</estimate>
         <estimate2>312.50</estimate2>
         <photog_id>57</photog_id>
         <submitted_at>2009-07-07 14:11:16</submitted_at>
         <accepted_at>2009-09-03 16:39:21</accepted_at>
+        <completed_at>2009-10-08 10:09:42</completed_at>
+        <delivered_at>2009-10-08 10:13:13</delivered_at>
         <internal_notes>8/26: Emailed Mari Anne to check in and ask about schedule.
--Katy</internal_notes>
+-Katy
+
+10/7:  Delivered via CD - ANI</internal_notes>
         <billing_notes>Photography:
 
 7:30-3:30: 8 hours @ $900 (day rate)=$900
@@ -70879,7 +70713,7 @@ Carrie
 
 </delivery_special>
         <slug>international</slug>
-        <status>Invoiced</status>
+        <status>Paid</status>
         <estimate>187.50</estimate>
         <estimate2></estimate2>
         <photog_id>16</photog_id>
@@ -70888,6 +70722,7 @@ Carrie
         <completed_at>2009-08-24 15:15:14</completed_at>
         <invoiced_at>2009-09-22 15:19:57</invoiced_at>
         <delivered_at>2009-08-27 11:06:59</delivered_at>
+        <paid_at>2009-09-30 15:33:47</paid_at>
         <internal_notes>8/24: delivered via photoshelter. -jt</internal_notes>
         <billing_notes>2.5 hours @ $150/hour - 50% discount for lateness = $187.50</billing_notes>
         <category>Event</category>
@@ -71283,7 +71118,7 @@ Thanks --
 
 Taylor</delivery_special>
         <slug>karlins</slug>
-        <status>Delivered</status>
+        <status>Paid</status>
         <estimate>125</estimate>
         <estimate2>25</estimate2>
         <photog_id>28</photog_id>
@@ -71291,6 +71126,7 @@ Taylor</delivery_special>
         <accepted_at>2009-07-28 09:52:08</accepted_at>
         <completed_at>2009-08-17 13:17:03</completed_at>
         <delivered_at>2009-09-14 09:51:18</delivered_at>
+        <paid_at>2009-09-30 15:15:16</paid_at>
         <internal_notes>9/14:  Delivered by ANI via  Photoshelter</internal_notes>
         <billing_notes></billing_notes>
         <category>Editorial</category>
@@ -71421,13 +71257,14 @@ A head shot for the magazine would be good, too.
 
 Alonso and I have talked about this...</delivery_special>
         <slug>isberg</slug>
-        <status>Delivered</status>
+        <status>Paid</status>
         <estimate>125</estimate>
         <estimate2>25</estimate2>
         <photog_id>28</photog_id>
         <submitted_at>2009-07-23 13:47:50</submitted_at>
         <completed_at>2009-08-05 15:30:05</completed_at>
         <delivered_at>2009-09-14 09:52:53</delivered_at>
+        <paid_at>2009-10-13 12:46:18</paid_at>
         <internal_notes>7/29: Alonso scheduling.
 -Katy
 
@@ -71655,14 +71492,16 @@ The shoot date is this Wednesday the 29th at 10:15 am. The three students are: L
 
 Dave </delivery_special>
         <slug>hillel</slug>
-        <status>Delivered</status>
+        <status>Paid</status>
         <estimate>125</estimate>
         <estimate2>25</estimate2>
         <photog_id>28</photog_id>
         <submitted_at>2009-07-27 15:25:54</submitted_at>
         <accepted_at>2009-07-28 10:43:09</accepted_at>
         <completed_at>2009-08-17 13:17:03</completed_at>
+        <invoiced_at>2009-10-01 09:45:46</invoiced_at>
         <delivered_at>2009-09-14 09:50:35</delivered_at>
+        <paid_at>2009-10-13 14:05:35</paid_at>
         <internal_notes>9/14:  Delivered by ANI via Merlin &amp; Photoshelter</internal_notes>
         <billing_notes>1 hour @ $150/hour</billing_notes>
         <category>Marketing</category>
@@ -71794,7 +71633,7 @@ Her office isn't far away, in Braker Hall, so it ought to be fine.
 
 Though I put down Aug. 10 for delivery, sooner would be better, if possible.</delivery_special>
         <slug>brown</slug>
-        <status>Delivered</status>
+        <status>Paid</status>
         <estimate>125</estimate>
         <estimate2>25</estimate2>
         <photog_id>28</photog_id>
@@ -71802,6 +71641,7 @@ Though I put down Aug. 10 for delivery, sooner would be better, if possible.</de
         <accepted_at>2009-08-04 13:03:34</accepted_at>
         <completed_at>2009-08-17 13:16:05</completed_at>
         <delivered_at>2009-09-14 09:51:36</delivered_at>
+        <paid_at>2009-09-30 15:15:16</paid_at>
         <internal_notes>9/14:  Delivered by ANI via Merlin &amp; Photoshelter</internal_notes>
         <billing_notes></billing_notes>
         <category>Editorial</category>
@@ -71883,13 +71723,14 @@ please make sure to get plenty of group shots and that no alcohol beverages are 
         <delivery_method>CD</delivery_method>
         <delivery_special>Multimedia piece. 14th annual event.</delivery_special>
         <slug>relays</slug>
-        <status>Delivered</status>
+        <status>Invoiced</status>
         <estimate>400</estimate>
         <estimate2>100</estimate2>
         <photog_id>7</photog_id>
         <submitted_at>2009-07-29 14:23:00</submitted_at>
         <accepted_at>2009-08-07 14:05:41</accepted_at>
         <completed_at>2009-08-10 13:11:08</completed_at>
+        <invoiced_at>2009-10-13 15:16:52</invoiced_at>
         <delivered_at>2009-08-24 16:29:15</delivered_at>
         <internal_notes>8/21: uploaded to merlin. jt</internal_notes>
         <billing_notes>4 hours photography @ half-day rate ($400) + 4 hours processing @ $25/hour</billing_notes>
@@ -71967,7 +71808,7 @@ please make sure to get plenty of group shots and that no alcohol beverages are 
         <delivery_method>CD</delivery_method>
         <delivery_special>headshot for web/brochure</delivery_special>
         <slug>brown</slug>
-        <status>Delivered</status>
+        <status>Paid</status>
         <estimate>75</estimate>
         <estimate2></estimate2>
         <photog_id>28</photog_id>
@@ -71975,6 +71816,7 @@ please make sure to get plenty of group shots and that no alcohol beverages are 
         <accepted_at>2009-07-30 11:49:47</accepted_at>
         <completed_at>2009-08-17 13:16:05</completed_at>
         <delivered_at>2009-09-14 09:53:40</delivered_at>
+        <paid_at>2009-10-13 15:07:38</paid_at>
         <internal_notes>9/14:  Delivered by ANI via CD</internal_notes>
         <billing_notes>studio headshot: $75 for 30 min</billing_notes>
         <category>Other</category>
@@ -72009,14 +71851,15 @@ please make sure to get plenty of group shots and that no alcohol beverages are 
         <delivery_method>CD</delivery_method>
         <delivery_special></delivery_special>
         <slug>composite</slug>
-        <status>Completed</status>
+        <status>Delivered</status>
         <estimate>900</estimate>
         <estimate2>200</estimate2>
         <photog_id>45</photog_id>
         <submitted_at>2009-07-31 13:32:07</submitted_at>
         <accepted_at>2009-08-25 17:11:01</accepted_at>
         <completed_at>2009-09-08 10:23:04</completed_at>
-        <internal_notes></internal_notes>
+        <delivered_at>2009-10-08 10:49:50</delivered_at>
+        <internal_notes>10/8:  Delivered via CD - ANI</internal_notes>
         <billing_notes></billing_notes>
         <category>Other</category>
     </jobs>
@@ -72151,7 +71994,7 @@ We have 4 groups for 50 student scheduled in 1 hour blocks for a total for 200 s
 3 -4PM: 50 Students
 </delivery_special>
         <slug>composite</slug>
-        <status>Delivered</status>
+        <status>Paid</status>
         <estimate>375</estimate>
         <estimate2>75</estimate2>
         <photog_id>35</photog_id>
@@ -72159,6 +72002,7 @@ We have 4 groups for 50 student scheduled in 1 hour blocks for a total for 200 s
         <accepted_at>2009-08-11 10:02:26</accepted_at>
         <completed_at>2009-08-24 15:15:14</completed_at>
         <delivered_at>2009-09-09 16:37:01</delivered_at>
+        <paid_at>2009-10-07 11:39:11</paid_at>
         <internal_notes>delivered directly to julie steinhilber. -jt</internal_notes>
         <billing_notes>3 hours @ $150/hour</billing_notes>
         <category>Other</category>
@@ -72240,13 +72084,14 @@ If we could get a dog on the machine that would be ideal.</delivery_special>
         <delivery_method>CD</delivery_method>
         <delivery_special>Rebecca is one of four students that we will be featuring in this year's matriculation piece which looks at incoming students from the Medford and Somerville area. We were hoping to get each of them in their hometown area. Becca is a Somerville High grad who frequents Davis Sq. So we would love to get some shots of her in and around Davis. I will be meeting her at 10 at Diesel to interview her, so it is your call if you want to go with me or show up 15 mins or so later so we will be mostly done talking.</delivery_special>
         <slug>wood</slug>
-        <status>Delivered</status>
+        <status>Invoiced</status>
         <estimate>125</estimate>
         <estimate2>25</estimate2>
         <photog_id>7</photog_id>
         <submitted_at>2009-08-05 09:59:39</submitted_at>
         <accepted_at>2009-08-05 17:06:06</accepted_at>
         <completed_at>2009-08-18 10:46:43</completed_at>
+        <invoiced_at>2009-10-13 15:16:52</invoiced_at>
         <delivered_at>2009-08-24 16:36:01</delivered_at>
         <internal_notes>8/20: uploaded to merlin. -jt</internal_notes>
         <billing_notes></billing_notes>
@@ -72322,14 +72167,15 @@ If we could get a dog on the machine that would be ideal.</delivery_special>
         <delivery_method>Email</delivery_method>
         <delivery_special></delivery_special>
         <slug>jordan</slug>
-        <status>Completed</status>
+        <status>Delivered</status>
         <estimate>125</estimate>
         <estimate2>25</estimate2>
         <photog_id>28</photog_id>
         <submitted_at>2009-08-05 13:09:43</submitted_at>
         <accepted_at>2009-09-15 10:57:39</accepted_at>
         <completed_at>2009-09-21 15:42:37</completed_at>
-        <internal_notes></internal_notes>
+        <delivered_at>2009-10-08 10:15:13</delivered_at>
+        <internal_notes>9/19:  Delivered via CD - ANI</internal_notes>
         <billing_notes></billing_notes>
         <category>Other</category>
     </jobs>
@@ -72487,13 +72333,14 @@ If we could get a dog on the machine that would be ideal.</delivery_special>
         <delivery_method>CD</delivery_method>
         <delivery_special>This is another Matriculation student. We need photos of him in Medford. He had some suggestions, including in front of the church where his parents were married. If someone could call him and set something up for next week (8/10-8/14) that would be great. The only thing to note is that we really want the photos to be in Medford, so even if he suggests a place he frequents in Somerville, we need a Medford option.</delivery_special>
         <slug>barretto</slug>
-        <status>Delivered</status>
+        <status>Invoiced</status>
         <estimate>125</estimate>
         <estimate2>25</estimate2>
         <photog_id>7</photog_id>
         <submitted_at>2009-08-07 09:00:54</submitted_at>
         <accepted_at>2009-08-10 17:27:35</accepted_at>
         <completed_at>2009-08-12 16:25:12</completed_at>
+        <invoiced_at>2009-10-13 15:27:28</invoiced_at>
         <delivered_at>2009-08-24 16:35:39</delivered_at>
         <internal_notes>8/20: uploaded to merlin. jt</internal_notes>
         <billing_notes>1 hour @ $150/hour</billing_notes>
@@ -72529,12 +72376,13 @@ If we could get a dog on the machine that would be ideal.</delivery_special>
         <delivery_method>CD</delivery_method>
         <delivery_special></delivery_special>
         <slug>cousens</slug>
-        <status>Completed</status>
+        <status>Delivered</status>
         <estimate>0</estimate>
         <estimate2></estimate2>
         <photog_id>7</photog_id>
         <submitted_at>2009-08-11 11:25:34</submitted_at>
         <completed_at>2009-08-11 11:27:17</completed_at>
+        <delivered_at>2009-10-07 15:16:03</delivered_at>
         <internal_notes></internal_notes>
         <billing_notes>no charge--stock</billing_notes>
         <category>Stock</category>
@@ -72569,13 +72417,14 @@ If we could get a dog on the machine that would be ideal.</delivery_special>
         <delivery_method>CD</delivery_method>
         <delivery_special>This is for the Volunteer Profile in the next issue of Blueprint. Dr. Kennison, M60, is a recently retired OB/GYN physician and is a very active volunteer for Tufts. He will celebrate his 50th reunion this year. He has been named Mr. Tufts Medicine for years. He is a past president of the Tufts Medical Alumni Association and a member of the University Alumni Council. A frequent recipient of teaching awards, Kennison won the school's Zucker Teaching Prize in 2000. </delivery_special>
         <slug>kennison</slug>
-        <status>Delivered</status>
+        <status>Invoiced</status>
         <estimate>314</estimate>
         <estimate2></estimate2>
         <photog_id>16</photog_id>
         <submitted_at>2009-08-11 15:05:27</submitted_at>
         <accepted_at>2009-09-01 10:28:53</accepted_at>
         <completed_at>2009-09-08 10:21:08</completed_at>
+        <invoiced_at>2009-10-07 13:43:47</invoiced_at>
         <delivered_at>2009-09-14 09:58:14</delivered_at>
         <internal_notes>9/14:  Delivered by ANI via Merlin &amp; Photoshelter</internal_notes>
         <billing_notes>As per Jodi's invoice</billing_notes>
@@ -72650,13 +72499,14 @@ If we could get a dog on the machine that would be ideal.</delivery_special>
         <delivery_method>Email</delivery_method>
         <delivery_special>We have some photos from April (prior to the dedication event) but they look like April--very bare and spare. We'd love to get some photos of the garden looking green and nicer *and* when people are back on campus, so there's some life in the images, too.</delivery_special>
         <slug>garden</slug>
-        <status>Completed</status>
+        <status>Delivered</status>
         <estimate>125</estimate>
         <estimate2>25</estimate2>
         <photog_id>7</photog_id>
         <submitted_at>2009-08-11 15:30:52</submitted_at>
         <accepted_at>2009-08-21 15:32:49</accepted_at>
         <completed_at>2009-09-25 15:15:05</completed_at>
+        <delivered_at>2009-10-07 15:16:03</delivered_at>
         <internal_notes></internal_notes>
         <billing_notes>1 hour @ $150/hour</billing_notes>
         <category>Marketing</category>
@@ -72782,13 +72632,14 @@ E-mail is probably the best way to reach her.
 
 Let's talk about location; it would be great to get her shot in a neighborhood with Latin stores in the background, but not essential.  </delivery_special>
         <slug>burgess</slug>
-        <status>Delivered</status>
+        <status>Paid</status>
         <estimate>125</estimate>
         <estimate2>25</estimate2>
         <photog_id>28</photog_id>
         <submitted_at>2009-08-18 16:55:03</submitted_at>
         <accepted_at>2009-09-03 14:13:38</accepted_at>
         <delivered_at>2009-09-14 09:56:53</delivered_at>
+        <paid_at>2009-10-13 12:46:18</paid_at>
         <internal_notes>9/14:  Delivered by ANI via Merlin &amp; Photoshelter</internal_notes>
         <billing_notes>1 hour @ $150/hour</billing_notes>
         <category>Editorial</category>
@@ -72886,12 +72737,14 @@ We met with both of them today and explained to them their duties. They will be 
 Thanks,
 Sue </delivery_special>
         <slug>community</slug>
-        <status>Accepted</status>
+        <status>Delivered</status>
         <estimate>800</estimate>
         <estimate2>200</estimate2>
         <photog_id>22</photog_id>
         <submitted_at>2009-08-19 13:49:46</submitted_at>
         <accepted_at>2009-09-16 14:09:41</accepted_at>
+        <completed_at>2009-10-02 14:49:59</completed_at>
+        <delivered_at>2009-10-07 15:25:13</delivered_at>
         <internal_notes></internal_notes>
         <billing_notes>Two photographers (JT &amp; AN) @ $400 each for four hours (half-day rate) + 8 hours processing (four hours/photographer) @ $25/hour=$1,000
 
@@ -72969,14 +72822,15 @@ Web Comm will pay 25% of the cost to cover a gallery for E-News</billing_notes>
         <delivery_method>CD</delivery_method>
         <delivery_special></delivery_special>
         <slug>transfer</slug>
-        <status>Completed</status>
+        <status>Delivered</status>
         <estimate>125</estimate>
         <estimate2>25</estimate2>
         <photog_id>28</photog_id>
         <submitted_at>2009-08-21 13:51:47</submitted_at>
         <accepted_at>2009-08-21 14:24:19</accepted_at>
         <completed_at>2009-09-08 10:23:04</completed_at>
-        <internal_notes></internal_notes>
+        <delivered_at>2009-10-08 10:10:36</delivered_at>
+        <internal_notes>10/7:  Delivered via CD - ANI</internal_notes>
         <billing_notes>1 hour @ $150/hour</billing_notes>
         <category>Other</category>
     </jobs>
@@ -73012,14 +72866,15 @@ Web Comm will pay 25% of the cost to cover a gallery for E-News</billing_notes>
 
 </delivery_special>
         <slug>class</slug>
-        <status>Completed</status>
+        <status>Delivered</status>
         <estimate>125</estimate>
         <estimate2>25</estimate2>
         <photog_id>28</photog_id>
         <submitted_at>2009-08-21 13:53:43</submitted_at>
         <accepted_at>2009-08-21 14:18:45</accepted_at>
         <completed_at>2009-09-08 10:23:04</completed_at>
-        <internal_notes></internal_notes>
+        <delivered_at>2009-10-08 10:11:03</delivered_at>
+        <internal_notes>10/7:  Delivered via CD - ANI</internal_notes>
         <billing_notes></billing_notes>
         <category>Other</category>
     </jobs>
@@ -73237,15 +73092,17 @@ Suzanne</delivery_special>
         <delivery_method>CD</delivery_method>
         <delivery_special>Candids and group shots for use on our department website.</delivery_special>
         <slug>orientation</slug>
-        <status>Completed</status>
-        <estimate>300</estimate>
-        <estimate2>75</estimate2>
+        <status>Paid</status>
+        <estimate>0</estimate>
+        <estimate2></estimate2>
         <photog_id>11</photog_id>
         <submitted_at>2009-08-27 15:29:06</submitted_at>
         <accepted_at>2009-09-01 10:19:07</accepted_at>
         <completed_at>2009-09-08 10:21:08</completed_at>
-        <internal_notes></internal_notes>
-        <billing_notes>2.5 hours @ $150/hour</billing_notes>
+        <paid_at>2009-10-15 09:49:12</paid_at>
+        <internal_notes>10/14: Spoke w/ Julian from UEP. Will waive charges due to late delivery.
+-Katy</internal_notes>
+        <billing_notes>no charge--LATE</billing_notes>
         <category>Event</category>
     </jobs>
     <jobs>
@@ -73280,13 +73137,14 @@ Suzanne</delivery_special>
         <delivery_special>We were thinking of doing perhaps 4 shots of 4 different groups.  The table and desk in Bobâ€™s office might be ideal
 for this.  For our purposes, we really donâ€™t need a shot of the steering committee all together, unless you can think of a creative way to get one. </delivery_special>
         <slug>steering</slug>
-        <status>Completed</status>
+        <status>Delivered</status>
         <estimate>125</estimate>
         <estimate2>25</estimate2>
         <photog_id>7</photog_id>
         <submitted_at>2009-08-28 16:41:47</submitted_at>
         <accepted_at>2009-09-02 10:30:29</accepted_at>
         <completed_at>2009-09-14 16:56:27</completed_at>
+        <delivered_at>2009-10-07 15:16:03</delivered_at>
         <internal_notes></internal_notes>
         <billing_notes></billing_notes>
         <category>Event</category>
@@ -73369,12 +73227,14 @@ Sorry for the last minute request.
 
 </delivery_special>
         <slug>dinner</slug>
-        <status>Accepted</status>
+        <status>Completed</status>
         <estimate>200</estimate>
         <estimate2>25</estimate2>
         <photog_id>69</photog_id>
         <submitted_at>2009-08-31 14:58:14</submitted_at>
         <accepted_at>2009-09-09 13:13:40</accepted_at>
+        <completed_at>2009-10-08 14:53:39</completed_at>
+        <delivered_at>2009-10-08 14:53:20</delivered_at>
         <internal_notes>9/4: Emailed Jared Charney. Joshi Radin not available.
 -Katy
 
@@ -73504,14 +73364,15 @@ E-mail: daniel.katzman@gmail.com</delivery_special>
         <delivery_method>CD</delivery_method>
         <delivery_special>We need an environmental portrait of Andrew Wilder for Tufts Nutrition magazine and the Journal. Wilder is affiliated with the Feinstein Center doing humanitarian work in Afghanistan (basic services, stabilization, schools, building, agriculture). I'd like Alonso to take this assignment. Contact Margot to discuss ideas for location/environment. He available the week of Sept. 14th. </delivery_special>
         <slug>wilder</slug>
-        <status>Completed</status>
+        <status>Delivered</status>
         <estimate>125</estimate>
         <estimate2>25</estimate2>
         <photog_id>28</photog_id>
         <submitted_at>2009-09-02 16:48:40</submitted_at>
         <accepted_at>2009-09-15 15:07:09</accepted_at>
         <completed_at>2009-09-17 10:20:13</completed_at>
-        <internal_notes></internal_notes>
+        <delivered_at>2009-10-08 10:16:42</delivered_at>
+        <internal_notes>9/19:   Delivered via CD - ANI</internal_notes>
         <billing_notes></billing_notes>
         <category>Editorial</category>
     </jobs>
@@ -73708,13 +73569,14 @@ E-mail: daniel.katzman@gmail.com</delivery_special>
         <delivery_method>CD</delivery_method>
         <delivery_special></delivery_special>
         <slug>basket</slug>
-        <status>Completed</status>
+        <status>Delivered</status>
         <estimate>375</estimate>
         <estimate2>75</estimate2>
         <photog_id>39</photog_id>
         <submitted_at>2009-09-04 10:18:28</submitted_at>
         <accepted_at>2009-09-04 10:19:56</accepted_at>
         <completed_at>2009-09-16 11:57:19</completed_at>
+        <delivered_at>2009-10-07 15:16:03</delivered_at>
         <internal_notes></internal_notes>
         <billing_notes>3 hours @ $150/hour</billing_notes>
         <category>Editorial</category>
@@ -73749,15 +73611,18 @@ E-mail: daniel.katzman@gmail.com</delivery_special>
         <delivery_method>CD</delivery_method>
         <delivery_special>Donor portrait</delivery_special>
         <slug>block</slug>
-        <status>Completed</status>
+        <status>Delivered</status>
         <estimate>400</estimate>
         <estimate2></estimate2>
         <photog_id>16</photog_id>
         <submitted_at>2009-09-04 10:33:17</submitted_at>
         <accepted_at>2009-09-09 16:55:57</accepted_at>
         <completed_at>2009-09-18 15:04:57</completed_at>
+        <delivered_at>2009-10-08 10:12:10</delivered_at>
         <internal_notes>9/4: entered separate job from Friedman campus visit for admin purposes. Will also charge separately. Joanie and Jodi both holding 10:45 and 12:45 on Friday to shoot this. Will make final decision when we find out the exact time.
--Katy</internal_notes>
+-Katy
+
+9/17:  Delivered via Photo Shelter - ANI</internal_notes>
         <billing_notes>Jodi's portrait rate</billing_notes>
         <category>Editorial</category>
     </jobs>
@@ -73877,13 +73742,14 @@ Andrea </delivery_special>
         <delivery_method>CD</delivery_method>
         <delivery_special>This will be part of a package that will be going on the homepage in Oct. I will be going to the event as well.</delivery_special>
         <slug>ribbon</slug>
-        <status>Completed</status>
+        <status>Delivered</status>
         <estimate>125</estimate>
         <estimate2>25</estimate2>
         <photog_id>7</photog_id>
         <submitted_at>2009-09-09 11:05:22</submitted_at>
         <accepted_at>2009-09-15 10:51:59</accepted_at>
         <completed_at>2009-09-18 15:04:57</completed_at>
+        <delivered_at>2009-10-07 15:16:03</delivered_at>
         <internal_notes></internal_notes>
         <billing_notes>1 hour @ $150/hour</billing_notes>
         <category>Editorial</category>
@@ -73930,14 +73796,15 @@ On Oct. 5, we'd like to schedule a shoot following the department meeting (1:15-
 
 Ilse will be the main contact for the shoot on both days, but I will be on hand to help facilitate as well.</delivery_special>
         <slug>headshots</slug>
-        <status>Completed</status>
+        <status>Delivered</status>
         <estimate>200</estimate>
         <estimate2>25</estimate2>
         <photog_id>28</photog_id>
         <submitted_at>2009-09-09 11:20:37</submitted_at>
         <accepted_at>2009-09-16 14:03:30</accepted_at>
         <completed_at>2009-09-21 15:42:38</completed_at>
-        <internal_notes></internal_notes>
+        <delivered_at>2009-10-08 10:44:13</delivered_at>
+        <internal_notes>10/8:  Delivered via CD - ANI</internal_notes>
         <billing_notes>1.5 hours @ $150/hour</billing_notes>
         <category>Other</category>
     </jobs>
@@ -73971,14 +73838,15 @@ Ilse will be the main contact for the shoot on both days, but I will be on hand 
         <delivery_method>CD</delivery_method>
         <delivery_special>This is a small gathering of faculty and staff who have given to Tufts in their will. The Provost will host the breakfast. We will want candid photos, and perhaps a group photo.</delivery_special>
         <slug>breakfast</slug>
-        <status>Completed</status>
+        <status>Delivered</status>
         <estimate>125</estimate>
         <estimate2>25</estimate2>
         <photog_id>28</photog_id>
         <submitted_at>2009-09-09 15:38:07</submitted_at>
         <accepted_at>2009-09-16 11:38:43</accepted_at>
         <completed_at>2009-09-21 15:42:37</completed_at>
-        <internal_notes></internal_notes>
+        <delivered_at>2009-10-08 10:17:18</delivered_at>
+        <internal_notes>9/24:  Delivered via CD - ANI</internal_notes>
         <billing_notes>1 hour @ $150/hour</billing_notes>
         <category>Event</category>
     </jobs>
@@ -74052,12 +73920,14 @@ Ilse will be the main contact for the shoot on both days, but I will be on hand 
         <delivery_method>CD</delivery_method>
         <delivery_special>We're not sure how formal we'd like the headshots to be. Ideally, we'd like to take the photos outdoors, but this will be weather/sunlight permitting. The idea is consistency for the faculty members, so perhaps a backdrop is best. </delivery_special>
         <slug>headshots</slug>
-        <status>Accepted</status>
+        <status>Completed</status>
         <estimate>125</estimate>
         <estimate2>25</estimate2>
         <photog_id>7</photog_id>
         <submitted_at>2009-09-09 16:16:13</submitted_at>
         <accepted_at>2009-09-16 14:10:43</accepted_at>
+        <completed_at>2009-10-07 15:25:28</completed_at>
+        <delivered_at>2009-10-07 15:25:13</delivered_at>
         <internal_notes>9/21: Should be only 3 people. Adjusting to minimum rate.
 -Katy</internal_notes>
         <billing_notes>~30 min. @ 1 hour minimum rate ($150)</billing_notes>
@@ -74133,13 +74003,16 @@ Ilse will be the main contact for the shoot on both days, but I will be on hand 
         <delivery_method>CD</delivery_method>
         <delivery_special>We need photographs of some new staff members to add to the office website. We'll be at a staff meeting on September 23rd and can stay after 3 pm for photos. </delivery_special>
         <slug>headshots</slug>
-        <status>Accepted</status>
+        <status>Paid</status>
         <estimate>125</estimate>
         <estimate2>25</estimate2>
         <photog_id>28</photog_id>
         <submitted_at>2009-09-10 12:53:55</submitted_at>
         <accepted_at>2009-09-16 14:05:24</accepted_at>
-        <internal_notes></internal_notes>
+        <completed_at>2009-10-08 10:09:43</completed_at>
+        <delivered_at>2009-10-08 10:44:47</delivered_at>
+        <paid_at>2009-10-08 15:00:03</paid_at>
+        <internal_notes>10/8:  Delivered via CD - ANI</internal_notes>
         <billing_notes>1 hour @ $150/hour</billing_notes>
         <category>Other</category>
     </jobs>
@@ -74173,13 +74046,14 @@ Ilse will be the main contact for the shoot on both days, but I will be on hand 
         <delivery_method>CD</delivery_method>
         <delivery_special>We will like to request Joanie Tobin for the job if she is available.  As far as the shooting, we always like to have both speaker photos as well as crowd shots.  Please note that the format of this event will be a panel conversation.</delivery_special>
         <slug>panel</slug>
-        <status>Completed</status>
+        <status>Delivered</status>
         <estimate>200</estimate>
         <estimate2>25</estimate2>
         <photog_id>7</photog_id>
         <submitted_at>2009-09-10 14:18:07</submitted_at>
         <accepted_at>2009-09-10 14:39:21</accepted_at>
         <completed_at>2009-09-18 15:04:57</completed_at>
+        <delivered_at>2009-10-07 15:16:03</delivered_at>
         <internal_notes></internal_notes>
         <billing_notes>1.5 hours @ $150/hour</billing_notes>
         <category>Event</category>
@@ -74267,13 +74141,14 @@ Since it's Grafton, I can be somewhat flexible on the due date -- the story need
         <delivery_special>This is for a piece on MOS's firefly watch which is Adam's brainchild. Not sure how his lab is set up but if there is the possibility of getting some specimen in the photo that would be great. Anything firefly related really. He listed a number of times he would be available, so feel free to contact him. Tuesday afternoon from 1-3 works, Wednesday morning from 11-12 works, and Wednesday afternoon from 1-4 works.  Thursday afternoon from 1-4 also works.
 </delivery_special>
         <slug>south</slug>
-        <status>Completed</status>
+        <status>Delivered</status>
         <estimate>125</estimate>
         <estimate2>25</estimate2>
         <photog_id>28</photog_id>
         <submitted_at>2009-09-14 09:12:17</submitted_at>
         <accepted_at>2009-09-17 13:13:46</accepted_at>
         <completed_at>2009-09-21 15:42:37</completed_at>
+        <delivered_at>2009-10-08 10:18:56</delivered_at>
         <internal_notes>9/15: Emailed him about this week.
 -Katy
 
@@ -74288,7 +74163,9 @@ Thank you very much,
 Adam 
 
 9/16: Georgy would like to have these for the 9/21 issue of E-News. Adam has 12-4 free on Friday, so we'll try to schedule it for then. If Joanie is busy, I will ask Alonso or maybe Jodi to shoot.
--Katy</internal_notes>
+-Katy
+
+9/22:  Delivered via Photoshelter - ANI</internal_notes>
         <billing_notes></billing_notes>
         <category>Editorial</category>
     </jobs>
@@ -74326,14 +74203,18 @@ Adam
 6:00pm - 6:30pm Reception in ASEAN Mezzanine, Cabot Intercultural Center
 6:30pm - 9:00pm Dinner at Gifford House</delivery_special>
         <slug>snyder</slug>
-        <status>Accepted</status>
+        <status>Delivered</status>
         <estimate>250</estimate>
         <estimate2>50</estimate2>
         <photog_id>28</photog_id>
         <submitted_at>2009-09-14 10:39:15</submitted_at>
         <accepted_at>2009-09-28 12:56:31</accepted_at>
+        <completed_at>2009-10-08 10:09:43</completed_at>
+        <delivered_at>2009-10-08 14:37:00</delivered_at>
         <internal_notes>9/21: Splitting off dinner from lecture and reception as per email from Jenna.
--Katy</internal_notes>
+-Katy
+
+10/8:  Delivered via CD - ANI</internal_notes>
         <billing_notes></billing_notes>
         <category>Event</category>
     </jobs>
@@ -74371,14 +74252,15 @@ Paul says the next opportunities to shoot her are home games Tuesday, Sept. 15 a
 
 Please talk with me or Paul for any background.</delivery_special>
         <slug>cadigan</slug>
-        <status>Completed</status>
+        <status>Delivered</status>
         <estimate>125</estimate>
         <estimate2>25</estimate2>
         <photog_id>28</photog_id>
         <submitted_at>2009-09-14 15:31:14</submitted_at>
         <accepted_at>2009-09-15 15:10:10</accepted_at>
         <completed_at>2009-09-17 10:20:13</completed_at>
-        <internal_notes></internal_notes>
+        <delivered_at>2009-10-08 10:15:54</delivered_at>
+        <internal_notes>9/18:  Delivered via CD - ANI</internal_notes>
         <billing_notes></billing_notes>
         <category>Editorial</category>
     </jobs>
@@ -74605,12 +74487,13 @@ Need shots of Rappaport, Dean Rosenblatt and the usual array of gleeful students
 
 Make shots available to Betsy Hayes via Merlin or whatever that system is morphing into.</delivery_special>
         <slug>whitecoat</slug>
-        <status>Accepted</status>
+        <status>Completed</status>
         <estimate>250</estimate>
         <estimate2>50</estimate2>
         <photog_id>28</photog_id>
         <submitted_at>2009-09-17 13:36:18</submitted_at>
         <accepted_at>2009-09-29 14:11:37</accepted_at>
+        <completed_at>2009-10-08 10:09:43</completed_at>
         <internal_notes>9/23: Emailed freelancer Kelvin Ma at Joanie's suggestion.
 -Katy</internal_notes>
         <billing_notes>2 hours @ $150/hour (possibly more if this runs long)</billing_notes>
@@ -74646,13 +74529,15 @@ Make shots available to Betsy Hayes via Merlin or whatever that system is morphi
         <delivery_method>CD</delivery_method>
         <delivery_special>Please include exterior shots of library.</delivery_special>
         <slug>stock</slug>
-        <status>Completed</status>
+        <status>Paid</status>
         <estimate></estimate>
         <estimate2></estimate2>
         <photog_id>7</photog_id>
         <submitted_at>2009-09-17 13:44:49</submitted_at>
         <accepted_at>2009-09-21 10:39:00</accepted_at>
         <completed_at>2009-09-24 10:30:01</completed_at>
+        <delivered_at>2009-10-07 15:16:03</delivered_at>
+        <paid_at>2009-10-13 15:30:32</paid_at>
         <internal_notes>9/17: To piggyback w/ Jenny Gilbert shoot. Shots of library for Tufts.edu (deliver to Bill/Efi).
 -Katy</internal_notes>
         <billing_notes>no charge</billing_notes>
@@ -74696,14 +74581,15 @@ Thank you!!</shoot_directions>
 
 Candids and posed shots.</delivery_special>
         <slug>music</slug>
-        <status>Completed</status>
+        <status>Delivered</status>
         <estimate>125</estimate>
         <estimate2>25</estimate2>
         <photog_id>28</photog_id>
         <submitted_at>2009-09-17 14:50:40</submitted_at>
         <accepted_at>2009-09-20 13:23:01</accepted_at>
         <completed_at>2009-09-21 15:42:38</completed_at>
-        <internal_notes></internal_notes>
+        <delivered_at>2009-10-08 10:19:37</delivered_at>
+        <internal_notes>9/22:  Delivered via Photoshelter - ANI</internal_notes>
         <billing_notes></billing_notes>
         <category>Event</category>
     </jobs>
@@ -74780,12 +74666,13 @@ Thank you in advance.</delivery_special>
         <delivery_method>CD</delivery_method>
         <delivery_special></delivery_special>
         <slug>dinner</slug>
-        <status>Accepted</status>
+        <status>Completed</status>
         <estimate></estimate>
         <estimate2></estimate2>
         <photog_id>24</photog_id>
         <submitted_at>2009-09-21 16:35:26</submitted_at>
         <accepted_at>2009-09-28 12:01:22</accepted_at>
+        <completed_at>2009-10-08 10:09:43</completed_at>
         <internal_notes></internal_notes>
         <billing_notes></billing_notes>
         <category>Event</category>
@@ -74802,8 +74689,9 @@ Thank you in advance.</delivery_special>
         <billing_deptid>C135100</billing_deptid>
         <billing_idr></billing_idr>
         <shoot_name>Dennett - Language and the Mind class</shoot_name>
-        <shoot_start>1:30</shoot_start>
-        <shoot_end>2:40</shoot_end>
+        <shoot_date>2009-10-07</shoot_date>
+        <shoot_start>1:30 pm</shoot_start>
+        <shoot_end>2:40 pm</shoot_end>
         <shoot_duedate>2009-10-09</shoot_duedate>
         <shoot_contact>Georgiana Cohen</shoot_contact>
         <shoot_phone>617-627-2482</shoot_phone>
@@ -74830,12 +74718,17 @@ Class is held 1:30 to ~2:45. Description on website says 2:20 but when Suzanne a
 Class description:
 http://ase.tufts.edu/philosophy/courses/descriptions.asp#003</delivery_special>
         <slug>dennett</slug>
-        <status>Pending</status>
-        <estimate></estimate>
-        <estimate2></estimate2>
+        <status>Accepted</status>
+        <estimate>200</estimate>
+        <estimate2>25</estimate2>
+        <photog_id>7</photog_id>
         <submitted_at>2009-09-21 17:06:50</submitted_at>
-        <internal_notes></internal_notes>
-        <billing_notes>tbd depending on length of shoot</billing_notes>
+        <accepted_at>2009-10-01 17:02:41</accepted_at>
+        <internal_notes>10/7: Need re-shoot. emailed Dennett today to ask. Copied Katy. - jt
+
+9/30: Emailed him about next wk.
+-Katy</internal_notes>
+        <billing_notes>90 minutes @ $150/hour</billing_notes>
         <category>Editorial</category>
     </jobs>
     <jobs>
@@ -74868,13 +74761,14 @@ http://ase.tufts.edu/philosophy/courses/descriptions.asp#003</delivery_special>
         <delivery_method>CD</delivery_method>
         <delivery_special></delivery_special>
         <slug>volleyball</slug>
-        <status>Completed</status>
+        <status>Delivered</status>
         <estimate></estimate>
         <estimate2></estimate2>
         <photog_id>28</photog_id>
         <submitted_at>2009-09-22 10:47:36</submitted_at>
         <completed_at>2009-09-22 10:58:24</completed_at>
-        <internal_notes></internal_notes>
+        <delivered_at>2009-10-08 10:17:57</delivered_at>
+        <internal_notes>9/24:  Delivered via Photoshelter - ANI</internal_notes>
         <billing_notes>NO CHARGE - STOCK</billing_notes>
         <category>Stock</category>
     </jobs>
@@ -74954,13 +74848,15 @@ Please chat with Efi and me about this before shooting, too.
 
 NOTE: she's sometimes difficult to track down, and is dealing with health issues with a parent. If she balks at going downtown, you can shoot her in Medford.</delivery_special>
         <slug>brodley</slug>
-        <status>Accepted</status>
+        <status>Delivered</status>
         <estimate>125</estimate>
         <estimate2>25</estimate2>
         <photog_id>28</photog_id>
         <attachment1>FE_sabbatical_program.doc</attachment1>
         <submitted_at>2009-09-22 16:37:28</submitted_at>
         <accepted_at>2009-09-24 14:58:03</accepted_at>
+        <completed_at>2009-10-08 10:09:43</completed_at>
+        <delivered_at>2009-10-08 10:22:30</delivered_at>
         <internal_notes>9/23: Emailed her.
 -Katy
 
@@ -74975,51 +74871,10 @@ BEST:  Oct 30 11:30-12:30
 Next best: October 29 10:30 - 11:30
 Oct 1: 10:30-11:30, 1:30-2:30
 
+10/2:  Delivered via Photoshelter - ANI
 Sorry to be so restrictive but I leave for Cornell University on Friday and don't return until Monday afternoon.
 
 -Carla </internal_notes>
-        <billing_notes></billing_notes>
-        <category>Editorial</category>
-    </jobs>
-    <jobs>
-        <id>1822</id>
-        <requester_name>Taylor McNeil</requester_name>
-        <requester_dept>Publications</requester_dept>
-        <requester_address>80 George Street</requester_address>
-        <requester_campus>Medford/Somerville</requester_campus>
-        <requester_email>taylor.mcneil@tufts.edu</requester_email>
-        <requester_phone>627-4503</requester_phone>
-        <billing_acctnum></billing_acctnum>
-        <billing_deptid></billing_deptid>
-        <billing_idr></billing_idr>
-        <shoot_name>lecture by Ray Murray, A51</shoot_name>
-        <shoot_date>2009-10-02</shoot_date>
-        <shoot_start>4:30 p.m.</shoot_start>
-        <shoot_end>5:30 p.m.</shoot_end>
-        <shoot_duedate>2009-10-09</shoot_duedate>
-        <shoot_contact>Taylor McNeil</shoot_contact>
-        <shoot_phone>627-4503</shoot_phone>
-        <shoot_email>taylor.mcneil@tufts.edu</shoot_email>
-        <shoot_address>Room 100, Lane Hall</shoot_address>
-        <shoot_directions></shoot_directions>
-        <delivery_pubname>p: Tufts Journal</delivery_pubname>
-        <delivery_pubtype>Website</delivery_pubtype>
-        <delivery_other></delivery_other>
-        <delivery_format>JPG</delivery_format>
-        <delivery_color>RGB</delivery_color>
-        <delivery_size>hi-res</delivery_size>
-        <delivery_method>CD</delivery_method>
-        <delivery_special>â€œForensic Geology: Earthly Crimes Solved with Dirtâ€ â€“ a talk by Raymond Murray, PhD, sponsored by the Geology Dept.
-
-Need a lecturing shot and an informal shot.</delivery_special>
-        <slug>murray</slug>
-        <status>Accepted</status>
-        <estimate>125</estimate>
-        <estimate2>25</estimate2>
-        <photog_id>28</photog_id>
-        <submitted_at>2009-09-22 16:59:10</submitted_at>
-        <accepted_at>2009-09-28 12:56:32</accepted_at>
-        <internal_notes></internal_notes>
         <billing_notes></billing_notes>
         <category>Editorial</category>
     </jobs>
@@ -75069,12 +74924,13 @@ She should meet at the offices of Alternatives for Community &amp; Environment (
 
 Penn</delivery_special>
         <slug>loh</slug>
-        <status>Accepted</status>
+        <status>Completed</status>
         <estimate>250</estimate>
         <estimate2>50</estimate2>
         <photog_id>7</photog_id>
         <submitted_at>2009-09-23 09:07:57</submitted_at>
         <accepted_at>2009-09-28 13:22:37</accepted_at>
+        <completed_at>2009-10-02 14:50:00</completed_at>
         <internal_notes>9/23: Emailed him. Am going to ask Georgy about possibly shooting this at a field site--seems more interesting than his office.
 -Katy
 
@@ -75137,6 +74993,9 @@ Thanks -- Jeff </delivery_special>
         <estimate2>75</estimate2>
         <submitted_at>2009-09-23 13:24:00</submitted_at>
         <internal_notes>9/29: Kristen is moving to SC. Will need to find another photographer for this job.
+-Katy
+
+10/5: Meghan has found an NYC photographer and will forward us info.
 -Katy</internal_notes>
         <billing_notes>3 hours @ $150/hour</billing_notes>
         <category>Event</category>
@@ -75218,10 +75077,13 @@ Alumnae Lounge: Same</shoot_directions>
 
 Any further Questions can be directed to Jeff Winey, info listed above.</delivery_special>
         <slug>panel</slug>
-        <status>Pending</status>
+        <status>Completed</status>
         <estimate>250</estimate>
         <estimate2>50</estimate2>
+        <photog_id>64</photog_id>
         <submitted_at>2009-09-23 16:18:24</submitted_at>
+        <accepted_at>2009-10-05 15:46:51</accepted_at>
+        <completed_at>2009-10-08 10:09:43</completed_at>
         <internal_notes></internal_notes>
         <billing_notes>2 hours @ $150/hour</billing_notes>
         <category>Event</category>
@@ -75258,13 +75120,14 @@ Any further Questions can be directed to Jeff Winey, info listed above.</deliver
 
 </delivery_special>
         <slug>monsters</slug>
-        <status>Completed</status>
+        <status>Delivered</status>
         <estimate></estimate>
         <estimate2></estimate2>
         <photog_id>28</photog_id>
         <submitted_at>2009-09-24 15:41:06</submitted_at>
         <completed_at>2009-09-25 11:37:06</completed_at>
-        <internal_notes></internal_notes>
+        <delivered_at>2009-10-08 10:20:40</delivered_at>
+        <internal_notes>9/28: Delivered via CD - ANI</internal_notes>
         <billing_notes></billing_notes>
         <category>Editorial</category>
     </jobs>
@@ -75296,13 +75159,46 @@ Any further Questions can be directed to Jeff Winey, info listed above.</deliver
         <delivery_color>RGB</delivery_color>
         <delivery_size>hi-res</delivery_size>
         <delivery_method>CD</delivery_method>
-        <delivery_special>Homecoming 2009.  take photos of Alumni, students, athletes; this is the first year of the Jumbo Stampede, a 5K road race.  I'd like shot of the start and finish.  Race begins at 9:00 am.</delivery_special>
+        <delivery_special>
+
+The following shots would be great:
+8:40AM at &quot;J&quot; Field (between Powderhouse Boulevard and the Ellis Oval) Jumbo Stampede 
+-shots of people lining up and getting ready. 
+- Adele Bacow, the starter-#1.  shots of her pre race and at race start.
+
+9:15AM Race Finish at J Field/Ellis Oval
+- first few people coming through.
+
+11:00AM Tailgating/Alumni Tent
+- Tailgaters, and others partying around.  Shots under our tent.
+- VIPs as indicated
+
+11:00 - 12:30PM The latino alumni brunch at  Bolles house/Latino Center
+
+12:15PM Best of Tailgate Competition.  Judging starts at 12:15 PM from the Jumbo Tent--located at J-Field.  
+--walk around the field testing food.  
+--award the best of tailgate.
+
+12:50PM Football Game 
+--football game 
+-- players entering the game in clean uniform.  
+-- 1:00 pm, kick off) 
+
+1:30PM men's soccer at Kraft Field
+
+3:30PM women's soccer Kraft Field
+
+
+</delivery_special>
         <slug>homecoming</slug>
-        <status>Pending</status>
+        <status>Accepted</status>
         <estimate></estimate>
         <estimate2></estimate2>
+        <photog_id>22</photog_id>
         <submitted_at>2009-09-24 16:54:35</submitted_at>
-        <internal_notes></internal_notes>
+        <accepted_at>2009-10-05 16:19:41</accepted_at>
+        <internal_notes>10/5: JT &amp; AN; estimate tk later this week pending schedule.
+-Katy</internal_notes>
         <billing_notes></billing_notes>
         <category>Event</category>
     </jobs>
@@ -75541,11 +75437,15 @@ Thank you.</delivery_special>
         <delivery_method>Email</delivery_method>
         <delivery_special></delivery_special>
         <slug>walt</slug>
-        <status>Pending</status>
+        <status>Delivered</status>
         <estimate>125</estimate>
         <estimate2>25</estimate2>
+        <photog_id>28</photog_id>
         <submitted_at>2009-09-28 12:13:34</submitted_at>
-        <internal_notes></internal_notes>
+        <accepted_at>2009-09-30 16:10:48</accepted_at>
+        <completed_at>2009-10-08 10:09:43</completed_at>
+        <delivered_at>2009-10-08 10:21:45</delivered_at>
+        <internal_notes>10/6:  Delivered via CD - ANI</internal_notes>
         <billing_notes>1 hour @ $150/hour</billing_notes>
         <category>Other</category>
     </jobs>
@@ -75646,7 +75546,7 @@ Thank you.</delivery_special>
         <shoot_end>5:30 pm</shoot_end>
         <shoot_duedate>2009-10-20</shoot_duedate>
         <shoot_contact>Michelle Hinkle</shoot_contact>
-        <shoot_phone>73324</shoot_phone>
+        <shoot_phone>617.966.8877</shoot_phone>
         <shoot_email>michelle.hinkle@tufts.edu</shoot_email>
         <shoot_address>National Mall, Washington, DC</shoot_address>
         <shoot_directions></shoot_directions>
@@ -75657,7 +75557,8 @@ Thank you.</delivery_special>
         <delivery_color>RGB</delivery_color>
         <delivery_size>hi-res</delivery_size>
         <delivery_method>CD</delivery_method>
-        <delivery_special>Email from Michelle:
+        <delivery_special>
+Email from Michelle:
 
 We expect to make our way to the Curio House site no later than 4pm, after the business meeting adjourns. We are not likely to linger longer than 5:30pm before moving the group for dinner.
 I've attached the agenda and attendance for your reference.
@@ -75666,13 +75567,722 @@ The idea was presented that the university might want to capture the group of ov
 
 If there are any special needs/requirements, I'm unaware of them. </delivery_special>
         <slug>overseers</slug>
+        <status>Accepted</status>
+        <estimate>400</estimate>
+        <estimate2></estimate2>
+        <photog_id>70</photog_id>
+        <submitted_at>2009-09-29 10:44:20</submitted_at>
+        <accepted_at>2009-10-02 11:55:03</accepted_at>
+        <internal_notes></internal_notes>
+        <billing_notes>Dennis's fee: $400 plus travel</billing_notes>
+        <category>Event</category>
+    </jobs>
+    <jobs>
+        <id>1839</id>
+        <requester_name>Mari Anne Paraskevas</requester_name>
+        <requester_dept>Special Events</requester_dept>
+        <requester_address>80 George Street</requester_address>
+        <requester_campus>Medford/Somerville</requester_campus>
+        <requester_email>mari_anne.paraskevas@tufts.edu</requester_email>
+        <requester_phone>75689</requester_phone>
+        <billing_acctnum>6050</billing_acctnum>
+        <billing_deptid>C495743</billing_deptid>
+        <billing_idr></billing_idr>
+        <shoot_name>Solar Decathlon Reception and Curio House Tour</shoot_name>
+        <shoot_date>2009-10-16</shoot_date>
+        <shoot_start>6:00 pm</shoot_start>
+        <shoot_end>9:00 pm</shoot_end>
+        <shoot_duedate>2009-10-30</shoot_duedate>
+        <shoot_contact>Mari Anne Paraskevas</shoot_contact>
+        <shoot_phone>75689</shoot_phone>
+        <shoot_email>mari_anne.paraskevas@tufts.edu</shoot_email>
+        <shoot_address>Washington, DC</shoot_address>
+        <shoot_directions>Hyatt Regency on Capitol Hill and National Mall, Washington, DC</shoot_directions>
+        <delivery_pubname>e: Solar Decathlon Reception and Curio House Tour</delivery_pubname>
+        <delivery_pubtype></delivery_pubtype>
+        <delivery_other></delivery_other>
+        <delivery_format>JPG</delivery_format>
+        <delivery_color>RGB</delivery_color>
+        <delivery_size>hi-res</delivery_size>
+        <delivery_method>CD</delivery_method>
+        <delivery_special>Hi Katy,
+
+I have already contacted a photographer that we used for a Fletcher event for our event on Oct. 16 in Washington, DC, but could you confirm with him and let him know what he needs to fot Tufts events? Below is his contact information -- call me with any questions. Thanks!
+-----------
+Hello Mari Anne, very good to hear from you.  Yes I will be happy to cover it for you, will send details by tomorrow.
+
+kaveh
+
+email: sardari@hotmail.com
+http://www.facebook.com/pages/Kaveh-Sardari-Photographer/47152232381
+* http://www.youtube.com/user/mymotiononline
+* http://twitter.com/kavehsar
+ 
+KAVEH SARDARI   |   SARDARI GROUP, INC. PHOTOGRAPHY   |   Tel: 703.599.7296   |    www.sardari.com
+
+</delivery_special>
+        <slug>reception</slug>
+        <status>Accepted</status>
+        <estimate></estimate>
+        <estimate2></estimate2>
+        <photog_id>65</photog_id>
+        <submitted_at>2009-10-01 13:35:33</submitted_at>
+        <accepted_at>2009-10-05 16:07:47</accepted_at>
+        <internal_notes></internal_notes>
+        <billing_notes></billing_notes>
+        <category>Event</category>
+    </jobs>
+    <jobs>
+        <id>1840</id>
+        <requester_name>Paul Sweeney</requester_name>
+        <requester_dept>Athletics</requester_dept>
+        <requester_address>Halligan Hall</requester_address>
+        <requester_campus>Medford/Somerville</requester_campus>
+        <requester_email>paul.sweeney@tufts.edu</requester_email>
+        <requester_phone>617/627-3586</requester_phone>
+        <billing_acctnum></billing_acctnum>
+        <billing_deptid></billing_deptid>
+        <billing_idr></billing_idr>
+        <shoot_name>Tufts Athletics Annual Awards Ceremony</shoot_name>
+        <shoot_date>2009-10-09</shoot_date>
+        <shoot_start>6:30 pm</shoot_start>
+        <shoot_end>9:00 pm</shoot_end>
+        <shoot_duedate>2009-10-23</shoot_duedate>
+        <shoot_contact>Paul Sweeney</shoot_contact>
+        <shoot_phone>617/627-3586</shoot_phone>
+        <shoot_email>paul.sweeney@tufts.edu</shoot_email>
+        <shoot_address>Alumnae Lounge/Cohen Auditorium</shoot_address>
+        <shoot_directions></shoot_directions>
+        <delivery_pubname>e: Athletics Awards Ceremony</delivery_pubname>
+        <delivery_pubtype>Website</delivery_pubtype>
+        <delivery_other></delivery_other>
+        <delivery_format>JPG</delivery_format>
+        <delivery_color>RGB</delivery_color>
+        <delivery_size>hi-res</delivery_size>
+        <delivery_method>CD</delivery_method>
+        <delivery_special>Group pictures at pre-ceremony reception ... Photos of award winners during awards ceremony</delivery_special>
+        <slug>awards</slug>
+        <status>Accepted</status>
+        <estimate>300</estimate>
+        <estimate2>75</estimate2>
+        <photog_id>16</photog_id>
+        <submitted_at>2009-10-02 15:26:14</submitted_at>
+        <accepted_at>2009-10-05 16:17:57</accepted_at>
+        <internal_notes></internal_notes>
+        <billing_notes>2.5 hours @ $150/hour</billing_notes>
+        <category>Event</category>
+    </jobs>
+    <jobs>
+        <id>1841</id>
+        <requester_name>Joanie Tobin</requester_name>
+        <requester_dept>Photo</requester_dept>
+        <requester_address>80 George St.</requester_address>
+        <requester_campus>Medford/Somerville</requester_campus>
+        <requester_email>joanie.tobin@tufts.edu</requester_email>
+        <requester_phone>617.627.4280</requester_phone>
+        <billing_acctnum></billing_acctnum>
+        <billing_deptid></billing_deptid>
+        <billing_idr></billing_idr>
+        <shoot_name>Solar Decathlon</shoot_name>
+        <shoot_date>2009-10-08</shoot_date>
+        <shoot_start>TBA</shoot_start>
+        <shoot_end></shoot_end>
+        <shoot_duedate>2009-10-09</shoot_duedate>
+        <shoot_contact>Joanie Tobin</shoot_contact>
+        <shoot_phone>617.627.4280</shoot_phone>
+        <shoot_email>joanie.tobin@tufts.edu</shoot_email>
+        <shoot_address>National Mall, Washington, D.C.</shoot_address>
+        <shoot_directions></shoot_directions>
+        <delivery_pubname>p: various</delivery_pubname>
+        <delivery_pubtype></delivery_pubtype>
+        <delivery_other>all</delivery_other>
+        <delivery_format>JPG</delivery_format>
+        <delivery_color>RGB</delivery_color>
+        <delivery_size>hi-res</delivery_size>
+        <delivery_method>CD</delivery_method>
+        <delivery_special>Please schedule shoots at your discretion based on the info below and on any conversations we have. 
+
+Team Boston Website: http://www.livecurio.us/
+Competition Website: http://www.solardecathlon.org/
+Michelle's Cell: 617.966.8877
+
+We know we need:
+1. Several nice exteriors by mid-morning Friday.
+2. Contest activities (connect with students for specific times)
+3. Judging (connect with students/judges for specific times)
+4. Any construction still going on (Probably only building on Tues. 10/6) 
+
+Otherwise, document the Tufts students' experience in the competition, the various elements of the house and anything else Tufts-related. </delivery_special>
+        <slug>solar</slug>
+        <status>Accepted</status>
+        <estimate></estimate>
+        <estimate2></estimate2>
+        <photog_id>70</photog_id>
+        <submitted_at>2009-10-05 18:47:21</submitted_at>
+        <accepted_at>2009-10-05 18:52:51</accepted_at>
+        <internal_notes>Made a new job for the rest of the solar decathlon shoots.</internal_notes>
+        <billing_notes></billing_notes>
+        <category>Editorial</category>
+    </jobs>
+    <jobs>
+        <id>1842</id>
+        <requester_name>Taylor McNeil</requester_name>
+        <requester_dept>Publications</requester_dept>
+        <requester_address>80 George Street</requester_address>
+        <requester_campus>Medford/Somerville</requester_campus>
+        <requester_email>taylor.mcneil@tufts.edu</requester_email>
+        <requester_phone>627-4503</requester_phone>
+        <billing_acctnum></billing_acctnum>
+        <billing_deptid></billing_deptid>
+        <billing_idr></billing_idr>
+        <shoot_name>new Eliot-Pearson playground</shoot_name>
+        <shoot_start></shoot_start>
+        <shoot_end></shoot_end>
+        <shoot_duedate>2009-10-15</shoot_duedate>
+        <shoot_contact>Debbie LeeKeenan</shoot_contact>
+        <shoot_phone>627-3434</shoot_phone>
+        <shoot_email>debbie.leekeenan@tufts.edu</shoot_email>
+        <shoot_address>playground behind Eliot-Pearson</shoot_address>
+        <shoot_directions></shoot_directions>
+        <delivery_pubname>p: Tufts Journal</delivery_pubname>
+        <delivery_pubtype>Website</delivery_pubtype>
+        <delivery_other></delivery_other>
+        <delivery_format>JPG</delivery_format>
+        <delivery_color>RGB</delivery_color>
+        <delivery_size>hi-res</delivery_size>
+        <delivery_method>CD</delivery_method>
+        <delivery_special>This so for a story on the new &quot;natural playground&quot; that was recently installed behind the Eliot-Pearson school. We'd like to get a few shots with kids playing there. It's an unusual playground, with few structures, which is popular in Europe. 
+
+Need to talk with Debbie about the permissions on photographing kids first.
+
+Marjorie is writing the story -- feel free to talk with her for more info. (She's in Monday through mid-day Wednesday.)</delivery_special>
+        <slug>playground</slug>
         <status>Pending</status>
         <estimate></estimate>
         <estimate2></estimate2>
-        <submitted_at>2009-09-29 10:44:20</submitted_at>
+        <submitted_at>2009-10-06 16:07:14</submitted_at>
         <internal_notes></internal_notes>
-        <billing_notes>tbd @ $150/hour</billing_notes>
+        <billing_notes></billing_notes>
+        <category>Editorial</category>
+    </jobs>
+    <jobs>
+        <id>1843</id>
+        <requester_name>Taylor McNeil</requester_name>
+        <requester_dept>Publications</requester_dept>
+        <requester_address>80 George Street</requester_address>
+        <requester_campus>Medford/Somerville</requester_campus>
+        <requester_email>taylor.mcneil@tufts.edu</requester_email>
+        <requester_phone>627-4503</requester_phone>
+        <billing_acctnum></billing_acctnum>
+        <billing_deptid></billing_deptid>
+        <billing_idr></billing_idr>
+        <shoot_name>Richard Vogel</shoot_name>
+        <shoot_date>2009-10-16</shoot_date>
+        <shoot_start>11:00 am</shoot_start>
+        <shoot_end>12:00 pm</shoot_end>
+        <shoot_duedate>2009-10-15</shoot_duedate>
+        <shoot_contact>Richard Vogel</shoot_contact>
+        <shoot_phone>627-4260, or 627-3211 (Staff Ass</shoot_phone>
+        <shoot_email>richard.vogel@tufts.edu </shoot_email>
+        <shoot_address>open</shoot_address>
+        <shoot_directions></shoot_directions>
+        <delivery_pubname>p: Tufts Journal</delivery_pubname>
+        <delivery_pubtype>Website</delivery_pubtype>
+        <delivery_other></delivery_other>
+        <delivery_format>JPG</delivery_format>
+        <delivery_color>RGB</delivery_color>
+        <delivery_size>hi-res</delivery_size>
+        <delivery_method>CD</delivery_method>
+        <delivery_special>Marjorie has written a story about the work Vogel is doing, along with an engineering graduate student, Brian Thomas, about building a model of groundwater pathways in Boston. 
+
+Many buildings in Boston still have wooden pilings, which must be surrounded by groundwater, or else they rot. Vogel is examining efforts by a city agency to maintain groundwater around these pilings, to keep the buildings structurally sound. 
+
+Please talk with Taylor or Marjorie about this. Marjorie was going to be in touch with Vogel to see if he had suggestions about where to shoot this. Might just be here on campus, but might not. We might have flexibility on the pub date on this, and thus when the photo can be shot.</delivery_special>
+        <slug>vogel</slug>
+        <status>Accepted</status>
+        <estimate>125</estimate>
+        <estimate2>25</estimate2>
+        <photog_id>28</photog_id>
+        <submitted_at>2009-10-06 16:13:08</submitted_at>
+        <accepted_at>2009-10-15 09:25:59</accepted_at>
+        <internal_notes>10/7: standard portrait on Medford campus, poss. with grad student. per Taylor. -jt
+
+10/9: Emailed him.
+-Katy
+
+10/9: He says Fri morning is best. Will ask Taylor about deadline.
+-Katy</internal_notes>
+        <billing_notes>1 hour @ $150/hour</billing_notes>
+        <category>Editorial</category>
+    </jobs>
+    <jobs>
+        <id>1844</id>
+        <requester_name>Mark Sullivan</requester_name>
+        <requester_dept>Advancement Communications</requester_dept>
+        <requester_address>80 George St</requester_address>
+        <requester_campus>Medford/Somerville</requester_campus>
+        <requester_email>mark.sullivan@tufts.edu</requester_email>
+        <requester_phone>x7.4302</requester_phone>
+        <billing_acctnum>5443</billing_acctnum>
+        <billing_deptid>C495500</billing_deptid>
+        <billing_idr></billing_idr>
+        <shoot_name>Javier Macaya and Angelos Metaxa</shoot_name>
+        <shoot_date>2009-10-15</shoot_date>
+        <shoot_start>10:15 a.m.</shoot_start>
+        <shoot_end>10:30 a.m.</shoot_end>
+        <shoot_duedate>2009-10-29</shoot_duedate>
+        <shoot_contact>Mark Sullivan</shoot_contact>
+        <shoot_phone>x7.4302</shoot_phone>
+        <shoot_email>mark.sullivan@tufts.edu</shoot_email>
+        <shoot_address>Institute for Global Leadership, 96 Packard Ave</shoot_address>
+        <shoot_directions>Institute for Global Leadership
+96 Packard Avenue
+Medford, MA 02155
+
+phone: +1 617.627.3314
+fax: +1 617.627.3940
+</shoot_directions>
+        <delivery_pubname>p: Beyond Boundaries website</delivery_pubname>
+        <delivery_pubtype>Website</delivery_pubtype>
+        <delivery_other></delivery_other>
+        <delivery_format>JPG</delivery_format>
+        <delivery_color>RGB</delivery_color>
+        <delivery_size>hi-res</delivery_size>
+        <delivery_method>CD</delivery_method>
+        <delivery_special>Javier Macaya and Angelos Metaxa, Tufts alumni and IGL Board members, will both be on campus on the 15th of October for a day long review of the Empower program which they so generously funded. We are doing a &quot;Profile in Giving&quot; on them for the campaign website. An attractive portrait of them together would be fine. Thanks! Mark S</delivery_special>
+        <slug>macaya</slug>
+        <status>Accepted</status>
+        <estimate>125</estimate>
+        <estimate2>25</estimate2>
+        <photog_id>28</photog_id>
+        <submitted_at>2009-10-09 17:12:43</submitted_at>
+        <accepted_at>2009-10-14 15:02:02</accepted_at>
+        <internal_notes></internal_notes>
+        <billing_notes>1 hour @ $150/hour</billing_notes>
+        <category>Marketing</category>
+    </jobs>
+    <jobs>
+        <id>1845</id>
+        <requester_name>Noah Kirksey</requester_name>
+        <requester_dept>Provost Office</requester_dept>
+        <requester_address>Provost Office, Ballou Hall 1 st Floor</requester_address>
+        <requester_campus>Medford/Somerville</requester_campus>
+        <requester_email>Noah.Kirksey@tufts.edu</requester_email>
+        <requester_phone>7-3931</requester_phone>
+        <billing_acctnum>6001</billing_acctnum>
+        <billing_deptid>C150111</billing_deptid>
+        <billing_idr></billing_idr>
+        <shoot_name>Graduate Diversity Reception</shoot_name>
+        <shoot_date>2009-10-30</shoot_date>
+        <shoot_start>4:30pm</shoot_start>
+        <shoot_end>6:30pm</shoot_end>
+        <shoot_duedate>2009-11-13</shoot_duedate>
+        <shoot_contact>Noah Kirksey</shoot_contact>
+        <shoot_phone>7-3931</shoot_phone>
+        <shoot_email>Noah.Kirksey@tufts.edu</shoot_email>
+        <shoot_address>Coolidge Room, Ballou Hall</shoot_address>
+        <shoot_directions></shoot_directions>
+        <delivery_pubname>e: Graduate Student Diversity Reception</delivery_pubname>
+        <delivery_pubtype></delivery_pubtype>
+        <delivery_other></delivery_other>
+        <delivery_format>JPG</delivery_format>
+        <delivery_color>RGB</delivery_color>
+        <delivery_size>hi-res</delivery_size>
+        <delivery_method>CD</delivery_method>
+        <delivery_special>This reception is being held for graduate students of diverse backgrounds at Tufts.  I would like for the photographer to capture as many action shots as possible. Candids, group shots, and posed shots are also welcome.</delivery_special>
+        <slug>reception</slug>
+        <status>Pending</status>
+        <estimate>250</estimate>
+        <estimate2>50</estimate2>
+        <submitted_at>2009-10-14 11:23:21</submitted_at>
+        <internal_notes></internal_notes>
+        <billing_notes>2 hours @ $150/hour</billing_notes>
         <category>Event</category>
+    </jobs>
+    <jobs>
+        <id>1846</id>
+        <requester_name>Noah Kirksey</requester_name>
+        <requester_dept>Provost Office</requester_dept>
+        <requester_address>Provost Office, Ballou Hall 1 st Floor</requester_address>
+        <requester_campus>Medford/Somerville</requester_campus>
+        <requester_email>Noah.Kirksey@tufts.edu</requester_email>
+        <requester_phone>7-3931</requester_phone>
+        <billing_acctnum>6001</billing_acctnum>
+        <billing_deptid>C110150</billing_deptid>
+        <billing_idr></billing_idr>
+        <shoot_name>Provost Fellows Breakfast</shoot_name>
+        <shoot_date>2009-11-02</shoot_date>
+        <shoot_start>8:30am</shoot_start>
+        <shoot_end>10:30am</shoot_end>
+        <shoot_duedate>2009-11-16</shoot_duedate>
+        <shoot_contact>Noah Kirksey</shoot_contact>
+        <shoot_phone>7-3931</shoot_phone>
+        <shoot_email>Noah.Kirksey@tufts.edu</shoot_email>
+        <shoot_address>Chase Dinning Hall, Medford Campus</shoot_address>
+        <shoot_directions></shoot_directions>
+        <delivery_pubname>e: Provost Fellows Breakfast</delivery_pubname>
+        <delivery_pubtype></delivery_pubtype>
+        <delivery_other></delivery_other>
+        <delivery_format>JPG</delivery_format>
+        <delivery_color>RGB</delivery_color>
+        <delivery_size>hi-res</delivery_size>
+        <delivery_method>CD</delivery_method>
+        <delivery_special>This reception is being held for graduate students of the Provost Fellows Program.  I will need the photographer to  take head shots of the students to post on the Fellows website.  I will also like them to capture action shoots, candid shots, group shots, and posed shots are also welcome.</delivery_special>
+        <slug>breakfast</slug>
+        <status>Pending</status>
+        <estimate>250</estimate>
+        <estimate2>50</estimate2>
+        <submitted_at>2009-10-14 11:30:39</submitted_at>
+        <internal_notes></internal_notes>
+        <billing_notes>2 hours @ $150/hour</billing_notes>
+        <category>Event</category>
+    </jobs>
+    <jobs>
+        <id>1847</id>
+        <requester_name>Fred Kalil</requester_name>
+        <requester_dept>Publications</requester_dept>
+        <requester_address>80 George Street</requester_address>
+        <requester_campus>Medford/Somerville</requester_campus>
+        <requester_email>frederick.kalil@tufts.edu</requester_email>
+        <requester_phone>617-627-2119</requester_phone>
+        <billing_acctnum></billing_acctnum>
+        <billing_deptid></billing_deptid>
+        <billing_idr></billing_idr>
+        <shoot_name>Chemistry faculty</shoot_name>
+        <shoot_date>2009-10-20</shoot_date>
+        <shoot_start>1:00PM</shoot_start>
+        <shoot_end>2:30PM</shoot_end>
+        <shoot_duedate>2009-10-27</shoot_duedate>
+        <shoot_contact>Joshua Kritzer</shoot_contact>
+        <shoot_phone>617-627-0451</shoot_phone>
+        <shoot_email>Joshua.Kritzer@tufts.edu </shoot_email>
+        <shoot_address>Chemistry Department, 62 Talbot Ave.</shoot_address>
+        <shoot_directions>Environmental portraits of Hyunmin Yi, Sam Thomas, and Joshua Kritzer</shoot_directions>
+        <delivery_pubname>p: Graduate chemistry booklet</delivery_pubname>
+        <delivery_pubtype></delivery_pubtype>
+        <delivery_other></delivery_other>
+        <delivery_format>JPG</delivery_format>
+        <delivery_color>RGB</delivery_color>
+        <delivery_size>hi-res</delivery_size>
+        <delivery_method>CD</delivery_method>
+        <delivery_special></delivery_special>
+        <slug>faculty</slug>
+        <status>Pending</status>
+        <estimate></estimate>
+        <estimate2></estimate2>
+        <submitted_at>2009-10-14 12:30:54</submitted_at>
+        <internal_notes></internal_notes>
+        <billing_notes></billing_notes>
+        <category>Editorial</category>
+    </jobs>
+    <jobs>
+        <id>1848</id>
+        <requester_name>Meghan Burke</requester_name>
+        <requester_dept>Special Events</requester_dept>
+        <requester_address>80 George St.</requester_address>
+        <requester_campus>Medford/Somerville</requester_campus>
+        <requester_email>photo@tufts.edu</requester_email>
+        <requester_phone>74969</requester_phone>
+        <billing_acctnum></billing_acctnum>
+        <billing_deptid></billing_deptid>
+        <billing_idr></billing_idr>
+        <shoot_name>Parents Weekend - Arts</shoot_name>
+        <shoot_date>2009-10-17</shoot_date>
+        <shoot_start>2:30 pm</shoot_start>
+        <shoot_end>3:30 pm</shoot_end>
+        <shoot_duedate>2009-10-19</shoot_duedate>
+        <shoot_contact>Meghan Burke</shoot_contact>
+        <shoot_phone>74969</shoot_phone>
+        <shoot_email>photo@tufts.edu</shoot_email>
+        <shoot_address>Talbot Ave. in front of Sophia Gordon</shoot_address>
+        <shoot_directions></shoot_directions>
+        <delivery_pubname>p: various</delivery_pubname>
+        <delivery_pubtype></delivery_pubtype>
+        <delivery_other>all</delivery_other>
+        <delivery_format>JPG</delivery_format>
+        <delivery_color>RGB</delivery_color>
+        <delivery_size>hi-res</delivery_size>
+        <delivery_method>CD</delivery_method>
+        <delivery_special>We need features from the following (don't need full coverage of each):
+
+2:30 pm
+Festival Kick-Off in the Square
+Gospel Choir, directed by David Coleman, Lecturer, Department of Music, performs
+ARTS SQUARE, STEPS OF SOPHIA GORDON HALL, EAST (RAIN: COHEN AUDITORIUM)
+
+Musical songs and short scenes
+Torn Ticket II, a student-run musical theater group, performs
+AIDEKMAN ARTS CENTER, BALCH ARENA THEATER
+
+2:40 pm
+Music on the Patio
+S-Factor, an all-male student a capella group, performs
+MAYER CAMPUS CENTER PATIO (RAIN: MAYER CAMPUS CENTER, HOTUNG CAFÃ‰)
+
+Music in the Square
+The Tufts Big Band, directed by Joel LaRue Smith, Lecturer, Department of Music, performs
+ARTS SQUARE, TALBOT STAGE
+
+2:50 pm
+Martial Arts in the Square
+Tae Kwon Do, the oldest martial arts group at Tufts, performs
+ARTS SQUARE, ASHER PLAZA (RAIN: SOPHIA GORDON HALL, MULTIPURPOSE ROOM)
+
+2:55 pm
+Music in the Square
+Jackson Jills, an all-female student
+a capella group, performs
+ARTS SQUARE, STEPS OF SOPHIA GORDON HALL, EAST (RAIN: AIDEKMAN ARTS CENTER, COHEN AUDITORIUM)
+Dance Ensemble In-Progress
+Daniel McCusker, Lecturer, Department of Drama and Dance, directs student dancers
+JACKSON GYM, JACKSON DANCE LAB
+
+3:05 pm
+Dancing in the Ballroom
+Tufts Ballroom Dance Club and Team performs for an hour, followed by an hour lesson
+MAYER CAMPUS CENTER, HOTUNG CAFÃ‰
+
+3:10 pm
+Music in the Square
+Amalgamates, a Tufts co-ed student a capella group, performs
+ARTS SQUARE, STEPS OF SOPHIA GORDON HALL, EAST (RAIN: COHEN AUDITORIUM)
+
+Theater in a Music Space
+Major: Undecided, a sketch comedy group, performs
+GRANOFF MUSIC CENTER, DISTLER PERFORMANCE HALL
+
+3:25 pm
+Dance in the Square
+Turbo, a student break-dancing group, performs
+ARTS SQUARE, TALBOT STAGE (RAIN: GRANOFF MUSIC CENTER, MURNANE LOBBY)</delivery_special>
+        <slug>parentsarts</slug>
+        <status>Accepted</status>
+        <estimate>125</estimate>
+        <estimate2>25</estimate2>
+        <photog_id>73</photog_id>
+        <submitted_at>2009-10-14 13:57:25</submitted_at>
+        <accepted_at>2009-10-16 16:55:38</accepted_at>
+        <internal_notes>10/14: emailed photo night list for photogs. jt</internal_notes>
+        <billing_notes></billing_notes>
+        <category>Event</category>
+    </jobs>
+    <jobs>
+        <id>1849</id>
+        <requester_name>Meghan Burke</requester_name>
+        <requester_dept>Special Events</requester_dept>
+        <requester_address>80 George St.</requester_address>
+        <requester_campus>Medford/Somerville</requester_campus>
+        <requester_email>photo@tufts.edu</requester_email>
+        <requester_phone>74969</requester_phone>
+        <billing_acctnum></billing_acctnum>
+        <billing_deptid></billing_deptid>
+        <billing_idr></billing_idr>
+        <shoot_name>Parents Weekend - Sports</shoot_name>
+        <shoot_date>2009-10-17</shoot_date>
+        <shoot_start>12:30 pm</shoot_start>
+        <shoot_end>3:30 pm</shoot_end>
+        <shoot_duedate>2009-10-09</shoot_duedate>
+        <shoot_contact>Meghan Burke</shoot_contact>
+        <shoot_phone>74969</shoot_phone>
+        <shoot_email>photo@tufts.edu</shoot_email>
+        <shoot_address>Bello and Kraft fields, possibly Ellis Oval</shoot_address>
+        <shoot_directions></shoot_directions>
+        <delivery_pubname>p: various</delivery_pubname>
+        <delivery_pubtype></delivery_pubtype>
+        <delivery_other>all</delivery_other>
+        <delivery_format>JPG</delivery_format>
+        <delivery_color>RGB</delivery_color>
+        <delivery_size>hi-res</delivery_size>
+        <delivery_method>CD</delivery_method>
+        <delivery_special>12:00 pm - get there at 12:30
+Field Hockey vs. Trinity
+BELLO FIELD
+
+1:30 pm
+Football vs. Trinity
+ELLIS OVAL
+
+2:30 pm
+Menâ€™s Soccer vs. Trinity
+KRAFT FIELD</delivery_special>
+        <slug>parentssports</slug>
+        <status>Accepted</status>
+        <estimate>375</estimate>
+        <estimate2>75</estimate2>
+        <photog_id>72</photog_id>
+        <submitted_at>2009-10-14 13:59:01</submitted_at>
+        <accepted_at>2009-10-14 14:00:48</accepted_at>
+        <internal_notes>10/14: emailed photo night list for photogs. jt</internal_notes>
+        <billing_notes>3 hours @ $150/hour</billing_notes>
+        <category>Event</category>
+    </jobs>
+    <jobs>
+        <id>1850</id>
+        <requester_name>Karolina Wrobel</requester_name>
+        <requester_dept>University Advancement </requester_dept>
+        <requester_address>75 Kneelland Street, Boston (physical address)</requester_address>
+        <requester_campus>Boston</requester_campus>
+        <requester_email>karolina.wrobel@tufts.edu</requester_email>
+        <requester_phone>617-636-2977</requester_phone>
+        <billing_acctnum>5443</billing_acctnum>
+        <billing_deptid>C452504</billing_deptid>
+        <billing_idr></billing_idr>
+        <shoot_name>Isner Lecture </shoot_name>
+        <shoot_date>2009-11-04</shoot_date>
+        <shoot_start>4 pm</shoot_start>
+        <shoot_end>5:30 pm </shoot_end>
+        <shoot_duedate>2009-11-30</shoot_duedate>
+        <shoot_contact>Karolina Wrobel</shoot_contact>
+        <shoot_phone>617-636-2977</shoot_phone>
+        <shoot_email>karolina.wrobel@tufts.edu</shoot_email>
+        <shoot_address>Boston </shoot_address>
+        <shoot_directions>Behrakis Auditorium
+Jaharis Family Center for Biomedical and Nutritional Sciences 
+Tufts University School of Medicine 
+150 Harrison Avenue
+Boston, MA 02111 
+
+Please park at the Tufts Medical Center garage, I will give the photographer a parking sticker. Thanks.
+</shoot_directions>
+        <delivery_pubname>e: Isner Lecture 2009</delivery_pubname>
+        <delivery_pubtype></delivery_pubtype>
+        <delivery_other></delivery_other>
+        <delivery_format>JPG</delivery_format>
+        <delivery_color>RGB</delivery_color>
+        <delivery_size>hi-res</delivery_size>
+        <delivery_method>CD</delivery_method>
+        <delivery_special>The lecture starts at 4 pm and should be over by 5 pm. After the lecture, the Dean will pose with the speaker and the donors for pictures. </delivery_special>
+        <slug>isner</slug>
+        <status>Pending</status>
+        <estimate>200</estimate>
+        <estimate2>25</estimate2>
+        <submitted_at>2009-10-14 17:17:13</submitted_at>
+        <internal_notes></internal_notes>
+        <billing_notes>1.5 hours @ $150/hour</billing_notes>
+        <category>Event</category>
+    </jobs>
+    <jobs>
+        <id>1851</id>
+        <requester_name>Omar A. Dauhajre</requester_name>
+        <requester_dept>Fares Center for Eastern Mediterranean Studies</requester_dept>
+        <requester_address>160 Packard Avenue</requester_address>
+        <requester_campus>Medford/Somerville</requester_campus>
+        <requester_email>omar.dauhajre@tufts.edu</requester_email>
+        <requester_phone>617.627.6560</requester_phone>
+        <billing_acctnum></billing_acctnum>
+        <billing_deptid>c156500</billing_deptid>
+        <billing_idr></billing_idr>
+        <shoot_name>â€œReflections on U.S.-Iran Relationsâ€</shoot_name>
+        <shoot_date>2009-10-21</shoot_date>
+        <shoot_start>5:30pm</shoot_start>
+        <shoot_end>6:45pm</shoot_end>
+        <shoot_duedate>2009-11-11</shoot_duedate>
+        <shoot_contact>Omar A. Dauhajre</shoot_contact>
+        <shoot_phone>617.627.6560</shoot_phone>
+        <shoot_email>omar.dauhajre@tufts.edu</shoot_email>
+        <shoot_address>Cabot 702</shoot_address>
+        <shoot_directions></shoot_directions>
+        <delivery_pubname>p: Pharos Newsletter</delivery_pubname>
+        <delivery_pubtype></delivery_pubtype>
+        <delivery_other>Newsletter</delivery_other>
+        <delivery_format>JPG</delivery_format>
+        <delivery_color>RGB</delivery_color>
+        <delivery_size>hi-res</delivery_size>
+        <delivery_method>CD</delivery_method>
+        <delivery_special>We will like to request Joanie Tobin for this job.  As always, we want to have speaker shots as well as audience shots.
+
+Thank you in advance!</delivery_special>
+        <slug>lecture</slug>
+        <status>Accepted</status>
+        <estimate>200</estimate>
+        <estimate2>25</estimate2>
+        <photog_id>7</photog_id>
+        <submitted_at>2009-10-15 10:47:13</submitted_at>
+        <accepted_at>2009-10-15 17:00:45</accepted_at>
+        <internal_notes></internal_notes>
+        <billing_notes>1.5 hours @ $150/hour</billing_notes>
+        <category>Event</category>
+    </jobs>
+    <jobs>
+        <id>1852</id>
+        <requester_name>Dave Nuscher</requester_name>
+        <requester_dept>Adv. Comm</requester_dept>
+        <requester_address>80 George St.</requester_address>
+        <requester_campus>Medford/Somerville</requester_campus>
+        <requester_email>dave.nuscher@tufts.edu</requester_email>
+        <requester_phone>74062</requester_phone>
+        <billing_acctnum></billing_acctnum>
+        <billing_deptid></billing_deptid>
+        <billing_idr></billing_idr>
+        <shoot_name>sackler spaces</shoot_name>
+        <shoot_date>2009-10-15</shoot_date>
+        <shoot_start>1:00PM</shoot_start>
+        <shoot_end>2:00PM</shoot_end>
+        <shoot_duedate>2009-10-15</shoot_duedate>
+        <shoot_contact>Dave Nuscher</shoot_contact>
+        <shoot_phone>74062</shoot_phone>
+        <shoot_email>dave.nuscher@tufts.edu</shoot_email>
+        <shoot_address>Sackler-M&amp;V Boston Campus</shoot_address>
+        <shoot_directions></shoot_directions>
+        <delivery_pubname>medical advancement slideshow</delivery_pubname>
+        <delivery_pubtype></delivery_pubtype>
+        <delivery_other>PowerPoint Presentation</delivery_other>
+        <delivery_format>JPG</delivery_format>
+        <delivery_color>RGB</delivery_color>
+        <delivery_size>hi-res</delivery_size>
+        <delivery_method>CD</delivery_method>
+        <delivery_special></delivery_special>
+        <slug>spaces</slug>
+        <status>Completed</status>
+        <estimate>125</estimate>
+        <estimate2>50</estimate2>
+        <photog_id>28</photog_id>
+        <submitted_at>2009-10-15 15:42:52</submitted_at>
+        <accepted_at>2009-10-15 15:43:27</accepted_at>
+        <completed_at>2009-10-15 15:43:30</completed_at>
+        <internal_notes></internal_notes>
+        <billing_notes></billing_notes>
+        <category>Marketing</category>
+    </jobs>
+    <jobs>
+        <id>1853</id>
+        <requester_name>Fred Kalil</requester_name>
+        <requester_dept>Publications</requester_dept>
+        <requester_address>80 George Street</requester_address>
+        <requester_campus>Medford/Somerville</requester_campus>
+        <requester_email>frederick.kalil@tufts.edu</requester_email>
+        <requester_phone>617-627-2119</requester_phone>
+        <billing_acctnum></billing_acctnum>
+        <billing_deptid></billing_deptid>
+        <billing_idr></billing_idr>
+        <shoot_name>Lisa Coleman</shoot_name>
+        <shoot_date>2009-10-29</shoot_date>
+        <shoot_start>2:30PM</shoot_start>
+        <shoot_end>3:30PM</shoot_end>
+        <shoot_duedate>2009-10-29</shoot_duedate>
+        <shoot_contact>Fred Kalil</shoot_contact>
+        <shoot_phone>617-627-2119</shoot_phone>
+        <shoot_email>frederick.kalil@tufts.edu</shoot_email>
+        <shoot_address>Medford campus</shoot_address>
+        <shoot_directions>As discussed with Alonso</shoot_directions>
+        <delivery_pubname>p: Diversity booklet</delivery_pubname>
+        <delivery_pubtype></delivery_pubtype>
+        <delivery_other>booklet</delivery_other>
+        <delivery_format>JPG</delivery_format>
+        <delivery_color>RGB</delivery_color>
+        <delivery_size>hi-res</delivery_size>
+        <delivery_method>CD</delivery_method>
+        <delivery_special>As discussed with Alonso</delivery_special>
+        <slug>coleman</slug>
+        <status>Accepted</status>
+        <estimate></estimate>
+        <estimate2></estimate2>
+        <photog_id>28</photog_id>
+        <submitted_at>2009-10-15 17:05:27</submitted_at>
+        <accepted_at>2009-10-16 10:18:58</accepted_at>
+        <internal_notes></internal_notes>
+        <billing_notes></billing_notes>
+        <category>Editorial</category>
     </jobs>
   <!-- Table jobs_projects -->
     <jobs_projects>
@@ -77528,6 +78138,27 @@ If there are any special needs/requirements, I'm unaware of them. </delivery_spe
         <name>Jared Charney</name>
         <phone>917-238-1523</phone>
         <email>jaredcharney@comcast.net</email>
+        <affiliation>Freelance</affiliation>
+    </photogs>
+    <photogs>
+        <photog_id>70</photog_id>
+        <name>Dennis Drenner</name>
+        <phone>301-437-6972 </phone>
+        <email>drenner@speakeasy.net</email>
+        <affiliation>Freelance</affiliation>
+    </photogs>
+    <photogs>
+        <photog_id>72</photog_id>
+        <name>Dominick Reuter</name>
+        <phone>617-935-8347</phone>
+        <email>dominick.reuter@gmail.com</email>
+        <affiliation>Freelance</affiliation>
+    </photogs>
+    <photogs>
+        <photog_id>73</photog_id>
+        <name>Donald Rockhead</name>
+        <phone>617-461-5868</phone>
+        <email>donnyrock@gmail.com</email>
         <affiliation>Freelance</affiliation>
     </photogs>
   <!-- Table projects -->

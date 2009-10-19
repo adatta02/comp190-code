@@ -6,24 +6,24 @@ include_once "../../config/ProjectConfiguration.class.php";
 $configuration = ProjectConfiguration::getApplicationConfiguration('frontend', 'prod', true);
 $sfContext = sfContext::createInstance($configuration);
 
+/*
 $u = new sfGuardUser();
 $u->setPassword("asdfasdf");
 $u->setUsername("adatta02");
 $u->save();
+*/
 
-die();
-/*
 $c = new Criteria();
-$c->add(JobPeer::G_CAL_ID, null);
+// $c->add(JobPeer::G_CAL_ID, null);
 
 foreach( JobPeer::doSelect( $c ) as $job ){
   
   list( $hour, $min, $sec ) = explode(":", $job->getStartTime());
   list( $eHour, $eMin, $eSec ) = explode(":", $job->getEndTime());
   
-  echo $job->getId() . "\n";
-  
   if( $hour < 5 && ($eHour+12) < 24 ){
+    echo $job->getId() . "\n";
+      
     $hour += 12;
     $start = $hour . ":" . $min . ":" . $sec;
     $job->setStartTime( $start );
@@ -33,19 +33,19 @@ foreach( JobPeer::doSelect( $c ) as $job ){
     $end = $hour . ":" . $min . ":" . $sec;
     
     $job->setEndTime( $end );
-  }
-  
-  try{
+    
+    try{
     $job->save();
-  }catch( Exception $ex ){
-    echo $ex->getMessage();
-    echo $ex->getTraceAsString();
+    }catch( Exception $ex ){
+      echo $ex->getMessage();
+      echo $ex->getTraceAsString();
+    }
   }
   
   sleep(1);
 }
 
-*/
+die();
 
 $c = new Criteria();
 $c->add( JobPhotographerPeer::PHOTOGRAPHER_ID, 25 );
