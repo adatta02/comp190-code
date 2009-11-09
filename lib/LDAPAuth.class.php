@@ -23,6 +23,12 @@ class LDAPAuth extends sfGuardSecurityUser{
   		return false;
   	}
 
+  	$res = $sfGuard->checkPasswordByGuard($password);
+  	
+  	if( $res ){
+  	  return true;
+  	}
+  	
   	if( !function_exists("ldap_connect") ){
   	  return true;
   	}
@@ -71,6 +77,7 @@ class LDAPAuth extends sfGuardSecurityUser{
 			$sfprofile->setEmail($email);
 			$sfprofile->setFirstName($firstName);
 			$sfprofile->setLastName($lastName);
+			
 			if($sfprofile->getUserTypeId() == NULL)
 			 $sfprofile->setUserTypeId(sfConfig::get("app_user_type_user"));
 			$sfprofile->save();

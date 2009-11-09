@@ -14,7 +14,7 @@ class BasicInfoJobForm extends BaseFormPropel
   {
     $this->setWidgets(array(
       'publication_id' => new sfWidgetFormPropelChoice(array('model' => 'Publication', 'add_empty' => true)),
-      'status_id'      => new sfWidgetFormPropelChoice(array('model' => 'Status', 'add_empty' => true)),
+      'status_id'      => new sfWidgetFormPropelChoice(array('model' => 'Status', 'add_empty' => false)),
       'event'          => new sfWidgetFormInput(),
       'date'           => new sfWidgetFormJQueryDate(),
       'start_time'     => new sfWidgetjQueryTimepickr(),
@@ -28,7 +28,7 @@ class BasicInfoJobForm extends BaseFormPropel
 
     $this->setValidators(array(
       'publication_id' => new sfValidatorPropelChoice(array('model' => 'Publication', 'column' => 'id', 'required' => false)),
-      'status_id'      => new sfValidatorPropelChoice(array('model' => 'Status', 'column' => 'id', 'required' => false)),
+      'status_id'      => new sfValidatorPropelChoice(array('model' => 'Status', 'column' => 'id', 'required' => true)),
       'event'          => new sfValidatorString(array('max_length' => 64, 'required' => false)),
       'date'           => new sfValidatorDate(array('required' => false)),
       'start_time'     => new sfValidatorDateTime(array('required' => false)),
@@ -63,7 +63,7 @@ class BasicInfoJobForm extends BaseFormPropel
   	}
   	
   	$j->setPublicationId($this->getValue("publication_id"));
-  	$j->setStatusId(sfConfig::get("app_job_status_pending", 1));
+  	$j->setStatusId($this->getValue("status_id"));
   	$j->setEvent($this->getValue("event"));
   	$j->setDate($this->getValue("date"));
   	$j->setStartTime($this->getValue("start_time"));

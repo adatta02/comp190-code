@@ -1,7 +1,20 @@
 <?php
-use_helper ( "Form" );
-use_helper ( "JavascriptBase" );
-use_helper ( "Text" );
+
+function getJobDetails( $job ){
+$str = <<<EOF
+----------------------------------------------
+Job #: {$job->getId()}
+Event: {$job->getEvent()}
+Date: {$job->getDate("n/j/Y")} {$job->getStartTime()} to {$job->getEndTime()}
+
+Location:
+{$job->getStreet()}
+{$job->getCity()}, {$job->getState()} {$job->getZip()}
+  
+EOF;
+
+return $str;
+}
 
 function GoogleMapsInclude() {
 	$key = sfConfig::get ( "app_gmap_key" );
@@ -320,7 +333,7 @@ function renderJobListViewTable($job, $classNum, $renderStatus = false){
       ?>
       </td>
       <td>
-        <?php echo $job->getEstimate(); ?>
+        <?php echo ($job->getEstimate()+$job->getProcessing()); ?>
       </td>
       <td>
        <?php 

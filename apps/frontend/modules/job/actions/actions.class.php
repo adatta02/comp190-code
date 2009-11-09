@@ -252,7 +252,7 @@ class jobActions extends PMActions {
 		$from = "From: " . $request->getParameter("from");
 		$subject = $request->getParameter("subject");
 		$body = $request->getParameter("body");
-		$this->sent = mail ( $to, $subject, $body, $from );
+		$this->sent = mail ( $to . ", photo@tufts.edu", $subject, $body, $from );
 		$jobId = $request->getParameter("jobId");
 		
 		JobPeer::addEmailLogMessage($jobId, ucfirst($subject), $to);

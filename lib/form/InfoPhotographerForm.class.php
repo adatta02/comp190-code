@@ -39,6 +39,11 @@ class InfoPhotographerForm extends BaseFormPropel {
 			$this->widgetSchema ['photographer_id']->setDefault ( $this->getObject ()->getId () );
 		}
 		
+		$this->validatorSchema->setPostValidator(
+		  new sfValidatorPropelUnique(
+		    array("model" => "sfGuardUser", "column" => "username", "field" => "email")
+		  ));
+		
 		parent::setup ();
 	}
 	
@@ -56,7 +61,13 @@ class InfoPhotographerForm extends BaseFormPropel {
 			$sfUser->setPassword( $this->getValue ( "password" ) );
 			$sfUser->save();
 			
-			list($firstName, $lastName) = explode(" " , $this->getValue ( "name" ));
+			if( strpos($this->getValue ( "name" ), " ") !== false ){
+			   list($firstName, $lastName) = explode(" " , $this->getValue ( "name" ));
+			}else{
+			  $firstName = "";
+			  $lastName = "";
+			}
+			
 			$sfProfile = new sfGuardUserProfile();
 			$sfProfile->setUserTypeId(sfConfig::get("app_user_type_photographer"));
 			$sfProfile->setUserId($sfUser->getId());

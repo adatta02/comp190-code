@@ -1,3 +1,5 @@
+<?php use_helper("Form", "Text", "JavascriptBase"); ?>
+
 <?php $noSort = (isset($noSort) ? $noSort : false); if(!$noSort): ?>
   <div class="box">
       <label for="sort-by-options">Sort By:</label>

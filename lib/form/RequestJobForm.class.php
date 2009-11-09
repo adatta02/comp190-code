@@ -143,6 +143,8 @@ class RequestJobForm extends sfForm {
 	
 	public function save($con = null) {
 	  
+	  sfContext::getInstance()->getConfiguration()->loadHelpers(array('Url','Object','Tag', 'Text', 'PMRender', 'Asset', 'Helper'));
+	  
 		$j = new Job ( );
 		$j->setEvent ( $this->getValue ( "event" ) );
 		$j->setStartTime ( $this->getValue ( "start_time" ) );
@@ -185,10 +187,14 @@ University Photography
 Medford, MA 02155
 Tel: 617.627.4282
 Fax: 617.627.3549
-photo@tufts.edu";
+photo@tufts.edu
+
+
+" . getJobDetails( $j );
 		
-		mail($this->getValue("email"), "Your University Photography Job", $body, 
-		                                "From: photo@tufts.edu");
+		mail($this->getValue("email") . ", photo@tufts.edu", 
+		        "University Photography Job #" . $j->getId() . " - " . $j->getEvent(), 
+		        $body, "From: photo@tufts.edu");
 		
 		$user = sfContext::getInstance()->getUser();
 		
@@ -206,7 +212,7 @@ photo@tufts.edu";
       $clientProfile->setName($this->getValue("name"));
       $clientProfile->setDepartment($this->getValue("department"));
       $clientProfile->setAddress($this->getValue("address"));
-      $clientProfile->setEmail("email");
+      $clientProfile->setEmail($this->getValue("email"));
       $clientProfile->setPhone($this->getValue("phone"));
       $clientProfile->save();
       
@@ -226,7 +232,7 @@ photo@tufts.edu";
       $clientProfile->setName($this->getValue("name"));
       $clientProfile->setDepartment($this->getValue("department"));
       $clientProfile->setAddress($this->getValue("address"));
-      $clientProfile->setEmail("email");
+      $clientProfile->setEmail($this->getValue("email"));
       $clientProfile->setPhone($this->getValue("phone"));
       $clientProfile->save();
 		}

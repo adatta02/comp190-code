@@ -45,14 +45,14 @@ class Job extends BaseJob
 		return ClientPeer::doSelect($c);
 	}
 	
- public function getPhotographers(){
+ public function getPhotographers( ){
     $c = new Criteria();
     $c->add(JobPhotographerPeer::JOB_ID, $this->getId());
     
     $photographerIds = array();
     $jc = JobPhotographerPeer::doSelectJoinPhotographer($c);
-    $names = array();
     
+    $names = array();
     foreach($jc as $j){
     	$names[] = $j->getPhotographer();
     }

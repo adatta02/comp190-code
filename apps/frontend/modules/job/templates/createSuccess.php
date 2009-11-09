@@ -60,13 +60,13 @@ if($sf_user->hasCredential("admin")){
         <?php endif; ?>
               
         <?php if(!$isAdmin): ?>
-           <tr><?php echo $form["name"]->renderRow(array("readonly" => $isReadonly)); ?></tr>
-           <tr><?php echo $form["department"]->renderRow(array("readonly" => $isReadonly)); ?></tr>
-           <tr><?php echo $form["address"]->renderRow(array("readonly" => $isReadonly)); ?></tr>
-           <tr><?php echo $form["email"]->renderRow(array("readonly" => $isReadonly)); ?></tr>
-           <tr><?php echo $form["phone"]->renderRow(array("readonly" => $isReadonly)); ?></tr>
-           <tr><?php echo $form["acct_num"]->renderRow(array("readonly" => $isReadonly)); ?></tr>
-           <tr><?php echo $form["dept_id"]->renderRow(array("readonly" => $isReadonly)); ?></tr>
+           <tr><?php echo $form["name"]->renderRow( ); ?></tr>
+           <tr><?php echo $form["department"]->renderRow( ); ?></tr>
+           <tr><?php echo $form["address"]->renderRow( ); ?></tr>
+           <tr><?php echo $form["email"]->renderRow( ); ?></tr>
+           <tr><?php echo $form["phone"]->renderRow( ); ?></tr>
+           <tr><?php echo $form["acct_num"]->renderRow( ); ?></tr>
+           <tr><?php echo $form["dept_id"]->renderRow( ); ?></tr>
         <?php else: ?>
           <?php echo $form["name"]->renderRow(); ?>
         <?php endif; ?>

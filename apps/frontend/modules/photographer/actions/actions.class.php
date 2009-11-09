@@ -64,7 +64,8 @@ class photographerActions extends PMActions {
 	}
 	
 	private function bindAndValidateForm($form, $request) {
-		$form->bind ( $request->getParameter ( $form->getName () ), $request->getFiles ( $form->getName () ) );
+		$form->bind ( $request->getParameter ( $form->getName () ), 
+		                $request->getFiles ( $form->getName () ) );
 		if ($form->isValid ()) {
 			$form->save ();
 			return true;
@@ -149,7 +150,7 @@ class photographerActions extends PMActions {
 	}
 	
 	public function executeCreate(sfWebRequest $request) {
-	 $this->InfoForm = new InfoPhotographerForm ( $this->photographer );
+	 $this->InfoForm = new InfoPhotographerForm ( );
 	 $this->InfoForm->setDefault("reset_password", true);
 	 
 	 if($request->isMethod("POST")){

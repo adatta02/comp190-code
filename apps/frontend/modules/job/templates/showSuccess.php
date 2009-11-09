@@ -104,6 +104,8 @@
       }}, {width: 300}))
     .result(function(event, data) { $("#add-photographer-id").val(data[1]); });
     
+    showEmailTemplate();
+    
    });
 
 var lastEmailName = "%name%";
@@ -120,29 +122,52 @@ function showEmailTemplate(){
   $("#email-to").val( "" );
   
   var template = $("#email-template").val();
-  var contactEmail = "<?php echo $job->getContactEmail(); ?>";
-  var contactName = "<?php echo $job->getContactName(); ?>";
+  var contactEmail = "";
+  var contactName = "";
+  var photogEmail = "";
+  var photogName = "";
+  
+  <?php
+  $clients = $job->getClients();
+  if( count($clients) == 1 ){
+    $client = array_shift( $clients );
+    ?>
+    contactEmail = "<?php echo $client->getEmail(); ?>";
+    contactName = "<?php echo $client->getName(); ?>";
+    <?php
+  }elseif( count($clients) > 1 ){
+    $emails = array();
+    foreach( $clients as $client ){
+      $emails[] = $client->getEmail(); 
+    }
+    ?>
+    contactEmail = "<?php echo implode(",", $emails) ?>";
+    contactName = "<?php echo "" ?>";
+    <?php
+  }
+  
+  ?>
   
   if(template == "details"){
-    $("#email-subject").val( "Verify Details" );
-    $("#email-body").val( $("#email-template-details").html() );
+    $("#email-subject").val( "University Photography - Job #<?php echo $job->getId();?> Details" );
+    $("#email-body").val( $("#email-template-details").html().replace("%name%", contactName) );
     $("#email-to").val( contactEmail );
   }
   
   if(template == "acceptance"){
-    $("#email-subject").val( "Job Acceptance" );
-    $("#email-body").val( $("#email-template-acceptance").html() );
+    $("#email-subject").val( "University Photography - Job #<?php echo $job->getId();?> Acceptanced" );
+    $("#email-body").val( $("#email-template-acceptance").html().replace("%name%", contactName) );
     $("#email-to").val( contactEmail );
   }
 
   if(template == "completion"){
-    $("#email-subject").val( "Job Completion" );
-    $("#email-body").val( $("#email-template-completion").html() );
+    $("#email-subject").val( "University Photography - Job #<?php echo $job->getId();?> Completion" );
+    $("#email-body").val( $("#email-template-completion").html().replace("%name%", contactName) );
     $("#email-to").val( contactEmail );
    }
    
    if(template == "assign"){         
-    $("#email-subject").val( "Photographer Assignment" );
+    $("#email-subject").val( "University Photography - Job #<?php echo $job->getId();?> Assignment" );
     $("#email-photographers").show();
     $("#email-body").val( $("#email-template-assign").html() );
    }
@@ -389,8 +414,10 @@ function sendEmail(){
   <br/><br/>
   
   <div id=email-container style="display: none">
-    <form action="<?php echo url_for("job_email"); ?>" method='POST' onsubmit="javascript:sendEmail(); return false;">
-      <label for="email-to">To</label> <input type='text' id='email-to' value='' /> <br />
+    <form action="<?php echo url_for("job_email"); ?>" method='POST' 
+        onsubmit="javascript:sendEmail(); return false;">
+      <label for="email-to">To</label> 
+        <input type='text' id='email-to' value='' size="64" /> <br />
       
       <div id="email-photographers" style="display: none">
         <optgroup>
@@ -403,10 +430,13 @@ function sendEmail(){
         </optgroup>
       </div>
       
-      <label for="email-from">From</label> <input type='text' id='email-from' value='photo@tufts.edu' /> <br />
-      <label for="email-subject">Subject</label> <input type='text' id='email-subject' value='' /> <br />
-      <textarea id='email-body' rows='20' cols='50'>
+      <label for="email-from">From</label> 
+        <input type='text' id='email-from' value='photo@tufts.edu' /> <br />
+      <label for="email-subject">Subject</label> 
+        <input type='text' id='email-subject' value='' size="64" /> <br />
+      <textarea id='email-body' style="width: 500px; height: 400px">
       </textarea>
+      <hr class="space" />
       <input type="submit" value="Send" />
     </form>
   </div>
@@ -415,8 +445,7 @@ function sendEmail(){
   </div>
 </div>
 
-<div id="email-template-assign" style="display: none">
-Dear %name%,
+<div id="email-template-assign" style="display: none">Dear %name%,
 
 Thank you for working on this assignment. 
 
@@ -433,10 +462,12 @@ Medford,MA 02155
 Tel:617.627.4282
 Fax: 617.627.3549
 photo.tufts.edu
+
+<?php echo getJobDetails($job); ?>
+
 </div>
 
-<div id="email-template-completion" style="display: none">
-Dear <?php echo $job->getContactName(); ?>, 
+<div id="email-template-completion" style="display: none">Dear %name%, 
 
 We have photographed our assignment. 
 The photos are being processed and will be delivered to you within 10-14 business days unless otherwise noted. 
@@ -450,10 +481,12 @@ Medford,MA 02155
 Tel:617.627.4282
 Fax: 617.627.3549
 photo.tufts.edu
+
+<?php echo getJobDetails($job); ?>
+
 </div>
 
-<div id="email-template-acceptance" style="display: none">
-Dear <?php echo $job->getContactName(); ?>,
+<div id="email-template-acceptance" style="display: none">Dear %name%,
 
 Here is your final approved photo request. 
 Please review the details and contact us as soon as possible if you need to make changes.
@@ -468,10 +501,12 @@ Medford,MA 02155
 Tel:617.627.4282
 Fax: 617.627.3549
 photo.tufts.edu
+
+<?php echo getJobDetails($job); ?>
+
 </div>
 
-<div id="email-template-details" style="display: none">
-Dear <?php echo $job->getContactName(); ?>,
+<div id="email-template-details" style="display: none;">Dear %name%,
 
 Thank you for submitting your photo assignment request. 
 Please review and confirm with us the details of your job by logging into 
@@ -487,5 +522,8 @@ Medford,MA 02155
 Tel:617.627.4282
 Fax: 617.627.3549
 photo.tufts.edu
+
+<?php echo getJobDetails($job); ?>
+
 </div>
 
