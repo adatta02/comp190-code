@@ -49,15 +49,6 @@ if($sf_user->hasCredential("admin")){
       
     <table>
       <tbody>
-        <?php if($isReadonly): ?>
-          <tr>
-            <td>
-              <small>
-                <a href="#" onclick="javascript:editInfo(); return false;">Edit my information</a>
-              </small>
-            </td>
-          </tr>
-        <?php endif; ?>
               
         <?php if(!$isAdmin): ?>
            <tr><?php echo $form["name"]->renderRow( ); ?></tr>

@@ -30,12 +30,13 @@
           <th>Client</th>
           <th>Photographer</th>
           <th>Date</th>
+          <th></th>
         </tr>
 
     <?php
     $count = 0;
     foreach($pager->getResults() as $i){
-      renderJobListViewTable($i, (($count % 2 == 0) ? "1" : "2"), !$own);
+      renderJobListViewTableClient($i, (($count % 2 == 0) ? "1" : "2"), !$own);
       $count += 1;
     }
     ?>

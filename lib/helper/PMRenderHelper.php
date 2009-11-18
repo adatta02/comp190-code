@@ -10,7 +10,11 @@ Date: {$job->getDate("n/j/Y")} {$job->getStartTime()} to {$job->getEndTime()}
 Location:
 {$job->getStreet()}
 {$job->getCity()}, {$job->getState()} {$job->getZip()}
-  
+
+Contact Name: {$job->getContactName()}
+Contact Email: {$job->getContactEmail()}
+Contact Phone: {$job->getContactPhone()}
+
 EOF;
 
 return $str;
@@ -210,6 +214,59 @@ function renderTagList($job) {
 		}
 	}
 
+}
+
+function renderJobListViewTableClient( $job, $class, $canAdd ){
+  
+  $showRoute = "clientview_job_show";
+  $borderStyle = strtolower(str_replace(" ", "_", $job->getStatus ()->getState ())) . "_bordered";
+?>
+    <tr>
+      <td class="<?php echo $borderStyle; ?>"><?php echo checkbox_tag ( 'job-' . $job->getId (), $job->getId(), 0, 
+                                    array ("class" => "job-check" ) );?></td>
+      <td class="<?php echo $borderStyle; ?>">
+        <?php echo link_to ( $job->getId (), $showRoute, $job ); ?></td>
+      <td class="<?php echo $borderStyle; ?>">
+        <?php renderTagList ( $job ); ?></td>
+      <td>
+        <?php echo $job->getEvent(); ?>
+      </td>
+      <td>
+       <?php 
+       $clients = $job->getClients(); 
+        if(count($clients) == 1){ 
+          $n = array_pop($clients); echo $n;
+        }else if(count($clients) > 1){
+          $names = array();
+          foreach( $clients as $n ){ $names[] = $n->__toString(); }
+          echo "<span class='tooltip' title='" 
+                . join(", ", $names) . "'>" . count( $clients ) . "</span>";
+        }else{
+          echo "-";
+        }?>
+      </td>
+      <td>
+      <?php
+       $photogs = $job->getPhotographers ();
+       if (count ( $photogs ) == 1) :
+         $i = array_pop( $photogs );
+         $name = truncate_text($i->getName(), "16"); 
+         echo link_to ( $name, "photographer_view_jobs", $i );
+       elseif (count ( $photogs ) == 0) :
+          echo "-";
+        else:
+          echo count ( $photogs ) . " Assigned";
+       endif;
+      ?>
+      </td>
+      <td>
+        <?php echo $job->getDate ( "n/j/Y" ) ?>
+      </td>
+      <?php if(sfContext::getInstance()->getUser()->hasCredential("client")): ?>
+        <td><?php echo link_to_function( "Add me as client", "addClient(" . $job->getId() . ")"); ?></td>
+     <?php endif; ?>
+    </tr>
+  <?php
 }
 
 function renderClientJobListView($job, $classNum, $canAdd) {

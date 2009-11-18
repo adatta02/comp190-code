@@ -23,7 +23,9 @@ class clientviewActions extends sfActions {
 			$profile = $this->getUser()->getProfile();
 			
 			$to = "photo@tufts.edu";
-			$subject = $profile->getFirstName() . " " . $profile->getLastName() . " is requestting to be added to job " . $job->getEvent();
+			$subject = $profile->getFirstName() . " " 
+			         . $profile->getLastName() . " is requestting to be added to job " 
+			         . $job->getEvent();
 			
 			mail($to, $subject, $subject);
 			JobPeer::addEmailLogMessage($jobId, "Request to be added", "photo@tufts.edu");
