@@ -6,7 +6,7 @@
  * @package    projectmanager
  * @subpackage form
  * @author     Your name here
- * @version    SVN: $Id: sfPropelFormGeneratedTemplate.php 15484 2009-02-13 13:13:51Z fabien $
+ * @version    SVN: $Id: sfPropelFormGeneratedTemplate.php 16976 2009-04-04 12:47:44Z fabien $
  */
 class BaseJobForm extends BaseFormPropel
 {
@@ -40,7 +40,7 @@ class BaseJobForm extends BaseFormPropel
       'ques2'               => new sfWidgetFormInput(),
       'ques3'               => new sfWidgetFormInput(),
       'slug'                => new sfWidgetFormInput(),
-      'photo_type'          => new sfWidgetFormPropelChoice(array('model' => 'PhotoType', 'add_empty' => true)),
+      'photo_type'          => new sfWidgetFormInput(),
       'processing'          => new sfWidgetFormInput(),
       'g_cal_id'            => new sfWidgetFormInput(),
       'g_cal_id_custom'     => new sfWidgetFormInput(),
@@ -75,7 +75,7 @@ class BaseJobForm extends BaseFormPropel
       'ques2'               => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'ques3'               => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'slug'                => new sfValidatorString(array('max_length' => 255, 'required' => false)),
-      'photo_type'          => new sfValidatorPropelChoice(array('model' => 'PhotoType', 'column' => 'id', 'required' => false)),
+      'photo_type'          => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'processing'          => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'g_cal_id'            => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'g_cal_id_custom'     => new sfValidatorString(array('max_length' => 255, 'required' => false)),

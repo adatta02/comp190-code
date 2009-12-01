@@ -88,9 +88,9 @@
     <column name="dept_id" type="VARCHAR" size="32"/>
     <column name="grant_id" type="VARCHAR" size="32"/>
     <column name="other" type="VARCHAR" size="255"/>
-    <column name="ques1" type="VARCHAR" size="255"/>
-    <column name="ques2" type="VARCHAR" size="255"/>
-    <column name="ques3" type="VARCHAR" size="255"/>
+    <column name="ques1" type="LONGVARCHAR"/>
+    <column name="ques2" type="LONGVARCHAR"/>
+    <column name="ques3" type="LONGVARCHAR"/>
     <column name="slug" type="VARCHAR" size="255"/>
     <column name="photo_type" type="VARCHAR" size="255" />
     <column name="processing" type="VARCHAR" size="255"/>
