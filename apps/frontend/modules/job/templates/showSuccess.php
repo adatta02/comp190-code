@@ -155,7 +155,7 @@ function showEmailTemplate(){
   }
   
   if(template == "acceptance"){
-    $("#email-subject").val( "University Photography - Job #<?php echo $job->getId();?> Acceptanced" );
+    $("#email-subject").val( "University Photography - Job #<?php echo $job->getId();?> Accepted" );
     $("#email-body").val( $("#email-template-acceptance").html().replace("%name%", contactName) );
     $("#email-to").val( contactEmail );
   }

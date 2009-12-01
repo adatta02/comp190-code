@@ -47,14 +47,16 @@
           ?>
        </td>
   </tr>
-  <tr>
-    <td>Department Id</td>
-    <td><?php echo $job->getDeptId() ?></td>
-  </tr>
-  <tr>
-    <td>Account Number</td>
-    <td><?php echo $job->getAcctNum() ?></td>
-  </tr>
+  <?php if($sf_user->hasCredential("admin")) :?>
+    <tr>
+      <td>Department Id</td>
+      <td><?php echo $job->getDeptId() ?></td>
+    </tr>
+    <tr>
+      <td>Account Number</td>
+      <td><?php echo $job->getAcctNum() ?></td>
+    </tr>
+  <?php endif; ?>
   <tr>
     <td>Tags
       <?php if($sf_user->hasCredential("admin")) :?> 

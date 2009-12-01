@@ -6,12 +6,31 @@ include_once "../../config/ProjectConfiguration.class.php";
 $configuration = ProjectConfiguration::getApplicationConfiguration('frontend', 'prod', true);
 $sfContext = sfContext::createInstance($configuration);
 
+$c = new Criteria();
+$c->add(JobPeer::DATE, null, Criteria::NOT_EQUAL);
+$c->addDescendingOrderByColumn( JobPeer::ID );
+
+foreach( JobPeer::doSelect( $c ) as $job ){
+  
+  try{
+    $job->save();
+  }catch(Exception $ex){
+    echo $ex->getMessage();
+  }
+  
+  echo $job->getId() . "\n";
+  
+  sleep(60);
+}
+
+die();
+
 /*
 $u = new sfGuardUser();
 $u->setPassword("asdfasdf");
 $u->setUsername("adatta02");
 $u->save();
-*/
+
 
 $c = new Criteria();
 // $c->add(JobPeer::G_CAL_ID, null);

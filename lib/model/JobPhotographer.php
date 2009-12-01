@@ -33,7 +33,6 @@ class JobPhotographer extends BaseJobPhotographer
         
         if( !$this->getJob()->getDate("U") > 0 ){ return; }
         
-        
         $arr = $this->getJob()->createCalendarArray();
         $arr["calUrl"] = $url;
         $event = sfGCalendar::createJobEvent ( $arr );
