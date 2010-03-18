@@ -12,6 +12,7 @@ class JobForm extends BaseJobForm
 {
   public function configure()
   {
+    
   	$unsetMe = array("id", "status_id", "estimate",
   	                 "grand_id", "other", "idr");
 
@@ -56,17 +57,22 @@ class JobForm extends BaseJobForm
   	                                   array('choices' => sfWidgetFormSelectUSState::getStateAbbreviations()
   	                                  ));
     // make sure the dates are OK
-  	$this->validatorSchema->setPostValidator( 
-    new sfValidatorAnd(array(
-      new sfValidatorSchemaCompare(
-          'start_time', sfValidatorSchemaCompare::LESS_THAN_EQUAL, 'end_time',
-          array('throw_global_error' => true),
-          array('invalid' => 'The start date ("%left_field%") must be before the end date! ("%right_field%")')),
-     new sfValidatorSchemaCompare('start_time', sfValidatorSchemaCompare::GREATER_THAN, 'now',
-         array('throw_global_error' => true),
-         array('invalid' => 'The start date ("%left_field%") must be in the future today!'))
-    )));
+    $this->validatorSchema->setPostValidator ( 
+      new sfValidatorCallback(array(
+          'callback'  => array($this, "checkJobTimes",
+      ))
+    ));
     
+  }
+  
+  public function checkJobTimes( $validator, $values ){
+    
+    if( strtotime($values["end_time"]) 
+         && strtotime($values["start_time"]) > strtotime($values["end_time"]) ){
+      throw new sfValidatorError($validator, 'The start time must be before the end time.');
+    }
+    
+    return $values;
   }
   
   /**

@@ -135,10 +135,23 @@ class RequestJobForm extends sfForm {
 		$this->errorSchema = new sfValidatorErrorSchema ( $this->validatorSchema );
 		
 		$this->validatorSchema->setPostValidator ( 
-		  new sfValidatorAnd ( array (new sfValidatorSchemaCompare ( 'start_time', sfValidatorSchemaCompare::LESS_THAN_EQUAL, 'end_time', array ('throw_global_error' => true ), array ('invalid' => 'The start date ("%left_field%") must be before the end date! ("%right_field%")' ) ), )));
+		  new sfValidatorCallback(array(
+          'callback'  => array($this, "checkJobTimes",
+      ))
+		));
 
 
 		parent::setup ();
+	}
+	
+	public function checkJobTimes( $validator, $values ){
+	  
+	  if( strtotime($values["end_time"]) 
+	       && strtotime($values["start_time"]) > strtotime($values["end_time"]) ){
+	    throw new sfValidatorError($validator, 'The start time must be before the end time.');
+	  }
+	  
+	  return $values;
 	}
 	
 	public function save($con = null) {
