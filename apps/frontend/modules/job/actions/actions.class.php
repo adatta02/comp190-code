@@ -249,7 +249,8 @@ class jobActions extends PMActions {
 	public function executeEmail(sfWebRequest $request) {
 		
 		$to = $request->getParameter("to");
-		$from = "From: " . $request->getParameter("from");
+		// $from = "From: " . $request->getParameter("from");
+		$from = "From: photo@tufts.edu";
 		$subject = $request->getParameter("subject");
 		$body = $request->getParameter("body");
 		$this->sent = mail ( $to . ", photo@tufts.edu", $subject, $body, $from );
